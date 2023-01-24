@@ -1,0 +1,67 @@
+.container-bar-top{
+    background-color: var(--color-primary);
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-social-midia{
+    width: 30%; /* this value is 30% to will be aplied the space between*/
+    padding: 0 1rem;
+}
+
+.content-social-midia svg{
+    margin: 0 .5rem;
+    font-size: clamp(15px , 1.5vw, 1.5rem);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all .2s linear;
+}
+
+.content-social-midia svg.icon-tiktok{
+    background: black;
+    color: white;
+}
+.content-social-midia svg.icon-instagram{
+    color: white;
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+.content-social-midia svg.icon-facebook{
+    color: #3b5998;
+    background: white;
+}
+.content-social-midia svg.icon-youtube{
+    color: red;
+    background: white;
+}
+
+.content-social-midia svg:hover{
+    filter: brightness(1.5);
+    transform: scale(1.05);
+}
+
+
+.content-message {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.content-message h2{
+   font-size: clamp(15px , 1.5vw , 1.5rem);
+   color: white;
+   margin: 0 .5rem;
+}
+
+.content-message svg{
+    font-size: clamp(18px , 1.8vw , 1.8rem);
+    color: #FECE44;
+    border-radius: 50%;
+ }
