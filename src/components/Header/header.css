@@ -4,3 +4,33 @@ header{
     min-height: 300px;
     background-color: white;
 }
+
+.container-bar-top{
+    background-color: var(--color-primary);
+    height: 12%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.content-message {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.content-message h2{
+   font-size: clamp(15px , 1.5vw , 1.5rem);
+   color: white;
+   margin: 0 .5rem;
+}
+
+.content-message svg{
+    font-size: clamp(18px , 1.8vw , 1.8rem);
+    color: #FECE44;
+    border-radius: 50%;
+ }
