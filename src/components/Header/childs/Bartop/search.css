@@ -1,15 +1,16 @@
 .content-search {
     width: 50%;
+    height: 100%;
     display: grid;
     place-items: center;
 }
 
 .content-search .search{
     width: 70%;
+    height: 100%;
+    padding: .5rem;
     background-color: var(--color-second);
     color: white;
-    padding: .5rem;
-    border-radius: .5rem;
     display: flex;
     align-items: center;
 }
@@ -25,6 +26,7 @@
 }
 
 .content-search .search input::placeholder{
+    font-size: clamp(12px, 1.2vw, 1.2rem);
     color: rgba(255, 255, 255, 0.7);
 }
 
