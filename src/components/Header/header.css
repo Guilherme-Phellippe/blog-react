@@ -1,35 +1,29 @@
 header{
     width: 100%;
-    height: 50%;
-    min-height: 300px;
-    max-height: 700px;
+    height: auto;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
-
 .container-bar-top{
     background-color: var(--color-primary);
-    height: 12%;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #24242420;
 }
 
-.content-message {
+.content-logo {
     width: 25%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-
-.content-message h2{
-   font-size: clamp(15px , 1.5vw , 1.5rem);
-   color: white;
-   margin: 0 .5rem;
+.content-logo img{
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
 }
-
-.content-message svg{
-    font-size: clamp(18px , 1.8vw , 1.8rem);
-    color: #FECE44;
-    border-radius: 50%;
- }

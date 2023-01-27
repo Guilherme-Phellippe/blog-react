@@ -1,22 +1,21 @@
-import { FaGrinStars } from 'react-icons/fa'
-import { Banner } from './childs/Banner/Banner'
+
 import { Search } from './childs/Bartop/Search'
 import { SocialMidia } from './childs/Bartop/SocialMidia'
 import { Menu } from './childs/Menu/Menu'
+
 import './header.css'
 
-export const Header = () => {
+export const Header = ({ setValueSearch }) => {
+
     return (
         <header>
             <div className="container-bar-top">
-                <div className="content-message">
-                    <h2>Arrase na cozinha com a gente</h2>
-                    <FaGrinStars />
+                <div className="content-logo">
+                    <img src="https://i.ibb.co/QnyS04q/Tem-Sabor.jpg" alt="logo da tem sabor" />
                 </div>
-                <Search />
+                <Search setValueSearch={setValueSearch}/>
                 <SocialMidia />
             </div>
-            <Banner />
             <Menu />
         </header>
     )

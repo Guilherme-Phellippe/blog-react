@@ -1,9 +1,24 @@
+
+import { CSSTransition } from 'react-transition-group';
+
+
 import './banner.css'
 
-export const Banner  = () => { 
-    return(
-        <div className="container-banner">
-            <img src="https://tfcmek.vteximg.com.br/arquivos/ids/156318/Banner%20de%20Categorias%20-%20Cozinha%20(1).png?v=637369845754830000" alt="Imagem banner" />
-        </div>
+export const Banner = ({ hide }) => {
+
+    console.log(!!hide)
+
+    return (
+        <CSSTransition
+            in={!hide}
+            timeout={100}
+            onExit={() => !!hide }
+        >
+            {state => (
+                <div className={`container-banner ${state}`}>
+                    <img src="https://i.ibb.co/QnyS04q/Tem-Sabor.jpg" alt="Imagem banner" />
+                </div>
+            )}
+        </CSSTransition>
     )
 }

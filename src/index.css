@@ -3,6 +3,8 @@
   --color-second: #ff9161;
   --background: #E4E4E4;
   --shadow: #24242450;
+  --color-text: #202020;
+  --color-sub-text: #414141;
 }
 
 *{
@@ -10,8 +12,10 @@
   box-sizing: border-box;
 }
 
-body {
+html {
   font-size: 62.5%;
+  background-color: var(--background);
+
 }
 
 p , h1 , h2 ,h3, h4 , span, li{
