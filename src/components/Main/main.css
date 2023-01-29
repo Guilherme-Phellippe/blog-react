@@ -55,7 +55,7 @@ section#best-recipes .container-best-recipes {
 
 section.container-main {
     display: grid;
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: 23% 50% 23%;
     gap: 2%;
     margin-top: 1rem;
 }

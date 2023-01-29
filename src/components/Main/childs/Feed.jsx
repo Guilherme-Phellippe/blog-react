@@ -1,14 +1,18 @@
 import { FaHeart, FaInfoCircle, FaSave } from "react-icons/fa"
 import { RiCloseCircleFill, RiMessage2Fill } from "react-icons/ri"
+import { Button } from "../../utils/Button"
 
 import './feed.css'
 
-export const Feed = ({ contents }) => {
+export const Feed = ({ contents, hasSearch }) => {
+
+    const classForSearch = hasSearch ? "style-search" : ''
+
     return (
         <div className="box-feed-recipe">
-            {contents.length && contents.map((content) => {
+            {contents.length ? contents.map((content) => {
                 return (
-                    <div className="content-feed-user">
+                    <div className={`content-feed-user ${classForSearch}`}>
                         <div className="info-user">
                             <div className="box-photo">
                                 <img src="https://www.procurandocraques.com/static/img/admin/user-profile.png" alt={content.author} />
@@ -18,7 +22,6 @@ export const Feed = ({ contents }) => {
                                 <p>Agora mesmo</p>
                             </div>
                             <div className="box-utils">
-                                <FaInfoCircle />
                                 <RiCloseCircleFill className="close" />
                             </div>
                         </div>
@@ -26,8 +29,13 @@ export const Feed = ({ contents }) => {
                             <img src={content.img} alt={content.name_recipe} />
                         </div>
                         <div className="box-ingredients">
+                            <h3>{content.category}</h3>
                             <h2>{content.name_recipe}</h2>
-                            <br />
+                            <div className="box-hidden-for-search">
+                                <h2>Criado por: <span>{content.author}</span></h2>
+                                <p>Agora mesmo</p>
+                                <Button text="Ver receita"/>
+                            </div>
                             <p>
                                 1kg de arroz <br />
                                 8 litros de leite <br />
@@ -40,11 +48,11 @@ export const Feed = ({ contents }) => {
                             <div className="info-loved">
                                 {content.nmr_hearts > 0 &&
                                     <>
-                                    <div className="hearts">
-                                        <FaHeart /> 
-                                        <FaHeart /> 
-                                        <FaHeart /> 
-                                    </div>
+                                        <div className="hearts">
+                                            <FaHeart />
+                                            <FaHeart />
+                                            <FaHeart />
+                                        </div>
                                         <p>{content.nmr_hearts} pessoas amaram essa receita</p>
                                     </>
                                 }
@@ -57,7 +65,7 @@ export const Feed = ({ contents }) => {
                         </div>
                     </div>
                 )
-            })}
+            }) : <h2>Não encontramos sua receita =(</h2>}
         </div>
     )
 }

@@ -2,6 +2,7 @@ import { FaClock, FaEye, FaHeart } from 'react-icons/fa';
 import { BiFoodMenu } from 'react-icons/bi';
 
 import './boxrecipe.css'
+import { Button } from '../../utils/Button';
 
 export const BoxRecipe = ({ recipe }) => {
     const {
@@ -25,7 +26,7 @@ export const BoxRecipe = ({ recipe }) => {
                     <p><FaClock /> {`${time} min`} </p>
                     <p><BiFoodMenu /> {`${ing} ing`} </p>
                 </div>
-                <button>Ver receita</button>
+                <Button text='Ver receita' />
             </div>
         </div>
     )

@@ -20,7 +20,18 @@ export const Main = ({ valueSearch }) => {
         let date1 = moment(a.createdAt)
         let date2 = moment(b.createdAt)
         return (date2.dayOfYear() - date1.dayOfYear())
-    })
+    });
+
+
+    const handleNewArrayFeed = () =>{
+        const findRecipes = valueSearch ? recipes.filter( recipe => {
+            return recipe.name_recipe.toLowerCase().includes(valueSearch.toLowerCase()) || 
+                    recipe.category.toLowerCase().includes(valueSearch.toLowerCase()) ||
+                    recipe.author.toLowerCase().includes(valueSearch.toLowerCase());
+        }) : recipes
+        return findRecipes.sort(() => Math.random() - .5);
+    }
+
 
     return (
         <main>
@@ -47,9 +58,13 @@ export const Main = ({ valueSearch }) => {
                     </div>
                 </aside>
                 <div className="feed">
-                    <VoteRecipes />
-                    <CreateFeed />
-                    <Feed contents={recipes}/>
+                    {!valueSearch &&
+                        <>
+                            <VoteRecipes contents={handleNewArrayFeed()} />
+                            <CreateFeed />
+                        </> 
+                    }
+                    <Feed contents={handleNewArrayFeed()} hasSearch={valueSearch}/>
                 </div>
                 <aside>
 

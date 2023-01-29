@@ -1,0 +1,44 @@
+.vote-best-recipe{
+    width: 100%;
+    height: 20rem;
+    background-color: white;
+    border-bottom: 1px solid #23232330;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.vote-best-recipe h2{
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: max(18px , 1.8vw);
+}
+.vote-best-recipe .content-best-recipes{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.vote-best-recipe .content-recipe{
+    width: 25%;
+    height: 50%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.vote-best-recipe .content-recipe{
+    width: 25%;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-recipe .box-img{
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    display: flex;
+}

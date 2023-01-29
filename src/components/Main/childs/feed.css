@@ -21,24 +21,35 @@
     overflow: hidden;
 }
 
+.info-user .box-photo {
+    width: 10%;
+    height: 70%;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 .info-user .box-photo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.info-user .box-name-date{
+.info-user .box-name-date {
     width: 70%;
     padding: 1.5rem 1rem;
     height: 100%;
 }
-.info-user .box-utils{
+
+.info-user .box-utils {
     width: 20%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
 }
-.info-user .box-utils svg{
+
+.info-user .box-utils svg {
     color: gray;
     text-shadow: none;
     cursor: pointer;
@@ -46,14 +57,13 @@
     font-size: max(25px, 2.5rem);
 }
 
-.info-user .box-utils svg:hover{
+.info-user .box-utils svg:hover {
     color: royalblue;
 }
-.info-user .box-utils svg.close:hover{
+
+.info-user .box-utils svg.close:hover {
     color: darkred;
 }
-
-
 
 .content-feed-user .content-feed {
     width: 100%;
@@ -75,6 +85,9 @@
     justify-content: center;
     align-items: center;
 }
+.content-feed-user .box-ingredients .box-hidden-for-search{
+    display: none;
+}
 
 .content-feed-user .box-ingredients a {
     font-size: max(15px, 1.5rem);
@@ -87,7 +100,8 @@
     flex-direction: column;
     align-items: center;
 }
-.box-buttons .info-loved{
+
+.box-buttons .info-loved {
     width: 100%;
     height: 50%;
     font-size: max(12px, 1.2vw);
@@ -95,20 +109,25 @@
     justify-content: center;
     align-items: center;
 }
+
 .info-loved .hearts {
     display: flex;
     align-items: center;
 }
-.info-loved .hearts svg{
+
+.info-loved .hearts svg {
     color: red;
 }
-.info-loved .hearts svg:nth-child(1){
+
+.info-loved .hearts svg:nth-child(1) {
     transform: translateX(16px);
 }
-.info-loved .hearts svg:nth-child(2){
+
+.info-loved .hearts svg:nth-child(2) {
     transform: translateX(8px);
 }
-.box-buttons .all-buttons{
+
+.box-buttons .all-buttons {
     width: 80%;
     height: 50%;
     display: flex;
@@ -116,7 +135,8 @@
     align-items: center;
     border-top: 1px solid #24242420;
 }
-.box-buttons .all-buttons button{
+
+.box-buttons .all-buttons button {
     border: none;
     background-color: transparent;
     display: flex;
@@ -127,15 +147,83 @@
     height: 100%;
     transition: all .2s linear;
 }
-.box-buttons .all-buttons button:hover{
+
+.box-buttons .all-buttons button:hover {
     background-color: #24242440;
 }
-.box-buttons .all-buttons button.heart:hover{
+
+.box-buttons .all-buttons button.heart:hover {
     color: red;
 }
-.box-buttons .all-buttons button.message:hover{
+
+.box-buttons .all-buttons button.message:hover {
     color: royalblue;
 }
-.box-buttons .all-buttons button:hover{
+
+.box-buttons .all-buttons button:hover {
     color: green
+}
+
+/* STYLE FOR WHEN USER WRITE SOMETHING IN THE SEARCH  */
+
+.content-feed-user.style-search {
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: filter .2s linear, transform .2s linear;
+}
+
+.content-feed-user.style-search:hover {
+    filter: brightness(1.1);
+    transform: scale(1.01);
+    box-shadow: 1px 1px 5px var(--shadow);
+}
+
+.content-feed-user.style-search .info-user {
+    display: none;
+}
+
+.content-feed-user.style-search .content-feed {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+}
+.content-feed-user.style-search .box-ingredients{
+    width: 60%;
+    height: 100%;
+    border: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.content-feed-user.style-search .box-ingredients > p,
+.content-feed-user.style-search .box-ingredients > a {
+    display: none;
+}
+
+.content-feed-user.style-search .box-ingredients > h2 {
+    font-size: max(18px , 1.8vw);
+}
+.content-feed-user.style-search .box-ingredients .box-hidden-for-search{
+    display: block;
+}
+.content-feed-user.style-search .box-ingredients .box-hidden-for-search > h2{
+    display: block;
+    font-size: max(12px , 1.2vw);
+    color: rgba(128, 128, 128, 0.7);
+    text-shadow: none;
+}
+.content-feed-user.style-search .box-ingredients .box-hidden-for-search span{
+    color: var(--color-primary);
+    text-shadow: none;
+}
+.content-feed-user.style-search .box-ingredients .box-hidden-for-search > p{
+    color: gray;
+    text-shadow: none;
+}
+
+.content-feed-user.style-search .box-buttons {
+    display: none;
 }
