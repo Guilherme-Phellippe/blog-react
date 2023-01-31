@@ -13,16 +13,16 @@ export const Footer = () => {
                     </div>
                     <div className="links">
                         <h3>Nossas politicas</h3>
-                        <a href="#">privacidade</a>
-                        <a href="#">Termos de uso</a>
-                        <a href="#">publicidade</a>
-                        <a href="#">Trocas e devoluções</a>
+                        <a href="/">privacidade</a>
+                        <a href="/">Termos de uso</a>
+                        <a href="/">publicidade</a>
+                        <a href="/">Trocas e devoluções</a>
                     </div>
                     <div className="links">
                         <h3>Sobre</h3>
-                        <a href="#">Quem somos?</a>
-                        <a href="#">Contato</a>
-                        <a href="#">Publique sua receita</a>
+                        <a href="/">Quem somos?</a>
+                        <a href="/">Contato</a>
+                        <a href="/">Publique sua receita</a>
                     </div>
                     <div className="links">
                         <Logo />
