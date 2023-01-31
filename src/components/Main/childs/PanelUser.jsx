@@ -20,7 +20,7 @@ export const PanelUser = ({ name_user = "Usuário"}) => {
                 <>
                     <Button text="Faça seu login"/>
                     <span>---- ou ----</span>
-                    <a href="#">Registre-se</a>
+                    <a href="/">Registre-se</a>
                 </>}
             
         </div>

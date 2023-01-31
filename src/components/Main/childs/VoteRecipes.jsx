@@ -8,18 +8,13 @@ export const VoteRecipes = ({ contents }) => {
 
     const recipes = [...contents].sort((x, y) => y.votes - x.votes)
 
-
-
     useEffect(() =>{
         setTotalVotes(0)
-        handletotalVotes();
-    }, [totalVotes]);
-
-    const handletotalVotes= () =>{
         recipes.forEach(recipe =>{
             setTotalVotes((r) => r += recipe.votes)
         })
-    }
+    }, [totalVotes, recipes]);
+
 
     return (
         <div className="vote-best-recipe">

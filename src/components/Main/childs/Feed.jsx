@@ -1,4 +1,4 @@
-import { FaHeart, FaInfoCircle, FaSave } from "react-icons/fa"
+import { FaHeart, FaSave } from "react-icons/fa"
 import { RiCloseCircleFill, RiMessage2Fill } from "react-icons/ri"
 import { Button } from "../../utils/Button"
 
@@ -41,7 +41,7 @@ export const Feed = ({ contents, hasSearch }) => {
                                 12 abacates <br />
                                 1 galinha <br />
                             </p>
-                            <a href="#">Saiba mais</a>
+                            <a href="/">Saiba mais</a>
                         </div>
                         <div className="box-buttons">
                             <div className="info-loved">

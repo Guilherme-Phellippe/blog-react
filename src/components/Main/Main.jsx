@@ -35,7 +35,7 @@ export const Main = ({ valueSearch }) => {
         const newFeed = findRecipes.slice(0, postPerPage)
         console.log(postPerPage)
         setFeed(newFeed);
-    }, [postPerPage])
+    }, [postPerPage, findRecipes])
 
 
     return (
@@ -44,7 +44,8 @@ export const Main = ({ valueSearch }) => {
                 <section id="best-recipes">
                     <div className="container-best-recipes">
                         {topViewed.length && topViewed.map((recipe, index) => {
-                            if (index < 3) return <BoxRecipe key={recipe.id} recipe={recipe} />
+                            if (index < 3) return <BoxRecipe key={recipe.id} recipe={recipe} />;
+                            return [];
                         })}
                     </div>
                 </section>
