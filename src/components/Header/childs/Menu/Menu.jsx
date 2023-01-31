@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
+import { Categories } from './Categories'
 import './menu.css'
 
 export const Menu = () => {
@@ -39,11 +40,7 @@ export const Menu = () => {
                 <li className='active'>Home</li>
                 <li onClick={handleSubCategory}>Categorias <RiArrowDownSLine />
                     {enabledSubCategory &&
-                        <ul>
-                            <li>Receitas de bolo</li>
-                            <li>Receitas de pão</li>
-                            <li>Receitas veganas</li>
-                        </ul>
+                        <Categories />
                     }
                 </li>
                 <li>Dicas de cozinha</li>

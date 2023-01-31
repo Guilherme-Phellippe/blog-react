@@ -7,6 +7,7 @@ button.primary{
     border: none;
     padding: .5rem 1rem;
     width: max(50%, 150px);
+    display: block;
     margin: 1rem auto;
     box-shadow: 3px 3px 5px var(--shadow);
     transition: all .3s linear;

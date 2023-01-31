@@ -20,7 +20,7 @@ export const recipes = [
             author: 'Caique de Carvalho',
             nmr_hearts: 29,
             nmr_eyes: 53,
-            votes: 17,
+            votes: 101,
             time: 15,
             ing: 3,
             createdAt: new Date(2022, 12 , 11),

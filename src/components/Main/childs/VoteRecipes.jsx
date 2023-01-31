@@ -8,17 +8,18 @@ export const VoteRecipes = ({ contents }) => {
 
     const recipes = [...contents].sort((x, y) => y.votes - x.votes)
 
+
+
+    useEffect(() =>{
+        setTotalVotes(0)
+        handletotalVotes();
+    }, [totalVotes]);
+
     const handletotalVotes= () =>{
         recipes.forEach(recipe =>{
             setTotalVotes((r) => r += recipe.votes)
         })
     }
-
-    useEffect(() =>{
-        setTotalVotes(0)
-        handletotalVotes();
-        console.log(totalVotes)
-    }, [totalVotes])
 
     return (
         <div className="vote-best-recipe">
@@ -26,19 +27,19 @@ export const VoteRecipes = ({ contents }) => {
             <div className="content-best-recipes">
                 {recipes.length && recipes.map((recipe, index) => {
                     if (index < 3) return (
-                        <div className="content-recipe">
+                        <div className="container-recipe-votes">
+                            <h2>{recipe.name_recipe}</h2>
                             <div className="box-img">
                                 <img src={recipe.img} alt={recipe.name_recipe} />
+                                <img className='avatar-user' src="https://www.procurandocraques.com/static/img/admin/user-profile.png" alt="" />
                             </div>
-                            {recipe.name_recipe}
-                            <br />
-                            <br />
-                            {`${((recipe.votes / totalVotes) * 100).toFixed(1)}% dos votos`}
+                            <p>{`${((recipe.votes / totalVotes) * 100).toFixed(1)}% dos votos`}</p>
+                            
                         </div>
                     )
                 })}
             </div>
-            <Button text='Deixe seu voto' />
+            <Button text='Ver votação' />
         </div>
     )
 }

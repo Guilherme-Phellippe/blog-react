@@ -5,7 +5,6 @@ import { Button } from "../../utils/Button"
 import './feed.css'
 
 export const Feed = ({ contents, hasSearch }) => {
-
     const classForSearch = hasSearch ? "style-search" : ''
 
     return (

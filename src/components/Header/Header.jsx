@@ -1,4 +1,5 @@
 
+import { Logo } from './childs/Bartop/Logo'
 import { Search } from './childs/Bartop/Search'
 import { SocialMidia } from './childs/Bartop/SocialMidia'
 import { Menu } from './childs/Menu/Menu'
@@ -10,9 +11,7 @@ export const Header = ({ setValueSearch }) => {
     return (
         <header>
             <div className="container-bar-top">
-                <div className="content-logo">
-                    <img src="https://i.ibb.co/QnyS04q/Tem-Sabor.jpg" alt="logo da tem sabor" />
-                </div>
+                <Logo />
                 <Search setValueSearch={setValueSearch}/>
                 <SocialMidia />
             </div>

@@ -1,18 +1,17 @@
-
-aside .content-most-recents {
+aside .container-ranking {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.content-most-recents > h2 {
+.container-ranking > h2 {
     width: 100%;
     text-align: center;
     padding: .5rem;
     font-size: max(15px, 1.5vw);
 }
 
-.content-most-recents .recent-recipe {
+.container-ranking .recent-recipe {
     width: 100%;
     height: 7rem;
     padding: .5rem;
@@ -26,7 +25,7 @@ aside .content-most-recents {
     transition: border .2s linear;
 }
 
-.content-most-recents .recent-recipe:hover {
+.container-ranking .recent-recipe:hover {
     border-bottom: 1px solid #24242470;
     border-top: 1px solid #24242470;
 }
@@ -60,7 +59,7 @@ aside .content-most-recents {
     color: var(--color-primary);
 }
 
-.content-most-recents > p{
+.container-ranking > p{
     width: 100%;
     text-align: center;
     padding: 1rem;
