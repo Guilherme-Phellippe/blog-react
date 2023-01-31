@@ -32,6 +32,7 @@ export const VoteRecipes = ({ contents }) => {
                             
                         </div>
                     )
+                    return [];
                 })}
             </div>
             <Button text='Ver votação' />
