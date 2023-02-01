@@ -11,7 +11,7 @@ export const Feed = ({ contents, hasSearch }) => {
         <div className="box-feed-recipe">
             {contents.length ? contents.map((content) => {
                 return (
-                    <div className={`content-feed-user ${classForSearch}`}>
+                    <div key={content.id} className={`content-feed-user ${classForSearch}`}>
                         <div className="info-user">
                             <div className="box-photo">
                                 <img src="https://www.procurandocraques.com/static/img/admin/user-profile.png" alt={content.author} />

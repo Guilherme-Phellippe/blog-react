@@ -22,7 +22,7 @@ export const VoteRecipes = ({ contents }) => {
             <div className="content-best-recipes">
                 {recipes.length && recipes.map((recipe, index) => {
                     if (index < 3) return (
-                        <div className="container-recipe-votes">
+                        <div key={recipe.id} className="container-recipe-votes">
                             <h2>{recipe.name_recipe}</h2>
                             <div className="box-img">
                                 <img src={recipe.img} alt={recipe.name_recipe} />

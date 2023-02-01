@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import { Main } from "../../components/Main/Main";
@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <div className="container">
-      <Header setValueSearch={setValueSearch}/>
+      {useMemo(() => <Header setValueSearch={setValueSearch}/> , [])}
       <Main valueSearch={valueSearch}/>
       <Footer />
     </div>
