@@ -1,19 +1,21 @@
-import { useMemo, useState } from "react";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
-import { Main } from "../../components/Main/Main";
-
-import './home.css'
+import { useMemo } from "react";
+import { Footer } from "../../components/templates/Footer/Footer";
+import { Header } from "../../components/templates/Header/Header";
+import { Main } from "../../components/templates/Home/Main";
+import { HomeProvider } from "../../contexts/Home/HomeProvider";
 
 export default function Home() {
-
-  const [valueSearch , setValueSearch] = useState('');
-
   return (
     <div className="container">
-      {useMemo(() => <Header setValueSearch={setValueSearch}/> , [])}
-      <Main valueSearch={valueSearch}/>
-      <Footer />
+      <HomeProvider>
+        {useMemo(() => {
+          return <>
+            <Header />
+            <Main />
+            <Footer />
+          </>
+        }, [])}
+      </HomeProvider>
     </div>
   );
 }

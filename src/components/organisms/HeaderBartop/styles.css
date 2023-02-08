@@ -1,0 +1,8 @@
+.container-bar-top{
+    background-color: var(--color-primary);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #24242420;
+}
