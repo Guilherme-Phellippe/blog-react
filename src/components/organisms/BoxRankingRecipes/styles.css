@@ -1,4 +1,4 @@
-aside .container-ranking {
+.container-ranking {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -11,9 +11,9 @@ aside .container-ranking {
     font-size: max(15px, 1.5vw);
 }
 
-.container-ranking .recent-recipe {
+.container-ranking .recent_recipe a {
     width: 100%;
-    height: 7rem;
+    height: 6rem;
     padding: .5rem;
     display: flex;
     align-items: center;
@@ -25,37 +25,37 @@ aside .container-ranking {
     transition: border .2s linear;
 }
 
-.container-ranking .recent-recipe:hover {
+.container-ranking .recent_recipe a:hover {
     border-bottom: 1px solid #24242470;
     border-top: 1px solid #24242470;
 }
 
-.recent-recipe .content-img {
+.recent_recipe .content_img {
     width: 20%;
     height: 80%;
     overflow: hidden;
     border-radius: 1rem;
 }
 
-.content-img img {
+.content_img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.content-info h2{
+.content_info h2{
     width: 100%;
     font-size: max(10px , 1.2vw);
     text-shadow: none;
     padding: 0 .5rem;
 }
-.content-info p{
+.content_info p{
     width: 100%;
     text-align: left;
     font-size: max(8px , .8vw);
     text-shadow: none;
     padding: 0 .5rem;
 }
-.content-info p span{
+.content_info p span{
     color: var(--color-primary);
 }
 

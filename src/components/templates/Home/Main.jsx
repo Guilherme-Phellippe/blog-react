@@ -6,7 +6,7 @@ import { recipes } from "../../../scripts/api/simulation"
 
 import { Button } from "../../atoms/Button";
 import { BoxRecipe } from "./BoxRecipe/BoxRecipe.jsx";
-import { ListRecipes } from "../../organisms/HomeListRecipes";
+import { BoxRankingRecipes } from "../../organisms/BoxRankingRecipes";
 import { PollRecipes } from "./PollRecipes/PollRecipes.jsx";
 import { CreateFeed } from './CreateFeed/CreateFeed.jsx'
 import { Feed } from  './Feed/Feed.jsx'
@@ -60,7 +60,7 @@ export const Main = () => {
             <section className="container-main">
                 <aside>
                     {useMemo(() => {
-                        return <ListRecipes title={'Receitas novas'} ranking={MostRecent()} />
+                        return <BoxRankingRecipes title={'Receitas novas'} ranking={MostRecent()} />
                     }, [MostRecent])}
                 </aside>
                 <div className="feed">
@@ -80,7 +80,7 @@ export const Main = () => {
                         return (
                             <>
                                 <PanelUser />
-                                <ListRecipes title={'As mais amadas'} ranking={topRanking('nmr_hearts')} />
+                                <BoxRankingRecipes title={'As mais amadas'} ranking={topRanking('nmr_hearts')} />
                             </>
                         )
                     }, [topRanking])}
