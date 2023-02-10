@@ -58,7 +58,6 @@
 }
 
 .container-recipe-votes p{
-    background-color: var(--color-second);
     color: white;
     padding: .3rem;
     margin: 1rem 0;

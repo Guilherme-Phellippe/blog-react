@@ -1,28 +1,2 @@
-button{
-    cursor: pointer;
-    border-radius: 1rem;
-    border: none;
-    display: block;
-    margin: 1rem auto;
-    transition: all .3s linear;
-    padding: .5rem;
-}
 
-button:hover{
-    filter: brightness(1.2);
-    transform: scale(1.05);
-}
-
-button.primary {
-    font-size: max(12px , 1.2vw);
-    background-color: var(--color-primary);
-    box-shadow: 3px 3px 5px var(--shadow);
-    color: white;
-}
-button.second {
-    font-size: max(12px , 1.2vw);
-    background-color: var(--color-second);
-    box-shadow: 3px 3px 5px var(--shadow);
-    color: white;
-}
 

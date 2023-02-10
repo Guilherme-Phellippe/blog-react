@@ -2,9 +2,10 @@ import types from 'prop-types'
 
 import './styles.css'
 
-export const Button  = ({ children, event, typeButton, style}) => { 
+export const Button  = ({ children, event, customClass = 'btn-primary', style}) => { 
+
     return(
-        <button className={ typeButton } onClick={event} style={style}>{children}</button>
+        <button className={ customClass } onClick={event} style={style}>{children}</button>
     )
 }
 

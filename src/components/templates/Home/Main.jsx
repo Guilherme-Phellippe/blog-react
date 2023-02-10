@@ -72,7 +72,9 @@ export const Main = () => {
                     }
                     <Feed contents={feed} hasSearch={valueSearch} />
                     {postPerPage <= feed.length &&
-                        <Button text="Carregar mais" event={() => setPostPerPage((nmr_post) => nmr_post + 5)} />
+                        <Button customClass={"btn-primary mx-auto block px-8"} event={() => setPostPerPage((nmr_post) => nmr_post + 5)}>
+                            Carregar mais
+                        </Button>
                     }
                 </div>
                 <aside>

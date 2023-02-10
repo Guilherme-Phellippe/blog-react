@@ -2,7 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+@layer components {
+  .btn-primary {
+    @apply rounded-2xl border-none p-2 cursor-pointer bg-color_primary text-white
+    transition-transform hover:scale-105;
+  }
+
+  /* button:hover {
+    transform: scale(1.05);
+  }
+
+  button.primary {
+    font-size: max(12px, 1.2vw);
+    background-color: var(--color-primary);
+    box-shadow: 3px 3px 5px var(--shadow);
+    color: white;
+  }
+
+  button.second {
+    font-size: max(12px, 1.2vw);
+    background-color: var(--color-second);
+    box-shadow: 3px 3px 5px var(--shadow);
+    color: white;
+  } */
+}
+
+:root {
   --color-primary: #FF6A28;
   --color-second: #ff9161;
   --background: #E4E4E4;
@@ -11,8 +36,9 @@
   --color-sub-text: #414141;
 }
 
-*{
-  margin: 0;padding: 0;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -22,11 +48,11 @@ html {
 
 }
 
-a{
-  all:unset
+a {
+  all: unset
 }
 
-.container{
+.container {
   width: 100vw;
   height: 100vh;
   max-width: 1600px;

@@ -28,7 +28,7 @@ export const BoxRecipe = ({ recipe }) => {
                     <p><BiFoodMenu /> {`${ing} ing`} </p>
                 </div>
                 <Link to={`/recipe/${id}`}>
-                <Button typeButton={'primary'} style={{padding: '.5rem 2rem'}}>Ver receita</Button>
+                <Button customClass={"btn-primary px-8 block mt-4 mx-auto"}>Ver receita</Button>
                 </Link>
             </div>
         </div>

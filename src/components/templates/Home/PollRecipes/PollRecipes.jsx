@@ -29,15 +29,14 @@ export const PollRecipes = ({ contents }) => {
                                 <img src={recipe.img} alt={recipe.name_recipe} />
                                 <img className='avatar-user' src="https://www.procurandocraques.com/static/img/admin/user-profile.png" alt="" />
                             </div>
-                            <p>{`${((recipe.votes / totalVotes) * 100).toFixed(1)}% dos votos`}</p>
-
+                            <p className='bg-color_third'>{`${((recipe.votes / totalVotes) * 100).toFixed(1)}% dos votos`}</p>
                         </div>
                     )
                     return [];
                 })}
             </div>
             <Link to={'/poll'}>
-                <Button text='Ver votação' />
+                <Button customClass={"btn-primary mx-auto block px-8 mt-4"}>Ver votação</Button>
             </Link>
         </div>
     )
