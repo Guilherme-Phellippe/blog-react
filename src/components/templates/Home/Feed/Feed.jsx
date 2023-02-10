@@ -1,6 +1,8 @@
 import { FaHeart, FaSave } from "react-icons/fa"
 import { RiCloseCircleFill, RiMessage2Fill } from "react-icons/ri"
+
 import { Button } from '../../../atoms/Button'
+import { NumberLoved } from '../../../atoms/NumberLoved'
 
 import './feed.css'
 
@@ -45,16 +47,7 @@ export const Feed = ({ contents, hasSearch }) => {
                         </div>
                         <div className="box-buttons">
                             <div className="info-loved">
-                                {content.nmr_hearts > 0 &&
-                                    <>
-                                        <div className="hearts">
-                                            <FaHeart />
-                                            <FaHeart />
-                                            <FaHeart />
-                                        </div>
-                                        <p>{content.nmr_hearts} pessoas amaram essa receita</p>
-                                    </>
-                                }
+                                {content.nmr_hearts > 0 && <NumberLoved nmr_hearts={content.nmr_hearts}/>}
                             </div>
                             <div className="all-buttons">
                                 <button className="heart"><FaHeart /> Amei</button>

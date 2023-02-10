@@ -8,11 +8,13 @@ import { NotFound } from './pages/NotFound/NotFound';
 import { Store } from './pages/Store/Store';
 import { Recipe } from './pages/Recipe';
 import { Poll } from './pages/Poll/Poll';
+import { ScrollToTopPage } from './contexts/ScrollToTopPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <ScrollToTopPage />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
