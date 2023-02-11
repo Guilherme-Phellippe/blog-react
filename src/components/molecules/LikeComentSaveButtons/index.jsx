@@ -4,29 +4,31 @@ import { Button } from "../../atoms/Button";
 
 const contents = [
     {
-        icon: <FaHeart />,
-        title: "amei"
+        icon: <FaHeart className="group-hover:fill-red-500 " />,
+        title: <p className="group-hover:text-red-400" >Amei</p>
     },
     {
-        icon: <RiMessage2Fill />,
-        title: 'comentar'
+        icon: <RiMessage2Fill className="group-hover:fill-blue-500 " />,
+        title: <p className="group-hover:text-blue-400" >Comentar</p>
     },
     {
-        icon: <FaSave />,
-        title: 'salvar'
+        icon: <FaSave className="group-hover:fill-green-500 "/>,
+        title: <p className="group-hover:text-green-400" >Salvar</p>
     },
 ]
 
 
 export const LikeComentsSaveButtons = () => {
     return (
-        <div className="flex w-5/6">
+        <div className="flex w-5/6 mx-auto">
             {contents.map(content =>
                 <Button 
                     key={content.title}
                     customClass=
-                    {"flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_3"}
+                    {"flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_3 hover:font-bold transition-all group"}
                 >{content.icon} {content.title}</Button>)}
         </div>
     )
 }
+
+

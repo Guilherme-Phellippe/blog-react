@@ -1,7 +1,5 @@
 import types from 'prop-types'
 
-import './styles.css'
-
 export const Button  = ({ children, event, customClass = 'btn-primary', style}) => { 
 
     return(

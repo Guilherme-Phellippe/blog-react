@@ -65,41 +65,11 @@
     color: darkred;
 }
 
-/* .content-feed-user .content-feed {
-    width: 100%;
-    height: 65%;
-    overflow: hidden;
-} */
-
 .content-feed-user .content-feed img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-
-/* .content-feed-user .box-ingredients {
-    height: 15%;
-    border-bottom: 1px solid #24242420;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.content-feed-user .box-ingredients .box-hidden-for-search{
-    display: none;
-}
-
-.content-feed-user .box-ingredients a {
-    font-size: max(15px, 1.5rem);
-    margin: .5rem;
-} */
-
-/* .content-feed-user .box-buttons {
-    height: 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
 
 .box-buttons .info-loved {
     width: 100%;

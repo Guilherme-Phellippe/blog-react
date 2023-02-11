@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import { Button } from '../../../atoms/Button'
 
 import './PanelUser.css'
 
-export const PanelUser = ({ name_user = "Usuário"}) => {
+export const PanelUser = ({ name_user = "Usuário" }) => {
 
-    const IsLogged = name_user !== "Usuário" ? true:false
+    const IsLogged = name_user !== "Usuário" ? true : false
 
     return (
         <div className="container-login">
@@ -14,15 +15,19 @@ export const PanelUser = ({ name_user = "Usuário"}) => {
                 </div>
                 <p>Bem vindo, <span>{name_user}</span></p>
             </div>
-            { IsLogged ? 
-                <Button text="Acessar painel"/>
-                : 
+            {IsLogged ?
+                <Button>Acessar painel</Button>
+                :
                 <>
-                    <Button text="Faça seu login"/>
-                    <span>---- ou ----</span>
-                    <a href="/">Registre-se</a>
+                    <Link to={'/login'}>
+                        <Button customClass={"btn-primary mt-4 px-8"}>Faça seu login</Button>
+                    </Link>
+                    <span>ou</span>
+                    <Link to={'/register'}>
+                        <p className='cursor-pointer text-color_second font-bold'>Registre-se</p>
+                    </Link>
                 </>}
-            
+
         </div>
     )
 }

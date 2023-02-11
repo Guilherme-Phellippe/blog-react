@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Footer } from "../../components/templates/Footer/Footer";
 import { Header } from "../../components/templates/Header/Header";
-import { Main } from "../../components/templates/Home/Main";
+import { MainContentHome } from "../../components/templates/Home/MainContentHome";
 import { HomeProvider } from "../../contexts/Home/HomeProvider";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
         {useMemo(() => {
           return <>
             <Header />
-            <Main />
+            <MainContentHome />
             <Footer />
           </>
         }, [])}

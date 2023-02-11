@@ -1,20 +1,22 @@
 import moment from "moment/moment.js";
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { HomeContext } from '../../../contexts/Home/HomeProvider'
+import { useCallback, useContext, useEffect, useState } from "react";
 
-import { recipes } from "../../../scripts/api/simulation"
+import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 
-import { Button } from "../../atoms/Button";
-import { BoxRecipe } from "./BoxRecipe/BoxRecipe.jsx";
-import { BoxRankingRecipes } from "../../organisms/BoxRankingRecipes";
-import { PollRecipes } from "./PollRecipes/PollRecipes.jsx";
-import { CreateFeed } from './CreateFeed/CreateFeed.jsx'
-import { Feed } from  './Feed/Feed.jsx'
-import { PanelUser } from './PanelUser/PanelUser.jsx' 
+import { recipes } from "../../../../scripts/api/simulation"
+
+import { Button } from "../../../atoms/Button";
+import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
+import { CreateFeed } from '../CreateFeed/CreateFeed.jsx'
+import { Feed } from '../../../organisms/Feed'
+
+import { MostViewedRecipesContainer } from "../../../organisms/MostViewedRecipesContainer";
+import { ColumnLeftMainHome } from "../../../organisms/ColumnLeftMainHome";
+import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
 
 import './main.css'
 
-export const Main = () => {
+export const MainContentHome = () => {
     const { valueSearch } = useContext(HomeContext)
 
     const [postPerPage, setPostPerPage] = useState(7);
@@ -46,23 +48,11 @@ export const Main = () => {
 
     return (
         <main>
-            {!valueSearch &&
-                <section id="best-recipes">
-                    <div className="container-best-recipes">
-                        {topRanking('nmr_eyes').length && topRanking('nmr_eyes').map((recipe, index) => {
-                            if (index < 3) return <BoxRecipe key={recipe.id} recipe={recipe} />;
-                            return [];
-                        })}
-                    </div>
-                </section>
-            }
+            <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRanking} />
 
             <section className="container-main">
-                <aside>
-                    {useMemo(() => {
-                        return <BoxRankingRecipes title={'Receitas novas'} ranking={MostRecent()} />
-                    }, [MostRecent])}
-                </aside>
+                <ColumnLeftMainHome ranking={MostRecent()} />
+
                 <div className="feed">
                     {!valueSearch &&
                         <>
@@ -77,17 +67,8 @@ export const Main = () => {
                         </Button>
                     }
                 </div>
-                <aside>
-                    {useMemo(() => {
-                        return (
-                            <>
-                                <PanelUser />
-                                <BoxRankingRecipes title={'As mais amadas'} ranking={topRanking('nmr_hearts')} />
-                            </>
-                        )
-                    }, [topRanking])}
 
-                </aside>
+                <ColumnRightMainHome ranking={topRanking('nmr_hearts')} />
             </section>
 
         </main>

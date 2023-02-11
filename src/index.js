@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { ScrollToTopPage } from './contexts/ScrollToTopPage';
 import Home from './pages/Home/Home';
 import { NotFound } from './pages/NotFound/NotFound';
 import { Store } from './pages/Store/Store';
 import { Recipe } from './pages/Recipe';
 import { Poll } from './pages/Poll/Poll';
-import { ScrollToTopPage } from './contexts/ScrollToTopPage';
+import { Login } from './pages/Login/Login'
 
 import './index.css';
 
@@ -22,6 +23,8 @@ root.render(
         <Route path='/store' element={<Store />} />
         <Route path='/recipe/:id' element={<Recipe />} />
         <Route path='/poll' element={<Poll />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Login />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -5,7 +5,7 @@
 @layer components {
   .btn-primary {
     @apply rounded-2xl border-none p-2 cursor-pointer bg-color_primary text-white
-    transition-transform hover:scale-105;
+    transition-transform hover:scale-105 hover:brightness-95;
   }
 
   /* button:hover {

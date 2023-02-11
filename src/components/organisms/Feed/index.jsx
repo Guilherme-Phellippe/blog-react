@@ -1,9 +1,9 @@
 import { RiCloseCircleFill } from "react-icons/ri"
 import { Link } from "react-router-dom"
 
-import { Button } from '../../../atoms/Button'
-import { NumberLoved } from '../../../atoms/NumberLoved'
-import { LikeComentsSaveButtons } from "../../../molecules/LikeComentSaveButtons"
+import { Button } from '../../atoms/Button'
+import { NumberLoved } from '../../atoms/NumberLoved'
+import { LikeComentsSaveButtons } from "../../molecules/LikeComentSaveButtons"
 
 import './feed.css'
 
