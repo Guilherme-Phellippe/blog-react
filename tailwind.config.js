@@ -7,12 +7,12 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        s1_2: 'max(12px, 1.2vw)',
-        s1_3: 'max(13px, 1.3vw)',
-        s1_5: 'max(15px, 1.5vw)',
-        s1_7: 'max(17px, 1.7vw)',
-        s2: 'max(20px, 2vw)',
-        s3: 'max(30px, 3vw)',
+        s1_2: ['max(12px, 1.2vw)', '12px'],
+        s1_3: ['max(13px, 1.3vw)','13px'],
+        s1_5: ['max(15px, 1.5vw)','15px'],
+        s1_7: ['max(17px, 1.7vw)','17px'],
+        s2: ['max(20px, 2vw)','20px'],
+        s3: ['max(30px, 3vw)','30px'],
       },
       colors: {
         color_primary: '#FF6A28',

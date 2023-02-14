@@ -1,3 +1,6 @@
+import moment from "moment"
+import 'moment/locale/pt-br';
+import { useEffect } from "react";
 import { RiCloseCircleFill } from "react-icons/ri"
 import { Link } from "react-router-dom"
 
@@ -7,8 +10,25 @@ import { LikeComentsSaveButtons } from "../../molecules/LikeComentSaveButtons"
 
 import './feed.css'
 
-export const Feed = ({ contents, hasSearch }) => {
-    const classForSearch = hasSearch ? "style-search" : ''
+
+export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForRemove, hasSearch }) => {
+    const classForSearch = hasSearch ? "style-search" : '';
+
+    useEffect(() =>{
+        //if listRecipeForRemove has a length bigger than seven, so the first item in this array will be removed,
+        // this was done to that user does not delete all recipes
+        listRecipeForRemove.length >= 7 && listRecipeForRemove.shift();
+        //save the recipe's id in the localstorage
+        localStorage.setItem("listIdForRemove", JSON.stringify(listRecipeForRemove))
+        //call the function 'setFeed' and define new feed, removing the feed that was removed before
+        setFeed(contents => contents.filter(content => !listRecipeForRemove.includes(content.id.toString())))
+    }, [listRecipeForRemove, setFeed] )
+
+    const handleIdForAddListRemove =({ currentTarget })=>{
+        setListRecipeForRemove(list => [...list, currentTarget.id])
+
+    };
+
 
     return (
         <div className="box-feed-recipe">
@@ -20,11 +40,15 @@ export const Feed = ({ contents, hasSearch }) => {
                                 <img src="https://www.procurandocraques.com/static/img/admin/user-profile.png" alt={content.author} />
                             </div>
                             <div className="box-name-date">
-                                <h2>{content.author}</h2>
-                                <p>Agora mesmo</p>
+                                <h2 className="text-s1_2">{content.author}</h2>
+                                <p>{moment(content.createdAt).startOf('hour').fromNow()}</p>
                             </div>
                             <div className="box-utils">
-                                <RiCloseCircleFill className="close" />
+                                <RiCloseCircleFill 
+                                    id={content.id} 
+                                    onClick={handleIdForAddListRemove} 
+                                    className="close" 
+                                />
                             </div>
                         </div>
 
@@ -43,10 +67,11 @@ export const Feed = ({ contents, hasSearch }) => {
                             <Link to={'/recipe/' + content.id} >
                                 <Button customClass={'btn-primary px-8 mt-4'}>Ver receita</Button>
                             </Link>
+                            <Link className="m-2 underline cursor-pointer" to={`/poll?name=${content.name_recipe}`}>Vote como receita do mês</Link>
                         </div>
                         <div className="w-full h-[10%] p-2">
                             <div className="h-1/2">
-                                {content.nmr_hearts > 0 && <NumberLoved nmr_hearts={content.nmr_hearts} />}
+                                {<NumberLoved nmr_hearts={content.nmr_hearts} nmr_comments={content.nmr_hearts} />}
                             </div>
                             <div className="h-1/2 flex justify-center">
                                 <LikeComentsSaveButtons />
@@ -55,6 +80,8 @@ export const Feed = ({ contents, hasSearch }) => {
                     </div>
                 )
             }) : <h2 className="text-s1_5 p-4 text-center">Não encontramos sua receita =(</h2>}
+
+
         </div>
     )
 }

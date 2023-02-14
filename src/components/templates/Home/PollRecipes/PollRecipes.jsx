@@ -1,42 +1,28 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { recipes } from '../../../../scripts/api/simulation';
 import { Button } from '../../../atoms/Button';
-import './voterecipes.css'
+import { Candidate } from '../../../organisms/Candidate';
 
-export const PollRecipes = ({ contents }) => {
+export const PollRecipes = () => {
 
-    const [totalVotes, setTotalVotes] = useState(0);
-
-    const recipes = [...contents].sort((x, y) => y.votes - x.votes)
-
-    useEffect(() => {
-        setTotalVotes(0)
-        recipes.forEach(recipe => {
-            setTotalVotes((r) => r += recipe.votes)
-        })
-    }, [totalVotes, recipes]);
-
+    recipes.sort((candidateA, candidateB) => {
+        return candidateB.votes.length - candidateA.votes.length
+    });
 
     return (
-        <div className="vote-best-recipe">
-            <h2>Qual será a melhor receita do mês?</h2>
-            <div className="content-best-recipes">
-                {recipes.length && recipes.map((recipe, index) => {
-                    if (index < 3) return (
-                        <div key={recipe.id} className="container-recipe-votes">
-                            <h2>{recipe.name_recipe}</h2>
-                            <div className="box-img">
-                                <img src={recipe.img} alt={recipe.name_recipe} />
-                                <img className='avatar-user' src="https://www.procurandocraques.com/static/img/admin/user-profile.png" alt="" />
-                            </div>
-                            <p className='bg-color_third'>{`${((recipe.votes / totalVotes) * 100).toFixed(1)}% dos votos`}</p>
-                        </div>
-                    )
-                    return [];
+        <div className="w-full bg-white p-4 border-b-[1px] border-solid border-gray-300 flex flex-col">
+            <h2 className='text-center p-4 text-s1_7'>Qual será a melhor receita do mês?</h2>
+            <div className="w-full flex items-end justify-evenly my-4">
+                {recipes.map((candidate, i) => {
+                    return i < 3 && <Candidate
+                        key={candidate.id}
+                        position={i}
+                        candidate={candidate}
+                         />
                 })}
             </div>
             <Link to={'/poll'}>
-                <Button customClass={"btn-primary mx-auto block px-8 mt-4"}>Ver votação</Button>
+                <Button customClass={"btn-primary mx-auto block px-12 text-s1_2 mt-8"}>Ver votação</Button>
             </Link>
         </div>
     )

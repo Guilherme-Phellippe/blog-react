@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash, FaSignInAlt, FaUserAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../atoms/Button";
 
 
 export const FormLogin = () => {
     const [openEyePassword, setOpenEyePassword] = useState(false)
     const [typeInputPassword, setTypeInputPassword] = useState('password');
+    const inputEmailRef = useRef();
     const inputPasswordRef = useRef();
-
+    const navigate = useNavigate();
+ 
     useEffect(() => {
         inputPasswordRef.current.focus();
         openEyePassword ? setTypeInputPassword(() => 'text') : setTypeInputPassword(() => 'password');
@@ -15,8 +18,12 @@ export const FormLogin = () => {
 
     const handleButtonSignin = (e) =>{
         e.preventDefault();
-        inputPasswordRef.current.value = '';
-        inputPasswordRef.current.focus();
+        if(!inputEmailRef.current.value.length && !inputEmailRef.current.value.length){
+            inputPasswordRef.current.value = '';
+            inputPasswordRef.current.focus();
+            return
+        }
+        navigate('/');
     }
 
     return (
@@ -24,6 +31,7 @@ export const FormLogin = () => {
             <h3 className="text-s1_5 mb-4">Entre com sua conta:</h3>
             <div className="w-2/3 flex items-center border-[1px] border-solid hover:border-color_second m-2 bg-background rounded-xl">
                 <input
+                    ref={inputEmailRef}
                     className="w-[85%] p-4 outline-none bg-transparent text-s1_2"
                     type="text"
                     placeholder="EMAIL:" />

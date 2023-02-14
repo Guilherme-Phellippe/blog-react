@@ -12,18 +12,40 @@ const contents = [
         title: <p className="group-hover:text-blue-400" >Comentar</p>
     },
     {
-        icon: <FaSave className="group-hover:fill-green-500 "/>,
+        icon: <FaSave className="group-hover:fill-green-500 " />,
         title: <p className="group-hover:text-green-400" >Salvar</p>
     },
 ]
 
 
 export const LikeComentsSaveButtons = () => {
+
+    const handleEventsButtons = ({ title: { props: {children:title} }, icon }) => {
+        switch (title) {
+            case 'Amei': {
+                console.log(icon)
+                break;
+            }
+            case 'Comentar': {
+                console.log(title)
+                break;
+            }
+            case 'Salvar': {
+                console.log(title)
+                break;
+            }
+            default:{
+                
+            }
+        }
+    }
+
     return (
         <div className="flex w-5/6 mx-auto">
-            {contents.map(content =>
-                <Button 
-                    key={content.title}
+            {contents.map((content, index) =>
+                <Button
+                    event={() => handleEventsButtons(content)}
+                    key={`${content.title}-${index}`}
                     customClass=
                     {"flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_3 hover:font-bold transition-all group"}
                 >{content.icon} {content.title}</Button>)}

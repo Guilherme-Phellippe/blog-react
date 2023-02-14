@@ -1,5 +1,7 @@
-export const Input = ({ placeholder, icon , type , onChange, id, size = 'medium'}) => {
-    const width = size === 'small' ? 'w-[25%]' : size === "medium" ? 'w-[51%]':'w-[100%]';
+import types from 'prop-types'
+
+export const Input = ({ placeholder, icon , type , onChange, id, value, size = 1}) => {
+    const width = size === 0 ? 'w-[25%]' : size === 1 ? 'w-[51%]': size === 2 ? 'w-[75%]' : 'w-[100%]';
 
 
     return (
@@ -7,6 +9,7 @@ export const Input = ({ placeholder, icon , type , onChange, id, size = 'medium'
             <input
                 onChange={onChange}
                 id={id}
+                value={value}
                 className="w-[85%] p-4 outline-none bg-transparent text-s1_2"
                 type={type}
                 placeholder={placeholder} />
@@ -15,4 +18,8 @@ export const Input = ({ placeholder, icon , type , onChange, id, size = 'medium'
             </div>
         </div>
     )
+}
+
+Input.propTypes ={
+    size: types.number
 }

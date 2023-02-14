@@ -1,20 +1,31 @@
-import './createfeed.css'
+import { FaPen } from 'react-icons/fa'
 import { RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
-import { Button } from '../../../atoms/Button'
+import { Link } from 'react-router-dom'
 
-export const CreateFeed  = () => { 
-    return(
-         <div className="container-create-feed">
+import { Button } from '../../../atoms/Button'
+import { Input } from '../../../atoms/Input'
+
+import './createfeed.css'
+
+export const CreateFeed = () => {
+    return (
+        <div className="container-create-feed">
+            <h3 className='w-full text-center text-s1_3'>Compartilhe conosco sua receita:</h3>
             <div className="photo-message">
-                <div className="photo">
-                    <img src="https://www.procurandocraques.com/static/img/admin/user-profile.png" alt="" />
+                <div className="w-[10%] h-full rounded-full overflow-hidden">
+                    <img className='w-full h-full object-cover' src="https://www.procurandocraques.com/static/img/admin/user-profile.png" alt="" />
                 </div>
-                <input type="text" placeholder="Compartilhe sua receita conosco..." />
+                <Input 
+                    size={2}
+                    placeholder={"Compartilhe sua receita conosco..."} 
+                    icon={<FaPen className='fill-color_third text-s1_5' />} />
+            </div>  
+            <div className="flex justify-around">
+                <Link to={'/create'}>
+                    <Button customClass='btn-primary px-4 '>Publicar receita <RiSendPlaneFill /></Button>
+                </Link>
+                <Button customClass='btn-primary px-4 '>Dica de cozinha <RiLightbulbFill /></Button>
             </div>
-            <div className="options">
-                <Button typeButton={'primary'} style={{padding:'.5rem 2rem'}}>Dica de cozinha <RiLightbulbFill /></Button>
-                <Button typeButton={'second'} style={{padding:'.5rem 2rem'}}>Publicar receita <RiSendPlaneFill /></Button>
-            </div>
-         </div>
+        </div >
     )
 }

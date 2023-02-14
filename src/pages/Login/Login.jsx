@@ -19,7 +19,7 @@ export const Login = () => {
                     <div className="w-full h-72 bg-white mb-12">
                         ads here.
                     </div>
-                    {isLogin ? <Signin setIsLogin={setIsLogin} /> : <Singup />}
+                    {isLogin ? <Signin setIsLogin={setIsLogin} /> : <Singup setIsLogin={setIsLogin} />}
                 </div>
                 <Footer />
             </HomeProvider>

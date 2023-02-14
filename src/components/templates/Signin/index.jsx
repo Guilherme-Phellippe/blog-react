@@ -1,5 +1,6 @@
 
 import { Button } from "../../atoms/Button"
+import { LoginWithSocialMidia } from "../../molecules/LoginWithSocialMidia"
 import { FormLogin } from "../FormLogin"
 
 export const Signin = ({ setIsLogin }) => {
@@ -10,8 +11,7 @@ export const Signin = ({ setIsLogin }) => {
             <h2 className="text-center font-bold text-s2 text-color_second p-4">Acessar sua conta</h2>
             <div className="w-full flex">
                 <div className="flex flex-col items-center justify-evenly w-1/2 border-r-[1px] border-solid border-gray-500">
-                    <Button>Entrar com o google</Button>
-                    <Button>Entrar com o facebook</Button>
+                    <LoginWithSocialMidia />
                 </div>
                 <FormLogin />
             </div>

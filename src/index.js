@@ -9,6 +9,7 @@ import { Store } from './pages/Store/Store';
 import { Recipe } from './pages/Recipe';
 import { Poll } from './pages/Poll/Poll';
 import { Login } from './pages/Login/Login'
+import { CreateRecipe } from './pages/CreateRecipe/CreateRecipe';
 
 import './index.css';
 
@@ -25,6 +26,7 @@ root.render(
         <Route path='/poll' element={<Poll />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Login />} />
+        <Route path='/create' element={<CreateRecipe />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

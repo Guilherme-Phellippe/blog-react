@@ -10,7 +10,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
             <h2>{title}</h2>
             {
                  ranking.length && ranking.map((recent, index) => {
-                    if (index < limitRecipes) if (index < 8) return (
+                    if (index < limitRecipes && index < 8) return (
                         <ListRecipes key={recent.id} recipe={recent} />
                     )
                     return [];
