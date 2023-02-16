@@ -1,4 +1,4 @@
-import { Logo } from '../../molecules/HeaderLogo';
+import { Logo } from '../../atoms/HeaderLogo';
 import { Search } from "../../molecules/HeaderSearch/Search"
 import { SocialMidia } from "../../molecules/HeaderSocialMidia"
 

@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { PanelUser } from "../../templates/Home/PanelUser/PanelUser"
+import { PanelUser } from "../../organisms/PanelUser/PanelUser"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 
 export const ColumnRightMainHome = ({ ranking }) => {

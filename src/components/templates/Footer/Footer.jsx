@@ -1,7 +1,7 @@
-import { Logo } from '../../molecules/HeaderLogo'
+import { Logo } from '../../atoms/HeaderLogo'
 import { SocialMidia } from '../../molecules/HeaderSocialMidia'
 import { Categories } from '../../molecules/HeaderSubCategories/Categories'
-import { Button } from '../../atoms/Button';
+import { Button } from '../../atoms/Button'
 
 import './footer.css'
 export const Footer = () => {

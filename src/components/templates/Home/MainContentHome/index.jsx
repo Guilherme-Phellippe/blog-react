@@ -4,7 +4,7 @@ import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 
 import { recipes } from "../../../../scripts/api/simulation"
 
-import { Button } from "../../../atoms/Button";
+import { Button } from "../../../helper/Button";
 import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
 import { CreateFeed } from '../CreateFeed/CreateFeed.jsx'
 import { Feed } from '../../../organisms/Feed'

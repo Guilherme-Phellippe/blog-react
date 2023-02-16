@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { recipes } from '../../../../scripts/api/simulation';
-import { Button } from '../../../atoms/Button';
-import { Candidate } from '../../../organisms/Candidate';
+import { Button } from '../../../helper/Button';
+import { Candidate } from '../../../mid-level/Candidate';
 
 export const PollRecipes = () => {
 

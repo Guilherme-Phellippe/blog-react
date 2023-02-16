@@ -1,9 +1,10 @@
 import { FaClock, FaEye, FaHeart } from 'react-icons/fa';
 import { BiFoodMenu } from 'react-icons/bi';
 
-import './boxrecipe.css'
-import { Button } from '../../../atoms/Button';
 import { Link } from 'react-router-dom';
+import { Button } from '../../atoms/Button';
+
+import './boxrecipe.css'
 
 export const BoxRecipe = ({ recipe }) => {
     const {
@@ -16,7 +17,7 @@ export const BoxRecipe = ({ recipe }) => {
             <div className="box-recipe">
                 <span>{category}</span>
                 <h2>{name_recipe}</h2>
-                <h3>por: <span>{author}</span></h3>
+                <h3>por: <span className='font-bold'>{author}</span></h3>
                 <div className="box-notes">
                     <FaHeart className='heart' /> <span>{nmr_hearts}</span> 
                     <FaEye className='eye' /> <span>{nmr_eyes}</span>

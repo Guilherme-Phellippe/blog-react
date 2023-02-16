@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { recipes } from '../../../scripts/api/simulation'
 
 import { InfoRecipeContent } from '../../organisms/InfoRecipeContent';
-import { RecipeSimilarContent } from '../../organisms/RecipeSimilarContent';
+import { RecipeSimilarContent } from '../../organisms/RecipeSimilarContent'
 import { IconsShare } from '../../organisms/IconsShare';
 
 export const Main = () => {

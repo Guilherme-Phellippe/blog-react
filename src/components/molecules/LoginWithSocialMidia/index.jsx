@@ -1,4 +1,4 @@
-import { Button } from "../../atoms/Button"
+import { Button } from "../../helper/Button"
 
 export const LoginWithSocialMidia = () => {
     return (

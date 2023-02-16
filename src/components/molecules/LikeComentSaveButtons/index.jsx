@@ -20,22 +20,28 @@ const contents = [
 
 export const LikeComentsSaveButtons = () => {
 
-    const handleEventsButtons = ({ title: { props: {children:title} }, icon }) => {
+    const handleEventsButtons = ({ title: { props: { children: title } }, icon}, {target}) => {
         switch (title) {
             case 'Amei': {
                 console.log(icon)
                 break;
             }
             case 'Comentar': {
-                console.log(title)
+                const boxFeedComments = target.closest("div#feed-recipe").querySelector('#feed-comment')
+                const input = target.closest("div#feed-recipe").querySelector('#feed-comment #InputWriteComment')
+                console.log(input)
+                
+                input.focus();
+                boxFeedComments.classList.toggle("hidden")
+                boxFeedComments.classList.toggle("flex")
                 break;
             }
             case 'Salvar': {
                 console.log(title)
                 break;
             }
-            default:{
-                
+            default: {
+
             }
         }
     }
@@ -44,7 +50,7 @@ export const LikeComentsSaveButtons = () => {
         <div className="flex w-5/6 mx-auto">
             {contents.map((content, index) =>
                 <Button
-                    event={() => handleEventsButtons(content)}
+                    event={(e) => handleEventsButtons(content, e)}
                     key={`${content.title}-${index}`}
                     customClass=
                     {"flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_3 hover:font-bold transition-all group"}
