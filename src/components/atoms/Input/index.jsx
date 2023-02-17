@@ -1,8 +1,8 @@
 import types from 'prop-types'
+import React from 'react';
 
-export const Input = ({ placeholder, icon , type , onChange, id, value, ref, size = 1}) => {
+export const Input = React.forwardRef(({ placeholder, icon , type = 'text' , onChange, id, value, size = 1}, ref) => {
     const width = size === 0 ? 'w-[25%]' : size === 1 ? 'w-[51%]': size === 2 ? 'w-[75%]' : 'w-[100%]';
-
 
     return (
         <div className={`${width} flex items-center border-[1px] border-solid hover:border-color_second m-2 bg-background rounded-xl`}>
@@ -19,7 +19,7 @@ export const Input = ({ placeholder, icon , type , onChange, id, value, ref, siz
             </div>
         </div>
     )
-}
+})
 
 Input.propTypes ={
     size: types.number

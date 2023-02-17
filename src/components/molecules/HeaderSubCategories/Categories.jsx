@@ -9,3 +9,5 @@ export const Categories = () => {
         </ul>
     )
 }
+
+// talvz haja mais componentes aqui , por isso está na pasta de molecules

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { recipes } from '../../../../scripts/api/simulation';
-import { Button } from '../../../helper/Button';
-import { Candidate } from '../../../mid-level/Candidate';
+import { Button } from '../../../atoms/Button';
+import { Candidate } from '../../../molecules/Candidate';
 
 export const PollRecipes = () => {
 
@@ -11,7 +11,7 @@ export const PollRecipes = () => {
 
     return (
         <div className="w-full bg-white p-4 border-b-[1px] border-solid border-gray-300 flex flex-col">
-            <h2 className='text-center p-4 text-s1_7'>Qual será a melhor receita do mês?</h2>
+            <h2 className='text-center mb-8 p-4 text-s2'>Qual será a melhor receita do mês?</h2>
             <div className="w-full flex items-end justify-evenly my-4">
                 {recipes.map((candidate, i) => {
                     return i < 3 && <Candidate

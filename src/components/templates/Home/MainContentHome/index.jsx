@@ -4,7 +4,7 @@ import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 
 import { recipes } from "../../../../scripts/api/simulation"
 
-import { Button } from "../../../helper/Button";
+import { Button } from "../../../atoms/Button";
 import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
 import { CreateFeed } from '../CreateFeed/CreateFeed.jsx'
 import { Feed } from '../../../organisms/Feed'
@@ -62,10 +62,10 @@ export const MainContentHome = () => {
                         setFeed={setFeed}
                         setListRecipeForRemove={setListRecipeForRemove}
                         listRecipeForRemove={listRecipeForRemove}
-                        hasSearch={valueSearch}
+                        valueSearch={valueSearch}
                     />
                     {postPerPage <= feed.length &&
-                        <Button customClass={"btn-primary mx-auto block px-8"} event={() => setPostPerPage((nmr_post) => nmr_post + 5)}>
+                        <Button customClass={"btn-primary mt-6 mx-auto block px-8"} event={() => setPostPerPage((nmr_post) => nmr_post + 5)}>
                             Carregar mais
                         </Button>
                     }

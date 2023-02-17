@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
-import { Input } from "../../helper/Input"
 import { FaUserCheck, FaLock, FaCheckCircle } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import { Button } from '../../helper/Button';
+
+import { Input } from "../../atoms/Input"
+import { Button } from '../../atoms/Button';
 import { LoginWithSocialMidia } from '../../molecules/LoginWithSocialMidia';
 
 export const Singup = ({ setIsLogin }) => {

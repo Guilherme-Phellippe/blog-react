@@ -2,8 +2,8 @@ import { FaPen } from 'react-icons/fa'
 import { RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
-import { Button } from '../../../helper/Button'
-import { Input } from '../../../helper/Input'
+import { Button } from '../../../atoms/Button'
+import { Input } from '../../../atoms/Input'
 
 import './createfeed.css'
 

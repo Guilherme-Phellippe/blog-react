@@ -1,37 +1,17 @@
-import { FaClock, FaEye, FaHeart } from 'react-icons/fa';
-import { BiFoodMenu } from 'react-icons/bi';
-
-import { Link } from 'react-router-dom';
-import { Button } from '../../atoms/Button';
+import { Img } from '../../atoms/Img';
+import { Info3MostViewedRecipes } from '../../atoms/Info3MostViewedRecipes';
+import { HoverInfo3MostViewedRecipes } from '../../molecules/HoverInfo3MostViewedRecipes';
 
 import './boxrecipe.css'
 
 export const BoxRecipe = ({ recipe }) => {
-    const {
-        id,img, category, name_recipe, author, nmr_hearts, nmr_eyes ,time, ing
-    } = recipe;
+    const { img, name_recipe } = recipe;
 
     return (
         <div className="content-recipe">
-            <img src={img} alt={`imagem de ${name_recipe}`} />
-            <div className="box-recipe">
-                <span>{category}</span>
-                <h2>{name_recipe}</h2>
-                <h3>por: <span className='font-bold'>{author}</span></h3>
-                <div className="box-notes">
-                    <FaHeart className='heart' /> <span>{nmr_hearts}</span> 
-                    <FaEye className='eye' /> <span>{nmr_eyes}</span>
-                </div>
-            </div>
-            <div className="box-hover-recipe">
-                <div>
-                    <p><FaClock /> {`${time} min`} </p>
-                    <p><BiFoodMenu /> {`${ing} ing`} </p>
-                </div>
-                <Link to={`/recipe/${id}`}>
-                <Button customClass={"btn-primary px-8 block mt-4 mx-auto"}>Ver receita</Button>
-                </Link>
-            </div>
+            <Img src={img} alt={`imagem de ${name_recipe}`} />
+            <Info3MostViewedRecipes recipe={recipe} />
+            <HoverInfo3MostViewedRecipes recipe={recipe} />
         </div>
     )
 }

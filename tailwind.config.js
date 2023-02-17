@@ -14,6 +14,7 @@ module.exports = {
         s1_5: ['max(15px, 1.5vw)','15px'],
         s1_7: ['max(17px, 1.7vw)','17px'],
         s2: ['max(20px, 2vw)','20px'],
+        s2_5: ['max(25px, 2.5vw)','25px'],
         s3: ['max(30px, 3vw)','30px'],
       },
       colors: {

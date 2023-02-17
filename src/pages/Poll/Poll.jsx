@@ -1,5 +1,5 @@
 import { Button } from "../../components/atoms/Button"
-import { Candidate } from "../../components/organisms/Candidate"
+import { Candidate } from "../../components/molecules/Candidate"
 import { TablePoll } from "../../components/organisms/TablePoll"
 import { Footer } from "../../components/templates/Footer/Footer"
 import { Header } from "../../components/templates/Header/Header"

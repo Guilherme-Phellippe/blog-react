@@ -1,5 +1,5 @@
 import { Logo } from '../../atoms/HeaderLogo'
-import { SocialMidia } from '../../molecules/HeaderSocialMidia'
+import { SocialMidia } from '../../atoms/HeaderSocialMidia'
 import { Categories } from '../../molecules/HeaderSubCategories/Categories'
 import { Button } from '../../atoms/Button'
 

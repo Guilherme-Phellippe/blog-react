@@ -29,8 +29,7 @@ export const LikeComentsSaveButtons = () => {
             case 'Comentar': {
                 const boxFeedComments = target.closest("div#feed-recipe").querySelector('#feed-comment')
                 const input = target.closest("div#feed-recipe").querySelector('#feed-comment #InputWriteComment')
-                console.log(input)
-                
+                console.log("dar focoo ao button input")                
                 input.focus();
                 boxFeedComments.classList.toggle("hidden")
                 boxFeedComments.classList.toggle("flex")

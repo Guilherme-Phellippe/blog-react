@@ -27,7 +27,7 @@ export const recipes = [
     },
     {
         id: 1,
-        idUser: 0,
+        idUser: 2,
         img: 'https://img.itdg.com.br/tdg/images/recipes/000/000/770/323683/323683_original.jpg',
         category: 'Comida caseira',
         name_recipe: 'Arroz soltinho',
@@ -48,7 +48,7 @@ export const recipes = [
     },
     {
         id: 2,
-        idUser: 0,
+        idUser: 1,
         img: 'https://www.padariavicosa.com.br/content/images/thumbs/0000070_pao-com-manteiga-na-canoa_800.jpeg',
         category: 'Café da manhã',
         name_recipe: 'Pão com manteiga',
@@ -68,13 +68,18 @@ export const recipes = [
                 idUser: 0,
                 ask: "posso colocar maionese no lugar da manteiga",
                 answer: "Não, assim não seria pao com manteiga"
+            },
+            {
+                idUser: 0,
+                ask: "essa receita engorda?",
+                answer: '',
             }
         ],
         createdAt: new Date(2023, 1, 11, 11,23,10),
     },
     {
         id: 3,
-        idUser: 0,
+        idUser: 3,
         img: 'https://s2.glbimg.com/WEF_MgZ7NrunOQhc-ZCcEmvwSRQ=/620x620/smart/e.glbimg.com/og/ed/f/original/2022/08/19/5-receitas-mais-buscadas-pelos-brasileiros-pudim-de-leite-em-po.png',
         category: 'Sobremesa',
         name_recipe: 'Pudim que da certo',
@@ -105,7 +110,7 @@ export const recipes = [
     },
     {
         id: 4,
-        idUser: 0,
+        idUser: 4,
         img: 'https://centralblogs.com.br/wp-content/uploads/2019/12/banana-com-chocolate.jpg',
         category: 'Sobremesa',
         name_recipe: 'Sorvete de chocolate',

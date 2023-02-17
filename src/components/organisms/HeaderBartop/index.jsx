@@ -1,6 +1,6 @@
 import { Logo } from '../../atoms/HeaderLogo';
 import { Search } from "../../molecules/HeaderSearch/Search"
-import { SocialMidia } from "../../molecules/HeaderSocialMidia"
+import { SocialMidia } from "../../atoms/HeaderSocialMidia"
 
 import './styles.css'
 

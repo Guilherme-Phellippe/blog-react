@@ -1,8 +1,8 @@
 import { CarouselMidiasContent } from '../../molecules/CarouselMidiasContent';
 import { InfoRecipeHeader } from '../../molecules/InfoRecipeHeader';
-import { IngredientsList } from '../../molecules/IngredientsList/IngredientsList';
+import { IngredientsList } from '../../atoms/IngredientsList/IngredientsList';
 import { PreparationInformation } from '../../molecules/PreparationInformation';
-import { PrepareMode } from '../../molecules/PrepareMode';
+import { PrepareMode } from '../../atoms/PrepareMode';
 import { RecipeChefInfo } from '../../molecules/RecipeChefInfo';
 import { LikeComentsSaveButtons } from '../../molecules/LikeComentSaveButtons'
 
