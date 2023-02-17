@@ -10,6 +10,8 @@ import { Recipe } from './pages/Recipe';
 import { Poll } from './pages/Poll/Poll';
 import { Login } from './pages/Login/Login'
 import { CreateRecipe } from './pages/CreateRecipe/CreateRecipe';
+import { Category } from './pages/Category/Category';
+import { About } from './pages/About';
 
 import './index.css';
 
@@ -22,11 +24,13 @@ root.render(
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/store' element={<Store />} />
-        <Route path='/recipe/:id' element={<Recipe />} />
         <Route path='/poll' element={<Poll />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Login />} />
         <Route path='/create' element={<CreateRecipe />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/recipe/:id' element={<Recipe />} />
+        <Route path='/category/:sub' element={<Category />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
-import { Categories } from '../../molecules/HeaderSubCategories/Categories'
+import { Categories } from '../../molecules/Categories/Categories'
 import './menu.css'
 
 export const Menu = () => {
@@ -49,7 +49,9 @@ export const Menu = () => {
                 <Link to={'/store'}>
                     <li>Dicas de cozinha</li>
                 </Link>
-                <li>Sobre nós</li>
+                <Link to={'/about'}>
+                    <li>Sobre nós</li>
+                </Link>
             </ul>
         </div>
     )

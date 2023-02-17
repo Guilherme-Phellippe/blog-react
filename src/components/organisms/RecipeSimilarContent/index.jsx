@@ -1,51 +1,19 @@
 import { ListRecipes } from "../../molecules/ListRecipes";
 import { recipes } from "../../../scripts/api/simulation";
 
-const stylesListRecipes = {
-    recent_recipe: {
-        width: '30%',
-        height: '45%',
-        position: 'relative',
-        cursor: 'pointer',
-    },
-    content_img: {
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
-        borderRadius: '.5rem',
-    },
-    img: {
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-    },
-    content_info: {
-        width: '60%',
-        height: '40%',
-        position: 'absolute',
-        top: '30%',
-        left: '20%',
-        backgroundColor: '#fffa',
-        borderRadius: '1rem',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
 
-    }
-}
 
 export const RecipeSimilarContent = ({ recipe }) => {
 
     const { name_recipe, category } = recipe
 
     const handleRecipeByTarget = () => {
-        const targets = name_recipe.split(' ').concat(category.split(' '));
+        const targets = name_recipe.split(' ');
         var recipesFinds = [];
         //find all recipes that has name_recipe similar the name_recipe or category this recipe.
         recipes.forEach((recipe) => {
             for (let target of targets) {
-                if (target.length > 3 && (recipe.name_recipe.toLowerCase().includes(target.toLowerCase()) || recipe.category.toLowerCase().includes(target.toLowerCase()))) {
+                if (target.length > 3 && (recipe.name_recipe.toLowerCase().includes(target.toLowerCase()))) {
                     recipesFinds.push(recipe);
                     break
                 }
@@ -68,10 +36,14 @@ export const RecipeSimilarContent = ({ recipe }) => {
         <div className="w-full bg-background pt-8">
             <div className="w-full bg-white rounded-md">
                 <h2 className='text-center text-s2 p-8 text-color_primary font-bold'>Talvez você goste</h2>
-                <div className="w-full h-[40rem] flex flex-wrap gap-2 justify-center" >
+                <div className="w-full flex flex-wrap gap-4 py-8 justify-center" >
                     {handleRecipeByTarget().length ?
                         handleRecipeByTarget().map(recipe => {
-                            return <ListRecipes key={recipe.id} recipe={recipe} styles={stylesListRecipes} />
+                            return <ListRecipes 
+                                        classContainer='w-[23rem] h-[15rem] border-[1px] overflow-hidden rounded-2xl relative border-solid cursor-pointer transition-transform hover:scale-105 hover:border-color_second'
+                                        classInfoContent='w-[80%] h-[50%] absolute top-1/4 left-[10%] bg-[#fffa] rounded-2xl flex flex-col justify-center'
+                                        key={recipe.id} 
+                                        recipe={recipe}/>
                         })
                         : <h2>Não temos nenhuma sugestão de receitas para você.</h2>}
                 </div>

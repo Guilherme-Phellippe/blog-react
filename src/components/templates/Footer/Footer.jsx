@@ -1,6 +1,6 @@
 import { Logo } from '../../atoms/HeaderLogo'
 import { SocialMidia } from '../../atoms/HeaderSocialMidia'
-import { Categories } from '../../molecules/HeaderSubCategories/Categories'
+import { Categories } from '../../molecules/Categories/Categories'
 import { Button } from '../../atoms/Button'
 
 import './footer.css'
