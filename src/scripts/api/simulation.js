@@ -6,7 +6,7 @@ export const recipes = [
         author: 'Julia de Carvalho',
         img: 'https://s2.glbimg.com/Lna-moWP46oqPm5QRbzO9imvbDY=/0x0:547x348/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2020/k/u/Fc2LJRT3iDt0m76OI9xg/bolo-de-fuba-cremoso.png',
         name_recipe: 'Receita de bolo de fubá cremoso',
-        describe: '',
+        describe_recipe: '',
         category: [3, 2],
         sub_category: [1],
         prepare: {
@@ -41,7 +41,7 @@ export const recipes = [
         category: [1],
         sub_category: [],
         name_recipe: 'Arroz soltinho',
-        describe: '',
+        describe_recipe: '',
         author: 'Caique de Carvalho',
         prepare: {
             time: 45,
@@ -70,7 +70,7 @@ export const recipes = [
         category: [3],
         sub_category: [],
         name_recipe: 'Pão com manteiga',
-        describe: '',
+        describe_recipe: '',
         author: 'Guilherme Phellipe',
         prepare: {
             time: 45,
@@ -109,7 +109,7 @@ export const recipes = [
         category: [3, 2],
         sub_category: [],
         name_recipe: 'Pudim que da certo',
-        describe: '',
+        describe_recipe: '',
         author: 'Rosali de Cassia',
         prepare: {
             time: 45,
@@ -148,7 +148,7 @@ export const recipes = [
         category: [2],
         sub_category: [],
         name_recipe: 'Sorvete de chocolate',
-        describe: '',
+        describe_recipe: '',
         author: 'Leticia lopes',
         prepare: {
             time: 45,
@@ -177,7 +177,7 @@ export const recipes = [
         category: [4],
         sub_category: [],
         name_recipe: 'Coxinha com massa de batata',
-        describe: '',
+        describe_recipe: '',
         author: 'Julia de Carvalho',
         prepare: {
             time: 45,
@@ -200,7 +200,7 @@ export const recipes = [
         category: [2],
         sub_category: [],
         name_recipe: 'Brownlie de chocolate',
-        describe: '',
+        describe_recipe: '',
         author: 'Julia de Carvalho',
         prepare: {
             time: 45,
@@ -222,7 +222,7 @@ export const recipes = [
         category: [2],
         sub_category: [],
         name_recipe: 'Brigadeiro variado',
-        describe: '',
+        describe_recipe: '',
         author: 'Rosana de Carvalho',
         prepare: {
             time: 45,
@@ -242,7 +242,7 @@ export const recipes = [
         id: 8,
         idUser: 0,
         name_recipe: 'Pão de forma com maionese',
-        describe: '',
+        describe_recipe: '',
         img: 'https://thumbs.dreamstime.com/b/p%C3%A3o-integral-com-maionese-e-margarina-83766779.jpg',
         category: [3, 0],
         sub_category: [],
@@ -268,7 +268,7 @@ export const recipes = [
         category: [3, 0],
         sub_category: [],
         name_recipe: 'Pão de forma com queijo',
-        describe: '',
+        describe_recipe: '',
         author: 'Guilherme Phellippe',
         prepare: {
             time: 45,
@@ -291,7 +291,7 @@ export const recipes = [
         category: [3, 0],
         sub_category: [],
         name_recipe: 'Pão de forma com presunto e raviole',
-        describe: '',
+        describe_recipe: '',
         author: 'Guilherme Phellippe',
         prepare: {
             time: 45,
@@ -314,14 +314,14 @@ export const recipes = [
         category: [1],
         sub_category: [],
         name_recipe: "Groselia com leite",
-        describe: 'Hoje vou ensinar como preparar um delicioso leite com groselia',
+        describe_recipe: 'Hoje vou ensinar como preparar um delicioso leite com groselia',
         author: '',
         prepare: {
             time: 5,
             portion: 5,
-            ing: [],
+            ing: ['1 pao, 1kg de feijao'],
             word_key: '',
-            prepareMode: "",
+            prepareMode: "em uma panela",
         },
         nmr_hearts: 0,
         nmr_eyes: 0,

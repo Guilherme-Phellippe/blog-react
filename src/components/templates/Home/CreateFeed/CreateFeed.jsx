@@ -9,7 +9,7 @@ import { Input } from '../../../atoms/Input'
 import './createfeed.css'
 
 export const CreateFeed = () => {
-    const [valueInput, setValueInput ] = useState();
+    const [valueInput, setValueInput ] = useState('');
 
     return (
         <div className="container-create-feed">

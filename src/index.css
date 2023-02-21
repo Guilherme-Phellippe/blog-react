@@ -7,6 +7,10 @@
     @apply flex items-center gap-2 rounded-2xl border-none p-2 cursor-pointer bg-color_primary text-white
     transition-transform hover:scale-105 hover:brightness-95;
   }
+  .btn-second {
+    @apply flex items-center gap-2 rounded-2xl border-none p-2 cursor-pointer bg-color_third font-semibold text-white
+    transition-transform hover:scale-105 hover:brightness-95;
+  }
 }
 
 :root {

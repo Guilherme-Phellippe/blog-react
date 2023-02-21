@@ -1,34 +1,65 @@
-import { useEffect, useRef, useState } from "react"
-import { useSearchParams } from "react-router-dom"
-
-import categories from "../../../scripts/api/categories"
-
+import { useRef, useState } from "react"
+import { BoxMenssage } from "../../../modals/BoxMenssage"
 import { Button } from "../../atoms/Button"
-import { Input } from "../../atoms/Input"
+import { StepOneCreateRecipe } from "../../organisms/StepOneCreateRecipe"
+import { StepThreeCreateRecipe } from "../../organisms/StepThreeCreateRecipe"
+import { StepTwoCreateRecipe } from "../../organisms/StepTwoCreateRecipe"
 
 export const MainCreateRecipe = () => {
-    const valueLimitsizeTittle = 45
-    const [qs] = useSearchParams();
-    const refTextArea = useRef(null);
-    const [limitSizeTittle, setLimitSizeTittle] = useState(valueLimitsizeTittle);
-    const [titleRecipe, setTitleRecipe] = useState('')
     const [step, setStep] = useState(1)
-    const [isOpenSelectCategory, setIsOpenSelectCategory] = useState(false)
-    const [valueInputCategory, setValueInputCategory] = useState('')
-    const filteredCategory = categories.filter(category =>
-        category.name_category.toLowerCase().includes(valueInputCategory.toLowerCase()))
-
-    useEffect(() => {
-        if (qs.get('n')) {
-            setLimitSizeTittle(valueLimitsizeTittle - qs.get('n').length)
-            setTitleRecipe(qs.get("n"));
-            refTextArea.current.focus()
-        }
-    }, [qs])
+    const [modalSuccessOpen, setModalSuccessOpen] = useState(false)
+    const refOneStep = useRef()
+    const refTwoStep = useRef()
+    const refThreeStep = useRef()
 
     const handleNextButton = (e) => {
         e.preventDefault()
-        if (e.target.id === "next" && step <= 3) setStep(v => v + 1)
+        if (e.target.id === "next") {
+            const ingredients = Array.from(refTwoStep.current.querySelectorAll('ul#ing li p')).map(p => p.textContent)
+            const wordKey = Array.from(refThreeStep.current.querySelectorAll('ul#word-keys li p')).map(p => p.textContent)
+            const recipeStepOne = {
+                id: 11,
+                idUser: 4,
+                name_recipe: refOneStep.current.querySelector('div input#name_recipe').value,
+                describe_recipe: refOneStep.current.querySelector('div textArea#describe_recipe').value,
+                category: [refOneStep.current.querySelector('div input#category')?.value, refOneStep.current.querySelector('div select#secondCategory')?.value],
+                prepare: {
+                    time: refOneStep.current.querySelector('div input#time').value,
+                    portion: refOneStep.current.querySelector('div input#portion').value,
+                    ing: ingredients,
+                    word_key: wordKey,
+                    prepareMode: refTwoStep.current.querySelector('textArea#prepare-mode').value,
+                },
+                img: 'enviei.png',
+                author: '',
+                nmr_hearts: 0,
+                nmr_eyes: 0,
+                nmr_saved: 0,
+                votes: [],
+                comments: [],
+                createdAt: new Date(2023, 1, 25, 18, 52, 1),
+
+            }
+
+            if (step === 1) {
+                if (recipeStepOne.name_recipe && recipeStepOne.describe_recipe && recipeStepOne.category && recipeStepOne.prepare.time && recipeStepOne.prepare.portion) {
+                    localStorage.setItem("recipe", JSON.stringify(recipeStepOne))
+                    setStep(2)
+                } else alert("preencha todos os campos!")
+            } else if (step === 2) {
+                if (!!recipeStepOne.prepare.ing.length && recipeStepOne.prepare.prepareMode) {
+                    localStorage.setItem("recipe", JSON.stringify(recipeStepOne))
+                    setStep(3)
+                } else alert("preencha todos os campos!")
+            } else if (step === 3) {
+                if (!!recipeStepOne.prepare.word_key) {
+                    localStorage.setItem("recipe", JSON.stringify(recipeStepOne))
+                    //salva no banco de dados
+                    setModalSuccessOpen(true)
+                } else alert("preencha todos os campos!")
+            }
+        }
+
         if (e.target.id === "previous" && step > 1) setStep(v => v - 1)
     }
 
@@ -39,78 +70,17 @@ export const MainCreateRecipe = () => {
             <div className="w-full flex justify-center gap-12 my-8">
                 <span className={`py-3 px-4 border-[1px] border-solid border-color_primary rounded-full ${step >= 1 && "bg-color_primary text-white "}`}>1</span>
                 <span className={`py-3 px-4 border-[1px] border-solid border-color_primary rounded-full ${step >= 2 && "bg-color_primary text-white"}`}>2</span>
-                <span className={`py-3 px-4 border-[1px] border-solid border-color_primary rounded-full ${step > 3 && "bg-color_primary text-white"}`}>3</span>
+                <span className={`py-3 px-4 border-[1px] border-solid border-color_primary rounded-full ${step >= 3 && "bg-color_primary text-white"}`}>3</span>
             </div>
             <form className="w-4/5 flex flex-col items-center gap-y-6">
-                <div className={`w-full flex-col justify-center items-center ${step === 1 ? "flex" : "hidden"}`}>
-                    <Input
-                        onChange={(e) => setLimitSizeTittle(valueLimitsizeTittle - e.target.value.length)}
-                        placeholder="Nome da sua receita"
-                        value={titleRecipe}
-                        icon={<h2 className={`text-s1_3 ${limitSizeTittle < 0 && 'text-red-500'}`}>{limitSizeTittle}</h2>}
-                    />
-                    <textarea
-                        ref={refTextArea}
-                        className="w-[51%] p-4 bg-background resize-none outline-none text-s1_2 rounded-xl m-2"
-                        name=""
-                        id=""
-                        cols="50"
-                        rows="5"
-                        placeholder="Digite a descrição da sua receita"
-                    ></textarea>
-                    <div className="w-[51%]">
-                        <Input
-                            placeholder="Quantos minutos leva para preparar sua receita?"
-                            size={2}
-                            type={'number'}
-                        />
-                    </div>
-                    <div className="w-[51%]">
-                        <Input
-                            placeholder="Quantas porções ela rende?"
-                            size={2}
-                            type={'number'}
-                        />
-                    </div>
-                    <div className="w-[51%] flex-col">
-                        <Input
-                            onChange={(e) => setValueInputCategory(e.target.value)}
-                            placeholder="Digite o nome da categoria da receita:"
-                            size={4}
-                            value={valueInputCategory}
-                            icon={<h2 className={`cursor-pointer bg-color_primary h-full text-center text-white text-s1 items-center ${filteredCategory.length ? 'hidden' : 'flex'}`}>Sugerir categoria</h2>}
-                        />
-                        {valueInputCategory &&
-                            <ul>
-                                {filteredCategory.map(category =>
-                                    <li onClick={
-                                        (e) => { setValueInputCategory(category.name_category); e.target.classList.add("hidden") }}
-                                        className="w-1/2 cursor-pointer mx-auto text-center hover:bg-[#24242440] bg-background border-b-[1px] m-2 text-s1_2 p-2"
-                                    >{category.name_category}</li>)
-                                }
-                            </ul>
-                        }
-                        {isOpenSelectCategory ?
-                            <div className="flex flex-col">
-                                <select className="p-4 w-[50%] m-2 text-s1_2 text-center cursor-pointer">
-                                    {categories.map(category =>
-                                        <option
-                                            className="text-s1_2 text-center cursor-pointer"
-                                            key={category.id}
-                                            value={category.name_category}
-                                        >{category.name_category}</option>)}
-
-                                </select>
-                            </div>
-                            : <Button event={(e) => { e.preventDefault(); setIsOpenSelectCategory(true) }}> Adicionar mais categoria </Button>
-                        }
-                    </div>
+                <div ref={refOneStep} className={`w-full flex-col justify-center items-center ${step === 1 ? "flex" : "hidden"}`}>
+                    <StepOneCreateRecipe />
                 </div>
-                <div className={`w-full flex-col justify-center items-center ${step === 2 ? "flex" : "hidden"}`}>
-                    <label forHtml="file" className="w-1/2 h-[10rem] cursor-pointer border-2 border-dotted border-color_primary flex justify-center items-center">
-                        <h2 className="text-s1_3 text-gray-500">Envie as imagens da receita</h2>
-                        <input type="file" name="" id="file" className="hidden"/>
-                    </label>
+                <div ref={refTwoStep} className={`w-full flex-col justify-center items-center ${step === 2 ? "flex" : "hidden"}`}>
+                    <StepTwoCreateRecipe />
+                </div>
+                <div ref={refThreeStep} className={`w-full flex-col justify-center items-center ${step === 3 ? "flex" : "hidden"}`}>
+                    <StepThreeCreateRecipe />
                 </div>
 
                 <div className="flex">
@@ -118,6 +88,13 @@ export const MainCreateRecipe = () => {
                     <Button id="next" event={handleNextButton}>Proxímo</Button>
                 </div>
             </form>
+
+            {modalSuccessOpen &&
+                <BoxMenssage
+                    setOpen={setModalSuccessOpen}
+                    menssage="Receita criada com sucesso"
+                />}
+
         </main>
     )
 }
