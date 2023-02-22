@@ -43,10 +43,11 @@ export const StepTwoCreateRecipe = () => {
                         }
                     </ul>
                 </div>}
-                <div className="flex w-full">
+                <div className="flex w-full my-8">
                     <Input
                         ref={refInputIngredients}
                         placeholder="Digite o ingrediente"
+                        label="Digite o ingrediente em clique no botão adicionar ao lado"
                         size={4}
                         icon={<FaPlusCircle
                             className="text-s1_7 fill-green-500 cursor-pointer"

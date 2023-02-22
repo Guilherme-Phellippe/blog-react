@@ -33,7 +33,7 @@ export const RecipeSimilarContent = ({ recipe }) => {
     }
 
     return (
-        <div className="w-full bg-background pt-8">
+        <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
             <div className="w-full bg-white rounded-md">
                 <h2 className='text-center text-s2 p-8 text-color_primary font-bold'>Talvez você goste</h2>
                 <div className="w-full flex flex-wrap gap-4 py-8 justify-center" >

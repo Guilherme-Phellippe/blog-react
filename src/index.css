@@ -45,3 +45,16 @@ a {
   margin: 0 auto;
   position: relative;
 }
+
+@media print {
+  .container > header,
+  .container > footer,
+  .container div#iconShare-print,
+  .container div#InfoRecipeHeader-print,
+  .container div#LikeComentsSaveButtons-print,
+  .container div#RecipeChefInfo-print,
+  .container div#ads-here-print,
+  .container div#RecipeSimilarContent-print{
+    display: none;
+  }
+}

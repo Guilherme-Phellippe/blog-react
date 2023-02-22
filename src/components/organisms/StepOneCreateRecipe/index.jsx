@@ -49,7 +49,7 @@ export const StepOneCreateRecipe = () => {
             <div className="w-[51%]">
                 <Input
                     id="time"
-                    label="Quantos minutos leva para preparar sua receita?"
+                    label="Quantos minutos para preparar sua receita?"
                     placeholder="ex.: 10 minutos"
                     size={2}
                     type={'number'}

@@ -1,15 +1,10 @@
-import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/atoms/Button"
 
 export const BoxMenssage = ({ menssage, setOpen }) => { 
-    const navigate = useNavigate()
-
     
     const handleButtonOk = () =>{
-        navigate('/')
         setOpen(false)
     }
-
 
     return(
         <div className="fixed w-screen h-screen top-0 grid place-items-center bg-[#24242440]">

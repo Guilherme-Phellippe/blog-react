@@ -46,7 +46,7 @@ export const LikeComentsSaveButtons = () => {
     }
 
     return (
-        <div className="flex w-5/6 mx-auto">
+        <div id="LikeComentsSaveButtons-print" className="flex w-5/6 mx-auto">
             {contents.map((content, index) =>
                 <Button
                     event={(e) => handleEventsButtons(content, e)}

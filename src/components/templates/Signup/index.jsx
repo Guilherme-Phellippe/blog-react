@@ -38,7 +38,7 @@ export const Singup = ({ setIsLogin }) => {
 
 
     return (
-        <div className="w-full bg-white p-4">
+        <div className="w-full bg-white p-16">
             <h2 className="text-center font-bold text-s2 text-color_second p-4 mb-4">Crie uma conta rápido e fácil</h2>
             <div className="w-full flex flex-col items-center">
                 <div className="flex gap-16">
@@ -51,7 +51,7 @@ export const Singup = ({ setIsLogin }) => {
                         id="name"
                         placeholder={'DIGITE SEU NOME E SOBRENOME:'}
                         type={'text'}
-                        size='medium'
+                        size={1}
                         icon={<FaUserCheck className={`text-s1_5 ${isCorrectName}`} />}
                     />
                     <Input
@@ -59,21 +59,21 @@ export const Singup = ({ setIsLogin }) => {
                         id="email"
                         placeholder={'DIGITE SEU EMAIL:'}
                         type={'text'}
-                        size='medium'
+                        size={1}
                         icon={<MdEmail className={`text-s1_5 ${isCorrectEmail}`} />} />
-                    <div className="flex w-full justify-center">
+                    <div className="flex w-1/2 justify-center">
                         <Input
                             onChange={(e) => setValueFirstInputPassword(e.target.value)}
                             placeholder={'DIGITE SUA SENHA:'}
                             type={'password'}
-                            size='small'
+                            size={1}
                         />
                         <Input
                             onChange={(e) => handleCheckInputs(e)}
                             id="password"
                             placeholder={'CONFIRME SUA SENHA:'}
                             type={'password'}
-                            size='small'
+                            size={1}
                             icon={<FaLock className={`text-s1_3 ${isCorrectPassword}`} />} />
                     </div>
                     <Button
