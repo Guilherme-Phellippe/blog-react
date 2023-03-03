@@ -1,8 +1,6 @@
 import { FeedComments } from "../FeedComments"
 
 export const ListRecipeComments = ({ content }) => {
-
-    console.log(content.comments)
     return (
         <div className="flex flex-col max-h-[18rem] overflow-y-auto overflow-x-hidden">
             {

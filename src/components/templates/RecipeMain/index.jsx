@@ -5,7 +5,7 @@ import { InfoRecipeContent } from '../../organisms/InfoRecipeContent';
 import { RecipeSimilarContent } from '../../organisms/RecipeSimilarContent'
 import { IconsShare } from '../../organisms/IconsShare';
 import {  useEffect, useState } from 'react';
-import { getUniqueRecipe } from '../../../api/recipe';
+import { getUniqueRecipe, updateNumberEyes } from '../../../api/recipe';
 import { Loading } from '../../atoms/Loading/Loading';
 
 export const Main = () => {
@@ -14,9 +14,10 @@ export const Main = () => {
 
     useEffect(() => {
         (async function fetchData(){
+            await updateNumberEyes(id)
             const data = await getUniqueRecipe(id);
             setRecipe(data)
-        })()
+        })();
     }, [id]);
 
 
