@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { FaPen } from 'react-icons/fa'
 import { RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
 import { Link } from 'react-router-dom'

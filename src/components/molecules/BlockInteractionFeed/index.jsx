@@ -6,7 +6,6 @@ import { LikeComentsSaveButtons } from "../LikeComentSaveButtons"
 export const BlockInteractionFeed = ({ nmr_hearts, comments }) => {
     const { valueSearch } = useContext(HomeContext)
 
-
     return (
         <div className={`w-full h-[10%] p-2 ${valueSearch && 'hidden'}`}>
             <div className="h-1/2">

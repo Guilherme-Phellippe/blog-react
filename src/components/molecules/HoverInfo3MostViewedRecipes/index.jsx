@@ -9,7 +9,7 @@ export const HoverInfo3MostViewedRecipes = ({recipe: { time, ing, id}}) => {
         <div className="box-hover-recipe">
                 <div>
                     <p><FaClock /> {`${time} min`} </p>
-                    <p><BiFoodMenu /> {`${ing} ing`} </p>
+                    <p><BiFoodMenu /> {`${ing.length} ing`} </p>
                 </div>
                 <Link to={`/recipe/${id}`}>
                     <Button customClass={"btn-primary px-8 block mt-4 mx-auto"}>Ver receita</Button>

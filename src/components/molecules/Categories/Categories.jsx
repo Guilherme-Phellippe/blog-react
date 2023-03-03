@@ -6,7 +6,7 @@ export const Categories = () => {
         <ul>
             {
                 categories.map(category =>
-                    <Link to={`/category/${category.name_category}`}>
+                    <Link key={category.id} to={`/category/${category.name_category}`}>
                         <li key={category.id}>{category.name_category}</li>
                     </Link>
                 )

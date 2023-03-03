@@ -4,10 +4,6 @@ import { Input } from "../../atoms/Input"
 import { Img } from "../../atoms/Img"
 
 export const FeedComments = ({ comment, content }) => {
-
-
-
-
     return (
         <div  className="w-full my-4 flex flex-col items-center">
             <div className="w-full h-1/2 flex items-center px-4">

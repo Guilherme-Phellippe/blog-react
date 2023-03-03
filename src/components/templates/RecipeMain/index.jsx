@@ -1,23 +1,30 @@
 
 import { useParams } from 'react-router-dom';
-import { recipes } from '../../../scripts/api/simulation'
 
 import { InfoRecipeContent } from '../../organisms/InfoRecipeContent';
 import { RecipeSimilarContent } from '../../organisms/RecipeSimilarContent'
 import { IconsShare } from '../../organisms/IconsShare';
+import {  useEffect, useState } from 'react';
+import { getUniqueRecipe } from '../../../api/recipe';
+import { Loading } from '../../atoms/Loading/Loading';
 
 export const Main = () => {
-
     const { id } = useParams();
+    const [recipe, setRecipe] =useState()
 
-    const recipe = recipes.find(recipe => recipe.id === Number(id));
+    useEffect(() => {
+        (async function fetchData(){
+            const data = await getUniqueRecipe(id);
+            setRecipe(data)
+        })()
+    }, [id]);
 
 
     return (
         <main className='flex flex-col w-5/6 mt-8 mx-auto'>
             <IconsShare />
             <div className="w-full bg-white">
-                <InfoRecipeContent recipe={recipe} />
+                {recipe ? <InfoRecipeContent recipe={recipe} /> : <Loading />}
 
                 <div id="ads-here-print" className="w-full bg-background pt-8">
                     <div className="w-full bg-white rounded-md">
@@ -27,8 +34,8 @@ export const Main = () => {
                         </div>
                     </div>
                 </div>
+                {recipe ? <RecipeSimilarContent recipe={recipe} /> : <Loading />}
                 
-                <RecipeSimilarContent recipe={recipe} />
             </div>
         </main>
     )

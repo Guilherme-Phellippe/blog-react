@@ -1,11 +1,21 @@
+import { useEffect, useState } from "react";
+import { getAllRecipes } from "../../../api/recipe";
 import { ListRecipes } from "../../molecules/ListRecipes";
-import { recipes } from "../../../scripts/api/simulation";
 
 
 
 export const RecipeSimilarContent = ({ recipe }) => {
 
-    const { name_recipe, category } = recipe
+    const { name_recipe } = recipe
+    const [recipes, setRecipes ] = useState([])
+
+    useEffect(() =>{
+        (async function fetchData(){
+            const data = await getAllRecipes();
+            setRecipes(data)
+        })()
+    }, [])
+
 
     const handleRecipeByTarget = () => {
         const targets = name_recipe.split(' ');

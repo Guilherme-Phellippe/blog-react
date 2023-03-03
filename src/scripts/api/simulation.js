@@ -3,7 +3,9 @@ export const recipes = [
     {
         id: 0,
         idUser: 0,
-        author: 'Julia de Carvalho',
+        user:{
+            name:'Julia de Carvalho'
+        },
         img: 'https://s2.glbimg.com/Lna-moWP46oqPm5QRbzO9imvbDY=/0x0:547x348/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2020/k/u/Fc2LJRT3iDt0m76OI9xg/bolo-de-fuba-cremoso.png',
         name_recipe: 'Receita de bolo de fubá cremoso',
         describe_recipe: '',

@@ -5,11 +5,11 @@ import { HoverInfo3MostViewedRecipes } from '../../molecules/HoverInfo3MostViewe
 import './boxrecipe.css'
 
 export const BoxRecipe = ({ recipe }) => {
-    const { img, name_recipe } = recipe;
+    const { images_recipe, name_recipe } = recipe;
 
     return (
         <div className="content-recipe">
-            <Img src={img} alt={`imagem de ${name_recipe}`} />
+            <Img src={images_recipe} alt={`imagem de ${name_recipe}`} />
             <Info3MostViewedRecipes recipe={recipe} />
             <HoverInfo3MostViewedRecipes recipe={recipe} />
         </div>

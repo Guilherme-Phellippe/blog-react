@@ -5,7 +5,7 @@ import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { Img } from "../../atoms/Img"
 
 
-export const HeaderInfoFeed = ({content: { author, createdAt, id}, onClick}) => {
+export const HeaderInfoFeed = ({content: { user, createdAt, id}, onClick}) => {
     const { valueSearch } = useContext(HomeContext)
 
     return (
@@ -13,11 +13,11 @@ export const HeaderInfoFeed = ({content: { author, createdAt, id}, onClick}) => 
             <div className="w-[35px] h-[35px] grid place-items-start rounded-full overflow-hidden">
                 <Img 
                     className="w-full h-full object-cover"
-                    src="https://www.procurandocraques.com/static/img/admin/user-profile.png" 
-                    alt={author} />
+                    src={user.photo} 
+                    alt={user.name} />
             </div>
             <div className="w-[70%] h-full py-6 px-4 ">
-                <h2 className="text-s1_2">{author}</h2>
+                <h2 className="text-s1_2">{user.name}</h2>
                 <p>{moment(createdAt).startOf('hour').fromNow()}</p>
             </div>
             <div className="w-1/5 flex justify-end items-center">

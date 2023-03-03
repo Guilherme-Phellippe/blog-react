@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import { FaArrowLeft, FaArrowRight, FaClosedCaptioning, FaWindowClose } from "react-icons/fa"
+import { FaArrowLeft, FaArrowRight, FaWindowClose } from "react-icons/fa"
 import { MdImage, MdImportContacts, MdList } from "react-icons/md"
 import { BoxMenssage } from "../../../modals/BoxMenssage"
 import { Button } from "../../atoms/Button"

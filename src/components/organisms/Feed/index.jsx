@@ -35,9 +35,9 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
                             <HeaderInfoFeed content={content} onClick={handleIdForAddListRemove}/>
 
                             <CarouselMidiasContent
-                                img={content.img}
+                                img={content.images_recipe}
                                 name_recipe={content.name_recipe}
-                                category={content.category}
+                                category={content.category.name_category}
                             />
 
                             <AddRecipeInfo 

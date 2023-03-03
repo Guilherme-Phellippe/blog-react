@@ -15,7 +15,7 @@ export const NumberLoved = ({ nmr_hearts, nmr_comments }) => {
 
     return (
         <div className={`"w-full flex ${positionJustify} items-center px-4"`}>
-            <div className='flex'>
+            <div className='flex items-center'>
                 <FaHeart className='fill-red-700 text-s1_5' />
                 <FaHeart className='fill-red-700 -translate-x-4 text-s1_5' />
                 <FaHeart className='fill-red-700 -translate-x-8 text-s1_5' />

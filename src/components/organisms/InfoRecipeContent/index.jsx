@@ -7,19 +7,19 @@ import { RecipeChefInfo } from '../../molecules/RecipeChefInfo';
 import { LikeComentsSaveButtons } from '../../molecules/LikeComentSaveButtons'
 
 export const InfoRecipeContent = ({ recipe }) => {
-    const { name_recipe, nmr_hearts, img, author, createdAt } = recipe
+    const { name_recipe, nmr_hearts, images_recipe, ing, prepareMode } = recipe
 
     return (
         <div className="w-2/3 p-4">
             <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
-            <CarouselMidiasContent name_recipe={name_recipe} img={img} />
+            <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
             <div className="w-full p-4">
                 <LikeComentsSaveButtons />
             </div>
-            <PreparationInformation />
-            <RecipeChefInfo author={author} createdAt={createdAt} />
-            <IngredientsList />
-            <PrepareMode />
+            <PreparationInformation recipe={recipe} />
+            <RecipeChefInfo recipe={recipe} />
+            <IngredientsList ing={ing}/>
+            <PrepareMode prepareMode={prepareMode}/>
         </div>
     )
 }
