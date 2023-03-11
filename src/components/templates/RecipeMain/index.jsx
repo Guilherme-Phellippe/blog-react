@@ -4,18 +4,19 @@ import { useParams } from 'react-router-dom';
 import { InfoRecipeContent } from '../../organisms/InfoRecipeContent';
 import { RecipeSimilarContent } from '../../organisms/RecipeSimilarContent'
 import { IconsShare } from '../../organisms/IconsShare';
-import {  useEffect, useState } from 'react';
-import { getUniqueRecipe, updateNumberEyes } from '../../../api/recipe';
+import {  useEffect, useRef, useState } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
+import { useRecipeApi } from '../../../hooks/useApi';
 
 export const Main = () => {
     const { id } = useParams();
-    const [recipe, setRecipe] =useState()
+    const [recipe, setRecipe] = useState()
+    const api = useRef(useRecipeApi());
 
     useEffect(() => {
-        (async function fetchData(){
-            await updateNumberEyes(id)
-            const data = await getUniqueRecipe(id);
+        (async () =>{
+            api.current.updateNumberEyes(id)
+            const { data } = await api.current.getUniqueRecipe(id)
             setRecipe(data)
         })();
     }, [id]);

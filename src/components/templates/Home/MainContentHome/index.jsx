@@ -1,6 +1,7 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState, useRef } from "react";
 
 import { HomeContext } from '../../../../contexts/Home/HomeProvider'
+import { checkUserLogged } from '../../../../scripts/checkUserLogged'
 
 import { Button } from "../../../atoms/Button";
 import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
@@ -9,30 +10,41 @@ import { Feed } from '../../../organisms/Feed'
 import { MostViewedRecipesContainer } from "../../../organisms/MostViewedRecipesContainer";
 import { ColumnLeftMainHome } from "../../../organisms/ColumnLeftMainHome";
 import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
+import { useRecipeApi, useUserApi } from "../../../../hooks/useApi";
 
 import './main.css'
-import { getAllRecipes, getUniqueRecipe } from "../../../../api/recipe";
 
 export const MainContentHome = () => {
-    const { valueSearch } = useContext(HomeContext)
+    const { valueSearch, setUser, user} = useContext(HomeContext);
     const [postPerPage, setPostPerPage] = useState(7);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
+    const recipeApi = useRef(useRecipeApi());
+    const userApi = useRef(useUserApi());
 
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
     const [listRecipeForRemove, setListRecipeForRemove] = useState(listRecipeLocalStorage);
 
     useEffect(() => {
-        (async function fetchData(){
-            const data = await getAllRecipes();
+        (async function fetchData() {
+            const { data } = await recipeApi.current.getAllRecipes();
             setRecipes(data)
-        })()
-    }, []);
+        })();
+
+        (async function checkUser() {
+            const { data: userData } = await checkUserLogged(userApi.current)
+            if (userData) setUser(userData)
+            else localStorage.removeItem('token')
+
+        }
+        )();
+
+    }, [setUser]);
 
 
     useEffect(() => {
         recipes.sort(() => Math.random() - .5)
-    },[recipes])
+    }, [recipes])
 
     useEffect(() => {
         const findRecipes = valueSearch ? recipes.filter(recipe => {
@@ -49,7 +61,7 @@ export const MainContentHome = () => {
 
     const topRanking = useCallback((column) => {
         return [...recipes].sort((x, y) => y[column] - x[column])
-    }, [recipes])
+    }, [recipes]);
 
     return (
         <main>
@@ -62,7 +74,7 @@ export const MainContentHome = () => {
                     {!valueSearch &&
                         <>
                             <PollRecipes />
-                            <CreateFeed />
+                            <CreateFeed user={user} />
                         </>
                     }
                     <Feed
@@ -79,7 +91,10 @@ export const MainContentHome = () => {
                     }
                 </div>
 
-                <ColumnRightMainHome ranking={topRanking('nmr_hearts')} />
+                <ColumnRightMainHome
+                    user={user}
+                    ranking={topRanking('nmr_hearts')}
+                />
             </section>
 
         </main>

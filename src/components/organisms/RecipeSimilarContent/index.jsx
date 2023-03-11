@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
-import { getAllRecipes } from "../../../api/recipe";
+import { useEffect, useRef, useState } from "react";
 import { ListRecipes } from "../../molecules/ListRecipes";
-
+import { useRecipeApi } from "../../../hooks/useApi"
 
 
 export const RecipeSimilarContent = ({ recipe }) => {
-
     const { name_recipe } = recipe
     const [recipes, setRecipes ] = useState([])
-
+    const api = useRef(useRecipeApi());
+    
     useEffect(() =>{
-        (async function fetchData(){
-            const data = await getAllRecipes();
+        const dataFetch = async (api) => {
+            const { data } = await api.current.getAllRecipes();
             setRecipes(data)
-        })()
-    }, [])
+        }
+        dataFetch(api)
+    }, []);
+
 
 
     const handleRecipeByTarget = () => {

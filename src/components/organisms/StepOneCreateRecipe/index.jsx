@@ -1,22 +1,25 @@
 import { useEffect, useRef, useState } from "react";
-import { FaPlusCircle } from "react-icons/fa"
 import { useSearchParams } from "react-router-dom";
-import categories from "../../../scripts/api/categories";
-import { Button } from "../../atoms/Button";
+import { useCategoryApi } from "../../../hooks/useApi";
 import { Input } from "../../atoms/Input";
 import { TextArea } from "../../atoms/TextArea";
 
 
 export const StepOneCreateRecipe = () => {
+    const categoryApi = useRef(useCategoryApi());
     const valueLimitsizeTittle = 45
     const refTextArea = useRef(null);
     const refInputNameRecipe = useRef(null);
+    const h2ButtonSuggest = useRef(null);
     const [qs] = useSearchParams();
     const [valueInputCategory, setValueInputCategory] = useState('')
     const [limitSizeTittle, setLimitSizeTittle] = useState(valueLimitsizeTittle);
-    const [isOpenSelectCategory, setIsOpenSelectCategory] = useState(false)
+    const [categories, setCategories] = useState([]);
     const filteredCategory = categories.filter(category =>
-        category.name_category.toLowerCase().includes(valueInputCategory.toLowerCase()))
+        category.name_category.toLowerCase().includes(valueInputCategory.toLowerCase())
+        &&
+        category.suggestion >= 3
+    )
 
 
     useEffect(() => {
@@ -25,7 +28,24 @@ export const StepOneCreateRecipe = () => {
             refInputNameRecipe.current.value = qs.get("n")
             refTextArea.current.focus()
         }
-    }, [qs])
+    }, [qs]);
+
+    useEffect(() => {
+        (async () => {
+            const categories = await categoryApi.current.getAllCategory();
+            setCategories(categories.data)
+        })();
+    }, []);
+
+    const handleSuggestCategory = async () => {
+        const name_category = valueInputCategory
+        const response = await categoryApi.current.createNewCategory(name_category);
+
+        if (response.status === 200) {
+            h2ButtonSuggest.current.style.display = 'none'
+        }
+
+    }
 
     return (
         <>
@@ -72,7 +92,12 @@ export const StepOneCreateRecipe = () => {
                     label="Digite o nome da categoria da receita:"
                     size={4}
                     value={valueInputCategory}
-                    icon={<h2 className={`cursor-pointer bg-color_primary h-full text-center text-white text-s1 items-center ${filteredCategory.length ? 'hidden' : 'flex'}`}>Sugerir categoria</h2>}
+                    icon={
+                        <h2
+                            ref={h2ButtonSuggest}
+                            className={`cursor-pointer bg-color_primary h-full text-center text-white text-s1 items-center ${filteredCategory.length ? 'hidden' : 'flex'}`}
+                            onClick={handleSuggestCategory}
+                        >Sugerir categoria</h2>}
                 />
                 {valueInputCategory &&
                     <ul>
@@ -80,26 +105,10 @@ export const StepOneCreateRecipe = () => {
                             <li key={category.id} onClick={
                                 (e) => { setValueInputCategory(category.name_category); e.target.classList.add("hidden") }}
                                 className="w-1/2 cursor-pointer mx-auto text-center hover:bg-[#24242440] bg-background border-b-[1px] m-2 text-s1_2 p-2"
-                            >{category.name_category}</li>)
-                        }
-                    </ul>
-                }
-                {isOpenSelectCategory ?
-                    <div className="flex flex-col">
-                        <select id="secondCategory" className="p-4 w-full m-2 text-s1_2 text-center cursor-pointer">
-                            {categories.map(category =>
-                                <option
-                                    className="text-s1_2 text-center cursor-pointer"
-                                    key={category.id}
-                                    value={category.name_category}
-                                >{category.name_category}</option>)}
+                            >{category.name_category}</li>
 
-                        </select>
-                    </div>
-                    : <Button
-                        event={(e) => { e.preventDefault(); setIsOpenSelectCategory(true) }}
-                        customClass="btn-second mx-auto mb-8 mt-4"
-                    > <FaPlusCircle /> Adicionar mais categoria </Button>
+                        )}
+                    </ul>
                 }
             </div>
         </>

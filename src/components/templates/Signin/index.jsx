@@ -1,7 +1,7 @@
 
 import { Button } from "../../atoms/Button"
 import { LoginWithSocialMidia } from "../../molecules/LoginWithSocialMidia"
-import { FormLogin } from "../FormLogin"
+import { FormLogin } from "../../organisms/FormLogin"
 
 export const Signin = ({ setIsLogin }) => {
 

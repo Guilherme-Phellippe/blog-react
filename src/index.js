@@ -14,6 +14,7 @@ import { Category } from './pages/Category/Category';
 import { About } from './pages/About';
 
 import './index.css';
+import { PanelUser } from './pages/PanelUser/PanelUser';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -32,6 +33,7 @@ root.render(
         <Route path='/about' element={<About />} />
         <Route path='/recipe/:id' element={<Recipe />} />
         <Route path='/category/:sub' element={<Category />} />
+        <Route path='/panel-user' element={<PanelUser />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
