@@ -15,9 +15,8 @@ export const CarouselMidiasContent = ({ img, name_recipe, category }) => {
                 </>}
             </div>
             <div className={`${valueSearch ? "order-1 w-1/2 h-full":'w-full h-[65%]'} overflow-hidden`}>
-                <img className={`w-full h-full object-cover`} src={img} alt={name_recipe} />
+                <img className={`w-full h-full object-cover`} src={img[0].big} alt={name_recipe} />
             </div>
         </>
     )
 }
-//será adicionado mais elementos por isso esse elemento está em molecules

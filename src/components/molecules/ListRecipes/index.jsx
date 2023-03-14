@@ -5,7 +5,7 @@ export const ListRecipes = ({ recipe, classContainer, classInfoContent, classImg
         <Link to={`/recipe/${recipe.id}`}>
             <div className={classContainer}>
                 <div className={classImgContent}>
-                    <img className='w-full h-full object-cover' src={recipe.images_recipe} alt={recipe.name_recipe} />
+                    <img className='w-full h-full object-cover' src={recipe.images_recipe[0].small} alt={recipe.name_recipe} />
                 </div>
                 <div className={classInfoContent}>
                     <h2 className="text-s1_2 text-color_sub_text text-center">{recipe.name_recipe}</h2>

@@ -1,18 +1,21 @@
 import { useRef, useState } from "react"
 import { FaPlusCircle } from "react-icons/fa"
 import { MdRemoveCircle } from "react-icons/md"
+import { useRecipeApi } from "../../../hooks/useApi"
 import { Input } from "../../atoms/Input"
 
 
-export const StepThreeCreateRecipe = () => {
+export const StepThreeCreateRecipe = ({ images, setImages }) => {
+    const apiImg = useRef(useRecipeApi());
     const [wordKeys, setWordKeys] = useState([])
     const refWordKeys = useRef(null)
+
 
     const handleAddListIngredients = () => {
         const value = refWordKeys.current.value
         !!value.length ? setWordKeys(v => [...v, value]) : alert("Digite a palavra chave")
         refWordKeys.current.value = ''
-        refWordKeys.current.focus()
+        refWordKeys.current.focus();
     }
 
     const handleRemoveListIngredients = ({ currentTarget }) => {
@@ -23,22 +26,42 @@ export const StepThreeCreateRecipe = () => {
     }
 
 
-    const handleUploadImages = async (event) =>{
-        
-    
+    const handleUploadImages = async ({ target }) => {
+        const files = target.files
+
+        if (files) {
+            for (let file of files) {
+                const form = new FormData();
+                form.append('image', file);
+                const { data } = await apiImg.current.hostImages(form)
+
+                console.log(data)
+                setImages((imgs)=> [...imgs, data]);
+
+            }
+
+        } else alert("erro ao enviar a imagem");
     };
+
+    const hanldeRemoveImage = ({ currentTarget }) => {
+        const imgForRemove = currentTarget.querySelector("img").src
+        console.log(images)
+        const imagesFiltered = images.filter(img => !img.small.includes(imgForRemove))
+        setImages(imagesFiltered)
+    }
+
 
     return (
         <>
-            <label 
-                forhtml="image-file" 
+            <label
+                forhtml="image-file"
                 className="w-1/2 h-[10rem] cursor-pointer border-2 border-dotted border-color_primary flex justify-center items-center"
             >
                 <h2 className="text-s1_3 text-gray-500">
                     Clique ou solte suas imagens aqui
                 </h2>
 
-                <input 
+                <input
                     type="file"
                     id="image-file"
                     className="hidden"
@@ -46,6 +69,25 @@ export const StepThreeCreateRecipe = () => {
                 />
 
             </label>
+            {!!images.length &&
+                <div className="flex m-4 w-1/2 min-h-[5rem] gap-4">
+                    {images.map(img => {
+                        return (
+                            <div 
+                                key={img.small}
+                                onClick={hanldeRemoveImage} 
+                                className="relative w-[50px] h-[40px] cursor-pointer group">
+                                <img
+                                    className="w-full h-full object-cover rounded-xl group-hover:opacity-40"
+                                    src={img.small} alt="imagem enviada pelo usuário" />
+                                <span
+                                    className="absolute w-full h-full top-1/4 left-[33%] text-s2_5 text-red-500 hidden group-hover:block font-bold">X</span>
+                            </div>
+                        )
+                    })}
+                </div>
+            }
+
 
 
             <div className="w-1/2 flex flex-col my-8">

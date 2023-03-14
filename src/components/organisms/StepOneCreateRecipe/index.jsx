@@ -5,12 +5,13 @@ import { Input } from "../../atoms/Input";
 import { TextArea } from "../../atoms/TextArea";
 
 
-export const StepOneCreateRecipe = () => {
+export const StepOneCreateRecipe = ({ recipe }) => {
     const categoryApi = useRef(useCategoryApi());
     const valueLimitsizeTittle = 45
     const refTextArea = useRef(null);
     const refInputNameRecipe = useRef(null);
     const h2ButtonSuggest = useRef(null);
+    const refInputCategory = useRef(null)
     const [qs] = useSearchParams();
     const [valueInputCategory, setValueInputCategory] = useState('')
     const [limitSizeTittle, setLimitSizeTittle] = useState(valueLimitsizeTittle);
@@ -36,6 +37,12 @@ export const StepOneCreateRecipe = () => {
             setCategories(categories.data)
         })();
     }, []);
+
+    const handleSelectedCategory = (category, e) =>{
+        setValueInputCategory(category.name_category)
+        refInputCategory.current.value = category.name_category
+        e.target.classList.add("hidden")
+    }
 
     const handleSuggestCategory = async () => {
         const name_category = valueInputCategory
@@ -87,11 +94,11 @@ export const StepOneCreateRecipe = () => {
             <div className="w-[51%] flex-col">
                 <Input
                     id="category"
+                    ref={refInputCategory}
                     onChange={(e) => setValueInputCategory(e.target.value)}
                     placeholder="ex.: Bolos e doces"
                     label="Digite o nome da categoria da receita:"
                     size={4}
-                    value={valueInputCategory}
                     icon={
                         <h2
                             ref={h2ButtonSuggest}
@@ -102,8 +109,8 @@ export const StepOneCreateRecipe = () => {
                 {valueInputCategory &&
                     <ul>
                         {filteredCategory.map(category =>
-                            <li key={category.id} onClick={
-                                (e) => { setValueInputCategory(category.name_category); e.target.classList.add("hidden") }}
+                            <li key={category.id} 
+                                onClick={(e) => handleSelectedCategory(category, e)}
                                 className="w-1/2 cursor-pointer mx-auto text-center hover:bg-[#24242440] bg-background border-b-[1px] m-2 text-s1_2 p-2"
                             >{category.name_category}</li>
 

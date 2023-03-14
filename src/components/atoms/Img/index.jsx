@@ -1,5 +1,9 @@
-export const Img = ({ src, alt , ...restProps}) => { 
-    return(
-        <img src={src} alt={alt} {...restProps}/>
+export const Img = ({ src, alt, ...restProps }) => {
+    return (
+        <img
+            className=""
+            src={src}
+            alt={alt}
+            {...restProps} />
     )
 }

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
+import { useCategoryApi, useUserApi, useRecipeApi } from "../../../hooks/useApi"
 
 import { FaArrowLeft, FaArrowRight, FaWindowClose } from "react-icons/fa"
 import { MdImage, MdImportContacts, MdList } from "react-icons/md"
-import { useNavigate } from "react-router-dom"
-import { useCategoryApi, useUserApi } from "../../../hooks/useApi"
 
 import { BoxMenssage } from "../../../modals/BoxMenssage"
 
@@ -12,83 +12,81 @@ import { Button } from "../../atoms/Button"
 import { StepOneCreateRecipe } from "../../organisms/StepOneCreateRecipe"
 import { StepThreeCreateRecipe } from "../../organisms/StepThreeCreateRecipe"
 import { StepTwoCreateRecipe } from "../../organisms/StepTwoCreateRecipe"
+import { modelRecipe } from "../../../scripts/modelRecipe"
 
 
 export const MainCreateRecipe = () => {
     const categoryApiRef = useRef(useCategoryApi())
     const userApiRef = useRef(useUserApi())
+    const recipeApiRef = useRef(useRecipeApi())
     const [categories, setCategories] = useState([])
     const [user, setUser] = useState([])
     const [step, setStep] = useState(1)
+    const [images, setImages] = useState([])
     const [modalSuccessOpen, setModalSuccessOpen] = useState(false)
     const [modalMenssage, setModalMenssage] = useState('')
     const [hasRecipeReady, setHasRecipeReady] = useState(localStorage.getItem('recipe'));
-    const refOneStep = useRef()
-    const refTwoStep = useRef()
-    const refThreeStep = useRef()
+    const refOneStep = useRef();
+    const refTwoStep = useRef();
+    const refThreeStep = useRef();
     const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
             const categories = await categoryApiRef.current.getAllCategory();
-            if(categories) setCategories(categories)
+            if (categories) setCategories(categories.data)
             const data = await userApiRef.current.authenticateLogin();
-            if(data) setUser(data.data)
-            else navigate('/')
+            if (data) setUser(data.data);
+            else navigate('/');
         })();
-    }, [navigate])
+    }, [navigate]);
 
-
-    //IMPLEMENTAR HOSPEDAGEM DE IMAGEM
-    
-
-
-    const handleNextButton = (e) => {
+    const handleNextButton = async (e) => {
         e.preventDefault()
         if (e.target.id === "next") {
             const ingredients = Array.from(refTwoStep.current.querySelectorAll('ul#ing li p')).map(p => p.textContent)
             const wordKey = Array.from(refThreeStep.current.querySelectorAll('ul#word-keys li p')).map(p => p.textContent)
-            const category = refOneStep.current.querySelector('div input#category')?.value
-            const recipeStepOne = {
-                categoryId: categories.find(cate => cate.name_category.toLowerCase().includes(category.toLowerCase()) && cate.id) ,
-                idUser: user.id,
-                name_recipe: refOneStep.current.querySelector('div input#name_recipe').value,
-                describe_recipe: refOneStep.current.querySelector('div textArea#describe_recipe').value,
-                time: refOneStep.current.querySelector('div input#time').value,
-                portion: refOneStep.current.querySelector('div input#portion').value,
-                ing: ingredients,
-                word_key: wordKey,
-                prepareMode: refTwoStep.current.querySelector('textArea#prepare-mode').value,
-                images_recipe: ['https://i.pinimg.com/564x/33/d8/65/33d8659d1f1aff43e424e293245abfb2.jpg'],
-                videos_recipe: [],
-            }
+            const category = refOneStep.current.querySelector('div input#category')?.value;
 
             if (step === 1) {
-                if (recipeStepOne.name_recipe &&
-                    recipeStepOne.describe_recipe &&
-                    recipeStepOne.categoryId &&
-                    recipeStepOne.time &&
-                    recipeStepOne.portion) {
-                    localStorage.setItem("recipe", JSON.stringify(recipeStepOne))
+                modelRecipe.categoryId = categories.find(cate => cate.name_category.toLowerCase().includes(category.toLowerCase())).id;
+                modelRecipe.userId = user.id;
+                modelRecipe.name_recipe = refOneStep.current.querySelector('div input#name_recipe').value;
+                modelRecipe.describe_recipe = refOneStep.current.querySelector('div textArea#describe_recipe').value;
+                modelRecipe.time = Number(refOneStep.current.querySelector('div input#time').value);
+                modelRecipe.portion = Number(refOneStep.current.querySelector('div input#portion').value);
+
+                if (modelRecipe.categoryId && modelRecipe.userId && modelRecipe.name_recipe && modelRecipe.describe_recipe && modelRecipe.time && modelRecipe.portion) {
+                    localStorage.setItem("recipe", JSON.stringify(modelRecipe));
                     setStep(2)
                 } else {
                     setModalMenssage("Preencha todos os campos")
                     setModalSuccessOpen(true)
                 }
-            } else if (step === 2) {
-                if (!!recipeStepOne.ing.length && recipeStepOne.prepareMode) {
-                    localStorage.setItem("recipe", JSON.stringify(recipeStepOne))
+            }
+            else if (step === 2) {
+                modelRecipe.ing = ingredients;
+                modelRecipe.prepareMode = refTwoStep.current.querySelector('textArea#prepare-mode').value;
+
+                if (!!modelRecipe.ing.length && modelRecipe.prepareMode) {
+                    localStorage.setItem("recipe", JSON.stringify(modelRecipe))
                     setStep(3)
                 } else {
                     setModalMenssage("Preencha todos os campos")
                     setModalSuccessOpen(true)
                 }
             } else if (step === 3) {
-                if (!!recipeStepOne.word_key) {
-                    localStorage.setItem("recipe", JSON.stringify(recipeStepOne))
-                    //salva no banco de dados
-                    setModalSuccessOpen(true)
-                    setModalMenssage("Receita criada com sucesso")
+                modelRecipe.word_key = wordKey;
+                modelRecipe.images_recipe = images;
+                modelRecipe.videos_recipe = [];
+
+                if (!!modelRecipe.word_key && !!images) {
+                    const data = await recipeApiRef.current.createNewRecipe(modelRecipe)
+                    if (data) {
+                        setModalSuccessOpen(true)
+                        setModalMenssage("Receita criada com sucesso")
+                        navigate('/')
+                    }
                 } else {
                     setModalMenssage("Preencha todos os campos")
                     setModalSuccessOpen(true)
@@ -96,9 +94,24 @@ export const MainCreateRecipe = () => {
             }
         }
 
-        if (e.target.id === "previous" && step > 1) setStep(v => v - 1)
+        if (e.target.id === "previous" && step > 1) setStep(v => v - 1);
+
+
+
     }
 
+    const handleAlreadyCreatedRecipe = () => {
+        const recipe = JSON.parse(localStorage.getItem('recipe'));
+
+        refOneStep.current.querySelector('div input#name_recipe').value = recipe.name_recipe;
+        refOneStep.current.querySelector('div textArea#describe_recipe').value = recipe.describe_recipe;
+        refOneStep.current.querySelector('div input#time').value = recipe.time;
+        refOneStep.current.querySelector('div input#portion').value = recipe.portion;
+        refOneStep.current.querySelector('div input#category').value = categories.find(category => category.id.includes(recipe.categoryId)).name_category
+        refTwoStep.current.querySelector('textArea#prepare-mode').value = recipe.prepareMode;
+
+        setHasRecipeReady('');  //close modal
+    }
 
     return (
         <main className="w-10/12 bg-white mx-auto flex flex-col items-center p-16">
@@ -124,7 +137,10 @@ export const MainCreateRecipe = () => {
                     <StepTwoCreateRecipe />
                 </div>
                 <div ref={refThreeStep} className={`w-full flex-col justify-center items-center ${step === 3 ? "flex" : "hidden"}`}>
-                    <StepThreeCreateRecipe />
+                    <StepThreeCreateRecipe
+                        images={images}
+                        setImages={setImages}
+                    />
                 </div>
 
                 <div className="flex">
@@ -156,7 +172,7 @@ export const MainCreateRecipe = () => {
                     />
                     <p className="text-white font-semibold text-center text-s1_3">Voce já tem uma receita salva, deseja continuar editando?</p>
                     <div className="flex w-full justify-between">
-                        <Button customClass="btn-second mt-4 px-8">Ok</Button>
+                        <Button event={handleAlreadyCreatedRecipe} customClass="btn-second mt-4 px-8">Ok</Button>
                         <Button event={() => { setHasRecipeReady(''); localStorage.removeItem('recipe') }} customClass="underline text-white mt-4 px-4">descartar</Button>
                     </div>
                 </div>

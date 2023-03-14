@@ -9,7 +9,7 @@ export const BoxRecipe = ({ recipe }) => {
 
     return (
         <div className="content-recipe">
-            <Img src={images_recipe} alt={`imagem de ${name_recipe}`} />
+            <Img src={images_recipe[0].medium} alt={`imagem de ${name_recipe}`} />
             <Info3MostViewedRecipes recipe={recipe} />
             <HoverInfo3MostViewedRecipes recipe={recipe} />
         </div>

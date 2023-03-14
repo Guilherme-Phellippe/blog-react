@@ -11,6 +11,18 @@ export const useRecipeApi = () => ({
         return response
     },
 
+    createNewRecipe: async (recipe) =>{
+        const data = await api.post('/recipe', recipe).catch(error => error)
+
+        return data.data
+    },
+
+    hostImages: async (imageForm) =>{
+        const images = await api.post('/upload-images' ,  imageForm);
+
+        return images
+    },
+
     getUniqueRecipe: async (id) => {
         const response = await api.get(`/recipe/${id}`).catch(err => err)
         return response
@@ -55,6 +67,11 @@ export const useUserApi = () => ({
         }
 
         return null
+    },
+
+    createNewUser: async (user) =>{
+        const { data } = await api.post('/users', user);
+        return data
     }
 
 })
@@ -67,7 +84,7 @@ export const useCategoryApi = () => ({
     },
 
     createNewCategory: async (name_category) => {
-        const category = await api.post(`/category`, name_category).catch(error => error)
+        const category = await api.post(`/category`, {name_category}).catch(error => error)
 
         return category
     }
