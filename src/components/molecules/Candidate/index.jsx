@@ -1,23 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useRecipeApi } from '../../../hooks/useApi';
 
-import { recipes } from '../../../scripts/api/simulation';
-import { users } from '../../../scripts/api/users';
 
 import { Img } from '../../atoms/Img';
 
 export const Candidate = ({ position, candidate }) => {
+    const refRecipeApi = useRef(useRecipeApi());
+    const [recipes , setRecipes] = useState([])
     const [totalVotes, setTotalVotes] = useState(0);
     const height = position !== 0 ? 'h-[17rem]' : 'h-[20rem]'
     const orderStyle = position === 0 ? 'order-2' : position === 1 ? 'order-1' : 'order-3';
+
+
+    useEffect(() => {
+        (async function fetchData() {
+            const { data } = await refRecipeApi.current.getAllRecipes();
+            setRecipes(data)
+        })();
+    },[])
 
     useEffect(() => {
         setTotalVotes(0)
         recipes.forEach(candidate => {
             setTotalVotes(value => value + candidate.votes.length)
         });
-    }, []);
+    }, [recipes]);
 
-    
+
 
     return (
         <div className={`${orderStyle} ${height} w-[28%] mx-auto flex flex-col justify-between relative border-[1px] border-solid border-color_second rounded-xl`}>
@@ -26,14 +35,14 @@ export const Candidate = ({ position, candidate }) => {
             </div>
             <Img
                 className="absolute -right-[10%] bottom-0 w-[30%] rounded-[50%]"
-                src={users.find(user => user.id === candidate.idUser)?.photo}
-                alt={`foto de ${candidate.author}`}
-                title={candidate.author}
+                src={candidate.user.photo}
+                alt={`foto de ${candidate.user.name}`}
+                title={candidate.user.name}
             />
             <div className="w-full h-[70%] rounded-xl overflow-hidden">
                 <Img
                     className="w-full h-full object-cover"
-                    src={candidate.img}
+                    src={candidate.images_recipe[0].small}
                     alt={candidate.name_recipe}
                 />
             </div>

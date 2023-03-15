@@ -1,14 +1,23 @@
-import { recipes } from "../../../scripts/api/simulation"
+import { useEffect, useRef, useState } from "react"
+import { useRecipeApi } from "../../../hooks/useApi"
 import { ListRecipes } from "../../molecules/ListRecipes"
 
 export const CardCategoriesSelect = ({ category }) => {
+    const refRecipeApi = useRef(useRecipeApi());
+    const [recipes, setRecipes] = useState([])
 
-    const filteredRecipes = recipes.filter(recipe => recipe.category.includes(category.id))
-    console.log(filteredRecipes)
+    useEffect(() => {
+        (async () => {
+            const { data } = await refRecipeApi.current.getRecipesByCategory(category.id);
+            if (data) setRecipes(data)
+        })()
+    }, [category]);
+
+
 
     return (
         <div className="w-full p-4 flex flex-wrap justify-center gap-4">
-            {filteredRecipes.map(recipe =>
+            {recipes.map(recipe =>
                 <ListRecipes
                     key={recipe.id}
                     recipe={recipe}

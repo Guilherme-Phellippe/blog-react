@@ -1,19 +1,28 @@
+import { useEffect, useRef, useState } from "react"
 import { Button } from "../../components/atoms/Button"
 import { Candidate } from "../../components/molecules/Candidate"
 import { TablePoll } from "../../components/organisms/TablePoll"
 import { Footer } from "../../components/templates/Footer/Footer"
 import { Header } from "../../components/templates/Header/Header"
 import { HomeProvider } from "../../contexts/Home/HomeProvider"
+import { useRecipeApi } from "../../hooks/useApi"
 
-import { recipes } from '../../scripts/api/simulation'
 
 export const Poll = () => {
+    const [updateListRecipe, setUpdateListRecipe] = useState(false)
+    const [recipes, setRecipes] = useState([]);
+    const refRecipeApi = useRef(useRecipeApi());
+
+    useEffect(() => {
+        (async () => {
+            const { data } = await refRecipeApi.current.getAllRecipes();
+            setRecipes(data)
+        })();
+    }, [updateListRecipe]);
 
     recipes.sort((candidateA, candidateB) => {
         return candidateB.votes.length - candidateA.votes.length
     });
-
-
 
     return (
         <div className="container">
@@ -55,7 +64,9 @@ export const Poll = () => {
                             <p className="text-s1_5">Kit de colher de silicone</p>
                         </div>
                     </div>
-                    <TablePoll candidates={recipes} />
+                    <TablePoll 
+                        setUpdateListRecipe={setUpdateListRecipe}
+                        candidates={recipes} />
                 </div>
                 <div className="w-11/12 h-[15rem] my-4 bg-white mx-auto grid place-items-center">
                     ads here.

@@ -48,6 +48,7 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
                             <BlockInteractionFeed 
                                 nmr_hearts={content.nmr_hearts}
                                 comments={content.comments}
+                                idRecipe={content.id}
                             />
                             
                         </div>
@@ -56,7 +57,7 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
                             
                             <ListRecipeComments content={content}/>
 
-                            <BoxAddNewComment author={content.author} />
+                            <BoxAddNewComment author={content.user.name} />
                             
                         </div>
                     </div>

@@ -59,13 +59,17 @@ export const MainContentHome = () => {
     }, [recipes, postPerPage, valueSearch, listRecipeForRemove])
 
 
-    const topRanking = useCallback((column) => {
-        return [...recipes].sort((x, y) => y[column] - x[column])
+    const topRankingByEyes = useCallback(() => {
+        return [...recipes].sort((x, y) => y.nmr_eyes - x.nmr_eyes)
+    }, [recipes]);
+
+    const topRankingByHearts = useCallback((column) => {
+        return [...recipes].sort((x, y) => y.nmr_hearts.length - x.nmr_hearts.length)
     }, [recipes]);
 
     return (
         <main>
-            <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRanking} />
+            <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
             <section className="container-main">
                 <ColumnLeftMainHome recipes={recipes} />
@@ -93,7 +97,7 @@ export const MainContentHome = () => {
 
                 <ColumnRightMainHome
                     user={user}
-                    ranking={topRanking('nmr_hearts')}
+                    ranking={topRankingByHearts()}
                 />
             </section>
 

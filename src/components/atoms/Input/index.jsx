@@ -1,6 +1,6 @@
 import React  from 'react';
 
-export const Input = React.forwardRef(({ placeholder, label, icon, type = 'text', onChange,eventIcon, id, value, size = 1 }, ref) => {
+export const Input = React.forwardRef(({ placeholder, label, icon, type = 'text', onChange,eventIcon, id, value, size = 1, ...restProps }, ref) => {
     const width = size === 0 ? 'w-[25%]' : size === 1 ? 'w-[51%]' : size === 2 ? 'w-[75%]' : 'w-[100%]';
 
     return (
@@ -19,6 +19,7 @@ export const Input = React.forwardRef(({ placeholder, label, icon, type = 'text'
                 className="w-[85%] p-4 outline-none bg-transparent text-s1_2"
                 type={type}
                 placeholder={placeholder}
+                {...restProps}
             />
             <div 
                 onClick={eventIcon}

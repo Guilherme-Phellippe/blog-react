@@ -1,14 +1,5 @@
-import { useEffect } from "react"
-import categories from "../../../scripts/api/categories"
 
-export const ColumnAllCategories = ({ categorySelect, setCategorySelect}) => {
-    
-    
-    useEffect(() =>{
-        categories.sort((a,b) => a.name_category.toLowerCase() < b.name_category.toLowerCase()  ? -1 : a.name_category.toLowerCase() > b.name_category.toLowerCase() ? 1 : 0)
-    },[])
-
-
+export const ColumnAllCategories = ({ categorySelect, setCategorySelect, categories}) => {
     return (
         <aside className="w-1/5 border-r-2 border-solid" >
             <ul className="w-full">

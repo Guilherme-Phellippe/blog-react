@@ -7,7 +7,7 @@ export const Info3MostViewedRecipes = ({recipe : { name_recipe, category, user, 
                 <h2>{name_recipe}</h2>
                 <h3>por: <span className='font-bold'>{user.name}</span></h3>
                 <div className="box-notes">
-                    <FaHeart className='heart' /> <span>{nmr_hearts}</span> 
+                    <FaHeart className='heart' /> <span>{nmr_hearts.length}</span> 
                     <FaEye className='eye' /> <span>{nmr_eyes}</span>
                 </div>
             </div>

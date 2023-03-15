@@ -28,18 +28,41 @@ export const useRecipeApi = () => ({
         return response
     },
 
+    getRecipesByCategory: async (id) => {
+        const response = await api.get(`/recipes/${id}/category`).catch(err => err)
+        return response
+    },
+    
     updateNumberEyes: async (id) => {
         const TIME_NOW = `${moment().year()}${moment().dayOfYear()}${moment().hours()}${moment().minutes()}`;
         const lastTimeCalled = localStorage.getItem("lastTimeCalledFunctionNumberEyes")
         const canExecuteFetch = lastTimeCalled ? Number(TIME_NOW) > (Number(lastTimeCalled) + 5) : true;
         if (canExecuteFetch) {
             localStorage.setItem("lastTimeCalledFunctionNumberEyes", TIME_NOW)
-            const data = await api.patch(`/recipe/${id}`).catch(err => {
+            const data = await api.patch(`/recipe/${id}/nmr-eyes`).catch(err => {
                 return err
             });
             return data
         }
+    },
+
+    updateNumberHearts: async (ids) => {
+            const data = await api.patch(`/recipe/${ids.idUser}/nmr-hearts/${ids.idRecipe}`).catch(err => {
+                return err
+            });
+
+            return data
+    },
+    updateVotesRecipe: async (ids) => {
+            const data = await api.patch(`/recipe/${ids.idUser}/votes/${ids.idRecipe}`).catch(err => {
+                return err
+            });
+
+            return data
     }
+
+
+
 })
 
 

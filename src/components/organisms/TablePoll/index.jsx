@@ -2,10 +2,12 @@ import moment from "moment"
 import { useEffect, useRef, useState } from "react"
 import { FaSadTear, FaSearch } from "react-icons/fa"
 import { Link, useSearchParams } from "react-router-dom"
+import { useRecipeApi } from "../../../hooks/useApi"
 import { Button } from "../../atoms/Button"
 import { Input } from "../../atoms/Input"
 
-export const TablePoll = ({ candidates }) => {
+export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe}) => {
+    const refVotesApi = useRef(useRecipeApi())
     const [search, setSearch] = useState('');
     const [newCandidates, setNewCandidates] = useState([]);
     const [totalVotes, setTotalVotes] = useState(0);
@@ -26,26 +28,37 @@ export const TablePoll = ({ candidates }) => {
 
     useEffect(() => {
         setTotalVotes(0)
-        candidates.forEach(candidate => {
-            setTotalVotes(value => value + candidate.votes.length)
+        candidatesRecipe.forEach(candidate => {
+            setTotalVotes(total => total + candidate.votes.length)
         })
-    }, [candidates])
+    }, [candidatesRecipe])
 
     useEffect(() => {
-        var newCandidates = search ? candidates.filter(candidate =>
+        var newCandidates = search ? candidatesRecipe.filter(candidate =>
             candidate.name_recipe.toLowerCase().includes(search.toLowerCase())
             ||
-            candidate.author.toLowerCase().includes(search.toLowerCase())
+            candidate.user.name.toLowerCase().includes(search.toLowerCase())
             ||
             Number(candidate.id) === Number(search))
-            : candidates;
+            : candidatesRecipe;
 
         setNewCandidates(() => newCandidates);
-    }, [search, candidates]);
+    }, [search, candidatesRecipe]);
 
 
-    const handleVoteUser = () => {
-        setSearch('')
+    const handleVoteUser = async ({ currentTarget }) => {
+        const token = JSON.parse(localStorage.getItem("token"))
+        if(token){
+            const response = await refVotesApi.current.updateVotesRecipe({idUser: token.id , idRecipe: currentTarget.id})
+            if(!response.response){
+                alert("você votou com sucesso!")
+                setUpdateListRecipe(true)
+            }else{
+                if(response.response.status === 409) alert("Você já votou")
+                else if(response.response.status === 403) alert("Essa receita não pode mais ser votada!")
+            }
+            setSearch('')
+        }else alert("Você precisa criar uma conta para poder votar!")
     }
 
 
@@ -65,7 +78,6 @@ export const TablePoll = ({ candidates }) => {
                 <thead>
                     <tr className="bg-color_primary text-white text-s1_3">
                         <th className="py-4">#</th>
-                        <th>id da receita</th>
                         <th>Nome</th>
                         <th>Author</th>
                         <th>Data</th>
@@ -83,9 +95,8 @@ export const TablePoll = ({ candidates }) => {
                                 className='text-center cursor-pointer hover:bg-background border-b-[1px] border-solid'
                             >
                                 <td className={`py-4 text-s1_2 p-2 ${index < 3 && !search ? 'bg-green-600 text-white font-bold' : ''}`}>{index + 1}°</td>
-                                <td className="py-4 text-s1_2">{candidate.id}</td>
                                 <td className="py-4 text-s1_2">{candidate.name_recipe}</td>
-                                <td className="py-4 text-s1_2">{candidate.author}</td>
+                                <td className="py-4 text-s1_2">{candidate.user.name}</td>
                                 <td className="py-4 text-s1_2">{moment(candidate.createdAt).startOf('hour').fromNow()}</td>
                                 <td className="py-4 text-s1_2">{
                                     totalVotes > 0 ? candidate.votes.length > 0
@@ -94,7 +105,10 @@ export const TablePoll = ({ candidates }) => {
                                         : '0'}
                                 </td>
                                 <td className="py-4 text-s1_2">
-                                    <Button event={handleVoteUser}>Votar</Button>
+                                    <Button 
+                                        id={candidate.id}
+                                        event={handleVoteUser}
+                                    >Votar</Button>
                                 </td>
                                 <td className="py-4 text-s1_2">
                                     <Link to={`/recipe/${candidate.id}`}>

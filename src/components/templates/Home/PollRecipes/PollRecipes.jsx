@@ -1,9 +1,19 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { recipes } from '../../../../scripts/api/simulation';
+import { useRecipeApi } from '../../../../hooks/useApi';
 import { Button } from '../../../atoms/Button';
 import { Candidate } from '../../../molecules/Candidate';
 
 export const PollRecipes = () => {
+    const [recipes, setRecipes] = useState([]);
+    const refRecipeApi = useRef(useRecipeApi());
+
+    useEffect(() => {
+        (async () => {
+            const { data } = await refRecipeApi.current.getAllRecipes();
+            setRecipes(data)
+        })()
+    }, [])
 
     recipes.sort((candidateA, candidateB) => {
         return candidateB.votes.length - candidateA.votes.length

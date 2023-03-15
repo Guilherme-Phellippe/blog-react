@@ -2,15 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useCategoryApi } from "../../../hooks/useApi";
 import { Input } from "../../atoms/Input";
-import { TextArea } from "../../atoms/TextArea";
 
 
-export const StepOneCreateRecipe = ({ recipe }) => {
+export const StepOneCreateRecipe = () => {
     const categoryApi = useRef(useCategoryApi());
     const valueLimitsizeTittle = 45
-    const refTextArea = useRef(null);
     const refInputNameRecipe = useRef(null);
-    const h2ButtonSuggest = useRef(null);
     const refInputCategory = useRef(null)
     const [qs] = useSearchParams();
     const [valueInputCategory, setValueInputCategory] = useState('')
@@ -27,7 +24,6 @@ export const StepOneCreateRecipe = ({ recipe }) => {
         if (qs.get('n')) {
             setLimitSizeTittle(valueLimitsizeTittle - qs.get('n').length)
             refInputNameRecipe.current.value = qs.get("n")
-            refTextArea.current.focus()
         }
     }, [qs]);
 
@@ -44,16 +40,6 @@ export const StepOneCreateRecipe = ({ recipe }) => {
         e.target.classList.add("hidden")
     }
 
-    const handleSuggestCategory = async () => {
-        const name_category = valueInputCategory
-        const response = await categoryApi.current.createNewCategory(name_category);
-
-        if (response.status === 200) {
-            h2ButtonSuggest.current.style.display = 'none'
-        }
-
-    }
-
     return (
         <>
             <Input
@@ -64,14 +50,6 @@ export const StepOneCreateRecipe = ({ recipe }) => {
                 id="name_recipe"
                 icon={<h2 className={`text-s1_3 ${limitSizeTittle < 0 && 'text-red-500'}`}>{limitSizeTittle}</h2>}
             />
-            <div className="w-1/2 mb-12 mt-4 h-[7rem]">
-                <TextArea
-                    id="describe_recipe"
-                    ref={refTextArea}
-                    label="Digite a descrição da sua receita"
-                    placeholder="ex.: minha receita foi feita..."
-                />
-            </div>
 
             <div className="w-[51%]">
                 <Input
@@ -80,6 +58,7 @@ export const StepOneCreateRecipe = ({ recipe }) => {
                     placeholder="ex.: 10 minutos"
                     size={2}
                     type={'number'}
+                    min={0}
                 />
             </div>
             <div className="w-[51%]">
@@ -99,12 +78,6 @@ export const StepOneCreateRecipe = ({ recipe }) => {
                     placeholder="ex.: Bolos e doces"
                     label="Digite o nome da categoria da receita:"
                     size={4}
-                    icon={
-                        <h2
-                            ref={h2ButtonSuggest}
-                            className={`cursor-pointer bg-color_primary h-full text-center text-white text-s1 items-center ${filteredCategory.length ? 'hidden' : 'flex'}`}
-                            onClick={handleSuggestCategory}
-                        >Sugerir categoria</h2>}
                 />
                 {valueInputCategory &&
                     <ul>

@@ -43,25 +43,27 @@ export const MainCreateRecipe = () => {
 
     const handleNextButton = async (e) => {
         e.preventDefault()
-        if (e.target.id === "next") {
+        if (e.currentTarget.id === "next") {
             const ingredients = Array.from(refTwoStep.current.querySelectorAll('ul#ing li p')).map(p => p.textContent)
             const wordKey = Array.from(refThreeStep.current.querySelectorAll('ul#word-keys li p')).map(p => p.textContent)
-            const category = refOneStep.current.querySelector('div input#category')?.value;
-
+            
             if (step === 1) {
-                modelRecipe.categoryId = categories.find(cate => cate.name_category.toLowerCase().includes(category.toLowerCase())).id;
-                modelRecipe.userId = user.id;
-                modelRecipe.name_recipe = refOneStep.current.querySelector('div input#name_recipe').value;
-                modelRecipe.describe_recipe = refOneStep.current.querySelector('div textArea#describe_recipe').value;
-                modelRecipe.time = Number(refOneStep.current.querySelector('div input#time').value);
-                modelRecipe.portion = Number(refOneStep.current.querySelector('div input#portion').value);
+                const category = refOneStep.current.querySelector('div input#category').value;
+                const response = await categoryApiRef.current.createNewCategory(category);
+                if (response.data) {
+                    modelRecipe.categoryId = categories.find(cate => cate.name_category.toLowerCase().includes(category.toLowerCase())).id;
+                    modelRecipe.userId = user.id;
+                    modelRecipe.name_recipe = refOneStep.current.querySelector('div input#name_recipe').value;
+                    modelRecipe.time = Number(refOneStep.current.querySelector('div input#time').value);
+                    modelRecipe.portion = Number(refOneStep.current.querySelector('div input#portion').value);
 
-                if (modelRecipe.categoryId && modelRecipe.userId && modelRecipe.name_recipe && modelRecipe.describe_recipe && modelRecipe.time && modelRecipe.portion) {
-                    localStorage.setItem("recipe", JSON.stringify(modelRecipe));
-                    setStep(2)
-                } else {
-                    setModalMenssage("Preencha todos os campos")
-                    setModalSuccessOpen(true)
+                    if (modelRecipe.categoryId && modelRecipe.userId && modelRecipe.name_recipe && modelRecipe.time && modelRecipe.portion) {
+                        localStorage.setItem("recipe", JSON.stringify(modelRecipe));
+                        setStep(2)
+                    } else {
+                        setModalMenssage("Preencha todos os campos")
+                        setModalSuccessOpen(true)
+                    }
                 }
             }
             else if (step === 2) {
@@ -80,7 +82,7 @@ export const MainCreateRecipe = () => {
                 modelRecipe.images_recipe = images;
                 modelRecipe.videos_recipe = [];
 
-                if (!!modelRecipe.word_key && !!images) {
+                if (!!modelRecipe.word_key && !!images.length) {
                     const data = await recipeApiRef.current.createNewRecipe(modelRecipe)
                     if (data) {
                         setModalSuccessOpen(true)
@@ -104,7 +106,6 @@ export const MainCreateRecipe = () => {
         const recipe = JSON.parse(localStorage.getItem('recipe'));
 
         refOneStep.current.querySelector('div input#name_recipe').value = recipe.name_recipe;
-        refOneStep.current.querySelector('div textArea#describe_recipe').value = recipe.describe_recipe;
         refOneStep.current.querySelector('div input#time').value = recipe.time;
         refOneStep.current.querySelector('div input#portion').value = recipe.portion;
         refOneStep.current.querySelector('div input#category').value = categories.find(category => category.id.includes(recipe.categoryId)).name_category

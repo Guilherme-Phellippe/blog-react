@@ -14,7 +14,7 @@ export const InfoRecipeContent = ({ recipe }) => {
             <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
             <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
             <div className="w-full p-4">
-                <LikeComentsSaveButtons />
+                <LikeComentsSaveButtons nmr_hearts={nmr_hearts} />
             </div>
             <PreparationInformation recipe={recipe} />
             <RecipeChefInfo recipe={recipe} />

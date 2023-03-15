@@ -24,6 +24,13 @@ export const StepTwoCreateRecipe = () => {
         setListIngredients(() => [...listIngredients])
     }
 
+    const handleKeyDown = (e) =>{
+        if(e.key === 'Enter'){
+            e.preventDefault()
+            handleAddListIngredients()
+        }
+    }
+
     return (
         <>
             
@@ -49,6 +56,7 @@ export const StepTwoCreateRecipe = () => {
                         placeholder="Digite o ingrediente"
                         label="Digite o ingrediente em clique no botão adicionar ao lado"
                         size={4}
+                        onKeyDown={handleKeyDown}
                         icon={<FaPlusCircle
                             className="text-s1_7 fill-green-500 cursor-pointer"
                             onClick={handleAddListIngredients}
