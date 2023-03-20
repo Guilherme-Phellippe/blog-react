@@ -1,18 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useCategoryApi } from "../../../hooks/useApi";
 import { Input } from "../../atoms/Input";
 
 
-export const StepOneCreateRecipe = () => {
-    const categoryApi = useRef(useCategoryApi());
+export const StepOneCreateRecipe = ({ categories }) => {
     const valueLimitsizeTittle = 45
     const refInputNameRecipe = useRef(null);
     const refInputCategory = useRef(null)
     const [qs] = useSearchParams();
     const [valueInputCategory, setValueInputCategory] = useState('')
     const [limitSizeTittle, setLimitSizeTittle] = useState(valueLimitsizeTittle);
-    const [categories, setCategories] = useState([]);
     const filteredCategory = categories.filter(category =>
         category.name_category.toLowerCase().includes(valueInputCategory.toLowerCase())
         &&
@@ -26,13 +23,6 @@ export const StepOneCreateRecipe = () => {
             refInputNameRecipe.current.value = qs.get("n")
         }
     }, [qs]);
-
-    useEffect(() => {
-        (async () => {
-            const categories = await categoryApi.current.getAllCategory();
-            setCategories(categories.data)
-        })();
-    }, []);
 
     const handleSelectedCategory = (category, e) =>{
         setValueInputCategory(category.name_category)
@@ -48,6 +38,7 @@ export const StepOneCreateRecipe = () => {
                 label="Nome da sua receita"
                 placeholder="ex.: Bolo de cenoura"
                 id="name_recipe"
+                customWidthAndMargin="w-[51%] my-6"
                 icon={<h2 className={`text-s1_3 ${limitSizeTittle < 0 && 'text-red-500'}`}>{limitSizeTittle}</h2>}
             />
 
@@ -56,7 +47,7 @@ export const StepOneCreateRecipe = () => {
                     id="time"
                     label="Quantos minutos para preparar sua receita?"
                     placeholder="ex.: 10 minutos"
-                    size={2}
+                    customWidthAndMargin="w-[100%] my-6"
                     type={'number'}
                     min={0}
                 />
@@ -66,7 +57,7 @@ export const StepOneCreateRecipe = () => {
                     id="portion"
                     label="Quantas porções ela rende?"
                     placeholder="ex.: 5 porções"
-                    size={2}
+                    customWidthAndMargin="w-[100%] my-6"
                     type={'number'}
                 />
             </div>
@@ -77,14 +68,14 @@ export const StepOneCreateRecipe = () => {
                     onChange={(e) => setValueInputCategory(e.target.value)}
                     placeholder="ex.: Bolos e doces"
                     label="Digite o nome da categoria da receita:"
-                    size={4}
+                    customWidthAndMargin="w-[100%] my-6"
                 />
                 {valueInputCategory &&
                     <ul>
                         {filteredCategory.map(category =>
                             <li key={category.id} 
                                 onClick={(e) => handleSelectedCategory(category, e)}
-                                className="w-1/2 cursor-pointer mx-auto text-center hover:bg-[#24242440] bg-background border-b-[1px] m-2 text-s1_2 p-2"
+                                className="w-full cursor-pointer mx-auto hover:bg-[#24242440] bg-background border-b-[1px] text-s1_2 p-4"
                             >{category.name_category}</li>
 
                         )}

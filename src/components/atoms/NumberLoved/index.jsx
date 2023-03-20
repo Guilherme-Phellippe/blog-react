@@ -21,7 +21,7 @@ export const NumberLoved = ({ nmr_hearts, nmr_comments }) => {
                 <FaHeart className='fill-red-700 -translate-x-8 text-s1_5' />
                 <p className='-ml-4 text-s1_2'>{nmr_hearts} {nmr_hearts <= 1 ? "pessoa amou essa receita": "pessoas amaram essa receita"}</p>
             </div>
-            {nmr_comments &&
+            {!!nmr_comments &&
                 <p onClick={handleClickComment} className='text-s1_2 flex items-center px-4 hover:underline cursor-pointer'>
                     <RiMessage2Fill className="fill-blue-500 mr-2 text-s1_5" /> {nmr_comments} comentário(s)
                 </p>

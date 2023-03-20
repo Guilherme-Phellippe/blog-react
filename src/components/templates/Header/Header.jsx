@@ -1,11 +1,9 @@
 import { Bartop } from '../../organisms/HeaderBartop'
 import { Menu } from '../../organisms/HeaderMenu/Menu'
 
-import './header.css'
-
 export const Header = () => {
     return (
-        <header>
+        <header className='w-full bg-white flex flex-col'>
             <Bartop />
             <Menu />
         </header>

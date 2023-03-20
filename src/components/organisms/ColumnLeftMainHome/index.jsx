@@ -14,9 +14,11 @@ export const ColumnLeftMainHome = ({ recipes }) => {
     }, [recipes]);
 
     return (
-        <aside>
+        <aside className="hidden md:block col-span-1">
             {useMemo(() => {
-                return <BoxRankingRecipes title={'Receitas novas'} ranking={MostRecent()} />
+                return <BoxRankingRecipes 
+                    title={'Receitas novas'} 
+                    ranking={MostRecent()} />
             }, [MostRecent])}
         </aside>
     )

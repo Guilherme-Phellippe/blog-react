@@ -46,12 +46,18 @@ export const MainCreateRecipe = () => {
         if (e.currentTarget.id === "next") {
             const ingredients = Array.from(refTwoStep.current.querySelectorAll('ul#ing li p')).map(p => p.textContent)
             const wordKey = Array.from(refThreeStep.current.querySelectorAll('ul#word-keys li p')).map(p => p.textContent)
-            
+
             if (step === 1) {
                 const category = refOneStep.current.querySelector('div input#category').value;
-                const response = await categoryApiRef.current.createNewCategory(category);
+                const formatCategoryUpperCase = category.charAt(0).toUpperCase() + category.slice(1)
+                const response = await categoryApiRef.current.createNewCategory(formatCategoryUpperCase);
+
                 if (response.data) {
-                    modelRecipe.categoryId = categories.find(cate => cate.name_category.toLowerCase().includes(category.toLowerCase())).id;
+                    var categoriesData = { data: null }
+                    if (response.status === 201) categoriesData = await categoryApiRef.current.getAllCategory();
+                    const { data } = categoriesData;
+                    const categoriesList = data || categories
+                    modelRecipe.categoryId = categoriesList.find(cate => cate.name_category.toLowerCase().includes(category.toLowerCase())).id;
                     modelRecipe.userId = user.id;
                     modelRecipe.name_recipe = refOneStep.current.querySelector('div input#name_recipe').value;
                     modelRecipe.time = Number(refOneStep.current.querySelector('div input#time').value);
@@ -132,7 +138,7 @@ export const MainCreateRecipe = () => {
             </div>
             <form className="w-4/5 flex flex-col items-center gap-y-6">
                 <div ref={refOneStep} className={`w-full flex-col justify-center items-center ${step === 1 ? "flex" : "hidden"}`}>
-                    <StepOneCreateRecipe />
+                    <StepOneCreateRecipe categories={categories}/>
                 </div>
                 <div ref={refTwoStep} className={`w-full flex-col justify-center items-center ${step === 2 ? "flex" : "hidden"}`}>
                     <StepTwoCreateRecipe />
@@ -166,7 +172,7 @@ export const MainCreateRecipe = () => {
             }
 
             {
-                hasRecipeReady && <div className="flex flex-col justify-center items-center fixed right-32 w-1/5 bg-orange-500 p-4 rounded-2xl overflow-hidden">
+                hasRecipeReady && step === 1 && <div className="flex flex-col justify-center items-center fixed right-32 w-1/5 bg-orange-500 p-4 rounded-2xl overflow-hidden">
                     <FaWindowClose
                         className="absolute right-0 top-0 fill-red-800 text-s1_5 cursor-pointer"
                         onClick={() => setHasRecipeReady('')}

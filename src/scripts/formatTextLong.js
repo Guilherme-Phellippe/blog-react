@@ -1,5 +1,5 @@
 export function formatTextLong(text, size){
-    var formatText = text
+    var formatText = text;
 
     if(text.length >= size){
         formatText = text.slice(0, size).concat('...')

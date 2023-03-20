@@ -11,7 +11,7 @@ export const StepThreeCreateRecipe = ({ images, setImages }) => {
     const refWordKeys = useRef(null)
 
 
-    const handleAddListIngredients = () => {
+    const handleAddListWordKeys = () => {
         const value = refWordKeys.current.value
         !!value.length ? setWordKeys(v => [...v, value]) : alert("Digite a palavra chave")
         refWordKeys.current.value = ''
@@ -25,6 +25,13 @@ export const StepThreeCreateRecipe = ({ images, setImages }) => {
         setWordKeys(() => [...wordKeys])
     }
 
+    const handleKeyDown = (e) =>{
+        if(e.key === 'Enter'){
+            e.preventDefault()
+            handleAddListWordKeys()
+        }
+    }
+
 
     const handleUploadImages = async ({ target }) => {
         const files = target.files
@@ -35,7 +42,6 @@ export const StepThreeCreateRecipe = ({ images, setImages }) => {
                 form.append('image', file);
                 const { data } = await apiImg.current.hostImages(form)
 
-                console.log(data)
                 setImages((imgs)=> [...imgs, data]);
 
             }
@@ -45,7 +51,6 @@ export const StepThreeCreateRecipe = ({ images, setImages }) => {
 
     const hanldeRemoveImage = ({ currentTarget }) => {
         const imgForRemove = currentTarget.querySelector("img").src
-        console.log(images)
         const imagesFiltered = images.filter(img => !img.small.includes(imgForRemove))
         setImages(imagesFiltered)
     }
@@ -109,9 +114,10 @@ export const StepThreeCreateRecipe = ({ images, setImages }) => {
                     ref={refWordKeys}
                     size={4}
                     placeholder="Digite suas palavras chaves..."
+                    onKeyDown={handleKeyDown}
                     icon={<FaPlusCircle
                         className="text-s1_7 fill-green-500 cursor-pointer"
-                        onClick={handleAddListIngredients}
+                        onClick={handleAddListWordKeys}
                     />}
                 />
             </div>

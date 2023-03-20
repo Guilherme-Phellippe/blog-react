@@ -8,7 +8,7 @@ export const Candidate = ({ position, candidate }) => {
     const refRecipeApi = useRef(useRecipeApi());
     const [recipes , setRecipes] = useState([])
     const [totalVotes, setTotalVotes] = useState(0);
-    const height = position !== 0 ? 'h-[17rem]' : 'h-[20rem]'
+    const height = position !== 0 ? 'h-[15rem]' : 'h-[17rem]'
     const orderStyle = position === 0 ? 'order-2' : position === 1 ? 'order-1' : 'order-3';
 
 

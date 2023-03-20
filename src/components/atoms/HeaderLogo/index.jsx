@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 
-export const Logo = () => {
+export const Logo = ({ hidden }) => {
 
     return (
-        <Link className='flex justify-center' to={'/'}>
-            <div className="w-1/4 h-full flex justify-center items-center cursor-pointer bg-black">
+        <Link className={hidden} to={'/'}>
+            <div className="w-1/4 h-full flex justify-center items-center cursor-pointer">
                 <img className='w-full h-full object-contain' src="https://i.ibb.co/QnyS04q/Tem-Sabor.jpg" alt="logo da tem sabor" />
             </div>
         </Link>

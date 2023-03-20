@@ -16,6 +16,7 @@ module.exports = {
         s2: ['max(20px, 2vw)','20px'],
         s2_5: ['max(25px, 2.5vw)','25px'],
         s3: ['max(30px, 3vw)','30px'],
+        s4: ['max(40px, 4vw)','40px'],
       },
       colors: {
         color_primary: '#FF6A28',

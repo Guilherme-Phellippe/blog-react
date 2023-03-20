@@ -11,7 +11,9 @@ export const Footer = () => {
                 <div className="container-links">
                     <div className="links">
                         <h3>Principais categorias</h3>
-                        <Categories />
+                        <div className="relative ">
+                            <Categories />
+                        </div>
                     </div>
                     <div className="links">
                         <h3>Nossas politicas</h3>
@@ -32,7 +34,6 @@ export const Footer = () => {
                         <div className="newsletter">
                             <h3>Quer receber receitas quentinhas?</h3>
                             <h4>Deixe seu email</h4>
-                            <input type="text" placeholder='email@email.com.br' />
                         </div>
                     </div>
                 </div>

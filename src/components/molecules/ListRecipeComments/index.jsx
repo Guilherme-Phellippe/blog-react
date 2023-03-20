@@ -1,14 +1,13 @@
 import { FeedComments } from "../FeedComments"
 
-export const ListRecipeComments = ({ content }) => {
+export const ListRecipeComments = ({ comments }) => {
     return (
         <div className="flex flex-col max-h-[18rem] overflow-y-auto overflow-x-hidden">
             {
-                content.comments.length
-                    ? content.comments.map(comment => {
+                comments.length
+                    ? comments.map(comment => {
                         return <FeedComments
                             key={comment.id}
-                            content={content}
                             comment={comment}
                         />
                     })

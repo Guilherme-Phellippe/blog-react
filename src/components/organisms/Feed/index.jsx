@@ -1,6 +1,6 @@
 import 'moment/locale/pt-br';
 
-import { useEffect} from "react";
+import { useEffect, useState} from "react";
 
 import { HeaderInfoFeed } from "../../molecules/HeaderInfoFeed";
 import { CarouselMidiasContent } from "../../molecules/CarouselMidiasContent";
@@ -11,6 +11,7 @@ import { BoxAddNewComment } from '../../molecules/BoxAddNewComment';
 
 export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForRemove, valueSearch }) => {
     const hasSearch = valueSearch ? true : false;
+
 
     useEffect(() => {
         //if listRecipeForRemove has a length bigger than seven, so the first item in this array will be removed,
@@ -55,9 +56,12 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
 
                         <div id="feed-comment" className="w-full flex-col items-center justify-center bg-white border-t-[1px] border-solid py-4 hidden">
                             
-                            <ListRecipeComments content={content}/>
+                            <ListRecipeComments 
+                                comments={content.comments} />
 
-                            <BoxAddNewComment author={content.user.name} />
+                            <BoxAddNewComment 
+                                user={content.user}
+                                idRecipe={content.id} />
                             
                         </div>
                     </div>

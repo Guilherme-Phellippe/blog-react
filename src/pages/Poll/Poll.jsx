@@ -31,9 +31,9 @@ export const Poll = () => {
                 <div className="w-11/12 h-[15rem] my-4 bg-white mx-auto grid place-items-center">
                     ads here.
                 </div>
-                <div className="w-5/6 mx-auto bg-white">
+                <div className="w-[95%] md:w-5/6 mx-auto bg-white">
                     <h2 className="p-4 text-s2 text-center text-color_third font-bold">Os mais votados:</h2>
-                    <div className="w-5/6 mx-auto my-12 flex justify-center items-end">
+                    <div className="w-[95%] md:w-5/6 mx-auto my-12 flex justify-center items-end">
                         {recipes.map((candidate, i) => {
                             return i < 3 && <Candidate
                                 key={candidate.id}
@@ -43,7 +43,7 @@ export const Poll = () => {
                         })}
                     </div>
                     <div className="flex flex-col items-center justify-center m-4">
-                        <h3 className="w-2/3 p-4 text-center text-s2 text-color_third font-bold ">Já pensou em ganhar prêmios fazendo oque você ama?</h3>
+                        <h3 className="w-[90%] md:w-2/3 p-4 text-center text-s1_7 md:text-s2 text-color_third font-bold ">Já pensou em ganhar prêmios fazendo oque você ama?</h3>
                         <Button customClass={"btn-primary py-4 px-12 text-s1_5 m-4"}>Criar uma receita</Button>
                     </div>
                     <div className="p-4">

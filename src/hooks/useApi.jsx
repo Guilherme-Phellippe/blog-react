@@ -2,7 +2,7 @@ import axios from "axios"
 import moment from "moment"
 
 const api = axios.create({
-    baseURL: 'http://localhost:3438'
+    baseURL: 'http://165.227.203.170:3334/'
 })
 
 export const useRecipeApi = () => ({
@@ -59,7 +59,14 @@ export const useRecipeApi = () => ({
             });
 
             return data
-    }
+    },
+    verifyExistVote: async (id) => {
+            const data = await api.get(`/recipe/${id}/already-voted`).catch(err => {
+                return err
+            });
+
+            return data
+    },
 
 
 
@@ -97,7 +104,8 @@ export const useUserApi = () => ({
         return data
     }
 
-})
+});
+
 export const useCategoryApi = () => ({
 
     getAllCategory: async () => {
@@ -107,9 +115,23 @@ export const useCategoryApi = () => ({
     },
 
     createNewCategory: async (name_category) => {
-        const category = await api.post(`/category`, {name_category}).catch(error => error)
+        const category = await api.post(`/category`, name_category).catch(error => error)
 
         return category
+    }
+
+})
+
+export const useCommentApi = () =>({
+
+    createNewComment: async (comment)=>{
+        const dataComment = await api.post('/comment', comment).catch(error => error);
+
+        return dataComment;
+    },
+
+    createNewAnswer: () =>{
+
     }
 
 })

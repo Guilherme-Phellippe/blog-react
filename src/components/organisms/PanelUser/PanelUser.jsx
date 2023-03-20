@@ -6,25 +6,36 @@ import { BsFillGearFill } from 'react-icons/bs';
 import { ImExit } from 'react-icons/im';
 
 import { Button } from '../../atoms/Button'
+import { useEffect, useRef, useState } from 'react';
+import { useUserApi } from '../../../hooks/useApi';
 
 
-export const PanelUser = ({ name_user, photo }) => {
-    const navigate = useNavigate()
-    const IsLogged = name_user !== "Usuário" ? true : false
+export const PanelUser = () => {
+    const navigate = useNavigate();
+    const [user , setUser] = useState({name:"Usuário", photo:"https://i.ibb.co/JCNSM0R/143086968-2856368904622192-1959732218791162458-n.png", isFalse: true})
+    const refUserApi = useRef(useUserApi())
+    const IsLogged = user.isFalse ? false : true
+
+    useEffect(()=>{
+        (async ()=>{
+            const data = await refUserApi.current.authenticateLogin();
+            if(data) setUser(data.data);
+        })()
+    },[])
 
     return (
-        <div className="w-full px-6 py-4 flex flex-col items-center border-b-[1px] border-solid border-rbga(24,24,24, .3)">
-            <div className="w-full flex items-center gap-4">
-                <div className="w-[25%]">
+        <div className="w-full px-6 py-4 flex flex-col items-center">
+            <div className="w-full flex justify-center items-center gap-4">
+                <div className="w-[50px] h-[50px]">
                     <img
-                        src={photo ? photo : "https://i.ibb.co/JCNSM0R/143086968-2856368904622192-1959732218791162458-n.png"}
-                        alt={name_user}
-                        title={name_user}
-                        className='w-full rounded-full object-contain'
+                        src={user.photo}
+                        alt={user.name}
+                        title={user.name}
+                        className='w-full h-full rounded-full object-cover'
                     />
                 </div>
                 <p className='text-s1_2 flex flex-col'>
-                    Bem vindo, <span className='text-s1_5 text-color_primary'>{formatTextLong(name_user, 19)}</span>
+                    Bem vindo, <span className='text-s1_5 text-color_primary'>{formatTextLong(user.name, 15)}</span>
                 </p>
             </div>
             {IsLogged ?

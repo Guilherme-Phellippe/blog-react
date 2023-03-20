@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCategoryApi } from "../../../hooks/useApi";
 
-export const Categories = () => {
+export const Categories = ({ customClass }) => {
     const refCategoryApi = useRef(useCategoryApi())
     const [categories, setCategories] = useState([])
 
@@ -17,12 +17,12 @@ export const Categories = () => {
 
 
     return (
-        <ul>
+        <ul className="absolute top-[115%] z-[99] flex flex-col items-center rounded-lg">
             {
                 categories.map((category, index) => {
                     if (index <= 8) {
-                        return <Link key={category.id} to={`/category/${category.name_category}`}>
-                            <li key={category.id}>{category.name_category}</li>
+                        return <Link className="relative" key={category.id} to={`/category/${category.name_category}`}>
+                            <li className={`border-y-[1px] border-t-transparent hover:border-y-white after:active:w-full after:w-0 after:h-[3px] after:bg-white after:absolute after:-bottom-2 after:left-0 transition-all ${customClass}`} key={category.id}>{category.name_category}</li>
                         </Link>
                     } else return null
                 })

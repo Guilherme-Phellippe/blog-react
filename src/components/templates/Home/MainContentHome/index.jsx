@@ -3,6 +3,8 @@ import { useCallback, useContext, useEffect, useState, useRef } from "react";
 import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 import { checkUserLogged } from '../../../../scripts/checkUserLogged'
 
+import { GiPodium } from 'react-icons/gi'
+
 import { Button } from "../../../atoms/Button";
 import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
 import { CreateFeed } from '../CreateFeed/CreateFeed.jsx'
@@ -15,10 +17,11 @@ import { useRecipeApi, useUserApi } from "../../../../hooks/useApi";
 import './main.css'
 
 export const MainContentHome = () => {
-    const { valueSearch, setUser, user} = useContext(HomeContext);
+    const { valueSearch, setUser, user } = useContext(HomeContext);
     const [postPerPage, setPostPerPage] = useState(7);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
+    const [isOpenRanking, setIsOpenRanking] = useState(false)
     const recipeApi = useRef(useRecipeApi());
     const userApi = useRef(useUserApi());
 
@@ -58,23 +61,35 @@ export const MainContentHome = () => {
         setFeed(newFeed);
     }, [recipes, postPerPage, valueSearch, listRecipeForRemove])
 
+    useEffect(()=>{
+        const removeModalRankignRecipe = document.addEventListener('click', ({ target , currentTarget})=>{
+            const box = target.closest("div[data-id=modal-ranking-recipe-mobile]")
+            if(!box) setIsOpenRanking(false)
+        });
+
+        return () => {
+            document.removeEventListener('click', removeModalRankignRecipe)
+        }
+    }, [])
+
 
     const topRankingByEyes = useCallback(() => {
         return [...recipes].sort((x, y) => y.nmr_eyes - x.nmr_eyes)
     }, [recipes]);
 
-    const topRankingByHearts = useCallback((column) => {
+    const topRankingByHearts = useCallback(() => {
         return [...recipes].sort((x, y) => y.nmr_hearts.length - x.nmr_hearts.length)
     }, [recipes]);
+
+
 
     return (
         <main>
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
-
-            <section className="container-main">
+            <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />
 
-                <div className="feed">
+                <div className={`feed col-span-2`}>
                     {!valueSearch &&
                         <>
                             <PollRecipes />
@@ -99,6 +114,29 @@ export const MainContentHome = () => {
                     user={user}
                     ranking={topRankingByHearts()}
                 />
+
+                {
+                    window.innerWidth <= 767 &&
+                    <>
+                        <div
+                            data-id="modal-ranking-recipe-mobile"
+                            className={`${!isOpenRanking ? "hidden" : 'block'} z-[999] fixed top-0 right-0 w-[70%] h-screen overflow-auto border-l-[2px] border-l-color_primary`}>
+                            <ColumnRightMainHome
+                                user={user}
+                                ranking={topRankingByHearts()}
+                                isOpenRanking={isOpenRanking}
+                            />
+                        </div>
+                        <div
+                            data-id="modal-ranking-recipe-mobile"
+                            onClick={() => setIsOpenRanking((open) => !open)}
+                            className={`${!isOpenRanking ? "right-[0px]" : 'right-[69%]'} fixed  bottom-32 w-[70px] border-[1px] border-white bg-color_primary rounded-tl-2xl rounded-bl-2xl flex justify-center`}>
+                            <GiPodium
+                                className="text-s4 fill-white mb-4" />
+                        </div>
+                    </>
+
+                }
             </section>
 
         </main>

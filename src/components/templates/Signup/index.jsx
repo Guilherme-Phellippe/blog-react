@@ -98,7 +98,7 @@ export const Singup = ({ setIsLogin }) => {
                         id="name"
                         placeholder={'DIGITE SEU NOME E SOBRENOME:'}
                         type={'text'}
-                        size={1}
+                        customWidthAndMargin="w-[50%] my-6"
                         icon={<FaUserCheck className={`text-s1_5 ${whatColorIconName}`} />}
                     />
                     <Input
@@ -106,21 +106,21 @@ export const Singup = ({ setIsLogin }) => {
                         id="email"
                         placeholder={'DIGITE SEU EMAIL:'}
                         type={'text'}
-                        size={1}
+                        customWidthAndMargin="w-[50%] my-6"
                         icon={<MdEmail className={`text-s1_5 ${whatColorIconEmail}`} />} />
                     <div className="flex w-1/2 justify-center">
                         <Input
                             onChange={(e) => setValueFirstInputPassword(e.target.value)}
                             placeholder={'DIGITE SUA SENHA:'}
                             type={'password'}
-                            size={1}
+                            customWidthAndMargin="w-[50%] my-6"
                         />
                         <Input
                             onChange={(e) => handleCheckInputs(e)}
                             id="password"
                             placeholder={'CONFIRME SUA SENHA:'}
                             type={'password'}
-                            size={1}
+                            customWidthAndMargin="w-[50%] my-6"
                             icon={<FaLock className={`text-s1_3 ${whatColorIconPassword}`} />} />
                     </div>
                     <Button

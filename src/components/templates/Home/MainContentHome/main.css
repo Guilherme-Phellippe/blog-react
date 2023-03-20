@@ -12,43 +12,6 @@ main section#best-recipes {
     place-items: center;
 }
 
-section#best-recipes .container-best-recipes {
-    width: 80%;
-    height: 90%;
-    border-radius: .5rem;
-    padding: .5rem;
-    background-color: white;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 65% 34%;
-    grid-template-rows: 49% 50%;
-    grid-template-areas: 'r1 r2'
-        'r1 r3';
-    gap: 1%;
-}
-
-.container-best-recipes .content-recipe {
-    border-radius: .5rem;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.container-best-recipes .content-recipe:nth-child(1) {
-    grid-area: r1;
-}
-
-.container-best-recipes .content-recipe:nth-child(2) {
-    grid-area: r2;
-}
-
-.container-best-recipes .content-recipe:nth-child(3) {
-    grid-area: r3;
-}
 
 
 /* MAIN / ASIDE / .FEED / ASIDE  */
@@ -60,13 +23,13 @@ section.container-main {
     margin-top: 1rem;
 }
 
-section.container-main aside {
+section aside {
     overflow: hidden;
     background-color: white;
     border-radius: .3rem;
 }
 
-section.container-main .feed {
+section .feed {
     overflow: hidden;
     border-radius: .3rem;
 }

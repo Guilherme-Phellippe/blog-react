@@ -1,12 +1,10 @@
 import React  from 'react';
 
-export const Input = React.forwardRef(({ placeholder, label, icon, type = 'text', onChange,eventIcon, id, value, size = 1, ...restProps }, ref) => {
-    const width = size === 0 ? 'w-[25%]' : size === 1 ? 'w-[51%]' : size === 2 ? 'w-[75%]' : 'w-[100%]';
+export const Input = React.forwardRef(({ placeholder, label, icon, type = 'text', onChange,eventIcon, id, value, customWidthAndMargin, ...restProps }, ref) => {
 
     return (
         <div
-            className={`${width} mt-8 flex items-center border-[1px] border-solid hover:border-color_second m-2 bg-background rounded-xl relative`}
-        >
+            className={`${customWidthAndMargin} flex items-center border-[1px] border-solid hover:border-color_second bg-background rounded-xl relative`}>
             <label
                 htmlFor={id}
                 className={`text-s1_1 absolute -top-1/2 text-color_text`}

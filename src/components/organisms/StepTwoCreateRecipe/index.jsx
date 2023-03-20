@@ -55,7 +55,7 @@ export const StepTwoCreateRecipe = () => {
                         ref={refInputIngredients}
                         placeholder="Digite o ingrediente"
                         label="Digite o ingrediente em clique no botão adicionar ao lado"
-                        size={4}
+                        customWidthAndMargin="w-[100%] my-6"
                         onKeyDown={handleKeyDown}
                         icon={<FaPlusCircle
                             className="text-s1_7 fill-green-500 cursor-pointer"
