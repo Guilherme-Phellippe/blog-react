@@ -125,13 +125,29 @@ export const useCategoryApi = () => ({
 export const useCommentApi = () =>({
 
     createNewComment: async (comment)=>{
-        const dataComment = await api.post('/comment', comment).catch(error => error);
+        const commentData = await api.post('/comment', comment).catch(error => error);
 
-        return dataComment;
+        return commentData;
     },
 
-    createNewAnswer: () =>{
+    createNewAnswer: async (answer) =>{
+       const answerData = await api.post(`/comment/${answer.commentId}/answer`, answer).catch(error => error);
 
-    }
+        return answerData;
+    },
+
+    deleteComment: async ({ commentId, userId }) =>{
+        const deleteData = await api.delete(`/comment/${commentId}/user/${userId}`).catch(error => error)
+
+        return deleteData
+    },
+
+    deleteAnswer: async ({ commentId, userId, answerId }) =>{
+        const deleteData = await api.delete(`/comment/${commentId}/answer/${answerId}/user/${userId}`).catch(error => error)
+
+        return deleteData
+    },
+
+
 
 })

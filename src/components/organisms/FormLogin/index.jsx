@@ -62,6 +62,13 @@ export const FormLogin = () => {
 
     }
 
+    const handleNextLine = (e) =>{
+        if(e.code === "Enter"){
+            e.preventDefault()
+            inputPasswordRef.current.focus()
+        }
+    }
+
     return (
         <form className="w-1/2 flex flex-col items-center">
             <h3 className="text-s1_5 mb-4">Entre com sua conta:</h3>
@@ -69,6 +76,7 @@ export const FormLogin = () => {
                 ref={inputEmailRef}
                 label="E-MAIL:"
                 placeholder="Digite seu e-mail..."
+                onKeyDown={handleNextLine}
                 icon={<FaUserAlt className="text-s1_5" />}
                 customWidthAndMargin="w-[70%] my-6"
             />

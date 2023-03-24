@@ -6,17 +6,15 @@ import { HomeProvider } from "../../contexts/Home/HomeProvider";
 
 export default function Home() {
   return (
-    <div className="container">
-      <HomeProvider>
-        {useMemo(() => {
-          return <>
-            <Header />
-            <MainContentHome />
-            <Footer />
-          </>
-        }, [])}
-      </HomeProvider>
-    </div>
+    <HomeProvider>
+      {useMemo(() => {
+        return <>
+          <Header />
+          <MainContentHome />
+          <Footer />
+        </>
+      }, [])}
+    </HomeProvider>
   );
 }
 

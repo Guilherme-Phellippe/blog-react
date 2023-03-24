@@ -1,6 +1,5 @@
 import { FaClock } from "react-icons/fa"
 import { BiFoodMenu } from "react-icons/bi"
-import { Link } from "react-router-dom"
 
 import { Button } from '../../atoms/Button'
 

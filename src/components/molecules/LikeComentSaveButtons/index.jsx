@@ -8,8 +8,8 @@ import { Button } from "../../atoms/Button";
 export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts }) => {
     const refApiUser = useRef(useRecipeApi())
     const [customClassToLoved, setCustomClassToLoved ] = useState('')
-    const [customClassToComment, setCustomClassToComment ] = useState('')
-    const [customClassToSave, setCustomClassToSave ] = useState('');
+    const [customClassToComment ] = useState('')
+    const [customClassToSave ] = useState('');
     const token = JSON.parse(localStorage.getItem("token"))
 
     useEffect(()=>{

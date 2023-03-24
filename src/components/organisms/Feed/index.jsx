@@ -1,17 +1,15 @@
 import 'moment/locale/pt-br';
 
-import { useEffect, useState} from "react";
+import { useEffect } from "react";
 
 import { HeaderInfoFeed } from "../../molecules/HeaderInfoFeed";
 import { CarouselMidiasContent } from "../../molecules/CarouselMidiasContent";
 import { AddRecipeInfo } from "../../molecules/AddRecipeInfo";
 import { BlockInteractionFeed } from "../../molecules/BlockInteractionFeed";
 import { ListRecipeComments } from '../../molecules/ListRecipeComments';
-import { BoxAddNewComment } from '../../molecules/BoxAddNewComment';
 
 export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForRemove, valueSearch }) => {
     const hasSearch = valueSearch ? true : false;
-
 
     useEffect(() => {
         //if listRecipeForRemove has a length bigger than seven, so the first item in this array will be removed,
@@ -27,13 +25,14 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
         setListRecipeForRemove(list => [...list, currentTarget.id])
     };
 
+
     return (
         <div>
             {contents.length ? contents.map((content) => {
                 return (
                     <div key={content.id} id="feed-recipe">
-                        <div className={`flex w-full bg-white mt-6 ${hasSearch ?'items-center h-[20rem]':'flex-col h-[60rem]'}`}>
-                            <HeaderInfoFeed content={content} onClick={handleIdForAddListRemove}/>
+                        <div className={`flex w-full bg-white mt-6 ${hasSearch ? 'items-center h-[20rem]' : 'flex-col h-[60rem]'}`}>
+                            <HeaderInfoFeed content={content} onClick={handleIdForAddListRemove} />
 
                             <CarouselMidiasContent
                                 img={content.images_recipe}
@@ -41,29 +40,21 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
                                 category={content.category.name_category}
                             />
 
-                            <AddRecipeInfo 
+                            <AddRecipeInfo
                                 hasSearch={hasSearch}
                                 content={content}
                             />
 
-                            <BlockInteractionFeed 
+                            <BlockInteractionFeed
                                 nmr_hearts={content.nmr_hearts}
                                 comments={content.comments}
                                 idRecipe={content.id}
                             />
-                            
+
                         </div>
 
-                        <div id="feed-comment" className="w-full flex-col items-center justify-center bg-white border-t-[1px] border-solid py-4 hidden">
-                            
-                            <ListRecipeComments 
-                                comments={content.comments} />
-
-                            <BoxAddNewComment 
-                                user={content.user}
-                                idRecipe={content.id} />
-                            
-                        </div>
+                        <ListRecipeComments
+                            content={content} />
                     </div>
                 )
             }) : <h2 className="text-s1_5 p-4 text-center">Não encontramos sua receita =(</h2>}
