@@ -68,9 +68,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
         const commentId = currentTarget.id
 
         if (commentId) {
-
-
-            if (userLogged.length) {
+            if (userLogged) {
                 const answer = refInputAnswer.current.value
                 if (!!answer) {
                     const answerData = {
@@ -100,8 +98,6 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
 
         if (code === "Enter") handleCreateAnswerComment(obj)
     }
-
-    console.log(userLogged)
 
     return (
         <div id="container-comment" className="w-full my-6 flex flex-col items-center">
@@ -154,11 +150,11 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                             <img className="w-[40px] h-[40px] object-cover" src={answer.photo} alt={answer.name} />
                         </div>
                         <div className="px-4 py-2 rounded-3xl m-2 flex flex-col bg-background">
-                            <div className="flex items-center mt-4 mx-4 gap-2">
+                            <div className="flex items-center mx-2 gap-2">
                                 <h2 className="font-bold text-s1_1 ">{answer.name} - </h2>
-                                <span className="text-s1">{moment(answer.createdAt).startOf('minutes').fromNow()}</span>
+                                <span className="text-s1">{moment(answer.createdAt).startOf('seconds').fromNow()}</span>
                             </div>
-                            <p className="text-s1_1 ml-4 mt-2">{answer.answer}</p>
+                            <p className="text-s1_1 ml-4 mt-4">{answer.answer}</p>
                         </div>
                         <div className="flex flex-col justify-center items-center gap-2">
                             {

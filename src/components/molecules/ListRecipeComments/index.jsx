@@ -6,7 +6,7 @@ import { FeedComments } from "../FeedComments"
 export const ListRecipeComments = ({ content }) => {
     const refToken = useRef(JSON.parse(localStorage.getItem('token')));
     const refUserApi = useRef(useUserApi());
-    const [userLogged, setUserLogged] = useState([])
+    const [userLogged, setUserLogged] = useState({})
     const [comments, setComments] = useState(content.comments)
 
     useEffect(() => {

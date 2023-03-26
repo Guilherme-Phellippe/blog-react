@@ -33,7 +33,7 @@ export const BoxAddNewComment = ({ idRecipe, setComments, userLogged }) => {
                     }
                 }])
             }
-        } else alert("você precisar criar uma conta para comentar nessa receita")
+        } else alert("Você precisar criar uma conta para comentar nessa receita")
 
         refInput.current.value = ''
         refInput.current.focus();
