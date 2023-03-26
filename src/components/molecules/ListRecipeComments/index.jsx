@@ -10,7 +10,7 @@ export const ListRecipeComments = ({ content }) => {
     const [comments, setComments] = useState(content.comments)
 
     useEffect(() => {
-        if (refToken.current.id) {
+        if (refToken.current) {
             (async () => {
                 const { data } = await refUserApi.current.authenticateLogin(refToken.current.id);
                 setUserLogged(data)
