@@ -2,7 +2,7 @@ import axios from "axios"
 import moment from "moment"
 
 const api = axios.create({
-    baseURL: 'http://165.227.203.170:3334/'
+    baseURL: 'https://api.temsabor.blog/'
 })
 
 export const useRecipeApi = () => ({
@@ -102,6 +102,11 @@ export const useUserApi = () => ({
     createNewUser: async (user) =>{
         const { data } = await api.post('/users', user);
         return data
+    },
+
+    updateUser: async (user) =>{
+        const response = await api.put(`/users/${user.id}`, user);
+        return response
     }
 
 });

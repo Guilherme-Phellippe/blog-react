@@ -28,7 +28,7 @@ export const PanelListRecipes = ({ recipes }) => {
             <div className="w-full flex flex-col gap-4 items-center max-h-[800px] overflow-auto py-8 mt-12">
                 {filteredRecipes.length ?
                     filteredRecipes.map((recipe, key) =>
-                        <div className="w-4/5 flex h-[170px] border-[1px] relative">
+                        <div className="w-4/5 flex h-[170px] border-[1px] border-color_primary shadow-sm relative">
                             <Link className="w-2/5 h-full cursor-pointer" key={key} to={`/recipe/${recipe.id}`}>
                                 <img className='w-full h-full object-cover' src={recipe.images_recipe[0].small} alt={recipe.name_recipe} />
                             </Link>

@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useRecipeApi, useUserApi } from "../../../hooks/useApi"
+
+import { BoxChangePassword } from "../../../modals/BoxChangePassword";
 import { Button } from "../../atoms/Button"
+import { Loading } from "../../atoms/Loading/Loading"
 
 export const PanelMydata = ({ user }) => {
+    const apiImg = useRef(useRecipeApi());
     const [isOpenSaveData, setIsOpenSaveData] = useState(false)
     const [inputName, setInputName] = useState(user?.name)
     const [inputEmail, setInputEmail] = useState(user?.email)
-    const { nmr_eyes, nmr_hearts, _count, winner , nmr_saved} = user;
+    const [showModal, setShowModal] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const refUserApi = useRef(useUserApi())
+    const refInputName = useRef()
+    const { nmr_eyes, nmr_hearts, _count, winner, nmr_saved } = user;
     const infos = [
         { name: 'Total de visualização:', value: nmr_eyes },
         { name: 'Total de amei em receitas:', value: nmr_hearts },
@@ -14,45 +23,86 @@ export const PanelMydata = ({ user }) => {
         { name: 'Total de prêmios:', value: winner ? winner : 0 }
     ]
 
-    const handleUpdateUser = ({ target }) => {
+    const handleUpdateUser = async ({ target }) => {
+        setLoading(true)
+        refInputName.current.click();
         if (target.textContent === "Salvar dados") {
-            alert('usuario atualizado com sucesso')
+            const userData = {
+                id: user.id,
+                name: inputName,
+                email: inputEmail,
+                photo: user.photo
+            }
+            const response = await refUserApi.current.updateUser(userData);
+            if (response.status === 200) alert("Seus dados forão atualizados com sucesso!");
+            else alert("Falha ao atualizar seus dados, entre com contato com suporte.")
         }
+        setLoading(false)
     }
 
-    const handleUploadPhoto = () => {
+    const handleUploadPhoto = async ({ currentTarget }) => {
+        setLoading(true)
+        const file = currentTarget.querySelector("input#file").files[0]
 
+        if (file) {
+            const form = new FormData();
+            form.append('image', file);
+
+            const { data } = await apiImg.current.hostImages(form)
+
+            const userData = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                photo: data.medium
+            }
+            const response = await refUserApi.current.updateUser(userData);
+            if (response.status === 200) currentTarget.querySelector("img").src = data.medium
+            else alert("Falha ao atualizar sua foto, entre com contato com suporte.")
+
+        } else alert("erro ao processar sua foto, tente novamente mais tarde.");
+
+        setLoading(false)
     }
 
     return (
         <div className="w-full flex flex-col items-center">
             <div className="w-full flex justify-center gap-12">
                 <label
-                    event={handleUploadPhoto}
+                    onChange={handleUploadPhoto}
                     className="w-44 h-44 mt-12 flex flex-start relative cursor-pointer"
-                    htmlFor="file">
+                    htmlFor="file"
+                >
+                    {loading && <Loading />}
                     <input className="hidden" type="file" id="file" accept="image/*" />
-                    <img className="w-full h-full" src={user.photo} alt="" />
+                    <img className="w-full h-full object-cover" src={user.photo} alt="" />
                     <span id="file" className="btn-primary w-full absolute bottom-0"> Alterar foto de perfil</span>
                 </label>
-                <div className="flex flex-col justify-center items-center gap-8 py-8">
+                <div className="w-1/2 flex flex-col justify-center items-center gap-8 p-8 my-4">
                     <input type="text"
-                        className="p-4"
+                        ref={refInputName}
+                        className={`p-4 w-full text-s1_2 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
                         placeholder="Seu nome copmpleto..."
                         onChange={(e) => setInputName(e.target.value)}
                         value={inputName}
                         disabled={!isOpenSaveData}
                     />
                     <input type="text"
-                        className="p-4"
+                        className={`p-4 w-full text-s1_2 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
                         placeholder="Seu e-mail..."
                         onChange={(e) => setInputEmail(e.target.value)}
                         value={inputEmail}
                         disabled={!isOpenSaveData}
                     />
-                    <Button>Mudar senha</Button>
+                    <Button event={() => setShowModal(true)}>Mudar senha</Button>
                 </div>
             </div>
+            <Button
+                event={(e) => { setIsOpenSaveData(v => !v); handleUpdateUser(e); }}
+                customClass="btn-primary px-12 py-4 relative">
+                {isOpenSaveData ? "Salvar dados" : "Alterar dados"}
+                {loading && <Loading />}
+            </Button>
             <div className="w-full flex flex-col items-center my-8">
                 <h2 className="text-s1_5 mb-6">Informações gerais</h2>
                 <div className='w-4/5 flex flex-wrap justify-evenly px-4 gap-8 border-[1px] border-[#0001] p-4 rounded-xl'>
@@ -69,10 +119,14 @@ export const PanelMydata = ({ user }) => {
                 </div>
 
             }
-
-            <Button
-                event={(e) => { setIsOpenSaveData(v => !v); handleUpdateUser(e); }}
-                customClass="btn-primary px-12 py-4">{isOpenSaveData ? "Salvar dados" : "Alterar dados"}</Button>
+            {/* BOX PASSWORD WHEN USER CLICK TO CHANGE PASSWORD */}
+            {
+                showModal && <BoxChangePassword setShowModal={setShowModal} />
+            }
+            <span
+                onClick={() => alert("Sistema indisponível no momento, tente novamente mais tarde")}
+                className="underline cursor-pointer text-red-400 text-s1"
+            >Deletar conta</span>
         </div>
     )
 }

@@ -12,7 +12,7 @@ export const ActiveInformation = ({ infoSelect, user }) => {
                 return <PanelListRecipes recipes={user.recipe} />
             }
             case "Notificações" : {
-                return <h2>Notificações</h2>
+                return <h2>Sistema ainda não disponível =(</h2>
             }
             case "Sair" : {
                 return <h2>Sair</h2>
