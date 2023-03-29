@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { FaDatabase, FaLockOpen, FaSave } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { useRecipeApi, useUserApi } from "../../../hooks/useApi"
 
 import { BoxChangePassword } from "../../../modals/BoxChangePassword";
@@ -6,14 +8,15 @@ import { Button } from "../../atoms/Button"
 import { Loading } from "../../atoms/Loading/Loading"
 
 export const PanelMydata = ({ user }) => {
-    const apiImg = useRef(useRecipeApi());
+    const apiImg = useRecipeApi();
     const [isOpenSaveData, setIsOpenSaveData] = useState(false)
     const [inputName, setInputName] = useState(user?.name)
     const [inputEmail, setInputEmail] = useState(user?.email)
     const [showModal, setShowModal] = useState(false)
     const [loading, setLoading] = useState(false)
-    const refUserApi = useRef(useUserApi())
+    const refUserApi = useUserApi()
     const refInputName = useRef()
+    const navigate = useNavigate()
     const { nmr_eyes, nmr_hearts, _count, winner, nmr_saved } = user;
     const infos = [
         { name: 'Total de visualização:', value: nmr_eyes },
@@ -33,7 +36,7 @@ export const PanelMydata = ({ user }) => {
                 email: inputEmail,
                 photo: user.photo
             }
-            const response = await refUserApi.current.updateUser(userData);
+            const response = await refUserApi.updateUser(userData);
             if (response.status === 200) alert("Seus dados forão atualizados com sucesso!");
             else alert("Falha ao atualizar seus dados, entre com contato com suporte.")
         }
@@ -48,7 +51,7 @@ export const PanelMydata = ({ user }) => {
             const form = new FormData();
             form.append('image', file);
 
-            const { data } = await apiImg.current.hostImages(form)
+            const { data } = await apiImg.hostImages(form)
 
             const userData = {
                 id: user.id,
@@ -56,13 +59,31 @@ export const PanelMydata = ({ user }) => {
                 email: user.email,
                 photo: data.medium
             }
-            const response = await refUserApi.current.updateUser(userData);
+            const response = await refUserApi.updateUser(userData);
             if (response.status === 200) currentTarget.querySelector("img").src = data.medium
             else alert("Falha ao atualizar sua foto, entre com contato com suporte.")
 
         } else alert("erro ao processar sua foto, tente novamente mais tarde.");
 
         setLoading(false)
+    }
+
+    const handleDeleteUser = async () => {
+        if (user) {
+            const responseUser = prompt("Digite seu email para excluir essa conta:");
+            if (user.email.toLowerCase() === responseUser.toLowerCase()) {
+                const response = await refUserApi.deleteUser(user.id).catch(error => {
+                    console.error(error)
+                    alert("falha ao tentar excluir o usuario, tente novamente mais tarde")
+                })
+
+                if (response.status === 200) {
+                    alert("Conta excluida com sucesso!")
+                    localStorage.removeItem("token")
+                    navigate('/')
+                }
+            } else alert("E-mail incorreto, tente novamente")
+        }
     }
 
     return (
@@ -76,31 +97,41 @@ export const PanelMydata = ({ user }) => {
                     {loading && <Loading />}
                     <input className="hidden" type="file" id="file" accept="image/*" />
                     <img className="w-full h-full object-cover" src={user.photo} alt="" />
-                    <span id="file" className="btn-primary w-full absolute bottom-0"> Alterar foto de perfil</span>
+                    <span id="file" className="btn-primary w-full absolute bottom-0 rounded-none"> Alterar foto de perfil</span>
                 </label>
-                <div className="w-1/2 flex flex-col justify-center items-center gap-8 p-8 my-4">
-                    <input type="text"
-                        ref={refInputName}
-                        className={`p-4 w-full text-s1_2 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
-                        placeholder="Seu nome copmpleto..."
-                        onChange={(e) => setInputName(e.target.value)}
-                        value={inputName}
-                        disabled={!isOpenSaveData}
-                    />
-                    <input type="text"
-                        className={`p-4 w-full text-s1_2 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
-                        placeholder="Seu e-mail..."
-                        onChange={(e) => setInputEmail(e.target.value)}
-                        value={inputEmail}
-                        disabled={!isOpenSaveData}
-                    />
-                    <Button event={() => setShowModal(true)}>Mudar senha</Button>
+                <div className="w-1/2 flex flex-col justify-center p-8 my-4">
+                    <div className="flex justify-between items-center gap-x-4 mb-4">
+                        <label htmlFor="input-name" className="text-s1_3 mt-4 mb-2 text-color_sub_text">Nome completo:</label>
+                        <input type="text"
+                            ref={refInputName}
+                            id="input-name"
+                            className={`p-4 text-s1_2 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
+                            placeholder="Seu nome copmpleto..."
+                            onChange={(e) => setInputName(e.target.value)}
+                            value={inputName}
+                            disabled={!isOpenSaveData}
+                        />
+                    </div>
+                    <div className="flex justify-between items-center gap-x-4 my-4">
+                        <label htmlFor="input-email" className="text-s1_3 mt-4 mb-2 text-color_sub_text"> E-mail:</label>
+                        <input type="text"
+                            id="input-email"
+                            className={`p-4 text-s1_2 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
+                            placeholder="Seu e-mail..."
+                            onChange={(e) => setInputEmail(e.target.value)}
+                            value={inputEmail}
+                            disabled={!isOpenSaveData}
+                        />
+                    </div>
+                    <Button customClass="btn-second px-6 mx-auto my-4 text-s1_1 text-center" event={() => setShowModal(true)}>Mudar senha <FaLockOpen /> </Button>
                 </div>
             </div>
             <Button
                 event={(e) => { setIsOpenSaveData(v => !v); handleUpdateUser(e); }}
-                customClass="btn-primary px-12 py-4 relative">
-                {isOpenSaveData ? "Salvar dados" : "Alterar dados"}
+                customClass="btn-primary px-12 py-4 text-s1_2 relative">
+                {isOpenSaveData ? "Salvar alteração" : "Alterar dados"}
+                {isOpenSaveData ? <FaSave /> : <FaDatabase />}
+
                 {loading && <Loading />}
             </Button>
             <div className="w-full flex flex-col items-center my-8">
@@ -121,10 +152,10 @@ export const PanelMydata = ({ user }) => {
             }
             {/* BOX PASSWORD WHEN USER CLICK TO CHANGE PASSWORD */}
             {
-                showModal && <BoxChangePassword setShowModal={setShowModal} />
+                showModal && <BoxChangePassword setShowModal={setShowModal} id={user.id} />
             }
             <span
-                onClick={() => alert("Sistema indisponível no momento, tente novamente mais tarde")}
+                onClick={handleDeleteUser}
                 className="underline cursor-pointer text-red-400 text-s1"
             >Deletar conta</span>
         </div>

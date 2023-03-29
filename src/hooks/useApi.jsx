@@ -107,6 +107,18 @@ export const useUserApi = () => ({
     updateUser: async (user) =>{
         const response = await api.put(`/users/${user.id}`, user);
         return response
+    },
+
+    updatePassword: async (boxPassword) =>{
+        const response = await api.patch(`/users/${boxPassword.id}/change-password`, boxPassword)
+
+        return response;
+    },
+
+    deleteUser: async (id) =>{
+        const response = await api.delete(`/users/${id}`);
+
+        return response
     }
 
 });

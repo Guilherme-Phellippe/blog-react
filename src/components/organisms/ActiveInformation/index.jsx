@@ -1,5 +1,6 @@
 import { PanelListRecipes } from "../../molecules/PanelListRecipes"
 import { PanelMydata } from "../../molecules/PanelMydata"
+import { PanelNotifications } from "../../molecules/PanelNotifications"
 
 export const ActiveInformation = ({ infoSelect, user }) => {
 
@@ -12,10 +13,7 @@ export const ActiveInformation = ({ infoSelect, user }) => {
                 return <PanelListRecipes recipes={user.recipe} />
             }
             case "Notificações" : {
-                return <h2>Sistema ainda não disponível =(</h2>
-            }
-            case "Sair" : {
-                return <h2>Sair</h2>
+                return <PanelNotifications notifications={user.notificationUser} />
             }
             default: <h2>Erro na exibição do panel</h2>
         }

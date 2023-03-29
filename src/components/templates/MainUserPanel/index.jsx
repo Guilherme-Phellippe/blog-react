@@ -6,7 +6,7 @@ import { ActiveInformation } from "../../organisms/ActiveInformation"
 import { useUserApi } from "../../../hooks/useApi"
 
 export const MainUserPanel = () => {
-    const navLinks = ["Meus dados", "Minhas receitas", "Notificações", "Sair"];
+    const navLinks = ["Meus dados", "Minhas receitas", "Notificações"];
     const navigate = useNavigate()
     const [infoSelect, setInfoSelect] = useState(navLinks[0]);
     const [user, setUser] = useState();
@@ -26,6 +26,8 @@ export const MainUserPanel = () => {
         setInfoSelect(target.textContent)
     }
 
+    console.log(user)
+
     return (
         <main className="w-full bg-background m-2 grid place-items-center">
             <div className="flex flex-col w-full max-w-[100rem] bg-white">
@@ -38,6 +40,12 @@ export const MainUserPanel = () => {
                             {link}
                         </button>)
                     }
+                    <button
+                        onClick={(e) => { handleInfoSelect(e); navigate('/')}}
+                        className={`p-8 text-s1_2 hover:bg-color_second hover:text-white transition-all duration-1 ${infoSelect === "Sair do painel" && "bg-color_primary text-white"}`}
+                    >
+                        Sair do painel
+                    </button>
                 </nav>
                 <section className="flex flex-col w-full p-8 max-w-[100rem] min-h-[50rem] bg-white">
                     {user ?
