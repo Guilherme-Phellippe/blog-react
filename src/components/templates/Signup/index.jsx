@@ -6,10 +6,11 @@ import { MdEmail } from 'react-icons/md';
 import { Input } from "../../atoms/Input"
 import { Button } from '../../atoms/Button';
 import { LoginWithSocialMidia } from '../../molecules/LoginWithSocialMidia';
-import { useUserApi } from '../../../hooks/useApi';
+import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
 import { useNavigate } from 'react-router-dom';
 
 export const Singup = ({ setIsLogin }) => {
+    const notificationApi = useNotificationApi()
     const apiUser = useRef(useUserApi());
     const refForm = useRef(null)
     const [whatColorIconName, setWhatColorIconName] = useState(null);
@@ -59,8 +60,6 @@ export const Singup = ({ setIsLogin }) => {
             password: '',
         }
 
-
-
         if (whatColorIconName) {
             if (whatColorIconEmail) {
                 if (whatColorIconPassword) {
@@ -69,7 +68,9 @@ export const Singup = ({ setIsLogin }) => {
                     user.password = refForm.current.querySelector("input#password").value
 
                     const response = await apiUser.current.createNewUser(user)
+                    console.log(response)
                     if (!response.error){
+                        notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
                         localStorage.setItem('token', JSON.stringify(response))
                         navigate('/')
                     }else alert("Usuário já possui uma conta!")

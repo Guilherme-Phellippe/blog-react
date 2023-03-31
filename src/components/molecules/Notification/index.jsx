@@ -1,15 +1,24 @@
 
+import moment from "moment";
 import { useState } from "react"
 import { MdArrowDropDown, MdArrowDropUp, MdCheckBox, MdDelete, MdMessage } from "react-icons/md"
+import { useNotificationApi } from "../../../hooks/useApi";
 import { formatTextLong } from "../../../scripts/formatTextLong";
 
-export const Notification = ({ notification: { notification } }) => {
-    const [showMessage , setShowMessage ] = useState(false)
-    const [read, setRead] = useState(notification.read);
+export const Notification = ({ notification }) => {
+    const notificationApi = useNotificationApi()
+    const [showMessage, setShowMessage] = useState(false)
+    const [read, setRead] = useState(notification.read)
 
-
-    const handleReadMessage = () => {
-        setRead(v => !v)
+    const handleReadMessage = async () => {
+        if(!read){
+            const { notificationId, userId } = notification
+            const response = await notificationApi.updateReadNotification(notificationId, userId)
+            if(response.status === 200){
+                notification.read = true
+                setRead(true)
+            }
+        }
     }
 
     return (
@@ -19,7 +28,7 @@ export const Notification = ({ notification: { notification } }) => {
                     <MdMessage className={`text-s2_5 ${read ? "text-color_sub_text" : "text-color_second"}`} />
                 </div>
                 <div onClick={() => setShowMessage(msg => !msg)} className="w-3/5 flex justify-between">
-                    <p className={`text-s1_5 ${!read && 'text-color_primary'}`}>{formatTextLong(notification.title, 30)}</p>
+                    <p className={`text-s1_5 ${!read && 'text-color_primary'}`}>{formatTextLong(notification.notification.title, 30)}</p>
                     {showMessage ? <MdArrowDropUp className="text-s2_5" /> : <MdArrowDropDown className="text-s2_5" />}
                 </div>
                 <div className="w-1/5 flex justify-center gap-8">
@@ -33,10 +42,19 @@ export const Notification = ({ notification: { notification } }) => {
                 </div>
             </div>
             {showMessage &&
-                <div className="w-full flex p-8">
-                    <p className="text-s1_3 text-center">{ notification.message }</p>
+                <div className="w-full flex flex-col p-8">
+                    <p
+                        className="flex flex-col items-center text-s1_3 text-center px-8]"
+                        dangerouslySetInnerHTML={{ __html: notification.notification.message }}
+                    ></p>
+                    <div className="flex justify-between mt-8 pt-6 px-4 border-t-[1px] text-s1 opacity-70">
+                        <span>@EquipeTemSabor</span>
+                        <span>{moment(notification.createdAt).format('lll')}</span>
+                    </div>
                 </div>
             }
         </div>
     )
 }
+
+

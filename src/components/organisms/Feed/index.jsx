@@ -46,7 +46,6 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
                             />
 
                             <BlockInteractionFeed
-                                nmr_hearts={content.nmr_hearts}
                                 comments={content.comments}
                                 idRecipe={content.id}
                             />

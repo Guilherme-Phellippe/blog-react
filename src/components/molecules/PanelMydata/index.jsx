@@ -17,12 +17,11 @@ export const PanelMydata = ({ user }) => {
     const refUserApi = useUserApi()
     const refInputName = useRef()
     const navigate = useNavigate()
-    const { nmr_eyes, nmr_hearts, _count, winner, nmr_saved } = user;
+    const { nmr_eyes, nmr_hearts, winner, recipe  } = user;
     const infos = [
         { name: 'Total de visualização:', value: nmr_eyes },
         { name: 'Total de amei em receitas:', value: nmr_hearts },
-        { name: 'Total de receitas salvas', value: nmr_saved },
-        { name: 'Total de comentários', value: _count.comments },
+        { name: 'Total de receitas salvas', value: recipe.reduce((acc, currentValue) =>  acc + currentValue.nmr_saved.length, 0 )},
         { name: 'Total de prêmios:', value: winner ? winner : 0 }
     ]
 
@@ -47,6 +46,7 @@ export const PanelMydata = ({ user }) => {
         setLoading(true)
         const file = currentTarget.querySelector("input#file").files[0]
 
+        
         if (file) {
             const form = new FormData();
             form.append('image', file);
@@ -60,8 +60,11 @@ export const PanelMydata = ({ user }) => {
                 photo: data.medium
             }
             const response = await refUserApi.updateUser(userData);
-            if (response.status === 200) currentTarget.querySelector("img").src = data.medium
-            else alert("Falha ao atualizar sua foto, entre com contato com suporte.")
+            if (response.status === 200){
+                const reader = new FileReader();
+                reader.readAsDataURL(file)
+                reader.onload = () => currentTarget.querySelector("img").src = reader.result;
+            }else alert("Falha ao atualizar sua foto, entre com contato com suporte.")
 
         } else alert("erro ao processar sua foto, tente novamente mais tarde.");
 

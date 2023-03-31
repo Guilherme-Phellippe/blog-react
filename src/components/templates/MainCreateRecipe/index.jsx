@@ -46,12 +46,12 @@ export const MainCreateRecipe = () => {
         if (e.currentTarget.id === "next") {
             const ingredients = Array.from(refTwoStep.current.querySelectorAll('ul#ing li p')).map(p => p.textContent)
             const wordKey = Array.from(refThreeStep.current.querySelectorAll('ul#word-keys li p')).map(p => p.textContent)
-
+            
             if (step === 1) {
                 const category = refOneStep.current.querySelector('div input#category').value;
                 const formatCategoryUpperCase = category.charAt(0).toUpperCase() + category.slice(1)
                 const response = await categoryApiRef.current.createNewCategory(formatCategoryUpperCase);
-
+                
                 if (response.data) {
                     var categoriesData = { data: null }
                     if (response.status === 201) categoriesData = await categoryApiRef.current.getAllCategory();

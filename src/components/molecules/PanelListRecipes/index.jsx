@@ -1,51 +1,45 @@
-import { Link } from "react-router-dom"
-import moment from "moment"
-import { formatTextLong } from "../../../scripts/formatTextLong"
 
-import { FcSearch, FcSettings } from "react-icons/fc"
+
+import { FcSearch } from "react-icons/fc"
 
 import { Input } from "../../atoms/Input"
 import { useState } from "react"
+import { ListRecipesUser } from "../ListRecipesUser"
+import { Button } from "../../atoms/Button"
 
-export const PanelListRecipes = ({ recipes }) => {
-
+export const PanelListRecipes = ({ recipes, isMyRecipes }) => {
     const [filteredRecipes, setFilteredRecipes] = useState(recipes.sort((a, b) => b.nmr_hearts.length - a.nmr_hearts.length))
 
     const handleSearchRecipe = ({ target }) => {
         setFilteredRecipes(recipes.filter(recipe => recipe.name_recipe.toLowerCase().includes(target.value.toLowerCase())))
     }
 
-    return (
-        <div className="w-4/5 flex flex-col justify-center items-center mx-auto">
-            <h2 className="text-s1_5 my-4 text-color_sub_text text-center">Encontre sua receita</h2>
-            <Input
-                onChange={handleSearchRecipe}
-                placeholder="Busque uma receita"
-                icon={<FcSearch className="text-s2" /> }
-                customWidthAndMargin="my-4 w-3/5" 
-            />
 
-            <div className="w-full flex flex-col gap-4 items-center max-h-[800px] overflow-auto py-8 mt-12">
+
+    return (
+        <div className={`w-full flex flex-col justify-center items-center mx-auto`}>
+            {
+                filteredRecipes.length >= 4 &&
+                <>
+                <h2 className="text-s1_5 my-4 text-color_sub_text text-center">Encontre sua receita</h2>
+                <Input
+                    onChange={handleSearchRecipe}
+                    placeholder="Busque uma receita"
+                    icon={<FcSearch className="text-s2" />}
+                    customWidthAndMargin="my-4 w-3/5"
+                />
+                </>
+            }
+
+            <div className={`w-full flex gap-4 justify-center items-center max-h-[800px] overflow-y-auto py-8 mt-12 ${isMyRecipes?"flex-col":"flex-wrap"}`}>
                 {filteredRecipes.length ?
                     filteredRecipes.map((recipe, key) =>
-                        <div className="w-4/5 flex h-[170px] border-[1px] border-color_primary shadow-sm relative">
-                            <Link className="w-2/5 h-full cursor-pointer" key={key} to={`/recipe/${recipe.id}`}>
-                                <img className='w-full h-full object-cover' src={recipe.images_recipe[0].small} alt={recipe.name_recipe} />
-                            </Link>
-                            <div className="px-4 w-3/5 flex flex-col justify-around items-center">
-                                <h3 className="text-center text-s1">{recipe.category.name_category}</h3>
-                                <h2 className="text-s1_2 text-color_sub_text text-center" title={recipe.name_recipe}>{formatTextLong(recipe.name_recipe, 40)}</h2>
-                                <h3 className="text-s1">{moment(recipe.createdAt).format("lll")}</h3>
-                                <div className="w-3/4 flex flex-col bg-color_primary justify-center text-white p-2 rounded-lg">
-                                    <span className="text-s1 flex justify-between my-1">Número de ameis: <span>{recipe.nmr_hearts.length}</span></span>
-                                    <span className="text-s1 flex justify-between my-1">Número de visualizações: <span>{recipe.nmr_eyes}</span></span>
-                                    <span className="text-s1 flex justify-between my-1">Número de receitas salvas: <span>{recipe.nmr_saved}</span></span>
-                                </div>
-                            </div>
-                            <FcSettings className="text-s2_5 cursor-pointer absolute top-0 right-0 mr-2 mt-2 fill-white" />
-                        </div>
+                        <ListRecipesUser key={key} recipe={recipe} isMyRecipes={isMyRecipes}/>
                     )
-                    : <p className="text-s1_5 my-12">Não encontramos nenhuma receita =(</p>
+                    : <div className="flex flex-col items-center">
+                        <p className="text-s1_5 my-12">Não encontramos nenhuma receita sua =(</p>
+                        <Button>Criar uma receita</Button>
+                    </div>
                 }
             </div>
         </div>

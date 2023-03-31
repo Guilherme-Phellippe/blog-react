@@ -6,7 +6,7 @@ import { ActiveInformation } from "../../organisms/ActiveInformation"
 import { useUserApi } from "../../../hooks/useApi"
 
 export const MainUserPanel = () => {
-    const navLinks = ["Meus dados", "Minhas receitas", "Notificações"];
+    const navLinks = ["Meus dados", "Minhas receitas","Receitas salvas", "Notificações"];
     const navigate = useNavigate()
     const [infoSelect, setInfoSelect] = useState(navLinks[0]);
     const [user, setUser] = useState();
@@ -25,8 +25,6 @@ export const MainUserPanel = () => {
     const handleInfoSelect = ({ target }) => {
         setInfoSelect(target.textContent)
     }
-
-    console.log(user)
 
     return (
         <main className="w-full bg-background m-2 grid place-items-center">

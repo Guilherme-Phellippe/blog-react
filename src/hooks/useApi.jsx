@@ -11,28 +11,28 @@ export const useRecipeApi = () => ({
         return response
     },
 
-    createNewRecipe: async (recipe) =>{
+    createNewRecipe: async (recipe) => {
         const data = await api.post('/recipe', recipe).catch(error => error)
 
         return data.data
     },
 
-    hostImages: async (imageForm) =>{
-        const images = await api.post('/upload-images' ,  imageForm);
+    hostImages: async (imageForm) => {
+        const images = await api.post('/upload-images', imageForm);
 
         return images
     },
 
     getUniqueRecipe: async (id) => {
-        const response = await api.get(`/recipe/${id}`).catch(err => err)
-        return response
+        const data = await api.get(`/recipe/${id}`).catch(err => err);
+        return data
     },
 
     getRecipesByCategory: async (id) => {
         const response = await api.get(`/recipes/${id}/category`).catch(err => err)
         return response
     },
-    
+
     updateNumberEyes: async (id) => {
         const TIME_NOW = `${moment().year()}${moment().dayOfYear()}${moment().hours()}${moment().minutes()}`;
         const lastTimeCalled = localStorage.getItem("lastTimeCalledFunctionNumberEyes")
@@ -47,26 +47,45 @@ export const useRecipeApi = () => ({
     },
 
     updateNumberHearts: async (ids) => {
-            const data = await api.patch(`/recipe/${ids.idUser}/nmr-hearts/${ids.idRecipe}`).catch(err => {
-                return err
-            });
+        const data = await api.patch(`/recipe/${ids.idUser}/nmr-hearts/${ids.idRecipe}`).catch(err => {
+            return err
+        });
 
-            return data
+        return data
+    },
+    updateNumberSaved: async (ids) => {
+        const data = await api.patch(`/recipe/${ids.idUser}/nmr-saved/${ids.idRecipe}`).catch(err => {
+            return err
+        });
+
+        return data
     },
     updateVotesRecipe: async (ids) => {
-            const data = await api.patch(`/recipe/${ids.idUser}/votes/${ids.idRecipe}`).catch(err => {
-                return err
-            });
+        const data = await api.patch(`/recipe/${ids.idUser}/votes/${ids.idRecipe}`).catch(err => {
+            return err
+        });
 
-            return data
+        return data
     },
     verifyExistVote: async (id) => {
-            const data = await api.get(`/recipe/${id}/already-voted`).catch(err => {
-                return err
-            });
+        const data = await api.get(`/recipe/${id}/already-voted`).catch(err => {
+            return err
+        });
 
-            return data
+        return data
     },
+
+    updateRecipe: async (recipe) => {
+        const data = await api.put(`/recipe/${recipe.id}`, recipe)
+
+        return data
+    },
+
+    deleteRecipe: async (id) => {
+        const data = await api.delete(`/recipe/${id}`)
+
+        return data
+    }
 
 
 
@@ -99,23 +118,31 @@ export const useUserApi = () => ({
         return null
     },
 
-    createNewUser: async (user) =>{
+    createNewUser: async (user) => {
         const { data } = await api.post('/users', user);
         return data
     },
 
-    updateUser: async (user) =>{
+    updateUser: async (user) => {
         const response = await api.put(`/users/${user.id}`, user);
         return response
     },
 
-    updatePassword: async (boxPassword) =>{
+    updatePassword: async (boxPassword) => {
         const response = await api.patch(`/users/${boxPassword.id}/change-password`, boxPassword)
 
         return response;
     },
 
-    deleteUser: async (id) =>{
+    updateNumberSaved: async (ids) => {
+        const data = await api.patch(`/user/${ids.idUser}/nmr-saved/${ids.idRecipe}`).catch(err => {
+            return err
+        });
+
+        return data
+    },
+
+    deleteUser: async (id) => {
         const response = await api.delete(`/users/${id}`);
 
         return response
@@ -132,39 +159,51 @@ export const useCategoryApi = () => ({
     },
 
     createNewCategory: async (name_category) => {
-        const category = await api.post(`/category`, name_category).catch(error => error)
+        const category = await api.post(`/category`, { name_category }).catch(error => error)
 
         return category
     }
 
 })
 
-export const useCommentApi = () =>({
+export const useCommentApi = () => ({
 
-    createNewComment: async (comment)=>{
+    createNewComment: async (comment) => {
         const commentData = await api.post('/comment', comment).catch(error => error);
 
         return commentData;
     },
 
-    createNewAnswer: async (answer) =>{
-       const answerData = await api.post(`/comment/${answer.commentId}/answer`, answer).catch(error => error);
+    createNewAnswer: async (answer) => {
+        const answerData = await api.post(`/comment/${answer.commentId}/answer`, answer).catch(error => error);
 
         return answerData;
     },
 
-    deleteComment: async ({ commentId, userId }) =>{
+    deleteComment: async ({ commentId, userId }) => {
         const deleteData = await api.delete(`/comment/${commentId}/user/${userId}`).catch(error => error)
 
         return deleteData
     },
 
-    deleteAnswer: async ({ commentId, userId, answerId }) =>{
+    deleteAnswer: async ({ commentId, userId, answerId }) => {
         const deleteData = await api.delete(`/comment/${commentId}/answer/${answerId}/user/${userId}`).catch(error => error)
 
         return deleteData
     },
+});
 
+export const useNotificationApi = () => ({
 
+    updateReadNotification: async (notificationId, userId) => {
+        const response = await api.patch(`/notification/${userId}/update-read/${notificationId}`);
 
+        return response
+    },
+
+    newNotificationAlreadyExist: async (notificationId, userId) => {
+        const response = await api.post(`/notification/${userId}/new/${notificationId}`);
+
+        return response
+    },
 })

@@ -17,7 +17,7 @@ export const PreparationInformation = ({recipe}) => {
             <div className='w-1/4 h-full flex flex-col justify-center items-center relative after:absolute after:right-0 after:w-px after:h-1/2 after:mt-1/4 after:opacity-10 after:bg-black'>
                 <BiHeart className='text-s3 text-color_primary' />
                 <h3>FAVORITOS</h3>
-                <h2 className='text-s2 text-color_primary'>{recipe.nmr_saved}</h2>
+                <h2 className='text-s2 text-color_primary'>{recipe.nmr_saved.length}</h2>
             </div>
             <div className='w-1/4 h-full flex flex-col justify-center items-center'>
                 <BiChat className='text-s3 text-color_primary' />
