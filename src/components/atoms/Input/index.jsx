@@ -14,7 +14,7 @@ export const Input = React.forwardRef(({ placeholder, label, icon, type = 'text'
                 onChange={onChange}
                 id={id}
                 value={value}
-                className="w-[85%] p-4 outline-none bg-transparent text-s1_2"
+                className="w-[85%] p-4 outline-none bg-transparent text-s1_3"
                 type={type}
                 placeholder={placeholder}
                 {...restProps}

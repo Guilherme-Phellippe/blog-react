@@ -24,6 +24,7 @@ export const MainContentHome = () => {
     const [isOpenRanking, setIsOpenRanking] = useState(false)
     const recipeApi = useRef(useRecipeApi());
     const userApi = useRef(useUserApi());
+    const [showIconRanking, setShowIconRanking] = useState(false)
 
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
     const [listRecipeForRemove, setListRecipeForRemove] = useState(listRecipeLocalStorage);
@@ -61,16 +62,26 @@ export const MainContentHome = () => {
         setFeed(newFeed);
     }, [recipes, postPerPage, valueSearch, listRecipeForRemove])
 
-    useEffect(()=>{
-        const removeModalRankignRecipe = document.addEventListener('click', ({ target , currentTarget})=>{
+    useEffect(() => {
+        const removeModalRankignRecipe = document.addEventListener('click', ({ target, currentTarget }) => {
             const box = target.closest("div[data-id=modal-ranking-recipe-mobile]")
-            if(!box) setIsOpenRanking(false)
+            if (!box) setIsOpenRanking(false)
         });
 
         return () => {
             document.removeEventListener('click', removeModalRankignRecipe)
         }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if (isOpenRanking) document.documentElement.style.overflow = 'hidden'
+        else document.documentElement.style.overflow = 'auto'
+    }, [isOpenRanking])
+
+    document.onscroll = () => {
+        if (window.scrollY > 480) setShowIconRanking(true)
+        else setShowIconRanking(false)
+    }
 
 
     const topRankingByEyes = useCallback(() => {
@@ -116,7 +127,7 @@ export const MainContentHome = () => {
                 />
 
                 {
-                    window.innerWidth <= 767 &&
+                    window.innerWidth <= 767 && showIconRanking &&
                     <>
                         <div
                             data-id="modal-ranking-recipe-mobile"
@@ -130,7 +141,7 @@ export const MainContentHome = () => {
                         <div
                             data-id="modal-ranking-recipe-mobile"
                             onClick={() => setIsOpenRanking((open) => !open)}
-                            className={`${!isOpenRanking ? "right-[0px]" : 'right-[69%]'} fixed  bottom-32 w-[70px] border-[1px] border-white bg-color_primary rounded-tl-2xl rounded-bl-2xl flex justify-center`}>
+                            className={`${!isOpenRanking ? "right-[0px]" : 'right-[69%]'} shadow-md shadow-[#24242480] z-50 fixed  bottom-32 w-[70px] border-[1px] border-white bg-color_primary rounded-tl-2xl rounded-bl-2xl flex justify-center`}>
                             <GiPodium
                                 className="text-s4 fill-white mb-4" />
                         </div>

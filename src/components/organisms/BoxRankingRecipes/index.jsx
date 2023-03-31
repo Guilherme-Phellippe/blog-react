@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { ListRecipes } from '../../molecules/ListRecipes';
 import './styles.css'
 
-export const BoxRankingRecipes = ({ title, ranking, customClass }) => {
+export const BoxRankingRecipes = ({ title, ranking }) => {
     const [limitRecipes, setLimitRecipes] = useState(5)
 
     return (
-        <div className={`container-ranking`}>
+        <div className={`container-ranking pb-12`}>
             <h2>{title}</h2>
             {
                  ranking.length && ranking.map((recent, index) => {
