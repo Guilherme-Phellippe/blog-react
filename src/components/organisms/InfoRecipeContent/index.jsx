@@ -10,7 +10,7 @@ export const InfoRecipeContent = ({ recipe }) => {
     const { name_recipe, nmr_hearts, images_recipe, ing, prepareMode, nmr_saved } = recipe
 
     return (
-        <div className="w-full md:w-1/3 p-4">
+        <div className="w-full md:w-2/3 p-4">
             <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
             <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
             <div className="w-full py-4 mt-4">

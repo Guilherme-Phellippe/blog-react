@@ -43,7 +43,7 @@ export const IconsShare = () => {
     return (
         <div
             id="iconShare-print"
-            className={`${customClass} transition-all z-50 md:-z-10 w-full md:w-1/12 fixed left-0 top-[90%] md:top-0 md:left-0 border-[1px] border-color_third md:border-none rounded-3xl md:rounded-none flex md:flex-col items-center bg-white md:bg-transparent`}
+            className={`${customClass} md:translate-x-0 transition-all z-50 md:z-0 w-full md:w-1/12 fixed left-0 top-[90%] md:top-[20%] md:left-0 border-[1px] border-color_third md:border-none rounded-3xl md:rounded-none flex md:flex-col items-center bg-white md:bg-transparent`}
         >
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible group-hover:visible group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
