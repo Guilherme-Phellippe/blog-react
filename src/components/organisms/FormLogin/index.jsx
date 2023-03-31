@@ -78,14 +78,14 @@ export const FormLogin = () => {
                 placeholder="Digite seu e-mail..."
                 onKeyDown={handleNextLine}
                 icon={<FaUserAlt className="text-s1_5" />}
-                customWidthAndMargin="w-[70%] my-6"
+                customWidthAndMargin="w-[90%] md:w-[70%] my-6"
             />
             <Input
                 ref={inputPasswordRef}
                 label="SENHA:"
                 placeholder="Digite sua senha..."
                 type={typeInputPassword}
-                customWidthAndMargin="w-[70%] my-6"
+                customWidthAndMargin="w-[90%] md:w-[70%] my-6"
                 eventIcon={() => setOpenEyePassword((value) => !value)}
                 icon={openEyePassword ? <FaEye className="text-s1_5 cursor-pointer" /> : <FaEyeSlash className="text-s1_5 cursor-pointer" />}
             />

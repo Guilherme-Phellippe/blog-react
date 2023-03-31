@@ -17,7 +17,7 @@ export const InfoRecipeContent = ({ recipe }) => {
             <RecipeChefInfo recipe={recipe} />
             <IngredientsList ing={ing}/>
             <PrepareMode prepareMode={prepareMode}/>
-            <div className="w-full py-4 mt-4 bg-color_second">
+            <div className="w-full py-4 mt-4 bg-[#24242420]">
                 <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved}/>
             </div>
         </div>
