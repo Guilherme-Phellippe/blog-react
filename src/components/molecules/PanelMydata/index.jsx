@@ -17,11 +17,11 @@ export const PanelMydata = ({ user }) => {
     const refUserApi = useUserApi()
     const refInputName = useRef()
     const navigate = useNavigate()
-    const { nmr_eyes, nmr_hearts, winner, recipe  } = user;
+    const { nmr_eyes, nmr_hearts, winner, recipe } = user;
     const infos = [
         { name: 'Total de visualização:', value: nmr_eyes },
         { name: 'Total de amei em receitas:', value: nmr_hearts },
-        { name: 'Total de receitas salvas', value: recipe.reduce((acc, currentValue) =>  acc + currentValue.nmr_saved.length, 0 )},
+        { name: 'Total de receitas salvas', value: recipe.reduce((acc, currentValue) => acc + currentValue.nmr_saved.length, 0) },
         { name: 'Total de prêmios:', value: winner ? winner : 0 }
     ]
 
@@ -46,7 +46,7 @@ export const PanelMydata = ({ user }) => {
         setLoading(true)
         const file = currentTarget.querySelector("input#file").files[0]
 
-        
+
         if (file) {
             const form = new FormData();
             form.append('image', file);
@@ -60,11 +60,11 @@ export const PanelMydata = ({ user }) => {
                 photo: data.medium
             }
             const response = await refUserApi.updateUser(userData);
-            if (response.status === 200){
+            if (response.status === 200) {
                 const reader = new FileReader();
                 reader.readAsDataURL(file)
                 reader.onload = () => currentTarget.querySelector("img").src = reader.result;
-            }else alert("Falha ao atualizar sua foto, entre com contato com suporte.")
+            } else alert("Falha ao atualizar sua foto, entre com contato com suporte.")
 
         } else alert("erro ao processar sua foto, tente novamente mais tarde.");
 
@@ -91,7 +91,7 @@ export const PanelMydata = ({ user }) => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <div className="w-full flex justify-center gap-12">
+            <div className="w-full flex justify-center">
                 <label
                     onChange={handleUploadPhoto}
                     className="w-44 h-44 mt-12 flex flex-start relative cursor-pointer"
@@ -102,24 +102,24 @@ export const PanelMydata = ({ user }) => {
                     <img className="w-full h-full object-cover" src={user.photo} alt="" />
                     <span id="file" className="btn-primary w-full absolute bottom-0 rounded-none"> Alterar foto de perfil</span>
                 </label>
-                <div className="w-1/2 flex flex-col justify-center p-8 my-4">
-                    <div className="flex justify-between items-center gap-x-4 mb-4">
+                <div className="w-2/3 md:w-1/2 flex flex-col justify-center p-8 my-4">
+                    <div className="w-full flex flex-col md:flex-row my-0 md:my-4 md:justify-between items-center gap-x-4">
                         <label htmlFor="input-name" className="text-s1_3 mt-4 mb-2 text-color_sub_text">Nome completo:</label>
                         <input type="text"
                             ref={refInputName}
                             id="input-name"
-                            className={`p-4 text-s1_2 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
+                            className={`p-4 text-s1_2 text-center md:text-right rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
                             placeholder="Seu nome copmpleto..."
                             onChange={(e) => setInputName(e.target.value)}
                             value={inputName}
                             disabled={!isOpenSaveData}
                         />
                     </div>
-                    <div className="flex justify-between items-center gap-x-4 my-4">
+                    <div className="w-full flex flex-col md:flex-row my-0 md:my-4 md:justify-between items-center gap-x-4">
                         <label htmlFor="input-email" className="text-s1_3 mt-4 mb-2 text-color_sub_text"> E-mail:</label>
                         <input type="text"
                             id="input-email"
-                            className={`p-4 text-s1_2 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
+                            className={`p-4 text-s1_2 text-center md:text-right rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
                             placeholder="Seu e-mail..."
                             onChange={(e) => setInputEmail(e.target.value)}
                             value={inputEmail}
@@ -139,11 +139,12 @@ export const PanelMydata = ({ user }) => {
             </Button>
             <div className="w-full flex flex-col items-center my-8">
                 <h2 className="text-s1_5 mb-6">Informações gerais</h2>
-                <div className='w-4/5 flex flex-wrap justify-evenly px-4 gap-8 border-[1px] border-[#0001] p-4 rounded-xl'>
-                    {infos.map((info, key) => <div key={key} className="flex flex-col justify-between items-center w-1/5 py-4 bg-white rounded-xl shadow-md border-[1px] border-color_second hover:scale-105 transition-all">
-                        <h3 className="text-s1_3 text-center text-color_text">{info.name}</h3>
-                        <span className="text-s1_5 font-semibold text-color_primary my-4">{info.value}</span>
-                    </div>)}
+                <div className='w-full md:w-4/5 flex flex-wrap justify-evenly px-4 gap-1 md:gap-8 border-[1px] border-[#0001] p-4 rounded-xl'>
+                    {infos.map((info, key) =>
+                        <div key={key} className="flex flex-col justify-between items-center w-[22%] md:w-1/5 py-4 bg-white rounded-xl shadow-md border-[1px] border-color_second hover:scale-105 transition-all">
+                            <h3 className="text-s1_3 text-center text-color_text">{info.name}</h3>
+                            <span className="text-s1_5 font-semibold text-color_primary my-4">{info.value}</span>
+                        </div>)}
                 </div>
             </div>
             {
