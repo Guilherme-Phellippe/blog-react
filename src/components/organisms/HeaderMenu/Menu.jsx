@@ -44,7 +44,7 @@ export const Menu = () => {
     }
 
     return (
-        <div className="container-menu w-full h-[50px] items-center bg-color_primary order-1 md:order-2">
+        <div className="container-menu w-full h-[50px] items-center bg-color_primary">
             <>
                 {
                     !menuIsOpen ?

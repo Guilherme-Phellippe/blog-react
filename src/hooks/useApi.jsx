@@ -206,4 +206,10 @@ export const useNotificationApi = () => ({
 
         return response
     },
+
+    deleteNotification: async (notificationId, userId) =>{
+        const response = await api.delete(`/notification/${userId}/delete/${notificationId}`);
+
+        return response
+    }
 })

@@ -5,20 +5,32 @@ import { MdArrowDropDown, MdArrowDropUp, MdCheckBox, MdDelete, MdMessage } from 
 import { useNotificationApi } from "../../../hooks/useApi";
 import { formatTextLong } from "../../../scripts/formatTextLong";
 
-export const Notification = ({ notification }) => {
+export const Notification = ({ notification, setNotifications }) => {
     const notificationApi = useNotificationApi()
     const [showMessage, setShowMessage] = useState(false)
     const [read, setRead] = useState(notification.read)
 
     const handleReadMessage = async () => {
-        if(!read){
+        if (!read) {
             const { notificationId, userId } = notification
             const response = await notificationApi.updateReadNotification(notificationId, userId)
-            if(response.status === 200){
+            if (response.status === 200) {
                 notification.read = true
                 setRead(true)
             }
         }
+    }
+
+    const handleDeleteNotification = async ({ currentTarget }) => {
+        //eslint-disable-next-line
+        const canDelete = confirm("Deseja realmente excluir essa notificação?");
+
+        if (canDelete) {
+            const { notificationId, userId } = notification
+            const response = await notificationApi.deleteNotification(notificationId, userId).catch(error => console.error(error));
+            if (response.status === 200) setNotifications(notifications => notifications.filter(not => not.notificationId !== currentTarget.id ));
+        }
+
     }
 
     return (
@@ -38,7 +50,13 @@ export const Notification = ({ notification }) => {
                     >
                         <MdCheckBox className={`text-s2  ${read ? "fill-green-800" : "fill-color_sub_text"}`} /> Marcar como lida
                     </p>
-                    <p className="flex flex-col justify-center items-center"><MdDelete className="text-s2 fill-red-700" />Excluir </p>
+                    <p
+                        id={notification.notificationId}
+                        onClick={handleDeleteNotification}
+                        className="flex flex-col justify-center items-center"
+                    >
+                        <MdDelete className="text-s2 fill-red-700" />Excluir
+                    </p>
                 </div>
             </div>
             {showMessage &&

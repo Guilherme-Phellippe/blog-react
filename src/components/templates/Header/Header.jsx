@@ -3,7 +3,7 @@ import { Menu } from '../../organisms/HeaderMenu/Menu'
 
 export const Header = () => {
     return (
-        <header className='w-full bg-white flex flex-col'>
+        <header className='w-full bg-color_primary flex flex-col items-center'>
             <Bartop />
             <Menu />
         </header>

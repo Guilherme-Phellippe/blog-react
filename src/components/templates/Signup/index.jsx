@@ -68,7 +68,6 @@ export const Singup = ({ setIsLogin }) => {
                     user.password = refForm.current.querySelector("input#password").value
 
                     const response = await apiUser.current.createNewUser(user)
-                    console.log(response)
                     if (!response.error){
                         notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
                         localStorage.setItem('token', JSON.stringify(response))
