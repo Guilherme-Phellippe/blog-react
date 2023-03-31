@@ -74,7 +74,7 @@ export const PanelMydata = ({ user }) => {
     const handleDeleteUser = async () => {
         if (user) {
             const responseUser = prompt("Digite seu email para excluir essa conta:");
-            if (user.email.toLowerCase() === responseUser.toLowerCase()) {
+            if (responseUser && user.email.toLowerCase() === responseUser.toLowerCase()) {
                 const response = await refUserApi.deleteUser(user.id).catch(error => {
                     console.error(error)
                     alert("falha ao tentar excluir o usuario, tente novamente mais tarde")

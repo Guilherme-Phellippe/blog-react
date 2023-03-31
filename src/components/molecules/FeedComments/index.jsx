@@ -115,11 +115,11 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                     />
                 </div>
                 <div className="w-auto rounded-3xl m-2 flex flex-col justify-start items-start bg-background">
-                    <div className="flex items-center mt-2 mx-4 gap-2">
+                    <div className="flex items-center mt-3 mx-4 gap-2">
                         <h2 className="font-bold text-s1_3">{comment.user.name} - </h2>
                         <span className="text-s1">{moment(comment.createdAt).startOf('seconds').fromNow()}</span>
                     </div>
-                    <p className="text-s1_3 mx-6">{comment.comment}</p>
+                    <p className="text-s1_3 mx-6 mb-3">{comment.comment}</p>
                 </div>
                 <div className="flex flex-col justify-center items-center gap-2">
                     {
@@ -132,7 +132,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                             className="hidden text-s2 fill-red-700 cursor-pointer group-hover:block" />
                     }
                     <span
-                        onClick={() => setShowButtonAnswer(btn => !btn)}
+                        onClick={() => userLogged.id ? setShowButtonAnswer(btn => !btn):alert("Crie uma conta para responder esse comentário")}
                         className="hover:underline w-auto cursor-pointer text-s1_1" >
                         Responder</span>
                 </div>

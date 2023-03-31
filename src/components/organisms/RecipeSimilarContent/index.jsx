@@ -47,11 +47,11 @@ export const RecipeSimilarContent = ({ recipe }) => {
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
             <div className="w-full bg-white rounded-md">
                 <h2 className='text-center text-s2 p-8 text-color_primary font-bold'>Talvez você goste</h2>
-                <div className="w-full flex flex-wrap gap-4 py-8 justify-center" >
+                <div className="w-full flex flex-wrap gap-4 py-8 justify-evenly" >
                     {handleRecipeByTarget().length ?
                         handleRecipeByTarget().map(recipe => {
                             return <ListRecipes 
-                                        classContainer='w-[23rem] h-[15rem] border-[1px] overflow-hidden rounded-2xl relative border-solid cursor-pointer transition-transform hover:scale-105 hover:border-color_second'
+                                        classContainer='w-[16rem] md:w-[23rem] h-[15rem] border-[1px] overflow-hidden rounded-2xl relative border-solid cursor-pointer transition-transform hover:scale-105 hover:border-color_second'
                                         classInfoContent='w-[80%] h-[50%] absolute top-1/4 left-[10%] bg-[#fffa] rounded-2xl flex flex-col justify-center'
                                         key={recipe.id} 
                                         recipe={recipe}/>

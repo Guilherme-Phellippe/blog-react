@@ -1,4 +1,5 @@
-import { FaSave, FaCamera, FaTiktok, FaFacebook, FaInstagram } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaSave, FaCamera, FaTiktok, FaFacebook, FaInstagram, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 const action = (type) => {
 
@@ -29,17 +30,29 @@ const action = (type) => {
     }
 }
 
+
 export const IconsShare = () => {
+    const [showIconsShare, setShowIconsShare] = useState(false)
+    const customClass = showIconsShare ? "" : "-translate-x-[83.33%]"
+
+    const handleIconsMobile = () => {
+        setShowIconsShare(v => !v)
+    }
+
+
     return (
-        <div id="iconShare-print" className="w-1/12 fixed left-0 flex flex-col items-center ">
-            <div className="flex mt-8 justify-center relative w-full group">
+        <div
+            id="iconShare-print"
+            className={`${customClass} transition-all z-50 md:-z-10 w-full md:w-1/12 fixed left-0 top-[90%] md:top-0 md:left-0 border-[1px] border-color_third md:border-none rounded-3xl md:rounded-none flex md:flex-col items-center bg-white md:bg-transparent`}
+        >
+            <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible group-hover:visible group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                     Salve essa receita</span>
                 <FaSave
                     onClick={() => action('save')}
                     className='text-s3 cursor-pointer fill-green-600' />
             </div>
-            <div className="flex mt-8 justify-center relative w-full group">
+            <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible group-hover:visible group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                     Imprima essa receita
                 </span>
@@ -47,7 +60,7 @@ export const IconsShare = () => {
                     onClick={() => action('print')}
                     className='text-s3 cursor-pointer fill-color_primary' />
             </div>
-            <div className="flex mt-8 justify-center relative w-full group">
+            <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible group-hover:visible group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                     Compartilhe no Tiktok
                 </span>
@@ -55,24 +68,36 @@ export const IconsShare = () => {
                     onClick={() => action('tiktok')}
                     className='text-s3 cursor-pointer fill-[#000000]' />
             </div>
-            <div className="flex mt-8 justify-center relative w-full group">
+            <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible group-hover:visible group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                     Compartilhe no Facebook
                 </span>
                 <FaFacebook
-                onClick={() => action('facebook')}
-                className='text-s3 cursor-pointer fill-blue-800' />
+                    onClick={() => action('facebook')}
+                    className='text-s3 cursor-pointer fill-blue-800' />
             </div>
-            <div className="flex mt-8 justify-center relative w-full group">
+            <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible group-hover:visible group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-4 transition-all'>
                     Compartilhe no Instagram
                 </span>
                 <FaInstagram
-                onClick={() => action('instagram')}
-                className='text-s3 cursor-pointer fill-[#833AB4] ' />
+                    onClick={() => action('instagram')}
+                    className='text-s3 cursor-pointer fill-[#833AB4] ' />
             </div>
-            
-            
+            <div className={`md:hidden md:mt-8 justify-end p-4 z-[999] rounded-3xl relative w-full group bg-color_third flex`}>
+                {
+                    showIconsShare ?
+                        <FaArrowAltCircleLeft
+                            onClick={handleIconsMobile}
+                            className='text-s3 cursor-pointer fill-white ' />
+                        :
+                        <FaArrowAltCircleRight
+                            onClick={handleIconsMobile}
+                            className='text-s3 cursor-pointer fill-white ' />
+                }
+            </div>
+
+
         </div>
     )
 }

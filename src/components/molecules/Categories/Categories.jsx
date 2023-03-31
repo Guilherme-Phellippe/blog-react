@@ -17,7 +17,7 @@ export const Categories = ({ customClass }) => {
 
 
     return (
-        <ul className="absolute top-[115%] z-[99] flex flex-col items-center rounded-lg">
+        <ul className="absolute top-[115%] z-50 flex flex-col items-center rounded-lg">
             {
                 categories.map((category, index) => {
                     if (index <= 8) {

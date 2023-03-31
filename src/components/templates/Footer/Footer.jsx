@@ -11,9 +11,7 @@ export const Footer = () => {
                 <div className="container-links">
                     <div className="links">
                         <h3>Principais categorias</h3>
-                        <div className="relative ">
-                            <Categories />
-                        </div>
+                        
                     </div>
                     <div className="links">
                         <h3>Nossas politicas</h3>

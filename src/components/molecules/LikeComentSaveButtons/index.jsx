@@ -69,7 +69,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
             <Button
                 event={handleLovedButton}
                 customClass=
-                {`flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_3 hover:font-bold transition-all group`}
+                {`flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
                 <FaHeart className={`${customClassToLoved} group-hover:fill-red-500`} />
                 <p className={`${customClassToLoved} group-hover:text-red-500`} >Amei</p>
@@ -78,7 +78,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
             <Button
                 event={handleCommentButton}
                 customClass=
-                {`${customClassToComment} flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_3 hover:font-bold transition-all group`}
+                {`${customClassToComment} flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
                 <RiMessage2Fill className="group-hover:fill-blue-500 " />
                 <p className="group-hover:text-blue-400" >Comentar</p>
@@ -87,7 +87,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
             <Button
                 event={handleSaveButton}
                 customClass=
-                {`${customClassToSave} flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_3 hover:font-bold transition-all group`}
+                {`${customClassToSave} flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
                 <FaSave className="group-hover:fill-green-700 " />
                 <p 
