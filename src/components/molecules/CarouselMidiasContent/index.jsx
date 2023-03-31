@@ -10,7 +10,7 @@ export const CarouselMidiasContent = ({ img, name_recipe, category }) => {
             <div id="title-recipe" className={`flex gap-2 items-center px-4 h-[5%] ${valueSearch ? 'hidden':''}`}>
                 
                 {category && <>
-                    <h2 className="text-s1_3">{name_recipe}</h2>
+                    <h2 className="text-s1_4">{name_recipe}</h2>
                     <h3 className="text-s1_2"> - {category}</h3>
                 </>}
             </div>

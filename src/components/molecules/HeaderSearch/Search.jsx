@@ -18,7 +18,6 @@ export const Search = ({ width='w-1/2' }) => {
         setValueSearch(target.value)
     }
     useEffect(()=>{
-        refInputSearch.current.focus()
         refInputSearch.current.value = qs.get('search')
         setValueSearch(qs.get('search'))
     }, [qs, setValueSearch])

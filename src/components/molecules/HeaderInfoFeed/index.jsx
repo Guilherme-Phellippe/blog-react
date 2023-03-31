@@ -17,7 +17,7 @@ export const HeaderInfoFeed = ({content: { user, createdAt, id}, onClick}) => {
                     alt={user.name} />
             </div>
             <div className="w-[70%] h-full py-6 px-4 ">
-                <h2 className="text-s1_2">{user.name}</h2>
+                <h2 className="text-s1_4">{user.name}</h2>
                 <p>{moment(createdAt).startOf('hour').fromNow()}</p>
             </div>
             <div className="w-1/5 flex justify-end items-center">

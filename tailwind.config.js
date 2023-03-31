@@ -11,6 +11,7 @@ module.exports = {
         s1_1: ['clamp(11px, 1.1vw, 15px)', '18px'],
         s1_2: ['clamp(12px, 1.2vw, 16px)', '19px'],
         s1_3: ['clamp(13px, 1.3vw, 17px)','20px'],
+        s1_4: ['clamp(14px, 1.4vw, 18px)','20px'],
         s1_5: ['clamp(15px, 1.5vw, 19px)','22px'],
         s1_7: ['clamp(17px, 1.7vw, 21px)','24px'],
         s2: ['clamp(20px, 2vw, 24px)','27px'],

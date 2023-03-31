@@ -34,7 +34,7 @@ export const Candidate = ({ position, candidate }) => {
                 {`${position + 1}°`}
             </div>
             <Img
-                className="absolute -right-[10%] bottom-0 w-[30%] rounded-[50%]"
+                className="absolute -right-[10%] bottom-0 w-[40px] h-[40px] object-cover rounded-[50%]"
                 src={candidate.user.photo}
                 alt={`foto de ${candidate.user.name}`}
                 title={candidate.user.name}

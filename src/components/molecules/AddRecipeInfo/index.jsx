@@ -1,10 +1,11 @@
 import moment from "moment"
 import { useContext } from "react"
+import { FaListAlt, FaPoll } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { Button } from "../../atoms/Button"
 
-export const AddRecipeInfo = ({ content: {author, id, name_recipe, createdAt}}) => {
+export const AddRecipeInfo = ({ content: { author, id, name_recipe, createdAt } }) => {
     const { valueSearch } = useContext(HomeContext)
 
 
@@ -15,10 +16,14 @@ export const AddRecipeInfo = ({ content: {author, id, name_recipe, createdAt}}) 
                 <h2 className="text-s1_2 mt-4">Criado por: <span className="text-color_primary">{author}</span></h2>
                 <p className="text-s1 mt-4 font-bold">criado em: <span className="text-gray-500 font-normal">{moment(createdAt).format('lll')}</span></p>
             </div>
-            <Link to={'/recipe/' + id} >
-                <Button customClass={'btn-primary px-8 mt-4'}>Ver receita</Button>
-            </Link>
-            <Link className="m-2 underline cursor-pointer" to={`/poll?name=${name_recipe}`}>Vote como receita do mês</Link>
+            <div className={`w-full h-full flex justify-evenly items-center ${valueSearch ? "mt-8":"border-b-[1px] "}`}>
+                <Link to={'/recipe/' + id} >
+                    <Button customClass={'btn-primary px-8 text-s1_3'}><FaListAlt /> Ver receita</Button>
+                </Link>
+                <Link className={`${valueSearch && 'hidden'}`} to={`/poll?name=${name_recipe}`}>
+                    <Button customClass={'btn-primary px-8 text-s1_3'}><FaPoll /> Votar</Button>
+                </Link>
+            </div>
         </div>
     )
 }
