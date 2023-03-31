@@ -70,7 +70,7 @@ export const FormLogin = () => {
     }
 
     return (
-        <form className="w-1/2 flex flex-col items-center">
+        <form className="w-full mt-4 md:mt-0 md:w-1/2 flex flex-col items-center">
             <h3 className="text-s1_5 mb-4">Entre com sua conta:</h3>
             <Input
                 ref={inputEmailRef}

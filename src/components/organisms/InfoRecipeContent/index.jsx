@@ -13,13 +13,13 @@ export const InfoRecipeContent = ({ recipe }) => {
         <div className="w-full md:w-2/3 p-4">
             <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
             <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
-            <div className="w-full py-4 mt-4">
-                <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved}/>
-            </div>
             <PreparationInformation recipe={recipe} />
             <RecipeChefInfo recipe={recipe} />
             <IngredientsList ing={ing}/>
             <PrepareMode prepareMode={prepareMode}/>
+            <div className="w-full py-4 mt-4 bg-color_second">
+                <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved}/>
+            </div>
         </div>
     )
 }

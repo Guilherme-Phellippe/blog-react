@@ -81,7 +81,7 @@ export const Singup = ({ setIsLogin }) => {
 
 
     return (
-        <div className="w-full bg-white p-16">
+        <div className="w-full bg-white p-4 md:p-16">
             <h2 className="text-center font-bold text-s2 text-color_second p-4 mb-4">Crie uma conta rápido e fácil</h2>
             <div className="w-full flex flex-col items-center">
                 <div className="flex gap-16">
@@ -90,7 +90,7 @@ export const Singup = ({ setIsLogin }) => {
                 <hr className='w-1/3 m-12' />
                 <form 
                     ref={refForm}
-                    className="w-5/6 flex flex-col items-center" 
+                    className="w-full md:w-5/6 flex flex-col items-center mb-12" 
                     action=""
                 >
                     <Input
@@ -98,7 +98,7 @@ export const Singup = ({ setIsLogin }) => {
                         id="name"
                         placeholder={'DIGITE SEU NOME E SOBRENOME:'}
                         type={'text'}
-                        customWidthAndMargin="w-[50%] my-6"
+                        customWidthAndMargin="w-[80%]  md:w-[80%]  md:w-[50%] my-6"
                         icon={<FaUserCheck className={`text-s1_5 ${whatColorIconName}`} />}
                     />
                     <Input
@@ -106,32 +106,32 @@ export const Singup = ({ setIsLogin }) => {
                         id="email"
                         placeholder={'DIGITE SEU EMAIL:'}
                         type={'text'}
-                        customWidthAndMargin="w-[50%] my-6"
+                        customWidthAndMargin="w-[80%] md:w-[50%] my-6"
                         icon={<MdEmail className={`text-s1_5 ${whatColorIconEmail}`} />} />
-                    <div className="flex w-1/2 justify-center">
+                    <div className="flex w-[80%] md:w-1/2 gap-4 justify-center">
                         <Input
                             onChange={(e) => setValueFirstInputPassword(e.target.value)}
                             placeholder={'DIGITE SUA SENHA:'}
                             type={'password'}
-                            customWidthAndMargin="w-[50%] my-6"
+                            customWidthAndMargin="w-[80%] md:w-[50%] my-6"
                         />
                         <Input
                             onChange={(e) => handleCheckInputs(e)}
                             id="password"
                             placeholder={'CONFIRME SUA SENHA:'}
                             type={'password'}
-                            customWidthAndMargin="w-[50%] my-6"
+                            customWidthAndMargin="w-[80%] md:w-[50%] my-6"
                             icon={<FaLock className={`text-s1_3 ${whatColorIconPassword}`} />} />
                     </div>
                     <Button
                         event={handleCreateNewUser}
-                        customClass={'btn-primary px-16 mt-8 flex justify-center items-center gap-2 text-s1_2'}>
+                        customClass={'btn-primary px-16 mt-8 flex justify-center items-center gap-2 text-s1_4'}>
                         Criar conta <FaCheckCircle />
                     </Button>
                     <hr className='w-1/3 mt-8' />
                     <Button
                         event={() => setIsLogin(true)}
-                        customClass={'underline mt-8 flex justify-center items-center gap-2 text-s1_2'}>
+                        customClass={'underline mt-8 flex justify-center items-center gap-2 text-s1_4'}>
                         Já tem uma conta?
                     </Button>
 

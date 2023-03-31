@@ -15,7 +15,7 @@ export const Login = () => {
         <div className="container">
             <HomeProvider>
                 <Header />
-                <div className="w-full p-16">
+                <div className="w-full p-4 md:p-16">
                     <div className="w-full h-72 bg-white mb-12">
                         ads here.
                     </div>
