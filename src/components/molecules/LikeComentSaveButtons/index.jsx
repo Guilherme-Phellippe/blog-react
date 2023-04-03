@@ -71,8 +71,8 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                 customClass=
                 {`flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
-                <FaHeart className={`${customClassToLoved} group-hover:fill-red-500`} />
-                <p className={`${customClassToLoved} group-hover:text-red-500`} >Amei</p>
+                <FaHeart className={`${customClassToLoved} text-color_sub_text group-hover:fill-red-500`} />
+                <p className={`${customClassToLoved} text-color_sub_text group-hover:text-red-500`} >Amei</p>
             </Button>
 
             <Button
@@ -80,8 +80,8 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                 customClass=
                 {`${customClassToComment} flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
-                <RiMessage2Fill className="group-hover:fill-blue-500 " />
-                <p className="group-hover:text-blue-400" >Comentar</p>
+                <RiMessage2Fill className="text-color_sub_text group-hover:fill-blue-500 " />
+                <p className=" text-color_sub_text group-hover:text-blue-400" >Comentar</p>
             </Button>
 
             <Button
@@ -89,10 +89,10 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                 customClass=
                 {`${customClassToSave} flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
-                <FaSave className="group-hover:fill-green-700 " />
+                <FaSave className="text-color_sub_text group-hover:fill-green-700 " />
                 <p 
                     ref={refButtonSave}
-                    className="group-hover:text-green-700" >Salvar</p>
+                    className="text-color_sub_text group-hover:text-green-700" >Salvar</p>
             </Button>
         </div>
     )

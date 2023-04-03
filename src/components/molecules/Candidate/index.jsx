@@ -29,7 +29,7 @@ export const Candidate = ({ position, candidate }) => {
 
 
     return (
-        <div className={`${orderStyle} ${height} w-[28%] mx-auto flex flex-col justify-between relative border-[1px] border-solid border-color_second rounded-xl`}>
+        <div className={`${orderStyle} ${height} w-[30%] min-w-[110px] mx-auto flex flex-col justify-between relative border-[1px] border-solid border-color_second rounded-xl`}>
             <div className={`absolute -top-4 -left-4 px-4 py-2 rounded-[50%] bg-color_primary text-white text-s1_2`}>
                 {`${position + 1}°`}
             </div>

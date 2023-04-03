@@ -63,7 +63,7 @@ export const MainContentHome = () => {
     }, [recipes, postPerPage, valueSearch, listRecipeForRemove])
 
     useEffect(() => {
-        const removeModalRankignRecipe = document.addEventListener('click', ({ target, currentTarget }) => {
+        const removeModalRankignRecipe = document.addEventListener('click', ({ target }) => {
             const box = target.closest("div[data-id=modal-ranking-recipe-mobile]")
             if (!box) setIsOpenRanking(false)
         });

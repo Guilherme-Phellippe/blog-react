@@ -8,6 +8,11 @@ import { Button } from "../../atoms/Button"
 export const AddRecipeInfo = ({ content: { author, id, name_recipe, createdAt } }) => {
     const { valueSearch } = useContext(HomeContext)
 
+    const handleScrollDocument = () =>{
+        // need to add this scroll: auto , because on mobile,
+        // if the user clicks on the list without closing the sorting modal, scrolling is "hidden"
+        document.documentElement.style.overflow = 'auto'
+    }
 
     return (
         <div className={`h-[10%] flex flex-col items-center justify-center ${valueSearch && 'order-3 w-1/2'}`}>
@@ -17,7 +22,7 @@ export const AddRecipeInfo = ({ content: { author, id, name_recipe, createdAt } 
                 <p className="text-s1 mt-4 font-bold">criado em: <span className="text-gray-500 font-normal">{moment(createdAt).format('lll')}</span></p>
             </div>
             <div className={`w-full h-full flex justify-evenly items-center ${valueSearch ? "mt-8":"border-b-[1px] "}`}>
-                <Link to={'/recipe/' + id} >
+                <Link onClick={handleScrollDocument} to={'/recipe/' + id} >
                     <Button customClass={'btn-primary px-8 text-s1_3'}><FaListAlt /> Ver receita</Button>
                 </Link>
                 <Link className={`${valueSearch && 'hidden'}`} to={`/poll?name=${name_recipe}`}>

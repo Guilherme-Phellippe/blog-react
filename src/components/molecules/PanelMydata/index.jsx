@@ -91,7 +91,7 @@ export const PanelMydata = ({ user }) => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <div className="w-full flex justify-center">
+            <div className="w-full flex flex-col md:flex-row justify-center items-center md:items-start">
                 <label
                     onChange={handleUploadPhoto}
                     className="w-44 h-44 mt-12 flex flex-start relative cursor-pointer"
@@ -100,26 +100,26 @@ export const PanelMydata = ({ user }) => {
                     {loading && <Loading />}
                     <input className="hidden" type="file" id="file" accept="image/*" />
                     <img className="w-full h-full object-cover" src={user.photo} alt="" />
-                    <span id="file" className="btn-primary w-full absolute bottom-0 rounded-none"> Alterar foto de perfil</span>
+                    <span id="file" className="btn-primary w-full absolute z-[997] bottom-0 rounded-none"> Alterar foto de perfil</span>
                 </label>
-                <div className="w-2/3 md:w-1/2 flex flex-col justify-center p-8 my-4">
-                    <div className="w-full flex flex-col md:flex-row my-0 md:my-4 md:justify-between items-center gap-x-4">
-                        <label htmlFor="input-name" className="text-s1_3 mt-4 mb-2 text-color_sub_text">Nome completo:</label>
+                <div className="w-full md:w-1/2 flex flex-col justify-center p-8 my-4">
+                    <div className="w-full flex my-4 justify-between gap-x-4">
+                        <label htmlFor="input-name" className="w-1/3 text-s1_3 mt-4 mb-2 text-color_sub_text">Nome completo:</label>
                         <input type="text"
                             ref={refInputName}
                             id="input-name"
-                            className={`p-4 text-s1_2 text-center md:text-right rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
+                            className={`w-2/3 p-4 text-s1_3 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
                             placeholder="Seu nome copmpleto..."
                             onChange={(e) => setInputName(e.target.value)}
                             value={inputName}
                             disabled={!isOpenSaveData}
                         />
                     </div>
-                    <div className="w-full flex flex-col md:flex-row my-0 md:my-4 md:justify-between items-center gap-x-4">
-                        <label htmlFor="input-email" className="text-s1_3 mt-4 mb-2 text-color_sub_text"> E-mail:</label>
+                    <div className="w-full flex my-0 md:my-4 justify-between gap-x-4">
+                        <label htmlFor="input-email" className="w-1/3 text-s1_3 mt-4 mb-2 text-color_sub_text"> E-mail:</label>
                         <input type="text"
                             id="input-email"
-                            className={`p-4 text-s1_2 text-center md:text-right rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
+                            className={`w-2/3 p-4 text-s1_3 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
                             placeholder="Seu e-mail..."
                             onChange={(e) => setInputEmail(e.target.value)}
                             value={inputEmail}
@@ -142,7 +142,7 @@ export const PanelMydata = ({ user }) => {
                 <div className='w-full md:w-4/5 flex flex-wrap justify-evenly px-4 gap-1 md:gap-8 border-[1px] border-[#0001] p-4 rounded-xl'>
                     {infos.map((info, key) =>
                         <div key={key} className="flex flex-col justify-between items-center w-[22%] md:w-1/5 py-4 bg-white rounded-xl shadow-md border-[1px] border-color_second hover:scale-105 transition-all">
-                            <h3 className="text-s1_3 text-center text-color_text">{info.name}</h3>
+                            <h3 className="text-s1_1 md:text-s1_3 text-center text-color_text">{info.name}</h3>
                             <span className="text-s1_5 font-semibold text-color_primary my-4">{info.value}</span>
                         </div>)}
                 </div>
@@ -160,7 +160,7 @@ export const PanelMydata = ({ user }) => {
             }
             <span
                 onClick={handleDeleteUser}
-                className="underline cursor-pointer text-red-400 text-s1"
+                className="underline cursor-pointer text-red-400 text-s1_1 mt-4 mb-16"
             >Deletar conta</span>
         </div>
     )

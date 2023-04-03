@@ -43,7 +43,7 @@ export const FormLogin = () => {
         if (inputEmailRef.current.value.length && inputPasswordRef.current.value.length) {
             const { data } = await api.current.authenticateUser(
                 {
-                    email: inputEmailRef.current.value,
+                    email: inputEmailRef.current.value.toLowerCase(),
                     password: inputPasswordRef.current.value
                 }
             );
