@@ -81,8 +81,8 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
     }
 
     return (
-        <div className={`flex gap-4 justify-center items-center relative overflow-hidden ${isMyRecipes ? "w-full" : "w-1/3"}`}>
-            <div className={`w-4/5 flex border-[1px] border-color_primary shadow-sm relative ${isMyRecipes ? "h-[200px]" : "flex-col h-[300px]"}`}>
+        <div className={`flex gap-y-4 justify-center items-center relative overflow-hidden ${isMyRecipes ? "w-full" : "w-1/3"}`}>
+            <div className={`w-[95%] md:w-4/5 flex border-[1px] border-color_primary shadow-sm relative ${isMyRecipes ? "h-[150px] md:h-[200px]" : "flex-col h-[300px]"}`}>
                 {
                     activeSettings ?
                         <label onChange={handleUploadImage} className={`cursor-pointer relative w-2/5 h-full`} htmlFor="file">
