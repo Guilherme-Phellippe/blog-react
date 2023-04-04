@@ -121,8 +121,8 @@ export const MainCreateRecipe = () => {
     }
 
     return (
-        <main className="w-10/12 bg-white mx-auto flex flex-col items-center p-16">
-            <h2 className="text-s2_5 text-center pb-8 font-semibold text-color_primary">Vamos criar uma receita?</h2>
+        <main className="w-[95%] md:w-10/12 bg-white mx-auto flex flex-col items-center p-4 md:p-16">
+            <h2 className="text-s2 md:text-s2_5 text-center pb-4 md:pb-8 font-semibold text-color_primary">Vamos criar uma receita?</h2>
             <div className="w-full flex justify-center gap-12 my-8">
                 <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full relative ${step >= 1 && "bg-color_primary text-white "}`}>
                     <MdImportContacts className="text-s1_5 z-10" />
@@ -136,7 +136,7 @@ export const MainCreateRecipe = () => {
                     <MdImage className="text-s1_5 " />
                 </span>
             </div>
-            <form className="w-4/5 flex flex-col items-center gap-y-6">
+            <form className="w-full md:w-4/5 flex flex-col items-center gap-y-6">
                 <div ref={refOneStep} className={`w-full flex-col justify-center items-center ${step === 1 ? "flex" : "hidden"}`}>
                     <StepOneCreateRecipe categories={categories}/>
                 </div>

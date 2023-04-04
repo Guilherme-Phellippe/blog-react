@@ -99,16 +99,16 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
                 <div className={`px-4 flex flex-col justify-around items-center ${isMyRecipes ? "w-3/5" : "w-full"}`}>
                     <input
                         title={inputCategory}
-                        value={formatTextLong(inputCategory, 40)}
+                        value={inputCategory}
                         onChange={({ target }) => setInputCategory(target.value)}
-                        className={`text-s1 text-center text-color_text p-2 outline-none ${activeSettings ? "bg-background" : "border-none  bg-transparent"}`}
+                        className={`w-[90%] text-s1 text-center text-color_text p-2 outline-none ${activeSettings ? "bg-background" : "border-none  bg-transparent"}`}
                         disabled={!activeSettings}
                     />
                     <input
                         title={inputNameRecipe}
-                        value={window.innerWidth < 700 ? formatTextLong(inputNameRecipe, 20) : formatTextLong(inputNameRecipe, 40)}
+                        value={inputNameRecipe}
                         onChange={({ target }) => setInputNameRecipe(target.value.charAt(0).toUpperCase() + target.value.slice(1))}
-                        className={`text-s1_3 text-center text-color_text p-2 outline-none ${activeSettings ? "bg-background" : "border-none  bg-transparent"}`}
+                        className={`w-[90%] text-s1_3 text-center text-color_text p-2 outline-none ${activeSettings ? "bg-background" : "border-none  bg-transparent"}`}
                         disabled={!activeSettings}
                     />
                     <h3 className="text-s1">{moment(recipe.createdAt).format("lll")}</h3>
@@ -138,7 +138,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
             </div>
             {
                 activeSettings &&
-                <Button event={handleDeleteRecipe} customClass="btn-primary bg-red-500 relative">{loading && <Loading />} <MdDelete /> Deletar receita </Button>
+                <Button event={handleDeleteRecipe} customClass="btn-primary bg-red-500 relative">{loading && <Loading />} <MdDelete /> {window.innerWidth < 700 ? "":"Deletar receita"} </Button>
             }
         </div>
     )

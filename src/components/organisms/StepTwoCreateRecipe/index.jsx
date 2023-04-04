@@ -33,8 +33,7 @@ export const StepTwoCreateRecipe = () => {
 
     return (
         <>
-            
-            <div className="w-1/2 my-8 flex flex-col items-center">
+            <div className="w-full md:w-1/2 my-8 flex flex-col items-center">
                 <h2 className="text-s1_5 text-color_primary p-4 mb-4 font-bold">Quais são os ingredientes?</h2>
                 {!!listIngredients.length && <div className="flex flex-col">
                     <ul id="ing">
@@ -65,7 +64,7 @@ export const StepTwoCreateRecipe = () => {
                     />
                 </div>
             </div>
-            <div className="flex flex-col w-1/2 h-[20rem]">
+            <div className="flex flex-col w-full md:w-1/2 h-[20rem]">
                 <TextArea
                 id="prepare-mode"
                     placeholder="ex.: em uma panela coloque...."

@@ -60,7 +60,7 @@ export const StepThreeCreateRecipe = ({ images, setImages }) => {
         <>
             <label
                 forhtml="image-file"
-                className="w-1/2 h-[10rem] cursor-pointer border-2 border-dotted border-color_primary flex justify-center items-center"
+                className="w-full md:w-1/2 h-[10rem] cursor-pointer border-2 border-dotted border-color_primary flex justify-center items-center"
             >
                 <h2 className="text-s1_3 text-gray-500">
                     Clique ou solte suas imagens aqui
@@ -95,7 +95,7 @@ export const StepThreeCreateRecipe = ({ images, setImages }) => {
 
 
 
-            <div className="w-1/2 flex flex-col my-8">
+            <div className="w-full md:w-1/2 flex flex-col my-8">
                 <h2 className="text-s1_5 w-full text-center">Coloque palavras chaves para sua receita ficar bem ranqueada</h2>
                 {!!wordKeys.length && <ul id="word-keys" className="w-1/2 mx-auto my-4 text-s1_1 flex flex-col justify-center">
                     {wordKeys.map((word, index) =>

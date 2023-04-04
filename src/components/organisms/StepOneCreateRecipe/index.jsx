@@ -38,11 +38,11 @@ export const StepOneCreateRecipe = ({ categories }) => {
                 label="Nome da sua receita"
                 placeholder="ex.: Bolo de cenoura"
                 id="name_recipe"
-                customWidthAndMargin="w-[51%] my-6"
+                customWidthAndMargin="w-[95%] md:w-[51%] my-6"
                 icon={<h2 className={`text-s1_3 ${limitSizeTittle < 0 && 'text-red-500'}`}>{limitSizeTittle}</h2>}
             />
 
-            <div className="w-[51%]">
+            <div className="w-[95%] md:w-[51%]">
                 <Input
                     id="time"
                     label="Quantos minutos para preparar sua receita?"
@@ -52,7 +52,7 @@ export const StepOneCreateRecipe = ({ categories }) => {
                     min={0}
                 />
             </div>
-            <div className="w-[51%]">
+            <div className="w-[95%] md:w-[51%]">
                 <Input
                     id="portion"
                     label="Quantas porções ela rende?"
@@ -61,7 +61,7 @@ export const StepOneCreateRecipe = ({ categories }) => {
                     type={'number'}
                 />
             </div>
-            <div className="w-[51%] flex-col">
+            <div className="w-[95%] md:w-[51%] flex-col">
                 <Input
                     id="category"
                     ref={refInputCategory}

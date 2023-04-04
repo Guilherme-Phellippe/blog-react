@@ -3,7 +3,7 @@ import React from "react"
 export const TextArea = React.forwardRef(({ placeholder, label, id }, ref) => {
     return (
         <>
-            <label className="w-full text-center text-s1_2 text-color_text">{label}</label>
+            <label className="w-full text-center text-s1_2 text-color_text mb-4">{label}</label>
             <textarea
                 id={id}
                 ref={ref}
