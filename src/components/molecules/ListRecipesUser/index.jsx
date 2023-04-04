@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import moment from "moment"
 import { useState } from "react"
-import { formatTextLong } from "../../../scripts/formatTextLong"
 
 import { MdDelete, MdCheckBox } from "react-icons/md"
 import { FcSettings } from "react-icons/fc"

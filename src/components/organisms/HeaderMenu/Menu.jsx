@@ -43,7 +43,7 @@ export const Menu = () => {
         })
     }
 
-    return ( 
+    return (
         <div className="container-menu w-full h-[50px] items-center bg-color_primary order-1 md:order-2">
             <>
                 {
@@ -71,7 +71,9 @@ export const Menu = () => {
 
 
                             <div className="h-full p-4 flex md:hidden justify-between items-center">
-                                <Logo hidden={"flex md:hidden"} />
+                                <div className="w-1/5 h-full flex md:hidden">
+                                    <Logo />
+                                </div>
                                 <GiHamburgerMenu onClick={() => setMenuIsOpen(true)} className='fill-white text-s2_5 cursor-pointer' />
                             </div>
                         </>

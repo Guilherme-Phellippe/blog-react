@@ -5,6 +5,7 @@ import { Link, useSearchParams } from "react-router-dom"
 import { useRecipeApi } from "../../../hooks/useApi"
 import { Button } from "../../atoms/Button"
 import { Input } from "../../atoms/Input"
+import { Loading } from "../../atoms/Loading/Loading"
 
 export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe }) => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -16,6 +17,7 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
     const [recipesPerPage, setRecipesPerPage] = useState(10);
     const refTablePoll = useRef();
     const [qs, setQs] = useSearchParams();
+    const [loading, setLoading] = useState(false)
 
 
 
@@ -49,9 +51,6 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
         })
     }, [candidatesRecipe])
 
-
-
-
     useEffect(() => {
         var newCandidates = search ? candidatesRecipe.filter(candidate =>
             candidate.name_recipe.toLowerCase().includes(search.toLowerCase())
@@ -60,10 +59,10 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
             ||
             Number(candidate.id) === Number(search))
             : candidatesRecipe.filter(candidate => {
-                const createdDate = moment(candidate.createdAt).month()+""+moment(candidate.createdAt).year();
-                const currenntDate = moment().month()+""+moment().year();
+                const createdDate = moment(candidate.createdAt).month() + "" + moment(candidate.createdAt).year();
+                const currenntDate = moment().month() + "" + moment().year();
 
-                if(createdDate === currenntDate) return candidate
+                if (createdDate === currenntDate) return candidate
                 else return null
             });
 
@@ -73,17 +72,18 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
 
     const handleVoteUser = async ({ currentTarget }) => {
         if (token) {
+            setLoading(true)
             const { data } = await refVotesApi.current.verifyExistVote(token.id)
-
-            if(!data){
-                const { data } = await refVotesApi.current.updateVotesRecipe({ idUser: token.id, idRecipe: currentTarget.id })
-                if (data) {
+            if (!data) {
+                const data = await refVotesApi.current.updateVotesRecipe({ userId: token.id, recipeId: currentTarget.id })
+                if (data.status === 204) {
                     setUpdateListRecipe(true)
                     setAlreadyVoted(true)
                     alert("você votou com sucesso!")
                 }
-            }else alert("Essa receita não pode ser mais votada ou você já usou seu voto")
+            } else alert("Essa receita não pode ser mais votada ou você já usou seu voto")
             setSearch('')
+            setLoading(false)
         } else alert("Você precisa criar uma conta para poder votar!")
     }
 
@@ -97,7 +97,7 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
                     value={search}
                     icon={<FaSearch className="text-s1_5  fill-color_primary" />}
                     placeholder="Busque sua receita favorita..."
-                    size={window.innerWidth <= 767 ? 3 : 1}
+                    customWidthAndMargin="w-full"
                 />
             </div>
             <table className="w-full border-[1px] border-solid" ref={refTablePoll}>
@@ -135,12 +135,16 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
                                         <Button customClass="btn-primary bg-color_second">Ver</Button>
                                     </Link>
                                 </td>
-                                <td className="py-4 text-s1_2">
-                                    {!alreadyVoted ?
-                                        <Button
-                                            id={candidate.id}
-                                            event={handleVoteUser}
-                                        >Votar</Button>: <p>Voto realizado</p>
+                                <td className="py-4 text-s1_2 relative">
+                                    {
+                                        loading ?
+                                            <Loading />
+                                            :
+                                            !alreadyVoted ?
+                                                <Button
+                                                    id={candidate.id}
+                                                    event={handleVoteUser}
+                                                >Votar</Button> : <p>Voto realizado</p>
                                     }
                                 </td>
                             </tr>

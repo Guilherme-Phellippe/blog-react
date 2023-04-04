@@ -61,7 +61,7 @@ export const useRecipeApi = () => ({
         return data
     },
     updateVotesRecipe: async (ids) => {
-        const data = await api.patch(`/recipe/${ids.idUser}/votes/${ids.idRecipe}`).catch(err => {
+        const data = await api.patch(`/recipe/${ids.userId}/votes/${ids.recipeId}`).catch(err => {
             return err
         });
 
