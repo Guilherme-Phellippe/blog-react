@@ -15,7 +15,7 @@ export const MainUserPanel = () => {
     ];
     const [user, setUser] = useState();
     const navigate = useNavigate()
-    const [infoSelect, setInfoSelect] = useState(navLinks[0]);
+    const [infoSelect, setInfoSelect] = useState(navLinks[0].name);
     const refUserApi = useRef(useUserApi())
     const token = localStorage.getItem("token")
     const refNav = useRef()

@@ -28,7 +28,7 @@ export const PanelMydata = ({ user }) => {
     const handleUpdateUser = async ({ target }) => {
         setLoading(true)
         refInputName.current.click();
-        if (target.textContent === "Salvar dados") {
+        if (target.textContent === "Salvar alteração") {
             const userData = {
                 id: user.id,
                 name: inputName,
@@ -139,11 +139,11 @@ export const PanelMydata = ({ user }) => {
             </Button>
             <div className="w-full flex flex-col items-center my-8">
                 <h2 className="text-s1_5 mb-6">Informações gerais</h2>
-                <div className='w-full md:w-4/5 flex flex-wrap justify-evenly px-4 gap-1 md:gap-8 border-[1px] border-[#0001] p-4 rounded-xl'>
+                <div className='w-full md:w-4/5 flex flex-wrap justify-evenly px-4 gap-4 md:gap-8 border-[1px] border-[#0001] p-4 rounded-xl'>
                     {infos.map((info, key) =>
-                        <div key={key} className="flex flex-col justify-between items-center w-[22%] md:w-1/5 py-4 bg-white rounded-xl shadow-md border-[1px] border-color_second hover:scale-105 transition-all">
-                            <h3 className="text-s1_1 md:text-s1_3 text-center text-color_text">{info.name}</h3>
-                            <span className="text-s1_5 font-semibold text-color_primary my-4">{info.value}</span>
+                        <div key={key} className="flex flex-col justify-between items-center w-2/5 md:w-1/5 py-4 bg-white rounded-xl shadow-md border-[1px] border-color_second hover:scale-105 transition-all">
+                            <h3 className="w-4/5 text-s1_1 md:text-s1_3 text-center text-color_text">{info.name}</h3>
+                            <span className="text-s2 font-semibold text-color_primary my-2">{info.value}</span>
                         </div>)}
                 </div>
             </div>
