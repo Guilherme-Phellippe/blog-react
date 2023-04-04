@@ -36,19 +36,20 @@ export const Notification = ({ notification, setNotifications }) => {
     return (
         <div className={`w-full flex-col border-[1px] ${read ? "border-color_sub_text" : "border-color_second"}`}>
             <div className={`w-full h-36 border-[1px] flex justify-evenly items-center cursor-pointer`}>
-                <div className="w-1/5 grid place-items-center border-r-[1px]">
+                <div className="w-1/12 md:w-1/5 grid place-items-center border-r-[1px]">
                     <MdMessage className={`text-s2_5 ${read ? "text-color_sub_text" : "text-color_second"}`} />
                 </div>
-                <div onClick={() => setShowMessage(msg => !msg)} className="w-3/5 flex justify-between">
+                <div onClick={() => setShowMessage(msg => !msg)} className="w-2/5 md:w-3/5 flex justify-between">
                     <p className={`text-s1_5 ${!read && 'text-color_primary'}`}>{formatTextLong(notification.notification.title, 30)}</p>
                     {showMessage ? <MdArrowDropUp className="text-s2_5" /> : <MdArrowDropDown className="text-s2_5" />}
                 </div>
-                <div className="w-1/5 flex justify-center gap-8">
+                <div className="w-1/6 flex justify-center gap-8">
                     <p
                         onClick={handleReadMessage}
                         className="flex flex-col justify-center items-center"
                     >
-                        <MdCheckBox className={`text-s2  ${read ? "fill-green-800" : "fill-color_sub_text"}`} /> Marcar como lida
+                        <MdCheckBox className={`text-s2  ${read ? "fill-green-800" : "fill-color_sub_text"}`} />
+                        {window.innerWidth < 700 ? "Lida": "Marcar como lida"}
                     </p>
                     <p
                         id={notification.notificationId}

@@ -81,8 +81,8 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
     }
 
     return (
-        <div className={`flex gap-y-4 justify-center items-center relative overflow-hidden ${isMyRecipes ? "w-full" : "w-1/3"}`}>
-            <div className={`w-[95%] md:w-4/5 flex border-[1px] border-color_primary shadow-sm relative ${isMyRecipes ? "h-[150px] md:h-[200px]" : "flex-col h-[300px]"}`}>
+        <div className={`flex gap-y-4 justify-center items-center relative overflow-hidden ${isMyRecipes ? "w-full" : "w-1/2 md:w-1/3"}`}>
+            <div className={`w-[95%] md:w-4/5 flex border-[1px] border-color_primary shadow-sm relative ${isMyRecipes ? "h-[150px] md:h-[200px]" : "flex-col h-[250px] md:h-[300px]"}`}>
                 {
                     activeSettings ?
                         <label onChange={handleUploadImage} className={`cursor-pointer relative w-2/5 h-full`} htmlFor="file">
@@ -106,7 +106,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
                     />
                     <input
                         title={inputNameRecipe}
-                        value={formatTextLong(inputNameRecipe, 40)}
+                        value={window.innerWidth < 700 ? formatTextLong(inputNameRecipe, 20) : formatTextLong(inputNameRecipe, 40)}
                         onChange={({ target }) => setInputNameRecipe(target.value.charAt(0).toUpperCase() + target.value.slice(1))}
                         className={`text-s1_3 text-center text-color_text p-2 outline-none ${activeSettings ? "bg-background" : "border-none  bg-transparent"}`}
                         disabled={!activeSettings}
