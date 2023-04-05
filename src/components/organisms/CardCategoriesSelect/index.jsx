@@ -21,7 +21,7 @@ export const CardCategoriesSelect = ({ category }) => {
                 <ListRecipes
                     key={recipe.id}
                     recipe={recipe}
-                    classContainer='w-[23rem] h-[15rem] border-[1px] overflow-hidden rounded-2xl relative border-solid cursor-pointer transition-transform hover:scale-105 hover:border-color_second'
+                    classContainer='w-[15rem] md:w-[23rem] h-[15rem] border-[1px] overflow-hidden rounded-2xl relative border-solid cursor-pointer transition-transform hover:scale-105 hover:border-color_second'
                     classInfoContent='w-[80%] h-[50%] absolute top-1/4 left-[10%] bg-[#fffa] rounded-2xl flex flex-col justify-center'
                 />
             )}

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { FaPen } from 'react-icons/fa'
-import { RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
+import { RiAccountBoxFill, RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
+import { DialogConfirm } from '../../../../modals/DialogConfirm'
 
 import { Button } from '../../../atoms/Button'
 import { Input } from '../../../atoms/Input'
@@ -12,16 +13,25 @@ export const CreateFeed = ({ user }) => {
 
     const navigate = useNavigate();
     const [valueInput, setValueInput] = useState('');
+    const [openModalConfirm, setModalConfirm] = useState(false);
+    const [containerConfirm, setContainerConfirm] = useState();
 
 
     const handleCanCreateRecipe = () => {
 
-        if(user){
+        if (user) {
             navigate(`/create/?n=${valueInput}`)
-        }else{
-            //eslint-disable-next-line no-restricted-globals
-            const response = confirm("Você precisa fazer login para criar uma receita")
-            response && navigate(`/login`)
+        } else {
+            setContainerConfirm({
+                function: setModalConfirm(true),
+                type: 1,
+                message: "Você precisa criar uma conta antes de publicar um receita!",
+                button:{
+                    icon: <RiAccountBoxFill />,
+                    title:"Criar conta",
+                    event:()=> navigate('/register')
+                }
+            })
         }
 
     }
@@ -45,12 +55,19 @@ export const CreateFeed = ({ user }) => {
                 />
             </div>
             <div className="flex justify-around">
-                <Button 
+                <Button
                     customClass='btn-primary px-4'
                     event={handleCanCreateRecipe}
                 >Publicar receita <RiSendPlaneFill /></Button>
                 <Button customClass='btn-primary px-4 '>Dica de cozinha <RiLightbulbFill /></Button>
             </div>
+
+            {
+                openModalConfirm && <DialogConfirm
+                    open={{ openModalConfirm, setModalConfirm }}
+                    container={ containerConfirm }
+                />
+            }
         </div >
     )
 }

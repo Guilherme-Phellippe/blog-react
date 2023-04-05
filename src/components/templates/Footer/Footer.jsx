@@ -8,23 +8,23 @@ import { Link } from 'react-router-dom'
 export const Footer = () => {
     return (
         <footer className='w-full h-auto md:h-[40vh] bg-color_primary flex flex-col items-center mt-8 '>
-            <div className="w-full h-full ">
-                <div className="flex flex-col md:flex-nowrap w-full h-full justify-evenly">
+            <div className="w-full h-full">
+                <div className="flex flex-col md:flex-row w-full h-full justify-evenly">
 
                     <div className="flex flex-col justify-start items-center min-w-1/4 pt-8">
-                        <h3 className='text-s2 text-white mb-8'>Nossas politicas</h3>
-                        <a className='text-s1_5 text-white underline my-4 cursor-pointer' href="/">privacidade</a>
-                        <a className='text-s1_5 text-white underline my-4 cursor-pointer' href="/">Termos de uso</a>
-                        <a className='text-s1_5 text-white underline my-4 cursor-pointer' href="/">publicidade</a>
+                        <h3 className='text-s2 md:text-s1_7 text-white mb-8'>Nossas politicas</h3>
+                        <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/">privacidade</a>
+                        <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/">Termos de uso</a>
+                        <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/">publicidade</a>
                     </div>
 
 
                     <div className="flex flex-col justify-start items-center min-w-1/4 pt-8">
-                        <h3 className='text-s2 text-white mb-8'>Sobre</h3>
-                        <a className='text-s1_5 text-white underline my-4 cursor-pointer' href="/">Quem somos?</a>
-                        <a className='text-s1_5 text-white underline my-4 cursor-pointer' href="/">Contato</a>
+                        <h3 className='text-s2 md:text-s1_7 text-white mb-8'>Sobre</h3>
+                        <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/">Quem somos?</a>
+                        <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/">Contato</a>
                         <Link to={'/create/?n='}>
-                            <Button customClass='btn-second mt-12 text-s1_5 p-4'>Publique uma receita</Button>
+                            <Button customClass='btn-second mt-12 text-s1_4 p-4'>Publique uma receita</Button>
                         </Link>
                     </div>
 
