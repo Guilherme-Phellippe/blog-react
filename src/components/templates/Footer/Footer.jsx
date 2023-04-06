@@ -11,7 +11,7 @@ export const Footer = () => {
             <div className="w-full h-full">
                 <div className="flex flex-col md:flex-row w-full h-full justify-evenly">
 
-                    <div className="flex flex-col justify-start items-center w-1/4 pt-8">
+                    <div className="flex flex-col justify-start items-center w-full md:w-1/4 pt-8">
                         <h3 className='text-s2 md:text-s1_7 text-white mb-8'>Nossos parceiros</h3>
                         <p className='text-s1_5 md:text-s1_3 text-white px-4 text-center' > Nosso blog ainda é totalmente independente, 
                             mas estamos em busca de patrocinadores que queiram apoiar o nosso trabalho 

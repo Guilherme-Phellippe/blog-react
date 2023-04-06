@@ -175,7 +175,8 @@ export const MainCreateRecipe = () => {
                 }
 
                 {
-                    hasRecipeReady && step === 1 && <div className="flex flex-col justify-center items-center fixed right-32 w-1/5 bg-orange-500 p-4 rounded-2xl overflow-hidden">
+                    hasRecipeReady && step === 1 &&
+                    <div className="flex flex-col justify-center items-center fixed right-8 md:right-32 w-1/2 md:w-1/5 bg-orange-500 p-4 rounded-2xl overflow-hidden z-[999]">
                         <FaWindowClose
                             className="absolute right-0 top-0 fill-red-800 text-s1_5 cursor-pointer"
                             onClick={() => setHasRecipeReady('')}

@@ -70,8 +70,8 @@ export const Menu = () => {
                             </ul>
 
 
-                            <div className="h-full p-4 flex md:hidden justify-between items-center">
-                                <div className="w-1/5 h-full flex md:hidden">
+                            <div className="h-full px-4 flex md:hidden justify-between items-center">
+                                <div className="w-1/4 h-full flex md:hidden">
                                     <Logo />
                                 </div>
                                 <GiHamburgerMenu onClick={() => setMenuIsOpen(true)} className='fill-white text-s2_5 cursor-pointer' />
