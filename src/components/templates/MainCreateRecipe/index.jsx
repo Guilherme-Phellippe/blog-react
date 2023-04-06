@@ -45,13 +45,14 @@ export const MainCreateRecipe = () => {
         e.preventDefault()
         if (e.currentTarget.id === "next") {
             const ingredients = Array.from(refTwoStep.current.querySelectorAll('ul#ing li p')).map(p => p.textContent)
+            const ingredientsNewList = Array.from(refTwoStep.current.querySelectorAll('ul#new-ing li p')).map(p => p.textContent)
             const wordKey = Array.from(refThreeStep.current.querySelectorAll('ul#word-keys li p')).map(p => p.textContent)
-            
+
             if (step === 1) {
                 const category = refOneStep.current.querySelector('div input#category').value;
                 const formatCategoryUpperCase = category.charAt(0).toUpperCase() + category.slice(1)
                 const response = await categoryApiRef.current.createNewCategory(formatCategoryUpperCase);
-                
+
                 if (response.data) {
                     var categoriesData = { data: null }
                     if (response.status === 201) categoriesData = await categoryApiRef.current.getAllCategory();
@@ -74,6 +75,7 @@ export const MainCreateRecipe = () => {
             }
             else if (step === 2) {
                 modelRecipe.ing = ingredients;
+                modelRecipe.stuffing_ing = ingredientsNewList;
                 modelRecipe.prepareMode = refTwoStep.current.querySelector('textArea#prepare-mode').value;
 
                 if (!!modelRecipe.ing.length && modelRecipe.prepareMode) {
@@ -121,70 +123,71 @@ export const MainCreateRecipe = () => {
     }
 
     return (
-        <main className="w-[95%] md:w-10/12 bg-white mx-auto flex flex-col items-center p-4 md:p-16">
-            <h2 className="text-s2 md:text-s2_5 text-center pb-4 md:pb-8 font-semibold text-color_primary">Vamos criar uma receita?</h2>
-            <div className="w-full flex justify-center gap-12 my-8">
-                <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full relative ${step >= 1 && "bg-color_primary text-white "}`}>
-                    <MdImportContacts className="text-s1_5 z-10" />
-                    <span className="absolute -z-0 left-full top-1/2 w-full h-[1px] bg-black opacity-30"></span>
-                </span>
-                <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full relative ${step >= 2 ? "bg-color_primary text-white" : "bg-white"}`}>
-                    <MdList className="text-s1_5 " />
-                    <span className="absolute -z-0 left-full top-1/2 w-full h-[1px] bg-black opacity-30"></span>
-                </span>
-                <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full ${step >= 3 ? "bg-color_primary text-white" : "bg-white"}`}>
-                    <MdImage className="text-s1_5 " />
-                </span>
-            </div>
-            <form className="w-full md:w-4/5 flex flex-col items-center gap-y-6">
-                <div ref={refOneStep} className={`w-full flex-col justify-center items-center ${step === 1 ? "flex" : "hidden"}`}>
-                    <StepOneCreateRecipe categories={categories}/>
+        <main className="w-full max-w-[1500px] mx-auto">
+            <div className="w-[95%] md:w-10/12 bg-white mx-auto flex flex-col items-center p-4 md:p-16">
+                <h2 className="text-s2 md:text-s2_5 text-center pb-4 md:pb-8 font-semibold text-color_primary">Vamos criar uma receita?</h2>
+                <div className="w-full flex justify-center gap-12 my-8">
+                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full relative ${step >= 1 && "bg-color_primary text-white "}`}>
+                        <MdImportContacts className="text-s1_5 z-10" />
+                        <span className="absolute -z-0 left-full top-1/2 w-full h-[1px] bg-black opacity-30"></span>
+                    </span>
+                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full relative ${step >= 2 ? "bg-color_primary text-white" : "bg-white"}`}>
+                        <MdList className="text-s1_5 " />
+                        <span className="absolute -z-0 left-full top-1/2 w-full h-[1px] bg-black opacity-30"></span>
+                    </span>
+                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full ${step >= 3 ? "bg-color_primary text-white" : "bg-white"}`}>
+                        <MdImage className="text-s1_5 " />
+                    </span>
                 </div>
-                <div ref={refTwoStep} className={`w-full flex-col justify-center items-center ${step === 2 ? "flex" : "hidden"}`}>
-                    <StepTwoCreateRecipe />
-                </div>
-                <div ref={refThreeStep} className={`w-full flex-col justify-center items-center ${step === 3 ? "flex" : "hidden"}`}>
-                    <StepThreeCreateRecipe
-                        images={images}
-                        setImages={setImages}
-                    />
-                </div>
-
-                <div className="flex">
-                    {step > 1 && <Button
-                        id="previous"
-                        customClass="btn-primary px-8 mx-8"
-                        event={handleNextButton}
-                    ><FaArrowLeft /> Voltar</Button>}
-                    <Button
-                        id="next"
-                        customClass="btn-primary px-8 mx-8"
-                        event={handleNextButton}
-                    >Proxímo <FaArrowRight /></Button>
-                </div>
-            </form>
-
-            {modalSuccessOpen &&
-                <BoxMenssage
-                    setOpen={setModalSuccessOpen}
-                    menssage={modalMenssage}
-                />
-            }
-
-            {
-                hasRecipeReady && step === 1 && <div className="flex flex-col justify-center items-center fixed right-32 w-1/5 bg-orange-500 p-4 rounded-2xl overflow-hidden">
-                    <FaWindowClose
-                        className="absolute right-0 top-0 fill-red-800 text-s1_5 cursor-pointer"
-                        onClick={() => setHasRecipeReady('')}
-                    />
-                    <p className="text-white font-semibold text-center text-s1_3">Voce já tem uma receita salva, deseja continuar editando?</p>
-                    <div className="flex w-full justify-between">
-                        <Button event={handleAlreadyCreatedRecipe} customClass="btn-second mt-4 px-8">Ok</Button>
-                        <Button event={() => { setHasRecipeReady(''); localStorage.removeItem('recipe') }} customClass="underline text-white mt-4 px-4">descartar</Button>
+                <form className="w-full md:w-4/5 flex flex-col items-center gap-y-6">
+                    <div ref={refOneStep} className={`w-full flex-col justify-center items-center ${step === 1 ? "flex" : "hidden"}`}>
+                        <StepOneCreateRecipe categories={categories} />
                     </div>
-                </div>
-            }
+                    <div ref={refTwoStep} className={`w-full flex-col justify-center items-center ${step === 2 ? "flex" : "hidden"}`}>
+                        <StepTwoCreateRecipe />
+                    </div>
+                    <div ref={refThreeStep} className={`w-full flex-col justify-center items-center ${step === 3 ? "flex" : "hidden"}`}>
+                        <StepThreeCreateRecipe
+                            images={images}
+                            setImages={setImages}
+                        />
+                    </div>
 
+                    <div className="flex mt-8">
+                        {step > 1 && <Button
+                            id="previous"
+                            customClass="btn-primary text-s1_1 px-8 mx-8"
+                            event={handleNextButton}
+                        ><FaArrowLeft /> Voltar</Button>}
+                        <Button
+                            id="next"
+                            customClass="btn-primary text-s1_1 px-8 mx-8"
+                            event={handleNextButton}
+                        >Proxímo <FaArrowRight /></Button>
+                    </div>
+                </form>
+
+                {modalSuccessOpen &&
+                    <BoxMenssage
+                        setOpen={setModalSuccessOpen}
+                        menssage={modalMenssage}
+                    />
+                }
+
+                {
+                    hasRecipeReady && step === 1 && <div className="flex flex-col justify-center items-center fixed right-32 w-1/5 bg-orange-500 p-4 rounded-2xl overflow-hidden">
+                        <FaWindowClose
+                            className="absolute right-0 top-0 fill-red-800 text-s1_5 cursor-pointer"
+                            onClick={() => setHasRecipeReady('')}
+                        />
+                        <p className="text-white font-semibold text-center text-s1_3">Voce já tem uma receita salva, deseja continuar editando?</p>
+                        <div className="flex w-full justify-between">
+                            <Button event={handleAlreadyCreatedRecipe} customClass="btn-second mt-4 px-8">Ok</Button>
+                            <Button event={() => { setHasRecipeReady(''); localStorage.removeItem('recipe') }} customClass="underline text-white mt-4 px-4">descartar</Button>
+                        </div>
+                    </div>
+                }
+            </div>
         </main>
     )
 }

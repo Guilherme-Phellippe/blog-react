@@ -7,12 +7,10 @@ import { Main } from '../../components/templates/RecipeMain';
 export const Recipe = () => {
 
     return (
-        <div className="container">
-            <HomeProvider>
-                <Header />
-                <Main />
-                <Footer />
-            </HomeProvider>
-        </div>
+        <HomeProvider>
+            <Header />
+            <Main />
+            <Footer />
+        </HomeProvider>
     )
 }
