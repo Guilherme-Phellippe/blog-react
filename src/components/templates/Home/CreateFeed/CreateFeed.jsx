@@ -18,7 +18,6 @@ export const CreateFeed = ({ user }) => {
 
 
     const handleCanCreateRecipe = () => {
-        console.log(user)
         if (user) {
             navigate(`/create/?n=${valueInput}`)
         } else {

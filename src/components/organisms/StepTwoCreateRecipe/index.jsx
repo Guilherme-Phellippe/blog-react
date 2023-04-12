@@ -75,6 +75,7 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                                         placeholder={`Digite o ${index + 1}° ingrediente`}
                                         customWidthAndMargin="w-[95%] my-6"
                                         onKeyDown={(e) => { if (e.code === "Enter") { e.preventDefault(); append({ value: '' }) } }}
+                                        autoFocus
                                         icon={<MdRemoveCircle
                                             className="text-s1_7 fill-red-700 cursor-pointer"
                                             onClick={() => { index > 0 && remove(index) }} />
