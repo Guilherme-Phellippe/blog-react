@@ -1,7 +1,6 @@
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
 
-
 /**
  * This modal component was created to be dinamic and to show in anywhere of application
  * @param {*} param0 
@@ -15,10 +14,10 @@ export const DialogConfirm = ({ open, container: { type, button, message } }) =>
     const TYPE_COLOR_BG = type === 0 ? "bg-red-600" : type === 1 ? "bg-color_primary" : "bg-green-700"
 
     return (
-        <AlertDialog.Root open={open.openModalConfirm} onOpenChange={open.setModalConfirm}>
+        <AlertDialog.Root open={open.openModalDialog} onOpenChange={open.setModalDialog}>
             <AlertDialog.Portal>
-                <AlertDialog.Overlay className='w-screen h-screen bg-black/80 fixed inset-0' />
-                <AlertDialog.Content className={`fixed p-4 bg-white rounded-2xl w-4/5 md:w-auto max-w-none md:max-w-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[2px] ${TYPE_BORDER}`}>
+                <AlertDialog.Overlay className='w-screen h-screen bg-black/80 fixed z-10 inset-0' />
+                <AlertDialog.Content className={`fixed z-20 p-4 bg-white rounded-2xl w-4/5 md:w-auto max-w-none md:max-w-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[2px] ${TYPE_BORDER}`}>
                     <AlertDialog.Title className={`text-center text-s1_3 p-4 ${TYPE_COLOR_TEXT} ${TYPE_COLOR_BG}/30`}>
                         BLOG TEM SABOR
                     </AlertDialog.Title>

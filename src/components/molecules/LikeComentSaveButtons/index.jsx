@@ -15,7 +15,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
     const [customClassToLoved, setCustomClassToLoved] = useState('')
     const [customClassToComment] = useState('')
     const [customClassToSave, setCustomClassToSave] = useState('');
-    const [openModalConfirm, setModalConfirm] = useState(false)
+    const [openModalDialog, setModalDialog] = useState(false)
     const [containerConfirm, setContainerConfirm] = useState()
     const navigate = useNavigate()
     const refButtonSave = useRef()
@@ -53,7 +53,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                     title: 'Criar conta',
                     event:()=> navigate('/register')
                 },
-                function: setModalConfirm(true)
+                function: setModalDialog(true)
             })
         }
 
@@ -90,7 +90,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                     title: "Criar conta",
                     event: ()=> navigate('/register')
                 },
-                function: setModalConfirm(true)
+                function: setModalDialog(true)
             })
         }
     }
@@ -132,7 +132,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
             {
                 containerConfirm &&
                 <DialogConfirm
-                    open={{ openModalConfirm, setModalConfirm }}
+                    open={{ openModalDialog, setModalDialog }}
                     container={containerConfirm}
                 />
             }

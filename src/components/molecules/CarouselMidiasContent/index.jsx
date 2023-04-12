@@ -14,7 +14,7 @@ export const CarouselMidiasContent = ({ img, name_recipe, category }) => {
                     <h3 className="text-s1_2"> - {category}</h3>
                 </>}
             </div>
-            <div className={`${valueSearch ? "order-1 w-1/2 h-full":'w-full h-[65%]'} overflow-hidden`}>
+            <div className={`${valueSearch ? "order-1 w-1/2 h-full":'w-full h-[65%]'}  max-h-[600px] overflow-hidden`}>
                 <img className={`w-full h-full object-cover`} src={img[0].big} alt={name_recipe} />
             </div>
         </>

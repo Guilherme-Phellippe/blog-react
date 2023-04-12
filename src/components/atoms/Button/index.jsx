@@ -1,12 +1,12 @@
-import types from 'prop-types'
-
-export const Button  = ({ id, children, event, customClass = 'btn-primary', style}) => { 
+export const Button  = ({ id, children, event, customClass = 'btn-primary', style, ...restProps}) => { 
 
     return(
-        <button id={id} className={ customClass } onClick={event} style={style}>{children}</button>
+        <button 
+            id={id} 
+            className={ customClass } 
+            onClick={event} 
+            style={style}
+            {...restProps}
+        >{children}</button>
     )
-}
-
-Button.propTypes = {
-    typeButton: types.string,
 }
