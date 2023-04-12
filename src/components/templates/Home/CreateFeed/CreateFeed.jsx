@@ -13,17 +13,17 @@ export const CreateFeed = ({ user }) => {
 
     const navigate = useNavigate();
     const [valueInput, setValueInput] = useState('');
-    const [openModalConfirm, setModalConfirm] = useState(false);
+    const [openModalDialog, setModalDialog] = useState(false);
     const [containerConfirm, setContainerConfirm] = useState();
 
 
     const handleCanCreateRecipe = () => {
-
+        console.log(user)
         if (user) {
             navigate(`/create/?n=${valueInput}`)
         } else {
             setContainerConfirm({
-                function: setModalConfirm(true),
+                function: setModalDialog(true),
                 type: 1,
                 message: "Você precisa criar uma conta antes de publicar um receita!",
                 button:{
@@ -63,8 +63,8 @@ export const CreateFeed = ({ user }) => {
             </div>
 
             {
-                openModalConfirm && <DialogConfirm
-                    open={{ openModalConfirm, setModalConfirm }}
+                openModalDialog && <DialogConfirm
+                    open={{ openModalDialog, setModalDialog }}
                     container={ containerConfirm }
                 />
             }
