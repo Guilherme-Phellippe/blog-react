@@ -100,7 +100,7 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={`w-full flex flex-col justify-center items-center`}>
+        <form onSubmit={handleSubmit(onSubmit)} className={`w-full flex flex-col justify-center items-center py-8`}>
             <Input
                 ref={refInputNameRecipe}
                 label="Nome da sua receita"
@@ -112,7 +112,7 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
                 onChange={handleDefineLimitSizeTitle}
             />
 
-            <div className="w-[95%] md:w-[51%]">
+            <div className="w-[95%] md:w-[51%] mt-6">
                 <Input
                     id="time"
                     label="Quantos minutos para preparar sua receita?"
@@ -123,7 +123,7 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
                     {...register("time")}
                 />
             </div>
-            <div className="w-[95%] md:w-[51%]">
+            <div className="w-[95%] md:w-[51%] mt-6">
                 <Input
                     id="portion"
                     label="Quantas porções ela rende?"
@@ -133,7 +133,7 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
                     {...register("portion")}
                 />
             </div>
-            <div className="w-[95%] md:w-[51%] flex-col">
+            <div className="w-[95%] md:w-[51%] flex-col mt-6">
                 <Input
                     placeholder="ex.: Bolos e doces"
                     label="Digite o nome da categoria que mais se encaixa na sua receita"
