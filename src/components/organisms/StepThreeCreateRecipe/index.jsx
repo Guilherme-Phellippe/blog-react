@@ -70,9 +70,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
         if (recipe) {
             recipe.images_recipe = images;
             recipe.wordKeys = wordKeys;
-            console.log(recipe)
             const data = await recipeApi.createNewRecipe(recipe)
-            console.log(data)
             if (data) {
                 localStorage.removeItem("recipe")
                 setContainerModal({

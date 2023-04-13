@@ -84,7 +84,7 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                                     />
                                     <MdAddCircle
                                         onClick={() => append({ value: '' })}
-                                        className="text-s1_7 fill-green-700 cursor-pointer" />
+                                        className="text-s3 mx-4 fill-green-700 cursor-pointer" />
                                 </div>
                                 {errors.ing?.[index]?.value && <span className="text-s1_1 text-red-700 bg-red-500/20 p-2">{errors.ing[index].value.message}</span>}
                             </div>
@@ -118,7 +118,7 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                                     />
                                     <MdAddCircle
                                         onClick={() => stuffingAppend({ value: '' })}
-                                        className="text-s1_7 fill-green-700 cursor-pointer" />
+                                        className="text-s2_5 ml-4 fill-green-700 cursor-pointer" />
                                 </div>
                                 {errors.stuffing_ing?.[index]?.value && <span className="text-s1_1 text-red-700 bg-red-500/20 p-2">{errors.stuffing_ing?.[index]?.value.message}</span>}
                             </div>
@@ -130,11 +130,11 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                 <div className="flex items-center gap-4" >
                     {
                         !stuffingField.length ?
-                            <Button type="button" event={() => stuffingAppend({ value: '' })} customClass="btn-primary text-s1_1 py-3 px-6">
+                            <Button type="button" event={() => stuffingAppend({ value: '' })} customClass="btn-primary text-s1_2 py-3 px-6">
                                 <MdAddCircle /> Criar recheio
                             </Button>
                             :
-                            <Button type="button" event={() => reset({ stuffing_ing: [] })} customClass="btn-second bg-red-700 text-s1_1 my-8 py-3 px-6">
+                            <Button type="button" event={() => reset({ stuffing_ing: [] })} customClass="btn-second bg-red-700 text-s1_2 my-8 py-3 px-6">
                                 <MdRemoveCircle />  Remover recheio
                             </Button>
 
@@ -168,10 +168,10 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                                     <div className="h-full flex flex-col justify-between items-center">
                                         <MdRemoveCircle
                                             onClick={() => { index > 0 && prepareRemove(index) }}
-                                            className="text-s2 fill-red-800 hover:fill-red-500 cursor-pointer ml-4 mb-2" />
+                                            className="text-s2_5 fill-red-800 hover:fill-red-500 cursor-pointer ml-4 mb-4" />
                                         <MdAddCircle
                                             onClick={() => prepareAppend({ value: '' })}
-                                            className="text-s2 fill-green-700 hover:fill-green-500 cursor-pointer ml-4 mt-2" />
+                                            className="text-s2_5 fill-green-700 hover:fill-green-500 cursor-pointer ml-4 mt-4" />
 
                                     </div>
                                 </div>

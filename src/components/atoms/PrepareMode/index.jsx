@@ -6,9 +6,9 @@ export const PrepareMode = ({ prepareMode }) => {
             <h2 className='text-s2 text-color_primary text-center font-bold my-4 bg-color_primary/20 w-full p-4'>MODO DE PREPARO</h2>
             {
                 newPrepareMode.map((mode, key) =>
-                    <div key={key} className="flex justify-evenly w-full mt-8 border-b-[1px] border-color_second/30 pb-4">
-                        <span className="text-s1_5  text-color_primary">Passo {key + 1}:</span>
-                        <p className='w-5/6 text-s1_7 leading-10' dangerouslySetInnerHTML={{ __html: mode }}></p>
+                    <div key={key} className="flex justify-evenly items-start w-full mt-8 border-b-[1px] border-color_second/30 pb-4">
+                        <span className="text-s1_5 bg-color_primary text-white px-4 py-3 rounded-full">{key + 1}</span>
+                        <p className='w-5/6 text-s1_7 text-center md:text-left leading-10' dangerouslySetInnerHTML={{ __html: mode }}></p>
                     </div>
                 )
             }
