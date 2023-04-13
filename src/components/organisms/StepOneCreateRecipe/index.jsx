@@ -19,6 +19,7 @@ const createRecipeFormSchema = z.object({
     time: z.coerce.number().min(1, "Sua receita precisa ter pelo menos 1 minuto de preparo"),
     portion: z.coerce.number().min(1, "Sua receita precisa render pelo menos 1 porção"),
     category: z.string().nonempty("Sua receita precisa ser vinculada a uma categoria")
+        .min(5, "Nome da categoria precisa ter no minimo 5 caracteres!")
         .transform(name => name.charAt(0).toUpperCase().concat(name.substring(1).toLowerCase()))
 });
 
@@ -31,6 +32,7 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
     const [limitSizeTittle, setLimitSizeTittle] = useState(VALUE_LIMIT_SIZE_TITLE);
     const [valueInputCategory, setValueInputCategory] = useState("")
     const [suggestionInputCategory, setSuggestionInputCategory] = useState('')
+    const [showSuggestion, setShowSuggestion] = useState(false)
     const [qs] = useSearchParams();
     const refInputNameRecipe = useRef(null);
 
@@ -72,6 +74,7 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
 
 
     const handleInputCategory = ({ target }) => {
+        setShowSuggestion(true)
         const text = target.value.replace(/[0-9]/g, '');
         setValueInputCategory(text)
 
@@ -82,13 +85,12 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
                 .replace(/[\u0300-\u036f]/g, '')
                 .includes(text.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()));
 
-        if (text === '') setSuggestionInputCategory('')
-        else if (!categorySelected.length) setSuggestionInputCategory(text)
+        if (!categorySelected.length) setSuggestionInputCategory(text)
         else setSuggestionInputCategory(categorySelected[0].name_category)
     }
 
     const onSubmit = async (data) => {
-        data.category = suggestionInputCategory.length ? suggestionInputCategory : data.category
+        data.category = suggestionInputCategory.length ? suggestionInputCategory : data.category;
         const response = await categoryApi.createNewCategory(data.category);
         if (response.status === 200 || response.status === 201) {
             const user = JSON.parse(localStorage.getItem("token"))
@@ -144,12 +146,12 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
                 />
 
                 {
-                    !!suggestionInputCategory.length &&
+                    showSuggestion &&
                     <div className="flex justify-center bg-background p-4 my-8 relative">
                         <div className="flex w-full justify-center text-s1_3 items-center gap-4">
                             <p className="w-1/5">Sugestão:</p>
                             <h2 className="w-3/5">{suggestionInputCategory}</h2>
-                            <Button type="button" className="btn-second" event={() => {setValueInputCategory(suggestionInputCategory); setSuggestionInputCategory('')}}>Selecionar</Button>
+                            <Button type="button" className="btn-second" event={() => {setValueInputCategory(suggestionInputCategory); setShowSuggestion(false)}}>Selecionar</Button>
                         </div>
                     </div>
                 }

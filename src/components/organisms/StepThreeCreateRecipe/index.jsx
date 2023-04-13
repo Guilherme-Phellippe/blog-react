@@ -68,25 +68,33 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
         setLoading(true)
         const recipe = JSON.parse(localStorage.getItem('recipe'));
         if (recipe) {
-            recipe.images_recipe = images;
-            recipe.wordKeys = wordKeys;
-            const data = await recipeApi.createNewRecipe(recipe)
-            if (data) {
-                localStorage.removeItem("recipe")
-                setContainerModal({
-                    function: setModalDialog(true),
-                    type: 2,
-                    message: "Sua receita foi criada com sucesso!",
-                    button:{
-                        title: "Voltar a home",
-                        event: ()=> navigate('/')
-                    }
-                })
-            }else {
+            if(images.length){
+                recipe.images_recipe = images;
+                recipe.wordKeys = wordKeys;
+                const data = await recipeApi.createNewRecipe(recipe)
+                if (data) {
+                    localStorage.removeItem("recipe")
+                    setContainerModal({
+                        function: setModalDialog(true),
+                        type: 2,
+                        message: "Sua receita foi criada com sucesso!",
+                        button:{
+                            title: "Voltar a home",
+                            event: ()=> navigate('/')
+                        }
+                    })
+                }else {
+                    setContainerModal({
+                        function: setModalDialog(true),
+                        type: 0,
+                        message: "Tivemos um erro ao tentar processa sua receita, preencha os dados novamente e tente de novo",
+                    })
+                }
+            } else {
                 setContainerModal({
                     function: setModalDialog(true),
                     type: 0,
-                    message: "Tivemos um erro ao tentar processa sua receita, preencha os dados novamente e tente de novo",
+                    message: "Sua receita precia de pelo menos uma imagem para ser criada!",
                 })
             }
             setLoading(false)
