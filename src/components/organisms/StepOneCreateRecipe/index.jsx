@@ -71,8 +71,6 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
     }
 
 
-
-
     const handleInputCategory = ({ target }) => {
         setShowSuggestion(true)
         const text = target.value.replace(/[0-9]/g, '');
@@ -84,6 +82,8 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
                 .normalize("NFD")
                 .replace(/[\u0300-\u036f]/g, '')
                 .includes(text.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase()));
+        
+        categorySelected.sort((x, y) => y.recipe - x.recipe)
 
         if (!categorySelected.length) setSuggestionInputCategory(text)
         else setSuggestionInputCategory(categorySelected[0].name_category)
