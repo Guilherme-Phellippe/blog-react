@@ -1,7 +1,7 @@
 
 import moment from "moment";
 import { useState } from "react"
-import { MdArrowDropDown, MdArrowDropUp, MdCheckBox, MdDelete, MdMessage } from "react-icons/md"
+import { MdArrowDropDown, MdArrowDropUp, MdDelete, MdMessage } from "react-icons/md"
 import { useNotificationApi } from "../../../hooks/useApi";
 import { formatTextLong } from "../../../scripts/formatTextLong";
 
@@ -10,7 +10,9 @@ export const Notification = ({ notification, setNotifications }) => {
     const [showMessage, setShowMessage] = useState(false)
     const [read, setRead] = useState(notification.read)
 
-    const handleReadMessage = async () => {
+    const handleOpenMessage = async () => {
+        setShowMessage(msg => !msg)
+        
         if (!read) {
             const { notificationId, userId } = notification
             const response = await notificationApi.updateReadNotification(notificationId, userId)
@@ -30,7 +32,6 @@ export const Notification = ({ notification, setNotifications }) => {
             const response = await notificationApi.deleteNotification(notificationId, userId).catch(error => console.error(error));
             if (response.status === 200) setNotifications(notifications => notifications.filter(not => not.notificationId !== currentTarget.id ));
         }
-
     }
 
     return (
@@ -39,18 +40,11 @@ export const Notification = ({ notification, setNotifications }) => {
                 <div className="w-1/12 md:w-1/5 grid place-items-center border-r-[1px]">
                     <MdMessage className={`text-s2_5 ${read ? "text-color_sub_text" : "text-color_second"}`} />
                 </div>
-                <div onClick={() => setShowMessage(msg => !msg)} className="w-2/5 md:w-3/5 flex justify-between">
+                <div onClick={handleOpenMessage} className="w-3/5 flex justify-between">
                     <p className={`text-s1_5 ${!read && 'text-color_primary'}`}>{formatTextLong(notification.notification.title, 30)}</p>
                     {showMessage ? <MdArrowDropUp className="text-s2_5" /> : <MdArrowDropDown className="text-s2_5" />}
                 </div>
-                <div className="w-1/6 flex justify-center gap-8">
-                    <p
-                        onClick={handleReadMessage}
-                        className="flex flex-col justify-center items-center"
-                    >
-                        <MdCheckBox className={`text-s2  ${read ? "fill-green-800" : "fill-color_sub_text"}`} />
-                        {window.innerWidth < 700 ? "Lida": "Marcar como lida"}
-                    </p>
+                <div className="w-1/6 flex justify-center">
                     <p
                         id={notification.notificationId}
                         onClick={handleDeleteNotification}

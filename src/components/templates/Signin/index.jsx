@@ -16,7 +16,7 @@ export const Signin = ({ setIsLogin }) => {
                 <FormLogin />
             </div>
             <div className="flex flex-col justify-center items-center m-16">
-                <Button customClass={"text-color_primary font-bold text-s1_2"}>Esqueceu sua senha?</Button>
+                {/* <Button customClass={"text-color_primary font-bold text-s1_2"}>Esqueceu sua senha?</Button> */}
                 <hr className="w-1/3 my-8" />
                 <Button customClass={"text-color_primary font-bold text-s1_2"} event={() => setIsLogin(() => false)}>Ainda não tem uma conta?</Button>
             </div>

@@ -63,9 +63,8 @@ export const Menu = () => {
                                     }
                                 </LinkNavigation>
 
-                                <LinkNavigation route={'/store'} customClass={''}>Loja</LinkNavigation>
+                                <LinkNavigation route={'/about'} customClass={''}>Sobre nós</LinkNavigation>
 
-                                <LinkNavigation route={'/about'} customClass={''}>Sobre</LinkNavigation>
 
                             </ul>
 
@@ -74,14 +73,16 @@ export const Menu = () => {
                                 <div className="w-1/4 h-full flex md:hidden">
                                     <Logo />
                                 </div>
-                                <GiHamburgerMenu onClick={() => setMenuIsOpen(true)} className='fill-white text-s2_5 cursor-pointer' />
+                                <div className="w-1/4 flex justify-end relative">
+                                    <GiHamburgerMenu onClick={() => setMenuIsOpen(true)} className='fill-white text-s2_5 cursor-pointer' />
+                                </div>
                             </div>
                         </>
                         :
                         <div className="fixed top-0 left-0  w-screen h-screen z-[99] flex flex-col bg-white">
-                            <div className="w-[90%] flex justify-between items-center">
-                                <PanelUser />
-                                <MdClose onClick={() => setMenuIsOpen(false)} className='text-s2_5 fill-color_primary font-bold' />
+                            <div className="w-full flex justify-center items-center">
+                                <PanelUser isMobile={true} />
+                                <MdClose onClick={() => setMenuIsOpen(false)} className='absolute right-8 text-s2_5 fill-color_primary font-bold' />
                             </div>
 
                             <ul className='menu flex flex-col w-full  items-center list-none' >
@@ -97,13 +98,10 @@ export const Menu = () => {
                                     }
                                 </LinkNavigation>
 
-                                <LinkNavigation route={'/store'} customClass={'border-b-[#fff4] border-b-[1px] w-screen'}>Loja</LinkNavigation>
-
-                                <LinkNavigation route={'/about'} customClass={'border-b-[#fff4] border-b-[1px] w-screen'}>Sobre</LinkNavigation>
-
+                                <LinkNavigation route={'/about'} customClass={'border-b-[#fff4] border-b-[1px] w-screen'}>Sobre nós</LinkNavigation>
                             </ul>
                             <div className="flex w-full h-[10%] justify-center items-center px-8">
-                                <SocialMidia />
+                                <SocialMidia isMobile={true} />
                             </div>
                         </div>
                 }

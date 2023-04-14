@@ -29,8 +29,11 @@ export const Footer = () => {
 
                     <div className="flex flex-col justify-start items-center min-w-1/4 pt-8">
                         <h3 className='text-s2 md:text-s1_7 text-white mb-8'>Sobre</h3>
-                        <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/">Quem somos?</a>
-                        <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/">Contato</a>
+                        <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/about">Quem somos?</a>
+                        <div className="flex flex-col gap-4 items-center text-s1_3 mb-8">
+                            <p className='text-white/80 mt-2'>Fale conosco:</p>
+                            <span className='text-white font-bold'>contato@temsabor.blog</span>
+                        </div>
                         <Link to={'/create/?n='}>
                             <Button customClass='btn-second mt-12 text-s1_4 p-4'>Publique uma receita</Button>
                         </Link>
@@ -45,9 +48,9 @@ export const Footer = () => {
                         <div className="w-full flex justify-center mb-8">
                             <SocialMidia />
                         </div>
-                        <div className="hidden md:flex flex-col text-s1_3 gap-2 text-white text-center mt-8">
-                            <h3>Quer receber receitas quentinhas?</h3>
-                            <h4>Deixe seu email</h4>
+                        <div className="hidden md:flex flex-col text-s1_3 gap-2 text-center mt-8">
+                            <h3 className=' text-white '>Quer receber receitas quentinhas?</h3>
+                            <h4 className=' text-white '>Deixe seu email</h4>
                             <Input
 
                                 className="text-black p-4"

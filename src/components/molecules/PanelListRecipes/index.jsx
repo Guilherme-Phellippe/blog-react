@@ -26,7 +26,7 @@ export const PanelListRecipes = ({ recipes, isMyRecipes }) => {
             />
 
 
-            <div className={`w-full flex gap-y-4 justify-center items-center max-h-[800px] overflow-y-auto py-8 mt-12 ${isMyRecipes ? "flex-col" : "flex-wrap"}`}>
+            <div className={`w-full flex gap-y-4 justify-center items-center h-auto py-8 mt-12 ${isMyRecipes ? "flex-col" : "flex-wrap"}`}>
                 {
                     filteredRecipes.length ?
                         filteredRecipes.map((recipe, key) =>

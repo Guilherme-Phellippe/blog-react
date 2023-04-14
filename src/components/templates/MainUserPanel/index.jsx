@@ -8,10 +8,10 @@ import { MdExitToApp, MdList, MdNotifications, MdPhotoLibrary, MdSave } from "re
 
 export const MainUserPanel = () => {
     const navLinks = [
-        { name: "Meus dados", icon: <MdPhotoLibrary className="text-s1_4" /> },
-        { name: "Minhas receitas", icon: <MdList className="text-s1_3" /> },
-        { name: "Receitas salvas", icon: <MdSave className="text-s1_4" /> },
-        { name: "Notificações", icon: <MdNotifications className="text-s1_4" /> },
+        { name: "Meus dados", icon: <MdPhotoLibrary className="text-s2 md:text-s1_4" /> },
+        { name: "Minhas receitas", icon: <MdList className="text-s2 md:text-s1_4" /> },
+        { name: "Receitas salvas", icon: <MdSave className="text-s2 md:text-s1_4" /> },
+        { name: "Notificações", icon: <MdNotifications className="text-s2 md:text-s1_4" /> },
     ];
     const [user, setUser] = useState();
     const navigate = useNavigate()
@@ -29,10 +29,11 @@ export const MainUserPanel = () => {
         } else navigate('/')
     }, [token, navigate]);
 
-    const handleInfoSelect = ({ target }) => {
-        if (target.textContent === "Meus dados" || target.textContent === "Minhas receitas") refNav.current.scrollTo({ left: (target.offsetLeft - 40), behavior: "smooth" });
+    const handleInfoSelect = ({ currentTarget: target }) => {
+        const text = target.querySelector("p").textContent
+        if (text === "Meus dados" || text === "Minhas receitas") refNav.current.scrollTo({ left: (target.offsetLeft - 40), behavior: "smooth" });
         else refNav.current.scrollTo({ left: (target.offsetLeft - target.clientWidth), behavior: "smooth" });
-        setInfoSelect(target.textContent)
+        setInfoSelect(text)
     }
 
     return (
@@ -43,18 +44,32 @@ export const MainUserPanel = () => {
                     {navLinks.map((link, key) =>
                         <button
                             onClick={handleInfoSelect}
-                            className={`p-8 w-2/5 snap-center flex-none flex gap-2 text-s1_2 hover:bg-color_second hover:text-white transition-all duration-1 ${infoSelect === link && "bg-color_primary text-white"}`}
-                            key={key}>
-                            {link.icon}
-                            {link.name}
+                            className={`p-8 w-2/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_primary hover:text-white transition-all duration-1 ${infoSelect === link.name && "bg-color_primary text-white"} relative`}
+                            key={key}
+                        >
+                            <div className="relative">
+                                {link.icon}
+                                {
+                                    !!user?.notificationUser.length && link.name === "Notificações" &&
+                                    <span className="absolute -top-2 -right-1 bg-color_primary px-1 text-white rounded-full">
+                                        {
+                                            user.notificationUser.reduce((total , current) => 
+                                                total + current.read ? 0 : 1, 0
+                                            )
+                                                                                            
+                                        }
+                                    </span>
+                                }
+                            </div>
+                            <p className={`${infoSelect === link.name ? "text-white" : "text-color_text"}`}>{link.name}</p>
                         </button>)
                     }
                     <button
                         onClick={(e) => { handleInfoSelect(e); navigate('/') }}
-                        className={`p-8 w-2/5 snap-center flex-none flex gap-2 text-s1_2 hover:bg-color_second hover:text-white transition-all duration-1 ${infoSelect === "Sair do painel" && "bg-color_primary text-white"}`}
+                        className={`p-8 w-2/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_second hover:text-white transition-all duration-1 ${infoSelect === "Sair do painel" && "bg-color_primary text-white"}`}
                     >
-                        <MdExitToApp className="text-s1_4" />
-                        Sair do painel
+                        <MdExitToApp className="text-s2 md:text-s1_4" />
+                        <p className={`${infoSelect === "Sair do painel" && "text-white"}`}>Sair do painel</p>
                     </button>
                 </nav>
                 <section className="flex flex-col w-full py-4 md:p-8 bg-white overflow-y-auto">
