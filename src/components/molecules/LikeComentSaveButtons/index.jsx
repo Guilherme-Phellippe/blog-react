@@ -61,7 +61,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
 
     const handleCommentButton = ({ target }) => {
         const boxFeedComments = target.closest("div#feed-recipe").querySelector('#feed-comment')
-        const input = target.closest("div#feed-recipe").querySelector('#feed-comment #InputWriteComment')
+        const input = target.closest("div#feed-recipe").querySelector('#feed-comment input[data-id=InputWriteComment]')
         input.focus();
         boxFeedComments.classList.toggle("hidden")
         boxFeedComments.classList.toggle("flex")

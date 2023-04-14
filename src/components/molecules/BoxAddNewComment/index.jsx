@@ -50,7 +50,7 @@ export const BoxAddNewComment = ({ idRecipe, setComments, userLogged }) => {
             </div>
             <Input
                 ref={refInput}
-                id="InputWriteComment"
+                data-id="InputWriteComment"
                 placeholder={"Digite um comentário aqui..."}
                 customWidthAndMargin="w-[100%] m-2"
                 onKeyDown={handleKeyDown}
