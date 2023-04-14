@@ -14,7 +14,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                         <ListRecipes 
                             key={recent.id} 
                             recipe={recent} 
-                            classContainer="w-full h-[8rem] flex cursor-pointer border-b-[1px] border-x-[1px] border-solid hover:border-x-color_second p-2 hover:bg-background"
+                            classContainer="w-full h-[8rem] flex cursor-pointer border-b-[1px] border-x-[1px] border-solid hover:border-x-color_red p-2 hover:bg-background"
                             classInfoContent="w-2/3 flex flex-col justify-center"
                             classImgContent="w-1/3 h-full p-2"
                         />

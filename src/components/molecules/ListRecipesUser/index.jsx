@@ -81,7 +81,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
 
     return (
         <div className={`flex-none flex gap-y-4 justify-center items-center relative overflow-hidden ${isMyRecipes ? "w-full h-[180px] md:h-[250px]" : "w-1/2 md:w-1/3"}`}>
-            <div className={`w-[95%] md:w-4/5 flex border-[1px] border-color_primary shadow-sm relative ${isMyRecipes ? "h-full" : "flex-col h-[250px] md:h-[300px]"}`}>
+            <div className={`w-[95%] md:w-4/5 flex border-[1px] border-color_orange shadow-sm relative ${isMyRecipes ? "h-full" : "flex-col h-[250px] md:h-[300px]"}`}>
                 {
                     activeSettings ?
                         <label onChange={handleUploadImage} className={`cursor-pointer relative w-2/5 h-full`} htmlFor="file">
@@ -113,7 +113,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
                     <h3 className="text-s1">{moment(recipe.createdAt).format("lll")}</h3>
                     {
                         isMyRecipes ?
-                            <div className={`w-3/4 flex flex-col gap-2 bg-color_primary justify-center py-3 px-8 rounded-lg`}>
+                            <div className={`w-3/4 flex flex-col gap-2 bg-color_orange justify-center py-3 px-8 rounded-lg`}>
                                 <span className="text-s1 text-white flex justify-between my-1">Número de ameis: <span className="text-white text-s1_5">{recipe.nmr_hearts.length}</span></span>
                                 <span className="text-s1 text-white flex justify-between my-1">Número de visualizações: <span className="text-white text-s1_5">{recipe.nmr_eyes}</span></span>
                                 <span className="text-s1 text-white flex justify-between my-1">Número de receitas salvas: <span className="text-white text-s1_5">{recipe.nmr_saved.length}</span></span>

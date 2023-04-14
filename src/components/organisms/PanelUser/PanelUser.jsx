@@ -55,13 +55,13 @@ export const PanelUser = ({ isMobile }) => {
                                 />
                                 {
                                     numberNotifications.current !== 0 &&
-                                    <span className='absolute -top-0 -right-0 px-2 py-1 rounded-full bg-color_primary text-white text-s1_2'>
+                                    <span className='absolute -top-0 -right-0 px-2 py-1 rounded-full bg-color_orange text-white text-s1_2'>
                                         {numberNotifications.current}
                                     </span>
                                 }
                             </div>
                             <p className='text-s1_2 flex flex-col'>
-                                Bem vindo, <span className='text-s1_5 text-color_primary'>{formatTextLong(user.name, 18)}</span>
+                                Bem vindo, <span className='text-s1_5 text-color_orange'>{formatTextLong(user.name, 18)}</span>
                             </p>
                         </div>
                     </Link>
@@ -80,12 +80,12 @@ export const PanelUser = ({ isMobile }) => {
                         </div>
                         :
                         <>
-                            <Link className="text-s1_3 text-color_primary my-2" to={'/login'}>
+                            <Link className="text-s1_3 text-color_orange my-2" to={'/login'}>
                                 <Button customClass={"btn-primary mt-4 px-8"}>Faça seu login</Button>
                             </Link>
                             <span>ou</span>
-                            <Link className="text-s1_3 text-color_primary my-2" to={'/register'}>
-                                <p className='cursor-pointer text-color_second font-bold'>Registre-se</p>
+                            <Link className="text-s1_3 text-color_orange my-2" to={'/register'}>
+                                <p className='cursor-pointer text-color_red font-bold'>Registre-se</p>
                             </Link>
                         </>}
                 </>

@@ -9,9 +9,9 @@ import * as AlertDialog from '@radix-ui/react-alert-dialog';
  */
 
 export const DialogConfirm = ({ open, container: { type, button, message } }) => {
-    const TYPE_BORDER = type === 0 ? "border-red-600" : type === 1 ? "border-color_primary" : "border-green-700"
-    const TYPE_COLOR_TEXT = type === 0 ? "text-red-600" : type === 1 ? "text-color_primary" : "text-green-700"
-    const TYPE_COLOR_BG = type === 0 ? "bg-red-600" : type === 1 ? "bg-color_primary" : "bg-green-700"
+    const TYPE_BORDER = type === 0 ? "border-red-600" : type === 1 ? "border-color_orange" : "border-green-700"
+    const TYPE_COLOR_TEXT = type === 0 ? "text-red-600" : type === 1 ? "text-color_orange" : "text-green-700"
+    const TYPE_COLOR_BG = type === 0 ? "bg-red-600" : type === 1 ? "bg-color_orange" : "bg-green-700"
 
     return (
         <AlertDialog.Root open={open.openModalDialog} onOpenChange={open.setModalDialog}>

@@ -31,18 +31,18 @@ export const MainCreateRecipe = () => {
         <main className="w-full max-w-[1500px] mx-auto">
             <div className="w-[95%] md:w-10/12 bg-white mx-auto flex flex-col items-center p-4 md:p-16">
 
-                <h2 className="text-s2 md:text-s2_5 text-center pb-4 md:pb-8 font-semibold text-color_primary">Vamos criar uma receita?</h2>
+                <h2 className="text-s2 md:text-s2_5 text-center pb-4 md:pb-8 font-semibold text-color_orange">Vamos criar uma receita?</h2>
 
                 <div className="w-full flex justify-center gap-12 my-8">
-                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full relative ${step >= 1 && "bg-color_primary text-white "}`}>
+                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_orange rounded-full relative ${step >= 1 && "bg-color_orange text-white "}`}>
                         <MdImportContacts className="text-s1_5 z-10" />
                         <span className="absolute -z-0 left-full top-1/2 w-full h-[1px] bg-black opacity-30"></span>
                     </span>
-                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full relative ${step >= 2 ? "bg-color_primary text-white" : "bg-white"}`}>
+                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_orange rounded-full relative ${step >= 2 ? "bg-color_orange text-white" : "bg-white"}`}>
                         <MdList className="text-s1_5 " />
                         <span className="absolute -z-0 left-full top-1/2 w-full h-[1px] bg-black opacity-30"></span>
                     </span>
-                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_primary rounded-full ${step >= 3 ? "bg-color_primary text-white" : "bg-white"}`}>
+                    <span className={`py-3 z-10 px-4 border-[1px] border-solid border-color_orange rounded-full ${step >= 3 ? "bg-color_orange text-white" : "bg-white"}`}>
                         <MdImage className="text-s1_5 " />
                     </span>
                 </div>

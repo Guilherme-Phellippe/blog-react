@@ -106,7 +106,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
         <div className={`w-full flex flex-col justify-center items-center`}>
             <label
                 forhtml="image-file"
-                className="w-full md:w-1/2 h-[10rem] cursor-pointer border-2 border-dotted border-color_primary flex justify-center items-center relative"
+                className="w-full md:w-1/2 h-[10rem] cursor-pointer border-2 border-dotted border-color_orange flex justify-center items-center relative"
             >
                 <h2 className="text-s1_3 text-gray-500">
                     Clique ou solte suas imagens aqui

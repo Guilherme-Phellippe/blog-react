@@ -15,7 +15,7 @@ export const ColumnRightMainHome = ({ ranking, user, isOpenRanking }) => {
                         {
                             isOpenRanking &&
                             <>
-                                <p className="bg-color_primary w-full h-[2px] my-12"></p>
+                                <p className="bg-color_orange w-full h-[2px] my-12"></p>
                                 <BoxRankingRecipes title={'Receitas novas'} ranking={ranking} />
                             </>
                         }

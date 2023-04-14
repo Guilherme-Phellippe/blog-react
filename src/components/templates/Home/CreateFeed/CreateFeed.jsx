@@ -50,7 +50,7 @@ export const CreateFeed = ({ user }) => {
                     onChange={(e) => setValueInput(e.target.value)}
                     customWidthAndMargin="w-[80%]"
                     placeholder={"Digite o nome da sua receita..."}
-                    icon={<FaPen className='fill-color_third text-s1_5' />}
+                    icon={<FaPen className='fill-color_red text-s1_5' />}
                 />
             </div>
             <div className="flex justify-around">

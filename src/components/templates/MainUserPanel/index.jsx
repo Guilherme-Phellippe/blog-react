@@ -44,14 +44,14 @@ export const MainUserPanel = () => {
                     {navLinks.map((link, key) =>
                         <button
                             onClick={handleInfoSelect}
-                            className={`p-8 w-2/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_primary hover:text-white transition-all duration-1 ${infoSelect === link.name && "bg-color_primary text-white"} relative`}
+                            className={`p-8 w-2/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_orange hover:text-white transition-all duration-1 ${infoSelect === link.name && "bg-color_orange text-white"} relative`}
                             key={key}
                         >
                             <div className="relative">
                                 {link.icon}
                                 {
                                     !!user?.notificationUser.length && link.name === "Notificações" &&
-                                    <span className="absolute -top-2 -right-1 bg-color_primary px-1 text-white rounded-full">
+                                    <span className="absolute -top-2 -right-1 bg-color_orange px-1 text-white rounded-full">
                                         {
                                             user.notificationUser.reduce((total , current) => 
                                                 total + current.read ? 0 : 1, 0
@@ -66,7 +66,7 @@ export const MainUserPanel = () => {
                     }
                     <button
                         onClick={(e) => { handleInfoSelect(e); navigate('/') }}
-                        className={`p-8 w-2/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_second hover:text-white transition-all duration-1 ${infoSelect === "Sair do painel" && "bg-color_primary text-white"}`}
+                        className={`p-8 w-2/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_red hover:text-white transition-all duration-1 ${infoSelect === "Sair do painel" && "bg-color_orange text-white"}`}
                     >
                         <MdExitToApp className="text-s2 md:text-s1_4" />
                         <p className={`${infoSelect === "Sair do painel" && "text-white"}`}>Sair do painel</p>

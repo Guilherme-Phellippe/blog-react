@@ -4,7 +4,7 @@ export const Input = React.forwardRef(({ placeholder, label, icon, type = 'text'
 
     return (
         <div
-            className={`${customWidthAndMargin} flex items-center border-[1px] border-solid hover:border-color_second bg-background rounded-xl relative`}>
+            className={`${customWidthAndMargin} flex items-center border-[1px] border-solid hover:border-color_red bg-background rounded-xl relative`}>
             <label
                 htmlFor={id}
                 className={`text-s1_2 absolute -top-[60%] text-color_text`}

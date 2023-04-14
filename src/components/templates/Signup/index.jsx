@@ -82,7 +82,7 @@ export const Singup = ({ setIsLogin }) => {
 
     return (
         <div className="w-full bg-white p-4 md:p-16">
-            <h2 className="text-center font-bold text-s2 text-color_second p-4 mb-4">Crie uma conta rápido e fácil</h2>
+            <h2 className="text-center font-bold text-s2 text-color_red p-4 mb-4">Crie uma conta rápido e fácil</h2>
             <div className="w-full flex flex-col items-center">
                 <div className="flex gap-16">
                     <LoginWithSocialMidia />

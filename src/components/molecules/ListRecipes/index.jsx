@@ -17,7 +17,7 @@ export const ListRecipes = ({ recipe, classContainer, classInfoContent, classImg
                 </div>
                 <div className={classInfoContent}>
                     <h2 className="text-s1_2 text-color_sub_text text-center">{formatTextLong(recipe.name_recipe, 25)}</h2>
-                    <p className="text-center text-color_sub_text">por: <span className="text-color_primary ">{recipe.user.name}</span></p>
+                    <p className="text-center text-color_sub_text">por: <span className="text-color_orange ">{recipe.user.name}</span></p>
                 </div>
             </div>
         </Link>

@@ -9,7 +9,7 @@ export const AboutMain = () => {
             <div className="flex flex-col  items-center gap-4 p-8">
 
 
-                <h1 className="p-4 mt-8 text-s2_5 text-center font-semibold text-color_primary">Sobre nossa marca</h1>
+                <h1 className="p-4 mt-8 text-s2_5 text-center font-semibold text-color_orange">Sobre nossa marca</h1>
                 <div className="flex gap-4 p-12">
                     <div className="w-1/3">
                         <img
@@ -61,7 +61,7 @@ export const AboutMain = () => {
 
                 </div>
                 <div className="w-1/2 flex flex-col justify-center gap-4 mt-16">
-                    <h2 className="p-4 mt-8 text-s2_5 text-center font-semibold text-color_primary">Organizadores e Responsavéis</h2>
+                    <h2 className="p-4 mt-8 text-s2_5 text-center font-semibold text-color_orange">Organizadores e Responsavéis</h2>
 
                     <p className="text-s1_7 text-justify leading-[25px]">
                         Criar um blog como mulher pode ser desafiador em um ambiente predominantemente masculino.
@@ -72,12 +72,12 @@ export const AboutMain = () => {
 
                 </div>
                 <div className="w-1/2 flex flex-col justify-center items-center gap-4 mt-16">
-                    <h2 className="text-s2 text-center font-semibold text-color_primary">Nossas redes sociais</h2>
+                    <h2 className="text-s2 text-center font-semibold text-color_orange">Nossas redes sociais</h2>
                     <SocialMidia />
                     <p className="flex flex-col gap-4 text-s1_5 mt-8 opacity-75"><span>Fale com a gente:</span>contato@temsabor.blog </p>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center items-center gap-4 mt-16">
-                    <h2 className="text-s2_5 text-center font-semibold text-color_primary">Mostre-nos uma receita:</h2>
+                    <h2 className="text-s2_5 text-center font-semibold text-color_orange">Mostre-nos uma receita:</h2>
                     <Link to={'/create/'}>
                         <Button customClass="btn-primary mt-8 text-s2 px-8 mb-8">Criar uma receita</Button>
                     </Link>

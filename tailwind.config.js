@@ -21,12 +21,12 @@ module.exports = {
       },
       colors: {
         background: '#E4E4E4',
-        color_primary: '#FF6A28',
-        color_second: '#ff9161',
-        color_third: '#fba510',
-        color_to_text_white: "#d14200",
-        color_text: '#202020',
-        color_sub_text: '#414141',
+        color_orange: '#ff6a28',
+        color_red: '#990000',
+        color_green: '#D4D925',
+        color_yellow: "#FFEE63",
+        color_text_white: '#fff',
+        color_text_black: '#202020',
       },
     },
 

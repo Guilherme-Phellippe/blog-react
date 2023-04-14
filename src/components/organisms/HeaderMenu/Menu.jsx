@@ -44,7 +44,7 @@ export const Menu = () => {
     }
 
     return (
-        <div className="container-menu w-full h-[50px] items-center bg-color_primary order-1 md:order-2">
+        <div className="container-menu w-full h-[50px] items-center bg-color_orange order-1 md:order-2">
             <>
                 {
                     !menuIsOpen ?
@@ -59,7 +59,7 @@ export const Menu = () => {
                                     onClick={handleSubCategory}
                                 >Categorias <RiArrowDownSLine />
                                     {enabledSubCategory &&
-                                        <Categories customClass={"w-[150px] text-center p-2 text-white bg-color_primary border-b-[#fff5]"} />
+                                        <Categories customClass={"w-[150px] text-center p-2 text-white bg-color_orange border-b-[#fff5]"} />
                                     }
                                 </LinkNavigation>
 
@@ -82,7 +82,7 @@ export const Menu = () => {
                         <div className="fixed top-0 left-0  w-screen h-screen z-[99] flex flex-col bg-white">
                             <div className="w-full flex justify-center items-center">
                                 <PanelUser isMobile={true} />
-                                <MdClose onClick={() => setMenuIsOpen(false)} className='absolute right-8 text-s2_5 fill-color_primary font-bold' />
+                                <MdClose onClick={() => setMenuIsOpen(false)} className='absolute right-8 text-s2_5 fill-color_orange font-bold' />
                             </div>
 
                             <ul className='menu flex flex-col w-full  items-center list-none' >
@@ -94,7 +94,7 @@ export const Menu = () => {
                                     onClick={handleSubCategory}
                                 >Categorias <RiArrowDownSLine />
                                     {enabledSubCategory &&
-                                        <Categories customClass={"w-screen text-center p-6 bg-white text-color_primary border-b-color_primary"} />
+                                        <Categories customClass={"w-screen text-center p-6 bg-white text-color_orange border-b-color_orange"} />
                                     }
                                 </LinkNavigation>
 

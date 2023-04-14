@@ -9,9 +9,9 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 
 export const DialogAlert = ({open, container: { type, message, eventClose}}) => {
-    const TYPE_BORDER = type === 0 ? "border-red-600" : type === 1 ? "border-color_primary" : "border-green-700"
-    const TYPE_COLOR_TEXT = type === 0 ? "text-red-600" : type === 1 ? "text-color_primary" : "text-green-700"
-    const TYPE_COLOR_BG = type === 0 ? "bg-red-600/30" : type === 1 ? "bg-color_primary/30" : "bg-green-700/30"
+    const TYPE_BORDER = type === 0 ? "border-red-600" : type === 1 ? "border-color_orange" : "border-green-700"
+    const TYPE_COLOR_TEXT = type === 0 ? "text-red-600" : type === 1 ? "text-color_orange" : "text-green-700"
+    const TYPE_COLOR_BG = type === 0 ? "bg-red-600/30" : type === 1 ? "bg-color_orange/30" : "bg-green-700/30"
 
     return (
         <Dialog.Root open={open.openModalAlert} onOpenChange={open.setModalAlert}>

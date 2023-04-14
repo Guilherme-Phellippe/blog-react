@@ -108,7 +108,7 @@ export const PanelMydata = ({ user }) => {
                         <input type="text"
                             ref={refInputName}
                             id="input-name"
-                            className={`w-2/3 p-4 text-s1_3 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
+                            className={`w-2/3 p-4 text-s1_3 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_orange bg-background outline-none" : 'bg-transparent'}`}
                             placeholder="Seu nome copmpleto..."
                             onChange={(e) => setInputName(e.target.value)}
                             value={inputName}
@@ -119,7 +119,7 @@ export const PanelMydata = ({ user }) => {
                         <label htmlFor="input-email" className="w-1/3 text-s1_3 mt-4 mb-2 text-color_sub_text"> E-mail:</label>
                         <input type="text"
                             id="input-email"
-                            className={`w-2/3 p-4 text-s1_3 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_primary bg-background outline-none" : 'bg-transparent'}`}
+                            className={`w-2/3 p-4 text-s1_3 rounded-xl ${isOpenSaveData ? "border-[1px] border-color_orange bg-background outline-none" : 'bg-transparent'}`}
                             placeholder="Seu e-mail..."
                             onChange={(e) => setInputEmail(e.target.value)}
                             value={inputEmail}
@@ -141,9 +141,9 @@ export const PanelMydata = ({ user }) => {
                 <h2 className="text-s1_5 mb-6">Informações gerais</h2>
                 <div className='w-full md:w-4/5 flex flex-wrap justify-evenly px-4 gap-4 md:gap-8 border-[1px] border-[#0001] p-4 rounded-xl'>
                     {infos.map((info, key) =>
-                        <div key={key} className="flex flex-col justify-between items-center w-2/5 md:w-1/5 py-4 bg-white rounded-xl shadow-md border-[1px] border-color_second hover:scale-105 transition-all">
+                        <div key={key} className="flex flex-col justify-between items-center w-2/5 md:w-1/5 py-4 bg-white rounded-xl shadow-md border-[1px] border-color_red hover:scale-105 transition-all">
                             <h3 className="w-4/5 text-s1_1 md:text-s1_3 text-center text-color_text">{info.name}</h3>
-                            <span className="text-s2 font-semibold text-color_primary my-2">{info.value}</span>
+                            <span className="text-s2 font-semibold text-color_orange my-2">{info.value}</span>
                         </div>)}
                 </div>
             </div>

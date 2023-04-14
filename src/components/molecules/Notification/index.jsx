@@ -35,13 +35,13 @@ export const Notification = ({ notification, setNotifications }) => {
     }
 
     return (
-        <div className={`w-full flex-col border-[1px] ${read ? "border-color_sub_text" : "border-color_second"}`}>
+        <div className={`w-full flex-col border-[1px] ${read ? "border-color_sub_text" : "border-color_red"}`}>
             <div className={`w-full h-36 border-[1px] flex justify-evenly items-center cursor-pointer`}>
                 <div className="w-1/12 md:w-1/5 grid place-items-center border-r-[1px]">
-                    <MdMessage className={`text-s2_5 ${read ? "text-color_sub_text" : "text-color_second"}`} />
+                    <MdMessage className={`text-s2_5 ${read ? "text-color_sub_text" : "text-color_red"}`} />
                 </div>
                 <div onClick={handleOpenMessage} className="w-3/5 flex justify-between">
-                    <p className={`text-s1_5 ${!read && 'text-color_primary'}`}>{formatTextLong(notification.notification.title, 30)}</p>
+                    <p className={`text-s1_5 ${!read && 'text-color_orange'}`}>{formatTextLong(notification.notification.title, 30)}</p>
                     {showMessage ? <MdArrowDropUp className="text-s2_5" /> : <MdArrowDropDown className="text-s2_5" />}
                 </div>
                 <div className="w-1/6 flex justify-center">

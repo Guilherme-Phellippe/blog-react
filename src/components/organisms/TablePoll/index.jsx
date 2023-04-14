@@ -90,19 +90,19 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
 
     return (
         <div className="w-full flex flex-col items-center justify-center p-4">
-            <h2 className="text-s2 my-4 text-color_primary font-bold">Vote na sua receita preferida:</h2>
+            <h2 className="text-s2 my-4 text-color_orange font-bold">Vote na sua receita preferida:</h2>
             <div className="flex justify-center w-full my-8">
                 <Input
                     onChange={(e) => setSearch(e.target.value)}
                     value={search}
-                    icon={<FaSearch className="text-s1_5  fill-color_primary" />}
+                    icon={<FaSearch className="text-s1_5  fill-color_orange" />}
                     placeholder="Busque sua receita favorita..."
-                    customWidthAndMargin="w-full"
+                    customWidthAndMargin="w-full md:w-1/2"
                 />
             </div>
             <table className="w-full border-[1px] border-solid" ref={refTablePoll}>
                 <thead>
-                    <tr className="bg-color_primary text-white text-s1_3">
+                    <tr className="bg-color_orange text-white text-s1_3">
                         <th className="py-4">#</th>
                         <th>Nome</th>
                         <th className="hidden md:block">Author</th>
@@ -132,7 +132,7 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
                                 </td>
                                 <td className="py-4 text-s1_2 flex justify-center">
                                     <Link to={`/recipe/${candidate.id}`}>
-                                        <Button customClass="btn-primary bg-color_second">Ver</Button>
+                                        <Button customClass="btn-primary bg-color_red">Ver</Button>
                                     </Link>
                                 </td>
                                 <td className="py-4 text-s1_2 relative">
@@ -150,7 +150,7 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
                             </tr>
                         )
                         : <tr className="text-s1_5 text-center">
-                            <td className="p-8 flex items-center gap-4 justify-center">Não há receitas disponíveis <FaSadTear className="fill-color_primary" /></td>
+                            <td className="p-8 flex items-center gap-4 justify-center">Não há receitas disponíveis <FaSadTear className="fill-color_orange" /></td>
                         </tr>
                     }
 

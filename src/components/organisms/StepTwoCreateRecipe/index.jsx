@@ -64,7 +64,7 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
         <form onSubmit={handleSubmit(onSubmit)} className={`w-full flex flex-col justify-center items-center`}>
             <div className="w-full md:w-1/2 my-8 flex flex-col items-center">
                 <div className="flex justify-between items-center">
-                    <h2 className="text-s1_7 md:text-s1_5 text-color_primary p-4 font-bold">Quais são os ingredientes?</h2>
+                    <h2 className="text-s1_7 md:text-s1_5 text-color_orange p-4 font-bold">Quais são os ingredientes?</h2>
                 </div>
                 <div className="flex flex-col w-full my-8">
                     {
@@ -100,7 +100,7 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                 <div className="flex flex-col">
                     {
                         !!stuffingField.length &&
-                        <h2 className="text-s1_5 text-color_primary p-4 mb-4 font-bold">Quais são os ingredientes do recheio?</h2>
+                        <h2 className="text-s1_5 text-color_orange p-4 mb-4 font-bold">Quais são os ingredientes do recheio?</h2>
                     }
                     {
                         stuffingField.map((field, index) =>
@@ -148,13 +148,13 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
 
 
             <div className="flex flex-col items-center w-full md:w-1/2 mt-8">
-                <h2 className="text-s1_7 md:text-s1_5 text-color_primary font-bold">Como é modo de preparo?</h2>
+                <h2 className="text-s1_7 md:text-s1_5 text-color_orange font-bold">Como é modo de preparo?</h2>
 
                 <div className="flex-col w-full h-full">
                     {
                         prepareField.map((step, index) =>
                             <div key={index} className="w-full flex flex-col justify-center">
-                                <span className="flex justify-center items-center w-2/12 text-s1_4 text-center text-color_primary m-6">
+                                <span className="flex justify-center items-center w-2/12 text-s1_4 text-center text-color_orange m-6">
                                     Passo {index + 1}
                                 </span>
                                 <div className="flex w-full items-center">

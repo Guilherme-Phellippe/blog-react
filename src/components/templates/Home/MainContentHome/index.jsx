@@ -131,7 +131,7 @@ export const MainContentHome = () => {
                     <>
                         <div
                             data-id="modal-ranking-recipe-mobile"
-                            className={`${!isOpenRanking ? "hidden" : 'block'} z-[999] fixed top-0 right-0 w-[70%] h-screen overflow-auto border-l-[2px] border-l-color_primary`}>
+                            className={`${!isOpenRanking ? "hidden" : 'block'} z-[999] fixed top-0 right-0 w-[70%] h-screen overflow-auto border-l-[2px] border-l-color_orange`}>
                             <ColumnRightMainHome
                                 user={user}
                                 ranking={topRankingByHearts()}
@@ -141,7 +141,7 @@ export const MainContentHome = () => {
                         <div
                             data-id="modal-ranking-recipe-mobile"
                             onClick={() => setIsOpenRanking((open) => !open)}
-                            className={`${!isOpenRanking ? "right-[0px]" : 'right-[69%]'} shadow-md shadow-[#24242480] z-50 fixed  bottom-32 w-[70px] border-[1px] border-white bg-color_primary rounded-tl-2xl rounded-bl-2xl flex justify-center`}>
+                            className={`${!isOpenRanking ? "right-[0px]" : 'right-[69%]'} shadow-md shadow-[#24242480] z-50 fixed  bottom-32 w-[70px] border-[1px] border-white bg-color_orange rounded-tl-2xl rounded-bl-2xl flex justify-center`}>
                             <GiPodium
                                 className="text-s4 fill-white mb-4" />
                         </div>

@@ -18,7 +18,7 @@ export const ColumnAllCategories = ({ categorySelect, setCategorySelect, categor
                     <li 
                         onClick={(e) => handleInfoSelect(category, e)}
                         key={category.id}
-                        className={`w-44 md:w-full flex-none snap-center cursor-pointer text-s1_3 text-center py-4 border-b-[1px] border-solid transition-colors hover:bg-color_second hover:text-white ${categorySelect === category.name_category && 'bg-color_second text-white'}`}
+                        className={`w-44 md:w-full flex-none snap-center cursor-pointer text-s1_3 text-center py-4 border-b-[1px] border-solid transition-colors hover:bg-color_red hover:text-white ${categorySelect === category.name_category && 'bg-color_red text-white'}`}
                     >{category.name_category}</li>)
                 }
             </ul>
