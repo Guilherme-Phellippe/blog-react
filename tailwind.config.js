@@ -20,10 +20,11 @@ module.exports = {
         s4: ['clamp(40px, 4vw, 44px)','44px'],
       },
       colors: {
+        background: '#E4E4E4',
         color_primary: '#FF6A28',
         color_second: '#ff9161',
-        background: '#E4E4E4',
         color_third: '#fba510',
+        color_to_text_white: "#d14200",
         color_text: '#202020',
         color_sub_text: '#414141',
       },
