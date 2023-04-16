@@ -27,20 +27,18 @@ export const Category = () => {
 
 
     return (
-        <div className="container">
-            <HomeProvider>
-                <Header />
-                <main className="flex flex-col md:flex-row w-[95%] md:w-11/12 bg-white mx-auto">
-                    <ColumnAllCategories
-                        categories={categories}
-                        categorySelect={categorySelect}
-                        setCategorySelect={setCategorySelect} />
-                    <ShowSelectedCategories
-                        categories={categories}
-                        categorySelect={categorySelect} />
-                </main>
-                <Footer />
-            </HomeProvider>
-        </div>
+        <HomeProvider>
+            <Header />
+            <main className="flex flex-col md:flex-row w-[95%] md:w-11/12 bg-white mx-auto">
+                <ColumnAllCategories
+                    categories={categories}
+                    categorySelect={categorySelect}
+                    setCategorySelect={setCategorySelect} />
+                <ShowSelectedCategories
+                    categories={categories}
+                    categorySelect={categorySelect} />
+            </main>
+            <Footer />
+        </HomeProvider>
     )
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { Categories } from '../../molecules/Categories/Categories'
 
@@ -10,14 +10,23 @@ import { SocialMidia } from '../../atoms/HeaderSocialMidia'
 import { LinkNavigation } from '../../atoms/LinkNavigation'
 import { Logo } from '../../atoms/HeaderLogo'
 import { PanelUser } from '../PanelUser/PanelUser'
+import { useCategoryApi } from '../../../hooks/useApi'
 
 export const Menu = () => {
+    const refCategoryApi = useRef(useCategoryApi())
+    const [categories, setCategories] = useState([])
     const [menuIsOpen, setMenuIsOpen] = useState(false)
     const [enabledSubCategory, setEnabledSubCategory] = useState(false)
 
     useEffect(() => {
         handleActiveLineTextMenu();
-    }, []);
+        (async () => {
+            const { data } = await refCategoryApi.current.getAllCategory();
+            data.sort((a, b) => b.recipe - a.recipe)
+            const categories = data.filter(category => category.recipe >= 1)
+            setCategories(categories)
+        })()
+    }, [])
 
     useEffect(() => {
         const takeClick = (e) => {
@@ -53,15 +62,18 @@ export const Menu = () => {
 
                                 <LinkNavigation route={'/'} customClass={''}>Home</LinkNavigation>
 
-                                <LinkNavigation
-                                    route={''}
-                                    customClass={''}
+                                <li
+                                    className='text-white bg-color_orange p-4 text-s1_5 relative cursor-pointer flex justify-center items-center after:hover:w-full after:active:w-full after:w-0 after:h-[3px] after:bg-white after:absolute after:-bottom-2 after:left-0 transition-all'
                                     onClick={handleSubCategory}
-                                >Categorias <RiArrowDownSLine />
+                                >
+                                    Categorias <RiArrowDownSLine />
                                     {enabledSubCategory &&
-                                        <Categories customClass={"w-[150px] text-center p-2 text-white bg-color_orange border-b-[#fff5]"} />
+                                        <Categories
+                                            categories={categories}
+                                            customClass={"w-[150px] text-center p-2 text-white bg-color_orange border-b-[#fff5]"}
+                                        />
                                     }
-                                </LinkNavigation>
+                                </li>
 
                                 <LinkNavigation route={'/about'} customClass={''}>Sobre nós</LinkNavigation>
 
