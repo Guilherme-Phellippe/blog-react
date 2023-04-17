@@ -22,7 +22,7 @@ module.exports = {
       colors: {
         background: '#E4E4E4',
         color_orange: '#ff6a28',
-        color_red: '#990000',
+        color_red: '#ff6a28bb',
         color_green: '#D4D925',
         color_yellow: "#FFEE63",
         color_text_white: '#fff',

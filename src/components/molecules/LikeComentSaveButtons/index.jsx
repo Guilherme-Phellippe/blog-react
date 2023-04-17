@@ -125,7 +125,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                 <FaSave className="text-color_sub_text group-hover:fill-green-700 " />
                 <p
                     ref={refButtonSave}
-                    className="text-color_sub_text group-hover:text-green-700" >Salvar</p>
+                    className={`${customClassToSave} text-color_sub_text group-hover:text-green-700`} >Salvar</p>
             </Button>
 
             {/* MODAL: */}

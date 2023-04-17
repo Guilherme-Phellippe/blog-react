@@ -22,7 +22,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                     return [];
                 })
             }
-            {ranking.length > limitRecipes ? <p onClick={() => setLimitRecipes(ranking.length)}>Veja mais</p> : ''}
+            {ranking.length > limitRecipes ? <p data-id="see-more" onClick={() => setLimitRecipes(ranking.length)}>Veja mais</p> : ''}
         </div>
     )
 }

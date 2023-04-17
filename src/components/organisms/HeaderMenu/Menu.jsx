@@ -106,7 +106,10 @@ export const Menu = () => {
                                     onClick={handleSubCategory}
                                 >Categorias <RiArrowDownSLine />
                                     {enabledSubCategory &&
-                                        <Categories customClass={"w-screen text-center p-6 bg-white text-color_orange border-b-color_orange"} />
+                                        <Categories
+                                            categories={categories}
+                                            customClass={"w-screen text-center p-6 bg-white text-color_orange border-b-color_orange"}
+                                        />
                                     }
                                 </LinkNavigation>
 

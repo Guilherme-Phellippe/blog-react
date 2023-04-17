@@ -45,7 +45,6 @@ export const MainContentHome = () => {
 
     }, [setUser]);
 
-
     useEffect(() => {
         recipes.sort(() => Math.random() - .5)
     }, [recipes])
@@ -65,7 +64,10 @@ export const MainContentHome = () => {
     useEffect(() => {
         const removeModalRankignRecipe = document.addEventListener('click', ({ target }) => {
             const box = target.closest("div[data-id=modal-ranking-recipe-mobile]")
-            if (!box) setIsOpenRanking(false)
+            const seeMoreNewRecipe = target.dataset.id === "see-more"
+            if (!box && !seeMoreNewRecipe) {
+                setIsOpenRanking(false)
+            }
         });
 
         return () => {
@@ -82,7 +84,6 @@ export const MainContentHome = () => {
         if (window.scrollY > 480) setShowIconRanking(true)
         else setShowIconRanking(false)
     }
-
 
     const topRankingByEyes = useCallback(() => {
         return [...recipes].sort((x, y) => y.nmr_eyes - x.nmr_eyes)
