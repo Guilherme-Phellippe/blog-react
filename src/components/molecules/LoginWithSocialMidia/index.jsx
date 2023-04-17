@@ -14,7 +14,7 @@ export const LoginWithSocialMidia = () => {
     };
 
     const logout = () => {
-        console.log('Usuário deslogado!');
+        console.log('Usuário deslogado!')
     };
 
 
