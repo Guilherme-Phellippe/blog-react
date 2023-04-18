@@ -21,14 +21,14 @@ export const Footer = () => {
                     </div>
                     <div className="flex flex-col justify-start items-center min-w-1/4 pt-8">
                         <h3 className='text-s2 md:text-s1_7 text-white mb-8'>Nossas politicas</h3>
-                        <Link to={'/policy'}>
-                            <span className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer'>Privacidade</span>
+                        <Link className='my-4' to={'/policy'}>
+                            <span className='text-s1_5 md:text-s1_3 text-white underline cursor-pointer'>Privacidade</span>
                         </Link>
-                        <Link to={'/policy?type=terms'}>
-                            <span className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer'>Termos de uso</span>
+                        <Link className='my-4' to={'/policy?type=terms'}>
+                            <span className='text-s1_5 md:text-s1_3 text-white underline cursor-pointer'>Termos de uso</span>
                         </Link>
-                        <Link to={'/policy'}>
-                            <span className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer'>Publicidade</span>
+                        <Link className='my-4' to={'/policy'}>
+                            <span className='text-s1_5 md:text-s1_3 text-white underline cursor-pointer'>Publicidade</span>
                         </Link>
                     </div>
 

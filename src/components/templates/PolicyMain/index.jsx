@@ -19,15 +19,15 @@ export const PolicyMain = () => {
                     <br />
                     O uso continuado de nosso blog será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.
                 </p>
+                <h3 className="text-s1_7 my-8 font-bold">Google AdSense:</h3>
                 <p className="text-s1_7 text-left">
-                    <h3 className="my-8 font-bold">Google AdSense:</h3>
                     O serviço Google AdSense que usamos para veicular publicidade usa um cookie DoubleClick para veicular anúncios mais relevantes em toda a Web e limitar o número de vezes que um determinado anúncio é exibido para você.
                     Para mais informações sobre o Google AdSense, consulte as FAQs oficiais sobre privacidade do Google AdSense.
                     Utilizamos anúncios para compensar os custos de funcionamento deste blog e fornecer financiamento para futuros desenvolvimentos. Os cookies de publicidade comportamental usados ​​por este blog foram projetados para garantir que você forneça os anúncios mais relevantes sempre que possível, rastreando anonimamente seus interesses e apresentando coisas semelhantes que possam ser do seu interesse.
                     Vários parceiros anunciam em nosso nome e os cookies de rastreamento de afiliados simplesmente nos permitem ver se nossos clientes acessaram o blog através de um dos sites de nossos parceiros, para que possamos creditá-los adequadamente e, quando aplicável, permitir que nossos parceiros afiliados ofereçam qualquer promoção que pode fornecê-lo para fazer uma compra.
                 </p>
+                <h3 className="text-s1_7 my-8 font-semibold">Compromisso do Usuário:</h3>
                 <p className="text-s1_7 text-center w-2/3 leading-10 mx-auto">
-                    <h3 className="my-8 font-semibold">Compromisso do Usuário:</h3>
 
                     O usuário se compromete a fazer uso adequado dos conteúdos e da informação que a Tem Sabor oferece no blog e com caráter enunciativo, mas não limitativo:
                 </p>

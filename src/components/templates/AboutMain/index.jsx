@@ -7,18 +7,16 @@ export const AboutMain = () => {
     return (
         <main className="w-full max-w-[1500px] mx-auto bg-white my-20">
             <div className="flex flex-col  items-center gap-4 p-8">
-
-
                 <h1 className="p-4 mt-8 text-s2_5 text-center font-semibold text-color_orange">Sobre nossa marca</h1>
-                <div className="flex gap-4 p-12">
-                    <div className="w-1/3">
+                <div className="flex flex-col md:flex-row gap-4 p-12">
+                    <div className="w-full md:w-1/3">
                         <img
                             className="w-full h-full object-cover"
                             src="https://i.ibb.co/cwVs9t8/Design-sem-nome-4.webp"
                             alt="imagem sobre nós mulheres felizes por fundar a tem sabor"
                         />
                     </div>
-                    <div className="w-2/3 flex flex-col justify-center text-center gap-4 mt-8">
+                    <div className="w-full md:w-2/3 flex flex-col justify-center text-center gap-4 mt-8">
                         <p className="text-s1_7 leading-[25px]">
                             Bem-vindo ao nosso site de receitas e culinária! Somos um grupo de mulheres apaixonadas pela arte de cozinhar, e fundamos este blog em 2022 para compartilhar nossas receitas favoritas com outras pessoas que também amam cozinhar.
                         </p>
@@ -60,7 +58,7 @@ export const AboutMain = () => {
                     </div>
 
                 </div>
-                <div className="w-1/2 flex flex-col justify-center gap-4 mt-16">
+                <div className="w-full md:w-1/2 flex flex-col justify-center gap-4 mt-16">
                     <h2 className="p-4 mt-8 text-s2_5 text-center font-semibold text-color_orange">Organizadores e Responsavéis</h2>
 
                     <p className="text-s1_7 text-justify leading-[25px]">
@@ -71,12 +69,12 @@ export const AboutMain = () => {
                     </p>
 
                 </div>
-                <div className="w-1/2 flex flex-col justify-center items-center gap-4 mt-16">
+                <div className="w-full md:w-1/2 flex flex-col justify-center items-center gap-4 mt-16">
                     <h2 className="text-s2 text-center font-semibold text-color_orange">Nossas redes sociais</h2>
                     <SocialMidia />
                     <p className="flex flex-col gap-4 text-s1_5 mt-8 opacity-75"><span>Fale com a gente:</span>contato@temsabor.blog </p>
                 </div>
-                <div className="w-1/2 flex flex-col justify-center items-center gap-4 mt-16">
+                <div className="w-full md:w-1/2 flex flex-col justify-center items-center gap-4 mt-16">
                     <h2 className="text-s2_5 text-center font-semibold text-color_orange">Mostre-nos uma receita:</h2>
                     <Link to={'/create/'}>
                         <Button customClass="btn-primary mt-8 text-s2 px-8 mb-8">Criar uma receita</Button>

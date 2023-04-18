@@ -25,7 +25,6 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
         setListRecipeForRemove(list => [...list, currentTarget.id])
     };
 
-
     return (
         <div>
             {contents.length ? contents.map((content) => {

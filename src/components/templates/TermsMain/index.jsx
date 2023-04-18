@@ -1,6 +1,6 @@
 export const TermsMain = () => {
     return (
-        <div className="w-full max-w-[1500px] bg-white mx-auto p-4 md:p-16 m-4 md:m-16">
+        <div className="w-full max-w-[1500px] bg-white mx-auto p-4 md:p-16 m-16">
             <div className="w-full flex flex-col gap-4 mt-8">
                 <h2 className="text-s2 text-color_orange">1. Termos</h2>
                 <p className="text-s1_7 leading-10 ml-12">
@@ -11,13 +11,15 @@ export const TermsMain = () => {
                 <h2 className="text-s2 text-color_orange">2. Uso de Licença</h2>
                 <p className="text-s1_7 leading-10 ml-12">
                     É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no blog Tem Sabor , apenas para visualização transitória pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título e, sob esta licença, você não pode:
-                    <ul className="list-decimal ml-16 my-8">
-                        <li>modificar ou copiar os materiais;</li>
-                        <li>usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial); </li>
-                        <li>tentar descompilar ou fazer engenharia reversa de qualquer software contido no blog Tem Sabor; </li>
-                        <li>remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou </li>
-                        <li>transferir os materiais para outra pessoa ou 'espelhe' os materiais em qualquer outro servidor.</li>
-                    </ul>
+                </p>
+                <ul className="text-s1_5 leading-10 list-decimal ml-32 my-8">
+                    <li>modificar ou copiar os materiais;</li>
+                    <li>usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial); </li>
+                    <li>tentar descompilar ou fazer engenharia reversa de qualquer software contido no blog Tem Sabor; </li>
+                    <li>remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou </li>
+                    <li>transferir os materiais para outra pessoa ou 'espelhe' os materiais em qualquer outro servidor.</li>
+                </ul>
+                <p className="text-s1_7 leading-10 ml-12">
                     Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser rescindida pela Tem Sabor a qualquer momento. Ao encerrar a visualização desses materiais ou após o término desta licença, você deve apagar todos os materiais baixados em sua posse, seja em formato eletrónico ou impresso.
                 </p>
             </div>
@@ -50,12 +52,13 @@ export const TermsMain = () => {
                 </p>
             </div>
 
-            <div className="w-full flex flex-col gap-4 mt-8">
-                <p className="text-s1_7 ml-12 leading-10">
-                    <h3>Modificações</h3>
+            <div className="w-full flex text-s1_7  flex-col gap-4 mt-8">
+                <h3>Modificações</h3>
+                <p className="ml-12 leading-10">
                     A Tem Sabor pode revisar estes termos de serviço do blog a qualquer momento, sem aviso prévio. Ao usar este blog, você concorda em ficar vinculado à versão atual desses termos de serviço.
-
-                    <h3>Lei aplicável</h3>
+                </p>
+                <h3>Lei aplicável</h3>
+                <p className=" ml-12 leading-10">
                     Estes termos e condições são regidos e interpretados de acordo com as leis do Tem Sabor e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais naquele estado ou localidade.
                 </p>
             </div>
