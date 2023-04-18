@@ -1,6 +1,6 @@
 export const PolicyMain = () => {
     return (
-        <div className="w-full max-w-[1500px] bg-white mx-auto p-16 m-16">
+        <div className="w-full max-w-[1500px] bg-white mx-auto p-4 md:p-16 m-16">
             <h2 className="text-s2 text-center text-color_orange">Política Privacidade</h2>
 
             <div className="flex flex-col gap-4 my-8 text-color_text_black">

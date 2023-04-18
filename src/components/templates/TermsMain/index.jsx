@@ -1,6 +1,6 @@
 export const TermsMain = () => {
     return (
-        <div className="w-full max-w-[1500px] bg-white mx-auto p-16 m-16">
+        <div className="w-full max-w-[1500px] bg-white mx-auto p-4 md:p-16 m-4 md:m-16">
             <div className="w-full flex flex-col gap-4 mt-8">
                 <h2 className="text-s2 text-color_orange">1. Termos</h2>
                 <p className="text-s1_7 leading-10 ml-12">
