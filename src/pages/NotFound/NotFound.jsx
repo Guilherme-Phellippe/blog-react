@@ -6,7 +6,6 @@ import { HomeProvider } from '../../contexts/Home/HomeProvider'
 
 export const NotFound = () => {
     return (
-        <div className="container">
             <HomeProvider>
                 <Header />
                 <div className="w-full h-[40rem] flex flex-col gap-8 justify-center items-center">
@@ -17,6 +16,5 @@ export const NotFound = () => {
                 </div>
                 <Footer />
             </HomeProvider>
-        </div>
     )
 }

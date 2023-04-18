@@ -12,17 +12,15 @@ export const Login = () => {
 
 
     return (
-        <div className="container">
-            <HomeProvider>
-                <Header />
-                <div className="w-full p-4 md:p-16">
-                    <div className="w-full h-72 bg-white mb-12">
-                        ads here.
-                    </div>
-                    {isLogin ? <Signin setIsLogin={setIsLogin} /> : <Singup setIsLogin={setIsLogin} />}
+        <HomeProvider>
+            <Header />
+            <div className="w-full max-w-[1500px] mx-auto p-4 md:p-16">
+                <div className="w-full h-72 bg-white mb-12">
+                    ads here.
                 </div>
-                <Footer />
-            </HomeProvider>
-        </div>
+                {isLogin ? <Signin setIsLogin={setIsLogin} /> : <Singup setIsLogin={setIsLogin} />}
+            </div>
+            <Footer />
+        </HomeProvider>
     )
 }
