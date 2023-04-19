@@ -5,7 +5,6 @@ import { Categories } from '../../molecules/Categories/Categories'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdClose } from 'react-icons/md'
 
-import './menu.css'
 import { SocialMidia } from '../../atoms/HeaderSocialMidia'
 import { LinkNavigation } from '../../atoms/LinkNavigation'
 import { Logo } from '../../atoms/HeaderLogo'
