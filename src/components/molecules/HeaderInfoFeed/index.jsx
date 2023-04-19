@@ -5,16 +5,17 @@ import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { Img } from "../../atoms/Img"
 
 
-export const HeaderInfoFeed = ({content: { user, createdAt, id}, onClick}) => {
+export const HeaderInfoFeed = ({ content: { user, createdAt, id }, onClick }) => {
     const { valueSearch } = useContext(HomeContext)
 
     return (
         <div className={`flex items-center px-4 h-[10%] ${valueSearch && "hidden"}`}>
             <div className="w-[35px] h-[35px] grid place-items-start rounded-full overflow-hidden">
-                <Img 
+                <Img
                     className="w-full h-full object-cover"
-                    src={user.photo} 
-                    alt={user.name} />
+                    src={user.photo}
+                    alt={user.name}
+                />
             </div>
             <div className="w-[70%] h-full py-6 px-4 ">
                 <h2 className="text-s1_4">{user.name}</h2>

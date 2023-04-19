@@ -30,16 +30,15 @@ export const Menu = () => {
 
     useEffect(() => {
         const takeClick = (e) => {
-            !e.target.matches('li') && setEnabledSubCategory(false)
+            if(!e.target.matches('li') && !e.target.matches('svg')) setEnabledSubCategory(false)
         }
         document.addEventListener('click', takeClick)
         return () => document.removeEventListener('click', takeClick)
     }, [enabledSubCategory])
 
 
-    const handleSubCategory = (event) => {
-        const [hasListMenu] = event.target.classList
-        if (hasListMenu) setEnabledSubCategory((disabled) => !disabled)
+    const handleSubCategory = () => {
+        setEnabledSubCategory((disabled) => !disabled)
     }
 
     const handleActiveLineTextMenu = () => {
@@ -100,24 +99,42 @@ export const Menu = () => {
                             </div>
 
                             <ul className='menu flex flex-col w-full  items-center list-none' >
-                                <LinkNavigation route={'/'} customClass={'border-b-[#fff4] border-b-[1px] w-screen'}>Home</LinkNavigation>
-
                                 <LinkNavigation
-                                    route={''}
+                                    onClick={() => setMenuIsOpen(false)}
+                                    route={'/'}
                                     customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
+                                >Home</LinkNavigation>
+
+                                <li
+                                    className='w-full text-white bg-color_orange p-4 text-s1_5 relative cursor-pointer flex justify-center items-center border-b-[#fff4] border-b-[1px] transition-all'
                                     onClick={handleSubCategory}
                                 >Categorias <RiArrowDownSLine />
                                     {enabledSubCategory &&
                                         <Categories
+                                            setMenuIsOpen={setMenuIsOpen}
                                             categories={categories}
                                             customClass={"w-screen text-center p-6 bg-white text-color_orange border-b-color_orange"}
                                         />
                                     }
-                                </LinkNavigation>
+                                </li>
 
-                                <LinkNavigation route={'/about'} customClass={'border-b-[#fff4] border-b-[1px] w-screen'}>Sobre nós</LinkNavigation>
-                                <LinkNavigation route={'/policy'} customClass={'border-b-[#fff4] border-b-[1px] w-screen'}>Politicas privacidade</LinkNavigation>
-                                <LinkNavigation route={'/terms'} customClass={'border-b-[#fff4] border-b-[1px] w-screen'}>Termos de uso</LinkNavigation>
+                                <LinkNavigation
+                                    onClick={() => setMenuIsOpen(false)}
+                                    route={'/about'}
+                                    customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
+                                >Sobre nós</LinkNavigation>
+
+                                <LinkNavigation
+                                    onClick={() => setMenuIsOpen(false)}
+                                    route={'/policy'}
+                                    customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
+                                >Politicas privacidade</LinkNavigation>
+
+                                <LinkNavigation
+                                    onClick={() => setMenuIsOpen(false)}
+                                    route={'/terms'}
+                                    customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
+                                >Termos de uso</LinkNavigation>
                             </ul>
                             <div className="flex w-full h-[10%] justify-center items-center px-8">
                                 <SocialMidia isMobile={true} />
