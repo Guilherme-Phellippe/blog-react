@@ -15,9 +15,6 @@ export const Login = () => {
         <HomeProvider>
             <Header />
             <div className="w-full max-w-[1500px] mx-auto p-4 md:p-16">
-                <div className="w-full h-72 bg-white mb-12">
-                    ads here.
-                </div>
                 {isLogin ? <Signin setIsLogin={setIsLogin} /> : <Singup setIsLogin={setIsLogin} />}
             </div>
             <Footer />

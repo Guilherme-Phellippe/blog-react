@@ -28,17 +28,7 @@ export const Main = () => {
                 <IconsShare />
                 <div className="w-full bg-white">
                     {recipe ? <InfoRecipeContent recipe={recipe} /> : <Loading />}
-
-                    <div id="ads-here-print" className="w-full bg-background pt-8">
-                        <div className="w-full bg-white rounded-md">
-                            <h2 className='text-center text-s2 p-8 text-color_orange font-bold'>PELA WEB</h2>
-                            <div className="w-full min-h-[50rem] border-[1px] mx-auto border-solid border-color_orange">
-                                <h3 className='text-center text-s2'>anuncios here.</h3>
-                            </div>
-                        </div>
-                    </div>
                     {recipe ? <RecipeSimilarContent recipe={recipe} /> : <Loading />}
-
                 </div>
             </main>
         </div>
