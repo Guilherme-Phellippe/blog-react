@@ -28,9 +28,6 @@ export const Poll = () => {
     return (
         <HomeProvider>
             <Header />
-            <div className="w-11/12 h-[15rem] my-4 bg-white mx-auto grid place-items-center">
-                ads here.
-            </div>
             <div className="w-[95%] md:w-5/6 mx-auto bg-white">
                 <h2 className="p-4 text-s2 text-center text-color_red font-bold">Os mais votados:</h2>
                 <div className="w-[95%] md:w-5/6 mx-auto my-12 flex justify-center items-end">
