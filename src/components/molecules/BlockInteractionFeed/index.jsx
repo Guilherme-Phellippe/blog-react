@@ -11,7 +11,7 @@ export const BlockInteractionFeed = ({ comments, idRecipe }) => {
     const [nmr_hearts, setNmr_hearts] = useState([])
 
     useEffect(() => {
-        (async ()=>{
+        (async () => {
             const { data } = await refRecipeApi.current.getUniqueRecipe(idRecipe)
             setNmr_hearts(data.nmr_hearts)
             setNmr_saved(data.nmr_saved)
@@ -22,12 +22,10 @@ export const BlockInteractionFeed = ({ comments, idRecipe }) => {
     return (
         <div className={`w-full h-[10%] p-2 ${valueSearch && 'hidden'}`}>
             <div className="h-1/2">
-                {
-                    <NumberLoved
-                        nmr_hearts={nmr_hearts.length}
-                        nmr_comments={comments.length}
-                    />
-                }
+                <NumberLoved
+                    nmr_hearts={nmr_hearts.length}
+                    nmr_comments={comments.length}
+                />
             </div>
             <div className="h-1/2 flex justify-center">
                 <LikeComentsSaveButtons

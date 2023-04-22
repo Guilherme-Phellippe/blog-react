@@ -37,7 +37,7 @@ export const BoxChangePassword = ({ setShowModal, id }) => {
     }
 
     return (
-        <div className="w-screen h-screen grid place-content-center bg-[#24242480] fixed top-0">
+        <div className="w-screen h-screen grid place-content-center bg-[#24242480] fixed top-0 z-[999]">
             <div className="flex flex-col items-center bg-white p-8 rounded-xl relative">
                 <span onClick={() => setShowModal(false)} className="absolute top-0 right-2 text-red-500 text-s2 cursor-pointer opacity-50">X</span>
                 <h2 className="text-s1_5 mb-6">Digite sua senha atual</h2>

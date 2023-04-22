@@ -6,14 +6,14 @@ import { useRef, useState } from "react"
 import { useCommentApi } from "../../../hooks/useApi"
 import moment from "moment"
 import { DialogConfirm } from "../../../modals/DialogConfirm"
-import { DialogAlert } from "../../../modals/DialogAlert"
 import { useNavigate } from "react-router-dom"
+import { DialogAlert } from "../../../modals/DialogAlert"
 
 export const FeedComments = ({ comment, userLogged, setComments }) => {
     const [showbuttonAsnwer, setShowButtonAnswer] = useState(true)
     const [showIconDelete, setShowIconDelete] = useState(false)
     const [allAnswer, setAllAnswer] = useState(comment.answer);
-    const [openModalConfirm, setModalConfirm] = useState(false);
+    const [openModalDialog, setModalDialog] = useState(false);
     const [containerConfirm, setContainerConfirm] = useState()
     const [openModalAlert, setModalAlert] = useState(false);
     const [containerAlert, setContainerAlert] = useState()
@@ -48,7 +48,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                     if (nmrComments) nmrComments.textContent = Number(nmrComments.textContent) !== 0 ? Number(nmrComments.textContent - 1) : 0
                 } else {
                     setContainerConfirm({
-                        function: setModalConfirm(true),
+                        function: setModalAlert(true),
                         type: 0,
                         message: "Não foi possivel excluir seu comentário, deseja enviar informações ao suporte?",
                         button: {
@@ -58,10 +58,10 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                     })
                 }
             } else setContainerConfirm({
-                function: setModalConfirm(true),
+                function: setModalDialog(true),
                 type: 1,
                 message: "Crie uma conta ou entre em uma conta existente para poder excluir esse comentário",
-                button:{
+                button: {
                     icon: <RiAccountBoxFill />,
                     title: "Criar conta",
                     event: navigate('/')
@@ -70,10 +70,10 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
         }
 
         setContainerConfirm({
-            function: setModalConfirm(true),
+            function: setModalDialog(true),
             type: 0,
             message: "Deseja realmente excluir esse comentário?",
-            button:{
+            button: {
                 icon: <RiDeleteBinFill />,
                 title: "Excluir",
                 event: () => deleteComment(),
@@ -92,24 +92,24 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
 
             const response = await refCommentApi.current.deleteAnswer(ids)
             if (response.status === 201) {
-                setAllAnswer(ans => ans.filter(a => a.id !== answer.id))
+                
                 setContainerAlert({
                     function: setModalAlert(true),
                     type: 2,
-                    message: "Resposta ao comentário removido com sucesso!"
-                    
+                    message: "Resposta ao comentário removido com sucesso!",
+                    eventClose: () => setAllAnswer(ans => ans.filter(a => a.id !== answer.id)),
                 })
             }
         }
 
 
         setContainerConfirm({
-            function: setModalConfirm(true),
+            function: setModalDialog(true),
             type: 0,
             message: "Deseja realmente excluir esse comentário?",
-            button:{
+            button: {
                 title: "Excluir",
-                event: ()=> deleteAnswer()
+                event: () => deleteAnswer()
             }
         })
     }
@@ -133,19 +133,19 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         setShowButtonAnswer(true)
                         setAllAnswer(v => [...v, response.data]);
                     }
-                } else setContainerAlert({
-                    function: setModalAlert(true),
+                } else containerConfirm({
+                    function: setModalDialog(true),
                     type: 1,
                     message: "Escreva sua resposta!"
                 })
             } else setContainerConfirm({
-                function: setModalConfirm(true),
+                function: setModalDialog(true),
                 type: 1,
                 message: "Crie uma conta para poder responder esse comentário!",
-                button:{
+                button: {
                     icon: <RiAccountBoxFill />,
                     text: "Criar conta",
-                    event: ()=> navigate('/register')
+                    event: () => navigate('/register')
                 }
             })
         }
@@ -193,13 +193,13 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                     }
                     <span
                         onClick={() => userLogged.id ? setShowButtonAnswer(btn => !btn) : setContainerConfirm({
-                            function: setModalConfirm(true),
+                            function: setModalDialog(true),
                             type: 1,
                             message: "Crie uma conta para responder esse comentário!",
                             button: {
                                 icon: <RiAccountBoxFill />,
                                 title: "Criar conta",
-                                event: ()=> navigate('/register')
+                                event: () => navigate('/register')
                             }
                         })}
                         className="hover:underline w-auto cursor-pointer text-s1_1" >
@@ -261,8 +261,8 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
 
             {/* MODAL: */}
             {
-                openModalConfirm && <DialogConfirm
-                    open={{ openModalConfirm, setModalConfirm }}
+                openModalDialog && <DialogConfirm
+                    open={{ openModalDialog, setModalDialog }}
                     container={containerConfirm}
                 />
             }
@@ -272,5 +272,6 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                     container={containerAlert}
                 />
             }
+
         </div>)
 }

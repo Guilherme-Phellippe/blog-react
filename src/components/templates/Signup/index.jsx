@@ -98,7 +98,7 @@ export const Singup = ({ setIsLogin }) => {
                         id="name"
                         placeholder={'DIGITE SEU NOME E SOBRENOME:'}
                         type={'text'}
-                        customWidthAndMargin="w-[80%]  md:w-[80%]  md:w-[50%] my-6"
+                        customWidthAndMargin="w-[80%]  md:w-[50%]  md:w-[50%] my-6"
                         icon={<FaUserCheck className={`text-s1_5 ${whatColorIconName}`} />}
                     />
                     <Input

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 
@@ -9,23 +9,40 @@ import { MdImage, MdImportContacts, MdList } from "react-icons/md"
 import { StepOneCreateRecipe } from "../../organisms/StepOneCreateRecipe"
 import { StepThreeCreateRecipe } from "../../organisms/StepThreeCreateRecipe"
 import { StepTwoCreateRecipe } from "../../organisms/StepTwoCreateRecipe";
+import { HomeContext } from "../../../contexts/Home/HomeProvider"
+import { DialogAlert } from "../../../modals/DialogAlert"
 
 
 
 export const MainCreateRecipe = () => {
+    const { user } = useContext(HomeContext);
+    const refUser = useRef(user)
     const categoryApiRef = useRef(useCategoryApi())
     const [categories, setCategories] = useState([])
     const [step, setStep] = useState(1)
     const [images, setImages] = useState([])
+    const [openModalAlert, setModalAlert] = useState(false);
+    const [containerAlert, setContainerAlert] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
-        (async () => {
-            const categories = await categoryApiRef.current.getAllCategory();
-            if (categories) setCategories(categories.data)
-            else navigate('/');
-        })();
+        if (refUser.current) {
+            (async () => {
+                const categories = await categoryApiRef.current.getAllCategory();
+                if (categories) setCategories(categories.data)
+                else navigate('/');
+            })();
+        } else {
+            setContainerAlert({
+                function: setModalAlert(true),
+                type: 1,
+                message: "Você precisa criar uma conta antes de publicar um receita!",
+                eventClose: () => navigate('/register')
+            })
+
+        }
     }, [navigate]);
+
 
     return (
         <main className="w-full max-w-[1500px] mx-auto">
@@ -50,6 +67,7 @@ export const MainCreateRecipe = () => {
                     {
                         step === 1 ?
                             <StepOneCreateRecipe
+                                user={user}
                                 setStep={setStep}
                                 categories={categories}
                             />
@@ -67,6 +85,15 @@ export const MainCreateRecipe = () => {
                 </div>
 
             </div>
+
+
+
+            {
+                openModalAlert && <DialogAlert
+                    open={{ openModalAlert, setModalAlert }}
+                    container={containerAlert}
+                />
+            }
         </main>
     )
 }

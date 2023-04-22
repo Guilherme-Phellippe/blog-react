@@ -6,6 +6,8 @@ import { MdSend } from "react-icons/md"
 import { Link } from 'react-router-dom'
 
 export const Footer = () => {
+
+
     return (
         <footer className='w-full h-auto md:h-[40vh] bg-color_orange flex flex-col items-center mt-20 '>
             <div className="w-full h-full">
@@ -72,6 +74,7 @@ export const Footer = () => {
             <div className="w-full bg-white flex justify-center p-4">
                 <span>Site desenvolvido por: <h4>Guilherme Phellippe</h4></span>
             </div>
+
         </footer>
     )
 }

@@ -23,7 +23,7 @@ export const DialogConfirm = ({ open, container: { type, button, message } }) =>
                     </AlertDialog.Title>
                     <AlertDialog.Description className="text-s1_4 my-8 p-4">{message}</AlertDialog.Description>
                     <div className="flex justify-around mt-6 border-t-[1px] py-8">
-                        <AlertDialog.Cancel className='text-s1_2 text-color_sub_text border-[1px] p-2 border-color_text/40 rounded-2xl '> {button ? "Cancelar" : "Entendi"} </AlertDialog.Cancel>
+                        <AlertDialog.Cancel className='text-s1_2 text-color_sub_text border-[1px] p-2 px-6 border-color_text/40 rounded-2xl '> {button ? "Cancelar" : "OK"} </AlertDialog.Cancel>
                         {
                             button &&
                             <AlertDialog.Action className={`btn-primary text-s1_2 gap-2 px-4 ${TYPE_COLOR_BG} `} onClick={button?.event}>

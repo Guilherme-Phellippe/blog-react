@@ -20,7 +20,7 @@ export const SocialMidia = ({ hidden, isMobile }) => {
                 <FaFacebook className={`my-2 ${isMobile ? 'text-s3 mx-4' : 'text-s1_7'} cursor-pointer rounded-full transition-all text-[#3b5998] bg-white`} />
             </a>
             <a
-                href="https://instagram.com/tem_saborofc/"
+                href="https://instagram.com/temsabor.oficial/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Esse link levará você ao Instagram"

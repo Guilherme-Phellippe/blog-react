@@ -78,11 +78,11 @@ export const LoginWithSocialMidia = () => {
 
     return (
         <>
-            <Button event={handleGoogleLogin} customClass='border rounded-3xl flex items-center gap-3 text-s1_5 px-8 py-4'>
+            <Button event={handleGoogleLogin} customClass='w-full flex justify-center border rounded-3xl flex items-center gap-3 text-s1_5 px-8 py-4'>
                 <FcGoogle />
                 Entrar com google
             </Button>
-            <Button event={handleFacebookLogin} customClass='border rounded-3xl flex items-center gap-3 text-s1_5 px-8 py-4'>
+            <Button event={handleFacebookLogin} customClass='w-full flex justify-center border rounded-3xl flex items-center gap-3 text-s1_5 px-8 py-4'>
                 <MdFacebook className='fill-blue-700' />
                 Entrar com Facebook
             </Button>

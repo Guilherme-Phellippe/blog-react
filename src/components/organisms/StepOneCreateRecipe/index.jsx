@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -23,7 +23,7 @@ const createRecipeFormSchema = z.object({
         .transform(name => name.charAt(0).toUpperCase().concat(name.substring(1).toLowerCase()))
 });
 
-export const StepOneCreateRecipe = ({ categories, setStep }) => {
+export const StepOneCreateRecipe = ({ categories, setStep, user }) => {
     const VALUE_LIMIT_SIZE_TITLE = 45
     const categoryApi = useCategoryApi()
     const { register, setValue, handleSubmit, formState: { errors } } = useForm(({ resolver: zodResolver(createRecipeFormSchema) }));
@@ -35,6 +35,7 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
     const [showSuggestion, setShowSuggestion] = useState(false)
     const [qs] = useSearchParams();
     const refInputNameRecipe = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const recipe = JSON.parse(localStorage.getItem('recipe'));
@@ -90,14 +91,27 @@ export const StepOneCreateRecipe = ({ categories, setStep }) => {
     }
 
     const onSubmit = async (data) => {
-        data.category = suggestionInputCategory.length ? suggestionInputCategory : data.category;
-        const response = await categoryApi.createNewCategory(data.category);
-        if (response.status === 200 || response.status === 201) {
-            const user = JSON.parse(localStorage.getItem("token"))
-            data.userId = user.id
-            data.categoryId = response.data.id
-            localStorage.setItem("recipe", JSON.stringify(data));
-            setStep(step => step + 1)
+        if(user){
+            data.category = suggestionInputCategory.length ? suggestionInputCategory : data.category;
+            const response = await categoryApi.createNewCategory(data.category);
+            if (response.status === 200 || response.status === 201) {
+                const user = JSON.parse(localStorage.getItem("token"))
+                data.userId = user.id
+                data.categoryId = response.data.id
+                localStorage.setItem("recipe", JSON.stringify(data));
+                setStep(step => step + 1)
+            }
+
+        }else{
+            setContainerModal({
+                type: 0,
+                message: "Você precisa criar uma conta antes de prosseguir!",
+                function: setModalDialog(true),
+                button: {
+                    title: "Criar conta",
+                    event: ()=> navigate('/register')
+                }
+            })
         }
     }
 

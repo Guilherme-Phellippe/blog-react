@@ -29,7 +29,7 @@ export const Category = () => {
     return (
         <HomeProvider>
             <Header />
-            <main className="flex flex-col md:flex-row w-[95%] md:w-11/12 bg-white mx-auto">
+            <main className="flex flex-col md:flex-row w-[95%] md:w-11/12 max-w-[1500px] bg-white mx-auto">
                 <ColumnAllCategories
                     categories={categories}
                     categorySelect={categorySelect}
