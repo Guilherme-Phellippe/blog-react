@@ -1,46 +1,48 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 
-import { useCategoryApi } from "../../../hooks/useApi"
+import { useCategoryApi, useUserApi } from "../../../hooks/useApi"
 
 import { MdImage, MdImportContacts, MdList } from "react-icons/md"
 
 import { StepOneCreateRecipe } from "../../organisms/StepOneCreateRecipe"
 import { StepThreeCreateRecipe } from "../../organisms/StepThreeCreateRecipe"
 import { StepTwoCreateRecipe } from "../../organisms/StepTwoCreateRecipe";
-import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { DialogAlert } from "../../../modals/DialogAlert"
 
-
-
 export const MainCreateRecipe = () => {
-    const { user } = useContext(HomeContext);
-    const refUser = useRef(user)
+    const refUser = useRef(useUserApi());
     const categoryApiRef = useRef(useCategoryApi())
     const [categories, setCategories] = useState([])
     const [step, setStep] = useState(1)
     const [images, setImages] = useState([])
     const [openModalAlert, setModalAlert] = useState(false);
     const [containerAlert, setContainerAlert] = useState();
+    const [user, setUser] = useState()
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (refUser.current) {
-            (async () => {
-                const categories = await categoryApiRef.current.getAllCategory();
-                if (categories) setCategories(categories.data)
-                else navigate('/');
-            })();
-        } else {
-            setContainerAlert({
-                function: setModalAlert(true),
-                type: 1,
-                message: "Você precisa criar uma conta antes de publicar um receita!",
-                eventClose: () => navigate('/register')
-            })
 
-        }
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await refUser.current.authenticateLogin();
+                if(response){
+                    setUser(response.data)
+                    const categories = await categoryApiRef.current.getAllCategory();
+                    if (categories) setCategories(categories.data)
+                    else navigate('/');
+                }else throw new Error("User is not logged")
+            } catch (error) {
+                console.error(error)
+                setContainerAlert({
+                    function: setModalAlert(true),
+                    type: 1,
+                    message: "Você precisa criar uma conta antes de publicar sua receita!",
+                    eventClose: () => navigate('/register')
+                })
+            }
+        })()
     }, [navigate]);
 
 
@@ -85,8 +87,6 @@ export const MainCreateRecipe = () => {
                 </div>
 
             </div>
-
-
 
             {
                 openModalAlert && <DialogAlert
