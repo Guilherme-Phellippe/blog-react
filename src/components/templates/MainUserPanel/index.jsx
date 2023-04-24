@@ -31,8 +31,10 @@ export const MainUserPanel = () => {
 
     const handleInfoSelect = ({ currentTarget: target }) => {
         const text = target.querySelector("p").textContent
-        if (text === "Meus dados" || text === "Minhas receitas") refNav.current.scrollTo({ left: (target.offsetLeft - 40), behavior: "smooth" });
-        else refNav.current.scrollTo({ left: (target.offsetLeft - target.clientWidth), behavior: "smooth" });
+        if (window.innerWidth <= 770) {
+            if (text === "Meus dados" || text === "Minhas receitas") refNav.current.scrollTo({ left: (target.offsetLeft - 40), behavior: "smooth" });
+            else refNav.current.scrollTo({ left: (target.offsetLeft - target.clientWidth), behavior: "smooth" });
+        }
         setInfoSelect(text)
     }
 
@@ -40,11 +42,10 @@ export const MainUserPanel = () => {
         <main className="w-screen md:w-full max-w-[1500px] mx-auto bg-background m-2">
             <div className="flex flex-col w-full min-h-[500px] bg-white">
                 <nav ref={refNav} className={`w-full snap-x snap-mandatory overflow-auto md:overflow-hidden flex bg-white md:pt-16 items-center gap-4 border-b-[1px] border-[#0002]`}>
-                    <div className=""></div>
                     {navLinks.map((link, key) =>
                         <button
                             onClick={handleInfoSelect}
-                            className={`p-8 w-2/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_orange hover:text-white transition-all duration-1 ${infoSelect === link.name && "bg-color_orange text-white"} relative`}
+                            className={`p-8 w-2/5 md:w-1/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_orange hover:text-white transition-all duration-1 ${infoSelect === link.name && "bg-color_orange text-white"} relative`}
                             key={key}
                         >
                             <div className="relative">
@@ -53,10 +54,10 @@ export const MainUserPanel = () => {
                                     !!user?.notificationUser.length && link.name === "Notificações" &&
                                     <span className="absolute -top-2 -right-1 bg-color_orange px-1 text-white rounded-full">
                                         {
-                                            user.notificationUser.reduce((total , current) => 
+                                            user.notificationUser.reduce((total, current) =>
                                                 total + current.read ? 0 : 1, 0
                                             )
-                                                                                            
+
                                         }
                                     </span>
                                 }

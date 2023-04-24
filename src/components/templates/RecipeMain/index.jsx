@@ -25,7 +25,7 @@ export const Main = () => {
     return (
         <div className="w-full max-w-[1500px] mx-auto">
             <main className='flex flex-col w-[95%] md:w-5/6 mt-8 mx-auto'>
-                <IconsShare />
+                <IconsShare recipeId={recipe?.id} />
                 <div className="w-full bg-white">
                     {recipe ? <InfoRecipeContent recipe={recipe} /> : <Loading />}
                     {recipe ? <RecipeSimilarContent recipe={recipe} /> : <Loading />}

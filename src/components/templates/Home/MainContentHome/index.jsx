@@ -4,6 +4,7 @@ import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 import { checkUserLogged } from '../../../../scripts/checkUserLogged'
 
 import { GiPodium } from 'react-icons/gi'
+import { MdArrowDropDown } from 'react-icons/md'
 
 import { Button } from "../../../atoms/Button";
 import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
@@ -18,7 +19,7 @@ import './main.css'
 
 export const MainContentHome = () => {
     const { valueSearch, setUser, user } = useContext(HomeContext);
-    const [postPerPage, setPostPerPage] = useState(7);
+    const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
     const [isOpenRanking, setIsOpenRanking] = useState(false)
@@ -116,8 +117,12 @@ export const MainContentHome = () => {
                         valueSearch={valueSearch}
                     />
                     {postPerPage <= feed.length &&
-                        <Button customClass={"btn-primary mt-6 mx-auto block px-8"} event={() => setPostPerPage((nmr_post) => nmr_post + 5)}>
-                            Carregar mais
+                        <Button
+                            customClass={"btn-primary flex items-center mt-16 mx-auto block px-8 text-s1_1"}
+                            event={() => setPostPerPage((nmr_post) => nmr_post + 10)}
+                        >
+                            Ver mais receitas
+                            <MdArrowDropDown className="text-s2"/>
                         </Button>
                     }
                 </div>
