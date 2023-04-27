@@ -33,48 +33,6 @@ export const useRecipeApi = () => ({
         return response
     },
 
-    updateNumberEyes: async (id) => {
-        const TIME_NOW = `${moment().year()}${moment().dayOfYear()}${moment().hours()}${moment().minutes()}`;
-        const lastTimeCalled = localStorage.getItem("lastTimeCalledFunctionNumberEyes")
-        const canExecuteFetch = lastTimeCalled ? Number(TIME_NOW) > (Number(lastTimeCalled) + 5) : true;
-        if (canExecuteFetch) {
-            localStorage.setItem("lastTimeCalledFunctionNumberEyes", TIME_NOW)
-            const data = await api.patch(`/recipe/${id}/nmr-eyes`).catch(err => {
-                return err
-            });
-            return data
-        }
-    },
-
-    updateNumberHearts: async (ids) => {
-        const data = await api.patch(`/recipe/${ids.idUser}/nmr-hearts/${ids.idRecipe}`).catch(err => {
-            return err
-        });
-
-        return data
-    },
-    updateNumberSaved: async (ids) => {
-        const data = await api.patch(`/recipe/${ids.idUser}/nmr-saved/${ids.idRecipe}`).catch(err => {
-            return err
-        });
-
-        return data
-    },
-    updateVotesRecipe: async (ids) => {
-        const data = await api.patch(`/recipe/${ids.userId}/votes/${ids.recipeId}`).catch(err => {
-            return err
-        });
-
-        return data
-    },
-    verifyExistVote: async (id) => {
-        const data = await api.get(`/recipe/${id}/already-voted`).catch(err => {
-            return err
-        });
-
-        return data
-    },
-
     updateRecipe: async (recipe) => {
         const data = await api.put(`/recipe/${recipe.id}`, recipe)
 
@@ -86,9 +44,93 @@ export const useRecipeApi = () => ({
 
         return data
     }
+});
+
+export const useTipApi = () => ({
+    getAllTips: async () => {
+        const response = await api.get('/tips').catch(err => err)
+        return response
+    },
+
+    createNewTip: async (tip) => {
+        const data = await api.post('/tip', tip).catch(error => error)
+
+        return data.data
+    },
+
+    getUniqueTip: async (id) => {
+        const data = await api.get(`/tip/${id}`).catch(err => err);
+        return data
+    },
 
 
+    updateTip: async (tip) => {
+        const data = await api.put(`/tip/${tip.id}`, tip)
 
+        return data
+    },
+
+    deleteTips: async (id) => {
+        const data = await api.delete(`/tip/${id}`)
+
+        return data
+    }
+});
+
+
+export const useFeedApi = () => ({
+    getAllFeed: async () => {
+        const response = await api.get('/feeds').catch(err => err)
+        return response
+    },
+
+
+    getUniqueFeed: async (id) => {
+        const data = await api.get(`/feed/${id}`).catch(err => err);
+        return data
+    },
+
+    updateNumberEyes: async (id) => {
+        const TIME_NOW = `${moment().year()}${moment().dayOfYear()}${moment().hours()}${moment().minutes()}`;
+        const lastTimeCalled = localStorage.getItem("lastTimeCalledFunctionNumberEyes")
+        const canExecuteFetch = lastTimeCalled ? Number(TIME_NOW) > (Number(lastTimeCalled) + 5) : true;
+        if (canExecuteFetch) {
+            localStorage.setItem("lastTimeCalledFunctionNumberEyes", TIME_NOW)
+            const data = await api.patch(`/feed/${id}/nmr-eyes`).catch(err => {
+                return err
+            });
+            return data
+        }
+    },
+
+    updateNumberHearts: async (ids) => {
+        const data = await api.patch(`/feed/${ids.idUser}/nmr-hearts/${ids.idRecipe}`).catch(err => {
+            return err
+        });
+
+        return data
+    },
+    updateNumberSaved: async (ids) => {
+        const data = await api.patch(`/feed/${ids.idUser}/nmr-saved/${ids.idRecipe}`).catch(err => {
+            return err
+        });
+
+        return data
+    },
+    updateVotesRecipe: async (ids) => {
+        const data = await api.patch(`/feed/${ids.userId}/votes/${ids.recipeId}`).catch(err => {
+            return err
+        });
+
+        return data
+    },
+    verifyExistVote: async (id) => {
+        const data = await api.get(`/feed/${id}/already-voted`).catch(err => {
+            return err
+        });
+
+        return data
+    },
 })
 
 

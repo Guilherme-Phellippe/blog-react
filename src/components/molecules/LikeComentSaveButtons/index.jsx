@@ -4,13 +4,13 @@ import { FaHeart, FaSave } from "react-icons/fa";
 import { RiAccountCircleFill, RiMessage2Fill } from "react-icons/ri"
 import { useNavigate } from "react-router-dom";
 
-import { useRecipeApi, useUserApi } from "../../../hooks/useApi";
+import { useFeedApi, useUserApi } from "../../../hooks/useApi";
 import { DialogConfirm } from "../../../modals/DialogConfirm";
 import { Button } from "../../atoms/Button";
 
 
 export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, setNmr_saved, nmr_saved }) => {
-    const refRecipeApi = useRef(useRecipeApi())
+    const refFeedApi = useRef(useFeedApi())
     const refUserApi = useUserApi()
     const [customClassToLoved, setCustomClassToLoved] = useState('')
     const [customClassToComment] = useState('')
@@ -38,8 +38,8 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
         if (token) {
             const userAlreadyGivedHeart = nmr_hearts.find(nmr => nmr === token.id);
             if (!userAlreadyGivedHeart) {
-                const data = await refRecipeApi.current.updateNumberHearts({ idUser: token.id, idRecipe })
-                if (data.status === 204) {
+                const data = await refFeedApi.current.updateNumberHearts({ idUser: token.id, idRecipe })
+                if (data.status === 201) {
                     setCustomClassToLoved('fill-red-500 text-red-500');
                     setNmr_hearts(nmr => [...nmr, token.id]);
                 }
@@ -60,8 +60,8 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
     }
 
     const handleCommentButton = ({ target }) => {
-        const boxFeedComments = target.closest("div#feed-recipe").querySelector('#feed-comment')
-        const input = target.closest("div#feed-recipe").querySelector('#feed-comment input[data-id=InputWriteComment]')
+        const boxFeedComments = target.closest("div[data-id=feed-recipe]").querySelector('[data-id=feed-comment]')
+        const input = target.closest("div[data-id=feed-recipe]").querySelector('[data-id=feed-comment] input[data-id=InputWriteComment]')
         input.focus();
         boxFeedComments.classList.toggle("hidden")
         boxFeedComments.classList.toggle("flex")
@@ -73,9 +73,9 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
         if (token) {
             const userAlreadyGivedSaved = nmr_saved.find(nmr => nmr === token.id);
             if (!userAlreadyGivedSaved) {
-                const data = await refRecipeApi.current.updateNumberSaved({ idUser: token.id, idRecipe })
+                const data = await refFeedApi.current.updateNumberSaved({ idUser: token.id, idRecipe })
                 const dataUser = await refUserApi.updateNumberSaved({ idUser: token.id, idRecipe })
-                if (data.status === 204 && dataUser.status === 204) {
+                if (data.status === 201 && dataUser.status === 204) {
                     setCustomClassToSave('fill-green-700 text-green-700')
                     setNmr_saved(nmr => [...nmr, token.id])
                     refButtonSave.current.textContent = "Salva"

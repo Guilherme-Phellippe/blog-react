@@ -24,15 +24,10 @@ export const NumberLoved = ({ nmr_hearts, nmr_comments }) => {
                     <span className='hidden group-hover:block absolute bottom-full left-1 text-s1 border px-2 py-1 bg-gray-400 text-white rounded-md'>{nmr_hearts}</span>
                 </p>
             </div>
-            {nmr_comments ?
+            {!!nmr_comments &&
                 <p data-id="total_nmr_comments" onClick={handleClickComment} className='text-s1_2 flex items-center px-4 hover:underline cursor-pointer'>
                     <RiMessage2Fill className="fill-blue-500 mr-2 text-s1_5" />
                     <span className='mr-1'>{formatNumberLong(nmr_comments)}</span>comentário(s)
-                </p>
-                :
-                <p className='text-s1_2 flex items-center px-4 hover:underline cursor-pointer'>
-                    <RiMessage2Fill className="fill-blue-500 mr-2 text-s1_5" />
-                    <span className='mr-1'>Seja o primeiro a comentar</span>
                 </p>
             }
         </div>

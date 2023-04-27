@@ -16,6 +16,9 @@ import { About } from './pages/About';
 import { PanelUser } from './pages/PanelUser/PanelUser';
 import { Policy } from './pages/Policy/Policy';
 
+import { Tip } from './pages/Tip';
+import { CreateTip } from './pages/CreateTip';
+
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -31,8 +34,10 @@ root.render(
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Login />} />
         <Route path='/create' element={<CreateRecipe />} />
+        <Route path='/create-tip' element={<CreateTip />} />
         <Route path='/about' element={<About />} />
         <Route path='/recipe/:id' element={<Recipe />} />
+        <Route path='/tip/:id' element={<Tip />} />
         <Route path='/category/:sub' element={<Category />} />
         <Route path='/panel-user' element={<PanelUser />} />
         <Route path='/terms' element={<Policy />} />

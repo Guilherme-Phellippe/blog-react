@@ -13,7 +13,7 @@ import { Feed } from '../../../organisms/Feed'
 import { MostViewedRecipesContainer } from "../../../organisms/MostViewedRecipesContainer";
 import { ColumnLeftMainHome } from "../../../organisms/ColumnLeftMainHome";
 import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
-import { useRecipeApi, useUserApi } from "../../../../hooks/useApi";
+import { useFeedApi, useUserApi } from "../../../../hooks/useApi";
 
 import './main.css'
 
@@ -23,44 +23,33 @@ export const MainContentHome = () => {
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
     const [isOpenRanking, setIsOpenRanking] = useState(false)
-    const recipeApi = useRef(useRecipeApi());
     const userApi = useRef(useUserApi());
+    const feedApi = useRef(useFeedApi());
     const [showIconRanking, setShowIconRanking] = useState(false)
 
-    const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
-    const [listRecipeForRemove, setListRecipeForRemove] = useState(listRecipeLocalStorage);
-
     useEffect(() => {
-        (async function fetchData() {
-            const { data } = await recipeApi.current.getAllRecipes();
-            setRecipes(data)
-        })();
-
-        (async function checkUser() {
+        (async () => {
             const { data: userData } = await checkUserLogged(userApi.current)
+            const { data: recipesData } = await feedApi.current.getAllFeed();
+            if(recipesData) setRecipes(recipesData)
             if (userData) setUser(userData)
             else localStorage.removeItem('token')
-
         }
         )();
 
     }, [setUser]);
 
     useEffect(() => {
-        recipes.sort(() => Math.random() - .5)
-    }, [recipes])
-
-    useEffect(() => {
         const findRecipes = valueSearch ? recipes.filter(recipe => {
             return recipe.name_recipe.toLowerCase().includes(valueSearch.toLowerCase()) ||
                 recipe.category.name_category.toLowerCase().includes(valueSearch.toLowerCase()) ||
                 recipe.user.name.toLowerCase().includes(valueSearch.toLowerCase());
-        }) : recipes.filter(recipe => !listRecipeForRemove.includes(recipe.id))
+        }) : recipes
 
         const newFeed = findRecipes.slice(0, postPerPage);
 
         setFeed(newFeed);
-    }, [recipes, postPerPage, valueSearch, listRecipeForRemove])
+    }, [recipes, postPerPage, valueSearch])
 
     useEffect(() => {
         const removeModalRankignRecipe = document.addEventListener('click', ({ target }) => {
@@ -87,11 +76,13 @@ export const MainContentHome = () => {
     }
 
     const topRankingByEyes = useCallback(() => {
-        return [...recipes].sort((x, y) => y.nmr_eyes - x.nmr_eyes)
+        const recipesFiltered = recipes.filter(recipe => recipe.name_recipe && recipe)
+        return [...recipesFiltered].sort((x, y) => y.nmr_eyes - x.nmr_eyes)
     }, [recipes]);
 
     const topRankingByHearts = useCallback(() => {
-        return [...recipes].sort((x, y) => y.nmr_hearts.length - x.nmr_hearts.length)
+        const recipesFiltered = recipes.filter(recipe => recipe.name_recipe && recipe)
+        return [...recipesFiltered].sort((x, y) => y.nmr_hearts.length - x.nmr_hearts.length)
     }, [recipes]);
 
 
@@ -112,8 +103,6 @@ export const MainContentHome = () => {
                     <Feed
                         contents={feed}
                         setFeed={setFeed}
-                        setListRecipeForRemove={setListRecipeForRemove}
-                        listRecipeForRemove={listRecipeForRemove}
                         valueSearch={valueSearch}
                     />
                     {postPerPage <= feed.length &&

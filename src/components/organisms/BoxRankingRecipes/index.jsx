@@ -5,15 +5,17 @@ import './styles.css'
 export const BoxRankingRecipes = ({ title, ranking }) => {
     const [limitRecipes, setLimitRecipes] = useState(5)
 
+    const filteredRanking = ranking.filter((rank) => rank.name_recipe && rank)
+
     return (
         <div className={`container-ranking pb-12`}>
             <h2>{title}</h2>
             {
-                 ranking.length && ranking.map((recent, index) => {
+                 filteredRanking.length && filteredRanking.map((recipe, index) => {
                     if (index < limitRecipes && index < 8) return (
                         <ListRecipes 
-                            key={recent.id} 
-                            recipe={recent} 
+                            key={recipe.id} 
+                            recipe={recipe} 
                             classContainer="w-full h-[8rem] flex cursor-pointer border-b-[1px] border-x-[1px] border-solid hover:border-x-color_red p-2 hover:bg-background"
                             classInfoContent="w-2/3 flex flex-col justify-center"
                             classImgContent="w-1/3 h-full p-2"

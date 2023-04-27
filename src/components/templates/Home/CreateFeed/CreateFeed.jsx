@@ -25,10 +25,27 @@ export const CreateFeed = ({ user }) => {
                 function: setModalDialog(true),
                 type: 1,
                 message: "Você precisa criar uma conta antes de publicar um receita!",
-                button:{
+                button: {
                     icon: <RiAccountBoxFill />,
-                    title:"Criar conta",
-                    event:()=> navigate('/register')
+                    title: "Criar conta",
+                    event: () => navigate('/register')
+                }
+            })
+        }
+
+    }
+    const handleCanCreateTip = () => {
+        if (user) {
+            navigate(`/create-tip/?n=${valueInput}`)
+        } else {
+            setContainerConfirm({
+                function: setModalDialog(true),
+                type: 1,
+                message: "Você precisa criar uma conta antes de publicar um receita!",
+                button: {
+                    icon: <RiAccountBoxFill />,
+                    title: "Criar conta",
+                    event: () => navigate('/register')
                 }
             })
         }
@@ -49,22 +66,29 @@ export const CreateFeed = ({ user }) => {
                 <Input
                     onChange={(e) => setValueInput(e.target.value)}
                     customWidthAndMargin="w-[80%]"
-                    placeholder={"Digite o nome da sua receita..."}
+                    placeholder={"Digite o nome da sua receita ou dica..."}
                     icon={<FaPen className='fill-color_red text-s1_5' />}
                 />
             </div>
             <div className="flex justify-around">
                 <Button
-                    customClass='btn-primary px-4'
+                    customClass='flex items-center font-semi-bold text-color_text_black p-4 rounded-xl gap-4 text-s1_1 hover:bg-gray-200/80'
                     event={handleCanCreateRecipe}
-                >Publicar receita <RiSendPlaneFill /></Button>
-                <Button customClass='btn-primary px-4 '>Dica de cozinha <RiLightbulbFill /></Button>
+                >
+                    Publicar receita <RiSendPlaneFill className='fill-blue-800' />
+                </Button>
+                <Button
+                    customClass='flex items-center font-semi-bold text-color_text_black p-4 rounded-xl gap-4 text-s1_1 hover:bg-gray-200/80 '
+                    event={handleCanCreateTip}
+                >
+                    Publicar dica <RiLightbulbFill className='fill-yellow-800' />
+                </Button>
             </div>
 
             {
                 openModalDialog && <DialogConfirm
                     open={{ openModalDialog, setModalDialog }}
-                    container={ containerConfirm }
+                    container={containerConfirm}
                 />
             }
         </div >

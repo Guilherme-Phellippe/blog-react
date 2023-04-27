@@ -9,7 +9,7 @@ export const HeaderInfoFeed = ({ content: { user, createdAt, id }, onClick }) =>
     const { valueSearch } = useContext(HomeContext)
 
     return (
-        <div className={`flex items-center px-4 h-[10%] ${valueSearch && "hidden"}`}>
+        <div className={`flex items-center px-4 h-[6rem] ${valueSearch && "hidden"}`}>
             <div className="w-[35px] h-[35px] grid place-items-start rounded-full overflow-hidden">
                 <Img
                     className="w-full h-full object-cover"

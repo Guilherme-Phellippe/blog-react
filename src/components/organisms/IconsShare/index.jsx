@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { FaSave, FaCamera, FaTiktok, FaFacebook, FaInstagram, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
-import { useRecipeApi, useUserApi } from '../../../hooks/useApi';
+import { useUserApi } from '../../../hooks/useApi';
 import { DialogConfirm } from '../../../modals/DialogConfirm';
 import { RiAccountCircleFill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
@@ -31,8 +31,7 @@ const action = (type) => {
 }
 
 
-export const IconsShare = ({ recipeId }) => {
-    const refRecipeApi = useRef(useRecipeApi())
+export const IconsShare = ({ recipeId, refFeedApi }) => {
     const refUserApi = useRef(useUserApi())
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";
@@ -45,10 +44,9 @@ export const IconsShare = ({ recipeId }) => {
         setShowIconsShare(v => !v)
     }
 
-    const handleLovedButton = async () => {
+    const handleSavedButton = async () => {
         if (token && recipeId) {
-            const data = await refRecipeApi.current.updateNumberSaved({ idUser: token.id, idRecipe: recipeId })
-            console.log(data)
+            const data = await refFeedApi.current.updateNumberSaved({ idUser: token.id, idRecipe: recipeId })
             if (data.status === 204) {
                 const dataUser = await refUserApi.current.updateNumberSaved({ idUser: token.id, idRecipe: recipeId })
                 if(dataUser.status === 204) setContainerConfirm({
@@ -88,7 +86,7 @@ export const IconsShare = ({ recipeId }) => {
                 <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                     Salve essa receita</span>
                 <FaSave
-                    onClick={handleLovedButton}
+                    onClick={handleSavedButton}
                     className='text-s3 cursor-pointer fill-green-600' />
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">

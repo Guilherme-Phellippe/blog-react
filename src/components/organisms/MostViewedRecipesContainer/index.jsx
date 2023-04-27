@@ -1,7 +1,7 @@
 import { BoxRecipe } from "../../organisms/BoxRecipe/BoxRecipe";
 
 export const MostViewedRecipesContainer = ({ valueSearch, topRanking }) => {
-    const filteredRanking = topRanking('nmr_eyes').filter((rank, index) => index <= 2 && rank )
+    const filteredRanking = topRanking('nmr_eyes').filter((recipe, index) => index <= 2 && recipe.name_recipe && recipe )
 
     return (
         <>

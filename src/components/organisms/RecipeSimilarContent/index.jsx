@@ -3,8 +3,7 @@ import { ListRecipes } from "../../molecules/ListRecipes";
 import { useRecipeApi } from "../../../hooks/useApi"
 
 
-export const RecipeSimilarContent = ({ recipe }) => {
-    const { name_recipe } = recipe
+export const RecipeSimilarContent = ({ name_search }) => {
     const [recipes, setRecipes ] = useState([])
     const api = useRef(useRecipeApi());
     
@@ -19,7 +18,7 @@ export const RecipeSimilarContent = ({ recipe }) => {
 
 
     const handleRecipeByTarget = () => {
-        const targets = name_recipe.split(' ');
+        const targets = name_search.split(' ');
         var recipesFinds = [];
         //find all recipes that has name_recipe similar the name_recipe or category this recipe.
         recipes.forEach((recipe) => {
@@ -34,9 +33,9 @@ export const RecipeSimilarContent = ({ recipe }) => {
         recipesFinds.filter((r, i) => recipesFinds.findIndex(obj => obj.id === r.id) === i)
 
         //if size not equal like six, this forEach will add new recipe at recipesFinds
-        recipesFinds.length < 6 && recipes.forEach(recipe => {
+        recipesFinds.length < 8 && recipes.forEach(recipe => {
             const founded = !recipesFinds.some(rf => recipe.id === rf.id) && recipe
-            if (recipesFinds.length < 6 && founded) recipesFinds.push(founded);
+            if (recipesFinds.length < 8 && founded) recipesFinds.push(founded);
             else return
         });
 

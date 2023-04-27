@@ -1,25 +1,29 @@
 import 'moment/locale/pt-br';
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { HeaderInfoFeed } from "../../molecules/HeaderInfoFeed";
-import { CarouselMidiasContent } from "../../molecules/CarouselMidiasContent";
-import { AddRecipeInfo } from "../../molecules/AddRecipeInfo";
-import { BlockInteractionFeed } from "../../molecules/BlockInteractionFeed";
-import { ListRecipeComments } from '../../molecules/ListRecipeComments';
+import { FeedRecipes } from '../../molecules/FeedRecipes';
+import { FeedTip } from '../../molecules/FeedTips';
+import { Loading } from '../../atoms/Loading/Loading';
 
-export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForRemove, valueSearch }) => {
+export const Feed = ({ contents, valueSearch }) => {
+    const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
+    const [listRecipeForRemove, setListRecipeForRemove] = useState(listRecipeLocalStorage);
     const hasSearch = valueSearch ? true : false;
+    const [feed, setFeed] = useState(contents);
 
     useEffect(() => {
         //if listRecipeForRemove has a length bigger than seven, so the first item in this array will be removed,
         // this was done to that user does not delete all recipes
         listRecipeForRemove.length >= 7 && listRecipeForRemove.shift();
         //save the recipe's id in the localstorage
-        localStorage.setItem("listIdForRemove", JSON.stringify(listRecipeForRemove))
+        localStorage.setItem("listIdForRemove", JSON.stringify(listRecipeForRemove));
         //call the function 'setFeed' and define new feed, removing the feed that was removed before
-        setFeed(contents => contents.filter(content => !listRecipeForRemove.includes(content.id.toString())))
-    }, [listRecipeForRemove, setFeed])
+        const removeFeed = contents.filter(content => !listRecipeForRemove.includes(content.id.toString()))
+
+        const sortedFeed = removeFeed.sort(() => Math.random() - .5)
+        setFeed(sortedFeed)
+    }, [contents, listRecipeForRemove])
 
     const handleIdForAddListRemove = ({ currentTarget }) => {
         setListRecipeForRemove(list => [...list, currentTarget.id])
@@ -27,37 +31,23 @@ export const Feed = ({ contents, setFeed, setListRecipeForRemove, listRecipeForR
 
     return (
         <div>
-            {contents.length ? contents.map((content) => {
+            {feed.length ? feed.map((content) => {
                 return (
-                    <div key={content.id} id="feed-recipe">
-                        <div className={`flex w-full bg-white mt-6 ${hasSearch ? 'items-center h-[20rem]' : 'flex-col h-[60rem]'}`}>
-                            <HeaderInfoFeed content={content} onClick={handleIdForAddListRemove} />
-
-                            <CarouselMidiasContent
-                                img={content.images_recipe}
-                                name_recipe={content.name_recipe}
-                                category={content.category.name_category}
-                            />
-
-                            <AddRecipeInfo
-                                hasSearch={hasSearch}
-                                content={content}
-                            />
-
-                            <BlockInteractionFeed
-                                comments={content.comments}
-                                idRecipe={content.id}
-                            />
-
-                        </div>
-
-                        <ListRecipeComments
-                            content={content} />
-                    </div>
+                    content.name_recipe ?
+                        <FeedRecipes
+                            key={content.id}
+                            content={content}
+                            hasSearch={hasSearch}
+                            handleIdForAddListRemove={handleIdForAddListRemove}
+                        />
+                        :
+                        <FeedTip
+                            key={content.id}
+                            content={content}
+                            handleIdForAddListRemove={handleIdForAddListRemove}
+                        />
                 )
-            }) : <h2 className="text-s1_5 p-4 text-center">Não encontramos sua receita =(</h2>}
-
-
+            }) : <Loading />}
         </div>
     )
 }
