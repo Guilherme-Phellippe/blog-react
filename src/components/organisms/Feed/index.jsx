@@ -19,10 +19,9 @@ export const Feed = ({ contents, valueSearch }) => {
         //save the recipe's id in the localstorage
         localStorage.setItem("listIdForRemove", JSON.stringify(listRecipeForRemove));
         //call the function 'setFeed' and define new feed, removing the feed that was removed before
-        const removeFeed = contents.filter(content => !listRecipeForRemove.includes(content.id.toString()))
+        const filteredFeed = contents.filter(content => !listRecipeForRemove.includes(content.id.toString()))
 
-        const sortedFeed = removeFeed.sort(() => Math.random() - .5)
-        setFeed(sortedFeed)
+        setFeed(filteredFeed)
     }, [contents, listRecipeForRemove])
 
     const handleIdForAddListRemove = ({ currentTarget }) => {

@@ -1,4 +1,5 @@
 import { PanelListRecipes } from "../../molecules/PanelListRecipes"
+import { PanelListTips } from "../../molecules/PanelListTips"
 import { PanelMydata } from "../../molecules/PanelMydata"
 import { PanelNotifications } from "../../molecules/PanelNotifications"
 import { PanelRecipesSaved } from "../../molecules/PanelRecipesSaved"
@@ -7,13 +8,16 @@ export const ActiveInformation = ({ infoSelect, user }) => {
 
     const viewer = () =>{
         switch(infoSelect){
-            case "Meus dados" : {
+            case "Perfil" : {
                 return <PanelMydata user={user} />
             }
-            case "Minhas receitas" : {
-                return <PanelListRecipes recipes={user.recipe} isMyRecipes={true} />
+            case "Receitas" : {
+                return <PanelListRecipes recipes={user.recipe}  isMyRecipes={true} />
             }
-            case "Receitas salvas" : {
+            case "Dicas" : {
+                return <PanelListTips tips={user.tips} />
+            }
+            case "Salvos" : {
                 return <PanelRecipesSaved user={user} />
             }
             case "Notificações" : {

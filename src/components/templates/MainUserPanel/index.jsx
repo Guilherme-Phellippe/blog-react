@@ -8,9 +8,10 @@ import { MdExitToApp, MdList, MdNotifications, MdPhotoLibrary, MdSave } from "re
 
 export const MainUserPanel = () => {
     const navLinks = [
-        { name: "Meus dados", icon: <MdPhotoLibrary className="text-s2 md:text-s1_4" /> },
-        { name: "Minhas receitas", icon: <MdList className="text-s2 md:text-s1_4" /> },
-        { name: "Receitas salvas", icon: <MdSave className="text-s2 md:text-s1_4" /> },
+        { name: "Perfil", icon: <MdPhotoLibrary className="text-s2 md:text-s1_4" /> },
+        { name: "Receitas", icon: <MdList className="text-s2 md:text-s1_4" /> },
+        { name: "Dicas", icon: <MdList className="text-s2 md:text-s1_4" /> },
+        { name: "Salvos", icon: <MdSave className="text-s2 md:text-s1_4" /> },
         { name: "Notificações", icon: <MdNotifications className="text-s2 md:text-s1_4" /> },
     ];
     const [user, setUser] = useState();
@@ -45,7 +46,7 @@ export const MainUserPanel = () => {
                     {navLinks.map((link, key) =>
                         <button
                             onClick={handleInfoSelect}
-                            className={`p-8 w-2/5 md:w-1/5 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_orange hover:text-white transition-all duration-1 ${infoSelect === link.name && "bg-color_orange text-white"} relative`}
+                            className={`p-8 w-1/6 snap-center flex-none flex items-center gap-2 text-s1_2 hover:bg-color_orange hover:text-white transition-all duration-1 ${infoSelect === link.name && "bg-color_orange text-white"} relative`}
                             key={key}
                         >
                             <div className="relative">

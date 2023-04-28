@@ -9,7 +9,7 @@ export const InfoTipContent = ({ tip }) => {
         <div className="w-full md:w-2/3 p-4">
             <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_tip} />
 
-            <img className='mx-auto' src={images[0].medium} alt={"imagem de"+ name_tip} />
+            <img className='mx-auto my-12' src={images[0].medium} alt={"imagem de"+ name_tip} />
 
             <div className="flex my-8 mb-12">
                 <div

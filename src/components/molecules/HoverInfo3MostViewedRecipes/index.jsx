@@ -3,7 +3,7 @@ import { BiFoodMenu } from "react-icons/bi"
 
 import { Button } from '../../atoms/Button'
 
-export const HoverInfo3MostViewedRecipes = ({ recipe: { time, ing, id } }) => {
+export const HoverInfo3MostViewedRecipes = ({ recipe: { time, ing } }) => {
     return (
         <div className="hidden z-[1] bg-[#fffa] p-4 w-1/2 min-w-[150px] rounded-2xl flex-col group-hover:flex">
             <div className="flex w-full justify-center cursor-default">

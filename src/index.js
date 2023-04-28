@@ -36,8 +36,8 @@ root.render(
         <Route path='/create' element={<CreateRecipe />} />
         <Route path='/create-tip' element={<CreateTip />} />
         <Route path='/about' element={<About />} />
-        <Route path='/recipe/:id' element={<Recipe />} />
-        <Route path='/tip/:id' element={<Tip />} />
+        <Route path='/recipe/:name/:id' element={<Recipe />} />
+        <Route path='/tip/:name/:id' element={<Tip />} />
         <Route path='/category/:sub' element={<Category />} />
         <Route path='/panel-user' element={<PanelUser />} />
         <Route path='/terms' element={<Policy />} />

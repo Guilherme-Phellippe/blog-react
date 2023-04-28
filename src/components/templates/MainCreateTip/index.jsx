@@ -43,7 +43,7 @@ export const MainCreateTip = () => {
                             function: setModalAlert(true),
                             type: 2,
                             message: "Sua dica foi publicada com sucesso!",
-                            eventClose: () => navigate(`/tip/${response.id}?${title}`)
+                            eventClose: () => navigate(`/tip/${title.replace('?','')}/${response.id}`)
                         })
 
                         setLoading(false)

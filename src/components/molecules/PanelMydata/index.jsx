@@ -46,7 +46,6 @@ export const PanelMydata = ({ user }) => {
         setLoading(true)
         const file = currentTarget.querySelector("input#file").files[0]
 
-
         if (file) {
             const form = new FormData();
             form.append('image', file);
@@ -59,6 +58,7 @@ export const PanelMydata = ({ user }) => {
                 email: user.email,
                 photo: data.medium
             }
+
             const response = await refUserApi.updateUser(userData);
             if (response.status === 200) {
                 const reader = new FileReader();

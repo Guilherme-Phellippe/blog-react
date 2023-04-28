@@ -91,7 +91,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
                             <div className="w-full h-full grid place-content-center bg-[#242424aa] absolute top-0 text-s2 text-white">Alterar Imagem</div>
                         </label>
                         :
-                        <Link className={`cursor-pointer relative ${isMyRecipes ? "w-2/5 h-full" : "w-full h-1/2"}`} to={`/recipe/${recipe.id}`}>
+                        <Link className={`cursor-pointer relative ${isMyRecipes ? "w-2/5 h-full" : "w-full h-1/2"}`} to={`/recipe/${recipe.name_recipe.replace('?','')}/${recipe.id}`}>
                             <img className='w-full h-full object-cover' src={inputImage.length && inputImage[0].medium} alt={recipe.name_recipe} />
                         </Link>
                 }
@@ -119,7 +119,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
                                 <span className="text-s1 text-white flex justify-between my-1">Número de receitas salvas: <span className="text-white text-s1_5">{recipe.nmr_saved.length}</span></span>
                             </div>
                             :
-                            <Link className="btn-primary text-s1_5 mt-8" to={`/recipe/${recipe.id}`}>Ver receita</Link>
+                            <Link className="btn-primary text-s1_5 mt-8" to={`/recipe/${recipe.name_recipe.replace('?','')}/${recipe.id}`}>Ver receita</Link>
                     }
                 </div>
                 {

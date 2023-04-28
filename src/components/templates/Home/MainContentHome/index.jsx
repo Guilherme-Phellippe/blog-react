@@ -27,6 +27,7 @@ export const MainContentHome = () => {
     const feedApi = useRef(useFeedApi());
     const [showIconRanking, setShowIconRanking] = useState(false)
 
+    //Search data in bd and fill recipes and user
     useEffect(() => {
         (async () => {
             const { data: userData } = await checkUserLogged(userApi.current)
@@ -39,17 +40,21 @@ export const MainContentHome = () => {
 
     }, [setUser]);
 
+    //filter the recipes case user search some recipes
     useEffect(() => {
         const findRecipes = valueSearch ? recipes.filter(recipe => {
-            return recipe.name_recipe.toLowerCase().includes(valueSearch.toLowerCase()) ||
+            return recipe.name_recipe ?
+                recipe.name_recipe.toLowerCase().includes(valueSearch.toLowerCase()) ||
                 recipe.category.name_category.toLowerCase().includes(valueSearch.toLowerCase()) ||
-                recipe.user.name.toLowerCase().includes(valueSearch.toLowerCase());
+                recipe.user.name.toLowerCase().includes(valueSearch.toLowerCase())
+                :
+                undefined
         }) : recipes
 
         const newFeed = findRecipes.slice(0, postPerPage);
 
         setFeed(newFeed);
-    }, [recipes, postPerPage, valueSearch])
+    }, [recipes, postPerPage, valueSearch]);
 
     useEffect(() => {
         const removeModalRankignRecipe = document.addEventListener('click', ({ target }) => {
