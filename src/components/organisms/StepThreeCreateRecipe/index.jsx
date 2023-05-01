@@ -61,7 +61,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                         message: "Sua receita foi criada com sucesso!",
                         button:{
                             title: "Ver receita",
-                            event: ()=> navigate(`/recipe/${data.id}`)
+                            event: ()=> navigate(`/recipe/${data.name_recipe}/${data.id}`)
                         }
                     })
                 }else {
