@@ -136,7 +136,7 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
                                         : 's/v'
                                         : '0'}
                                 </td>
-                                <td className="py-4 text-s1_2 relative" data-name="action" id={candidate.id}>
+                                <td className="py-4 text-s1_2 relative flex justify-center" data-name="action" id={candidate.id}>
                                     {
                                         loading ?
                                             <Loading />
