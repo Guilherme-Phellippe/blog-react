@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from "react"
 import { Input } from "../../components/atoms/Input"
 
-import { FaUpload, FaRegTrashAlt, FaPlusCircle, FaSave, FaArrowLeft } from "react-icons/fa"
+import { FaUpload, FaRegTrashAlt, FaPlusCircle, FaSave, FaArrowLeft, FaTrash } from "react-icons/fa"
 
 import { useCategoryApi, useRecipeApi } from "../../hooks/useApi"
 import { Button } from "../../components/atoms/Button"
+import { Loading } from "../../components/atoms/Loading/Loading"
 
 export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecipe }) => {
     const RefCategoryApi = useRef(useCategoryApi())
     const recipeApi = useRecipeApi();
+    const [loading, setLoading] = useState(false)
     const [categories, setCategories] = useState()
     const [nameRecipe, setNameRecipe] = useState(recipe.name_recipe);
     const [nameCategory, setNameCategory] = useState(recipe.category.name_category);
@@ -17,7 +19,7 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
     const [ing, setIng] = useState(recipe.ing)
     const [stuffingIng, setStuffingIng] = useState(recipe.stuffing_ing)
     const [prepareMode, setPrepareMode] = useState(recipe.prepareMode.split('<step>'))
-    const [images] = useState(recipe.images_recipe)
+    const [images, setImages] = useState(recipe.images_recipe)
     const [valueInputIng, setValueInputIng] = useState('');
     const [valueInputStuffing, setValueInputStuffing] = useState('');
     const [valueInputPrepareMode, setValueInputPrepareMode] = useState('');
@@ -50,40 +52,33 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
         }
     }
 
-    // const handleUploadImage = async ({ currentTarget }) => {
-    //     if (!loading) {
-    //         setLoading(true)
-    //         const file = currentTarget.querySelector("input#file").files[0]
-    //         if (file) {
-    //             const form = new FormData();
-    //             form.append('image', file);
-    //             const { data } = await recipeApi.hostImages(form)
-    //             setInputImage([{ ...data }])
-    //             recipe.images_recipe = [{ ...data }]
-    //             const reader = new FileReader();
-    //             reader.readAsDataURL(file)
-    //             reader.onload = () => currentTarget.querySelector("img").src = reader.result;
+    const handleUploadImage = async ({ currentTarget }) => {
+        if (!loading) {
+            try {
+                setLoading(true);
+                const file = currentTarget.querySelector("input#file").files[0]
+                if (file) {
+                    const form = new FormData();
+                    form.append('image', file);
 
-    //         } else alert("erro ao processar sua foto, tente novamente mais tarde.");
+                    const { data } = await recipeApi.hostImages(form);
+                    setImages(v => [...v, { ...data }])
+                }
+            } catch {
+                alert("erro ao processar sua foto, tente novamente mais tarde.");
+            }
+            setLoading(false)
+        }
+    }
 
-    //         setLoading(false)
-    //     }
-    // }
+    const handleRemoveImage = ({ currentTarget }) => {
+        const imgForRemove = currentTarget.id
+        const imagesFiltered = images.filter(img => !img.small.includes(imgForRemove))
+        setImages(imagesFiltered)
+    }
 
 
-    // const handleDeleteRecipe = async () => {
-    //     if (!loading) {
-    //         setLoading(true);
-    //         const canDelete = prompt("Digite o nome da categoria da receita para deleta-la:")
-    //         if (canDelete && recipe.category.name_category.toLowerCase().includes(canDelete.toLowerCase())) {
-    //             const response = await recipeApi.deleteRecipe(recipe.id).catch(error => setLoading(false))
-    //             if (response.status === 200) window.location.reload()
-    //         } else alert("Nome da categoria da receita incorreto!")
-    //         setLoading(false)
-    //     }
-    // }
-
-    const handleUpdateRecipe = async ({ currentTarget }) => {
+    const handleUpdateRecipe = async () => {
         if (nameRecipe && nameCategory && ing.length && prepareMode) {
             const updateRecipe = {
                 id: recipe.id,
@@ -96,7 +91,7 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
                 time: Number(time),
                 prepareMode: prepareMode.map((mode, index) => {
                     const isLastItem = index === (prepareMode.length - 1)
-                    return isLastItem ? mode.value : `${mode.value}<step>`
+                    return isLastItem ? mode : `${mode}<step>`
                 }).join(''),
                 videos_recipe: []
             }
@@ -104,19 +99,18 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
             const response = await recipeApi.updateRecipe(updateRecipe);
 
             if (response) {
-                response.data.category = {name_category:  nameCategory }
+                response.data.category = { name_category: nameCategory }
                 setCurrentRecipe(response.data)
-                handleCloseModal({ target: { dataset: { close : "close-modal"} }})
+                handleCloseModal({ target: { dataset: { close: "close-modal" } } })
             }
         } else alert("Não deixe campos vazios!")
     };
 
     return (
         <div
-            onClick={handleCloseModal}
             className="fixed top-0 left-0 z-[999] w-screen h-screen grid place-items-center bg-black/30"
         >
-            <div className="w-2/3 h-2/3 max-w-[1500px] bg-white rounded-2xl shadow-xl p-8 overflow-auto relative">
+            <div className="w-full md:w-2/3 h-5/6 md:h-2/3 max-w-[1500px] bg-white rounded-2xl shadow-xl p-8 overflow-auto relative">
                 <FaArrowLeft
                     onClick={handleCloseModal}
                     data-close="close-modal"
@@ -124,33 +118,49 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
                 />
                 <h2 className="text-s1_5 text-center p-4 mb-8">informações sobre receita:</h2>
                 <div className="w-full relative">
-                    <div className="flex justify-center mb-8">
+                    <div className="flex justify-center mb-8 gap-8 relative">
+                        {loading && <Loading />}
                         {
-                            recipe.images_recipe.map(image =>
-                                <div key={image.id} className="w-[120px] h-[100px] relative cursor-pointer group">
+                            images.map((image, index) =>
+                                <div key={index} className="w-[120px] h-[100px] cursor-pointer group relative">
                                     <img
                                         src={image.small}
                                         alt={`Imagem representando a receita ${recipe.name_recipe}`}
                                         className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute top-0 left-0 w-full h-full grid place-items-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-                                        <FaUpload className="text-s3 text-white" />
-                                        <h4 className="text-s1_1 text-white">Alterar imagem</h4>
+                                    <div
+                                        className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center gap-4 bg-black/50 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+                                        onClick={handleRemoveImage}
+                                        id={image.small}
+                                    >
+                                        <FaTrash className="text-s3 fill-red-400"/>
+                                        <h3 className="text-white text-s1">Remover</h3>
                                     </div>
                                 </div>
                             )
                         }
+                        <label htmlFor="file" onChange={handleUploadImage}>
+                            <input
+                                type="file"
+                                id="file"
+                                className="hidden"
+                            />
+                            <div className="w-[120px] h-[100px] relative cursor-pointer group border bg-gray-300/40 border-gray-400 rounded-lg flex flex-col justify-center items-center gap-4">
+                                <FaUpload className="text-s3 text-gray-500/80" />
+                                <h4 className="text-s1_1 text-gray-500/80">Adicionar</h4>
+                            </div>
+                        </label>
                     </div>
 
-                    <div className="flex justify-between items-center gap-12">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-12">
                         <Input
                             value={nameRecipe}
                             onChange={({ target }) => setNameRecipe(target.value)}
                             label="Nome da receita:"
-                            customWidthAndMargin="w-1/2 my-12"
+                            customWidthAndMargin="w-full md:w-1/2 mt-6 md:my-12"
                         />
 
-                        <div className="flex flex-col w-1/2 relative">
+                        <div className="flex flex-col w-full md:w-1/2 relative">
                             <label className="text-s1_2 absolute -top-[50%] text-color_text_black">
                                 Categoria:
                             </label>
@@ -192,8 +202,8 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
                     <div className="flex flex-col items-center">
                         <h2 className="text-s2 text-color_orange p-8">Ingredientes: </h2>
                         {
-                            !!ing.length ? ing.map((i) =>
-                                <div className="flex w-1/2 justify-between text-s1_1 my-4">
+                            !!ing.length ? ing.map((i, index) =>
+                                <div key={index} className="flex w-full md:w-1/2 justify-between text-s1_3 md:text-s1_2 my-4">
                                     <p>{i}</p>
                                     <FaRegTrashAlt
                                         onClick={() => setIng(handleRemoveItemList(ing, i))}
@@ -202,9 +212,9 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
                                 </div>
                             )
                                 :
-                                <h2 className="bg-red-500/20 p-2 text-s1_1 rounded-xl">Adicione ao menos um ingrediente!</h2>
+                                <h2 className="bg-red-500/20 p-2 text-s1_2 rounded-xl">Adicione ao menos um ingrediente!</h2>
                         }
-                        <div className="flex w-1/2 items-center gap-6 my-8">
+                        <div className="flex w-full md:w-1/2 items-center gap-6 my-8">
                             <Input
                                 value={valueInputIng}
                                 onChange={({ target }) => setValueInputIng(target.value)}
@@ -223,7 +233,7 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
                         <h2 className="text-s2 text-color_orange p-8">Ingredientes do Recheio: </h2>
                         {
                             stuffingIng.map(stuffing =>
-                                <div className="flex w-1/2 justify-between text-s1_1 my-4">
+                                <div className="flex w-full md:w-1/2 justify-between text-s1_3 md:text-s1_1 my-4">
                                     <p>{stuffing}</p>
                                     <FaRegTrashAlt
                                         onClick={() => setStuffingIng(handleRemoveItemList(stuffingIng, stuffing))}
@@ -252,7 +262,7 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
                         <h2 className="text-s2 text-color_orange p-8">Modo de preparo: </h2>
                         {
                             prepareMode.map((mode, index) =>
-                                <div key={index} className="flex w-5/6 justify-between text-s1_1 my-4">
+                                <div key={index} className="flex w-full md:w-5/6 justify-between text-s1_3 md:text-s1_1 my-4">
                                     <div className="flex">
                                         <span>{index + 1} </span>
                                         <p>- {mode}</p>
@@ -264,7 +274,7 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
                                 </div>
                             )
                         }
-                        <div className="flex w-5/6 items-center gap-6 my-8">
+                        <div className="flex w-full md:w-5/6 items-center gap-6 my-8">
                             <Input
                                 value={valueInputPrepareMode}
                                 onChange={({ target }) => setValueInputPrepareMode(target.value)}
@@ -279,7 +289,7 @@ export const ModalSettingsRecipe = ({ setActiveSettings, recipe, setCurrentRecip
                         </div>
                     </div>
 
-                    <div className="w-[66%] mx-auto flex justify-evenly fixed bottom-[16.5%] left-1/2 -translate-x-1/2 rounded-2xl bg-color_orange/30 border border-t-black/30 p-4">
+                    <div className="w-full md:w-[66%] mx-auto flex justify-evenly fixed bottom-[8.5%] md:bottom-[16.5%] left-0 md:left-1/2 md:-translate-x-1/2 rounded-2xl bg-color_orange/30 border border-t-black/30 p-4">
                         <Button
                             data-close={'close-modal'}
                             event={handleCloseModal}
