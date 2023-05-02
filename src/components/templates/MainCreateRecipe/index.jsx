@@ -32,7 +32,7 @@ export const MainCreateRecipe = () => {
                     const categories = await categoryApiRef.current.getAllCategory();
                     if (categories) setCategories(categories.data)
                     else navigate('/');
-                }else throw new Error("User is not logged")
+                }else throw new Error("User isnt logged")
             } catch (error) {
                 console.error(error)
                 setContainerAlert({

@@ -39,6 +39,21 @@ export const useRecipeApi = () => ({
         return data
     },
 
+    updateVotesRecipe: async (ids) => {
+        const data = await api.patch(`/recipe/${ids.userId}/votes/${ids.recipeId}`).catch(err => {
+            return err
+        });
+
+        return data
+    },
+    verifyExistVote: async (id) => {
+        const data = await api.get(`/recipe/${id}/already-voted`).catch(err => {
+            return err
+        });
+
+        return data
+    },
+
     deleteRecipe: async (id) => {
         const data = await api.delete(`/recipe/${id}`)
 
@@ -112,20 +127,6 @@ export const useFeedApi = () => ({
     },
     updateNumberSaved: async (ids) => {
         const data = await api.patch(`/feed/${ids.idUser}/nmr-saved/${ids.idRecipe}`).catch(err => {
-            return err
-        });
-
-        return data
-    },
-    updateVotesRecipe: async (ids) => {
-        const data = await api.patch(`/feed/${ids.userId}/votes/${ids.recipeId}`).catch(err => {
-            return err
-        });
-
-        return data
-    },
-    verifyExistVote: async (id) => {
-        const data = await api.get(`/feed/${id}/already-voted`).catch(err => {
             return err
         });
 

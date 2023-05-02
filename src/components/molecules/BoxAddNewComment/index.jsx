@@ -4,7 +4,7 @@ import { useCommentApi } from "../../../hooks/useApi";
 import { Input } from "../../atoms/Input"
 
 
-export const BoxAddNewComment = ({ idRecipe, setComments, userLogged }) => {
+export const BoxAddNewComment = ({ id, setComments, userLogged, isRecipe }) => {
     const refInput = useRef(null);
     const refCommentApi = useRef(useCommentApi())
 
@@ -13,9 +13,10 @@ export const BoxAddNewComment = ({ idRecipe, setComments, userLogged }) => {
             const { value } = refInput.current;
 
             const formComment = {
-                userId: userLogged.id,
-                recipeId: idRecipe,
                 comment: value,
+                userId: userLogged.id,
+                id,
+                isRecipe,
             }
 
             const response = await refCommentApi.current.createNewComment(formComment)
@@ -29,7 +30,7 @@ export const BoxAddNewComment = ({ idRecipe, setComments, userLogged }) => {
                     user: {
                         id: userLogged.id,
                         name: userLogged.name,
-                        photo: userLogged.photo
+                        photo: userLogged.photo,
                     }
                 }])
             }

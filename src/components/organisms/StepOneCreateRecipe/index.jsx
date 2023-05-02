@@ -19,7 +19,6 @@ const createRecipeFormSchema = z.object({
     time: z.coerce.number().min(1, "Sua receita precisa ter pelo menos 1 minuto de preparo"),
     portion: z.coerce.number().min(1, "Sua receita precisa render pelo menos 1 porção"),
     category: z.string().nonempty("Sua receita precisa ser vinculada a uma categoria")
-        .min(5, "Nome da categoria precisa ter no minimo 5 caracteres!")
         .transform(name => name.charAt(0).toUpperCase().concat(name.substring(1).toLowerCase()))
 });
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useRecipeApi } from '../../../../hooks/useApi';
 import { Button } from '../../../atoms/Button';
 import { Candidate } from '../../../molecules/Candidate';
+import moment from 'moment';
 
 export const PollRecipes = () => {
     const [recipes, setRecipes] = useState([]);
@@ -11,7 +12,15 @@ export const PollRecipes = () => {
     useEffect(() => {
         (async () => {
             const { data } = await refRecipeApi.current.getAllRecipes();
-            setRecipes(data)
+            const filteredRecipeByDate = data.filter(recipe => {
+                const createdAt = moment(recipe.createdAt).month() + "" + moment(recipe.createdAt).year();
+                const currentDate = moment().month() + "" + moment().year();
+
+                if (createdAt === currentDate) return recipe
+                else return null
+            })
+
+            setRecipes(filteredRecipeByDate)
         })()
     }, [])
 
@@ -28,7 +37,8 @@ export const PollRecipes = () => {
                         key={candidate.id}
                         position={i}
                         candidate={candidate}
-                         />
+                        recipes={recipes}
+                    />
                 })}
             </div>
             <Link to={'/poll'}>

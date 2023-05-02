@@ -8,6 +8,10 @@ import { Header } from "../../components/templates/Header/Header"
 import { HomeProvider } from "../../contexts/Home/HomeProvider"
 import { useRecipeApi } from "../../hooks/useApi"
 
+import { IoIosCreate } from "react-icons/io"
+
+import moment from "moment"
+
 
 export const Poll = () => {
     const [updateListRecipe, setUpdateListRecipe] = useState(false)
@@ -17,7 +21,15 @@ export const Poll = () => {
     useEffect(() => {
         (async () => {
             const { data } = await refRecipeApi.current.getAllRecipes();
-            setRecipes(data)
+            const filteredRecipeByDate = data.filter(recipe => {
+                const createdAt = moment(recipe.createdAt).month()+""+moment(recipe.createdAt).year();
+                const currentDate = moment().month()+""+moment().year();
+
+                if(createdAt === currentDate) return recipe
+                else return null
+            })
+
+            setRecipes(filteredRecipeByDate)
         })();
     }, [updateListRecipe]);
 
@@ -30,19 +42,20 @@ export const Poll = () => {
             <Header />
             <div className="w-[95%] md:w-5/6 mx-auto bg-white">
                 <h2 className="p-4 text-s2 text-center text-color_red font-bold">Os mais votados:</h2>
-                <div className="w-[95%] md:w-5/6 mx-auto my-12 flex justify-center items-end">
+                <div className="w-[95%] md:w-[60rem] mx-auto my-12 flex justify-center items-end">
                     {recipes.map((candidate, i) => {
                         return i < 3 && <Candidate
                             key={candidate.id}
                             position={i}
                             candidate={candidate}
+                            recipes={recipes}
                         />
                     })}
                 </div>
                 <div className="flex flex-col items-center justify-center m-4">
                     <h3 className="w-[90%] md:w-2/3 p-4 text-center text-s1_7 md:text-s2 text-color_red font-bold ">Já pensou em ganhar prêmios fazendo oque você ama?</h3>
                     <Link to={'/create/?n='}>
-                        <Button customClass={"btn-primary py-4 px-12 text-s1_5 m-4"}>Criar uma receita</Button>
+                        <Button customClass={"btn-primary py-4 px-12 text-s1_5 m-4"}>Criar uma receita <IoIosCreate /></Button>
                     </Link>
                 </div>
                 {/* <div className="p-4">
@@ -66,9 +79,6 @@ export const Poll = () => {
                 <TablePoll
                     setUpdateListRecipe={setUpdateListRecipe}
                     candidates={recipes} />
-            </div>
-            <div className="w-11/12 h-[15rem] my-4 bg-white mx-auto grid place-items-center">
-                ads here.
             </div>
             <Footer />
         </HomeProvider>

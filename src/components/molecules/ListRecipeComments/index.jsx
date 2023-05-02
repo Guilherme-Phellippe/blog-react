@@ -41,8 +41,10 @@ export const ListRecipeComments = ({ content }) => {
 
             <BoxAddNewComment
                 userLogged={userLogged}
-                idRecipe={content.id}
-                setComments={setComments} />
+                id={content.id}
+                setComments={setComments}
+                isRecipe={content.name_recipe ? true : false}
+            />
 
         </div>
 

@@ -1,23 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import { useRecipeApi } from '../../../hooks/useApi';
-
+import { useEffect, useState } from 'react';
 
 import { Img } from '../../atoms/Img';
 
-export const Candidate = ({ position, candidate }) => {
-    const refRecipeApi = useRef(useRecipeApi());
-    const [recipes , setRecipes] = useState([])
+export const Candidate = ({ recipes, position, candidate }) => {
     const [totalVotes, setTotalVotes] = useState(0);
     const height = position !== 0 ? 'h-[15rem]' : 'h-[17rem]'
     const orderStyle = position === 0 ? 'order-2' : position === 1 ? 'order-1' : 'order-3';
-
-
-    useEffect(() => {
-        (async function fetchData() {
-            const { data } = await refRecipeApi.current.getAllRecipes();
-            setRecipes(data)
-        })();
-    },[])
 
     useEffect(() => {
         setTotalVotes(0)
