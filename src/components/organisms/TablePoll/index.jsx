@@ -6,7 +6,6 @@ import { useRecipeApi } from "../../../hooks/useApi"
 import { Button } from "../../atoms/Button"
 import { Input } from "../../atoms/Input"
 import { Loading } from "../../atoms/Loading/Loading"
-import { DialogConfirm } from "../../../modals/DialogConfirm"
 import { dialog } from "../../../scripts/dialog"
 
 export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe }) => {
@@ -18,7 +17,6 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
     const [totalVotes, setTotalVotes] = useState(0);
     const [recipesPerPage, setRecipesPerPage] = useState(10);
     const [loading, setLoading] = useState(false)
-    const [modalDialog, setModalDialog] = useState()
     const refTablePoll = useRef();
     const [qs, setQs] = useSearchParams();
     const navigate = useNavigate()
