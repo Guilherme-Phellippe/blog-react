@@ -29,7 +29,7 @@ export const Feed = ({ contents, valueSearch }) => {
     };
 
     return (
-        <div>
+        <div className='relative'>
             {feed.length ? feed.map((content) => {
                 return (
                     content.name_recipe ?

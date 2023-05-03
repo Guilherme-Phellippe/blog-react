@@ -16,6 +16,7 @@ import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
 import { useFeedApi, useUserApi } from "../../../../hooks/useApi";
 
 import './main.css'
+import { smartSearch } from "../../../../scripts/smartSearch";
 
 export const MainContentHome = () => {
     const { valueSearch, setUser, user } = useContext(HomeContext);
@@ -32,25 +33,17 @@ export const MainContentHome = () => {
         (async () => {
             const { data: userData } = await checkUserLogged(userApi.current)
             const { data: recipesData } = await feedApi.current.getAllFeed();
-            if(recipesData) setRecipes(recipesData)
+            if (recipesData) setRecipes(recipesData)
             if (userData) setUser(userData)
             else localStorage.removeItem('token')
         }
         )();
-
     }, [setUser]);
 
     //filter the recipes case user search some recipes
     useEffect(() => {
-        const findRecipes = valueSearch ? recipes.filter(recipe => {
-            return recipe.name_recipe ?
-                recipe.name_recipe.toLowerCase().includes(valueSearch.toLowerCase()) ||
-                recipe.category.name_category.toLowerCase().includes(valueSearch.toLowerCase()) ||
-                recipe.user.name.toLowerCase().includes(valueSearch.toLowerCase())
-                :
-                undefined
-        }) : recipes
-
+        const findRecipes = valueSearch ? smartSearch(recipes, valueSearch) : recipes
+        
         const newFeed = findRecipes.slice(0, postPerPage);
 
         setFeed(newFeed);
@@ -116,7 +109,7 @@ export const MainContentHome = () => {
                             event={() => setPostPerPage((nmr_post) => nmr_post + 10)}
                         >
                             Ver mais receitas
-                            <MdArrowDropDown className="text-s2"/>
+                            <MdArrowDropDown className="text-s2" />
                         </Button>
                     }
                 </div>
