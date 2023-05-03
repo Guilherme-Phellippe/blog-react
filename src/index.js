@@ -20,6 +20,7 @@ import { Tip } from './pages/Tip';
 import { CreateTip } from './pages/CreateTip';
 
 import './index.css';
+import { Contact } from './pages/Contact/Contact';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -36,6 +37,7 @@ root.render(
         <Route path='/create' element={<CreateRecipe />} />
         <Route path='/create-tip' element={<CreateTip />} />
         <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path='/recipe/:name/:id' element={<Recipe />} />
         <Route path='/tip/:name/:id' element={<Tip />} />
         <Route path='/category/:sub' element={<Category />} />

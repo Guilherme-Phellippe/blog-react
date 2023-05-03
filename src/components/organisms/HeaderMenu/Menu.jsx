@@ -74,6 +74,7 @@ export const Menu = () => {
                                 </li>
 
                                 <LinkNavigation route={'/about'} customClass={''}>Sobre nós</LinkNavigation>
+                                <LinkNavigation route={'/contact'} customClass={''}>Contato</LinkNavigation>
                                 <LinkNavigation route={'/policy'} customClass={''}>Politicas privacidade</LinkNavigation>
                                 <LinkNavigation route={'/terms'} customClass={''}>Termos de uso</LinkNavigation>
 
@@ -122,6 +123,12 @@ export const Menu = () => {
                                     route={'/about'}
                                     customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
                                 >Sobre nós</LinkNavigation>
+
+                                <LinkNavigation
+                                    onClick={() => setMenuIsOpen(false)}
+                                    route={'/contact'}
+                                    customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
+                                >Contato</LinkNavigation>
 
                                 <LinkNavigation
                                     onClick={() => setMenuIsOpen(false)}
