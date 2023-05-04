@@ -29,6 +29,15 @@ module.exports = {
         color_text_black: '#202020cc',
       },
     },
+    keyframes:{
+      pulse:{
+        '0%, 100%': { transform: 'rotate(0deg) scale(1) translateX(0)' },
+        '50%': { transform: 'rotate(-30deg) scale(1.5) translateX(-2px)'}
+      }
+    },
+    animation:{
+      'pulse-icon': 'pulse 700ms'
+    }
 
   },
   plugins: [],

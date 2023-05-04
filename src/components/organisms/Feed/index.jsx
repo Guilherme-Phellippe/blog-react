@@ -6,7 +6,7 @@ import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
 import { Loading } from '../../atoms/Loading/Loading';
 
-export const Feed = ({ contents, valueSearch }) => {
+export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
     const [listRecipeForRemove, setListRecipeForRemove] = useState(listRecipeLocalStorage);
     const hasSearch = valueSearch ? true : false;
@@ -38,12 +38,14 @@ export const Feed = ({ contents, valueSearch }) => {
                             content={content}
                             hasSearch={hasSearch}
                             handleIdForAddListRemove={handleIdForAddListRemove}
+                            setIsOpenRanking={setIsOpenRanking}
                         />
                         :
                         <FeedTip
                             key={content.id}
                             content={content}
                             handleIdForAddListRemove={handleIdForAddListRemove}
+                            setIsOpenRanking={setIsOpenRanking}
                         />
                 )
             }) : <Loading />}

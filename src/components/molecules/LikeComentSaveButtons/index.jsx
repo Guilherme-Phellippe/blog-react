@@ -34,10 +34,13 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
     }, [nmr_hearts, nmr_saved, token])
 
 
-    const handleLovedButton = async () => {
+    const handleLovedButton = async ({ currentTarget }) => {
+
+
         if (token) {
             const userAlreadyGivedHeart = nmr_hearts.find(nmr => nmr === token.id);
             if (!userAlreadyGivedHeart) {
+                currentTarget.querySelector('svg').classList.add('animate-pulse-icon', 'duration-500', 'fill-red-500');
                 const data = await refFeedApi.current.updateNumberHearts({ idUser: token.id, idRecipe })
                 if (data.status === 201) {
                     setCustomClassToLoved('fill-red-500 text-red-500');
@@ -51,7 +54,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                 button: {
                     icon: <RiAccountCircleFill />,
                     title: 'Criar conta',
-                    event:()=> navigate('/register')
+                    event: () => navigate('/register')
                 },
                 function: setModalDialog(true)
             })
@@ -59,23 +62,24 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
 
     }
 
-    const handleCommentButton = ({ target }) => {
+    const handleCommentButton = ({ target, currentTarget }) => {
         const boxFeedComments = target.closest("div[data-id=feed-recipe]").querySelector('[data-id=feed-comment]')
         const input = target.closest("div[data-id=feed-recipe]").querySelector('[data-id=feed-comment] input[data-id=InputWriteComment]')
         input.focus();
         boxFeedComments.classList.toggle("hidden")
         boxFeedComments.classList.toggle("flex")
-
     }
 
-    const handleSaveButton = async () => {
+    const handleSaveButton = async ({ currentTarget }) => {
 
         if (token) {
             const userAlreadyGivedSaved = nmr_saved.find(nmr => nmr === token.id);
             if (!userAlreadyGivedSaved) {
+                currentTarget.querySelector('svg').classList.add('animate-pulse-icon', 'duration-500', 'fill-green-700');
                 const data = await refFeedApi.current.updateNumberSaved({ idUser: token.id, idRecipe })
                 const dataUser = await refUserApi.updateNumberSaved({ idUser: token.id, idRecipe })
-                if (data.status === 201 && dataUser.status === 204) {
+
+                if (data.status === 200 && dataUser.status === 200) {
                     setCustomClassToSave('fill-green-700 text-green-700')
                     setNmr_saved(nmr => [...nmr, token.id])
                     refButtonSave.current.textContent = "Salva"
@@ -88,7 +92,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                 button: {
                     icon: <RiAccountCircleFill />,
                     title: "Criar conta",
-                    event: ()=> navigate('/register')
+                    event: () => navigate('/register')
                 },
                 function: setModalDialog(true)
             })
@@ -101,7 +105,7 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
             <Button
                 event={handleLovedButton}
                 customClass=
-                {`flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
+                {`flex w-1/3 items-center justify-center gap-1 rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
                 <FaHeart className={`${customClassToLoved} text-color_sub_text group-hover:fill-red-500`} />
                 <p className={`${customClassToLoved} text-color_sub_text group-hover:text-red-500`} >Amei</p>
@@ -110,17 +114,17 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
             <Button
                 event={handleCommentButton}
                 customClass=
-                {`${customClassToComment} flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
+                {`${customClassToComment} flex w-1/3 items-center justify-center gap-1 rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
                 <RiMessage2Fill className="text-color_sub_text group-hover:fill-blue-500 " />
-                <p className=" text-color_sub_text group-hover:text-blue-400" >Comentar</p>
+                <p className="text-color_sub_text group-hover:text-blue-400" >Comentar</p>
             </Button>
 
 
             <Button
                 event={handleSaveButton}
                 customClass=
-                {`${customClassToSave} flex w-1/3 items-center justify-center gap-1 hover:bg-background rounded-md text-s1_4 hover:font-bold transition-all group`}
+                {`${customClassToSave} flex w-1/3 items-center justify-center gap-1 rounded-md text-s1_4 hover:font-bold transition-all group`}
             >
                 <FaSave className="text-color_sub_text group-hover:fill-green-700 " />
                 <p
