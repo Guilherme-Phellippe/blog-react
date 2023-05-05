@@ -47,7 +47,7 @@ export const BoxAddNewComment = ({ id, setComments, userLogged, isRecipe }) => {
     return (
         <div className="w-full px-4 py-2 flex items-center">
             <div className="overflow-hidden rounded-full">
-                <img className="w-[40px] h-[40px] object-cover" src={userLogged.photo || "https://i.ibb.co/JCNSM0R/143086968-2856368904622192-1959732218791162458-n.png" } alt={userLogged.name} />
+                <img className="w-[40px] h-[40px] object-cover" src={userLogged?.photo || "https://i.ibb.co/JCNSM0R/143086968-2856368904622192-1959732218791162458-n.png" } alt={userLogged?.name || "Usuário"} />
             </div>
             <Input
                 ref={refInput}
