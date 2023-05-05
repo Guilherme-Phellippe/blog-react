@@ -16,7 +16,6 @@ export const BoxRecipe = ({ recipe, area, index }) => {
                 <Img
                     imgs={images_recipe}
                     alt={`imagem de ${name_recipe}`}
-                    loadSpeed={index === 0? true:false}
                 />
             </div>
             <Info3MostViewedRecipes recipe={recipe} index={index} />
