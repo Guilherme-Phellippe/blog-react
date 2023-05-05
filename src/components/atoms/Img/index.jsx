@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import lazySizes from 'lazysizes';
 
-export const Img = ({ imgs, alt, title }) => {
+export const Img = ({ imgs, alt, title, loadSpeed }) => {
   //800, 450, 220, 100 = sizes in hostImages
   const imageRef = useRef(null)
   const [src, setSrc] = useState('')
@@ -43,6 +43,7 @@ export const Img = ({ imgs, alt, title }) => {
       data-src={src}
       data-sizes="auto"
       ref={imageRef}
+      preload={loadSpeed ? "true" : "false"}
     />
   )
 }
