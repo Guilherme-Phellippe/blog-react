@@ -1,30 +1,23 @@
-import { useEffect, useState } from "react"
-import { Loading } from "../Loading/Loading";
+import { useEffect, useRef } from "react"
+import lazySizes from 'lazysizes';
 
-export const Img = ({ src, alt, ...restProps }) => {
-    const [imgLoad, setImgLoad] = useState(false)
+export const Img = ({ src, alt, title }) => {
+    const imageRef = useRef(null)
 
     useEffect(() => {
-        const img = new Image();
-        img.src = src || 'https://i.ibb.co/xjg8FPj/67c4adae57ba.webp';
-        img.onload = () => {
-            setImgLoad(true)
+        if (imageRef.current) {
+          lazySizes.loader.unveil(imageRef.current);
         }
-    }, [src])
+      }, []);
 
     return (
-        <>
-            {
-
-                imgLoad ?
-                    <img
-                        className="w-full h-full object-cover"
-                        src={src}
-                        alt={alt}
-                        {...restProps} />
-                    :
-                    <Loading />
-            }
-        </>
+        <img
+            className={`lazyloader w-full h-full object-cover`}
+            data-src={src}
+            src="https://i.ibb.co/zsRwZ69/Design-sem-nome-24.webp"
+            alt={alt}
+            title={title}
+            ref={imageRef}
+        />
     )
 }

@@ -16,15 +16,16 @@ export const Candidate = ({ recipes, position, candidate }) => {
 
     return (
         <div className={`${orderStyle} ${height} w-[30%] min-w-[110px] mx-auto flex flex-col justify-between relative border-[1px] border-solid border-color_red rounded-xl`}>
-            <div className={`absolute -top-4 -left-4 px-4 py-2 rounded-[50%] bg-color_red text-white text-s1_2`}>
+            <div className={`absolute -top-4 -left-4 px-4 py-2 rounded-[50%] bg-color_orange text-white text-s1_2`}>
                 {`${position + 1}°`}
             </div>
-            <Img
-                className="absolute right-0 bottom-0 w-[40px] h-[40px] object-cover rounded-[50%]"
-                src={candidate.user.photo}
-                alt={`foto de ${candidate.user.name}`}
-                title={candidate.user.name}
-            />
+            <div className="absolute right-0 bottom-0 w-[40px] h-[40px] object-cover rounded-[50%] overflow-hidden">
+                <Img
+                    src={candidate.user.photo}
+                    alt={`foto de ${candidate.user.name}`}
+                    title={candidate.user.name}
+                />
+            </div>
             <div className="w-full h-[70%] rounded-xl overflow-hidden">
                 <Img
                     className="w-full h-full object-cover"
