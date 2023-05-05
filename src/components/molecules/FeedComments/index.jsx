@@ -170,7 +170,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                 <div>
                     <Img
                         className="min-w-[40px] w-[40px] h-[40px] rounded-full object-cover"
-                        src={comment.user.photo}
+                        imgs={comment.user.photo}
                         alt={comment.user.name}
                     />
                 </div>
@@ -216,7 +216,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         key={index}
                         className="w-full h-1/2 flex items-center group">
                         <div className="ml-[60px] h-[80%] overflow-hidden rounded-full">
-                            <img className="w-[40px] h-[40px] object-cover" src={answer.photo} alt={answer.name} />
+                            <Img imgs={answer.photo} alt={answer.name} />
                         </div>
                         <div className="rounded-3xl m-2 flex flex-col bg-background">
                             <div className="flex items-center mx-3 mt-2 gap-2">
@@ -246,7 +246,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         <div className="ml-[60px] w-[40px] h-[40px] overflow-hidden rounded-full">
                             <Img
                                 className="w-full h-full rounded-full object-cover"
-                                src={userLogged.photo || "https://i.ibb.co/JCNSM0R/143086968-2856368904622192-1959732218791162458-n.png"}
+                                imgs={userLogged.photo || "https://i.ibb.co/JCNSM0R/143086968-2856368904622192-1959732218791162458-n.png"}
                                 alt={userLogged.name || "Avatar do usuario sem foto Usuário"}
                             />
                         </div>

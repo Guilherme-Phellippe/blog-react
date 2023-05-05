@@ -13,7 +13,7 @@ export const HeaderInfoFeed = ({ content: { user, createdAt, id }, onClick }) =>
             <div className="w-[35px] h-[35px] grid place-items-start rounded-full overflow-hidden">
                 <Img
                     className="w-full h-full object-cover"
-                    src={user.photo}
+                    imgs={user.photo}
                     alt={user.name}
                 />
             </div>

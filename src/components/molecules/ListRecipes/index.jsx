@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { formatTextLong } from "../../../scripts/formatTextLong";
+import { Img } from "../../atoms/Img";
 
 export const ListRecipes = ({ recipe, classContainer, classInfoContent, classImgContent = "w-full h-full" }) => {
 
@@ -13,7 +14,7 @@ export const ListRecipes = ({ recipe, classContainer, classInfoContent, classImg
         <Link onClick={handleScrollDocument} to={`/recipe/${recipe.name_recipe}/${recipe.id}`}>
             <div className={classContainer}>
                 <div className={classImgContent}>
-                    <img className='w-full h-full object-cover' src={recipe.images_recipe[0].small} alt={recipe.name_recipe} />
+                    <Img imgs={recipe.images_recipe[0].small} alt={recipe.name_recipe} />
                 </div>
                 <div className={classInfoContent}>
                     <h2 className="text-s1_2 text-color_sub_text text-center">{formatTextLong(recipe.name_recipe, 25)}</h2>

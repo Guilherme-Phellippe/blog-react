@@ -1,6 +1,5 @@
 import { useContext } from "react"
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
-import { defineSizeImage } from "../../../scripts/defineSizeImage";
 import { Img } from "../../atoms/Img";
 
 export const CarouselMidiasContent = ({ img, name_recipe, category }) => {
@@ -15,7 +14,7 @@ export const CarouselMidiasContent = ({ img, name_recipe, category }) => {
                 </>}
             </div>
             <div className={`${valueSearch ? "order-1 w-1/2 h-full":'w-full h-[65%]'} max-h-[600px] mt-4 overflow-hidden`}>
-                <Img src={defineSizeImage(img)} alt={name_recipe} />
+                <Img imgs={img} alt={name_recipe} />
             </div>
         </>
     )

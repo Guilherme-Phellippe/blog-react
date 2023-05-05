@@ -21,7 +21,7 @@ export const Candidate = ({ recipes, position, candidate }) => {
             </div>
             <div className="absolute right-0 bottom-0 w-[40px] h-[40px] object-cover rounded-[50%] overflow-hidden">
                 <Img
-                    src={candidate.user.photo}
+                    imgs={candidate.user.photo}
                     alt={`foto de ${candidate.user.name}`}
                     title={candidate.user.name}
                 />
@@ -29,7 +29,7 @@ export const Candidate = ({ recipes, position, candidate }) => {
             <div className="w-full h-[70%] rounded-xl overflow-hidden">
                 <Img
                     className="w-full h-full object-cover"
-                    src={candidate.images_recipe[0].small}
+                    imgs={candidate.images_recipe}
                     alt={candidate.name_recipe}
                 />
             </div>
