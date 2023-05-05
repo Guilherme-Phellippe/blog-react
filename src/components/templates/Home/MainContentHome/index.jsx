@@ -1,7 +1,6 @@
 import { useCallback, useContext, useEffect, useState, useRef } from "react";
 
 import { HomeContext } from '../../../../contexts/Home/HomeProvider'
-import { checkUserLogged } from '../../../../scripts/checkUserLogged'
 
 import { GiPodium } from 'react-icons/gi'
 import { MdArrowDropDown } from 'react-icons/md'
@@ -13,32 +12,29 @@ import { Feed } from '../../../organisms/Feed'
 import { MostViewedRecipesContainer } from "../../../organisms/MostViewedRecipesContainer";
 import { ColumnLeftMainHome } from "../../../organisms/ColumnLeftMainHome";
 import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
-import { useFeedApi, useUserApi } from "../../../../hooks/useApi";
+import { useFeedApi } from "../../../../hooks/useApi";
 
 import './main.css'
 import { smartSearch } from "../../../../scripts/smartSearch";
 
 export const MainContentHome = () => {
-    const { valueSearch, setUser, user } = useContext(HomeContext);
+    const { valueSearch,  user } = useContext(HomeContext);
     const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
     const [isOpenRanking, setIsOpenRanking] = useState(false)
-    const userApi = useRef(useUserApi());
     const feedApi = useRef(useFeedApi());
     const [showIconRanking, setShowIconRanking] = useState(false)
 
     //Search data in bd and fill recipes and user
     useEffect(() => {
         (async () => {
-            const { data: userData } = await checkUserLogged(userApi.current)
             const { data: recipesData } = await feedApi.current.getAllFeed();
             if (recipesData) setRecipes(recipesData)
-            if (userData) setUser(userData)
             else localStorage.removeItem('token')
         }
         )();
-    }, [setUser]);
+    }, []);
 
     //filter the recipes case user search some recipes
     useEffect(() => {
@@ -116,7 +112,6 @@ export const MainContentHome = () => {
                 </div>
 
                 <ColumnRightMainHome
-                    user={user}
                     ranking={topRankingByHearts()}
                 />
 
@@ -127,7 +122,6 @@ export const MainContentHome = () => {
                             data-id="modal-ranking-recipe-mobile"
                             className={`${!isOpenRanking ? "invisible translate-x-full" : 'visible translate-x-[43%]'} z-[999] transition-transform duration-400 fixed top-0 w-[70%] h-screen overflow-auto border-l-[2px] border-l-color_orange`}>
                             <ColumnRightMainHome
-                                user={user}
                                 ranking={topRankingByHearts()}
                                 isOpenRanking={isOpenRanking}
                             />

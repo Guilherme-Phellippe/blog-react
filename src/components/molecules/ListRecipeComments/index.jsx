@@ -1,22 +1,12 @@
-import { useEffect, useRef, useState } from "react"
-import { useUserApi } from "../../../hooks/useApi";
+import { useContext, useState } from "react"
 import { BoxAddNewComment } from "../BoxAddNewComment"
 import { FeedComments } from "../FeedComments"
+import { HomeContext } from "../../../contexts/Home/HomeProvider";
 
 export const ListRecipeComments = ({ content }) => {
-    const refToken = useRef(JSON.parse(localStorage.getItem('token')));
-    const refUserApi = useRef(useUserApi());
-    const [userLogged, setUserLogged] = useState({})
+    const { user: userLogged } = useContext(HomeContext)
     const [comments, setComments] = useState(content.comments)
 
-    useEffect(() => {
-        if (refToken.current) {
-            (async () => {
-                const { data } = await refUserApi.current.authenticateLogin(refToken.current.id);
-                setUserLogged(data)
-            })();
-        }
-    }, []);
 
     return (
         <div data-id="feed-comment" className="w-full flex-col items-center justify-center bg-white border-t-[1px] border-solid py-4 hidden">

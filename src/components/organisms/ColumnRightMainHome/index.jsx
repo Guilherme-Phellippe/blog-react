@@ -1,7 +1,7 @@
+import moment from "moment"
 import { useCallback, useMemo } from "react"
 import { PanelUser } from "../../organisms/PanelUser/PanelUser"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
-import moment from "moment"
 
 export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 

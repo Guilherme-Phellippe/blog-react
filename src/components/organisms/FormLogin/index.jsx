@@ -3,21 +3,20 @@ import { useNavigate } from "react-router-dom";
 
 import { FaEye, FaEyeSlash, FaSignInAlt, FaUserAlt } from "react-icons/fa";
 
-import { HomeContext } from "../../../contexts/Home/HomeProvider";
 
 import { useUserApi } from "../../../hooks/useApi";
 
 import { Button } from "../../atoms/Button";
 import { Input } from "../../atoms/Input"
 import { Loading } from "../../atoms/Loading/Loading"
+import { HomeContext } from "../../../contexts/Home/HomeProvider";
 
 
 export const FormLogin = () => {
-    const { setUser } = useContext(HomeContext)
+    const { user } = useContext(HomeContext)
     const [openEyePassword, setOpenEyePassword] = useState(false)
     const [typeInputPassword, setTypeInputPassword] = useState('password');
-    const [loading , setLoading] = useState(false)
-    const [tokenLogin, setTokenLogin] = useState(JSON.parse(localStorage.getItem('token')));
+    const [loading, setLoading] = useState(false)
     const inputEmailRef = useRef();
     const inputPasswordRef = useRef();
     const api = useRef(useUserApi());
@@ -30,17 +29,9 @@ export const FormLogin = () => {
     }, [openEyePassword]);
 
     useEffect(() => {
-        (async () => {
-            if (tokenLogin) {
-                const user = await api.current.authenticateLogin()
-                if (user) {
-                    setUser(user)
-                    navigate('/')
-                }
-            }
-        })();
-    }, [tokenLogin, navigate, setUser])
-
+        console.log(user)
+        if (user) navigate('/')
+    }, [user, navigate])
 
 
     const handleButtonSignin = async (e) => {
@@ -55,10 +46,9 @@ export const FormLogin = () => {
                 }
             );
 
-
             if (data) {
                 localStorage.setItem("token", JSON.stringify(data));
-                setTokenLogin(JSON.parse(localStorage.getItem('token')));
+                navigate('/')
             } else alert("Usuario ou senha incorretos!")
 
         } else {
@@ -69,8 +59,8 @@ export const FormLogin = () => {
         setLoading(false)
     }
 
-    const handleNextLine = (e) =>{
-        if(e.code === "Enter"){
+    const handleNextLine = (e) => {
+        if (e.code === "Enter") {
             e.preventDefault()
             inputPasswordRef.current.focus()
         }
@@ -98,8 +88,8 @@ export const FormLogin = () => {
             <Button
                 customClass={"btn-primary flex items-center justify-center gap-2 w-1/2 mt-4 p-4 text-s1_2 relative"}
                 event={handleButtonSignin}
-            >   
-            {loading && <Loading />}
+            >
+                {loading && <Loading />}
                 Entrar <FaSignInAlt />
             </Button>
         </form>

@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button } from "../../atoms/Button"
 import { Input } from "../../atoms/Input";
 import { TextEditor } from "../../molecules/TextEditor"
 import { DialogAlert } from '../../../modals/DialogAlert'
-import { useTipApi, useUserApi } from "../../../hooks/useApi";
-import { checkUserLogged } from '../../../scripts/checkUserLogged'
+import { useTipApi } from "../../../hooks/useApi";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../../atoms/Loading/Loading";
 import { UploadImage } from "../../molecules/UploadImage";
+import { HomeContext } from "../../../contexts/Home/HomeProvider";
 
 
 export const MainCreateTip = () => {
     const tipApi = useTipApi()
+    const { user } = useContext(HomeContext)
     const [text, setText] = useState('');
     const [title, setTitle] = useState('');
     const [align, setAlign] = useState('text-left')
@@ -19,12 +20,10 @@ export const MainCreateTip = () => {
     const [openModalAlert, setModalAlert] = useState(false)
     const [container, setContainer] = useState(null)
     const [loading, setLoading] = useState(false)
-    const userPromisse = checkUserLogged(useUserApi())
     const navigate = useNavigate()
 
     const handleCreateTip = async () => {
         setLoading(true)
-        const user = await userPromisse
         if (user) {
             if (!!title && title.length > 5) {
                 if (!!images.length) {
