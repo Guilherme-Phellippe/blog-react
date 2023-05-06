@@ -5,8 +5,9 @@ export const MostViewedRecipesContainer = ({ valueSearch, topRanking }) => {
 
     const filteredRanking = topRanking('nmr_eyes')
     .filter((recipe) => recipe.name_recipe && moment(recipe.createdAt).dayOfYear() > (moment().dayOfYear() - 3) && recipe)
-    .filter((recipe, index) => index < 3 && recipe )
     .sort((a,b) => moment(b.createdAt).dayOfYear() - moment(a.createdAt).dayOfYear())
+    .filter((recipe, index) => index < 3 && recipe)
+    .sort((a,b) => b.nmr_eyes - a.nmr_eyes)
 
 
     return (
