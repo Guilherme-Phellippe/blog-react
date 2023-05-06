@@ -167,9 +167,8 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                 onClick={handleShowIconDelete}
                 onMouseLeave={handleShowIconDelete}
                 className="w-full h-1/2 flex items-center px-4 group">
-                <div>
+                <div className="min-w-[40px] w-[40px] h-[40px] rounded-full object-cover overflow-hidden">
                     <Img
-                        className="min-w-[40px] w-[40px] h-[40px] rounded-full object-cover"
                         imgs={comment.user.photo}
                         alt={comment.user.name}
                     />
@@ -215,7 +214,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         onMouseLeave={handleShowIconDelete}
                         key={index}
                         className="w-full h-1/2 flex items-center group">
-                        <div className="ml-[60px] h-[80%] overflow-hidden rounded-full">
+                        <div className="ml-[60px] h-[40px] overflow-hidden rounded-full">
                             <Img imgs={answer.photo} alt={answer.name} />
                         </div>
                         <div className="rounded-3xl m-2 flex flex-col bg-background">
