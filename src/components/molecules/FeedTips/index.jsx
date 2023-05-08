@@ -42,8 +42,7 @@ export const FeedTip = ({ content , handleIdForAddListRemove, setIsOpenRanking})
                 />
 
                 <BlockInteractionFeed
-                    comments={content.comments}
-                    idRecipe={content.id}
+                    content={content}
                 />
 
             </div>

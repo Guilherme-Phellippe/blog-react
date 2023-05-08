@@ -29,7 +29,6 @@ export const FormLogin = () => {
     }, [openEyePassword]);
 
     useEffect(() => {
-        console.log(user)
         if (user) navigate('/')
     }, [user, navigate])
 

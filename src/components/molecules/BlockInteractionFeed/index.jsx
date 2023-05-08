@@ -1,22 +1,19 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
-import { useFeedApi } from "../../../hooks/useApi"
 import { NumberLoved } from "../../atoms/NumberLoved"
 import { LikeComentsSaveButtons } from "../LikeComentSaveButtons"
 
-export const BlockInteractionFeed = ({ comments, idRecipe }) => {
-    const refFeedApi = useRef(useFeedApi())
+export const BlockInteractionFeed = ({ content }) => {
     const { valueSearch } = useContext(HomeContext)
     const [nmr_saved, setNmr_saved] = useState([])
     const [nmr_hearts, setNmr_hearts] = useState([])
+    const comments = content.comments
+    const recipeId = content.id
 
     useEffect(() => {
-        (async () => {
-            const { data } = await refFeedApi.current.getUniqueFeed(idRecipe)
-            setNmr_hearts(data.nmr_hearts)
-            setNmr_saved(data.nmr_saved)
-        })()
-    }, [idRecipe]);
+        setNmr_hearts(content.nmr_hearts)
+        setNmr_saved(content.nmr_saved)
+    }, [content]);
 
 
     return (
@@ -33,7 +30,7 @@ export const BlockInteractionFeed = ({ comments, idRecipe }) => {
                     setNmr_saved={setNmr_saved}
                     nmr_hearts={nmr_hearts}
                     nmr_saved={nmr_saved}
-                    idRecipe={idRecipe}
+                    recipeId={recipeId}
                 />
             </div>
         </div>

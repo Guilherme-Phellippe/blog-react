@@ -30,7 +30,7 @@ export const MainCreateTip = () => {
                     if (!!text && text.length > 100) {
 
                         const data = {
-                            userId: user.data.id,
+                            userId: user.id,
                             name_tip: title,
                             images: images[0],
                             description_tip: `<p class=${align}>${text}</p>`
