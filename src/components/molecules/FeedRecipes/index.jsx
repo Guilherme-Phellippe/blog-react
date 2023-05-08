@@ -51,7 +51,6 @@ export const FeedRecipes = ({ content , hasSearch, handleIdForAddListRemove, set
                 <BlockInteractionFeed
                     content={content}
                 />
-
             </div>
 
             <ListRecipeComments

@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
 import { FaHeart, FaSave } from "react-icons/fa";
-import { RiAccountCircleFill, RiMessage2Fill } from "react-icons/ri"
+import { RiMessage2Fill } from "react-icons/ri"
 import { useNavigate } from "react-router-dom";
 
 import { useFeedApi, useUserApi } from "../../../hooks/useApi";
-import { DialogConfirm } from "../../../modals/DialogConfirm";
 import { Button } from "../../atoms/Button";
+import { dialog } from "../../../modals/Dialog";
 
 
 export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, setNmr_saved, nmr_saved }) => {
@@ -15,8 +15,6 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
     const [customClassToLoved, setCustomClassToLoved] = useState('')
     const [customClassToComment] = useState('')
     const [customClassToSave, setCustomClassToSave] = useState('');
-    const [openModalDialog, setModalDialog] = useState(false)
-    const [containerConfirm, setContainerConfirm] = useState()
     const navigate = useNavigate()
     const refButtonSave = useRef()
     const token = JSON.parse(localStorage.getItem("token"))
@@ -48,21 +46,13 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                 }
             }
         } else {
-            setContainerConfirm({
-                type: 1,
-                message: "Você precisa criar uma conta para dar amei nessa receita",
-                button: {
-                    icon: <RiAccountCircleFill />,
-                    title: 'Criar conta',
-                    event: () => navigate('/register')
-                },
-                function: setModalDialog(true)
-            })
+            const response = await dialog("Você precisa criar uma conta para dar amei nessa receita", 1, "Criar conta")
+            if(response) navigate('/register')
         }
 
     }
 
-    const handleCommentButton = ({ target, currentTarget }) => {
+    const handleCommentButton = ({ target }) => {
         const boxFeedComments = target.closest("div[data-id=feed-recipe]").querySelector('[data-id=feed-comment]')
         const input = target.closest("div[data-id=feed-recipe]").querySelector('[data-id=feed-comment] input[data-id=InputWriteComment]')
         input.focus();
@@ -86,16 +76,8 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                 }
             }
         } else {
-            setContainerConfirm({
-                type: 1,
-                message: "Você precisa criar uma conta para salvar essa receita",
-                button: {
-                    icon: <RiAccountCircleFill />,
-                    title: "Criar conta",
-                    event: () => navigate('/register')
-                },
-                function: setModalDialog(true)
-            })
+            const response = await dialog("Você precisa criar uma conta para salvar essa receita", 1, "Criar conta");
+            if(response) navigate('/register')
         }
     }
 
@@ -131,15 +113,6 @@ export const LikeComentsSaveButtons = ({ idRecipe, setNmr_hearts, nmr_hearts, se
                     ref={refButtonSave}
                     className={`${customClassToSave} text-color_sub_text group-hover:text-green-700`} >Salvar</p>
             </Button>
-
-            {/* MODAL: */}
-            {
-                containerConfirm &&
-                <DialogConfirm
-                    open={{ openModalDialog, setModalDialog }}
-                    container={containerConfirm}
-                />
-            }
         </div>
     )
 }

@@ -19,6 +19,7 @@ export const Main = () => {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id)
             setRecipe(data)
+            document.title = data.name_recipe + " - Tem sabor Receitas oficiais"
         })();
     }, [id]);
 

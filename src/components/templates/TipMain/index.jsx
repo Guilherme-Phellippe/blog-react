@@ -19,6 +19,7 @@ export const TipMain = () => {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refTipApi.current.getUniqueTip(id)
             setTip(data)
+            document.title = data.name_tip + " - Tem sabor Receitas oficiais"
         })();
     }, [id]);
 
@@ -27,7 +28,7 @@ export const TipMain = () => {
         <div className="w-full max-w-[1500px] mx-auto">
             <main className='flex flex-col w-[95%] md:w-5/6 mt-8 mx-auto'>
                 <IconsShare recipeId={tip?.id}  refFeedApi={refFeedApi} />
-                <div className="w-full bg-white">
+                <div className="w-full bg-white min-h-screen">
                     {tip ? <InfoTipContent tip={tip} /> : <Loading />}
                     {tip ? <RecipeSimilarContent name_search={tip.name_tip} /> : <Loading />}
                 </div>

@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react';
 import { FaSave, FaCamera, FaTiktok, FaFacebook, FaInstagram, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 import { useUserApi } from '../../../hooks/useApi';
-import { DialogConfirm } from '../../../modals/DialogConfirm';
-import { RiAccountCircleFill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
+import { dialog } from "../../../modals/Dialog"
 
 const action = (type) => {
 
@@ -35,8 +34,6 @@ export const IconsShare = ({ recipeId, refFeedApi }) => {
     const refUserApi = useRef(useUserApi())
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";
-    const [openModalDialog, setModalDialog] = useState(false)
-    const [containerConfirm, setContainerConfirm] = useState()
     const navigate = useNavigate()
     const token = JSON.parse(localStorage.getItem("token"))
 
@@ -49,30 +46,12 @@ export const IconsShare = ({ recipeId, refFeedApi }) => {
             const data = await refFeedApi.current.updateNumberSaved({ idUser: token.id, idRecipe: recipeId })
             if (data.status === 204) {
                 const dataUser = await refUserApi.current.updateNumberSaved({ idUser: token.id, idRecipe: recipeId })
-                if(dataUser.status === 204) setContainerConfirm({
-                    type: 2,
-                    message: "Receita salva com sucesso!",
-                    function: setModalDialog(true)
-                })
+                if(dataUser.status === 204) await dialog("Receita salva com sucesso", 2)
                 else console.error("error when trying to save recipe for user")
-            }else {
-                setContainerConfirm({
-                    type: 1,
-                    message: "Você já salvou essa receita",
-                    function: setModalDialog(true)
-                })
-            }
+            }else await dialog("Está receita já está salva no seu perfil", 1)
         } else {
-            setContainerConfirm({
-                type: 1,
-                message: "Você precisa criar uma conta para dar amei nessa receita",
-                button: {
-                    icon: <RiAccountCircleFill />,
-                    title: 'Criar conta',
-                    event: () => navigate('/register')
-                },
-                function: setModalDialog(true)
-            })
+            const response = await dialog("Você precisa criar uma conta para dar amei nessa receita", 2, "Criar conta")
+            if(response) navigate('/register')
         }
     }
 
@@ -133,14 +112,6 @@ export const IconsShare = ({ recipeId, refFeedApi }) => {
                             className='text-s3 cursor-pointer fill-white ' />
                 }
             </div>
-
-            {
-                containerConfirm &&
-                <DialogConfirm
-                    open={{ openModalDialog, setModalDialog }}
-                    container={containerConfirm}
-                />
-            }
         </div>
     )
 }

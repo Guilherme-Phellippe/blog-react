@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Img } from '../../atoms/Img';
+import { Link } from 'react-router-dom';
 
 export const Candidate = ({ recipes, position, candidate }) => {
     const [totalVotes, setTotalVotes] = useState(0);
@@ -15,7 +16,10 @@ export const Candidate = ({ recipes, position, candidate }) => {
     }, [recipes]);
 
     return (
-        <div className={`${orderStyle} ${height} w-[30%] min-w-[110px] mx-auto flex flex-col justify-between relative border-[1px] border-solid border-color_red rounded-xl`}>
+        <Link
+            to={'/poll'}
+            className={`${orderStyle} ${height} w-[30%] min-w-[110px] mx-auto flex flex-col justify-between relative border-[1px] border-solid border-color_red rounded-xl`}
+        >
             <div className={`absolute -top-4 -left-4 px-4 py-2 rounded-[50%] bg-color_orange text-white text-s1_2`}>
                 {`${position + 1}°`}
             </div>
@@ -39,8 +43,7 @@ export const Candidate = ({ recipes, position, candidate }) => {
                     {totalVotes > 0 ? ((candidate.votes.length / totalVotes) * 100).toFixed(2).replace('.', ',') + "% dos votos" : "Ainda não há votos sufientes"}
                 </h3>
             </div>
-
-        </div>
+        </Link>
     )
 }
 

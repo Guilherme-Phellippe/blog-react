@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-
 import { useCategoryApi, useUserApi } from "../../../hooks/useApi"
+import { dialog } from "../../../modals/Dialog"
 
 import { MdImage, MdImportContacts, MdList } from "react-icons/md"
 
 import { StepOneCreateRecipe } from "../../organisms/StepOneCreateRecipe"
 import { StepThreeCreateRecipe } from "../../organisms/StepThreeCreateRecipe"
 import { StepTwoCreateRecipe } from "../../organisms/StepTwoCreateRecipe";
-import { DialogAlert } from "../../../modals/DialogAlert"
 
 export const MainCreateRecipe = () => {
     const refUser = useRef(useUserApi());
@@ -17,8 +16,6 @@ export const MainCreateRecipe = () => {
     const [categories, setCategories] = useState([])
     const [step, setStep] = useState(1)
     const [images, setImages] = useState([])
-    const [openModalAlert, setModalAlert] = useState(false);
-    const [containerAlert, setContainerAlert] = useState();
     const [user, setUser] = useState()
     const navigate = useNavigate();
 
@@ -35,12 +32,8 @@ export const MainCreateRecipe = () => {
                 }else throw new Error("User isnt logged")
             } catch (error) {
                 console.error(error)
-                setContainerAlert({
-                    function: setModalAlert(true),
-                    type: 1,
-                    message: "Você precisa criar uma conta antes de publicar sua receita!",
-                    eventClose: () => navigate('/register')
-                })
+                const response = await dialog("Você precisa criar uma conta antes de publicar sua receita!", 1, "Criar conta");
+                if(response)navigate('/register')
             }
         })()
     }, [navigate]);
@@ -87,13 +80,6 @@ export const MainCreateRecipe = () => {
                 </div>
 
             </div>
-
-            {
-                openModalAlert && <DialogAlert
-                    open={{ openModalAlert, setModalAlert }}
-                    container={containerAlert}
-                />
-            }
         </main>
     )
 }

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { FaPen } from 'react-icons/fa'
-import { RiAccountBoxFill, RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
+import { RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
-import { DialogConfirm } from '../../../../modals/DialogConfirm'
+
+import { dialog } from '../../../../modals/Dialog'
 
 import { Button } from '../../../atoms/Button'
 import { Input } from '../../../atoms/Input'
@@ -13,41 +14,22 @@ export const CreateFeed = ({ user }) => {
 
     const navigate = useNavigate();
     const [valueInput, setValueInput] = useState('');
-    const [openModalDialog, setModalDialog] = useState(false);
-    const [containerConfirm, setContainerConfirm] = useState();
 
-
-    const handleCanCreateRecipe = () => {
+    const handleCanCreateRecipe = async () => {
         if (user) {
             navigate(`/create/?n=${valueInput}`)
         } else {
-            setContainerConfirm({
-                function: setModalDialog(true),
-                type: 1,
-                message: "Você precisa criar uma conta antes de publicar um receita!",
-                button: {
-                    icon: <RiAccountBoxFill />,
-                    title: "Criar conta",
-                    event: () => navigate('/register')
-                }
-            })
+            const response = await dialog("Você precisa criar uma conta antes de publicar um receita!", 1, "Criar conta")
+            if(response) navigate('/register');
         }
 
     }
-    const handleCanCreateTip = () => {
+    const handleCanCreateTip = async () => {
         if (user) {
             navigate(`/create-tip/?n=${valueInput}`)
         } else {
-            setContainerConfirm({
-                function: setModalDialog(true),
-                type: 1,
-                message: "Você precisa criar uma conta antes de publicar um receita!",
-                button: {
-                    icon: <RiAccountBoxFill />,
-                    title: "Criar conta",
-                    event: () => navigate('/register')
-                }
-            })
+            const response = await dialog("Você precisa criar uma conta antes de publicar um receita!", 1, "Criar conta")
+            if(response) navigate('/register');
         }
 
     }
@@ -84,13 +66,6 @@ export const CreateFeed = ({ user }) => {
                     Publicar dica <RiLightbulbFill className='fill-yellow-800' />
                 </Button>
             </div>
-
-            {
-                openModalDialog && <DialogConfirm
-                    open={{ openModalDialog, setModalDialog }}
-                    container={containerConfirm}
-                />
-            }
         </div >
     )
 }

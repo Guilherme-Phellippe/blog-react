@@ -1,22 +1,17 @@
-import { RiAccountBoxFill, RiDeleteBinFill, RiSendPlaneFill } from "react-icons/ri"
+import { RiSendPlaneFill } from "react-icons/ri"
 import { Input } from "../../atoms/Input"
 import { Img } from "../../atoms/Img"
 import { MdDeleteForever } from 'react-icons/md'
 import { useRef, useState } from "react"
 import { useCommentApi } from "../../../hooks/useApi"
 import moment from "moment"
-import { DialogConfirm } from "../../../modals/DialogConfirm"
 import { useNavigate } from "react-router-dom"
-import { DialogAlert } from "../../../modals/DialogAlert"
+import { dialog } from "../../../modals/Dialog"
 
 export const FeedComments = ({ comment, userLogged, setComments }) => {
     const [showbuttonAsnwer, setShowButtonAnswer] = useState(true)
     const [showIconDelete, setShowIconDelete] = useState(false)
     const [allAnswer, setAllAnswer] = useState(comment.answer);
-    const [openModalDialog, setModalDialog] = useState(false);
-    const [containerConfirm, setContainerConfirm] = useState()
-    const [openModalAlert, setModalAlert] = useState(false);
-    const [containerAlert, setContainerAlert] = useState()
     const navigate = useNavigate()
     const refCommentApi = useRef(useCommentApi());
     const refInputAnswer = useRef();
@@ -31,87 +26,41 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
     }
 
     const handleDeleteComment = async ({ currentTarget }) => {
-        async function deleteComment() {
+        const response = await dialog("Deseja realmente excluir esse comentário?", 0, "Excluir")
+        if(response){
             if (userLogged) {
                 const commentId = currentTarget.id
                 const userId = userLogged.id;
                 const data = await refCommentApi.current.deleteComment({ commentId, userId });
                 if (data.status === 201) {
-                    setContainerAlert({
-                        function: setModalAlert(true),
-                        type: 2,
-                        message: "Comentário excluido com sucesso",
-                        eventClose: () => setComments(comments => comments.filter(comment => comment.id !== commentId)),
-                    });
-
+                    await dialog("Comentário excluido com sucesso", 2)
+                    setComments(comments => comments.filter(comment => comment.id !== commentId))
                     const nmrComments = currentTarget.closest("#feed-recipe")?.querySelector("[data-id=total_nmr_comments] > span")
                     if (nmrComments) nmrComments.textContent = Number(nmrComments.textContent) !== 0 ? Number(nmrComments.textContent - 1) : 0
-                } else {
-                    setContainerConfirm({
-                        function: setModalAlert(true),
-                        type: 0,
-                        message: "Não foi possivel excluir seu comentário, deseja enviar informações ao suporte?",
-                        button: {
-                            title: "Enviar informações",
-                            event: () => console.error("erro ao enviar informações")
-                        },
-                    })
-                }
-            } else setContainerConfirm({
-                function: setModalDialog(true),
-                type: 1,
-                message: "Crie uma conta ou entre em uma conta existente para poder excluir esse comentário",
-                button: {
-                    icon: <RiAccountBoxFill />,
-                    title: "Criar conta",
-                    event: navigate('/')
-                }
-            });
-        }
-
-        setContainerConfirm({
-            function: setModalDialog(true),
-            type: 0,
-            message: "Deseja realmente excluir esse comentário?",
-            button: {
-                icon: <RiDeleteBinFill />,
-                title: "Excluir",
-                event: () => deleteComment(),
+                } else  await dialog("Não foi possivel excluir seu comentário, tente novamente mais tarde", 2)
+                
+            } else {
+                const response = await dialog("Crie uma conta ou entre em uma conta existente para poder excluir esse comentário", 1, "Criar Conta")
+                if(response) navigate('/register')
             }
-        })
-
+        }
     }
 
     const handleDeleteAnswer = async (answer) => {
-        async function deleteAnswer() {
+        const response = await dialog("Deseja realmente excluir esse comentário?", 0, "Excluir")
+        if(response){
             const ids = {
                 commentId: comment.id,
                 userId: answer.userId || userLogged.id,
                 answerId: answer.id,
             }
-
+    
             const response = await refCommentApi.current.deleteAnswer(ids)
             if (response.status === 201) {
-                
-                setContainerAlert({
-                    function: setModalAlert(true),
-                    type: 2,
-                    message: "Resposta ao comentário removido com sucesso!",
-                    eventClose: () => setAllAnswer(ans => ans.filter(a => a.id !== answer.id)),
-                })
+                await dialog("Resposta ao comentário removido com sucesso!", 2)
+                setAllAnswer(ans => ans.filter(a => a.id !== answer.id))
             }
         }
-
-
-        setContainerConfirm({
-            function: setModalDialog(true),
-            type: 0,
-            message: "Deseja realmente excluir esse comentário?",
-            button: {
-                title: "Excluir",
-                event: () => deleteAnswer()
-            }
-        })
     }
 
     const handleCreateAnswerComment = async ({ currentTarget }) => {
@@ -133,21 +82,12 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         setShowButtonAnswer(true)
                         setAllAnswer(v => [...v, response.data]);
                     }
-                } else containerConfirm({
-                    function: setModalDialog(true),
-                    type: 1,
-                    message: "Escreva sua resposta!"
-                })
-            } else setContainerConfirm({
-                function: setModalDialog(true),
-                type: 1,
-                message: "Crie uma conta para poder responder esse comentário!",
-                button: {
-                    icon: <RiAccountBoxFill />,
-                    text: "Criar conta",
-                    event: () => navigate('/register')
-                }
-            })
+                } else await dialog("Escreva sua resposta", 1)
+            } else {
+                const response = await dialog("Crie uma conta para poder responder esse comentário!", 1, "Criar conta")
+                if(response) navigate('/register')
+            }
+
         }
     }
 
@@ -191,16 +131,13 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                             className="hidden text-s2 fill-red-700 cursor-pointer group-hover:block" />
                     }
                     <span
-                        onClick={() => userLogged.id ? setShowButtonAnswer(btn => !btn) : setContainerConfirm({
-                            function: setModalDialog(true),
-                            type: 1,
-                            message: "Crie uma conta para responder esse comentário!",
-                            button: {
-                                icon: <RiAccountBoxFill />,
-                                title: "Criar conta",
-                                event: () => navigate('/register')
-                            }
-                        })}
+                        onClick={() => userLogged.id ? 
+                            setShowButtonAnswer(btn => !btn) : 
+                            (async ()=>{
+                                const response = await dialog("Crie uma conta para responder esse comentário!", 1 , "Criar conta")
+                                response && navigate('/')
+                            })()
+                        }
                         className="hover:underline w-auto cursor-pointer text-s1_1" >
                         Responder</span>
                 </div>
@@ -257,20 +194,5 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         />
                     </div> : null
             }
-
-            {/* MODAL: */}
-            {
-                openModalDialog && <DialogConfirm
-                    open={{ openModalDialog, setModalDialog }}
-                    container={containerConfirm}
-                />
-            }
-            {
-                openModalAlert && <DialogAlert
-                    open={{ openModalAlert, setModalAlert }}
-                    container={containerAlert}
-                />
-            }
-
         </div>)
 }

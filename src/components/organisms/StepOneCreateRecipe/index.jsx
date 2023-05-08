@@ -4,12 +4,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import { DialogConfirm } from "../../../modals/DialogConfirm";
-
 import { Input } from "../../atoms/Input";
 import { FaArrowRight } from "react-icons/fa";
 import { Button } from "../../atoms/Button";
 import { useCategoryApi } from "../../../hooks/useApi";
+import { dialog } from "../../../modals/Dialog";
 
 
 const createRecipeFormSchema = z.object({
@@ -26,8 +25,6 @@ export const StepOneCreateRecipe = ({ categories, setStep, user }) => {
     const VALUE_LIMIT_SIZE_TITLE = 45
     const categoryApi = useCategoryApi()
     const { register, setValue, handleSubmit, formState: { errors } } = useForm(({ resolver: zodResolver(createRecipeFormSchema) }));
-    const [openModalDialog, setModalDialog] = useState(false);
-    const [containerModal, setContainerModal] = useState()
     const [limitSizeTittle, setLimitSizeTittle] = useState(VALUE_LIMIT_SIZE_TITLE);
     const [valueInputCategory, setValueInputCategory] = useState("")
     const [suggestionInputCategory, setSuggestionInputCategory] = useState('')
@@ -55,14 +52,10 @@ export const StepOneCreateRecipe = ({ categories, setStep, user }) => {
     }, [qs, setValue]);
 
     useEffect(() => {
-        const errorsArray = Object.values(errors);
-        if (!!errorsArray.length) {
-            setContainerModal({
-                type: 0,
-                message: errorsArray[0]?.message || "erro",
-                function: setModalDialog(true)
-            })
-        }
+        (async ()=>{
+            const errorsArray = Object.values(errors);
+            if (!!errorsArray.length) await dialog(errorsArray[0]?.message || "Erro interno no formulario, já estamos reparando!", 0)
+        })()
     }, [errors]);
 
     const handleDefineLimitSizeTitle = ({ target }) => {
@@ -102,15 +95,8 @@ export const StepOneCreateRecipe = ({ categories, setStep, user }) => {
             }
 
         }else{
-            setContainerModal({
-                type: 0,
-                message: "Você precisa criar uma conta antes de prosseguir!",
-                function: setModalDialog(true),
-                button: {
-                    title: "Criar conta",
-                    event: ()=> navigate('/register')
-                }
-            })
+            const response = await dialog("Você precisa criar uma conta antes de prosseguir!", 0 , "Criar conta")
+            if(response) navigate('/register')
         }
     }
 
@@ -175,16 +161,6 @@ export const StepOneCreateRecipe = ({ categories, setStep, user }) => {
             <Button customClass="btn-primary text-s1_2 py-3 px-8 mx-8">
                 Proxímo <FaArrowRight />
             </Button>
-
-
-            {/* MODALS */}
-            {
-                openModalDialog &&
-                <DialogConfirm
-                    open={{ openModalDialog, setModalDialog }}
-                    container={containerModal}
-                />
-            }
         </form>
     )
 }

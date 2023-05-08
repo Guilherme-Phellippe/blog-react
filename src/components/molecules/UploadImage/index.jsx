@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRecipeApi } from "../../../hooks/useApi";
 import { Loading } from "../../atoms/Loading/Loading";
+import { dialog } from '../../../modals/Dialog'
 
 export const UploadImage = ({ images , setImages}) => {
     const [loading, setLoading] = useState(false)
@@ -12,10 +13,12 @@ export const UploadImage = ({ images , setImages}) => {
         setLoading(true)
         if (files) {
             for (let file of files) {
-                const form = new FormData();
-                form.append('image', file);
-                const { data } = await recipeApi.hostImages(form)
-                setImages(img => [...img, data])
+                if(file.size < 4000000 ){
+                    const form = new FormData();
+                    form.append('image', file);
+                    const { data } = await recipeApi.hostImages(form)
+                    setImages(img => [...img, data])
+                }else dialog("Imagem muito grande escolhe um tamanho menor ou diminu-a sua imagem!", 1)
             }
             setLoading(false)
         } else alert("erro ao enviar a imagem");

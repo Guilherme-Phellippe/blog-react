@@ -6,7 +6,7 @@ import { useRecipeApi } from "../../../hooks/useApi"
 import { Button } from "../../atoms/Button"
 import { Input } from "../../atoms/Input"
 import { Loading } from "../../atoms/Loading/Loading"
-import { dialog } from "../../../scripts/dialog"
+import { dialog } from "../../../modals/Dialog"
 
 export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe }) => {
     const token = JSON.parse(localStorage.getItem("token"));

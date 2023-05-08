@@ -6,8 +6,8 @@ import { Input } from "../../atoms/Input"
 import { Button } from "../../atoms/Button"
 import { Loading } from "../../atoms/Loading/Loading"
 import { useNavigate } from "react-router-dom"
-import { DialogConfirm } from "../../../modals/DialogConfirm"
 import { UploadImage } from "../../molecules/UploadImage"
+import { dialog } from "../../../modals/Dialog"
 
 
 export const StepThreeCreateRecipe = ({ setStep }) => {
@@ -15,8 +15,6 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
     const [loading, setLoading] = useState(false)
     const [images, setImages] = useState([])
     const [wordKeys, setWordKeys] = useState([])
-    const [openModalDialog, setModalDialog] = useState(false)
-    const [containerModal, setContainerModal] = useState()
     const refWordKeys = useRef(null)
     const navigate = useNavigate()
 
@@ -55,29 +53,10 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                 const data = await recipeApi.createNewRecipe(recipe)
                 if (data) {
                     localStorage.removeItem("recipe")
-                    setContainerModal({
-                        function: setModalDialog(true),
-                        type: 2,
-                        message: "Sua receita foi criada com sucesso!",
-                        button:{
-                            title: "Ver receita",
-                            event: ()=> navigate(`/recipe/${data.name_recipe}/${data.id}`)
-                        }
-                    })
-                }else {
-                    setContainerModal({
-                        function: setModalDialog(true),
-                        type: 0,
-                        message: "Tivemos um erro ao tentar processa sua receita, preencha os dados novamente e tente de novo",
-                    })
-                }
-            } else {
-                setContainerModal({
-                    function: setModalDialog(true),
-                    type: 0,
-                    message: "Sua receita precia de pelo menos uma imagem para ser criada!",
-                })
-            }
+                    const response = await dialog("Sua receita foi criada com sucesso!", 2 , "Ver receita")
+                    if(response) navigate(`/recipe/${data.name_recipe}/${data.id}`)
+                }else await dialog("Tivemos um erro ao tentar processa sua receita, preencha os dados novamente e tente de novo", 0)
+            } else await dialog("Sua receita precia de pelo menos uma imagem para ser criada!", 0)
             setLoading(false)
         }
     }
@@ -137,14 +116,6 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                     <MdListAlt /> Criar receita
                 </Button>
             </div>
-
-            {
-                openModalDialog &&
-                <DialogConfirm 
-                    open={ { openModalDialog, setModalDialog} }
-                    container={containerModal}
-                />
-            }
         </div>
     )
 }

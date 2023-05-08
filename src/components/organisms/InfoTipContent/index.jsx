@@ -13,7 +13,7 @@ export const InfoTipContent = ({ tip }) => {
 
             <div className="flex my-8 mb-12">
                 <div
-                    className='text-s1_5 leading-8 text-color_text_black/80'
+                    className='text-s1_7 leading-10 tracking-wide text-color_text_black/80'
                     dangerouslySetInnerHTML={{ __html: description_tip }}
                 ></div>
             </div>
