@@ -33,7 +33,7 @@ export const Candidate = ({ recipes, position, candidate }) => {
             <div className="w-full h-[70%] rounded-xl overflow-hidden">
                 <Img
                     className="w-full h-full object-cover"
-                    imgs={candidate.images_recipe}
+                    imgs={candidate.images_recipe[0]}
                     alt={candidate.name_recipe}
                 />
             </div>

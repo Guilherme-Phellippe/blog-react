@@ -13,10 +13,10 @@ export const Img = ({ imgs, alt, title }) => {
       if (imageRef.current) {
         const width = Math.floor(imageRef.current.getBoundingClientRect().width)
 
-        if (width < 120) result = imgs[0]?.thumb || imgs[0].small
-        else if (width < 300) result = imgs[0].small
-        else if (width < 600) result = imgs[0].medium
-        else result = imgs[0].big
+        if (width < 120) result = imgs?.thumb || imgs.small
+        else if (width < 300) result = imgs.small
+        else if (width < 600) result = imgs.medium
+        else result = imgs.big
 
       }
     } else if(typeof imgs === 'string') result = imgs

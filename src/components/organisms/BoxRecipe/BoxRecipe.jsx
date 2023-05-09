@@ -14,7 +14,7 @@ export const BoxRecipe = ({ recipe, area, index }) => {
         >
             <div className="absolute top-0 left-0 w-full h-full object-cover opacity-50 z-0 transition-opacity duration-300 ease-linear group-hover:opacity-80">
                 <Img
-                    imgs={images_recipe}
+                    imgs={images_recipe[0]}
                     alt={`imagem de ${name_recipe}`}
                 />
             </div>

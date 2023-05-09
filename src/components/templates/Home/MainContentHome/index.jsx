@@ -32,6 +32,7 @@ export const MainContentHome = () => {
             const { data: recipesData } = await feedApi.current.getAllFeed();
             if (recipesData) setRecipes(recipesData)
             else localStorage.removeItem('token')
+            document.title = "Tem Sabor receitas oficiais"
         }
         )();
     }, []);

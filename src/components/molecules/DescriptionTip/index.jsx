@@ -6,8 +6,8 @@ export const DescriptionTip = ({ content }) => {
         <Link to={`/tip/${content.name_tip.replace('?', '')}/${content.id}`}>
             <div className="flex flex-col h-auto max-h-[46rem] overflow-hidden items-center border-b px-4 pb-8 relative cursor-pointer">
                 <h2 className="text-s1_7 mb-8 px-4">{content.name_tip}</h2>
-                <div className="w-[220px] object-cover mb-12">
-                    <Img imgs={content.images} alt={"imagem de " + content.name_tip} />
+                <div className="w-[220px] mb-12">
+                    <Img imgs={content.images[0]} alt={"imagem de " + content.name_tip} />
                 </div>
                 <div className="text-s1_5 leading-8 text-color_text_black/80" dangerouslySetInnerHTML={{ __html: content.description_tip }}></div>
                 <div className="w-full h-[3rem] absolute bottom-0 flex justify-center items-center bg-gradient-to-t from-black/30 via-black/20 to-transparent">

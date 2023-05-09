@@ -99,7 +99,6 @@ export const useFeedApi = () => ({
         return response
     },
 
-
     getUniqueFeed: async (id) => {
         const data = await api.get(`/feed/${id}`).catch(err => err);
         return data
@@ -119,14 +118,14 @@ export const useFeedApi = () => ({
     },
 
     updateNumberHearts: async (ids) => {
-        const data = await api.patch(`/feed/${ids.idUser}/nmr-hearts/${ids.idRecipe}`).catch(err => {
+        const data = await api.patch(`/feed/${ids.idUser}/nmr-hearts/${ids.recipeId}`).catch(err => {
             return err
         });
 
         return data
     },
     updateNumberSaved: async (ids) => {
-        const data = await api.patch(`/feed/${ids.idUser}/nmr-saved/${ids.idRecipe}`).catch(err => {
+        const data = await api.patch(`/feed/${ids.idUser}/nmr-saved/${ids.recipeId}`).catch(err => {
             return err
         });
 

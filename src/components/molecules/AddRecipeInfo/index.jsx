@@ -10,13 +10,13 @@ export const AddRecipeInfo = ({ content: { user, id, name_recipe, createdAt } })
     const showButtonVote = moment(createdAt).month() === moment().month()
 
     const handleScrollDocument = () => {
-        // need to add this scroll: auto , because on mobile,
+        // need to add this scroll: auto, because on mobile,
         // if the user clicks on the list without closing the sorting modal, scrolling is "hidden"
         document.documentElement.style.overflow = 'auto'
     }
 
     return (
-        <div className={`h-[10%] flex flex-col items-center justify-center ${valueSearch && 'order-3 w-1/2 px-4'}`}>
+        <div className={`h-20 flex flex-col items-center justify-center ${valueSearch && 'order-3 w-1/2 px-4'}`}>
             <div className={valueSearch ? 'flex flex-col items-center justify-center' : 'hidden'}>
                 <h2 className="text-s1_5 text-center">{name_recipe}</h2>
                 <h2 className="text-s1_2 mt-4">Criado por: <span className="text-color_orange">{user.name}</span></h2>
