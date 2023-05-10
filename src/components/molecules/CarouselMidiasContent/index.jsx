@@ -14,9 +14,9 @@ export const CarouselMidiasContent = ({ img: imgs, name_recipe, category }) => {
         var currentPosition = 0;
 
         if (currentTarget.dataset.side === 'right')
-            currentPosition = container.scrollLeft + 200
+            currentPosition = container.scrollLeft + container.getBoundingClientRect().width
         else if (currentTarget.dataset.side === "left")
-            currentPosition = container.scrollLeft - 200
+            currentPosition = container.scrollLeft - container.getBoundingClientRect().width
 
         container.scroll({ top: 0, left: currentPosition, behavior: "smooth" })
     }
