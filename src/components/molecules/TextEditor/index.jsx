@@ -102,7 +102,7 @@ export const TextEditor = ({ text, setText, title, setAlign, align, images }) =>
     ];
 
     return (
-        <div className={`${isExpand ? "fixed top-0 left-0 z-[999] w-screen h-screen" : "w-full min-h-[20rem] md:min-h-[30rem]"} bg-white flex flex-col`}>
+        <div className={`${isExpand ? "fixed top-0 left-0 z-[999] w-screen h-screen" : "min-h-[20rem] md:min-h-[30rem]"} w-full bg-white flex flex-col`}>
             <h2 className="text-s1_5 mb-2">Descreva sua dica:</h2>
             <div className="flex justify-center bg-white">
                 {

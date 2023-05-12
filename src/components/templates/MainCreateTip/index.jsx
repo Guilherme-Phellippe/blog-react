@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { dialog } from '../../../modals/Dialog'
+import { HomeContext } from "../../../contexts/Home/HomeProvider";
+import { useTipApi } from "../../../hooks/useApi";
+import { IoCreate } from  'react-icons/io5'
+
 import { Button } from "../../atoms/Button"
 import { Input } from "../../atoms/Input";
-import { TextEditor } from "../../molecules/TextEditor"
-import { dialog } from '../../../modals/Dialog'
-import { useTipApi } from "../../../hooks/useApi";
-import { useNavigate } from "react-router-dom";
 import { Loading } from "../../atoms/Loading/Loading";
+import { TextEditor } from "../../molecules/TextEditor"
 import { UploadImage } from "../../molecules/UploadImage";
-import { HomeContext } from "../../../contexts/Home/HomeProvider";
 
 
 export const MainCreateTip = () => {
@@ -38,7 +41,7 @@ export const MainCreateTip = () => {
                         const response = await tipApi.createNewTip(data);
 
                         if (response) {
-                            const response = await dialog("Sua dica foi publicada com sucesso!")
+                            const response = await dialog("Sua dica foi publicada com sucesso!", 2 , "Ver receita");
                             if(response) navigate(`/tip/${title.replace('?','')}/${response.id}`)
                         }
                         setLoading(false)
@@ -88,7 +91,12 @@ export const MainCreateTip = () => {
                 </div>
                 <div className="flex relative">
                     {loading && <Loading />}
-                    <Button event={handleCreateTip}>Publicar Dica</Button>
+                    <Button
+                        event={handleCreateTip}
+                        customClass="btn-primary text-s1_5 flex px-8 py-3"
+                    >
+                        Publicar Dica <IoCreate className="text-s1_5" />
+                    </Button>
                 </div>
             </div>
         </main>

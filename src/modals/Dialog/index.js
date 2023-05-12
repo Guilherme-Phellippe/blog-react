@@ -32,7 +32,7 @@ export const dialog = (text , type, buttonText) => {
         })
 
         const buttonConfirm = document.createElement('button')
-        buttonConfirm.setAttribute("class", `text-s1_3 p-2 px-6 text-white border rounded-xl bg-${color}`)
+        buttonConfirm.setAttribute("class", `bg-${color} text-s1_3 p-2 px-6 text-white border rounded-xl`)
         buttonConfirm.innerHTML = buttonText
         buttonConfirm.addEventListener('click', () => {
             root.removeChild(container)

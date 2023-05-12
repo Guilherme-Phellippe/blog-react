@@ -1,12 +1,18 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { initializeApp } from 'firebase/app'
-import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+
+import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
+import { dialog } from '../../../modals/Dialog'
+import { formatTextLong } from '../../../scripts/formatTextLong'
 
 import { FcGoogle } from "react-icons/fc"
+import { MdExitToApp, MdFacebook } from 'react-icons/md';
 
 import { Button } from "../../atoms/Button"
-import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
-import { useNavigate } from 'react-router-dom';
-import { MdFacebook } from 'react-icons/md';
+import { Img } from '../../atoms/Img'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDkpJkYLEFE3r-oyqpdG_4uGJEo9IDYAo8",
@@ -20,9 +26,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider();
-const providerFb = new FacebookAuthProvider();
 
 export const LoginWithSocialMidia = () => {
+    const [connected, setConnected] = useState({ connected: false })
     const notificationApi = useNotificationApi()
     const userApi = useUserApi();
     const navigate = useNavigate();
@@ -31,7 +37,7 @@ export const LoginWithSocialMidia = () => {
     const handleGoogleLogin = async () => {
         signInWithPopup(auth, provider)
             .then(async (result) => {
-               const userData = result.user.providerData[0];
+                const userData = result.user.providerData[0];
 
                 const user = {
                     id: userData.uid,
@@ -51,7 +57,7 @@ export const LoginWithSocialMidia = () => {
                     const { data } = await userApi.authenticateUser(
                         {
                             email: userData.email.toLowerCase(),
-                            password: userData.displayName.split(' ').join('')
+                            socialLogin: true
                         }
                     );
 
@@ -66,26 +72,120 @@ export const LoginWithSocialMidia = () => {
             });
     }
 
-    const handleFacebookLogin = async () => {
-        signInWithPopup(auth, providerFb)
-            .then(async (result) => {
-               console.log(result)
+    const handleFacebookLogin = () => {
+        window.FB.login((resp) => {
+            const { accessToken } = resp.authResponse;
+            console.log(accessToken)
+
+            window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
+                const { name, picture, email, id } = userData
+
+                if (resp.status === "connected") {
+                    const user = {
+                        id,
+                        name,
+                        email,
+                        photo: picture.data.url,
+                    }
+
+                    const response = await userApi.createNewUser(user);
+
+                    if (!response.error) {
+                        notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
+                        localStorage.setItem('token', JSON.stringify(response))
+                        navigate('/')
+                    } else {
+                        const { data } = await userApi.authenticateUser(
+                            {
+                                email: userData.email.toLowerCase(),
+                                socialLogin: true
+                            }
+                        );
+
+                        if (data) {
+                            localStorage.setItem("token", JSON.stringify(data));
+                            navigate('/')
+                        } else dialog("Alguma coisa não se saiu bem :(, tente novamente mais tarde", 0)
+                    }
+                }
             })
-            .catch((error) => {
-                console.error(error)
-            });
+        }, { scope: 'public_profile, email' });
+    };
+
+    const handleLogoutFacebook = () => {
+        window.FB.logout(() => {
+            setConnected({ connected: false })
+        });
     }
+
+    useEffect(() => {
+        window.FB?.getLoginStatus(function (response) {
+            window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
+                const { name, picture: { data: { url } } } = userData
+                name ? setConnected({ connected: true, name, photo: url }) : setConnected({ connected: false })
+            })
+        });
+    }, [])
+
+    useEffect(() => {
+        window.fbAsyncInit = () => {
+            window.FB.init({
+                appId: 593957432708717,
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v16.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    }, [])
 
     return (
         <>
-            <Button event={handleGoogleLogin} customClass='w-full flex justify-center border rounded-3xl flex items-center gap-3 text-s1_5 px-8 py-4'>
-                <FcGoogle />
-                Entrar com google
+            <Button event={handleGoogleLogin} customClass='w-full h-[40px] flex border rounded-3xl flex items-center gap-3 text-s1_5 py-4 my-8 md:my-0 bg-green-600'>
+                <FcGoogle className='text-s2_5 w-[55px] h-[50px] border border-green-500 rounded-full bg-white -translate-x-2' />
+                <span className='border-l px-4 w-full text-center text-white font-bold'>
+                    Entrar com google
+                </span>
             </Button>
-            <Button event={handleFacebookLogin} customClass='w-full flex justify-center border rounded-3xl flex items-center gap-3 text-s1_5 px-8 py-4'>
-                <MdFacebook className='fill-blue-700' />
-                Entrar com Facebook
-            </Button>
+
+            {
+                connected.connected ?
+                    <div className="flex flex-col w-full border p-4 rounded-xl">
+                        <Button event={handleFacebookLogin} customClass='w-full h-[40px] flex border rounded-3xl flex items-center gap-3 py-4 bg-blue-600'>
+                            <MdFacebook className='text-s2_5 w-[55px] h-[50px] border border-blue-700 rounded-full bg-white fill-blue-700 -translate-x-2' />
+                            <div className="w-4/6 flex flex-col items-start border-l">
+                                <span className=' w-full text-s1_1 text-white'>Continuar como</span>
+                                <span className=' w-full text-s1_3 text-white font-bold'>
+                                    {`${formatTextLong(connected.name, 18)}`}
+                                </span>
+                            </div>
+                            <div className="w-[40px] m-4 rounded-full overflow-hidden">
+                                <Img imgs={connected.photo} alt={"foto de " + connected.name} />
+                            </div>
+                        </Button>
+
+                        <Button event={handleLogoutFacebook} customClass='w-4/6 h-[40px] mx-auto mt-8 flex rounded-3xl flex items-center py-4 bg-blue-600'>
+                            <MdExitToApp className='w-[40px] h-[40px] p-2 border border-red-700 rounded-full bg-white fill-red-700 -translate-x-2' />
+                            <span className='w-5/6 text-s1_1 text-white font-bold'>
+                                Desconectar do facebook
+                            </span>
+                        </Button>
+                    </div>
+                    :
+                    <Button event={handleFacebookLogin} customClass='w-full h-[40px] flex border rounded-3xl flex items-center gap-3 py-4 bg-blue-600'>
+                        <MdFacebook className='text-s2_5 w-[55px] h-[50px] border border-blue-700 rounded-full bg-white fill-blue-700 -translate-x-2' />
+                        <span className='w-full text-s1_3 text-white font-bold border-l'>
+                            Entrar com facebook
+                        </span>
+                    </Button>
+            }
         </>
     )
 }
