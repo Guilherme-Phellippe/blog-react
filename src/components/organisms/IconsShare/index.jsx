@@ -36,7 +36,7 @@ export const IconsShare = () => {
     }
 
     const handlePublishInstagram = () =>{
-        const accessToken = localStorage.getItem("sad")
+        const accessToken = localStorage.getItem("f-access-t_34353839")
         console.log(accessToken)
     }
 
