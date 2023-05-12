@@ -87,6 +87,7 @@ export const LoginWithSocialMidia = () => {
                     }
 
                     const response = await userApi.createNewUser(user);
+                    console.log(accessToken)
                     response.accessToken = accessToken
 
                     if (!response.error) {
