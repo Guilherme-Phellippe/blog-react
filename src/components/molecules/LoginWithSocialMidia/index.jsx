@@ -49,7 +49,6 @@ export const LoginWithSocialMidia = () => {
 
                 const response = await userApi.createNewUser(user);
                 if (!response.error) {
-                    console.log(response)
                     notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
                     localStorage.setItem('token', JSON.stringify(response))
                     navigate('/')
@@ -89,7 +88,7 @@ export const LoginWithSocialMidia = () => {
 
                     if (!response.error) {
                         notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
-                        localStorage.setItem('token', JSON.stringify(response))
+                        // localStorage.setItem('token', JSON.stringify(response))
                         navigate('/')
                     } else {
                         const { data } = await userApi.authenticateUser(

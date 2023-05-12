@@ -36,7 +36,7 @@ export const IconsShare = () => {
     }
 
     const handlePublishInstagram = () =>{
-        const accessToken = localStorage.getItem()
+        const accessToken = localStorage.getItem("sad")
         console.log(accessToken)
     }
 
@@ -75,7 +75,7 @@ export const IconsShare = () => {
                     Compartilhe no Instagram
                 </span>
                 <FaInstagram
-                    onClick={() => action('instagram')}
+                    onClick={handlePublishInstagram}
                     className='text-s3 cursor-pointer fill-[#833AB4] ' />
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">
