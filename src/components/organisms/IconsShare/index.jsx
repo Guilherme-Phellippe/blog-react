@@ -3,7 +3,6 @@ import { FaCamera, FaTiktok, FaFacebook, FaInstagram, FaArrowAltCircleRight, FaA
 
 
 const action = (type) => {
-
     switch (type) {
         case 'print': {
             window.print()
@@ -34,6 +33,11 @@ export const IconsShare = () => {
 
     const handleIconsMobile = () => {
         setShowIconsShare(v => !v)
+    }
+
+    const handlePublishInstagram = () =>{
+        const accessToken = localStorage.getItem()
+        console.log(accessToken)
     }
 
 
