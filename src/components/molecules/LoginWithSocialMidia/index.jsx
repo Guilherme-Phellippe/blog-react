@@ -115,6 +115,8 @@ export const LoginWithSocialMidia = () => {
     }
 
     useEffect(() => {
+        console.log("arroz")
+
         window.FB?.getLoginStatus(function (response) {
             window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
                 const { name, picture: { data: { url } } } = userData
