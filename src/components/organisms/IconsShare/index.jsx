@@ -37,7 +37,23 @@ export const IconsShare = () => {
 
     const handlePublishInstagram = () =>{
         const accessToken = localStorage.getItem("f-access-t_34353839")
-        console.log(accessToken)
+        const formData = new FormData();
+        formData.append('access_token', accessToken);
+        formData.append('image_url', 'https://i.ibb.co/1XzXqwq/30484bf51e1f.webp');
+        formData.append('caption', 'Minha nova publicação no Instagram!');
+        
+        // Faça a solicitação POST para criar uma nova publicação
+        fetch('https://graph.instagram.com/me/media', {
+          method: 'POST',
+          body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Publicação criada com sucesso: ', data);
+        })
+        .catch(error => {
+          console.error('Erro ao criar publicação: ', error);
+        });
     }
 
 
