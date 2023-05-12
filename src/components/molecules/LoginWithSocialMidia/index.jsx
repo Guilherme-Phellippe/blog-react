@@ -73,6 +73,8 @@ export const LoginWithSocialMidia = () => {
 
     const handleFacebookLogin = () => {
         window.FB.login((resp) => {
+            const { accessToken } = resp.authResponse
+
             window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
                 const { name, picture, email, id } = userData
 
@@ -87,7 +89,8 @@ export const LoginWithSocialMidia = () => {
                     const response = await userApi.createNewUser(user);
 
                     if (!response.error) {
-                        notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
+                        notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id);
+                        response.accessToken = accessToken
                         localStorage.setItem('token', JSON.stringify(response))
                         navigate('/')
                     } else {
