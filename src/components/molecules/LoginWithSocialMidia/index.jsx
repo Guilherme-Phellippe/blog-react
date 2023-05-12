@@ -75,8 +75,8 @@ export const LoginWithSocialMidia = () => {
     const handleFacebookLogin = () => {
         window.FB.login((resp) => {
             const { accessToken } = resp.authResponse;
-            console.log(accessToken)
-
+            localStorage.setItem("koobecafsseccanekot", accessToken)
+            
             window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
                 const { name, picture, email, id } = userData
 
