@@ -146,8 +146,8 @@ export const LoginWithSocialMidia = () => {
     }, [])
 
     return (
-        <>
-            <Button event={handleGoogleLogin} customClass='w-full h-[40px] flex border rounded-3xl flex items-center gap-3 text-s1_5 py-4 my-8 md:my-0 bg-green-600'>
+        <div className='w-full flex flex-col justify-center items-center'>
+            <Button event={handleGoogleLogin} customClass='w-full max-w-[300px] h-[40px] flex border rounded-3xl flex items-center gap-3 text-s1_5 py-4 my-8 bg-green-600'>
                 <FcGoogle className='text-s2_5 w-[55px] h-[50px] border border-green-500 rounded-full bg-white -translate-x-2' />
                 <span className='border-l px-4 w-full text-center text-white font-bold'>
                     Entrar com google
@@ -157,7 +157,7 @@ export const LoginWithSocialMidia = () => {
             {
                 connected.connected ?
                     <div className="flex flex-col w-full border p-4 rounded-xl">
-                        <Button event={handleFacebookLogin} customClass='w-full h-[40px] flex border rounded-3xl flex items-center gap-3 py-4 bg-blue-600'>
+                        <Button event={handleFacebookLogin} customClass='w-full max-w-[300px] h-[40px] flex border rounded-3xl flex items-center gap-3 py-4 bg-blue-600'>
                             <MdFacebook className='text-s2_5 w-[55px] h-[50px] border border-blue-700 rounded-full bg-white fill-blue-700 -translate-x-2' />
                             <div className="w-4/6 flex flex-col items-start border-l">
                                 <span className=' w-full text-s1_1 text-white'>Continuar como</span>
@@ -170,7 +170,7 @@ export const LoginWithSocialMidia = () => {
                             </div>
                         </Button>
 
-                        <Button event={handleLogoutFacebook} customClass='w-4/6 h-[40px] mx-auto mt-8 flex rounded-3xl flex items-center py-4 bg-blue-600'>
+                        <Button event={handleLogoutFacebook} customClass='w-full max-w-[250px] h-[40px] mx-auto mt-8 flex rounded-3xl flex items-center py-4 bg-blue-600'>
                             <MdExitToApp className='w-[40px] h-[40px] p-2 border border-red-700 rounded-full bg-white fill-red-700 -translate-x-2' />
                             <span className='w-5/6 text-s1_1 text-white font-bold'>
                                 Desconectar do facebook
@@ -178,13 +178,28 @@ export const LoginWithSocialMidia = () => {
                         </Button>
                     </div>
                     :
-                    <Button event={handleFacebookLogin} customClass='w-full h-[40px] flex border rounded-3xl flex items-center gap-3 py-4 bg-blue-600'>
+                    <Button event={handleFacebookLogin} customClass='w-full max-w-[300px] h-[40px] flex border rounded-3xl flex items-center gap-3 py-4 bg-blue-600'>
                         <MdFacebook className='text-s2_5 w-[55px] h-[50px] border border-blue-700 rounded-full bg-white fill-blue-700 -translate-x-2' />
                         <span className='w-full text-s1_3 text-white font-bold border-l'>
                             Entrar com facebook
                         </span>
                     </Button>
+
             }
-        </>
+            <span className='w-5/6 max-w-[300px] text-s1_2 text-center my-8'>
+                Ao criar a conta nas redes Google e Facebook, você aceita nossas
+                <a
+                    href="/policy"
+                    className='text-blue-900 hover:text-blue-500 cursor-pointer'
+                    target='_blank'
+                > Políticas Privacidade </a>
+                e nossos
+                <a
+                    href="/terms"
+                    className='text-blue-900 hover:text-blue-500 cursor-pointer'
+                    target='_blank'
+                > Termos de uso </a>.
+            </span>
+        </div>
     )
 }

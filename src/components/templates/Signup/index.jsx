@@ -8,6 +8,8 @@ import { Button } from '../../atoms/Button';
 import { LoginWithSocialMidia } from '../../molecules/LoginWithSocialMidia';
 import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
 import { useNavigate } from 'react-router-dom';
+import { dialog } from '../../../modals/Dialog';
+import { Loading } from '../../atoms/Loading/Loading';
 
 export const Singup = ({ setIsLogin }) => {
     const notificationApi = useNotificationApi()
@@ -18,13 +20,13 @@ export const Singup = ({ setIsLogin }) => {
     const [whatColorIconPassword, setWhatColorIconPassword] = useState(null);
     const [valueFirstInputPassword, setValueFirstInputPassword] = useState('')
     const navigate = useNavigate()
-
+    const refCheckPolicyAndTerms = useRef(null);
+    const [loading, setLoading] = useState(false)
+    const RED = "text-red-800";
+    const GREEN = "text-green-500";
 
 
     const handleCheckInputs = ({ target }) => {
-        const RED = "text-red-800";
-        const GREEN = "text-green-500";
-
         switch (target.id) {
             case 'name': {
                 let names = target.value.split(" ");
@@ -53,30 +55,33 @@ export const Singup = ({ setIsLogin }) => {
     }
 
     const handleCreateNewUser = async (e) => {
+        setLoading(true)
         e.preventDefault();
         const user = {
             name: '',
             email: '',
             password: '',
         }
+        if (whatColorIconName === GREEN) {
+            if (whatColorIconEmail === GREEN) {
+                if (whatColorIconPassword === GREEN) {
+                    if (refCheckPolicyAndTerms.current.checked) {
+                        user.name = refForm.current.querySelector("input#name").value
+                        user.email = refForm.current.querySelector("input#email").value
+                        user.password = refForm.current.querySelector("input#password").value
 
-        if (whatColorIconName) {
-            if (whatColorIconEmail) {
-                if (whatColorIconPassword) {
-                    user.name = refForm.current.querySelector("input#name").value
-                    user.email = refForm.current.querySelector("input#email").value
-                    user.password = refForm.current.querySelector("input#password").value
+                        const response = await apiUser.current.createNewUser(user)
+                        if (!response.error) {
+                            notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
+                            localStorage.setItem('token', JSON.stringify(response))
+                            navigate('/')
+                        } else dialog("Usuário já possui uma conta!", 1)
+                    } else dialog("Você não poderá criar uma conta na tem sabor sem concordar com nossas Politicas privacidade e nossos termos de uso.", 1)
+                } else dialog("Senha incompatível ou muito pequena", 1)
+            } else dialog("E-mail invalído!", 1)
+        } else dialog("Nome e sobrenome invalídos!", 1)
 
-                    const response = await apiUser.current.createNewUser(user)
-                    if (!response.error){
-                        notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
-                        localStorage.setItem('token', JSON.stringify(response))
-                        navigate('/')
-                    }else alert("Usuário já possui uma conta!")
-
-                } else alert("Senha incompatível ou muito pequena")
-            } else alert("E-mail invalído!")
-        } else alert("Nome e sobrenome invalídos!")
+        setLoading(false)
     }
 
 
@@ -84,13 +89,9 @@ export const Singup = ({ setIsLogin }) => {
         <div className="w-full bg-white p-4 md:p-16">
             <h2 className="text-center font-bold text-s2 text-color_red p-4 mb-4">Crie uma conta rápido e fácil</h2>
             <div className="w-full flex flex-col items-center">
-                <div className="flex gap-16">
-                    <LoginWithSocialMidia />
-                </div>
-                <hr className='w-1/3 m-12' />
-                <form 
+                <form
                     ref={refForm}
-                    className="w-full md:w-5/6 flex flex-col items-center mb-12" 
+                    className="w-full md:w-5/6 flex flex-col items-center mb-12"
                     action=""
                 >
                     <Input
@@ -123,9 +124,35 @@ export const Singup = ({ setIsLogin }) => {
                             customWidthAndMargin="w-full md:w-[50%] my-6"
                             icon={<FaLock className={`text-s1_3 ${whatColorIconPassword}`} />} />
                     </div>
+
+                    <div className="flex my-8 w-5/6 md:w-1/2">
+                        <input
+                            ref={refCheckPolicyAndTerms}
+                            type="checkbox"
+                            className='mx-4 cursor-pointer '
+                        />
+                        <span className='text-s1_2'>
+                            Confirme que leu e aceita nossas
+                            <a
+                                href="/policy"
+                                className='text-blue-900 hover:text-blue-500 cursor-pointer'
+                                target='_blank'
+                            > Políticas Privacidade </a>
+                            e nossos
+                            <a
+                                href="/terms"
+                                className='text-blue-900 hover:text-blue-500 cursor-pointer'
+                                target='_blank'
+                            > Termos de uso </a>.
+                        </span>
+                    </div>
                     <Button
                         event={handleCreateNewUser}
-                        customClass={'btn-primary px-16 mt-8 flex justify-center items-center gap-2 text-s1_4'}>
+                        customClass={'btn-primary px-16 mt-8 flex justify-center items-center gap-2 text-s1_4'}
+                    >
+                        {
+                            loading && <Loading />
+                        }
                         Criar conta <FaCheckCircle />
                     </Button>
                     <hr className='w-1/3 mt-8' />
@@ -134,9 +161,9 @@ export const Singup = ({ setIsLogin }) => {
                         customClass={'underline mt-8 flex justify-center items-center gap-2 text-s1_4'}>
                         Já tem uma conta?
                     </Button>
-
-
                 </form>
+                <hr className='w-1/3 mb-4' />
+                <LoginWithSocialMidia />
             </div>
         </div>
     )

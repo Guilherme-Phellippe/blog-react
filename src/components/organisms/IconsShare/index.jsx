@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaCamera, FaTiktok, FaFacebook, FaInstagram, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp } from 'react-icons/fa';
+import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp } from 'react-icons/fa';
 
 
 const action = (type) => {
@@ -35,27 +35,6 @@ export const IconsShare = () => {
         setShowIconsShare(v => !v)
     }
 
-    const handlePublishInstagram = () =>{
-        const accessToken = localStorage.getItem("f-access-t_34353839")
-        const formData = new FormData();
-        formData.append('access_token', accessToken);
-        formData.append('image_url', 'https://i.ibb.co/1XzXqwq/30484bf51e1f.webp');
-        formData.append('caption', 'Minha nova publicação no Instagram!');
-        
-        // Faça a solicitação POST para criar uma nova publicação
-        fetch('https://graph.instagram.com/me/media', {
-          method: 'POST',
-          body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Publicação criada com sucesso: ', data);
-        })
-        .catch(error => {
-          console.error('Erro ao criar publicação: ', error);
-        });
-    }
-
 
     return (
         <div
@@ -72,27 +51,11 @@ export const IconsShare = () => {
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
-                    Compartilhe no Tiktok
-                </span>
-                <FaTiktok
-                    onClick={() => action('tiktok')}
-                    className='text-s3 cursor-pointer fill-[#000000]' />
-            </div>
-            <div className="flex md:mt-8 justify-center relative w-full group">
-                <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                     Compartilhe no Facebook
                 </span>
                 <FaFacebook
                     onClick={() => action('facebook')}
                     className='text-s3 cursor-pointer fill-blue-800' />
-            </div>
-            <div className="flex md:mt-8 justify-center relative w-full group">
-                <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-4 transition-all'>
-                    Compartilhe no Instagram
-                </span>
-                <FaInstagram
-                    onClick={handlePublishInstagram}
-                    className='text-s3 cursor-pointer fill-[#833AB4] ' />
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-4 transition-all'>

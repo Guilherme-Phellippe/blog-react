@@ -40,14 +40,22 @@ h1,h2,h3,h4,h5,h6,p,span{
 }
 
 @media print {
-  .container > header,
-  .container > footer,
-  .container div#iconShare-print,
-  .container div#InfoRecipeHeader-print,
-  .container div#LikeComentsSaveButtons-print,
-  .container div#RecipeChefInfo-print,
-  .container div#ads-here-print,
-  .container div#RecipeSimilarContent-print{
+  div#root > header,
+  div#root > footer,
+  div#iconShare-print,
+  div#preparation-information,
+  div#InfoRecipeHeader-print,
+  div#LikeComentsSaveButtons-print,
+  div#RecipeChefInfo-print,
+  div#ads-here-print,
+  div#RecipeSimilarContent-print{
     display: none;
   }
+
+  div[data-id="container-imgs"] {
+    width: 150px;
+    margin: 0 auto;
+  }
+
+  
 }
