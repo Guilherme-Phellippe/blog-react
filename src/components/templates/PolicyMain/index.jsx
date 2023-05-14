@@ -1,24 +1,71 @@
 export const PolicyMain = () => {
     return (
-        <div className="w-full max-w-[1500px] bg-white mx-auto p-4 md:p-16 m-16">
-            <h2 className="text-s2 text-center text-color_orange">Política Privacidade</h2>
+        <div className="w-full max-w-[1500px] bg-white mx-auto p-4 md:p-16 m-16 flex flex-col items-center">
+            <h2 className="text-s2 text-center text-color_orange">Política de Privacidade do Blog "Tem Sabor"</h2>
 
-            <div className="flex flex-col gap-4 my-8 text-color_text_black">
-                <p className="text-s1_7 text-center leading-10">
-                    A sua privacidade é importante para nós. É política da Tem Sabor respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no blog Tem Sabor, e outros sites que possuímos e operamos.
-                    <br />
-                    Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.
-                    <br />
-                    Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis ​​para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.
-                    <br />
-                    Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.
-                    <br />
-                    O nosso blog pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.
-                    <br />
-                    Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.
-                    <br />
-                    O uso continuado de nosso blog será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.
+            <div className="w-5/6 flex flex-col gap-4 my-8 text-color_text_black">
+                <p className="text-s1_7 text-center my-6 leading-10">
+                    O blog "Tem Sabor" respeita a privacidade dos usuários e está comprometido em proteger suas informações pessoais.
+                    Esta Política de Privacidade descreve como coletamos, usamos, compartilhamos e protegemos suas informações pessoais
+                    em nosso site.
                 </p>
+                <p className="text-s1_7 text-center my-6 leading-10">
+                    <strong>Coleta de Informações: </strong>
+                    Podemos coletar informações pessoais, como nome e endereço de e-mail,
+                    quando você se inscreve em nossa lista de e-mails ou deixa um comentário em nosso site.
+                    Além disso, podemos coletar informações anônimas sobre como os usuários navegam em nosso site
+                    usando cookies e outras tecnologias de rastreamento.
+                </p>
+                <p className="text-s1_7 text-center my-6 leading-10">
+                    <strong>Uso de Informações: </strong>
+                    Usamos as informações coletadas para fornecer conteúdo relevante em nosso site,
+                    melhorar a experiência do usuário e fornecer informações sobre nossos produtos e serviços.
+                    Também podemos usar as informações para fins de marketing e publicidade,
+                    incluindo a exibição de anúncios personalizados em nosso site e em outros sites que você visita.
+                </p>
+                <p className="text-s1_7 text-center my-6 leading-10">
+                    <strong>Compartilhamento de Informações: </strong>
+                    Não compartilhamos suas informações pessoais com terceiros,
+                    exceto quando exigido por lei ou quando necessário para fornecer nossos serviços,
+                    como com provedores de serviços de e-mail marketing. No entanto, podemos compartilhar informações anônimas
+                    e agregadas sobre o uso do site com nossos parceiros de publicidade.
+                </p>
+                <p className="text-s1_7 text-center my-6 leading-10">
+                    <strong>Proteção de Informações: </strong>
+                    Implementamos medidas de segurança para proteger suas informações pessoais contra acesso,
+                    alteração, divulgação ou destruição não autorizados. No entanto,
+                    não podemos garantir a segurança completa de suas informações.
+                </p>
+                <p className="text-s1_7 text-center my-6 leading-10">
+                    <strong>Links para Outros Sites: </strong>
+                    Nosso site pode conter links para outros sites que não são de nossa propriedade ou controle.
+                    Não somos responsáveis pelas práticas de privacidade desses sites e recomendamos que você leia suas políticas
+                    de privacidade antes de fornecer qualquer informação pessoal.
+                </p>
+                <p className="text-s1_7 text-center my-6 leading-10">
+                    <strong>Alterações na Política de Privacidade: </strong>
+                    Podemos atualizar esta Política de Privacidade de tempos em tempos.
+                    Quaisquer alterações serão publicadas nesta página.
+                </p>
+                <p className="text-s1_7 text-center my-6 leading-10">
+                    <strong>Como o Google usa seus dados: </strong>
+
+                    O Google coleta e usa dados do usuário para personalizar a experiência do usuário,
+                    fornecer anúncios relevantes, melhorar seus produtos e serviços e manter a segurança dos usuários.
+                    Esses dados incluem informações sobre atividades do usuário em seus serviços, localização geográfica,
+                    pesquisas e sites visitados. Os usuários podem controlar suas configurações de privacidade e
+                    escolher quais dados compartilhar com o Google.<br />
+
+                    <a
+                        href="https://policies.google.com/technologies/partner-sites"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-blue-900 hover:text-blue-400 cursor-pointer underline"
+                    >
+                        Leia mais sobre Como o Google usa os dados quando você utiliza apps ou sites dos nossos parceiros
+                    </a>
+                </p>
+
                 <h3 className="text-s1_7 my-8 font-semibold">Compromisso do Usuário:</h3>
                 <p className="text-s1_7 text-center w-2/3 leading-10 mx-auto">
 
@@ -35,6 +82,14 @@ export const PolicyMain = () => {
                     Mais informações
                     Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso blog.
                 </p>
+
+                <p className="text-s1_7 text-center mt-16 flex flex-col items-center">
+                    <strong>Contato:</strong><br />
+                    Se tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco através do e-mail contato@temsabor.blog.
+                    <br /><br />
+                    Ao usar nosso site, você concorda com os termos desta Política de Privacidade.
+                </p>
+
                 <p className="text-s1_7 text-center mt-32">
                     Esta política é efetiva a partir de 18 April 2023 14:17
                 </p>
