@@ -27,7 +27,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
 
     const handleDeleteComment = async ({ currentTarget }) => {
         const response = await dialog("Deseja realmente excluir esse comentário?", 0, "Excluir")
-        if(response){
+        if (response) {
             if (userLogged) {
                 const commentId = currentTarget.id
                 const userId = userLogged.id;
@@ -37,24 +37,24 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                     setComments(comments => comments.filter(comment => comment.id !== commentId))
                     const nmrComments = currentTarget.closest("#feed-recipe")?.querySelector("[data-id=total_nmr_comments] > span")
                     if (nmrComments) nmrComments.textContent = Number(nmrComments.textContent) !== 0 ? Number(nmrComments.textContent - 1) : 0
-                } else  await dialog("Não foi possivel excluir seu comentário, tente novamente mais tarde", 2)
-                
+                } else await dialog("Não foi possivel excluir seu comentário, tente novamente mais tarde", 2)
+
             } else {
                 const response = await dialog("Crie uma conta ou entre em uma conta existente para poder excluir esse comentário", 1, "Criar Conta")
-                if(response) navigate('/register')
+                if (response) navigate('/register')
             }
         }
     }
 
     const handleDeleteAnswer = async (answer) => {
         const response = await dialog("Deseja realmente excluir esse comentário?", 0, "Excluir")
-        if(response){
+        if (response) {
             const ids = {
                 commentId: comment.id,
                 userId: answer.userId || userLogged.id,
                 answerId: answer.id,
             }
-    
+
             const response = await refCommentApi.current.deleteAnswer(ids)
             if (response.status === 201) {
                 await dialog("Resposta ao comentário removido com sucesso!", 2)
@@ -85,7 +85,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                 } else await dialog("Escreva sua resposta", 1)
             } else {
                 const response = await dialog("Crie uma conta para poder responder esse comentário!", 1, "Criar conta")
-                if(response) navigate('/register')
+                if (response) navigate('/register')
             }
 
         }
@@ -131,10 +131,10 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                             className="hidden text-s2 fill-red-700 cursor-pointer group-hover:block" />
                     }
                     <span
-                        onClick={() => userLogged.id ? 
-                            setShowButtonAnswer(btn => !btn) : 
-                            (async ()=>{
-                                const response = await dialog("Crie uma conta para responder esse comentário!", 1 , "Criar conta")
+                        onClick={() => userLogged.id ?
+                            setShowButtonAnswer(btn => !btn) :
+                            (async () => {
+                                const response = await dialog("Crie uma conta para responder esse comentário!", 1, "Criar conta")
                                 response && navigate('/')
                             })()
                         }
@@ -150,8 +150,9 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         onClick={handleShowIconDelete}
                         onMouseLeave={handleShowIconDelete}
                         key={index}
-                        className="w-full h-1/2 flex items-center group">
-                        <div className="ml-[60px] h-[40px] overflow-hidden rounded-full">
+                        className="w-full h-1/2 flex items-center group"
+                    >
+                        <div className="ml-[60px] w-[35px] h-[35px] overflow-hidden rounded-full">
                             <Img imgs={answer.photo} alt={answer.name} />
                         </div>
                         <div className="rounded-3xl m-2 flex flex-col bg-background">
@@ -181,7 +182,6 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         className="w-full h-1/2 mt-3 mb-6 flex items-center gap-2 bg-white">
                         <div className="ml-[60px] w-[40px] h-[40px] overflow-hidden rounded-full">
                             <Img
-                                className="w-full h-full rounded-full object-cover"
                                 imgs={userLogged.photo || "https://i.ibb.co/JCNSM0R/143086968-2856368904622192-1959732218791162458-n.png"}
                                 alt={userLogged.name || "Avatar do usuario sem foto Usuário"}
                             />
