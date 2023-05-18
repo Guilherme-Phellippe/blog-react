@@ -33,10 +33,17 @@ module.exports = {
       pulse:{
         '0%, 100%': { transform: 'rotate(0deg) scale(1) translateX(0)' },
         '50%': { transform: 'rotate(-30deg) scale(1.5) translateX(-2px)'}
+      },
+      loading: {
+         '0%' : { transform: 'scale(.7) translateY(0)', opacity: '50%' },
+         '100%': { transform: 'scale(1.2) translateY(-5px)', opacity: '100%' }
       }
     },
     animation:{
-      'pulse-icon': 'pulse 700ms'
+      'pulse-icon': 'pulse 700ms',
+      'loading-1': 'loading infinite ease-in alternate-reverse 500ms',
+      'loading-2': 'loading infinite ease-in alternate-reverse 500ms 100ms',
+      'loading-3': 'loading infinite ease-in alternate-reverse 500ms 200ms'
     }
 
   },

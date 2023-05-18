@@ -3,7 +3,7 @@ import { ListRecipes } from '../../molecules/ListRecipes';
 import './styles.css'
 
 export const BoxRankingRecipes = ({ title, ranking }) => {
-    const [limitRecipes, setLimitRecipes] = useState(5)
+    const [limitRecipes, setLimitRecipes] = useState(8)
 
     const filteredRanking = ranking.filter((rank) => rank.name_recipe && rank)
 
@@ -12,7 +12,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
             <h2>{title}</h2>
             {
                  filteredRanking.length && filteredRanking.map((recipe, index) => {
-                    if (index < limitRecipes && index < 8) return (
+                    if (index < limitRecipes && index < 15) return (
                         <ListRecipes 
                             key={recipe.id} 
                             recipe={recipe} 
