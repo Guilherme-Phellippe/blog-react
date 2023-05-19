@@ -66,7 +66,7 @@ export const FormLogin = () => {
     }
 
     return (
-        <form className="w-full mt-4 md:mt-0 md:w-1/2 md:order-2 flex flex-col items-center">
+        <form className="w-full mt-4 md:mt-0 md:w-1/2 md:order-2 flex flex-col items-center justify-center">
             <Input
                 ref={inputEmailRef}
                 label="E-MAIL:"

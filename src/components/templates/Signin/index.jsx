@@ -9,7 +9,7 @@ export const Signin = ({ setIsLogin }) => {
     return (
         <div className="w-full bg-white p-4">
             <h2 className="text-center font-bold text-s2 text-color_red p-4">Acessar sua conta</h2>
-            <div className="w-full flex items-center flex-col md:flex-row md:mt-16">
+            <div className="w-full flex justify-center items-center flex-col md:flex-row md:mt-16">
                 <FormLogin />
             </div>
             <div className="flex flex-col justify-center items-center">

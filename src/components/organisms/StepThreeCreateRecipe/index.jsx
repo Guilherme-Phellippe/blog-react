@@ -54,6 +54,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                 if (data) {
                     localStorage.removeItem("recipe")
                     const response = await dialog("Sua receita foi criada com sucesso!", 2, "Ver receita")
+                    console.log(response)
                     if (response) navigate(`/recipe/${data.name_recipe}/${data.id}`)
                     else navigate('/')
                 } else await dialog("Tivemos um erro ao tentar processa sua receita, preencha os dados novamente e tente de novo", 0)

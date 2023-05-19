@@ -156,7 +156,7 @@ export const LoginWithSocialMidia = () => {
 
             {
                 connected.connected ?
-                    <div className="flex flex-col w-full border p-4 rounded-xl">
+                    <div className="flex flex-col items-center w-full max-w-[500px] border p-4 rounded-xl">
                         <Button event={handleFacebookLogin} customClass='w-full max-w-[300px] h-[40px] flex border rounded-3xl flex items-center gap-3 py-4 bg-blue-600'>
                             <MdFacebook className='text-s2_5 w-[55px] h-[50px] border border-blue-700 rounded-full bg-white fill-blue-700 -translate-x-2' />
                             <div className="w-4/6 flex flex-col items-start border-l">
