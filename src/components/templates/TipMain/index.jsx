@@ -10,7 +10,7 @@ import { InfoTipContent } from '../../organisms/InfoTipContent';
 
 export const TipMain = () => {
     const { id } = useParams();
-    const [tip, setTip] = useState()
+    const [tip, setTip] = useState(null)
     const refTipApi = useRef(useTipApi());
     const refFeedApi = useRef(useFeedApi());
 

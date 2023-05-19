@@ -13,6 +13,7 @@ import { MdExitToApp, MdFacebook } from 'react-icons/md';
 
 import { Button } from "../../atoms/Button"
 import { Img } from '../../atoms/Img'
+import { Loading } from '../../atoms/Loading/Loading';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDkpJkYLEFE3r-oyqpdG_4uGJEo9IDYAo8",
@@ -29,6 +30,7 @@ const provider = new GoogleAuthProvider();
 
 export const LoginWithSocialMidia = () => {
     const [connected, setConnected] = useState({ connected: false })
+    const [loading, setLoading] = useState(false);
     const notificationApi = useNotificationApi()
     const userApi = useUserApi();
     const navigate = useNavigate();
@@ -36,7 +38,8 @@ export const LoginWithSocialMidia = () => {
 
     const handleGoogleLogin = async () => {
         signInWithPopup(auth, provider)
-            .then(async (result) => {
+        .then(async (result) => {
+                setLoading(true)
                 const userData = result.user.providerData[0];
 
                 const user = {
@@ -68,6 +71,7 @@ export const LoginWithSocialMidia = () => {
             })
             .catch((error) => {
                 console.error(error)
+                setLoading(false)
             });
     }
 
@@ -146,7 +150,7 @@ export const LoginWithSocialMidia = () => {
     }, [])
 
     return (
-        <div className='w-full flex flex-col justify-center items-center'>
+        <div className='w-full flex flex-col justify-center items-center relative'>
             <Button event={handleGoogleLogin} customClass='w-full max-w-[300px] h-[40px] flex border rounded-3xl flex items-center gap-3 text-s1_5 py-4 my-8 bg-green-600'>
                 <FcGoogle className='text-s2_5 w-[55px] h-[50px] border border-green-500 rounded-full bg-white -translate-x-2' />
                 <span className='border-l px-4 w-full text-center text-white font-bold'>
@@ -200,6 +204,8 @@ export const LoginWithSocialMidia = () => {
                     target='_blank'
                 > Termos de uso </a>.
             </span>
+
+            {loading && <Loading />}
         </div>
     )
 }

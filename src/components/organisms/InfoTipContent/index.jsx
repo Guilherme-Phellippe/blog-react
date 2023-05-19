@@ -1,6 +1,7 @@
 import { InfoRecipeHeader } from '../../molecules/InfoRecipeHeader';
 import { RecipeChefInfo } from '../../molecules/RecipeChefInfo';
 import { LikeComentsSaveButtons } from '../../molecules/LikeComentSaveButtons'
+import { Img } from '../../atoms/Img';
 
 export const InfoTipContent = ({ tip }) => {
     const { name_tip, description_tip, images, nmr_hearts, nmr_saved } = tip
@@ -9,7 +10,9 @@ export const InfoTipContent = ({ tip }) => {
         <div className="w-full md:w-2/3 p-4">
             <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_tip} />
 
-            <img className='mx-auto my-12' src={images[0].medium} alt={"imagem de"+ name_tip} />
+            <div className="w-1/2 mx-auto my-8">
+                <Img imgs={images[0]} alt={"imagem de" + name_tip} />
+            </div>
 
             <div className="flex my-8 mb-12">
                 <div
