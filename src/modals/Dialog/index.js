@@ -24,7 +24,7 @@ export const dialog = (text , type, buttonText) => {
         message.innerText = text
 
         const buttonClose = document.createElement('button')
-        buttonClose.setAttribute("class", `text-s1_3 p-2 px-4 text-color_text_black/80 border rounded-xl`)
+        buttonClose.setAttribute("class", `text-s1_3 p-2 px-4 text-color_text_black border rounded-xl`)
         buttonClose.innerHTML = buttonText ? "Fechar" : "OK"
         buttonClose.addEventListener('click', () => {
             root.removeChild(container)

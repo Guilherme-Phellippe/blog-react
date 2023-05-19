@@ -47,15 +47,16 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
         setLoading(true)
         const recipe = JSON.parse(localStorage.getItem('recipe'));
         if (recipe) {
-            if(images.length){
+            if (images.length) {
                 recipe.images_recipe = images;
                 recipe.wordKeys = wordKeys;
                 const data = await recipeApi.createNewRecipe(recipe)
                 if (data) {
                     localStorage.removeItem("recipe")
-                    const response = await dialog("Sua receita foi criada com sucesso!", 2 , "Ver receita")
-                    if(response) navigate(`/recipe/${data.name_recipe}/${data.id}`)
-                }else await dialog("Tivemos um erro ao tentar processa sua receita, preencha os dados novamente e tente de novo", 0)
+                    const response = await dialog("Sua receita foi criada com sucesso!", 2, "Ver receita")
+                    if (response) navigate(`/recipe/${data.name_recipe}/${data.id}`)
+                    else navigate('/')
+                } else await dialog("Tivemos um erro ao tentar processa sua receita, preencha os dados novamente e tente de novo", 0)
             } else await dialog("Sua receita precia de pelo menos uma imagem para ser criada!", 0)
             setLoading(false)
         }
@@ -64,8 +65,8 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
 
     return (
         <div className={`w-full flex flex-col justify-center items-center`}>
-            
-            <UploadImage 
+
+            <UploadImage
                 images={images}
                 setImages={setImages}
             />
@@ -112,8 +113,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                     customClass="btn-primary bg-green-700 text-s1_2 py-3 px-8 mx-8 relative"
                     event={handleCreateRecipe}
                 >
-                    { loading && <Loading />}
-                    <MdListAlt /> Criar receita
+                    {loading ? <Loading /> : <span><MdListAlt /> Criar receita</span>}
                 </Button>
             </div>
         </div>
