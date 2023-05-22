@@ -32,7 +32,7 @@ export const IconsShare = ({ recipe }) => {
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <WhatsappShareButton
                     title={recipe.name_recipe}
-                    separator=' - '
+                    separator=' <br /><br /> '
                     url={`https://temsabor.blog/${recipe.name_recipe.replaceAll(" ", "%20")}/${recipe.id}`}
                     
                 >
