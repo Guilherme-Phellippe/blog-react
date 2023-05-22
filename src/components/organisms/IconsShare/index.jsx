@@ -31,10 +31,9 @@ export const IconsShare = ({ recipe }) => {
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <WhatsappShareButton
-                    title={`*${recipe.name_recipe}*`}
-                    separator={<br />}
+                    title={`\n*${recipe.name_recipe}*\n`}
+                    separator={"\n"}
                     url={`https://temsabor.blog/recipe/${recipe.name_recipe.replaceAll(" ", "%20")}/${recipe.id}`}
-                    
                 >
                     <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-4 transition-all'>
                         Compartilhe no Whatsapp
