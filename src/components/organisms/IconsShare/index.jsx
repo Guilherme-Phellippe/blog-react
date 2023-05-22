@@ -1,40 +1,14 @@
 import { useState } from 'react';
 import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp } from 'react-icons/fa';
+import { WhatsappShareButton } from "react-share"
 
-
-const action = (type) => {
-    switch (type) {
-        case 'print': {
-            window.print()
-            break;
-        }
-        case 'tiktok': {
-            alert("Sistema ainda não disponível")
-            break;
-        }
-        case 'facebook': {
-            alert("Sistema ainda não disponível")
-            break;
-        }
-        case 'instagram': {
-            alert("Sistema ainda não disponível")
-            break;
-        }
-        default: {
-
-        }
-    }
-}
-
-
-export const IconsShare = () => {
+export const IconsShare = ({ recipe }) => {
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";
 
     const handleIconsMobile = () => {
         setShowIconsShare(v => !v)
     }
-
 
     return (
         <div
@@ -46,26 +20,30 @@ export const IconsShare = () => {
                     Imprima essa receita
                 </span>
                 <FaCamera
-                    onClick={() => action('print')}
+                    onClick={() => window.print()}
                     className='text-s3 cursor-pointer fill-color_orange' />
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                     Compartilhe no Facebook
                 </span>
-                <FaFacebook
-                    onClick={() => action('facebook')}
-                    className='text-s3 cursor-pointer fill-blue-800' />
+                <FaFacebook className='text-s3 cursor-pointer fill-blue-800' />
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">
-                <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-4 transition-all'>
-                    Compartilhe no Whatsapp
-                </span>
-                <FaWhatsapp
-                    onClick={() => action('whatsapp')}
-                    className='text-s3 cursor-pointer fill-green-500 ' />
+                <WhatsappShareButton
+                    title={recipe.name_recipe}
+                    separator=' - '
+                    url={`https://temsabor.blog/${recipe.name_recipe}/${recipe.id}`}
+                    
+                >
+                    <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-4 transition-all'>
+                        Compartilhe no Whatsapp
+                    </span>
+                    <FaWhatsapp className='text-s3 cursor-pointer fill-green-500 ' />
+                </WhatsappShareButton>
             </div>
-            <div className={`md:hidden md:mt-8 p-4 z-[999] rounded-3xl relative w-full group bg-color_red flex ${showIconsShare ? "justify-center": "justify-end"}`}>
+
+            <div className={`md:hidden md:mt-8 p-4 z-[999] rounded-3xl relative w-full group bg-color_red flex ${showIconsShare ? "justify-center" : "justify-end"}`}>
                 {
                     showIconsShare ?
                         <FaArrowAltCircleLeft

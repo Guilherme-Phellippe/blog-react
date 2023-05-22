@@ -95,7 +95,7 @@ export const StepOneCreateRecipe = ({ categories, setStep, user }) => {
             }
 
         }else{
-            const response = await dialog("Você precisa criar uma conta antes de prosseguir!", 0 , "Criar conta")
+            const response = await dialog("Você precisa criar uma conta antes de prosseguir!", 0, "Criar conta")
             if(response) navigate('/register')
         }
     }

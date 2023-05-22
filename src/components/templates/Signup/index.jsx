@@ -129,7 +129,7 @@ export const Singup = ({ setIsLogin }) => {
                         <input
                             ref={refCheckPolicyAndTerms}
                             type="checkbox"
-                            className='mx-4 cursor-pointer '
+                            className='mx-4 cursor-pointer w-14 md:w-10 bg-red-500'
                         />
                         <span className='text-s1_2'>
                             Confirme que leu e aceita nossas
