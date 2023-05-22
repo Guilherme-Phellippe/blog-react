@@ -33,7 +33,7 @@ export const IconsShare = ({ recipe }) => {
                 <WhatsappShareButton
                     title={recipe.name_recipe}
                     separator=' - '
-                    url={`https://temsabor.blog/${recipe.name_recipe}/${recipe.id}`}
+                    url={`https://temsabor.blog/${recipe.name_recipe.replace(" ", "%20")}/${recipe.id}`}
                     
                 >
                     <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-4 transition-all'>
