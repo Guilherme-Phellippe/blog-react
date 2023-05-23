@@ -11,8 +11,8 @@ export const HomeProvider = ({ children }) => {
     useEffect(() =>{
         (async ()=>{
             const response = await refUserApi.current.authenticateLogin();
-            console.log(response)
-            if(response) setUser(response.data)
+            if(response.data) setUser(response.data)
+            else localStorage.removeItem('token')
         })()
     },[])
 

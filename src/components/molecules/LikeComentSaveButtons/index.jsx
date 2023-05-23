@@ -21,7 +21,6 @@ export const LikeComentsSaveButtons = ({ recipeId, setNmr_hearts, nmr_hearts, se
         if (token) {
             const userAlreadyGivedHeart = nmr_hearts.find(nmr => nmr === token.id);
             const userAlreadyGivedSaved = nmr_saved.find(nmr => nmr === token.id);
-            console.log(userAlreadyGivedHeart)
             if (userAlreadyGivedHeart) {
                 refButtonLove.current.classList.add('text-red-500', 'font-bold')
                 refButtonLove.current.closest('button').querySelector('svg').classList.add('fill-red-500')
