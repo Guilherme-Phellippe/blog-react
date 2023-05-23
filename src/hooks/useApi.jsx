@@ -92,7 +92,6 @@ export const useTipApi = () => ({
     }
 });
 
-
 export const useFeedApi = () => ({
     getAllFeed: async () => {
         const response = await api.get('/feeds').catch(err => err)
@@ -132,7 +131,6 @@ export const useFeedApi = () => ({
         return data
     },
 })
-
 
 export const useUserApi = () => ({
 
