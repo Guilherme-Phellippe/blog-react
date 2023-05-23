@@ -123,7 +123,7 @@ export const LoginWithSocialMidia = () => {
 
     useEffect(() => {
         window.FB?.getLoginStatus(function (response) {
-            window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
+            window.FB?.api('/me', { fields: 'name, email, picture' }, async (userData) => {
                 const { name, picture: { data: { url } } } = userData
                 name ? setConnected({ connected: true, name, photo: url }) : setConnected({ connected: false })
             })
