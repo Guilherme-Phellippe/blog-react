@@ -9,7 +9,7 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
         return [...ranking].sort((a, b) => {
             let date1 = moment(a.createdAt, 'YYYY-MM-DD HH:mm:ss')
             let date2 = moment(b.createdAt, 'YYYY-MM-DD HH:mm:ss')
-            if(date1.isAfter(date2)) return -1
+            if (date1.isAfter(date2)) return -1
             else if (date1.isBefore(date2)) return 1
             else return 0
         })
@@ -23,6 +23,15 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
                         <PanelUser />
 
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
+
+                        <ins class="adsbygoogle"
+                            style={{display: 'block', textAlign: 'center'}}
+                            data-ad-layout="in-article"
+                            data-ad-format="fluid"
+                            data-ad-client="ca-pub-4781060024956035"
+                            data-ad-slot="1064809587"
+                        ></ins>
+
                         {
                             isOpenRanking &&
                             <>

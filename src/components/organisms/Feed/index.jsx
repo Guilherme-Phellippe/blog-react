@@ -30,23 +30,32 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
 
     return (
         <div className='min-h-screen relative'>
-            {feed.length ? feed.map((content) => {
+            {feed.length ? feed.map((content, index) => {
                 return (
-                    content.name_recipe ?
-                        <FeedRecipes
-                            key={content.id}
-                            content={content}
-                            hasSearch={hasSearch}
-                            handleIdForAddListRemove={handleIdForAddListRemove}
-                            setIsOpenRanking={setIsOpenRanking}
-                        />
+                    index === 5 ?
+                        <ins class="adsbygoogle"
+                            style={{ display: 'block' }}
+                            data-ad-format="fluid"
+                            data-ad-layout-key="-6o+ed+2i-1n-4w"
+                            data-ad-client="ca-pub-4781060024956035"
+                            data-ad-slot="1096599178"
+                        ></ins>
                         :
-                        <FeedTip
-                            key={content.id}
-                            content={content}
-                            handleIdForAddListRemove={handleIdForAddListRemove}
-                            setIsOpenRanking={setIsOpenRanking}
-                        />
+                        content.name_recipe ?
+                            <FeedRecipes
+                                key={content.id}
+                                content={content}
+                                hasSearch={hasSearch}
+                                handleIdForAddListRemove={handleIdForAddListRemove}
+                                setIsOpenRanking={setIsOpenRanking}
+                            />
+                            :
+                            <FeedTip
+                                key={content.id}
+                                content={content}
+                                handleIdForAddListRemove={handleIdForAddListRemove}
+                                setIsOpenRanking={setIsOpenRanking}
+                            />
                 )
             }) : <Loading />}
         </div>
