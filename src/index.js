@@ -46,7 +46,6 @@ root.render(
         <Route path='/panel-user' element={<PanelUser />} />
         <Route path='/terms' element={<Policy />} />
         <Route path='/policy' element={<Policy />} />
-        <Route path='/ads.txt' element={ads} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
