@@ -22,8 +22,6 @@ import { CreateTip } from './pages/CreateTip';
 import './index.css';
 import { Contact } from './pages/Contact/Contact';
 
-import ads from '../ads.txt'
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
