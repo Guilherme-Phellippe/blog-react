@@ -110,10 +110,10 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                 ><FaArrowLeft /> Voltar</Button>
 
                 <Button
-                    customClass="btn-primary bg-green-700 text-s1_2 py-3 px-8 mx-8 relative flex items-center gap-2"
+                    customClass="btn-primary bg-green-700 text-s1_2 py-3 px-8 mx-8 relative"
                     event={handleCreateRecipe}
                 >
-                    {loading ? <Loading /> : <span className="text-white"><MdListAlt /> Criar receita</span>}
+                    {loading ? <Loading /> : <span className="text-white flex justify-center gap-2"><MdListAlt /> Criar receita</span>}
                 </Button>
             </div>
         </div>
