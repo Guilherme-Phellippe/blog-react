@@ -22,6 +22,8 @@ import { CreateTip } from './pages/CreateTip';
 import './index.css';
 import { Contact } from './pages/Contact/Contact';
 
+import ads from '../ads.txt'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -44,6 +46,7 @@ root.render(
         <Route path='/panel-user' element={<PanelUser />} />
         <Route path='/terms' element={<Policy />} />
         <Route path='/policy' element={<Policy />} />
+        <Route path='/ads.txt' element={ads} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
