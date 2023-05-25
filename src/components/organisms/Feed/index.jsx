@@ -30,7 +30,7 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
 
     return (
         <div className='min-h-screen relative'>
-            {feed.length ? feed.map((content, index) => {
+            {feed.length ? feed.map((content) => {
                 return (
                     content.name_recipe ?
                         <FeedRecipes
