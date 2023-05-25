@@ -27,7 +27,7 @@ export const TipMain = () => {
     return (
         <div className="w-full max-w-[1500px] mx-auto">
             <main className='flex flex-col w-[95%] md:w-5/6 mt-8 mx-auto'>
-                <IconsShare recipeId={tip?.id}  refFeedApi={refFeedApi} />
+                <IconsShare recipe={tip} />
                 <div className="w-full bg-white min-h-screen">
                     {tip ? <InfoTipContent tip={tip} /> : <Loading />}
                     {tip ? <RecipeSimilarContent name_search={tip.name_tip} /> : <Loading />}
