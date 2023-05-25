@@ -24,14 +24,6 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
 
-                        <ins class="adsbygoogle"
-                            style={{display: 'block', textAlign: 'center'}}
-                            data-ad-layout="in-article"
-                            data-ad-format="fluid"
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="1064809587"
-                        ></ins>
-
                         {
                             isOpenRanking &&
                             <>
