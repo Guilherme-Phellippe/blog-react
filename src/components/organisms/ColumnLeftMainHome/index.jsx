@@ -18,7 +18,6 @@ export const ColumnLeftMainHome = ({ recipes }) => {
     useEffect(() => {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
-            window.innerWidth > 700 &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
