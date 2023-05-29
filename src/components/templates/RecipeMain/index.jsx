@@ -26,8 +26,8 @@ export const Main = () => {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
+            {recipe ? <IconsShare recipe={recipe} /> : <Loading />}
             <main className='flex flex-col w-[95%] md:w-5/6 mt-8 mx-auto'>
-                {recipe ?  <IconsShare recipe={recipe} /> : <Loading />}
                 <div className="w-full bg-white min-h-screen">
                     {recipe ? <InfoRecipeContent recipe={recipe} /> : <Loading />}
                     {recipe ? <RecipeSimilarContent name_search={recipe.name_recipe} /> : <Loading />}
