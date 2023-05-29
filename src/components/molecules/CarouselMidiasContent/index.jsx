@@ -22,56 +22,45 @@ export const CarouselMidiasContent = ({ img: imgs, name_recipe, category }) => {
     }
 
     return (
-        <>
-
-            <div id="title-recipe" className={`flex flex-col gap-2 items-center px-2 h-[5%] ${valueSearch ? 'hidden' : ''}`}>
-                {category && <>
-                    <h3 className="text-s1_2 text-color_orange">{category}</h3>
-                    <h2 className="text-s1_4 leading-6">{name_recipe}</h2>
-                </>}
+        <div
+            data-id="container"
+            className={`${valueSearch ? "order-1 w-1/2 h-full" : 'h-auto'} w-full flex max-h-[500px] mt-4 overflow-hidden relative`}
+        >
+            <div
+                data-side="left"
+                onClick={handleScrollImgs}
+                className="flex items-center h-full absolute left-0 top-0 cursor-pointer"
+            >
+                <SlArrowLeft className={`${imgs.length <= 1 ? "hidden" : "block"} text-s3 text-white`} />
             </div>
-
 
             <div
-                data-id="container"
-                className={`${valueSearch ? "order-1 w-1/2 h-full" : 'h-auto'} w-full flex max-h-[500px] mt-4 overflow-hidden relative`}
+                data-id="container-imgs"
+                className={`${imgs.length <= 1 ? "w-full" : "flex flex-nowrap w-full overflow-auto no-scrollbar snap-x snap-mandatory"}`}
             >
-                <div
-                    data-side="left"
-                    onClick={handleScrollImgs}
-                    className="flex items-center h-full absolute left-0 top-0 cursor-pointer"
-                >
-                    <SlArrowLeft className={`${imgs.length <= 1 ? "hidden" : "block"} text-s3 text-white`} />
-                </div>
-
-                <div
-                    data-id="container-imgs"
-                    className={`${imgs.length <= 1 ? "w-full" : "flex flex-nowrap w-full overflow-auto no-scrollbar snap-x snap-mandatory"}`}
-                >
-                    {
-                        imgs.map((img, index) => {
-                            return (
-                                <div
-                                    key={index}
-                                    className={`flex-none ${imgs.length <= 1 ? 'w-full' : 'w-[95%] border-l-2 ml-2 border-l-white snap-start'}  `}
-                                >
-                                    <Img imgs={img} alt={name_recipe} />
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-
-                <div
-                    data-side="right"
-                    onClick={handleScrollImgs}
-                    className="flex items-center h-full absolute right-0 top-0 cursor-pointer"
-                >
-                    <SlArrowRight
-                        className={`${imgs.length <= 1 ? "hidden" : "block"} text-s3 text-white`}
-                    />
-                </div>
+                {
+                    imgs.map((img, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={`flex-none ${imgs.length <= 1 ? 'w-full' : 'w-[95%] border-l-2 ml-2 border-l-white snap-start'}  `}
+                            >
+                                <Img imgs={img} alt={name_recipe} />
+                            </div>
+                        )
+                    })
+                }
             </div>
-        </>
+
+            <div
+                data-side="right"
+                onClick={handleScrollImgs}
+                className="flex items-center h-full absolute right-0 top-0 cursor-pointer"
+            >
+                <SlArrowRight
+                    className={`${imgs.length <= 1 ? "hidden" : "block"} text-s3 text-white`}
+                />
+            </div>
+        </div>
     )
 }
