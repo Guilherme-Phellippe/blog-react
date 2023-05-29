@@ -17,9 +17,10 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' && 
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
+        window.location.hostname !== 'localhost' &&
+            isOpenRanking &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [isOpenRanking])
 
     return (
         <aside className={`col-span-1 md:block ${isOpenRanking ? "block" : "hidden"}`}>
