@@ -38,7 +38,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                     onClick={() => setLimitRecipes(ranking.length)}
                 >Veja mais</p>
             }
-            <div className="w-full min-h-[1rem] p-4 hover:bg-background">
+            <div className="w-full min-h-[1rem] p-4 hover:bg-background border-r-color_orange border-b-background">
                 <ins class="adsbygoogle"
                     style={{ display: "block", width: "100%" }}
                     data-ad-client="ca-pub-4781060024956035"
