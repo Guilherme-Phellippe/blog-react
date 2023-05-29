@@ -34,13 +34,11 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
             {feed.length ? feed.map((content, index) => {
                 return (
                     (index + 1) % 6 === 0 ?
-                        <div className="w-full h-[30rem]">
-                            <Adsense
-                                format="fluid"
-                                slot="1096599178"
-                                data-ad-layout-key="+3v+pt+4r-a-41"
-                            />
-                        </div>
+                        <Adsense
+                            format="fluid"
+                            slot="1096599178"
+                            data-ad-layout-key="+3v+pt+4r-a-41"
+                        />
                         :
                         content.name_recipe ?
                             <FeedRecipes
