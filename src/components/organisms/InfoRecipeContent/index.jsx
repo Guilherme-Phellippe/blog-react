@@ -23,7 +23,9 @@ export const InfoRecipeContent = ({ recipe }) => {
                     <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved} />
                 </div>
             </div>
-            <Adsense slot="2090078650" format="auto"/>
+            <div className="w-1/3">
+                <Adsense slot="2090078650" format="auto" />
+            </div>
         </div>
     )
 }
