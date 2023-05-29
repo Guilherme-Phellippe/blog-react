@@ -28,6 +28,10 @@ export const MainContentHome = () => {
 
     //Search data in bd and fill recipes and user
     useEffect(() => {
+        // GOOGLE ADSENSE 
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+
+        // REQ TO API TO SEARCH ALL FEEDS
         (async () => {
             const { data: recipesData } = await feedApi.current.getAllFeed();
             if (recipesData) setRecipes(recipesData)
@@ -35,18 +39,8 @@ export const MainContentHome = () => {
             document.title = "Tem Sabor receitas oficiais"
         }
         )();
-    }, []);
 
-    //filter the recipes case user search some recipes
-    useEffect(() => {
-        const findRecipes = valueSearch ? smartSearch(recipes, valueSearch) : recipes
-
-        const newFeed = findRecipes.slice(0, postPerPage);
-
-        setFeed(newFeed);
-    }, [recipes, postPerPage, valueSearch]);
-
-    useEffect(() => {
+        //THIS CODE IS FOR CLOSE MODAL RANKING
         const removeModalRankignRecipe = document.addEventListener('click', ({ target }) => {
             const box = target.closest("div[data-id=modal-ranking-recipe-mobile]")
             const seeMoreNewRecipe = target.dataset.id === "see-more"
@@ -59,6 +53,15 @@ export const MainContentHome = () => {
             document.removeEventListener('click', removeModalRankignRecipe)
         }
     }, []);
+
+    //filter the recipes case user search some recipes
+    useEffect(() => {
+        const findRecipes = valueSearch ? smartSearch(recipes, valueSearch) : recipes
+
+        const newFeed = findRecipes.slice(0, postPerPage);
+
+        setFeed(newFeed);
+    }, [recipes, postPerPage, valueSearch]);
 
     useEffect(() => {
         if (isOpenRanking) document.documentElement.style.overflow = 'hidden'
@@ -80,12 +83,17 @@ export const MainContentHome = () => {
         return [...recipesFiltered].sort((x, y) => y.nmr_hearts.length - x.nmr_hearts.length)
     }, [recipes]);
 
-
-
     return (
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
-            
+
+            <ins class="adsbygoogle"
+                style={{display:'block', borderWidth:'1px', borderStyle: 'solid', borderColor: 'gray'}}
+                data-ad-client="ca-pub-4781060024956035"
+                data-ad-slot="2090078650"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />
 
