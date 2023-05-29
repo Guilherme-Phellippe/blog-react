@@ -26,7 +26,7 @@ export const InfoRecipeContent = ({ recipe }) => {
             <div className="w-1/3">
                 {/* <Adsense slot="2090078650" format="auto" /> */}
                 <ins class="adsbygoogle"
-                    style={{ display: 'block', textAlign: 'center' }}
+                    style={{ display: 'block', textAlign: 'center', width: '100%' }}
                     data-ad-layout="in-article"
                     data-ad-format="fluid"
                     data-ad-client="ca-pub-4781060024956035"
