@@ -18,7 +18,7 @@ import './main.css'
 import { smartSearch } from "../../../../scripts/smartSearch";
 
 export const MainContentHome = () => {
-    const { valueSearch,  user } = useContext(HomeContext);
+    const { valueSearch, user } = useContext(HomeContext);
     const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
@@ -40,7 +40,7 @@ export const MainContentHome = () => {
     //filter the recipes case user search some recipes
     useEffect(() => {
         const findRecipes = valueSearch ? smartSearch(recipes, valueSearch) : recipes
-        
+
         const newFeed = findRecipes.slice(0, postPerPage);
 
         setFeed(newFeed);
@@ -85,6 +85,15 @@ export const MainContentHome = () => {
     return (
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
+
+            <ins class="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-format="fluid"
+                data-ad-layout-key="-6o+ed+2i-1n-4w"
+                data-ad-client="ca-pub-4781060024956035"
+                data-ad-slot="1096599178"
+            ></ins>
+
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />
 
