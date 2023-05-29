@@ -5,10 +5,15 @@ import { PreparationInformation } from '../../molecules/PreparationInformation';
 import { PrepareMode } from '../../atoms/PrepareMode';
 import { RecipeChefInfo } from '../../molecules/RecipeChefInfo';
 import { LikeComentsSaveButtons } from '../../molecules/LikeComentSaveButtons'
-// import { Adsense } from "../../molecules/Adsense"
+import { useEffect } from 'react';
 
 export const InfoRecipeContent = ({ recipe }) => {
     const { name_recipe, nmr_hearts, images_recipe, ing, stuffing_ing, prepareMode, nmr_saved } = recipe
+
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [])
 
     return (
         <div className="w-full flex">
@@ -24,7 +29,6 @@ export const InfoRecipeContent = ({ recipe }) => {
                 </div>
             </div>
             <div className="w-1/3">
-                {/* <Adsense slot="2090078650" format="auto" /> */}
                 <ins class="adsbygoogle"
                     style={{ display: 'block', textAlign: 'center', width: '100%' }}
                     data-ad-layout="in-article"
