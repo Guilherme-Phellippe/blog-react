@@ -85,15 +85,7 @@ export const MainContentHome = () => {
     return (
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
-
-            <ins class="adsbygoogle"
-                style={{ display: 'block' }}
-                data-ad-format="fluid"
-                data-ad-layout-key="-6o+ed+2i-1n-4w"
-                data-ad-client="ca-pub-4781060024956035"
-                data-ad-slot="1096599178"
-            ></ins>
-
+            
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />
 
