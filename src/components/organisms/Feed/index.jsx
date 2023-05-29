@@ -34,7 +34,9 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
             {feed.length ? feed.map((content, index) => {
                 return (
                     index === 5 ?
-                        <Adsense key={index+"-adsense"} slot="1096599178" format="fluid" />
+                        <div className={`flex w-full bg-white mt-6 ${hasSearch ? 'items-center h-[20rem]' : 'flex-col h-auto'}`}>
+                            <Adsense key={index+"-adsense"} slot="1096599178" format="fluid" />
+                        </div>
                         :
                         content.name_recipe ?
                             <FeedRecipes

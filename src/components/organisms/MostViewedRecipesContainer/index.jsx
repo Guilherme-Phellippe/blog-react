@@ -12,12 +12,11 @@ export const MostViewedRecipesContainer = ({ valueSearch, topRanking }) => {
 
     return (
         <>
-            {!valueSearch &&
+            {!valueSearch && !!filteredRanking.length &&
                 <section id="best-recipes" className="relative">
                     <div
                         className="w-[95%] md:w-[80%] h-[90%] rounded-lg p-2 bg-white overflow-hidden grid grid-cols-4 grid-rows-6 gap-4">
                         {
-                            !!filteredRanking.length &&
                             filteredRanking.map((recipe, index) => {
                                 return <BoxRecipe
                                     key={recipe.id}
