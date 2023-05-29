@@ -12,9 +12,7 @@ export const Adsense = ({ slot, format, ...rest }) => {
                 <ins className="adsbygoogle"
                     style={{
                         display: 'block',
-                        border: '1px solid #00000007',
                         margin: '2rem auto',
-                        maxWidth: '1000px',
                         minHeight: format === "fluid" ? '50px' : '0px',
                     }}
                     data-ad-format={format}
