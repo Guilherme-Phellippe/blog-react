@@ -2,7 +2,6 @@ import moment from "moment"
 import { useCallback, useMemo } from "react"
 import { PanelUser } from "../../organisms/PanelUser/PanelUser"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
-import { Adsense } from "../../molecules/Adsense"
 
 export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
@@ -32,9 +31,6 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
                                 <BoxRankingRecipes title={'Receitas novas'} ranking={MostRecent()} />
                             </>
                         }
-
-                        <Adsense slot="6974841302" format="autorelaxed" />
-
                     </>
                 )
             }, [ranking, isOpenRanking, MostRecent])}

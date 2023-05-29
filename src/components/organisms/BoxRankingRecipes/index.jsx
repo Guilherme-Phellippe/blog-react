@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { ListRecipes } from '../../molecules/ListRecipes';
+import { Adsense } from '../../molecules/Adsense';
+
 import './styles.css'
 
 export const BoxRankingRecipes = ({ title, ranking }) => {
@@ -25,6 +27,8 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                 })
             }
             {ranking.length > limitRecipes ? <p data-id="see-more" onClick={() => setLimitRecipes(ranking.length)}>Veja mais</p> : ''}
+
+            <Adsense slot="6974841302" format="autorelaxed" />
         </div>
     )
 }
