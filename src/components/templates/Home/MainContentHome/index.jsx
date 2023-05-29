@@ -86,9 +86,9 @@ export const MainContentHome = () => {
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
-            <div className="flex justify-center border-[1px] border-color_text_black/10 min-h-[40px]">
-                {useMemo(() => {
-                    return (
+            {useMemo(() => {
+                return (
+                    <div className="w-full flex justify-center border-[1px] border-color_text_black/10 min-h-[40px]">
                         <ins className="adsbygoogle"
                             style={{ display: 'block' }}
                             data-ad-client="ca-pub-4781060024956035"
@@ -97,9 +97,9 @@ export const MainContentHome = () => {
                             data-full-width-responsive="true"
                             data-ad-status="unfilled"
                         ></ins>
-                    )
-                }, [])}
-            </div>
+                    </div>
+                )
+            }, [])}
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />
