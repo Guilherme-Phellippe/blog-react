@@ -15,7 +15,6 @@ export const Adsense = ({ slot, format }) => {
                         border: '1px solid #00000007',
                         margin: '2rem auto',
                         maxWidth: '1000px',
-                        padding: format === "fluid" ? '2rem' : '0px',
                         minHeight: format === "fluid" ? '20rem' : '0px',
                         minWidth: format === "fluid" ? '250px' : '0px',
                     }}
