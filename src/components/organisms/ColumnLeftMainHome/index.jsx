@@ -15,10 +15,10 @@ export const ColumnLeftMainHome = ({ recipes }) => {
         })
     }, [recipes]);
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
+    // useEffect(() => {
+    //     // GOOGLE ADSENSE 
+    //     window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // }, [])
 
 
     return (
