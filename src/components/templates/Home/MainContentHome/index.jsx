@@ -93,6 +93,7 @@ export const MainContentHome = () => {
                     data-ad-slot="2090078650"
                     data-ad-format="auto"
                     data-full-width-responsive="true"
+                    data-ad-status="unfilled"
                 ></ins>
             </div>
 
