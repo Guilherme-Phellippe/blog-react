@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ListRecipes } from '../../molecules/ListRecipes';
-import { Adsense } from '../../molecules/Adsense';
 
 import './styles.css'
 
