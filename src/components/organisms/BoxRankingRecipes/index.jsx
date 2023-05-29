@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { ListRecipes } from '../../molecules/ListRecipes';
 
-import './styles.css'
-
 export const BoxRankingRecipes = ({ title, ranking }) => {
     const [limitRecipes, setLimitRecipes] = useState(8)
 
@@ -26,7 +24,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                 })
 
             }
-            <div className="w-full h-screen">
+            <div className="w-full min-h-[1rem]">
                 <ins class="adsbygoogle"
                     style={{ display: "block", width: "100%" }}
                     data-ad-client="ca-pub-4781060024956035"
@@ -37,7 +35,15 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                     data-ad-format="autorelaxed"
                 ></ins>
             </div >
-            {ranking.length > limitRecipes ? <p data-id="see-more" onClick={() => setLimitRecipes(ranking.length)}>Veja mais</p> : ''}
+            {
+                ranking.length > limitRecipes &&
+                <p
+                    data-id="see-more"
+                    className='text-center text-s1_2 my-8 underline cursor-auto'
+                    onClick={() => setLimitRecipes(ranking.length)}
+                >Veja mais</p>
+            }
+
 
 
         </div>
