@@ -17,9 +17,9 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' &&
-            isOpenRanking &&
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
+        if(window.location.hostname !== 'localhost'){
+            if(isOpenRanking || window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
     }, [isOpenRanking])
 
     return (
