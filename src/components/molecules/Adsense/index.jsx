@@ -18,6 +18,6 @@ export const Adsense = ({ slot, format }) => {
                     data-full-width-responsive="true"
                 ></ins>
             )
-        }, [])
+        }, [format, slot])
     )
 }

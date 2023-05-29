@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState, useRef, useMemo } from "react";
+import { useCallback, useContext, useEffect, useState, useRef } from "react";
 
 import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 
