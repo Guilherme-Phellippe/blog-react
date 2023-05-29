@@ -28,7 +28,7 @@ export const InfoRecipeContent = ({ recipe }) => {
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="6974841302"
                     data-matched-content-ui-type="image_sidebyside"
-                    data-matched-content-rows-num="3"
+                    data-matched-content-rows-num="5"
                     data-matched-content-columns-num="1"
                     data-ad-format="autorelaxed"
                 ></ins>
