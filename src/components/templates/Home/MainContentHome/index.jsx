@@ -92,7 +92,7 @@ export const MainContentHome = () => {
             {useMemo(() => {
                 return (
                     <ins className="adsbygoogle"
-                        style={{ display: 'block', border: '1px solid #00000007', margin: '0 auto' }}
+                        style={{ display: 'block', border: '1px solid #00000007', margin: '2rem auto' }}
                         data-ad-client="ca-pub-4781060024956035"
                         data-ad-slot="2090078650"
                         data-ad-format="auto"
