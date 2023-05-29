@@ -33,7 +33,7 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                    index === 5 ?
+                    (index+1) % 5 === 0 ?
                         <div className={`flex w-full min-w-[250px] bg-white mt-6 ${hasSearch ? 'items-center h-[20rem]' : 'flex-col h-auto'}`}>
                             <Adsense key={index+"-adsense"} slot="1096599178" format="fluid" />
                         </div>
