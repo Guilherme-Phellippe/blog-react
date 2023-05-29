@@ -32,7 +32,7 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
 
                         {
-                            isOpenRanking &&
+                            window.innerWidth > 700 || isOpenRanking ?
                             <ins class="adsbygoogle"
                                 style={{ display: "block" }}
                                 data-ad-client="ca-pub-4781060024956035"
@@ -42,6 +42,8 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
                                 data-matched-content-columns-num="1"
                                 data-ad-format="autorelaxed"
                             ></ins>
+                            :
+                            null
                         }
 
                         {
