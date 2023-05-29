@@ -23,7 +23,7 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
     }, [isOpenRanking])
 
     return (
-        <aside className={`col-span-1 md:block ${isOpenRanking ? "block" : "hidden"}`}>
+        <aside className={`min-w-[20px] col-span-1 md:block ${isOpenRanking ? "block" : "hidden"}`}>
             {useMemo(() => {
                 return (
                     <>
@@ -32,7 +32,7 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
 
                         <ins class="adsbygoogle"
-                            style={{ display: "block", width: "100%" }}
+                            style={{ display: "block"}}
                             data-ad-client="ca-pub-4781060024956035"
                             data-ad-slot="6974841302"
                             data-matched-content-ui-type="image_sidebyside"
