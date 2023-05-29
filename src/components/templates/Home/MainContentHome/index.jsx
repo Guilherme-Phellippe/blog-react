@@ -16,6 +16,7 @@ import { useFeedApi } from "../../../../hooks/useApi";
 
 import './main.css'
 import { smartSearch } from "../../../../scripts/smartSearch";
+import { Adsense } from "../../../molecules/Adsense";
 
 export const MainContentHome = () => {
     const { valueSearch, user } = useContext(HomeContext);
@@ -28,9 +29,6 @@ export const MainContentHome = () => {
 
     //Search data in bd and fill recipes and user
     useEffect(() => {
-        // GOOGLE ADSENSE 
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-
         // REQ TO API TO SEARCH ALL FEEDS
         (async () => {
             const { data: recipesData } = await feedApi.current.getAllFeed();
@@ -89,18 +87,7 @@ export const MainContentHome = () => {
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
-            {useMemo(() => {
-                return (
-                    <ins className="adsbygoogle"
-                        style={{ display: 'block', border: '1px solid #00000007', maxWidth: '1000px', margin: '2rem auto'}}
-                        data-ad-client="ca-pub-4781060024956035"
-                        data-ad-slot="2090078650"
-                        data-ad-format="auto"
-                        data-adtest="on"
-                        data-full-width-responsive="true"
-                    ></ins>
-                )
-            }, [])}
+            <Adsense slot="2090078650" client="ca-pub-4781060024956035" format="auto" />
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />

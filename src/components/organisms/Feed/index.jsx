@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
 import { Loading } from '../../atoms/Loading/Loading';
+import { Adsense } from '../../molecules/Adsense';
 
 export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
@@ -30,23 +31,26 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
 
     return (
         <div className='min-h-screen relative'>
-            {feed.length ? feed.map((content) => {
+            {feed.length ? feed.map((content, index) => {
                 return (
-                    content.name_recipe ?
-                        <FeedRecipes
-                            key={content.id}
-                            content={content}
-                            hasSearch={hasSearch}
-                            handleIdForAddListRemove={handleIdForAddListRemove}
-                            setIsOpenRanking={setIsOpenRanking}
-                        />
+                    index === 5 ?
+                        <Adsense key={index+"-adsense"} slot="1096599178" format="fluid" />
                         :
-                        <FeedTip
-                            key={content.id}
-                            content={content}
-                            handleIdForAddListRemove={handleIdForAddListRemove}
-                            setIsOpenRanking={setIsOpenRanking}
-                        />
+                        content.name_recipe ?
+                            <FeedRecipes
+                                key={content.id}
+                                content={content}
+                                hasSearch={hasSearch}
+                                handleIdForAddListRemove={handleIdForAddListRemove}
+                                setIsOpenRanking={setIsOpenRanking}
+                            />
+                            :
+                            <FeedTip
+                                key={content.id}
+                                content={content}
+                                handleIdForAddListRemove={handleIdForAddListRemove}
+                                setIsOpenRanking={setIsOpenRanking}
+                            />
                 )
             }) : <Loading />}
         </div>
