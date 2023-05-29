@@ -19,13 +19,12 @@ export const Adsense = ({ slot, format, layout }) => {
                         minWidth: format === "fluid" ? '250px' : '0px',
                     }}
                     data-ad-format={format}
-                    data-ad-layout={layout || null}
                     data-ad-layout-key={format === "fluid" ? "-6o+ed+2i-1n-4w" : ''}
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot={slot}
                     data-full-width-responsive="true"
                 ></ins>
             )
-        }, [format, slot, layout])
+        }, [format, slot])
     )
 }
