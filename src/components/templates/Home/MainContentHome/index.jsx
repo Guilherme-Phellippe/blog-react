@@ -89,10 +89,9 @@ export const MainContentHome = () => {
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
             <ins className="adsbygoogle"
-                style={{ display: 'block', borderWidth: '1px', borderStyle: 'solid', borderColor: '#1111' }}
+                style={{ display: 'block', borderWidth: '1px', borderStyle: 'solid', borderColor: '#00000008' }}
                 data-ad-client="ca-pub-4781060024956035"
                 data-ad-slot="2090078650"
-                data-adtest="on"
                 data-ad-format="auto"
                 data-full-width-responsive="true"
             ></ins>
