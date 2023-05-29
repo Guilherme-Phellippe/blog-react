@@ -27,7 +27,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
             }
             {ranking.length > limitRecipes ? <p data-id="see-more" onClick={() => setLimitRecipes(ranking.length)}>Veja mais</p> : ''}
 
-            <Adsense slot="1064809587" format="autorelaxed" />
+            <Adsense slot="6974841302" format="autorelaxed" />
  
 
         </div>
