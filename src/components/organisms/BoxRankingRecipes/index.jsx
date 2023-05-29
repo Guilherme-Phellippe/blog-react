@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ListRecipes } from '../../molecules/ListRecipes';
 import './styles.css'
-import { Adsense } from '../../molecules/Adsense';
 
 export const BoxRankingRecipes = ({ title, ranking }) => {
     const [limitRecipes, setLimitRecipes] = useState(8)
@@ -28,10 +27,11 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
             {ranking.length > limitRecipes ? <p data-id="see-more" onClick={() => setLimitRecipes(ranking.length)}>Veja mais</p> : ''}
 
             <ins class="adsbygoogle"
-                style={{display:"block"}}
+                style={{ display: "block" }}
                 data-ad-format="autorelaxed"
                 data-ad-client="ca-pub-4781060024956035"
-                data-ad-slot="6974841302"></ins>
+                data-ad-slot="6974841302"
+            ></ins>
 
 
         </div>
