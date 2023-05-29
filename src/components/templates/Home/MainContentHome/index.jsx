@@ -37,8 +37,7 @@ export const MainContentHome = () => {
         }
         )();
 
-        // GOOGLE ADSENSE 
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        
     }, []);
 
     useEffect(() => {
@@ -50,7 +49,6 @@ export const MainContentHome = () => {
                 setIsOpenRanking(false)
             }
         });
-
 
         return () => {
             document.removeEventListener('click', removeModalRankignRecipe)
@@ -90,7 +88,7 @@ export const MainContentHome = () => {
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
-            <ins clas="adsbygoogle"
+            <ins className="adsbygoogle"
                 style={{ display: 'block', borderWidth: '1px', borderStyle: 'solid', borderColor: '#1111' }}
                 data-ad-client="ca-pub-4781060024956035"
                 data-ad-slot="2090078650"
