@@ -18,8 +18,8 @@ export const ColumnLeftMainHome = ({ recipes }) => {
     useEffect(() => {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
-        window.innerWidth > 700 && 
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+            window.innerWidth > 700 &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
 
@@ -31,15 +31,19 @@ export const ColumnLeftMainHome = ({ recipes }) => {
                     ranking={MostRecent()} />
             }, [MostRecent])}
 
-            <ins class="adsbygoogle"
-                style={{ display: "block" }}
-                data-ad-client="ca-pub-4781060024956035"
-                data-ad-slot="6974841302"
-                data-matched-content-ui-type="image_sidebyside"
-                data-matched-content-rows-num="4"
-                data-matched-content-columns-num="1"
-                data-ad-format="autorelaxed"
-            ></ins>
+            {
+                window.innerWidth > 700 &&
+                <ins class="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="6974841302"
+                    data-matched-content-ui-type="image_sidebyside"
+                    data-matched-content-rows-num="4"
+                    data-matched-content-columns-num="1"
+                    data-ad-format="autorelaxed"
+                ></ins>
+            }
+
         </aside>
     )
 }
