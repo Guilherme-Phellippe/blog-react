@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ListRecipes } from '../../molecules/ListRecipes';
 
 export const BoxRankingRecipes = ({ title, ranking }) => {
     const [limitRecipes, setLimitRecipes] = useState(8)
 
     const filteredRanking = ranking.filter((rank) => rank.name_recipe && rank)
+
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [])
+
 
     return (
         <div className={`w-full flex flex-col pb-12`}>;
@@ -43,9 +49,6 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                     onClick={() => setLimitRecipes(ranking.length)}
                 >Veja mais</p>
             }
-
-
-
         </div>
     )
 }
