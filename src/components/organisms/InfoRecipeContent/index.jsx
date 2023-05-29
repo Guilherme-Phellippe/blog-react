@@ -22,7 +22,7 @@ export const InfoRecipeContent = ({ recipe }) => {
                     <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved} />
                 </div>
             </div>
-            <div className="hidden md:block md:w-1/3 p-4">
+            <div className="block md:w-1/3 p-4">
                 <ins class="adsbygoogle"
                     style={{ display: "block" }}
                     data-ad-client="ca-pub-4781060024956035"
