@@ -36,8 +36,6 @@ export const MainContentHome = () => {
             document.title = "Tem Sabor receitas oficiais"
         }
         )();
-
-        
     }, []);
 
     useEffect(() => {
@@ -88,13 +86,15 @@ export const MainContentHome = () => {
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
-            <ins className="adsbygoogle"
-                style={{ display: 'block', borderWidth: '1px', borderStyle: 'solid', borderColor: '#00000008' }}
-                data-ad-client="ca-pub-4781060024956035"
-                data-ad-slot="2090078650"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-            ></ins>
+            <div className="flex justify-center">
+                <ins className="adsbygoogle"
+                    style={{ display: 'block', borderWidth: '1px', borderStyle: 'solid', borderColor: '#00000008' }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="2090078650"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
+            </div>
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />
