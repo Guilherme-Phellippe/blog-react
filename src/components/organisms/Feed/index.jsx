@@ -39,12 +39,14 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
             {feed.length ? feed.map((content, index) => {
                 return (
                     (index + 1) % 7 === 0 ?
-                        <ins class="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-format="fluid"
-                            data-ad-layout-key="-64+ed+2i-1n-4w"
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="1096599178"></ins>
+                        <div className="w-full">
+                            <ins class="adsbygoogle"
+                                style={{ display: "block" }}
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-64+ed+2i-1n-4w"
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="1096599178"></ins>
+                        </div>
                         :
                         content.name_recipe ?
                             <FeedRecipes
