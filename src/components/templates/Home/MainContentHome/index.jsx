@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState, useRef } from "react";
+import { useCallback, useContext, useEffect, useState, useRef, useMemo } from "react";
 
 import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 
@@ -87,14 +87,20 @@ export const MainContentHome = () => {
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
             <div className="flex justify-center border-[1px] border-color_text_black/10 min-h-[40px]">
-                <ins className="adsbygoogle"
-                    style={{ display: 'block' }}
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="2090078650"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                    data-ad-status="unfilled"
-                ></ins>
+                {
+                    useMemo(() =>{
+                        return (
+                            <ins className="adsbygoogle"
+                                style={{ display: 'block' }}
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="2090078650"
+                                data-ad-format="auto"
+                                data-full-width-responsive="true"
+                                data-ad-status="unfilled"
+                            >{console.log("fui executado: ins")}</ins>
+                        )
+                    },[])
+                }
             </div>
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
