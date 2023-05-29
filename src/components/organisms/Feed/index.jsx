@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
 import { Loading } from '../../atoms/Loading/Loading';
+import { Adsense } from '../../molecules/Adsense';
 
 export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
@@ -33,18 +34,11 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
             {feed.length ? feed.map((content, index) => {
                 return (
                     (index + 1) % 6 === 0 ?
-                        <ins class="adsbygoogle"
-                            style={{ display: 'block' }}
-                            data-ad-format="fluid"
+                        <Adsense
+                            format="fluid"
+                            slot="1096599178"
                             data-ad-layout-key="+3v+pt+4r-a-41"
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="1096599178"
-                        ></ins>
-                        // <Adsense
-                        //     format="fluid"
-                        //     slot="1096599178"
-                        //     data-ad-layout-key="+3v+pt+4r-a-41"
-                        // />
+                        />
                         :
                         content.name_recipe ?
                             <FeedRecipes
