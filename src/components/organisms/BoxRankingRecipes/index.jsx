@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { ListRecipes } from '../../molecules/ListRecipes';
 
 export const BoxRankingRecipes = ({ title, ranking }) => {
@@ -6,10 +6,6 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
 
     const filteredRanking = ranking.filter((rank) => rank.name_recipe && rank)
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
 
 
     return (
@@ -38,17 +34,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                     onClick={() => setLimitRecipes(ranking.length)}
                 >Veja mais</p>
             }
-            <div className="w-full min-h-[1rem] p-4 ">
-                <ins class="adsbygoogle"
-                    style={{ display: "block", width: "100%" }}
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="6974841302"
-                    data-matched-content-ui-type="image_sidebyside"
-                    data-matched-content-rows-num="4"
-                    data-matched-content-columns-num="1"
-                    data-ad-format="autorelaxed"
-                ></ins>
-            </div >
+            
         </div>
     )
 }
