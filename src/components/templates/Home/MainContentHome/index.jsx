@@ -29,11 +29,7 @@ export const MainContentHome = () => {
     //Search data in bd and fill recipes and user
     useEffect(() => {
         // GOOGLE ADSENSE 
-        try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (error) {
-            console.log(error)
-        }
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
 
         // REQ TO API TO SEARCH ALL FEEDS
         (async () => {
@@ -96,7 +92,7 @@ export const MainContentHome = () => {
             {useMemo(() => {
                 return (
                     <ins className="adsbygoogle"
-                        style={{ display: 'block', border: '1px solid #00000007' }}
+                        style={{ display: 'block', border: '1px solid #00000007', margin: '0 auto' }}
                         data-ad-client="ca-pub-4781060024956035"
                         data-ad-slot="2090078650"
                         data-ad-format="auto"
