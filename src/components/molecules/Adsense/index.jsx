@@ -16,7 +16,6 @@ export const Adsense = ({ slot, format, ...rest }) => {
                         margin: '2rem auto',
                         maxWidth: '1000px',
                         minHeight: format === "fluid" ? '50px' : '0px',
-                        // minWidth: format === "fluid" ? '250px' : '0px',
                     }}
                     data-ad-format={format}
                     data-ad-client="ca-pub-4781060024956035"

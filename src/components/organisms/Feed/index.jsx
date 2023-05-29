@@ -33,11 +33,11 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                    (index + 1) % 7 === 0 ?
+                    (index + 1) % 6 === 0 ?
                         <Adsense
                             format="fluid"
                             slot="1096599178"
-                            data-ad-layout-key="-64+ed+2i-1n-4w"
+                            data-ad-layout-key="+3v+pt+4r-a-41"
                         />
                         :
                         content.name_recipe ?
