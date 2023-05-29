@@ -30,7 +30,15 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                 })
 
             }
-            <div className="w-full min-h-[1rem]">
+            {
+                ranking.length > limitRecipes &&
+                <p
+                    data-id="see-more"
+                    className='text-center text-s1_2 my-8 underline cursor-auto'
+                    onClick={() => setLimitRecipes(ranking.length)}
+                >Veja mais</p>
+            }
+            <div className="w-full min-h-[1rem] p-4">
                 <ins class="adsbygoogle"
                     style={{ display: "block", width: "100%" }}
                     data-ad-client="ca-pub-4781060024956035"
@@ -41,14 +49,6 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
                     data-ad-format="autorelaxed"
                 ></ins>
             </div >
-            {
-                ranking.length > limitRecipes &&
-                <p
-                    data-id="see-more"
-                    className='text-center text-s1_2 my-8 underline cursor-auto'
-                    onClick={() => setLimitRecipes(ranking.length)}
-                >Veja mais</p>
-            }
         </div>
     )
 }
