@@ -24,13 +24,11 @@ export const InfoRecipeContent = ({ recipe }) => {
             </div>
             <div className="w-1/3 h-screen">
                 <ins class="adsbygoogle"
-                    style={{ display: "block" }}
+                    style={{ display: "block", textAlign: 'center' }}
+                    data-ad-layout="in-article"
+                    data-ad-format="fluid"
                     data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="6974841302"
-                    data-matched-content-ui-type="image_sidebyside"
-                    data-matched-content-rows-num="4"
-                    data-matched-content-columns-num="1"
-                    data-ad-format="autorelaxed"
+                    data-ad-slot="1064809587"
                 ></ins>
             </div>
         </div>
