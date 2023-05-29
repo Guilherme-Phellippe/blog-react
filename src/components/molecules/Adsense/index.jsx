@@ -13,6 +13,7 @@ export const Adsense = ({ slot, format, ...rest }) => {
                     style={{
                         display: 'block',
                         margin: '2rem auto',
+                        maxWidth: '1000px',
                         minHeight: format === "fluid" ? '50px' : '0px',
                     }}
                     data-ad-format={format}
