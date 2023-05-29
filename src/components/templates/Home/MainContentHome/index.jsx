@@ -86,9 +86,9 @@ export const MainContentHome = () => {
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
-            <div className="flex justify-center">
+            <div className="flex justify-center border-[1px] border-color_text_black/10 min-h-[40px]">
                 <ins className="adsbygoogle"
-                    style={{ display: 'block', borderWidth: '1px', borderStyle: 'solid', borderColor: '#00000008' }}
+                    style={{ display: 'block' }}
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="2090078650"
                     data-ad-format="auto"
