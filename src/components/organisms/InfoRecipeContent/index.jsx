@@ -5,6 +5,7 @@ import { PreparationInformation } from '../../molecules/PreparationInformation';
 import { PrepareMode } from '../../atoms/PrepareMode';
 import { RecipeChefInfo } from '../../molecules/RecipeChefInfo';
 import { LikeComentsSaveButtons } from '../../molecules/LikeComentSaveButtons'
+import { Adsense } from "../../molecules/Adsense"
 
 export const InfoRecipeContent = ({ recipe }) => {
     const { name_recipe, nmr_hearts, images_recipe, ing, stuffing_ing, prepareMode, nmr_saved } = recipe
@@ -22,15 +23,7 @@ export const InfoRecipeContent = ({ recipe }) => {
                     <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved} />
                 </div>
             </div>
-            <div className="w-1/3 h-screen">
-                <ins class="adsbygoogle"
-                    style={{ display: "block", textAlign: 'center' }}
-                    data-ad-layout="in-article"
-                    data-ad-format="fluid"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1064809587"
-                ></ins>
-            </div>
+            <Adsense slot="2090078650" format="auto"/>
         </div>
     )
 }
