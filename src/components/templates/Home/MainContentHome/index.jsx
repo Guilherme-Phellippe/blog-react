@@ -28,6 +28,9 @@ export const MainContentHome = () => {
 
     //Search data in bd and fill recipes and user
     useEffect(() => {
+        // GOOGLE ADSENSE 
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+
         // REQ TO API TO SEARCH ALL FEEDS
         (async () => {
             const { data: recipesData } = await feedApi.current.getAllFeed();
@@ -88,7 +91,7 @@ export const MainContentHome = () => {
 
             {useMemo(() => {
                 return (
-                    <div className="w-full flex justify-center border-[1px] border-color_text_black/10 min-h-[40px]">
+                    <div className="w-min-[300px] w-full flex justify-center border-[1px] border-color_text_black/10 min-h-[40px]">
                         <ins className="adsbygoogle"
                             style={{ display: 'block' }}
                             data-ad-client="ca-pub-4781060024956035"
