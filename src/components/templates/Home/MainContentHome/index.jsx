@@ -28,9 +28,6 @@ export const MainContentHome = () => {
 
     //Search data in bd and fill recipes and user
     useEffect(() => {
-        // GOOGLE ADSENSE 
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-
         // REQ TO API TO SEARCH ALL FEEDS
         (async () => {
             const { data: recipesData } = await feedApi.current.getAllFeed();
@@ -40,6 +37,11 @@ export const MainContentHome = () => {
         }
         )();
 
+        // GOOGLE ADSENSE 
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, []);
+
+    useEffect(() => {
         //THIS CODE IS FOR CLOSE MODAL RANKING
         const removeModalRankignRecipe = document.addEventListener('click', ({ target }) => {
             const box = target.closest("div[data-id=modal-ranking-recipe-mobile]")
@@ -49,10 +51,11 @@ export const MainContentHome = () => {
             }
         });
 
+
         return () => {
             document.removeEventListener('click', removeModalRankignRecipe)
         }
-    }, []);
+    }, [])
 
     //filter the recipes case user search some recipes
     useEffect(() => {
@@ -87,12 +90,14 @@ export const MainContentHome = () => {
         <main className="max-w-[1500px] mx-auto">
             <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
 
-            <ins class="adsbygoogle"
-                style={{display:'block', borderWidth:'1px', borderStyle: 'solid', borderColor: 'gray'}}
+            <ins clas="adsbygoogle"
+                style={{ display: 'block', borderWidth: '1px', borderStyle: 'solid', borderColor: '#1111' }}
                 data-ad-client="ca-pub-4781060024956035"
                 data-ad-slot="2090078650"
+                data-adtest="on"
                 data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
+                data-full-width-responsive="true"
+            ></ins>
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />
