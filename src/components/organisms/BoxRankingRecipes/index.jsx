@@ -6,8 +6,6 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
 
     const filteredRanking = ranking.filter((rank) => rank.name_recipe && rank)
 
-
-
     return (
         <div className={`w-full flex flex-col pb-12`}>;
             <h2 className='w-full text-center padding-1 text-s1_2'>{title}</h2>
