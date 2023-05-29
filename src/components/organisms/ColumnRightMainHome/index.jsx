@@ -29,7 +29,7 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
 
-                        <div className="w-full min-h-[1rem] p-4 ">
+                        <div className="w-full min-w-[1rem] min-h-[1rem] p-4 ">
                             <ins class="adsbygoogle"
                                 style={{ display: "block", width: "100%" }}
                                 data-ad-client="ca-pub-4781060024956035"
