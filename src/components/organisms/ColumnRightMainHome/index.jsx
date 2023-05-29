@@ -17,7 +17,8 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+        window.location.hostname !== 'localhost' && 
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
     return (
@@ -30,7 +31,7 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
 
                         <ins class="adsbygoogle"
-                            style={{ display: "block" }}
+                            style={{ display: "block", width: 0 }}
                             data-ad-client="ca-pub-4781060024956035"
                             data-ad-slot="6974841302"
                             data-matched-content-ui-type="image_sidebyside"
