@@ -27,15 +27,18 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
             }
             {ranking.length > limitRecipes ? <p data-id="see-more" onClick={() => setLimitRecipes(ranking.length)}>Veja mais</p> : ''}
 
-            <ins class="adsbygoogle"
-                style={{ display: "block" }}
-                data-ad-client="ca-pub-4781060024956035"
-                data-ad-slot="6974841302"
-                data-ad-format="autorelaxed"
-                data-matched-content-ui-type="image_card_sidebyside"
-                data-matched-content-rows-num="4"
-                data-matched-content-columns-num="1"
-            ></ins>
+            <div className="w-full h-screen">
+                <ins class="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="6974841302"
+                    data-matched-content-ui-type="image_sidebyside"
+                    data-matched-content-rows-num="4"
+                    data-matched-content-columns-num="1"
+                    data-ad-format="autorelaxed"
+                ></ins>
+            </div>
+            
         </div>
     )
 }
