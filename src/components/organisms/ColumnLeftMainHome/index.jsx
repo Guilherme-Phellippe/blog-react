@@ -30,7 +30,7 @@ export const ColumnLeftMainHome = ({ recipes }) => {
             }, [MostRecent])}
 
             <ins class="adsbygoogle"
-                style={{ display: "block", width: "100%" }}
+                style={{ display: "block" }}
                 data-ad-client="ca-pub-4781060024956035"
                 data-ad-slot="6974841302"
                 data-matched-content-ui-type="image_sidebyside"
