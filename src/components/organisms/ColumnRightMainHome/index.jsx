@@ -29,17 +29,15 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
 
-                        <div className="w-full min-w-[1rem] min-h-[1rem] p-4 ">
-                            <ins class="adsbygoogle"
-                                style={{ display: "block", width: "100%" }}
-                                data-ad-client="ca-pub-4781060024956035"
-                                data-ad-slot="6974841302"
-                                data-matched-content-ui-type="image_sidebyside"
-                                data-matched-content-rows-num="4"
-                                data-matched-content-columns-num="1"
-                                data-ad-format="autorelaxed"
-                            ></ins>
-                        </div >
+                        <ins class="adsbygoogle"
+                            style={{ display: "block", width: "100%" }}
+                            data-ad-client="ca-pub-4781060024956035"
+                            data-ad-slot="6974841302"
+                            data-matched-content-ui-type="image_sidebyside"
+                            data-matched-content-rows-num="4"
+                            data-matched-content-columns-num="1"
+                            data-ad-format="autorelaxed"
+                        ></ins>
 
                         {
                             isOpenRanking &&
