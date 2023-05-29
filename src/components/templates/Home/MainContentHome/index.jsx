@@ -95,15 +95,13 @@ export const MainContentHome = () => {
 
             {useMemo(() => {
                 return (
-                    <div className="w-full flex justify-center border-[1px] border-color_text_black/10 min-h-[40px]">
-                        <ins className="adsbygoogle"
-                            style={{ display: 'block' }}
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="2090078650"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"
-                        ></ins>
-                    </div>
+                    <ins className="adsbygoogle"
+                        style={{ display: 'block', border: '1px solid #00000007' }}
+                        data-ad-client="ca-pub-4781060024956035"
+                        data-ad-slot="2090078650"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"
+                    ></ins>
                 )
             }, [])}
 
