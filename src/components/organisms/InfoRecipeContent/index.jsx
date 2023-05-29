@@ -10,7 +10,7 @@ export const InfoRecipeContent = ({ recipe }) => {
     const { name_recipe, nmr_hearts, images_recipe, ing, stuffing_ing, prepareMode, nmr_saved } = recipe
 
     return (
-        <div className="flex">
+        <div className="h-auto flex">
             <div className="w-full md:w-2/3 p-4">
                 <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
                 <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
@@ -22,17 +22,15 @@ export const InfoRecipeContent = ({ recipe }) => {
                     <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved} />
                 </div>
             </div>
-            <div className="block md:w-1/3 p-4">
-                <ins class="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="6974841302"
-                    data-matched-content-ui-type="image_card_sidebyside"
-                    data-matched-content-rows-num="4"
-                    data-matched-content-columns-num="1"
-                    data-ad-format="autorelaxed"
-                ></ins>
-            </div>
+            <ins class="adsbygoogle"
+                style={{ display: "block" }}
+                data-ad-client="ca-pub-4781060024956035"
+                data-ad-slot="6974841302"
+                data-matched-content-ui-type="image_card_sidebyside"
+                data-matched-content-rows-num="4"
+                data-matched-content-columns-num="1"
+                data-ad-format="autorelaxed"
+            ></ins>
         </div>
     )
 }
