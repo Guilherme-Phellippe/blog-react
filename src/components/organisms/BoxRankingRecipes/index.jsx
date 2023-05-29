@@ -28,7 +28,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
             }
             <div className="w-full h-screen">
                 <ins class="adsbygoogle"
-                    style={{ display: "block" }}
+                    style={{ display: "block", width: "100%" }}
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="6974841302"
                     data-matched-content-ui-type="image_sidebyside"
