@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useCallback, useEffect, useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 
 export const ColumnLeftMainHome = ({ recipes }) => {
