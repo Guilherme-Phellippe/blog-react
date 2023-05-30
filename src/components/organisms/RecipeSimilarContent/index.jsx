@@ -46,24 +46,25 @@ export const RecipeSimilarContent = ({ name_search }) => {
         return recipesFinds;
     }
 
-    
+
 
     return (
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
             <div className="w-full bg-white rounded-md">
+                <h2 className='text-center text-s2 p-8 text-color_orange font-bold'>Pela web</h2>
                 <ins className="adsbygoogle"
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="3655130128"
                     data-matched-content-ui-type="image_stacked"
-                    data-matched-content-rows-num={window.innerWidth < 700 ? "3": "2"}
-                    data-matched-content-columns-num={window.innerWidth < 700 ? "1": "4"}
+                    data-matched-content-rows-num={window.innerWidth < 700 ? "3" : "2"}
+                    data-matched-content-columns-num={window.innerWidth < 700 ? "1" : "4"}
                     data-ad-format="autorelaxed"
                 ></ins>
             </div>
 
             <div className="w-full bg-white rounded-md">
-                <h2 className='text-center text-s2 p-8 text-color_orange font-bold'>Talvez você goste</h2>
+                <h2 className='text-center text-s2 p-8 text-color_orange font-bold'>Talvez você goste dessas receitas</h2>
                 <div className="w-full flex flex-wrap gap-4 py-8 justify-evenly" >
                     {handleRecipeByTarget().length ?
                         handleRecipeByTarget().map(recipe => {

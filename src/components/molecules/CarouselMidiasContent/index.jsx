@@ -73,7 +73,7 @@ export const CarouselMidiasContent = ({ img: imgs, name_recipe, category }) => {
                 </div>
             </div>
 
-            <div className="overflow-hidden">
+            <div className="overflow-hidden mt-2">
                 <ins className="adsbygoogle"
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-4781060024956035"
