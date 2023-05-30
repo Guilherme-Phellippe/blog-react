@@ -39,8 +39,8 @@ export const InfoRecipeContent = ({ recipe }) => {
                 ></ins> */}
                 <ins class="adsbygoogle"
                     style={{ display: 'block' }}
-                    data-ad-client="ca-pub-1234567890123456"
-                    data-ad-slot="1234567890"
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="3655130128"
                     data-matched-content-ui-type="image_stacked"
                     data-matched-content-rows-num="3"
                     data-matched-content-columns-num="1"
