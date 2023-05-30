@@ -1,7 +1,16 @@
+import { useEffect } from "react";
+
 export const IngredientsList = ({ ing: ingredients, stuffing_ing }) => {
+
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        window.location.hostname !== 'localhost' &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [])
+
     return (
         <div className="w-full h-auto flex flex-col items-center p-4 mt-8">
-            
+
             <div className="overflow-hidden mt-2">
                 <ins className="adsbygoogle"
                     style={{ display: 'block' }}
