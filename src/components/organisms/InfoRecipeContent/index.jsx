@@ -12,7 +12,9 @@ export const InfoRecipeContent = ({ recipe }) => {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+        window.location.hostname !== 'localhost' &&
+        window.innerWidth > 700 &&
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
     return (
