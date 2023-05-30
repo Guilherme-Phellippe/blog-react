@@ -13,7 +13,6 @@ export const InfoRecipeContent = ({ recipe }) => {
     useEffect(() => {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
-            window.innerWidth > 700 &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
@@ -22,7 +21,7 @@ export const InfoRecipeContent = ({ recipe }) => {
             <div className="w-full md:w-2/3 p-4">
                 <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
                 <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
-                <ins class="adsbygoogle"
+                <ins className="adsbygoogle"
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="9346456414"
