@@ -21,15 +21,13 @@ export const InfoRecipeContent = ({ recipe }) => {
             <div className="w-full md:w-2/3 p-4">
                 <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
                 <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
-                <div className="px-4 py-1">
-                    <ins className="adsbygoogle"
-                        style={{ display: 'block' }}
-                        data-ad-client="ca-pub-4781060024956035"
-                        data-ad-slot="9346456414"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true"
-                    ></ins>
-                </div>
+                <ins className="adsbygoogle"
+                    style={{ display: 'block', padding:"8px 2px" }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="9346456414"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
                 <PreparationInformation recipe={recipe} />
                 <RecipeChefInfo recipe={recipe} />
                 <IngredientsList ing={ing} stuffing_ing={stuffing_ing} />
