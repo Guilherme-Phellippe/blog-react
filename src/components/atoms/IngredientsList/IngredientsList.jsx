@@ -10,9 +10,9 @@ export const IngredientsList = ({ ing: ingredients, stuffing_ing }) => {
 
     return (
         <>
-            <div className="w-[98%] mt-4 mx-1">
+            <div className="mt-4 mx-1">
                 <ins className="adsbygoogle"
-                    style={{ display: 'block' }}
+                    style={{ display: 'block', maxWidth: "98%" }}
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="9346456414"
                     data-ad-format="auto"
