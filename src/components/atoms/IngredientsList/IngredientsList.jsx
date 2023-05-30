@@ -11,15 +11,13 @@ export const IngredientsList = ({ ing: ingredients, stuffing_ing }) => {
     return (
         <div className="w-full h-auto flex flex-col items-center p-4 mt-8">
 
-            <div className="overflow-hidden mt-2">
-                <ins className="adsbygoogle"
-                    style={{ display: 'block' }}
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="9346456414"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
-            </div>
+            <ins className="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-client="ca-pub-4781060024956035"
+                data-ad-slot="9346456414"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+            ></ins>
 
             <h2 className='text-s2 text-color_orange text-center font-bold my-4 bg-color_orange/20 w-full p-4'>INGREDIENTES</h2>
             <ul className='w-full p-4 flex flex-col'>
