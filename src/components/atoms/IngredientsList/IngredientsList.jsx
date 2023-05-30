@@ -10,7 +10,7 @@ export const IngredientsList = ({ ing: ingredients, stuffing_ing }) => {
 
     return (
         <>
-            <div className="w-full overflow-hidden">
+            <div className="w-full mt-2">
                 <ins className="adsbygoogle"
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-4781060024956035"
