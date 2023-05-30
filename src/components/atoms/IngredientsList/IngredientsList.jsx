@@ -1,23 +1,23 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export const IngredientsList = ({ ing: ingredients, stuffing_ing }) => {
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' &&
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
+    // useEffect(() => {
+    //     // GOOGLE ADSENSE 
+    //     window.location.hostname !== 'localhost' &&
+    //         (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // }, [])
 
     return (
         <div className="w-full h-auto flex flex-col items-center p-4 mt-8">
 
-            <ins className="adsbygoogle"
+            {/* <ins className="adsbygoogle"
                 style={{ display: 'block' }}
                 data-ad-client="ca-pub-4781060024956035"
                 data-ad-slot="9346456414"
                 data-ad-format="auto"
                 data-full-width-responsive="true"
-            ></ins>
+            ></ins> */}
 
             <h2 className='text-s2 text-color_orange text-center font-bold my-4 bg-color_orange/20 w-full p-4'>INGREDIENTES</h2>
             <ul className='w-full p-4 flex flex-col'>
