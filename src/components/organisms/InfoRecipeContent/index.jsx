@@ -5,6 +5,7 @@ import { PreparationInformation } from '../../molecules/PreparationInformation';
 import { PrepareMode } from '../../atoms/PrepareMode';
 import { RecipeChefInfo } from '../../molecules/RecipeChefInfo';
 import { LikeComentsSaveButtons } from '../../molecules/LikeComentSaveButtons'
+import { useEffect } from 'react';
 // import { useEffect } from 'react';
 
 export const InfoRecipeContent = ({ recipe }) => {
