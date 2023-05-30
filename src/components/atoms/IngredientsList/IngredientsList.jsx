@@ -10,13 +10,15 @@ export const IngredientsList = ({ ing: ingredients, stuffing_ing }) => {
 
     return (
         <>
-            <ins className="adsbygoogle"
-                style={{ display: 'block' }}
-                data-ad-client="ca-pub-4781060024956035"
-                data-ad-slot="9346456414"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-            ></ins>
+            <div className="w-full overflow-hidden">
+                <ins className="adsbygoogle"
+                    style={{ display: 'block' }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="9346456414"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
+            </div>
 
             <div className="w-full h-auto flex flex-col items-center p-4 mt-8">
 
