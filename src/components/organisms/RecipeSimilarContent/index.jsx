@@ -4,10 +4,10 @@ import { useRecipeApi } from "../../../hooks/useApi"
 
 
 export const RecipeSimilarContent = ({ name_search }) => {
-    const [recipes, setRecipes ] = useState([])
+    const [recipes, setRecipes] = useState([])
     const api = useRef(useRecipeApi());
-    
-    useEffect(() =>{
+
+    useEffect(() => {
         const dataFetch = async (api) => {
             const { data } = await api.current.getAllRecipes();
             setRecipes(data)
@@ -15,7 +15,11 @@ export const RecipeSimilarContent = ({ name_search }) => {
         dataFetch(api)
     }, []);
 
-
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        window.location.hostname !== 'localhost' &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [])
 
     const handleRecipeByTarget = () => {
         const targets = name_search.split(' ');
@@ -42,18 +46,32 @@ export const RecipeSimilarContent = ({ name_search }) => {
         return recipesFinds;
     }
 
+    
+
     return (
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
+            <div className="w-full bg-white rounded-md">
+                <ins className="adsbygoogle"
+                    style={{ display: 'block' }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="3655130128"
+                    data-matched-content-ui-type="image_stacked"
+                    data-matched-content-rows-num={window.innerWidth < 700 ? "3": "2"}
+                    data-matched-content-columns-num={window.innerWidth < 700 ? "1": "4"}
+                    data-ad-format="autorelaxed"
+                ></ins>
+            </div>
+
             <div className="w-full bg-white rounded-md">
                 <h2 className='text-center text-s2 p-8 text-color_orange font-bold'>Talvez você goste</h2>
                 <div className="w-full flex flex-wrap gap-4 py-8 justify-evenly" >
                     {handleRecipeByTarget().length ?
                         handleRecipeByTarget().map(recipe => {
-                            return <ListRecipes 
-                                        classContainer='w-[16rem] md:w-[23rem] h-[15rem] border-[1px] overflow-hidden rounded-2xl relative border-solid cursor-pointer transition-transform hover:scale-105 hover:border-color_red'
-                                        classInfoContent='w-[80%] h-[50%] absolute top-1/4 left-[10%] bg-[#fffa] rounded-2xl flex flex-col justify-center'
-                                        key={recipe.id} 
-                                        recipe={recipe}/>
+                            return <ListRecipes
+                                classContainer='w-[16rem] md:w-[23rem] h-[15rem] border-[1px] overflow-hidden rounded-2xl relative border-solid cursor-pointer transition-transform hover:scale-105 hover:border-color_red'
+                                classInfoContent='w-[80%] h-[50%] absolute top-1/4 left-[10%] bg-[#fffa] rounded-2xl flex flex-col justify-center'
+                                key={recipe.id}
+                                recipe={recipe} />
                         })
                         : <h2>Não temos nenhuma sugestão de receitas para você.</h2>}
                 </div>
