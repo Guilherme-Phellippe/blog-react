@@ -13,8 +13,8 @@ export const InfoRecipeContent = ({ recipe }) => {
     useEffect(() => {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
-        window.innerWidth > 700 &&
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+            window.innerWidth > 700 &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
     return (
@@ -22,6 +22,13 @@ export const InfoRecipeContent = ({ recipe }) => {
             <div className="w-full md:w-2/3 p-4">
                 <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
                 <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
+                <ins class="adsbygoogle"
+                    style={{ display: 'block' }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="9346456414"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
                 <PreparationInformation recipe={recipe} />
                 <RecipeChefInfo recipe={recipe} />
                 <IngredientsList ing={ing} stuffing_ing={stuffing_ing} />
@@ -31,13 +38,6 @@ export const InfoRecipeContent = ({ recipe }) => {
                 </div>
             </div>
             <div className="hidden md:block w-1/3 ml-4">
-                {/* <ins class="adsbygoogle"
-                    style={{ display: 'block', textAlign: 'center', width: '100%' }}
-                    data-ad-layout="in-article"
-                    data-ad-format="fluid"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1064809587"
-                ></ins> */}
                 <ins className="adsbygoogle"
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-4781060024956035"
