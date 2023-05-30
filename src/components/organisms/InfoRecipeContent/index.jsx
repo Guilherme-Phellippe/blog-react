@@ -21,7 +21,7 @@ export const InfoRecipeContent = ({ recipe }) => {
             <div className="w-full md:w-2/3 p-4">
                 <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
                 <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
-                <div className="px-4">
+                <div className="px-4 py-1">
                     <ins className="adsbygoogle"
                         style={{ display: 'block' }}
                         data-ad-client="ca-pub-4781060024956035"
