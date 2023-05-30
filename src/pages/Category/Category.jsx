@@ -9,7 +9,8 @@ import { Header } from "../../components/templates/Header/Header"
 import { ShowSelectedCategories } from "../../components/templates/ShowSelectedCategories"
 import { HomeProvider } from "../../contexts/Home/HomeProvider"
 
-export const Category = () => {
+
+export default function Category() {
     const { sub } = useParams();
     const [categorySelect, setCategorySelect] = useState(sub)
     const refCategoryApi = useRef(useCategoryApi())
@@ -24,7 +25,6 @@ export const Category = () => {
             setCategories(categories)
         })()
     }, [])
-
 
     return (
         <HomeProvider>

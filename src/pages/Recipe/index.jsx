@@ -4,8 +4,7 @@ import { Header } from "../../components/templates/Header/Header"
 
 import { Main } from '../../components/templates/RecipeMain';
 
-export const Recipe = () => {
-
+export default function Recipe() {
     return (
         <HomeProvider>
             <Header />

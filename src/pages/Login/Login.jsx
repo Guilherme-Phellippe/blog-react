@@ -6,11 +6,10 @@ import { Signin } from "../../components/templates/Signin";
 import { Singup } from "../../components/templates/Signup";
 import { HomeProvider } from "../../contexts/Home/HomeProvider"
 
-export const Login = () => {
+
+export default function Login() {
     const { pathname } = useLocation();
     const [isLogin, setIsLogin] = useState(pathname.includes("login"))
-
-
     return (
         <HomeProvider>
             <Header />

@@ -4,8 +4,8 @@ import { Header } from "../../components/templates/Header/Header"
 
 import { TipMain } from '../../components/templates/TipMain';
 
-export const Tip = () => {
 
+export default function Tip() {
     return (
         <HomeProvider>
             <Header />

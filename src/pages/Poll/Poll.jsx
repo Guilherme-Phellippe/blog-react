@@ -12,8 +12,8 @@ import { IoIosCreate } from "react-icons/io"
 
 import moment from "moment"
 
+export default function Poll() {
 
-export const Poll = () => {
     const [updateListRecipe, setUpdateListRecipe] = useState(false)
     const [recipes, setRecipes] = useState([]);
     const refRecipeApi = useRef(useRecipeApi());
@@ -22,10 +22,10 @@ export const Poll = () => {
         (async () => {
             const { data } = await refRecipeApi.current.getAllRecipes();
             const filteredRecipeByDate = data.filter(recipe => {
-                const createdAt = moment(recipe.createdAt).month()+""+moment(recipe.createdAt).year();
-                const currentDate = moment().month()+""+moment().year();
+                const createdAt = moment(recipe.createdAt).month() + "" + moment(recipe.createdAt).year();
+                const currentDate = moment().month() + "" + moment().year();
 
-                if(createdAt === currentDate) return recipe
+                if (createdAt === currentDate) return recipe
                 else return null
             })
 
@@ -59,23 +59,23 @@ export const Poll = () => {
                     </Link>
                 </div>
                 {/* <div className="p-4">
-                        <h2 className="text-s2 my-8 text-color_orange font-bold">Os mais votados vão receber:</h2>
-                        <div className="flex h-40 items-center gap-8">
-                            <span className="px-6 py-4 bg-color_orange rounded-full text-white text-s1_5">1°</span>
-                            <img className="w-1/12 h-full object-contain cursor-pointer" src="https://http2.mlstatic.com/D_NQ_NP_843836-MLB53355798366_012023-W.webp" alt="premio um" />
-                            <p className="text-s1_5">Kit de colher de silicone</p>
-                        </div>
-                        <div className="flex h-40 items-center gap-8">
-                            <span className="px-6 py-4 bg-color_orange rounded-full text-white text-s1_5">2°</span>
-                            <img className="w-1/12 h-full object-contain cursor-pointer" src="https://http2.mlstatic.com/D_NQ_NP_980767-MLB49687751966_042022-O.webp" alt="premio dois" />
-                            <p className="text-s1_5">Kit de colher de silicone</p>
-                        </div>
-                        <div className="flex h-40 items-center gap-8">
-                            <span className="px-6 py-4 bg-color_orange rounded-full text-white text-s1_5">3°</span>
-                            <img className="w-1/12 h-full object-contain cursor-pointer" src="https://http2.mlstatic.com/D_NQ_NP_692005-MLB52818681594_122022-O.webp" alt="premio dois" />
-                            <p className="text-s1_5">Kit de colher de silicone</p>
-                        </div>
-                    </div> */}
+                    <h2 className="text-s2 my-8 text-color_orange font-bold">Os mais votados vão receber:</h2>
+                    <div className="flex h-40 items-center gap-8">
+                        <span className="px-6 py-4 bg-color_orange rounded-full text-white text-s1_5">1°</span>
+                        <img className="w-1/12 h-full object-contain cursor-pointer" src="https://http2.mlstatic.com/D_NQ_NP_843836-MLB53355798366_012023-W.webp" alt="premio um" />
+                        <p className="text-s1_5">Kit de colher de silicone</p>
+                    </div>
+                    <div className="flex h-40 items-center gap-8">
+                        <span className="px-6 py-4 bg-color_orange rounded-full text-white text-s1_5">2°</span>
+                        <img className="w-1/12 h-full object-contain cursor-pointer" src="https://http2.mlstatic.com/D_NQ_NP_980767-MLB49687751966_042022-O.webp" alt="premio dois" />
+                        <p className="text-s1_5">Kit de colher de silicone</p>
+                    </div>
+                    <div className="flex h-40 items-center gap-8">
+                        <span className="px-6 py-4 bg-color_orange rounded-full text-white text-s1_5">3°</span>
+                        <img className="w-1/12 h-full object-contain cursor-pointer" src="https://http2.mlstatic.com/D_NQ_NP_692005-MLB52818681594_122022-O.webp" alt="premio dois" />
+                        <p className="text-s1_5">Kit de colher de silicone</p>
+                    </div>
+                </div> */}
                 <TablePoll
                     setUpdateListRecipe={setUpdateListRecipe}
                     candidates={recipes} />

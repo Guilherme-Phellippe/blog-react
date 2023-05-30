@@ -35,6 +35,7 @@ export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
                 return (
                     (index + 1) % 6 === 0 ?
                         <Adsense
+                            key={index + "-adsense"}
                             format="fluid"
                             slot="1096599178"
                             data-ad-layout-key="+3v+pt+4r-a-41"
