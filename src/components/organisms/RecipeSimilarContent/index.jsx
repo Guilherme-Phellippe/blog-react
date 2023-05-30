@@ -58,7 +58,7 @@ export const RecipeSimilarContent = ({ name_search }) => {
                     data-ad-slot="3655130128"
                     data-matched-content-ui-type="image_stacked"
                     data-matched-content-rows-num={window.innerWidth < 700 ? "3" : "2"}
-                    data-matched-content-columns-num={window.innerWidth < 700 ? "1" : "4"}
+                    data-matched-content-columns-num={window.innerWidth < 700 ? "2" : "4"}
                     data-ad-format="autorelaxed"
                 ></ins>
             </div>
