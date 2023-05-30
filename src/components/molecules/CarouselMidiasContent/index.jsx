@@ -73,7 +73,7 @@ export const CarouselMidiasContent = ({ img: imgs, name_recipe, category }) => {
                 </div>
             </div>
 
-            <div className="p-8">
+            <div className="p-8 overflow-hidden">
                 <ins className="adsbygoogle"
                     style={{ display: 'block', padding: "8px 2px" }}
                     data-ad-client="ca-pub-4781060024956035"
