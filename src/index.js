@@ -42,21 +42,21 @@ root.render(
       <Routes>
         <Route path='/' element={<Suspense fallback={<Logo />}><Home /></Suspense>} />
         <Route path='/home' element={<Suspense fallback={<Logo />} ><Home /></Suspense>} />
-        <Route path='/recipe/:name/:id' element={<Suspense fallback={<Loading />} ><Recipe /></Suspense>} />
-        <Route path='/store' element={<Suspense fallback={<Loading />} ><Store /></Suspense>} />
-        <Route path='/poll' element={<Suspense fallback={<Loading />} ><Poll /></Suspense>} />
-        <Route path='/login' element={<Suspense fallback={<Loading />} ><Login /></Suspense>} />
-        <Route path='/register' element={<Suspense fallback={<Loading />} ><Login /></Suspense>} />
-        <Route path='/create' element={<Suspense fallback={<Loading />} ><CreateRecipe /></Suspense>} />
-        <Route path='/create-tip' element={<Suspense fallback={<Loading />} ><CreateTip /></Suspense>} />
-        <Route path='/about' element={<Suspense fallback={<Loading />} ><About /></Suspense>} />
-        <Route path='/contact' element={<Suspense fallback={<Loading />} ><Contact /></Suspense>} />
-        <Route path='/tip/:name/:id' element={<Suspense fallback={<Loading />} ><Tip /></Suspense>} />
-        <Route path='/category/:sub' element={<Suspense fallback={<Loading />} ><Category /></Suspense>} />
-        <Route path='/panel-user' element={<Suspense fallback={<Loading />} ><PanelUser /></Suspense>} />
-        <Route path='/terms' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
-        <Route path='/policy' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
-        <Route path='*' element={<Suspense fallback={<Loading />} ><NotFound /></Suspense>} />
+        <Route path='/recipe/:name/:id' element={<Suspense fallback={<Logo />} ><Recipe /></Suspense>} />
+        <Route path='/store' element={<Suspense fallback={<Logo />} ><Store /></Suspense>} />
+        <Route path='/poll' element={<Suspense fallback={<Logo />} ><Poll /></Suspense>} />
+        <Route path='/login' element={<Suspense fallback={<Logo />} ><Login /></Suspense>} />
+        <Route path='/register' element={<Suspense fallback={<Logo />} ><Login /></Suspense>} />
+        <Route path='/create' element={<Suspense fallback={<Logo />} ><CreateRecipe /></Suspense>} />
+        <Route path='/create-tip' element={<Suspense fallback={<Logo />} ><CreateTip /></Suspense>} />
+        <Route path='/about' element={<Suspense fallback={<Logo />} ><About /></Suspense>} />
+        <Route path='/contact' element={<Suspense fallback={<Logo />} ><Contact /></Suspense>} />
+        <Route path='/tip/:name/:id' element={<Suspense fallback={<Logo />} ><Tip /></Suspense>} />
+        <Route path='/category/:sub' element={<Suspense fallback={<Logo />} ><Category /></Suspense>} />
+        <Route path='/panel-user' element={<Suspense fallback={<Logo />} ><PanelUser /></Suspense>} />
+        <Route path='/terms' element={<Suspense fallback={<Logo />} ><Policy /></Suspense>} />
+        <Route path='/policy' element={<Suspense fallback={<Logo />} ><Policy /></Suspense>} />
+        <Route path='*' element={<Suspense fallback={<Logo />} ><NotFound /></Suspense>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
