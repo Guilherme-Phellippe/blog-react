@@ -1,11 +1,12 @@
 import 'moment/locale/pt-br';
 
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 
 import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
 import { Loading } from '../../atoms/Loading/Loading';
-import { Adsense } from '../../molecules/Adsense';
+
+const Adsense = lazy(() => import('../../molecules/Adsense'))
 
 export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []

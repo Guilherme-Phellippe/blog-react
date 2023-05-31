@@ -14,12 +14,12 @@ import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
 import { useFeedApi } from "../../../../hooks/useApi";
 
 import { smartSearch } from "../../../../scripts/smartSearch";
-import { Adsense } from "../../../molecules/Adsense";
 
 import './main.css'
 import { Loading } from "../../../atoms/Loading/Loading";
 
 const MostViewedRecipesContainer = lazy(() => import("../../../organisms/MostViewedRecipesContainer"))
+const Adsense = lazy(() => import("../../../molecules/Adsense"))
 
 export default function MainContentHome() {
     const { valueSearch, user } = useContext(HomeContext);
@@ -90,13 +90,13 @@ export default function MainContentHome() {
         <main className="max-w-[1500px] mx-auto">
             <Suspense fallback={<Loading />}>
                 <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
+                <Adsense
+                    slot="2090078650"
+                    format="auto"
+                    data-full-width-responsive="true"
+                />
             </Suspense>
 
-            <Adsense
-                slot="2090078650"
-                format="auto"
-                data-full-width-responsive="true"
-            />
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />

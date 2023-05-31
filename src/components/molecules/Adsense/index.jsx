@@ -1,11 +1,11 @@
 import { useEffect, useMemo } from "react"
 
-export const Adsense = ({ slot, format, ...rest }) => {
+export default function Adsense({ slot, format, ...rest }) {
     useEffect(() => {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
-
+    
     return (
         useMemo(() => {
             return (
