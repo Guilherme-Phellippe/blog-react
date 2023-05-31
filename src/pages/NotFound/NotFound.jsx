@@ -1,8 +1,11 @@
+import { lazy } from "react"
 import { Link } from "react-router-dom"
+
 import { Button } from "../../components/atoms/Button"
-import { Footer } from "../../components/templates/Footer/Footer"
-import { Header } from "../../components/templates/Header/Header"
 import { HomeProvider } from '../../contexts/Home/HomeProvider'
+
+const Header = lazy(() => import("../../components/templates/Header/Header"))
+const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 
 export default function NotFound() {
     return (

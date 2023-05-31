@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState, useRef } from "react";
+import { useCallback, useContext, useEffect, useState, useRef, lazy, Suspense } from "react";
 
 import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 
@@ -9,16 +9,19 @@ import { Button } from "../../../atoms/Button";
 import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
 import { CreateFeed } from '../CreateFeed/CreateFeed.jsx'
 import { Feed } from '../../../organisms/Feed'
-import { MostViewedRecipesContainer } from "../../../organisms/MostViewedRecipesContainer";
 import { ColumnLeftMainHome } from "../../../organisms/ColumnLeftMainHome";
 import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
 import { useFeedApi } from "../../../../hooks/useApi";
 
-import './main.css'
 import { smartSearch } from "../../../../scripts/smartSearch";
 import { Adsense } from "../../../molecules/Adsense";
 
-export const MainContentHome = () => {
+import './main.css'
+import { Loading } from "../../../atoms/Loading/Loading";
+
+const MostViewedRecipesContainer = lazy(() => import("../../../organisms/MostViewedRecipesContainer"))
+
+export default function MainContentHome() {
     const { valueSearch, user } = useContext(HomeContext);
     const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
@@ -85,7 +88,9 @@ export const MainContentHome = () => {
 
     return (
         <main className="max-w-[1500px] mx-auto">
-            <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
+            <Suspense fallback={<Loading />}>
+                <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
+            </Suspense>
 
             <Adsense
                 slot="2090078650"

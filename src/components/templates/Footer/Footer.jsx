@@ -5,9 +5,8 @@ import { Input } from '../../atoms/Input'
 import { MdSend } from "react-icons/md"
 import { Link } from 'react-router-dom'
 
-export const Footer = () => {
 
-
+export default function Footer() {
     return (
         <footer className='w-full h-auto md:h-[40vh] bg-color_orange flex flex-col items-center mt-20 '>
             <div className="w-full h-full">

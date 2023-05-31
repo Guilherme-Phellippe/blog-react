@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from "react"
+import { lazy, useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import { useCategoryApi } from "../../hooks/useApi"
 
 import { ColumnAllCategories } from "../../components/templates/ColumnAllCategories"
-import { Footer } from "../../components/templates/Footer/Footer"
-import { Header } from "../../components/templates/Header/Header"
 import { ShowSelectedCategories } from "../../components/templates/ShowSelectedCategories"
 import { HomeProvider } from "../../contexts/Home/HomeProvider"
 
+const Header = lazy(() => import("../../components/templates/Header/Header"))
+const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 
 export default function Category() {
     const { sub } = useParams();

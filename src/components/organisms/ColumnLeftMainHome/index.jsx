@@ -33,7 +33,7 @@ export const ColumnLeftMainHome = ({ recipes }) => {
 
             {
                 window.innerWidth > 700 &&
-                <ins class="adsbygoogle"
+                <ins className="adsbygoogle"
                     style={{ display: "block" }}
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="6974841302"

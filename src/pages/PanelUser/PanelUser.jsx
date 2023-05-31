@@ -1,7 +1,10 @@
+import { lazy } from 'react'
+
 import { HomeProvider } from '../../contexts/Home/HomeProvider'
-import { Footer } from "../../components/templates/Footer/Footer"
 import { MainUserPanel } from "../../components/templates/MainUserPanel"
 import { UserPanelHeader } from '../../components/templates/UserPanelHeader'
+
+const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 
 
 export default function PanelUser() {

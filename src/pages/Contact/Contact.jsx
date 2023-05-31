@@ -1,8 +1,10 @@
+import { lazy } from "react"
+
 import { HomeProvider } from "../../contexts/Home/HomeProvider"
-import { Header } from "../../components/templates/Header/Header"
-import { Footer } from "../../components/templates/Footer/Footer"
 import { ContactMain } from "../../components/templates/ContactMain"
 
+const Header = lazy(() => import("../../components/templates/Header/Header"))
+const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 
 export default function Contact() {
     return (

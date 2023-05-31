@@ -1,16 +1,17 @@
-import { useEffect, useRef, useState } from "react"
+import { lazy, useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { Button } from "../../components/atoms/Button"
 import { Candidate } from "../../components/molecules/Candidate"
 import { TablePoll } from "../../components/organisms/TablePoll"
-import { Footer } from "../../components/templates/Footer/Footer"
-import { Header } from "../../components/templates/Header/Header"
 import { HomeProvider } from "../../contexts/Home/HomeProvider"
 import { useRecipeApi } from "../../hooks/useApi"
 
 import { IoIosCreate } from "react-icons/io"
 
 import moment from "moment"
+
+const Header = lazy(() => import("../../components/templates/Header/Header"))
+const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 
 export default function Poll() {
 
