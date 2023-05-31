@@ -2,15 +2,15 @@ import { useCallback, useContext, useEffect, useState, useRef, lazy, Suspense } 
 
 import { HomeContext } from '../../../../contexts/Home/HomeProvider'
 
-import { GiPodium } from 'react-icons/gi'
-import { MdArrowDropDown } from 'react-icons/md'
+// import { GiPodium } from 'react-icons/gi'
+// import { MdArrowDropDown } from 'react-icons/md'
 
-import { Button } from "../../../atoms/Button";
-import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
-import { CreateFeed } from '../CreateFeed/CreateFeed.jsx'
-import { Feed } from '../../../organisms/Feed'
-import { ColumnLeftMainHome } from "../../../organisms/ColumnLeftMainHome";
-import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
+// import { Button } from "../../../atoms/Button";
+// import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
+// import { CreateFeed } from '../CreateFeed/CreateFeed.jsx'
+// import { Feed } from '../../../organisms/Feed'
+// import { ColumnLeftMainHome } from "../../../organisms/ColumnLeftMainHome";
+// import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
 import { useFeedApi } from "../../../../hooks/useApi";
 
 import { smartSearch } from "../../../../scripts/smartSearch";
@@ -31,6 +31,7 @@ export default function MainContentHome() {
     const [showIconRanking, setShowIconRanking] = useState(false)
 
     //Search data in bd and fill recipes and user
+    console.log(feed, user, showIconRanking, setPostPerPage)
     useEffect(() => {
         // REQ TO API TO SEARCH ALL FEEDS
         (async () => {
@@ -81,10 +82,10 @@ export default function MainContentHome() {
         return [...recipesFiltered].sort((x, y) => y.nmr_eyes - x.nmr_eyes)
     }, [recipes]);
 
-    const topRankingByHearts = useCallback(() => {
-        const recipesFiltered = recipes.filter(recipe => recipe.name_recipe && recipe)
-        return [...recipesFiltered].sort((x, y) => y.nmr_hearts.length - x.nmr_hearts.length)
-    }, [recipes]);
+    // const topRankingByHearts = useCallback(() => {
+    //     const recipesFiltered = recipes.filter(recipe => recipe.name_recipe && recipe)
+    //     return [...recipesFiltered].sort((x, y) => y.nmr_hearts.length - x.nmr_hearts.length)
+    // }, [recipes]);
 
     return (
         <main className="max-w-[1500px] mx-auto">
@@ -98,7 +99,7 @@ export default function MainContentHome() {
             </Suspense>
 
 
-            <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
+            {/* <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4">
                 <ColumnLeftMainHome recipes={recipes} />
 
                 <div className={`feed col-span-2`}>
@@ -150,7 +151,7 @@ export default function MainContentHome() {
                     </>
 
                 }
-            </section>
+            </section> */}
 
         </main>
     )
