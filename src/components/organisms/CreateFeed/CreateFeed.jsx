@@ -3,14 +3,14 @@ import { FaPen } from 'react-icons/fa'
 import { RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
-import { dialog } from '../../../../modals/Dialog'
+import { dialog } from '../../../modals/Dialog'
 
-import { Button } from '../../../atoms/Button'
-import { Input } from '../../../atoms/Input'
+import { Button } from '../../atoms/Button'
+import { Input } from '../../atoms/Input'
 
 import './createfeed.css'
 
-export const CreateFeed = ({ user }) => {
+export default function CreateFeed({ user }) {
 
     const navigate = useNavigate();
     const [valueInput, setValueInput] = useState('');
@@ -20,7 +20,7 @@ export const CreateFeed = ({ user }) => {
             navigate(`/create/?n=${valueInput}`)
         } else {
             const response = await dialog("Você precisa criar uma conta antes de publicar um receita!", 1, "Criar conta")
-            if(response) navigate('/register');
+            if (response) navigate('/register');
         }
 
     }
@@ -29,10 +29,11 @@ export const CreateFeed = ({ user }) => {
             navigate(`/create-tip/?n=${valueInput}`)
         } else {
             const response = await dialog("Você precisa criar uma conta antes de publicar um receita!", 1, "Criar conta")
-            if(response) navigate('/register');
+            if (response) navigate('/register');
         }
 
     }
+
 
     return (
         <div className="container-create-feed">

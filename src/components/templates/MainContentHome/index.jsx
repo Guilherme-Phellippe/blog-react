@@ -1,25 +1,23 @@
 import { useCallback, useContext, useEffect, useState, useRef, lazy, Suspense } from "react";
 
-import { HomeContext } from '../../../../contexts/Home/HomeProvider'
+import { HomeContext } from '../../../contexts/Home/HomeProvider'
 
 import { GiPodium } from 'react-icons/gi'
 import { MdArrowDropDown } from 'react-icons/md'
 
-import { Button } from "../../../atoms/Button";
-import { PollRecipes } from "../PollRecipes/PollRecipes.jsx";
-import { CreateFeed } from '../CreateFeed/CreateFeed.jsx'
-import { Feed } from '../../../organisms/Feed'
-import { ColumnLeftMainHome } from "../../../organisms/ColumnLeftMainHome";
-import { ColumnRightMainHome } from "../../../organisms/ColumnRightMainHome";
-import { useFeedApi } from "../../../../hooks/useApi";
+import { Button } from "../../atoms/Button";
+import { useFeedApi } from "../../../hooks/useApi";
 
-import { smartSearch } from "../../../../scripts/smartSearch";
+import { smartSearch } from "../../../scripts/smartSearch";
+import { Loading } from "../../atoms/Loading/Loading";
 
-import './main.css'
-import { Loading } from "../../../atoms/Loading/Loading";
-
-const MostViewedRecipesContainer = lazy(() => import("../../../organisms/MostViewedRecipesContainer"))
-const Adsense = lazy(() => import("../../../molecules/Adsense"))
+const MostViewedRecipesContainer = lazy(() => import("../../organisms/MostViewedRecipesContainer"))
+const Adsense = lazy(() => import("../../molecules/Adsense"))
+const ColumnLeftMainHome = lazy(() => import("../../organisms/ColumnLeftMainHome"))
+const ColumnRightMainHome = lazy(() => import("../../organisms/ColumnRightMainHome"))
+const Feed = lazy(() => import("../../organisms/Feed"))
+const PollRecipes = lazy(() => import("../../organisms/PollRecipes/PollRecipes"))
+const CreateFeed = lazy(() => import("../../organisms/CreateFeed/CreateFeed"))
 
 export default function MainContentHome() {
     const { valueSearch, user } = useContext(HomeContext);
@@ -96,9 +94,11 @@ export default function MainContentHome() {
     }, [recipes]);
 
     return (
-        <main className="max-w-[1500px] mx-auto">
+        <main className="w-full max-w-[1500px] mt-4 mx-auto relative">
             <Suspense fallback={<Loading />}>
                 <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
+            </Suspense>
+            <Suspense fallback={<Loading />}>
                 <Adsense
                     slot="2090078650"
                     format="auto"
@@ -106,26 +106,29 @@ export default function MainContentHome() {
                 />
             </Suspense>
 
-
-            <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4 min-h-screen">
+            <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4 min-h-screen relative">
                 {
                     showContentSection &&
                     <>
-                        <ColumnLeftMainHome recipes={recipes} />
+                        <Suspense fallback={<Loading />}>
+                            <ColumnLeftMainHome recipes={recipes} />
+                        </Suspense>
 
-                        <div className={`feed col-span-2`}>
+                        <div className={`feed col-span-2 relative`}>
                             {!valueSearch &&
-                                <>
+                                <Suspense fallback={<Loading />}>
                                     <PollRecipes />
                                     <CreateFeed user={user} />
-                                </>
+                                </Suspense>
                             }
-                            <Feed
-                                contents={feed}
-                                setFeed={setFeed}
-                                valueSearch={valueSearch}
-                                setIsOpenRanking={setIsOpenRanking}
-                            />
+                            <Suspense fallback={<Loading />}>
+                                <Feed
+                                    contents={feed}
+                                    setFeed={setFeed}
+                                    valueSearch={valueSearch}
+                                    setIsOpenRanking={setIsOpenRanking}
+                                />
+                            </Suspense>
                             {postPerPage <= feed.length &&
                                 <Button
                                     customClass={"btn-primary flex items-center mt-16 mx-auto block px-8 text-s1_1"}
@@ -137,9 +140,12 @@ export default function MainContentHome() {
                             }
                         </div>
 
-                        <ColumnRightMainHome
-                            ranking={topRankingByHearts()}
-                        />
+                        <Suspense fallback={<Loading />}>
+                            <ColumnRightMainHome
+                                ranking={topRankingByHearts()}
+                            />
+                        </Suspense>
+
 
                         {
                             window.innerWidth <= 767 && showIconRanking &&
@@ -147,10 +153,12 @@ export default function MainContentHome() {
                                 <div
                                     data-id="modal-ranking-recipe-mobile"
                                     className={`${!isOpenRanking ? "invisible translate-x-full" : 'visible translate-x-[43%]'} z-[999] transition-transform duration-400 fixed top-0 w-[70%] h-screen overflow-auto border-l-[2px] border-l-color_orange`}>
-                                    <ColumnRightMainHome
-                                        ranking={topRankingByHearts()}
-                                        isOpenRanking={isOpenRanking}
-                                    />
+                                    <Suspense fallback={<Loading />} >
+                                        <ColumnRightMainHome
+                                            ranking={topRankingByHearts()}
+                                            isOpenRanking={isOpenRanking}
+                                        />
+                                    </Suspense>
                                 </div>
                                 <div
                                     data-id="modal-ranking-recipe-mobile"
@@ -170,5 +178,4 @@ export default function MainContentHome() {
         </main>
     )
 }
-
 

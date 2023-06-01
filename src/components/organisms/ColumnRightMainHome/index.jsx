@@ -3,8 +3,7 @@ import { useCallback, useEffect, useMemo } from "react"
 import { PanelUser } from "../../organisms/PanelUser/PanelUser"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 
-export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
-
+export default function ColumnRightMainHome({ ranking, isOpenRanking }) {
     const MostRecent = useCallback(() => {
         return [...ranking].sort((a, b) => {
             let date1 = moment(a.createdAt, 'YYYY-MM-DD HH:mm:ss')
@@ -17,13 +16,13 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        if(window.location.hostname !== 'localhost'){
-            if(isOpenRanking || window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
+        if (window.location.hostname !== 'localhost') {
+            if (isOpenRanking || window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
         }
     }, [isOpenRanking])
 
     return (
-        <aside className={`col-span-1 md:block ${isOpenRanking ? "block" : "hidden"}`}>
+        <aside className={`col-span-1 bg-white md:block ${isOpenRanking ? "block" : "hidden"}`}>
             {useMemo(() => {
                 return (
                     <>
@@ -33,17 +32,17 @@ export const ColumnRightMainHome = ({ ranking, isOpenRanking }) => {
 
                         {
                             window.innerWidth > 700 || isOpenRanking ?
-                            <ins className="adsbygoogle"
-                                style={{ display: "block" }}
-                                data-ad-client="ca-pub-4781060024956035"
-                                data-ad-slot="6974841302"
-                                data-matched-content-ui-type="image_sidebyside"
-                                data-matched-content-rows-num="4"
-                                data-matched-content-columns-num="1"
-                                data-ad-format="autorelaxed"
-                            ></ins>
-                            :
-                            null
+                                <ins className="adsbygoogle"
+                                    style={{ display: "block" }}
+                                    data-ad-client="ca-pub-4781060024956035"
+                                    data-ad-slot="6974841302"
+                                    data-matched-content-ui-type="image_sidebyside"
+                                    data-matched-content-rows-num="4"
+                                    data-matched-content-columns-num="1"
+                                    data-ad-format="autorelaxed"
+                                ></ins>
+                                :
+                                null
                         }
 
                         {

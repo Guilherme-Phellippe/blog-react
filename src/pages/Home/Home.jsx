@@ -5,7 +5,7 @@ import { Loading } from "../../components/atoms/Loading/Loading";
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
-const MainContentHome = lazy(() => import("../../components/templates/Home/MainContentHome"))
+const MainContentHome = lazy(() => import("../../components/templates/MainContentHome"))
 const CookieConsent = lazy(() => import("react-cookie-consent"))
 
 export default function Home() {

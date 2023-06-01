@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecipeApi } from '../../../../hooks/useApi';
-import { Button } from '../../../atoms/Button';
-import { Candidate } from '../../../molecules/Candidate';
+import { useRecipeApi } from '../../../hooks/useApi';
+import { Button } from '../../atoms/Button';
+import { Candidate } from '../../molecules/Candidate';
+
 import moment from 'moment';
 
-export const PollRecipes = () => {
+export default function PollRecipes() {
     const [recipes, setRecipes] = useState([]);
     const refRecipeApi = useRef(useRecipeApi());
 

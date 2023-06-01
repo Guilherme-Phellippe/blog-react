@@ -2,8 +2,7 @@ import moment from "moment";
 import { useCallback, useEffect, useMemo } from "react"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 
-export const ColumnLeftMainHome = ({ recipes }) => {
-
+export default function ColumnLeftMainHome({ recipes }) {
 
     const MostRecent = useCallback(() => {
         return [...recipes].sort((a, b) => {
@@ -22,9 +21,8 @@ export const ColumnLeftMainHome = ({ recipes }) => {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
-
     return (
-        <aside className="hidden md:block col-span-1">
+        <aside className="hidden md:block col-span-1 bg-white">
             {useMemo(() => {
                 return <BoxRankingRecipes
                     title={'Receitas novas'}

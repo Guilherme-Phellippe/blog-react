@@ -8,7 +8,8 @@ import { Loading } from '../../atoms/Loading/Loading';
 
 const Adsense = lazy(() => import('../../molecules/Adsense'))
 
-export const Feed = ({ contents, valueSearch, setIsOpenRanking }) => {
+
+export default function Feed({ contents, valueSearch, setIsOpenRanking }) {
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
     const [listRecipeForRemove, setListRecipeForRemove] = useState(listRecipeLocalStorage);
     const hasSearch = valueSearch ? true : false;

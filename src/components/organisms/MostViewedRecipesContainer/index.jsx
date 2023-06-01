@@ -11,7 +11,8 @@ export default function MostViewedRecipesContainer({ valueSearch, topRanking }) 
     return (
         <>
             {!valueSearch && !!filteredRanking.length &&
-                <section id="best-recipes" className="relative">
+
+                <section className="w-full h-[50vh] min-h-[400px] grid place-items-center relative">
                     <div
                         className="w-[95%] md:w-[80%] h-[90%] rounded-lg p-2 bg-white overflow-hidden grid grid-cols-4 grid-rows-6 gap-4">
                         {
