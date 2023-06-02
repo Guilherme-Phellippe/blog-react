@@ -6,7 +6,7 @@ import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
-const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
+// const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
 
 export default function RecipeMain() {
     const { id } = useParams();
