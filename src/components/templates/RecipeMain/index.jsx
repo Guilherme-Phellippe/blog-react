@@ -1,11 +1,11 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { IconsShare } from '../../organisms/IconsShare';
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
+const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 // const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
 
 export default function RecipeMain() {
@@ -26,7 +26,9 @@ export default function RecipeMain() {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
-            {recipe ? <IconsShare recipe={recipe} /> : <Loading />}
+
+            {recipe && <Suspense fallback={<Loading />}><IconsShare recipe={recipe} /></Suspense>}
+            
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div className="w-full bg-white min-h-screen overflow-hidden">
                     {
