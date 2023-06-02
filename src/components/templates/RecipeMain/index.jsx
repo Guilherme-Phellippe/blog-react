@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 
-export const Main = () => {
+export default function RecipeMain() {
     const { id } = useParams();
     const [recipe, setRecipe] = useState()
     const refRecipeApi = useRef(useRecipeApi());

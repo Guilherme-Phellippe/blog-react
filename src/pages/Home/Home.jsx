@@ -13,6 +13,7 @@ export default function Home() {
     <HomeProvider>
       <Header />
       <Suspense fallback={<Loading />}>
+        {console.log("Home")}
         <MainContentHome />
         <Footer />
         <CookieConsent
@@ -31,7 +32,7 @@ export default function Home() {
           </p>
         </CookieConsent>
       </Suspense>
-    </HomeProvider>
+    </HomeProvider >
   );
 }
 

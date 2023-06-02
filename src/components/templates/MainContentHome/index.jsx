@@ -20,15 +20,18 @@ const PollRecipes = lazy(() => import("../../organisms/PollRecipes/PollRecipes")
 const CreateFeed = lazy(() => import("../../organisms/CreateFeed/CreateFeed"))
 
 export default function MainContentHome() {
+    //useContext
     const { valueSearch, user } = useContext(HomeContext);
+    //useState
     const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
     const [isOpenRanking, setIsOpenRanking] = useState(false)
-    const feedApi = useRef(useFeedApi());
     const [showIconRanking, setShowIconRanking] = useState(false)
     const [showContentSection, setContentSection] = useState(false)
-
+    //useRef
+    const feedApi = useRef(useFeedApi());
+    
     //Search data in bd and fill recipes and user
     useEffect(() => {
         // REQ TO API TO SEARCH ALL FEEDS
@@ -105,6 +108,7 @@ export default function MainContentHome() {
                     data-full-width-responsive="true"
                 />
             </Suspense>
+            {console.log("showContentSection: "+ showContentSection)}
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4 min-h-screen relative">
                 {
@@ -178,4 +182,5 @@ export default function MainContentHome() {
         </main>
     )
 }
+
 
