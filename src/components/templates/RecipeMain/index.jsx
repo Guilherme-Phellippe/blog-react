@@ -76,7 +76,7 @@ export default function RecipeMain() {
                     }
 
                     {
-                        showContentAfterScroll &&
+                        showContentAfterScroll && recipe &&
                         <Suspense fallback={<Loading />}>
                             <RecipeSimilarContent name_search={recipe.name_recipe} />
                         </Suspense>
