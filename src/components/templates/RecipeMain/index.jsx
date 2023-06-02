@@ -54,7 +54,7 @@ export default function RecipeMain() {
             }
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
-                <div className="mt-4">
+                <div className="mb-4">
                     <ins className="adsbygoogle"
                         style={{ display: 'block' }}
                         data-ad-client="ca-pub-4781060024956035"
