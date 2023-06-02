@@ -8,7 +8,6 @@ import { InfoTipContent } from '../../organisms/InfoTipContent';
 const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 
-
 export const TipMain = () => {
     const { id } = useParams();
     const [tip, setTip] = useState(null)

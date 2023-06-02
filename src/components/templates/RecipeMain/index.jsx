@@ -6,13 +6,14 @@ import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
-// const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
+const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
 
 export default function RecipeMain() {
     const { id } = useParams();
     const [recipe, setRecipe] = useState()
     const refRecipeApi = useRef(useRecipeApi());
     const refFeedApi = useRef(useFeedApi());
+    const [showContentAfterScroll, setContentAfterScroll] = useState(false)
 
     useEffect(() => {
         (async () => {
@@ -22,6 +23,21 @@ export default function RecipeMain() {
             document.title = data.name_recipe + " - Tem sabor Receitas oficiais"
         })();
     }, [id]);
+
+    useEffect(() => {
+
+        const handleScrollY = () => {
+            if (window.scrollY > 150) setContentAfterScroll(true)
+        }
+
+        window.addEventListener("scroll", handleScrollY)
+
+        return () => {
+            window.removeEventListener("scroll", handleScrollY)
+        }
+
+
+    }, [])
 
 
     return (
@@ -39,8 +55,17 @@ export default function RecipeMain() {
                     {
                         recipe &&
                         <Suspense fallback={<Loading />}>
-                            <InfoRecipeContent recipe={recipe} />
-                            {/* <RecipeSimilarContent name_search={recipe.name_recipe} />  */}
+                            <InfoRecipeContent 
+                                recipe={recipe}
+                                showContentAfterScroll={showContentAfterScroll}
+                            />
+                        </Suspense>
+                    }
+
+                    {
+                        showContentAfterScroll &&
+                        <Suspense fallback={<Loading />}>
+                            <RecipeSimilarContent name_search={recipe.name_recipe} />
                         </Suspense>
                     }
                 </div>
