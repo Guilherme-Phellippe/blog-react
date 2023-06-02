@@ -1,6 +1,5 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { HomeProvider } from '../../contexts/Home/HomeProvider'
-import { Loading } from '../../components/atoms/Loading/Loading';
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
@@ -10,10 +9,8 @@ export default function Recipe() {
     return (
         <HomeProvider>
             <Header />
-            <Suspense fallback={<Loading />}>
-                <Main />
-                <Footer />
-            </Suspense>
+            <Main />
+            <Footer />
         </HomeProvider>
     )
 }

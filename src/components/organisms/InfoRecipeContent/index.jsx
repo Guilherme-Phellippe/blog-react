@@ -6,8 +6,10 @@ import { PrepareMode } from '../../atoms/PrepareMode';
 import { RecipeChefInfo } from '../../molecules/RecipeChefInfo';
 import { LikeComentsSaveButtons } from '../../molecules/LikeComentSaveButtons'
 
-export const InfoRecipeContent = ({ recipe }) => {
+
+export default function InfoRecipeContent({ recipe }) {
     const { name_recipe, nmr_hearts, images_recipe, ing, stuffing_ing, prepareMode, nmr_saved } = recipe
+
 
     return (
         <div className="w-full flex justify-center">
