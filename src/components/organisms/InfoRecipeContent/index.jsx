@@ -20,14 +20,14 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
                     <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
                 </Suspense>
+                <Suspense fallback={<Loading />}>
+                    <PreparationInformation recipe={recipe} />
+                    <RecipeChefInfo recipe={recipe} />
+                </Suspense>
 
                 {
                     showContentAfterScroll &&
                     <>
-                        <Suspense fallback={<Loading />}>
-                            <PreparationInformation recipe={recipe} />
-                            <RecipeChefInfo recipe={recipe} />
-                        </Suspense>
                         <Suspense fallback={<Loading />}>
                             <IngredientsList ing={ing} stuffing_ing={stuffing_ing} />
                             <PrepareMode prepareMode={prepareMode} />
