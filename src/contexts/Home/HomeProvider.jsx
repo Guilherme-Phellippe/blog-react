@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useRef, useState } from "react"
+import { createContext, useEffect, useRef, useState } from "react"
 import { useUserApi } from "../../hooks/useApi";
 
 export const HomeContext = createContext();
@@ -15,15 +15,8 @@ export const HomeProvider = ({ children }) => {
         })()
     }, [])
 
-    const homeContextValue = useMemo(() => ({
-        valueSearch,
-        user,
-        children
-    }), [valueSearch, user, children])
-
     return (
-        <HomeContext.Provider value={{homeContextValue, setValueSearch}}>
-            {console.log("HomeProvider")}
+        <HomeContext.Provider value={{valueSearch, user, setValueSearch}}>
             {children}
         </HomeContext.Provider>
     )
