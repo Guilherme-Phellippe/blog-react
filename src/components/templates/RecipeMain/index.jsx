@@ -26,6 +26,10 @@ export default function RecipeMain() {
 
     useEffect(() => {
 
+        // GOOGLE ADSENSE 
+        window.location.hostname !== 'localhost' &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+
         const handleScrollY = () => {
             if (window.scrollY > 150) setContentAfterScroll(true)
         }
@@ -39,7 +43,6 @@ export default function RecipeMain() {
 
     }, [])
 
-
     return (
         <div className="w-full max-w-[1500px] mx-auto">
 
@@ -51,11 +54,21 @@ export default function RecipeMain() {
             }
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
+                <div className="mt-4">
+                    <ins className="adsbygoogle"
+                        style={{ display: 'block' }}
+                        data-ad-client="ca-pub-4781060024956035"
+                        data-ad-slot="9346456414"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"
+                    ></ins>
+                </div>
+
                 <div className="w-full bg-white min-h-screen overflow-hidden">
                     {
                         recipe &&
                         <Suspense fallback={<Loading />}>
-                            <InfoRecipeContent 
+                            <InfoRecipeContent
                                 recipe={recipe}
                                 showContentAfterScroll={showContentAfterScroll}
                             />
