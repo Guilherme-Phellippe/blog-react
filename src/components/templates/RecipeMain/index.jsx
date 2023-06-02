@@ -27,8 +27,13 @@ export default function RecipeMain() {
     return (
         <div className="w-full max-w-[1500px] mx-auto">
 
-            {recipe && <Suspense fallback={<Loading />}><IconsShare recipe={recipe} /></Suspense>}
-            
+            {
+                recipe &&
+                <Suspense fallback={<Loading />}>
+                    <IconsShare recipe={recipe} />
+                </Suspense>
+            }
+
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div className="w-full bg-white min-h-screen overflow-hidden">
                     {

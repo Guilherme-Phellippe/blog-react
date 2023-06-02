@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp, FaTwitter, FaTelegram } from 'react-icons/fa';
 import { WhatsappShareButton, FacebookShareButton, TwitterShareButton, TelegramShareButton } from "react-share"
 
-export const IconsShare = ({ recipe }) => {
+export default function IconsShare({ recipe }){ 
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";
 
@@ -85,3 +85,4 @@ export const IconsShare = ({ recipe }) => {
         </div>
     )
 }
+

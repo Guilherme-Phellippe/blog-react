@@ -1,12 +1,12 @@
 import { lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { IconsShare } from '../../organisms/IconsShare';
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useTipApi } from '../../../hooks/useApi';
 import { InfoTipContent } from '../../organisms/InfoTipContent';
 
 const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
+const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 
 
 export const TipMain = () => {
