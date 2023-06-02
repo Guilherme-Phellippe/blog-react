@@ -33,7 +33,7 @@ export default function RecipeMain() {
                         recipe &&
                         <Suspense fallback={<Loading />}>
                             <InfoRecipeContent recipe={recipe} />
-                            <RecipeSimilarContent name_search={recipe.name_recipe} /> 
+                            {/* <RecipeSimilarContent name_search={recipe.name_recipe} />  */}
                         </Suspense>
                     }
                 </div>
