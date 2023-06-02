@@ -1,8 +1,7 @@
 import moment from "moment"
 import { formatTextLong } from "../../../scripts/formatTextLong"
 
-export const RecipeChefInfo = ({ recipe }) => {
-
+export default function RecipeChefInfo({ recipe }){ 
     const noImgUser = 'https://www.procurandocraques.com/static/img/admin/user-profile.png'
     
     return (

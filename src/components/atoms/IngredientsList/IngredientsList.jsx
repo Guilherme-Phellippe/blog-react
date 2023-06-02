@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
-export const IngredientsList = ({ ing: ingredients, stuffing_ing }) => {
-
+export default function IngredientsList({ ing: ingredients, stuffing_ing }) {
     useEffect(() => {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&

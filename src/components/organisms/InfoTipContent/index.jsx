@@ -1,7 +1,11 @@
-import { InfoRecipeHeader } from '../../molecules/InfoRecipeHeader';
-import { RecipeChefInfo } from '../../molecules/RecipeChefInfo';
-import { LikeComentsSaveButtons } from '../../molecules/LikeComentSaveButtons'
+import { lazy } from 'react';
+
 import { Img } from '../../atoms/Img';
+
+const LikeComentsSaveButtons = lazy(()=> import("../../molecules/LikeComentSaveButtons"))
+const InfoRecipeHeader = lazy(()=> import("../../molecules/InfoRecipeHeader"))
+const RecipeChefInfo = lazy(()=> import("../../molecules/RecipeChefInfo"))
+
 
 export const InfoTipContent = ({ tip }) => {
     const { name_tip, description_tip, images, nmr_hearts, nmr_saved } = tip

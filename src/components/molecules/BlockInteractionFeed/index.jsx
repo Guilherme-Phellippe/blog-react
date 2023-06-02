@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from "react"
+import { lazy, useContext, useEffect, useState } from "react"
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { NumberLoved } from "../../atoms/NumberLoved"
-import { LikeComentsSaveButtons } from "../LikeComentSaveButtons"
+
+const LikeComentsSaveButtons = lazy(()=> import("../LikeComentSaveButtons"))
 
 export const BlockInteractionFeed = ({ content }) => {
     const { valueSearch } = useContext(HomeContext)

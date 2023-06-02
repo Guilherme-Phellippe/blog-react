@@ -1,11 +1,14 @@
+import { lazy } from "react";
+
 import { HeaderInfoFeed } from "../../molecules/HeaderInfoFeed";
-import { CarouselMidiasContent } from "../../molecules/CarouselMidiasContent";
 import { AddRecipeInfo } from "../../molecules/AddRecipeInfo";
 import { BlockInteractionFeed } from "../../molecules/BlockInteractionFeed";
 import { ListRecipeComments } from '../../molecules/ListRecipeComments';
 
-export const FeedRecipes = ({ content , hasSearch, handleIdForAddListRemove}) => {
+const CarouselMidiasContent = lazy(()=> import("../../molecules/CarouselMidiasContent"))
 
+
+export const FeedRecipes = ({ content , hasSearch, handleIdForAddListRemove}) => {
 
     return (
         <div 

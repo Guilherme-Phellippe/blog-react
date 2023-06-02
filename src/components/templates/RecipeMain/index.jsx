@@ -1,13 +1,12 @@
-
+import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { RecipeSimilarContent } from '../../organisms/RecipeSimilarContent'
 import { IconsShare } from '../../organisms/IconsShare';
-import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
+const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
 
 export default function RecipeMain() {
     const { id } = useParams();
@@ -34,9 +33,9 @@ export default function RecipeMain() {
                         recipe &&
                         <Suspense fallback={<Loading />}>
                             <InfoRecipeContent recipe={recipe} />
+                            <RecipeSimilarContent name_search={recipe.name_recipe} /> 
                         </Suspense>
                     }
-                    {recipe ? <RecipeSimilarContent name_search={recipe.name_recipe} /> : <Loading />}
                 </div>
             </main>
         </div>

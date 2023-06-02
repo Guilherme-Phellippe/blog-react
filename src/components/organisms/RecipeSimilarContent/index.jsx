@@ -3,7 +3,7 @@ import { ListRecipes } from "../../molecules/ListRecipes";
 import { useRecipeApi } from "../../../hooks/useApi"
 
 
-export const RecipeSimilarContent = ({ name_search }) => {
+export default function RecipeSimilarContent({ name_search }) {
     const [recipes, setRecipes] = useState([])
     const api = useRef(useRecipeApi());
 
@@ -47,7 +47,6 @@ export const RecipeSimilarContent = ({ name_search }) => {
     }
 
 
-
     return (
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
             <div className="w-full bg-white rounded-md p-4">
@@ -80,3 +79,4 @@ export const RecipeSimilarContent = ({ name_search }) => {
         </div>
     )
 }
+
