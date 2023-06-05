@@ -44,12 +44,12 @@ export default function RecipeMain() {
             height.setAttribute("property", "og:image:height")
             height.setAttribute("content", `630`)
 
-            document.head.insertBefore(title, document.head.firstChild)
-            document.head.insertBefore(type, document.head.firstChild)
-            document.head.insertBefore(url, document.head.firstChild)
-            document.head.insertBefore(img, document.head.firstChild)
-            document.head.insertBefore(width, document.head.firstChild)
             document.head.insertBefore(height, document.head.firstChild)
+            document.head.insertBefore(width, document.head.firstChild)
+            document.head.insertBefore(img, document.head.firstChild)
+            document.head.insertBefore(url, document.head.firstChild)
+            document.head.insertBefore(type, document.head.firstChild)
+            document.head.insertBefore(title, document.head.firstChild)
 
             setRecipe(data);
         })();
