@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+
+import DocumentMeta from 'react-document-meta';
 
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
@@ -16,18 +17,12 @@ export default function RecipeMain() {
     const refFeedApi = useRef(useFeedApi());
     const [showContentAfterScroll, setContentAfterScroll] = useState(false)
 
+
     useEffect(() => {
         (async () => {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
-            setRecipe(data)
-
-            document.head.querySelector("#tag-image").content = data.images_recipe[0].small
-            document.head.querySelector("#tag-title").content = data.name_recipe
-            document.head.querySelector("#tag-description").content = `Venha conhecer essa deliciosa receta de ${data.name_recipe} e surpreenda-se com a receita.`
-
-
-            document.title = data.name_recipe + " - Tem sabor Receitas oficiais"
+            setRecipe(data);
         })();
     }, [id]);
 
@@ -50,15 +45,12 @@ export default function RecipeMain() {
 
     }, [])
 
+
     return (
         <div className="w-full max-w-[1500px] mx-auto">
-            <Helmet>
-                <meta property="og:image" content="" />
-                <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="630" />
-                <meta property="og:title" content="" />
-                <meta property="og:description" content="" />
-            </Helmet>
+            <DocumentMeta>
+                <meta property="og:title" content={"teste"} />
+            </DocumentMeta>
 
             {
                 recipe &&
