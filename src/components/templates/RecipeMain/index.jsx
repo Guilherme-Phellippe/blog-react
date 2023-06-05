@@ -19,11 +19,12 @@ export default function RecipeMain() {
         (async () => {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
+            console.log(data)
             setRecipe(data)
             //CREATE META TAG TO SHOW IMAGE WHEN SHARE RECIPE LINK
             const metaTag = document.createElement("meta");
             metaTag.property = "og:image"
-            metaTag.content = data ? data.images[0].small : ""
+            metaTag.content = data ? data.images_recipe[0].small : ""
             document.head.appendChild(metaTag)
             document.title = data.name_recipe + " - Tem sabor Receitas oficiais"
         })();
