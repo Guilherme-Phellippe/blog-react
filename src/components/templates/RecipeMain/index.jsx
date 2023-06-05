@@ -22,10 +22,18 @@ export default function RecipeMain() {
             console.log(data)
             setRecipe(data)
             //CREATE META TAG TO SHOW IMAGE WHEN SHARE RECIPE LINK
-            const metaTag = document.createElement("meta");
-            metaTag.property = "og:image"
-            metaTag.content = data ? data.images_recipe[0].small : ""
-            document.head.appendChild(metaTag)
+            const metaTagImage = document.createElement("meta");
+            const metaTagTitle = document.createElement("meta");
+            const metaTagDescription = document.createElement("meta");
+            metaTagImage.property = "og:image"
+            metaTagTitle.property = "og:title"
+            metaTagDescription.property = "og:description"
+            metaTagImage.content = data ? data.images_recipe[0].small : ""
+            metaTagTitle.content = data.name_recipe
+            metaTagDescription.content = "Conheça essa deliciosa receita no nosso blog Tem sabor"
+            document.head.appendChild(metaTagImage)
+            document.head.appendChild(metaTagTitle)
+            document.head.appendChild(metaTagDescription)
             document.title = data.name_recipe + " - Tem sabor Receitas oficiais"
         })();
     }, [id]);
