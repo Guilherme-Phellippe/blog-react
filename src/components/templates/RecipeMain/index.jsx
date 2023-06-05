@@ -53,11 +53,11 @@ export default function RecipeMain() {
     return (
         <div className="w-full max-w-[1500px] mx-auto">
             <Helmet>
-                <meta id="tag-image" property="og:image" content="" />
-                <meta id="tag-width" property="og:image:width" content="1200" />
-                <meta id="tag-height" property="og:image:height" content="630" />
-                <meta id="tag-title" property="og:title" content="" />
-                <meta id="tag-description" property="og:description" content="" />
+                <meta property="og:image" content="" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:title" content="" />
+                <meta property="og:description" content="" />
             </Helmet>
 
             {
