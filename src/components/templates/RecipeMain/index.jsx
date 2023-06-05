@@ -50,7 +50,7 @@ export default function RecipeMain() {
         <div className="w-full max-w-[1500px] mx-auto">
             {
                 recipe &&
-                <Helmet>
+                <Helmet >
                     <title>{recipe.name_recipe+" - Tem sabor"}</title>
                     <meta property="og:title" content={`${recipe.name_recipe}`} />
                     <meta property="og:type" content="image/*" />
