@@ -6,6 +6,7 @@ const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 const Main = lazy(() => import('../../components/templates/RecipeMain'))
 
 export default function Recipe() {
+
     return (
         <HomeProvider>
             <Header />
