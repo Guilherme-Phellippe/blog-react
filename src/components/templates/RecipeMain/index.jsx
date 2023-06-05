@@ -1,7 +1,6 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 
@@ -22,9 +21,6 @@ export default function RecipeMain() {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
 
-            //         <meta property="og:image:width" content="400" />
-            //         <meta property="og:image:height" content="300" />
-
             const title = document.createElement('title');
             const type = document.createElement('meta');
             const url = document.createElement('meta');
@@ -34,7 +30,7 @@ export default function RecipeMain() {
 
             title.textContent = data.name_recipe
             type.setAttribute("property", "og:type")
-            type.setAttribute("content", "image/*")
+            type.setAttribute("content", "image/webp")
             url.setAttribute("property", "og:url")
             url.setAttribute("content", `https://www.temsabor.blog/recipe/${data.name_recipe}/${data.id}`)
             img.setAttribute("property", "og:image")
