@@ -1,7 +1,6 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Helmet } from "react-helmet";
 
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
@@ -22,6 +21,36 @@ export default function RecipeMain() {
         (async () => {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
+
+            //         <meta property="og:image:width" content="400" />
+            //         <meta property="og:image:height" content="300" />
+
+            const title = document.createElement('title');
+            const type = document.createElement('meta');
+            const url = document.createElement('meta');
+            const img = document.createElement('meta');
+            const width = document.createElement('meta');
+            const height = document.createElement('meta');
+
+            title.textContent = data.name_recipe
+            type.setAttribute("property", "og:type")
+            type.setAttribute("content", "image/*")
+            url.setAttribute("property", "og:url")
+            url.setAttribute("content", `https://www.temsabor.blog/recipe/${data.name_recipe}/${data.id}`)
+            img.setAttribute("property", "og:image")
+            img.setAttribute("content", `${data.images_recipe[0].small}`)
+            width.setAttribute("property", "og:image:width")
+            width.setAttribute("content", `1200`)
+            height.setAttribute("property", "og:image:height")
+            height.setAttribute("content", `630`)
+
+            document.head.insertBefore(title, document.head.firstChild)
+            document.head.insertBefore(type, document.head.firstChild)
+            document.head.insertBefore(url, document.head.firstChild)
+            document.head.insertBefore(img, document.head.firstChild)
+            document.head.insertBefore(width, document.head.firstChild)
+            document.head.insertBefore(height, document.head.firstChild)
+
             setRecipe(data);
         })();
     }, [id]);
@@ -48,19 +77,6 @@ export default function RecipeMain() {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
-            {
-                recipe &&
-                <Helmet >
-                    <title>{recipe.name_recipe+" - Tem sabor"}</title>
-                    <meta property="og:title" content={`${recipe.name_recipe}`} />
-                    <meta property="og:type" content="image/*" />
-                    <meta property="og:url" content={`https://www.temsabor.blog/recipe/${recipe.name_recipe}/${recipe.id}`} />
-                    <meta property="og:image" content={`${recipe.images_recipe[0].small}`} />
-                    <meta property="og:image:width" content="400" />
-                    <meta property="og:image:height" content="300" />
-                </Helmet>
-
-            }
 
             {
                 recipe &&

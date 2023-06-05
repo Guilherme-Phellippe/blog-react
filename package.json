@@ -18,7 +18,6 @@
     "react-cookie-consent": "^8.0.1",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
-    "react-helmet": "^6.1.0",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.1",
