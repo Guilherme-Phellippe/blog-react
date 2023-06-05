@@ -1,7 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import DocumentMeta from 'react-document-meta';
+import { Helmet } from "react-helmet";
 
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
@@ -48,9 +48,19 @@ export default function RecipeMain() {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
-            <DocumentMeta>
-                <meta property="og:title" content={"teste"} />
-            </DocumentMeta>
+            {
+                recipe &&
+                <Helmet>
+                    <title>{recipe.name_recipe+" - Tem sabor"}</title>
+                    <meta property="og:title" content={`${recipe.name_recipe}`} />
+                    <meta property="og:type" content="image/*" />
+                    <meta property="og:url" content={`https://www.temsabor.blog/recipe/${recipe.name_recipe}/${recipe.id}`} />
+                    <meta property="og:image" content={`${recipe.images_recipe[0].small}`} />
+                    <meta property="og:image:width" content="400" />
+                    <meta property="og:image:height" content="300" />
+                </Helmet>
+
+            }
 
             {
                 recipe &&
