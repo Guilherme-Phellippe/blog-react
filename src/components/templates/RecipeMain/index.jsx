@@ -1,6 +1,8 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Helmet } from 'react-helmet';
+
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 
@@ -20,34 +22,7 @@ export default function RecipeMain() {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
             setRecipe(data)
-            //CREATE META TAG TO SHOW IMAGE WHEN SHARE RECIPE LINK
-            const metaTagType = document.createElement("meta");
-            const metaTagImage = document.createElement("meta");
-            const metaTagImageWidth = document.createElement("meta");
-            const metaTagImageHeight = document.createElement("meta");
-            const metaTagTitle = document.createElement("meta");
-            const metaTagDescription = document.createElement("meta");
 
-            metaTagType.property = "og:type"
-            metaTagImage.property = "og:image"
-            metaTagImageWidth.property = "og:image:width"
-            metaTagImageHeight.property = "og:image:height"
-            metaTagTitle.property = "og:title"
-            metaTagDescription.property = "og:description"
-
-            metaTagType.content = "website"
-            metaTagImage.content = data ? data.images_recipe[0].small : ""
-            metaTagImageWidth.content = "1200"
-            metaTagImageHeight.content = "630"
-            metaTagTitle.content = data.name_recipe
-            metaTagDescription.content = "Conheça essa deliciosa receita no nosso blog Tem sabor"
-
-            document.head.appendChild(metaTagType)
-            document.head.appendChild(metaTagImage)
-            document.head.appendChild(metaTagImageWidth)
-            document.head.appendChild(metaTagImageHeight)
-            document.head.appendChild(metaTagTitle)
-            document.head.appendChild(metaTagDescription)
 
             document.title = data.name_recipe + " - Tem sabor Receitas oficiais"
         })();
@@ -76,6 +51,15 @@ export default function RecipeMain() {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
+            <Helmet>
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content={recipe ? recipe.images_recipe[0].small : ""} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="650" />
+                <meta property="og:title" content={recipe && recipe.name_recipe} />
+                <meta property="og:description" content="Conheça essa deliciosa receita no nosso blog Tem sabor" />
+
+            </Helmet>
 
             {
                 recipe &&
