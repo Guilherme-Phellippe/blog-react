@@ -30,8 +30,6 @@ export default function RecipeMain() {
 
     useEffect(() => {
 
-
-
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -50,27 +48,20 @@ export default function RecipeMain() {
     }, [])
 
     return (
+        recipe &&
         <div className="w-full max-w-[1500px] mx-auto">
             <Helmet>
-                {
-                    recipe &&
-                    <>
-                        <meta property="og:type" content="website" />
-                        <meta property="og:image" content={recipe.images_recipe[0].small} />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="650" />
-                        <meta property="og:title" content={recipe.name_recipe} />
-                        <meta property="og:description" content="Conheça essa deliciosa receita no nosso blog Tem sabor" />
-                    </>
-                }
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content={recipe.images_recipe[0].small} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="650" />
+                <meta property="og:title" content={recipe.name_recipe} />
+                <meta property="og:description" content="Conheça essa deliciosa receita no nosso blog Tem sabor" />
             </Helmet>
 
-            {
-                recipe &&
-                <Suspense fallback={<Loading />}>
-                    <IconsShare recipe={recipe} />
-                </Suspense>
-            }
+            <Suspense fallback={<Loading />}>
+                <IconsShare recipe={recipe} />
+            </Suspense>
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div className="mb-4">
@@ -84,18 +75,15 @@ export default function RecipeMain() {
                 </div>
 
                 <div className="w-full bg-white min-h-screen overflow-hidden">
-                    {
-                        recipe &&
-                        <Suspense fallback={<Loading />}>
-                            <InfoRecipeContent
-                                recipe={recipe}
-                                showContentAfterScroll={showContentAfterScroll}
-                            />
-                        </Suspense>
-                    }
+                    <Suspense fallback={<Loading />}>
+                        <InfoRecipeContent
+                            recipe={recipe}
+                            showContentAfterScroll={showContentAfterScroll}
+                        />
+                    </Suspense>
 
                     {
-                        showContentAfterScroll && recipe &&
+                        showContentAfterScroll &&
                         <Suspense fallback={<Loading />}>
                             <RecipeSimilarContent name_search={recipe.name_recipe} />
                         </Suspense>
