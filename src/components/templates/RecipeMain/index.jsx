@@ -50,12 +50,7 @@ export default function RecipeMain() {
     return (
         <div className="w-full max-w-[1500px] mx-auto">
             <Helmet>
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content={recipe ? recipe.images_recipe[0].small : ""} />
-                <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="650" />
-                <meta property="og:title" content={recipe ? recipe.name_recipe : "recita da tem sabor"} />
-                <meta property="og:description" content="Conheça essa deliciosa receita no nosso blog Tem sabor" />
+                
             </Helmet>
 
             {
