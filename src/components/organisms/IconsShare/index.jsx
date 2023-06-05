@@ -47,7 +47,7 @@ export default function IconsShare({ recipe }){
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <WhatsappShareButton
-                    title={`Olha oque eu encontrei: \n*${recipe?.name_recipe || recipe.name_tip}*\n`}
+                    title={`*${recipe?.name_recipe || recipe.name_tip}*\n`}
                     separator={"\n"}
                     url={`https://temsabor.blog/recipe/${recipe?.name_recipe ? recipe.name_recipe.replaceAll(" ", "%20") : recipe.name_tip.replaceAll(" ", "%20")}/${recipe.id}`}
                 >
