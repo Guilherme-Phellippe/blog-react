@@ -75,10 +75,6 @@ export const Menu = () => {
 
                                 <LinkNavigation route={'/about'} customClass={''}>Sobre nós</LinkNavigation>
                                 <LinkNavigation route={'/contact'} customClass={''}>Contato</LinkNavigation>
-                                <LinkNavigation route={'/policy'} customClass={''}>Politicas privacidade</LinkNavigation>
-                                <LinkNavigation route={'/terms'} customClass={''}>Termos de uso</LinkNavigation>
-
-
                             </ul>
 
 
@@ -123,24 +119,11 @@ export const Menu = () => {
                                     route={'/about'}
                                     customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
                                 >Sobre nós</LinkNavigation>
-
                                 <LinkNavigation
                                     onClick={() => setMenuIsOpen(false)}
                                     route={'/contact'}
                                     customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
                                 >Contato</LinkNavigation>
-
-                                <LinkNavigation
-                                    onClick={() => setMenuIsOpen(false)}
-                                    route={'/policy'}
-                                    customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
-                                >Politicas privacidade</LinkNavigation>
-
-                                <LinkNavigation
-                                    onClick={() => setMenuIsOpen(false)}
-                                    route={'/terms'}
-                                    customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
-                                >Termos de uso</LinkNavigation>
                             </ul>
                             <div className="flex w-full h-[10%] justify-center items-center px-8">
                                 <SocialMidia isMobile={true} />

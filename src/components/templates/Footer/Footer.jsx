@@ -18,7 +18,8 @@ export default function Footer() {
                             mas estamos em busca de patrocinadores que queiram apoiar o nosso trabalho
                             e fazer parte da nossa comunidade de leitores e seguidores. Com um público engajado e fiel,
                             oferecemos oportunidades valiosas para empresas e indivíduos que desejam alcançar um público mais amplo
-                            e consolidar sua presença no mercado.</p>
+                            e consolidar sua presença no mercado.
+                        </p>
                     </div>
                     <div className="flex flex-col justify-start items-center min-w-1/4 pt-8">
                         <h3 className='text-s2 md:text-s1_7 text-white mb-8'>Nossas politicas</h3>
@@ -38,8 +39,10 @@ export default function Footer() {
                         <h3 className='text-s2 md:text-s1_7 text-white mb-8'>Sobre</h3>
                         <a className='text-s1_5 md:text-s1_3 text-white underline my-4 cursor-pointer' href="/about">Quem somos?</a>
                         <div className="flex flex-col gap-4 items-center text-s1_3 mb-8">
-                            <p className='text-white/80 mt-2'>Fale conosco:</p>
-                            <span className='text-white font-bold'>contato@temsabor.blog</span>
+                            <h3 className='text-s2 md:text-s1_7 text-white my-6'>Fale conosco:</h3>
+                            <Link to={'/contact'} className='text-white cursor-pointer underline'>
+                                contato
+                            </Link>
                         </div>
                         <Link to={'/create/?n='}>
                             <Button customClass='btn-second mt-12 text-s1_4 p-4'>Publique uma receita</Button>
