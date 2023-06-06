@@ -1,6 +1,5 @@
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { HomeProvider } from '../../contexts/Home/HomeProvider'
-import { Loading } from '../../components/atoms/Loading/Loading';
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
@@ -19,12 +18,8 @@ export default function Recipe() {
 
     return (
         <HomeProvider>
-            <Suspense fallback={<Loading />}>
-                <Header />
-            </Suspense>
-            <Suspense fallback={<Loading />}>
-                <Main showContentAfterScroll={showContentAfterScroll} />
-            </Suspense>
+            <Header />
+            <Main showContentAfterScroll={showContentAfterScroll} />
             {
                 showContentAfterScroll &&
                 <>
