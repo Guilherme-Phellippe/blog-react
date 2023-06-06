@@ -21,22 +21,24 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
                 </Suspense>
 
-                {
-                    showContentAfterScroll &&
-                    <>
-                        <Suspense fallback={<Loading />}>
-                            <PreparationInformation recipe={recipe} />
-                            <RecipeChefInfo recipe={recipe} />
-                        </Suspense>
-                        <Suspense className="relative" fallback={<Loading />}>
-                            <IngredientsList ing={ing} stuffing_ing={stuffing_ing} />
-                            <PrepareMode prepareMode={prepareMode} />
-                            <div className="w-full py-4 mt-4 bg-[#24242420]">
-                                <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved} />
-                            </div>
-                        </Suspense>
-                    </>
-                }
+                <div className="w-full min-h-screen relative">
+                    {
+                        showContentAfterScroll &&
+                        <>
+                            <Suspense fallback={<Loading />}>
+                                <PreparationInformation recipe={recipe} />
+                                <RecipeChefInfo recipe={recipe} />
+                            </Suspense>
+                            <Suspense className="relative" fallback={<Loading />}>
+                                <IngredientsList ing={ing} stuffing_ing={stuffing_ing} />
+                                <PrepareMode prepareMode={prepareMode} />
+                                <div className="w-full py-4 mt-4 bg-[#24242420]">
+                                    <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved} />
+                                </div>
+                            </Suspense>
+                        </>
+                    }
+                </div>
             </div>
         </div>
     )

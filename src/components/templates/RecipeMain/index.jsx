@@ -8,12 +8,11 @@ const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent")
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
 
-export default function RecipeMain() {
+export default function RecipeMain({ showContentAfterScroll }) {
     const { id } = useParams();
     const [recipe, setRecipe] = useState()
     const refRecipeApi = useRef(useRecipeApi());
     const refFeedApi = useRef(useFeedApi());
-    const [showContentAfterScroll, setContentAfterScroll] = useState(false)
 
 
     useEffect(() => {
@@ -21,52 +20,14 @@ export default function RecipeMain() {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
 
-            const title = document.createElement('title');
-            const type = document.createElement('meta');
-            const url = document.createElement('meta');
-            const img = document.createElement('meta');
-            const width = document.createElement('meta');
-            const height = document.createElement('meta');
-
-            title.textContent = data.name_recipe
-            type.setAttribute("property", "og:type")
-            type.setAttribute("content", "image/webp")
-            url.setAttribute("property", "og:url")
-            url.setAttribute("content", `https://www.temsabor.blog/recipe/${data.name_recipe}/${data.id}`)
-            img.setAttribute("property", "og:image")
-            img.setAttribute("content", `${data.images_recipe[0].small}`)
-            width.setAttribute("property", "og:image:width")
-            width.setAttribute("content", `1200`)
-            height.setAttribute("property", "og:image:height")
-            height.setAttribute("content", `630`)
-
-            document.head.insertBefore(height, document.head.firstChild)
-            document.head.insertBefore(width, document.head.firstChild)
-            document.head.insertBefore(img, document.head.firstChild)
-            document.head.insertBefore(url, document.head.firstChild)
-            document.head.insertBefore(type, document.head.firstChild)
-            document.head.insertBefore(title, document.head.firstChild)
-
             setRecipe(data);
         })();
     }, [id]);
 
     useEffect(() => {
-
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
-
-        const handleScrollY = () => {
-            if (window.scrollY > 150) setContentAfterScroll(true)
-        }
-
-        window.addEventListener("scroll", handleScrollY)
-
-        return () => {
-            window.removeEventListener("scroll", handleScrollY)
-        }
-
 
     }, [])
 
@@ -104,7 +65,7 @@ export default function RecipeMain() {
                     }
 
                     {
-                        showContentAfterScroll && recipe &&
+                        recipe &&
                         <Suspense fallback={<Loading />}>
                             <RecipeSimilarContent name_search={recipe.name_recipe} />
                         </Suspense>
