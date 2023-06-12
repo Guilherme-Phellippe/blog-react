@@ -1,17 +1,20 @@
-import { useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { FaArrowLeft, FaPlusCircle } from "react-icons/fa"
 import { MdListAlt, MdRemoveCircle } from "react-icons/md"
-import { useRecipeApi } from "../../../hooks/useApi"
+import { useRecipeApi, useWhatsapp } from "../../../hooks/useApi"
 import { Input } from "../../atoms/Input"
 import { Button } from "../../atoms/Button"
 import { Loading } from "../../atoms/Loading/Loading"
 import { useNavigate } from "react-router-dom"
 import { UploadImage } from "../../molecules/UploadImage"
 import { dialog } from "../../../modals/Dialog"
+import { HomeContext } from "../../../contexts/Home/HomeProvider"
 
 
 export const StepThreeCreateRecipe = ({ setStep }) => {
     const recipeApi = useRecipeApi()
+    const whatsapp = useWhatsapp()
+    const { user } = useContext(HomeContext)
     const [loading, setLoading] = useState(false)
     const [images, setImages] = useState([])
     const [wordKeys, setWordKeys] = useState([])
@@ -40,9 +43,6 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
         }
     }
 
-
-
-
     const handleCreateRecipe = async () => {
         setLoading(true)
         const recipe = JSON.parse(localStorage.getItem('recipe'));
@@ -52,7 +52,23 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                 recipe.wordKeys = wordKeys;
                 const data = await recipeApi.createNewRecipe(recipe)
                 if (data) {
+                    // REMOVE RECIPE FROM STORAGE
                     localStorage.removeItem("recipe")
+
+                    // SEND RECIPE TO WHATSAPP
+                    if(user.admin){
+                        const description = prompt("Crie um texto persoasivo para essa receita...")
+
+                        const infoRecipe = {
+                            url: data.images_recipe[0].small,
+                            name: data.name_recipe,
+                            description,
+                            link: `https://temsabor.blog/recipe/${data.name_recipe.replaceAll(" ", "%20")}/${data.id}`,
+                        }
+                        await whatsapp.sendRecipe(infoRecipe).catch(err => console.log(err))
+                    }
+
+                    // REDIRECT TO USER TO RECIPE PAGE
                     const response = await dialog("Sua receita foi criada com sucesso!", 2, "Ver receita")
                     if (response) navigate(`/recipe/${data.name_recipe}/${data.id}`)
                     else navigate('/')

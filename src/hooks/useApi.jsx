@@ -253,3 +253,12 @@ export const useNotificationApi = () => ({
         return response
     }
 })
+
+
+export const useWhatsapp = () => ({
+    sendRecipe: async (data) => {
+        const response = await axios.post("https://whatsapp.temsabor.blog/send-recipe", data)
+        
+        return response
+    }
+})
