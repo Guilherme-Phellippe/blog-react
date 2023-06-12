@@ -1,6 +1,6 @@
 export const dialog = (text , type, buttonText) => {
     const root = document.querySelector("#root")
-    const color = type === 0 ? "red-500" : type === 1 ? "color_orange" : "green-500"
+    const color = type === 0 ? "red-500" : type === 1 ? "color_orange" : "green-700"
 
     return new Promise((resolve, reject) => {
         const container = document.createElement('div');
@@ -32,7 +32,7 @@ export const dialog = (text , type, buttonText) => {
         })
 
         const buttonConfirm = document.createElement('button')
-        buttonConfirm.setAttribute("class", `text-s1_3 p-2 px-6 text-white border rounded-xl bg-${color}`)
+        buttonConfirm.setAttribute("class", `bg-${color} text-s1_3 p-2 px-6 text-white border rounded-xl`)
         buttonConfirm.innerHTML = buttonText
         buttonConfirm.addEventListener('click', () => {
             root.removeChild(container)

@@ -9,7 +9,6 @@ export const NumberLoved = ({ nmr_hearts, nmr_comments }) => {
     const handleClickComment = ({ target }) => {
         const boxFeedComments = target.closest("div[data-id=feed-recipe]").querySelector('[data-id=feed-comment]')
         boxFeedComments.classList.toggle("hidden")
-        boxFeedComments.classList.toggle("flex")
     }
 
 

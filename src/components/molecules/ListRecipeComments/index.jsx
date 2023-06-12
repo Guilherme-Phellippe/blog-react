@@ -9,12 +9,12 @@ export const ListRecipeComments = ({ content }) => {
 
 
     return (
-        <div data-id="feed-comment" className="w-full flex-col items-center justify-center bg-white border-t-[1px] border-solid py-4 hidden">
+        <div data-id="feed-comment" className="w-full flex-col items-center justify-center bg-white border-t-[1px] border-solid py-4">
 
             <div
                 onLoad={({ currentTarget }) => currentTarget.scrollBy(0, 100) }
                 id="box-comment"
-                className="w-full flex flex-col max-h-[25rem] overflow-y-auto overflow-x-hidden">
+                className="w-full flex flex-col max-h-[25rem] overflow-y-auto overflow-x-hidden my-4">
                 {
                     comments.length
                         ? comments.map(comment => {

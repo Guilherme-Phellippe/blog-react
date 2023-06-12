@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
+import { ListRecipeComments } from '../../molecules/ListRecipeComments';
 
 const InfoRecipeHeader = lazy(() => import("../../molecules/InfoRecipeHeader"))
 const CarouselMidiasContent = lazy(() => import("../../molecules/CarouselMidiasContent"))
@@ -32,9 +33,12 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             <Suspense className="relative" fallback={<Loading />}>
                                 <IngredientsList ing={ing} stuffing_ing={stuffing_ing} />
                                 <PrepareMode prepareMode={prepareMode} />
-                                <div className="w-full py-4 mt-4 bg-[#24242420]">
+                            </Suspense>
+                            <Suspense fallback={<Loading />}>
+                                <div className="w-full py-4 my-4 bg-[#24242420]">
                                     <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved} />
                                 </div>
+                                <ListRecipeComments content={recipe} />
                             </Suspense>
                         </>
                     }

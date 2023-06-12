@@ -42,7 +42,7 @@ export default function LikeComentSaveButtons({ recipeId, setNmr_hearts, nmr_hea
                 if (data.status === 201) setNmr_hearts(nmr => [...nmr, token.id]);
             }
         } else {
-            const response = await dialog("Você precisa criar uma conta para dar amei nessa receita", 1, "Criar conta")
+            const response = await dialog("Você precisa criar uma conta para dar amei nessa receita", 2, "Criar conta")
             if (response) navigate('/register')
         }
 

@@ -5,6 +5,7 @@ import { useRecipeApi } from "../../../hooks/useApi"
 
 export default function RecipeSimilarContent({ name_search }) {
     const [recipes, setRecipes] = useState([])
+    const NUMBER_CONTENT_SIMILAR = 8
     const api = useRef(useRecipeApi());
 
     useEffect(() => {
@@ -36,10 +37,10 @@ export default function RecipeSimilarContent({ name_search }) {
         //if exist one or more recipe with same id , this filter will remove this recipe
         recipesFinds.filter((r, i) => recipesFinds.findIndex(obj => obj.id === r.id) === i)
 
-        //if size not equal like six, this forEach will add new recipe at recipesFinds
-        recipesFinds.length < 8 && recipes.forEach(recipe => {
+        //if size not equal like eigth, this forEach will add new recipe at recipesFinds
+        recipesFinds.length < NUMBER_CONTENT_SIMILAR && recipes.forEach(recipe => {
             const founded = !recipesFinds.some(rf => recipe.id === rf.id) && recipe
-            if (recipesFinds.length < 8 && founded) recipesFinds.push(founded);
+            if (recipesFinds.length < NUMBER_CONTENT_SIMILAR && founded) recipesFinds.push(founded);
             else return
         });
 
@@ -66,8 +67,8 @@ export default function RecipeSimilarContent({ name_search }) {
                 <h2 className='text-center text-s2 p-8 text-color_orange font-bold'>Talvez você goste dessas receitas</h2>
                 <div className="w-full flex flex-wrap gap-4 py-8 justify-evenly" >
                     {handleRecipeByTarget().length ?
-                        handleRecipeByTarget().map(recipe => {
-                            return <ListRecipes
+                        handleRecipeByTarget().map((recipe, index) => {
+                            return index < NUMBER_CONTENT_SIMILAR && <ListRecipes
                                 classContainer='w-[16rem] md:w-[23rem] h-[15rem] border-[1px] overflow-hidden rounded-2xl relative border-solid cursor-pointer transition-transform hover:scale-105 hover:border-color_red'
                                 classInfoContent='w-[80%] h-[50%] absolute top-1/4 left-[10%] bg-[#fffa] rounded-2xl flex flex-col justify-center'
                                 key={recipe.id}

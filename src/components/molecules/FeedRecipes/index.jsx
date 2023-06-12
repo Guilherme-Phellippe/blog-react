@@ -5,13 +5,13 @@ import { AddRecipeInfo } from "../../molecules/AddRecipeInfo";
 import { BlockInteractionFeed } from "../../molecules/BlockInteractionFeed";
 import { ListRecipeComments } from '../../molecules/ListRecipeComments';
 
-const CarouselMidiasContent = lazy(()=> import("../../molecules/CarouselMidiasContent"))
+const CarouselMidiasContent = lazy(() => import("../../molecules/CarouselMidiasContent"))
 
 
-export const FeedRecipes = ({ content , hasSearch, handleIdForAddListRemove}) => {
+export const FeedRecipes = ({ content, hasSearch, handleIdForAddListRemove }) => {
 
     return (
-        <div 
+        <div
             data-id="feed-recipe"
         >
             <div className={`flex w-full bg-white mt-6 ${hasSearch ? 'items-center h-[20rem]' : 'flex-col h-auto'}`}>

@@ -2,7 +2,7 @@ export default function PrepareMode({ prepareMode }){
    const newPrepareMode = prepareMode.split("<step>")
 
    return (
-       <div className="w-full h-auto flex flex-col items-center p-4 mt-8">
+       <div className="w-full h-auto flex flex-col items-center p-4 mb-20">
            <h2 className='text-s2 text-color_orange text-center font-bold my-4 bg-color_orange/20 w-full p-4'>MODO DE PREPARO</h2>
            {
                newPrepareMode.map((mode, key) =>
