@@ -106,7 +106,8 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                 onMouseEnter={handleShowIconDelete}
                 onClick={handleShowIconDelete}
                 onMouseLeave={handleShowIconDelete}
-                className="w-full h-1/2 flex items-center px-4 group">
+                className="w-full h-1/2 flex items-center px-4 group my-1"
+            >
                 <div className="min-w-[40px] w-[40px] h-[40px] rounded-full object-cover overflow-hidden">
                     <Img
                         imgs={comment.user.photo}
@@ -114,7 +115,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                     />
                 </div>
                 <div className="w-auto rounded-3xl m-2 flex flex-col justify-start items-start bg-background">
-                    <div className="flex items-center mt-2 mx-4 gap-2">
+                    <div className="flex items-center my-2 mx-4 gap-2">
                         <h2 className="font-bold text-s1_3">{comment.user.name} - </h2>
                         <span className="text-s1">{moment(comment.createdAt).startOf('seconds').fromNow()}</span>
                     </div>
