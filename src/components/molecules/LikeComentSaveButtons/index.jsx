@@ -8,7 +8,7 @@ import { useFeedApi, useUserApi } from "../../../hooks/useApi";
 import { Button } from "../../atoms/Button";
 import { dialog } from "../../../modals/Dialog";
 
-export default function LikeComentSaveButtons({ recipeId, setNmr_hearts, nmr_hearts, setNmr_saved, nmr_saved }){ 
+export default function LikeComentSaveButtons({ recipeId, setNmr_hearts, nmr_hearts, setNmr_saved, nmr_saved }) {
     const token = JSON.parse(localStorage.getItem("token"))
     const refFeedApi = useRef(useFeedApi())
     const refUserApi = useUserApi()

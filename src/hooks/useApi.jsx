@@ -1,5 +1,6 @@
 import axios from "axios"
 import moment from "moment"
+import { promptModal } from "../modals/Prompt";
 
 const api = axios.create({
     baseURL: 'https://api.temsabor.blog/'
@@ -247,7 +248,7 @@ export const useNotificationApi = () => ({
         return response
     },
 
-    deleteNotification: async (notificationId, userId) =>{
+    deleteNotification: async (notificationId, userId) => {
         const response = await api.delete(`/notification/${userId}/delete/${notificationId}`);
 
         return response
@@ -256,9 +257,25 @@ export const useNotificationApi = () => ({
 
 
 export const useWhatsapp = () => ({
+
+
+
     sendRecipe: async (data) => {
-        const response = await axios.post("https://whatsapp.temsabor.blog/send-recipe", data)
-        
-        return response
+        const description = await promptModal("Crie um texto persuasivo para essa receita...", true);
+        const url = data?.images_recipe ? data.images_recipe[0].big : data.images[0].big;
+
+        if (description) {
+            const infoRecipe = {
+                url,
+                name: data.name_recipe || data.name_tip,
+                description,
+                link: `https://temsabor.blog/recipe/${(data.name_recipe || data.name_tip).replaceAll(" ", "%20")}/${data.id}`,
+            }
+
+            const response = await axios.post("https://whatsapp.temsabor.blog/send-recipe", infoRecipe)
+
+            return response
+        } else return null
+
     }
 })

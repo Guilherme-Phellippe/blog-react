@@ -56,17 +56,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                     localStorage.removeItem("recipe")
 
                     // SEND RECIPE TO WHATSAPP
-                    if(user.admin){
-                        const description = prompt("Crie um texto persoasivo para essa receita...")
-
-                        const infoRecipe = {
-                            url: data.images_recipe[0].small,
-                            name: data.name_recipe,
-                            description,
-                            link: `https://temsabor.blog/recipe/${data.name_recipe.replaceAll(" ", "%20")}/${data.id}`,
-                        }
-                        await whatsapp.sendRecipe(infoRecipe).catch(err => console.log(err))
-                    }
+                    if (user.admin) await whatsapp.sendRecipe(data).catch(err => console.log(err))
 
                     // REDIRECT TO USER TO RECIPE PAGE
                     const response = await dialog("Sua receita foi criada com sucesso!", 2, "Ver receita")

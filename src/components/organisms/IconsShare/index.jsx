@@ -1,14 +1,23 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp, FaTwitter, FaTelegram } from 'react-icons/fa';
+import { MdOutlineSendToMobile } from 'react-icons/md';
 import { WhatsappShareButton, FacebookShareButton, TwitterShareButton, TelegramShareButton } from "react-share"
+import { HomeContext } from "../../../contexts/Home/HomeProvider"
+import { useWhatsapp } from '../../../hooks/useApi';
 
-export default function IconsShare({ recipe }){ 
+export default function IconsShare({ recipe }) {
+    const { user } = useContext(HomeContext)
+    const Whatsapp = useWhatsapp()
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";
 
     const handleIconsMobile = () => {
         setShowIconsShare(v => !v)
     }
+
+    const handleSendWhatsapp = async () => [
+        await Whatsapp.sendRecipe(recipe)
+    ]
 
     return (
         <div
@@ -69,6 +78,20 @@ export default function IconsShare({ recipe }){
                     <FaTelegram className='text-s3 cursor-pointer fill-[#0088cc]' />
                 </TelegramShareButton>
             </div>
+            {
+                user?.admin &&
+                <div
+                    className="flex md:mt-8 justify-center relative w-full group"
+                    onClick={handleSendWhatsapp}
+                >
+                    <div>
+                        <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
+                            Enviar receita no whatsapp
+                        </span>
+                        <MdOutlineSendToMobile className='text-s3 cursor-pointer fill-pink-500' />
+                    </div>
+                </div>
+            }
 
             <div className={`md:hidden md:mt-8 p-4 z-[999] rounded-3xl relative w-full group bg-color_red flex ${showIconsShare ? "justify-center" : "justify-end"}`}>
                 {
