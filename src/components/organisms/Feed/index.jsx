@@ -36,7 +36,7 @@ export default function Feed({ contents, valueSearch, setIsOpenRanking }) {
             {feed.length ? feed.map((content, index) => {
                 return (
                     (index + 1) % 6 === 0 ?
-                        !hasSearch && <Adsense
+                        <Adsense
                             key={index + "-adsense"}
                             format="fluid"
                             slot="1096599178"

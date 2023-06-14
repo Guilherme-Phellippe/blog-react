@@ -31,7 +31,7 @@ export default function MainContentHome() {
     const [showContentSection, setContentSection] = useState(false)
     //useRef
     const feedApi = useRef(useFeedApi());
-    
+
     //Search data in bd and fill recipes and user
     useEffect(() => {
         // REQ TO API TO SEARCH ALL FEEDS
@@ -101,14 +101,19 @@ export default function MainContentHome() {
             <Suspense fallback={<Loading />}>
                 <MostViewedRecipesContainer valueSearch={valueSearch} topRanking={topRankingByEyes} />
             </Suspense>
-            <Suspense fallback={<Loading />}>
-                <Adsense
-                    slot="2090078650"
-                    format="auto"
-                    data-full-width-responsive="true"
-                />
-            </Suspense>
-            {console.log("showContentSection: "+ showContentSection)}
+
+            {
+                !valueSearch &&
+                <Suspense fallback={<Loading />}>
+                    <Adsense
+                        slot="2090078650"
+                        format="auto"
+                        data-full-width-responsive="true"
+                    />
+                </Suspense>
+            }
+            
+            {console.log("showContentSection: " + showContentSection)}
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4 min-h-screen relative">
                 {
