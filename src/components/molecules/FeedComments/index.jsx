@@ -1,10 +1,13 @@
+import moment from "moment"
+
 import { RiSendPlaneFill } from "react-icons/ri"
+import { AiOutlineComment } from "react-icons/ai"
+
 import { Input } from "../../atoms/Input"
 import { Img } from "../../atoms/Img"
 import { MdDeleteForever } from 'react-icons/md'
 import { useRef, useState } from "react"
 import { useCommentApi } from "../../../hooks/useApi"
-import moment from "moment"
 import { useNavigate } from "react-router-dom"
 import { dialog } from "../../../modals/Dialog"
 
@@ -16,6 +19,10 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
     const refCommentApi = useRef(useCommentApi());
     const refInputAnswer = useRef();
 
+    /**
+     *  função criada para mostrar o icon delete apenas para o proprietário do comentário
+     * @param {*} e 
+     */
     const handleShowIconDelete = (e) => {
         if (e.type === "mouseenter" || e.type === 'click') {
             if (userLogged) {
@@ -121,16 +128,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                     </div>
                     <p className="text-s1_3 mx-6 mb-3">{comment.comment}</p>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-2">
-                    {
-                        showIconDelete
-                        &&
-                        <MdDeleteForever
-                            id={comment.id}
-                            title="Excluir seu comentário"
-                            onClick={handleDeleteComment}
-                            className="hidden text-s2 fill-red-700 cursor-pointer group-hover:block" />
-                    }
+                <div className="flex justify-center items-center gap-4">
                     <span
                         onClick={() => userLogged.id ?
                             setShowButtonAnswer(btn => !btn) :
@@ -139,8 +137,21 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                                 response && navigate('/')
                             })()
                         }
-                        className="hover:underline w-auto cursor-pointer text-s1_1" >
-                        Responder</span>
+                        className="text-s2 text-blue-400 cursor-pointer group-hover:block"
+                    >
+                        <AiOutlineComment />
+                    </span>
+                    {
+                        showIconDelete
+                        &&
+                        <MdDeleteForever
+                            id={comment.id}
+                            title="Excluir seu comentário"
+                            onClick={handleDeleteComment}
+                            className="hidden text-s2 fill-red-700 cursor-pointer group-hover:block"
+                        />
+                    }
+
                 </div>
             </div>
             {!!allAnswer.length &&

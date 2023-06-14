@@ -66,7 +66,7 @@ export const promptModal = (text, showEmoji) => {
             emojis.innerHTML = emoji
             emojis.addEventListener("click", ({ target }) => {
                 const textArea = target.closest("div#container-top").querySelector("textarea")
-                textArea.value += ` ${target.textContent}`
+                textArea.value += target.textContent
                 textArea.focus()
             })
             contentEmojis.appendChild(emojis)

@@ -47,7 +47,7 @@ export default function MainContentHome() {
     useEffect(() => {
         //THIS CODE IS SHOW SECTION IF USER SCROLLING PAGE
         const handleScroll = () => {
-            if (window.scrollY > 150) setContentSection(true)
+            if (window.scrollY > 20) setContentSection(true)
         }
 
         window.addEventListener('scroll', handleScroll)
