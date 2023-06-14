@@ -33,8 +33,7 @@ export const FeedRecipes = ({ content, hasSearch, handleIdForAddListRemove }) =>
                 />
             </div>
 
-            <ListRecipeComments
-                content={content} />
+           { !hasSearch && <ListRecipeComments content={content} /> }
         </div>
     )
 }

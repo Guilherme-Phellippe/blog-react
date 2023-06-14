@@ -44,7 +44,7 @@ export const Search = ({ width = 'w-1/2' }) => {
                     left: 0,
                     behavior: "smooth",
                 })
-            }, 80)
+            }, 500)
 
             qs.set('screen', "show")
         }

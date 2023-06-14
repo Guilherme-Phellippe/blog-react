@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { Categories } from '../../molecules/Categories/Categories'
 
@@ -10,8 +10,10 @@ import { LinkNavigation } from '../../atoms/LinkNavigation'
 import { Logo } from '../../atoms/HeaderLogo'
 import { PanelUser } from '../PanelUser/PanelUser'
 import { useCategoryApi } from '../../../hooks/useApi'
+import { HomeContext } from '../../../contexts/Home/HomeProvider'
 
 export const Menu = () => {
+    const { setValueSearch } = useContext(HomeContext)
     const refCategoryApi = useRef(useCategoryApi())
     const [categories, setCategories] = useState([])
     const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -29,7 +31,7 @@ export const Menu = () => {
 
     useEffect(() => {
         const takeClick = (e) => {
-            if(!e.target.matches('li') && !e.target.matches('svg')) setEnabledSubCategory(false)
+            if (!e.target.matches('li') && !e.target.matches('svg')) setEnabledSubCategory(false)
         }
         document.addEventListener('click', takeClick)
         return () => document.removeEventListener('click', takeClick)
@@ -58,7 +60,11 @@ export const Menu = () => {
                         <>
                             <ul className='menu hidden md:flex w-full h-full justify-center items-center list-none' >
 
-                                <LinkNavigation route={'/'} customClass={''}>Home</LinkNavigation>
+                                <LinkNavigation
+                                    onClick={() => setValueSearch("")}
+                                    route={'/'}
+                                    customClass={''}
+                                >Home</LinkNavigation>
 
                                 <li
                                     className='text-white bg-color_orange p-4 text-s1_5 relative cursor-pointer flex justify-center items-center after:hover:w-full after:active:w-full after:w-0 after:h-[3px] after:bg-white after:absolute after:-bottom-2 after:left-0 transition-all'
@@ -96,7 +102,7 @@ export const Menu = () => {
 
                             <ul className='menu flex flex-col w-full  items-center list-none' >
                                 <LinkNavigation
-                                    onClick={() => setMenuIsOpen(false)}
+                                    onClick={() => { setMenuIsOpen(false); setValueSearch("") }}
                                     route={'/'}
                                     customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
                                 >Home</LinkNavigation>
