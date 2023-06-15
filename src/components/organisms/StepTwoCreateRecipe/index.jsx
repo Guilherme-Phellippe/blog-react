@@ -181,16 +181,13 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                             <div key={index} className="w-full flex flex-col justify-center">
                                 <div className="flex my-6">
                                     {
-                                        !!stuffingField.length &&
-                                        <>
-                                            <SelectTypeIng
-                                                register={register}
-                                                index={index}
-                                                table={"prepareMode"}
-                                            />
-                                            {errors.prepareMode?.[index]?.type && <span className="text-s1_1 text-red-700 bg-red-500/20 p-2">{errors.prepareMode[index].type.message}</span>}
-                                        </>
+                                        <SelectTypeIng
+                                            register={register}
+                                            index={index}
+                                            table={"prepareMode"}
+                                        />
                                     }
+                                    {errors.prepareMode?.[index]?.type && <span className="text-s1_1 text-red-700 bg-red-500/20 p-2">{errors.prepareMode[index].type.message}</span>}
                                     <span className="flex justify-center items-center w-2/12 text-s1_4 text-center text-color_orange ">
                                         Passo {index + 1}:
                                     </span>
