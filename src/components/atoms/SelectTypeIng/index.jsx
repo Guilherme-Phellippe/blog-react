@@ -12,6 +12,7 @@ export default function SelectTypeIng({ disabledMain, register, index, table }) 
 
             <option value="Acompanhamento">Acompanhamento</option>
             <option value="Cobertura">Cobertura</option>
+            <option value="Montagem">Montagem</option>
             <option value="Recheio">Recheio</option>
             <option value="Calda">Calda</option>
             <option value="Molho">Molho</option>
