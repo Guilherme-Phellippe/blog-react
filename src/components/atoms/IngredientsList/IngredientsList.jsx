@@ -1,5 +1,4 @@
 import { createListIngAdd } from "../../../scripts/createListIngAdd";
-import { formatTextLong } from "../../../scripts/formatTextLong";
 
 export default function IngredientsList({ ing: ingredients, stuffing_ing, type_stuffing_ing }) {
 
