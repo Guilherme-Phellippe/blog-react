@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /panel-user
+max-image-preview:large
