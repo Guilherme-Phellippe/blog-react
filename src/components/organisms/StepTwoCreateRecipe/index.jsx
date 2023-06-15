@@ -7,15 +7,18 @@ import { Button } from "../../atoms/Button"
 import { useForm, useFieldArray } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import SelectTypeIng from "../../atoms/SelectTypeIng"
 
 const schema = z.object({
     ing: z.array(z.object({
         value: z.string().nonempty("Digite o ingredinte da sua receita")
     })).min(1, "Sua receita precisa ter no minimo um ingrediente"),
     stuffing_ing: z.array(z.object({
+        type: z.string(),
         value: z.string().nonempty("Digite o ingredinte do seu recheio, caso não tenha recheio, remova o recheio da sua receita")
     })),
     prepareMode: z.array(z.object({
+        type: z.string(),
         value: z.string().nonempty("Digite o modo de preparo da sua receita")
     })).min(1, "Sua receita precisa ter no minimo um passo no modo de preparo"),
 })
@@ -28,19 +31,28 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
         {
             resolver: zodResolver(schema),
             defaultValues: {
-                ing: storage.ing ? storage.ing.map(item => { return { value: item } }) : [{ value: '' }],
-                prepareMode: storage.prepareMode ? storage.prepareMode.split("<step>").map(item => { return { value: item } }) : [{ value: '' }]
+                ing: storage.ing ? storage.ing.map(item => {
+                    return {
+                        value: item.value
+                    }
+                }) : [{ value: '' }],
+                prepareMode: storage.prepareMode ? storage.prepareMode.split("<step>").map(item => {
+                    return { type: item.type, value: item.type }
+                }) : [{ type: 'Principal', value: '' }]
             }
         }
     );
+
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'ing',
     });
+
     const { fields: stuffingField, append: stuffingAppend, remove: stuffingRemove } = useFieldArray({
         control,
         name: 'stuffing_ing',
     });
+
     const { fields: prepareField, append: prepareAppend, remove: prepareRemove } = useFieldArray({
         control,
         name: 'prepareMode',
@@ -51,26 +63,35 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
         if (dataRecipe) {
             dataRecipe.ing = data.ing.map(obj => obj.value)
             dataRecipe.stuffing_ing = data.stuffing_ing.map(obj => obj.value)
-            dataRecipe.prepareMode = data.prepareMode.map((mode, index) =>{
+            dataRecipe.type_stuffing_ing = data.stuffing_ing.map(obj => obj.type)
+            dataRecipe.prepareMode = data.prepareMode.map((mode, index) => {
                 const isLastItem = index === (data.prepareMode.length - 1)
                 return isLastItem ? mode.value : `${mode.value}<step>`
             }).join('')
+            dataRecipe.type_prepare_mode = data.prepareMode.map((mode) => mode.type)
             localStorage.setItem("recipe", JSON.stringify(dataRecipe))
             setStep(3)
         } else alert("Tivemos um problema na criação de sua receita")
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={`w-full flex flex-col justify-center items-center`}>
-            <div className="w-full md:w-1/2 my-8 flex flex-col items-center">
-                <div className="flex justify-between items-center">
-                    <h2 className="text-s1_7 md:text-s1_5 text-color_orange p-4 font-bold">Quais são os ingredientes?</h2>
-                </div>
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className={`w-full flex flex-col justify-center items-center`}
+        >
+            <div className="w-full md:w-2/3 my-8 flex flex-col items-center">
+
+                <h2 className="text-s1_7 md:text-s1_7 text-color_orange p-4 font-bold">Quais são os ingredientes?</h2>
+
                 <div className="flex flex-col w-full my-8">
                     {
                         fields.map((field, index) =>
                             <div key={field.id} className="flex flex-col items-start">
                                 <div className="w-full flex justify-between items-center">
+                                    <select className="cursor-pointer p-4 text-s1_2 text-center text-color_text_black rounded-xl mx-4">
+                                        <option value="Principal">Principal</option>
+                                    </select>
+                                    {errors.ing?.[index]?.type && <span className="text-s1_1 text-red-700 bg-red-500/20 p-2">{errors.ing[index].type.message}</span>}
                                     <Input
                                         placeholder={`Digite o ${index + 1}° ingrediente`}
                                         customWidthAndMargin="w-[95%] my-6"
@@ -94,18 +115,22 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                 </div>
 
 
-
-
-
-                <div className="flex flex-col">
+                <div className="w-full flex flex-col">
                     {
                         !!stuffingField.length &&
-                        <h2 className="text-s1_5 text-color_orange p-4 mb-4 font-bold">Quais são os ingredientes do recheio?</h2>
+                        <h2 className="text-s1_5 text-color_orange p-4 mb-4 font-bold">Quais são os ingredientes adicionais?</h2>
                     }
                     {
                         stuffingField.map((field, index) =>
                             <div key={field.id} className="w-full flex flex-col">
                                 <div className="w-full flex justify-between items-center">
+                                    <SelectTypeIng
+                                        disabledMain={true}
+                                        register={register}
+                                        index={index}
+                                        table={"stuffing_ing"}
+                                    />
+                                    {errors.stuffing_ing?.[index]?.type && <span className="text-s1_1 text-red-700 bg-red-500/20 p-2">{errors.stuffing_ing[index].type.message}</span>}
                                     <Input
                                         placeholder={`Digite o ${index + 1}° ingrediente do recheio`}
                                         customWidthAndMargin="w-[90%] my-6"
@@ -130,7 +155,7 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                 <div className="flex items-center gap-4" >
                     {
                         !stuffingField.length ?
-                            <Button type="button" event={() => stuffingAppend({ value: '' })} customClass="btn-primary text-s1_2 py-3 px-6">
+                            <Button type="button" event={() => stuffingAppend({ type: 'Acompanhamento', value: '' })} customClass="btn-primary text-s1_2 py-3 px-6">
                                 <MdAddCircle /> Criar recheio
                             </Button>
                             :
@@ -154,9 +179,17 @@ export const StepTwoCreateRecipe = ({ setStep }) => {
                     {
                         prepareField.map((step, index) =>
                             <div key={index} className="w-full flex flex-col justify-center">
-                                <span className="flex justify-center items-center w-2/12 text-s1_4 text-center text-color_orange m-6">
-                                    Passo {index + 1}
-                                </span>
+                                <div className="flex my-6">
+                                    <SelectTypeIng
+                                        register={register}
+                                        index={index}
+                                        table={"prepareMode"}
+                                    />
+                                    {errors.prepareMode?.[index]?.type && <span className="text-s1_1 text-red-700 bg-red-500/20 p-2">{errors.prepareMode[index].type.message}</span>}
+                                    <span className="flex justify-center items-center w-2/12 text-s1_4 text-center text-color_orange ">
+                                        Passo {index + 1}:
+                                    </span>
+                                </div>
                                 <div className="flex w-full items-center">
                                     <TextArea
                                         onKeyDown={(e) => { if (e.code === "Enter") { e.preventDefault(); prepareAppend({ value: '' }) } }}

@@ -26,7 +26,8 @@ module.exports = {
         color_green: '#D4D925',
         color_yellow: "#FFEE63",
         color_text_white: '#fff',
-        color_text_black: '#202020cc',
+        color_text_black: '#303030',
+        color_text_black_light: '#666',
       },
     },
     keyframes:{

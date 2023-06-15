@@ -12,7 +12,17 @@ const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSave
 
 
 export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
-    const { name_recipe, nmr_hearts, images_recipe, ing, stuffing_ing, prepareMode, nmr_saved } = recipe
+    const {
+        name_recipe,
+        nmr_hearts,
+        images_recipe,
+        ing,
+        stuffing_ing,
+        type_stuffing_ing,
+        prepareMode,
+        type_prepare_mode,
+        nmr_saved
+    } = recipe
 
     return (
         <div className="w-full flex justify-center">
@@ -31,8 +41,15 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 <RecipeChefInfo recipe={recipe} />
                             </Suspense>
                             <Suspense className="relative" fallback={<Loading />}>
-                                <IngredientsList ing={ing} stuffing_ing={stuffing_ing} />
-                                <PrepareMode prepareMode={prepareMode} />
+                                <IngredientsList
+                                    ing={ing}
+                                    stuffing_ing={stuffing_ing}
+                                    type_stuffing_ing={type_stuffing_ing}
+                                />
+                                <PrepareMode
+                                    prepareMode={prepareMode}
+                                    type_prepare_mode={type_prepare_mode}
+                                />
                             </Suspense>
                             <Suspense fallback={<Loading />}>
                                 <div className="w-full py-4 my-4 bg-[#24242420]">
