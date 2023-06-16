@@ -19,7 +19,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
         (async () => {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
-
+            document.head.querySelector("title").textContent = data.name_recipe+" - Tem sabor receitas"
             setRecipe(data);
         })();
     }, [id]);
@@ -28,7 +28,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
-
     }, [])
 
 
