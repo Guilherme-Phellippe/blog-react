@@ -1,67 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!-- STATIC PAGES -->
+    <sitemap>
+        <loc>https://www.temsabor.blog/sitemap-recipes.xml</loc>
+        <lastmod>2023-06-16</lastmod>
+    </sitemap>
+<!-- CATEGORIES -->
+    <sitemap>
+        <loc>https://www.temsabor.blog/sitemap-category.xml</loc>
+        <lastmod>2023-06-16</lastmod>
+    </sitemap>
+<!-- RECIPES -->
+    <sitemap>
+        <loc>https://www.temsabor.blog/sitemap-recipes.xml</loc>
+        <lastmod>2023-06-16</lastmod>
+    </sitemap>
+</sitemapindex>
 
-  <url>
-    <loc>https://temsabor.blog/</loc>
-    <lastmod>2023-06-16</lastmod>
-    <changefreq>always</changefreq>
-    <priority>1.0</priority>
-  </url>
 
-
-
-  <url>
-    <loc>https://temsabor.blog/poll</loc>
-    <lastmod>2023-06-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://temsabor.blog/about</loc>
-    <lastmod>2023-04-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://temsabor.blog/contact</loc>
-    <lastmod>2023-04-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://temsabor.blog/category/Bolos%20e%20doces</loc>
-    <lastmod>2023-06-15</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://temsabor.blog/category/Bolos%20e%20doces</loc>
-    <lastmod>2023-06-15</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-<!-- PAGINAS DINAMICAS, RECEITAS: -->
-  <url>
-    <loc>https://temsabor.blog/recipe/Bra%C3%A7o%20de%20cigana/ad068b9e-b3ff-4b7c-bb2c-b25dcbaf6201</loc>
-    <lastmod>2023-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://temsabor.blog/recipe/Receita%20de%20pav%C3%AA%20de%20lim%C3%A3o/4f3680f4-bade-45dc-bdd8-0db2b2f21847</loc>
-    <lastmod>2023-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://temsabor.blog/recipe/Torta%20brigadeiro/a98f315a-3df4-4830-bd76-d0c8635c7d57</loc>
-    <lastmod>2023-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-</urlset>
