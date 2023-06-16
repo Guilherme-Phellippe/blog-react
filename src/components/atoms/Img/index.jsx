@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react"
 import lazySizes from 'lazysizes';
 
 export const Img = ({ imgs, alt, title }) => {
-  //800, 450, 220, 100 = sizes in hostImages
+  //1250, 650, 300, 100 = sizes in hostImages
   const imageRef = useRef(null)
   const [src, setSrc] = useState('')
 
   useEffect(() =>{
     let result = ''
     
-    if (typeof imgs == 'object' ) {
+    if (typeof imgs == 'object') {
       if (imageRef.current) {
         const width = Math.floor(imageRef.current.getBoundingClientRect().width)
 
