@@ -4,7 +4,9 @@ export default function PreviewRecipe({ title }) {
     console.log(document.head.querySelector("meta"))
     return (
         <Helmet>
-            {document.head.querySelector("meta")}
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content={"dynamicDescription"} />
+            <meta property="og:image" content={"https://via.placeholder.com/1000"} />
         </Helmet>
     )
 }
