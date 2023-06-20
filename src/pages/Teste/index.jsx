@@ -58,7 +58,6 @@ export default function Teste() {
   // Logs in a Facebook user
   const logInToFB = React.useCallback(() => {
     window.FB.login((response) => {
-      console.log(response)
       setFbUserAccessToken(response.authResponse.accessToken);
     }, { scope: "pages_show_list" });
   }, []);
@@ -85,7 +84,8 @@ export default function Teste() {
     if (fbUserAccessToken) {
       window.FB.api(
         `/me/accounts`,
-        ({ access_token }) => console.log(access_token)
+        "GET",
+        (response) => console.log(response)
       );
     }
   }, [fbUserAccessToken]);
