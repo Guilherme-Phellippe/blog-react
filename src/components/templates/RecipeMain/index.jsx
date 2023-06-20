@@ -33,8 +33,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
-
-
     }, [])
 
 
