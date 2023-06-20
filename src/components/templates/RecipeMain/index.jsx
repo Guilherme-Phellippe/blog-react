@@ -10,7 +10,7 @@ const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarCon
 
 export default function RecipeMain({ showContentAfterScroll }) {
     const { id } = useParams();
-    const [recipe, setRecipe] = useState()
+    const [recipe, setRecipe] = useState();
     const refRecipeApi = useRef(useRecipeApi());
     const refFeedApi = useRef(useFeedApi());
 
