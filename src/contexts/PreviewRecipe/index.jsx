@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 
 export default function PreviewRecipe({ title }) {
-    console.log(document.head.querySelector("meta"))
+    console.log(document.head.querySelector("meta[property='og:title']"))
     return (
         <Helmet>
             <meta property="og:title" content={title} />
