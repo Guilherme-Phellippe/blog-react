@@ -84,11 +84,8 @@ export default function Teste() {
   React.useEffect(() => {
     if (fbUserAccessToken) {
       window.FB.api(
-        `/${PAGE_ID}?fields=access_token&access_token=${fbUserAccessToken}`,
-        ({ access_token }) => {
-            console.log(access_token)
-            setFbPageAccessToken(access_token)
-        }
+        `/me/accounts`,
+        ({ access_token }) => console.log(access_token)
       );
     }
   }, [fbUserAccessToken]);
@@ -117,11 +114,11 @@ export default function Teste() {
       <header id="app-header">
         <p id="logo-text">FB Page API</p>
         {fbUserAccessToken ? (
-          <button onClick={logOutOfFB} className="btn confirm-btn">
+          <button onClick={logOutOfFB} className="btn confirm-btn border border-red p-8 text-4xl">
             Log out
           </button>
         ) : (
-          <button onClick={logInToFB} className="btn confirm-btn">
+          <button onClick={logInToFB} className="btn confirm-btn border border-black p-8 text-4xl">
             Login with Facebook
           </button>
         )}
