@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
+import PreviewRecipe from '../../../contexts/PreviewRecipe';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
@@ -33,6 +34,8 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
+
+            <PreviewRecipe title={"testinho do teste"} />
 
             {
                 recipe &&
