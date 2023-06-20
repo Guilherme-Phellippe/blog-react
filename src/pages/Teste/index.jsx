@@ -45,7 +45,7 @@ const useInitFbSDK = () => {
 // in the "About" section of your page on Facebook.
 const PAGE_ID = "116648617991932";
 
-export function Teste() {
+export default function Teste() {
   // Initializes the Facebook SDK
   const isFbSDKInitialized = useInitFbSDK();
 
