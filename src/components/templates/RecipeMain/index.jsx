@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
-import PreviewRecipe from '../../../contexts/PreviewRecipe';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
@@ -20,7 +19,12 @@ export default function RecipeMain({ showContentAfterScroll }) {
         (async () => {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
+            //ADD TITLE DYNAMIC
             document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
+            //ADD METAGS OPEN GRAPH
+            document.head.querySelector("meta[property='og:title']").content = data.name_recipe
+            document.head.querySelector("meta[property='og:description']").content = data.name_recipe
+            document.head.querySelector("meta[property='og:image']").content = data.images_recipe[0].big
             setRecipe(data);
         })();
     }, [id]);
@@ -29,13 +33,14 @@ export default function RecipeMain({ showContentAfterScroll }) {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
+
+
     }, [])
 
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
 
-            <PreviewRecipe title={"testinho do teste"} />
 
             {
                 recipe &&
