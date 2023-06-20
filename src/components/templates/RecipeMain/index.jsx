@@ -1,5 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+
 
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
@@ -19,7 +21,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
         (async () => {
             refFeedApi.current.updateNumberEyes(id)
             const { data } = await refRecipeApi.current.getUniqueRecipe(id);
-            document.head.querySelector("title").textContent = data.name_recipe+" - Tem sabor receitas"
+            document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
             setRecipe(data);
         })();
     }, [id]);
@@ -33,6 +35,11 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
+            <Helmet>
+                <meta property="og:title" content="Título da sua página" />
+                <meta property="og:description" content="Descrição da sua página" />
+                <meta property="og:image" content="https://via.placeholder/500" />
+            </Helmet>
 
             {
                 recipe &&
