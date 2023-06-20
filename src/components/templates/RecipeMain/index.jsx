@@ -1,7 +1,5 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-
 
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
@@ -35,11 +33,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
-            <Helmet>
-                <meta property="og:title" content="Título da sua página" />
-                <meta property="og:description" content="Descrição da sua página" />
-                <meta property="og:image" content="https://via.placeholder.com/500" />
-            </Helmet>
 
             {
                 recipe &&
