@@ -38,7 +38,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
             <Helmet>
                 <meta property="og:title" content="Título da sua página" />
                 <meta property="og:description" content="Descrição da sua página" />
-                <meta property="og:image" content="https://via.placeholder/500" />
+                <meta property="og:image" content="https://via.placeholder.com/500" />
             </Helmet>
 
             {
