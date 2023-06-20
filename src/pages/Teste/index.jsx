@@ -60,7 +60,7 @@ export default function Teste() {
     window.FB.login((response) => {
       console.log(response)
       setFbUserAccessToken(response.authResponse.accessToken);
-    }, { scope: "show_list_page" });
+    }, { scope: "pages_show_list" });
   }, []);
 
   // Logs out the current Facebook user
