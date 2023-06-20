@@ -85,7 +85,10 @@ export default function Teste() {
     if (fbUserAccessToken) {
       window.FB.api(
         `/${PAGE_ID}?fields=access_token&access_token=${fbUserAccessToken}`,
-        ({ access_token }) => setFbPageAccessToken(access_token)
+        ({ access_token }) => {
+            console.log(access_token)
+            setFbPageAccessToken(access_token)
+        }
       );
     }
   }, [fbUserAccessToken]);
@@ -110,7 +113,7 @@ export default function Teste() {
 
   // UI with custom styling from ./styles.css`
   return (
-    <div id="app">
+    <div id="app" className="grid place-content-center">
       <header id="app-header">
         <p id="logo-text">FB Page API</p>
         {fbUserAccessToken ? (
