@@ -32,7 +32,7 @@ export default function Home() {
           </p>
         </CookieConsent>
       </Suspense>
-    </HomeProvider >
+    </HomeProvider>
   );
 }
 

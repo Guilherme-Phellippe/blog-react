@@ -4,8 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { ScrollToTopPage } from './contexts/ScrollToTopPage';
 
-import './index.css';
 import { Loading } from './components/atoms/Loading/Loading';
+
+import './index.css';
+import Teste from './pages/Teste';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Recipe = lazy(() => import('./pages/Recipe/index'));
@@ -21,8 +23,6 @@ const Policy = lazy(() => import('./pages/Policy/Policy'));
 const Tip = lazy(() => import('./pages/Tip/index'));
 const CreateTip = lazy(() => import('./pages/CreateTip/index'));
 const Contact = lazy(() => import('./pages/Contact/Contact'));
-
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -46,6 +46,7 @@ root.render(
         <Route path='/panel-user' element={<Suspense fallback={<Loading />} ><PanelUser /></Suspense>} />
         <Route path='/terms' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
         <Route path='/policy' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
+        <Route path='/teste' element={<Suspense fallback={<Loading />} ><Teste /></Suspense>} />
         <Route path='*' element={<Suspense fallback={<Loading />} ><NotFound /></Suspense>} />
       </Routes>
     </BrowserRouter>

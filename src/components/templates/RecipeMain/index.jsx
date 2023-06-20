@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 
 import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
-import { Helmet } from 'react-helmet';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
@@ -35,13 +34,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
-            <Helmet>
-                <meta property="og:title" content="Blog"  data-react-helmet="true" />
-                <meta property="og:description" content="Seja"  data-react-helmet="true" />
-                <meta property="og:url" content="https://temsabor.blog"  data-react-helmet="true" />
-                <meta property="og:type" content="image/webp"  data-react-helmet="true" />
-                <meta property="og:image" content="https://via.placeholder.com/1000"  data-react-helmet="true" />
-            </Helmet>
+            
 
             {
                 recipe &&
