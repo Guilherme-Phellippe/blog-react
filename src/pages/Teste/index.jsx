@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./index.css";
-
 const injectFbSDKScript = () => {
     (function (d, s, id) {
         var js,
