@@ -45,35 +45,35 @@ export default function MenuMobileOption({ handleClickButtonMenu, menuIsOpen }) 
     return (
         <div
             ref={refMenu}
-            className="flex md:hidden items-center border-t border-t-black fixed z-[999] bottom-0 left-0 w-full h-[8%] min-h-[5rem] max-h-[10rem] bg-white p-4"
+            className="flex md:hidden items-center border-t border-t-black fixed z-[999] bottom-0 left-0 w-full h-[5rem] bg-white p-4"
         >
             <div className="w-full flex justify-around">
                 <div
                     className="flex flex-col justify-center items-center active-menu"
                     onClick={changeColorMenu}
                 >
-                    <MdHome className="text-s4 cursor-pointer fill-inherit" />
+                    <MdHome className="text-s3 cursor-pointer fill-inherit" />
                     <span>Home</span>
                 </div>
                 <div
                     className="flex flex-col justify-center items-center fill-zinc-400"
                     onClick={changeColorMenu}
                 >
-                    <IoMdPodium className="text-s4 cursor-pointer fill-inherit" />
+                    <IoMdPodium className="text-s3 cursor-pointer fill-inherit" />
                     <span className="text-inherit">Ranking</span>
                 </div>
                 <div
                     className="flex flex-col justify-center items-center fill-zinc-400 relative"
                     onClick={changeColorMenu}
                 >
-                    <FcPlus className="text-s5 fill-zinc-400 absolute -top-[20%] left-1/2 -translate-x-1/2" />
+                    <FcPlus className="text-s4 fill-zinc-400 absolute -top-[.5rem] left-1/2 -translate-x-1/2" />
                     <span className="hidden">Create</span>
                 </div>
                 <div
                     className="flex flex-col justify-center items-center fill-zinc-400"
                     onClick={changeColorMenu}
                 >
-                    <MdNotifications className="text-s4 cursor-pointer fill-inherit" />
+                    <MdNotifications className="text-s3 cursor-pointer fill-inherit" />
                     <span>Notificações</span>
                 </div>
                 <div
@@ -82,9 +82,9 @@ export default function MenuMobileOption({ handleClickButtonMenu, menuIsOpen }) 
                 >
                     {
                         menuIsOpen ?
-                            <MdClose className="text-s4 cursor-pointer fill-inherit" />
+                            <MdClose className="text-s3 cursor-pointer fill-inherit" />
                             :
-                            <MdMenu className="text-s4 cursor-pointer fill-inherit" />
+                            <MdMenu className="text-s3 cursor-pointer fill-inherit" />
                     }
                     <span>Menu</span>
                 </div>
