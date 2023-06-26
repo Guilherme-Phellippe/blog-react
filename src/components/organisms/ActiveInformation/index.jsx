@@ -21,7 +21,7 @@ export const ActiveInformation = ({ infoSelect, user }) => {
                 return <PanelRecipesSaved user={user} />
             }
             case "Notificações" : {
-                return <PanelNotifications notifications={user.notificationUser} />
+                return user ? <PanelNotifications notifications={user.notificationUser} />: <h2 className="text-center text-s2 p-8">Você não está logado!</h2>
             }
             default: <h2>Erro na exibição do panel</h2>
         }

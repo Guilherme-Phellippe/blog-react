@@ -11,6 +11,12 @@
     @apply flex items-center gap-2 rounded-2xl border-none p-2 cursor-pointer bg-color_red font-medium text-color_text_white
     transition-transform hover:scale-105 hover:brightness-95;
   }
+  .hidden-menu {
+    @apply translate-y-full transition-transform duration-200
+  }
+  .active-menu {
+    @apply fill-color_orange text-color_orange transition-colors duration-150
+  }
 }
 
 @layer utilities {

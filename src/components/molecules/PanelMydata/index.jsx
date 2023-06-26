@@ -100,7 +100,7 @@ export const PanelMydata = ({ user }) => {
                     {loading && <Loading />}
                     <input className="hidden" type="file" id="file" accept="image/*" />
                     <img className="w-full h-full object-cover" src={user.photo} alt="" />
-                    <span id="file" className="btn-primary w-full absolute z-[997] bottom-0 rounded-none"> Alterar foto de perfil</span>
+                    <span id="file" className="btn-primary w-full absolute z-[100] bottom-0 rounded-none"> Alterar foto de perfil</span>
                 </label>
                 <div className="w-full md:w-1/2 flex flex-col justify-center p-8 my-4">
                     <div className="w-full flex my-4 justify-between gap-x-4">

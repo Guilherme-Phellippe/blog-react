@@ -18,6 +18,7 @@ module.exports = {
         s2_5: ['clamp(25px, 2.5vw, 29px)','28px'],
         s3: ['clamp(30px, 3vw, 34px)','34px'],
         s4: ['clamp(40px, 4vw, 44px)','44px'],
+        s5: ['max(5vw, 55px)']
       },
       colors: {
         background: '#E4E4E4',

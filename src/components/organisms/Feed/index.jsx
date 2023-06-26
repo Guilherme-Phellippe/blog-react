@@ -9,7 +9,7 @@ import { Loading } from '../../atoms/Loading/Loading';
 const Adsense = lazy(() => import('../../molecules/Adsense'))
 
 
-export default function Feed({ contents, valueSearch, setIsOpenRanking }) {
+export default function Feed({ contents, valueSearch }) {
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
     const [listRecipeForRemove, setListRecipeForRemove] = useState(listRecipeLocalStorage);
     const hasSearch = valueSearch ? true : false;
@@ -49,14 +49,12 @@ export default function Feed({ contents, valueSearch, setIsOpenRanking }) {
                                 content={content}
                                 hasSearch={hasSearch}
                                 handleIdForAddListRemove={handleIdForAddListRemove}
-                                setIsOpenRanking={setIsOpenRanking}
                             />
                             :
                             <FeedTip
                                 key={content.id}
                                 content={content}
                                 handleIdForAddListRemove={handleIdForAddListRemove}
-                                setIsOpenRanking={setIsOpenRanking}
                             />
                 )
             }) : <Loading />}

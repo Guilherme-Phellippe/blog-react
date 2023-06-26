@@ -8,7 +8,7 @@ import { Img } from '../../atoms/Img';
 import { HomeContext } from '../../../contexts/Home/HomeProvider';
 
 
-export const PanelUser = ({ isMobile }) => {
+export const PanelUser = () => {
     const { user } = useContext(HomeContext)
     const numberNotifications = useRef(0)
 
@@ -30,7 +30,7 @@ export const PanelUser = ({ isMobile }) => {
 
 
     return (
-        <div className="w-full px-6 py-4 flex flex-col items-center relative">
+        <div className="w-full p-6 flex flex-col items-center relative">
             <>
                 <Link onClick={handleScrollDocument} to={'/panel-user'}>
                     <div className="w-full flex justify-center items-center gap-4">

@@ -5,6 +5,7 @@ import { Loading } from "../../../components/atoms/Loading/Loading"
 import { ActiveInformation } from "../../organisms/ActiveInformation"
 import { useUserApi } from "../../../hooks/useApi"
 import { MdExitToApp, MdList, MdNotifications, MdPhotoLibrary, MdSave } from "react-icons/md";
+import MenuMobile, { } from "../../templates/MenuMobile"
 
 export const MainUserPanel = () => {
     const navLinks = [
@@ -74,6 +75,7 @@ export const MainUserPanel = () => {
                         <p className={`${infoSelect === "Sair do painel" && "text-white"}`}>Sair do painel</p>
                     </button>
                 </nav>
+
                 <section className="flex flex-col w-full py-4 md:p-8 bg-white overflow-y-auto">
                     {user ?
                         <ActiveInformation user={user} infoSelect={infoSelect} />
@@ -82,6 +84,12 @@ export const MainUserPanel = () => {
                     }
                 </section>
             </div>
+            {/* This menu will only be displayed when the user is on the smartphone */}
+            {window.innerWidth < 764 &&
+                <MenuMobile
+                    user={user}
+                />
+            }
         </main>
     )
 }

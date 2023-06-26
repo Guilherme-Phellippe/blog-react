@@ -1,10 +1,17 @@
+/**
+ * 
+ * @param {string} text 
+ * @param {number} type 
+ * @param {string} buttonText 
+ * @returns 
+ */
 export const dialog = (text , type, buttonText) => {
     const root = document.querySelector("#root")
     const color = type === 0 ? "red-500" : type === 1 ? "color_orange" : "green-700"
 
     return new Promise((resolve, reject) => {
         const container = document.createElement('div');
-        container.setAttribute("class", "fixed top-0 left-0 w-screen h-screen bg-black/30 grid place-items-center");
+        container.setAttribute("class", "fixed top-0 left-0 z-[999] w-screen h-screen bg-black/30 grid place-items-center");
 
         const box = document.createElement('div');
         box.setAttribute('class', `min-w-[20rem] max-w-[80%] md:max-w-2/3 min-h-[12rem] bg-white p-2 rounded-xl flex flex-col justify-between border-[1px] border-${color}`)

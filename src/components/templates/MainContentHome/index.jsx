@@ -2,7 +2,6 @@ import { useCallback, useContext, useEffect, useState, useRef, lazy, Suspense } 
 
 import { HomeContext } from '../../../contexts/Home/HomeProvider'
 
-import { GiPodium } from 'react-icons/gi'
 import { MdArrowDropDown } from 'react-icons/md'
 
 import { Button } from "../../atoms/Button";
@@ -10,6 +9,7 @@ import { useFeedApi } from "../../../hooks/useApi";
 
 import { smartSearch } from "../../../scripts/smartSearch";
 import { Loading } from "../../atoms/Loading/Loading";
+import MenuMobile from "../MenuMobile";
 
 const MostViewedRecipesContainer = lazy(() => import("../../organisms/MostViewedRecipesContainer"))
 const Adsense = lazy(() => import("../../molecules/Adsense"))
@@ -26,8 +26,6 @@ export default function MainContentHome() {
     const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
-    const [isOpenRanking, setIsOpenRanking] = useState(false)
-    const [showIconRanking, setShowIconRanking] = useState(false)
     const [showContentSection, setContentSection] = useState(false)
     //useRef
     const feedApi = useRef(useFeedApi());
@@ -52,17 +50,7 @@ export default function MainContentHome() {
 
         window.addEventListener('scroll', handleScroll)
 
-        //THIS CODE IS FOR CLOSE MODAL RANKING
-        const removeModalRankignRecipe = document.addEventListener('click', ({ target }) => {
-            const box = target.closest("div[data-id=modal-ranking-recipe-mobile]")
-            const seeMoreNewRecipe = target.dataset.id === "see-more"
-            if (!box && !seeMoreNewRecipe) {
-                setIsOpenRanking(false)
-            }
-        });
-
         return () => {
-            document.removeEventListener('click', removeModalRankignRecipe)
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
@@ -76,15 +64,6 @@ export default function MainContentHome() {
         setFeed(newFeed);
     }, [recipes, postPerPage, valueSearch]);
 
-    useEffect(() => {
-        if (isOpenRanking) document.documentElement.style.overflow = 'hidden'
-        else document.documentElement.style.overflow = 'auto'
-    }, [isOpenRanking])
-
-    document.onscroll = () => {
-        if (window.scrollY > 480) setShowIconRanking(true)
-        else setShowIconRanking(false)
-    }
 
     const topRankingByEyes = useCallback(() => {
         const recipesFiltered = recipes.filter(recipe => recipe.name_recipe && recipe)
@@ -112,8 +91,6 @@ export default function MainContentHome() {
                     />
                 </Suspense>
             }
-            
-            {console.log("showContentSection: " + showContentSection)}
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4 min-h-screen relative">
                 {
@@ -135,7 +112,6 @@ export default function MainContentHome() {
                                     contents={feed}
                                     setFeed={setFeed}
                                     valueSearch={valueSearch}
-                                    setIsOpenRanking={setIsOpenRanking}
                                 />
                             </Suspense>
                             {postPerPage <= feed.length &&
@@ -148,41 +124,26 @@ export default function MainContentHome() {
                                 </Button>
                             }
                         </div>
-
-                        <Suspense fallback={<Loading />}>
-                            <ColumnRightMainHome
-                                ranking={topRankingByHearts()}
-                            />
-                        </Suspense>
-
-
                         {
-                            window.innerWidth <= 767 && showIconRanking &&
-                            <>
-                                <div
-                                    data-id="modal-ranking-recipe-mobile"
-                                    className={`${!isOpenRanking ? "invisible translate-x-full" : 'visible translate-x-[43%]'} z-[999] transition-transform duration-400 fixed top-0 w-[70%] h-screen overflow-auto border-l-[2px] border-l-color_orange`}>
-                                    <Suspense fallback={<Loading />} >
-                                        <ColumnRightMainHome
-                                            ranking={topRankingByHearts()}
-                                            isOpenRanking={isOpenRanking}
-                                        />
-                                    </Suspense>
-                                </div>
-                                <div
-                                    data-id="modal-ranking-recipe-mobile"
-                                    onClick={() => setIsOpenRanking((open) => !open)}
-                                    className={`${!isOpenRanking ? "right-[0px]" : 'right-[69%]'} shadow-md shadow-[#24242480] transition-all duration-450 z-50 fixed  bottom-32 w-[70px] border-[1px] border-white bg-color_orange rounded-tl-2xl rounded-bl-2xl flex justify-center`}>
-                                    <GiPodium
-                                        className="text-s4 fill-white mb-4" />
-                                </div>
-                            </>
-
+                            window.innerWidth > 700 &&
+                            <Suspense fallback={<Loading />}>
+                                <ColumnRightMainHome
+                                    ranking={topRankingByHearts()}
+                                />
+                            </Suspense>
                         }
                     </>
 
                 }
             </section>
+
+            {/* This menu will only be displayed when the user is on the smartphone */}
+            {window.innerWidth < 764 &&
+                <MenuMobile
+                    user={user}
+                    ranking={topRankingByHearts()}
+                />
+            }
 
         </main>
     )
