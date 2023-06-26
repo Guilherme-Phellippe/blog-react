@@ -15,7 +15,7 @@ export default function MenuMobileOption({ handleClickButtonMenu, menuIsOpen }) 
         var currentScroll = 0
 
         const toggleBottomMenu = () => {
-            if (window.scrollY > currentScroll && refMenu) refMenu.current.classList.add("hidden-menu")
+            if (window.scrollY >= currentScroll && refMenu) refMenu.current.classList.add("hidden-menu")
             else refMenu.current.classList.remove("hidden-menu")
             currentScroll = window.scrollY // add current scroll to variable
         }
