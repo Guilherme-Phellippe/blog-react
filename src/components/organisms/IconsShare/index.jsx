@@ -1,13 +1,17 @@
 import { useContext, useState } from 'react';
-import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp, FaTwitter, FaTelegram } from 'react-icons/fa';
-import { MdOutlineSendToMobile } from 'react-icons/md';
 import { WhatsappShareButton, FacebookShareButton, TwitterShareButton, TelegramShareButton } from "react-share"
+
+
+import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp, FaTwitter, FaTelegram, FaLink } from 'react-icons/fa';
+import { MdOutlineSendToMobile } from 'react-icons/md';
+
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
-import { useWhatsapp } from '../../../hooks/useApi';
+import { useWhatsapp, useShortLink } from '../../../hooks/useApi';
 
 export default function IconsShare({ recipe }) {
     const { user } = useContext(HomeContext)
     const Whatsapp = useWhatsapp()
+    const shotLinks = useShortLink()
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";
 
@@ -15,9 +19,17 @@ export default function IconsShare({ recipe }) {
         setShowIconsShare(v => !v)
     }
 
-    const handleSendWhatsapp = async () => [
+    const handleSendWhatsapp = async () => {
         await Whatsapp.sendRecipe(recipe)
-    ]
+    }
+
+    const createAShortLink =async ()=>{
+        const url = window.location.href
+        const response = await shotLinks.createShortLink(url)
+        console.log(response)
+    }
+
+
 
     return (
         <div
@@ -31,6 +43,14 @@ export default function IconsShare({ recipe }) {
                 <FaCamera
                     onClick={() => window.print()}
                     className='text-s3 cursor-pointer fill-color_orange' />
+            </div>
+            <div className="flex md:mt-8 justify-center relative w-full group">
+                <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
+                    Copiar o link da receita
+                </span>
+                <FaLink
+                    onClick={createAShortLink}
+                    className='text-s3 cursor-pointer fill-yellow-600' />
             </div>
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <FacebookShareButton

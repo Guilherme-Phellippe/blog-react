@@ -257,9 +257,6 @@ export const useNotificationApi = () => ({
 
 
 export const useWhatsapp = () => ({
-
-
-
     sendRecipe: async (data) => {
         const description = await promptModal("Crie um texto persuasivo para essa receita...", true);
         const url = data?.images_recipe ? data.images_recipe[0].big : data.images[0].big;
@@ -277,5 +274,16 @@ export const useWhatsapp = () => ({
             return response
         } else return null
 
+    }
+})
+
+export const useShortLink = () => ({
+    createShortLink : async (url)=>{
+        api.post("/create-short-link", url).then(res =>{
+            return res
+        }).catch((err)=>{
+            console.error("ERROR REQUEST SHORT LINK:", err)
+            return false
+        } )
     }
 })
