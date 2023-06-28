@@ -32,15 +32,12 @@ export default function IconsShare({ recipe }) {
         var response;
         if (hasLinkSaveLocalStorage) {
             response = { data: { short_link: hasLinkSaveLocalStorage.short_link } }
-            console.log("usou o local")
         } else {
             response = await shotLinks.createShortLink({ origin_link })
 
             linkLocalStorage.push({ origin_link, short_link: response.data.short_link })
 
             localStorage.setItem("short_links", JSON.stringify(linkLocalStorage))
-
-            console.log("usou a api")
         }
         if (response) {
             const { data: { short_link } } = response;
@@ -66,14 +63,7 @@ export default function IconsShare({ recipe }) {
                     onClick={() => window.print()}
                     className='text-s3 cursor-pointer fill-color_orange' />
             </div>
-            <div className="flex md:mt-8 justify-center relative w-full group">
-                <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
-                    Copiar o link da receita
-                </span>
-                <FaLink
-                    onClick={createAShortLink}
-                    className='text-s3 cursor-pointer fill-yellow-600' />
-            </div>
+
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <FacebookShareButton
                     quote={`${recipe?.name_recipe || recipe.name_tip}\n`}
@@ -122,17 +112,28 @@ export default function IconsShare({ recipe }) {
             </div>
             {
                 user?.admin &&
-                <div
-                    className="flex md:mt-8 justify-center relative w-full group"
-                    onClick={handleSendWhatsapp}
-                >
-                    <div>
-                        <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
-                            Enviar receita no whatsapp
-                        </span>
-                        <MdOutlineSendToMobile className='text-s3 cursor-pointer fill-pink-500' />
+                <>
+                    <div
+                        className="flex md:mt-8 justify-center relative w-full group"
+                        onClick={handleSendWhatsapp}
+                    >
+                        <div>
+                            <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
+                                Enviar receita no whatsapp
+                            </span>
+                            <MdOutlineSendToMobile className='text-s3 cursor-pointer fill-pink-500' />
+                        </div>
                     </div>
-                </div>
+                    <div className="flex md:mt-8 justify-center relative w-full group">
+                        <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
+                            Copiar o link da receita
+                        </span>
+                        <FaLink
+                            onClick={createAShortLink}
+                            className='text-s3 cursor-pointer fill-yellow-600' />
+                    </div>
+                </>
+
             }
 
             <div className={`md:hidden md:mt-8 p-4 z-[999] rounded-3xl relative w-full group bg-color_red flex ${showIconsShare ? "justify-center" : "justify-end"}`}>
