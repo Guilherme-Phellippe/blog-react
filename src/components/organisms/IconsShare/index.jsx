@@ -23,9 +23,9 @@ export default function IconsShare({ recipe }) {
         await Whatsapp.sendRecipe(recipe)
     }
 
-    const createAShortLink =async ()=>{
-        const url = window.location.href
-        const response = await shotLinks.createShortLink(url)
+    const createAShortLink = async () => {
+        const origin_link = window.location.href
+        const response = await shotLinks.createShortLink({ origin_link })
         console.log(response)
     }
 
