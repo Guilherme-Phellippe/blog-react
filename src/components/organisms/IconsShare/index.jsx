@@ -26,22 +26,29 @@ export default function IconsShare({ recipe }) {
 
     const createAShortLink = async () => {
         const origin_link = window.location.href
-        const linkLocalStorage = localStorage.getItem(origin_link)
+        const linkLocalStorage = JSON.parse(localStorage.getItem("short_links"))
+        const hasLinkSaveLocalStorage = linkLocalStorage ? linkLocalStorage.find(link => link.origin_link === origin_link) : null
+
         var response;
-        if(linkLocalStorage){
-            response = { data: { short_link: linkLocalStorage }}
+        if (hasLinkSaveLocalStorage) {
+            response = { data: { short_link: hasLinkSaveLocalStorage.short_link } }
             console.log("usou o local")
-        }else{
+        } else {
             response = await shotLinks.createShortLink({ origin_link })
+
+            linkLocalStorage.push({ origin_link, short_link: response.data.short_link })
+
+            localStorage.setItem("short_links", JSON.stringify(linkLocalStorage))
+
             console.log("usou a api")
         }
-        if(response){
+        if (response) {
             const { data: { short_link } } = response;
-            localStorage.setItem(origin_link, short_link)
-            navigator.clipboard.writeText(short_link).then(()=>{
+
+            navigator.clipboard.writeText(short_link).then(() => {
                 dialog("Link copiado com sucesso", 2)
             })
-        }else dialog("Falha ao copiar o link", 0)
+        } else dialog("Falha ao copiar o link", 0)
     }
 
 
