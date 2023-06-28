@@ -26,8 +26,14 @@ export default function IconsShare({ recipe }) {
 
     const createAShortLink = async () => {
         const origin_link = window.location.href
-        const response = await shotLinks.createShortLink({ origin_link })
-        console.log(response)
+        const linkLocalStorage = localStorage.getItem(origin_link)
+        var response;
+        if(linkLocalStorage){
+            response = linkLocalStorage
+        }else{
+            response = await shotLinks.createShortLink({ origin_link })
+            console.log(response)
+        }
         if(response){
             const { data: { short_link } } = response;
             localStorage.setItem(origin_link, short_link)
