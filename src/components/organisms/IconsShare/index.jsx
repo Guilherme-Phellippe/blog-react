@@ -26,7 +26,12 @@ export default function IconsShare({ recipe }) {
     const createAShortLink = async () => {
         const origin_link = window.location.href
         const response = await shotLinks.createShortLink({ origin_link })
-        console.log(response)
+        if(response){
+            const { data: { short_link } } = response;
+            navigator.clipboard.writeText(short_link).then(()=>{
+                alert("Link copiado com sucesso")
+            })
+        }else alert("Falha ao copiar o link")
     }
 
 
