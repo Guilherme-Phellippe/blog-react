@@ -29,10 +29,11 @@ export default function IconsShare({ recipe }) {
         const linkLocalStorage = localStorage.getItem(origin_link)
         var response;
         if(linkLocalStorage){
-            response = linkLocalStorage
+            response = { data: { short_link: linkLocalStorage }}
+            console.log("usou o local")
         }else{
             response = await shotLinks.createShortLink({ origin_link })
-            console.log(response)
+            console.log("usou a api")
         }
         if(response){
             const { data: { short_link } } = response;
