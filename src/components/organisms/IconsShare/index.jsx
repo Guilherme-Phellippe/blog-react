@@ -26,8 +26,8 @@ export default function IconsShare({ recipe }) {
 
     const createAShortLink = async () => {
         const origin_link = window.location.href
-        const linkLocalStorage = JSON.parse(localStorage.getItem("short_links"))
-        const hasLinkSaveLocalStorage = linkLocalStorage ? linkLocalStorage.find(link => link.origin_link === origin_link) : null
+        const linkLocalStorage = JSON.parse(localStorage.getItem("short_links")) || []
+        const hasLinkSaveLocalStorage = linkLocalStorage.find(link => link.origin_link === origin_link)
 
         var response;
         if (hasLinkSaveLocalStorage) {
