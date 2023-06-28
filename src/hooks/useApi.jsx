@@ -279,11 +279,11 @@ export const useWhatsapp = () => ({
 
 export const useShortLink = () => ({
     createShortLink : async (url)=>{
-        api.post("/create-short-link", url).then(res =>{
-            return res
-        }).catch((err)=>{
+        const link = await api.post("/create-short-link", url).catch((err)=>{
             console.error("ERROR REQUEST SHORT LINK:", err)
             return false
         } )
+
+        return link
     }
 })
