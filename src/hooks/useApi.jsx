@@ -280,7 +280,6 @@ export const useWhatsapp = () => ({
 export const useShortLink = () => ({
     createShortLink : async (url)=>{
         api.post("/create-short-link", url).then(res =>{
-            console.log(res)
             return res
         }).catch((err)=>{
             console.error("ERROR REQUEST SHORT LINK:", err)
