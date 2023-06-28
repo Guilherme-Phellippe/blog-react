@@ -7,6 +7,7 @@ import { MdOutlineSendToMobile } from 'react-icons/md';
 
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { useWhatsapp, useShortLink } from '../../../hooks/useApi';
+import { dialog } from "../../../modals/Dialog"
 
 export default function IconsShare({ recipe }) {
     const { user } = useContext(HomeContext)
@@ -29,10 +30,11 @@ export default function IconsShare({ recipe }) {
         console.log(response)
         if(response){
             const { data: { short_link } } = response;
+            localStorage.setItem(origin_link, short_link)
             navigator.clipboard.writeText(short_link).then(()=>{
-                alert("Link copiado com sucesso")
+                dialog("Link copiado com sucesso", 2)
             })
-        }else alert("Falha ao copiar o link")
+        }else dialog("Falha ao copiar o link", 0)
     }
 
 
