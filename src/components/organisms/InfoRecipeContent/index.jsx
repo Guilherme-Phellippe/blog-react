@@ -15,7 +15,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' && recipe &&
+        recipe && window.location.hostname !== 'localhost'  &&
             (window.adsbygoogle = window.adsbygoogle || []).push({})
     }, [recipe])
 
