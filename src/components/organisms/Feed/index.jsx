@@ -95,6 +95,7 @@ export default function Feed({ contents, valueSearch }) {
                         <div className="grid min-h-[20rem] bg-white my-4">
                             {/* <AdsInFeed index={index} /> */}
                             <ins
+                                className="adsbygoogle"
                                 style={{ display: "block" }}
                                 data-ad-format="fluid"
                                 data-ad-layout-key="-5z+ed+2i-1n-4w"
