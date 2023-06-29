@@ -36,26 +36,15 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 <PreparationInformation recipe={recipe} />
                                 <RecipeChefInfo recipe={recipe} />
                             </Suspense>
+                            <ins
+                                className="adsbygoogle"
+                                style={{ display: "block" }}
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-fc+51+9h-cr-91"
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="1453561477"
+                            ></ins>
                             <Suspense className="relative" fallback={<Loading />}>
-                                <div className="mb-4">
-                                    <ins className="adsbygoogle"
-                                        style={{ display: 'block' }}
-                                        data-ad-client="ca-pub-4781060024956035"
-                                        data-ad-slot="9346456414"
-                                        data-ad-format="auto"
-                                        data-full-width-responsive="true"
-                                    ></ins>
-                                </div>
-
-                                <ins
-                                    className="adsbygoogle"
-                                    style={{ display: "block" }}
-                                    data-ad-format="fluid"
-                                    data-ad-layout-key="-fc+51+9h-cr-91"
-                                    data-ad-client="ca-pub-4781060024956035"
-                                    data-ad-slot="1453561477"
-                                ></ins>
-
                                 <IngredientsList
                                     ing={recipe.ing}
                                     stuffing_ing={recipe.stuffing_ing}
@@ -65,17 +54,15 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     prepareMode={recipe.prepareMode}
                                     type_prepare_mode={recipe.type_prepare_mode}
                                 />
-
-                                <ins
-                                    className="adsbygoogle"
-                                    style={{ display: "block", textAlign: "center" }}
-                                    data-ad-layout="in-article"
-                                    data-ad-format="fluid"
-                                    data-ad-client="ca-pub-4781060024956035"
-                                    data-ad-slot="5009663107"
-                                ></ins>
-
                             </Suspense>
+                            <ins
+                                className="adsbygoogle"
+                                style={{ display: "block", textAlign: "center" }}
+                                data-ad-layout="in-article"
+                                data-ad-format="fluid"
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="5009663107"
+                            ></ins>
                             <Suspense fallback={<Loading />}>
                                 <div className="w-full py-4 my-4 bg-[#24242420]">
                                     <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
