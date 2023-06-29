@@ -16,11 +16,7 @@ export default function RecipeSimilarContent({ name_search }) {
         dataFetch(api)
     }, []);
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' &&
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
+
 
     const handleRecipeByTarget = () => {
         const targets = name_search?.split(' ') || "";
