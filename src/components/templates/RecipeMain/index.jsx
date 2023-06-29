@@ -28,7 +28,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
     return (
         <div className="w-full max-w-[1500px] mx-auto">
 
-
             {
                 recipe &&
                 <Suspense fallback={<Loading />}>
