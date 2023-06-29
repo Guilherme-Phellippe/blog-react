@@ -33,9 +33,13 @@ export default function Feed({ contents, valueSearch }) {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                    (index + 1) % 6 === 0 ?
-                        <div className="w-full min-h-[10rem]">
-                            <ins class="adsbygoogle"
+                    (index + 1) % 4 === 0 ?
+                        <div 
+                            key={content.id}
+                            className="w-full min-h-[20rem] grid place-items-center"
+                        >
+                            <ins
+                                className="adsbygoogle"
                                 style={{ display: "block" }}
                                 data-ad-format="fluid"
                                 data-ad-layout-key="+3v+pt+4r-a-41"

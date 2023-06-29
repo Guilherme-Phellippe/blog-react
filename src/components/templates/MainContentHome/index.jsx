@@ -12,7 +12,6 @@ import { Loading } from "../../atoms/Loading/Loading";
 import MenuMobile from "../MenuMobile";
 
 const MostViewedRecipesContainer = lazy(() => import("../../organisms/MostViewedRecipesContainer"))
-const Adsense = lazy(() => import("../../molecules/Adsense"))
 const ColumnLeftMainHome = lazy(() => import("../../organisms/ColumnLeftMainHome"))
 const ColumnRightMainHome = lazy(() => import("../../organisms/ColumnRightMainHome"))
 const Feed = lazy(() => import("../../organisms/Feed"))
@@ -83,14 +82,15 @@ export default function MainContentHome() {
 
             {
                 !valueSearch &&
-                <Suspense fallback={<Loading />}>
-                    <Adsense
-                        slot="2090078650"
-                        format="auto"
-                        data-full-width-responsive="true"
-                    />
-                </Suspense>
-            }
+                <ins
+                    className="adsbygoogle"
+                    style={{display:"block"}}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="2090078650"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
+            }u
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4 min-h-screen relative">
                 {
