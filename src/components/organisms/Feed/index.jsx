@@ -89,7 +89,7 @@ export default function Feed({ contents, valueSearch }) {
             {feed.length ? feed.map((content, index) => {
                 return (
                     ((index + 1) % 4) === 0 ?
-                        <div className="grid bg-white my-4">
+                        <div className="grid bg-white my-4 min-h-[20rem]">
                             <AdsInFeed index={index} />
                         </div>
                         :
