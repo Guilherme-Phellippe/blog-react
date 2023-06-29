@@ -59,6 +59,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     prepareMode={prepareMode}
                                     type_prepare_mode={type_prepare_mode}
                                 />
+
                                 <ins class="adsbygoogle"
                                     style={{ display: "block", textAlign: "center" }}
                                     data-ad-layout="in-article"
@@ -66,6 +67,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     data-ad-client="ca-pub-4781060024956035"
                                     data-ad-slot="5009663107"
                                 ></ins>
+                                
                             </Suspense>
                             <Suspense fallback={<Loading />}>
                                 <div className="w-full py-4 my-4 bg-[#24242420]">
