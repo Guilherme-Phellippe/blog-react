@@ -34,19 +34,14 @@ export default function Feed({ contents, valueSearch }) {
             {feed.length ? feed.map((content, index) => {
                 return (
                     (index + 1) % 4 === 0 ?
-                        <div 
-                            key={content.id}
-                            className="w-full min-h-[20rem] grid place-items-center"
-                        >
-                            <ins
-                                className="adsbygoogle"
-                                style={{ display: "block" }}
-                                data-ad-format="fluid"
-                                data-ad-layout-key="+3v+pt+4r-a-41"
-                                data-ad-client="ca-pub-4781060024956035"
-                                data-ad-slot="1096599178"
-                            ></ins>
-                        </div>
+                        <ins
+                            className="adsbygoogle"
+                            style={{ display: "block" }}
+                            data-ad-format="fluid"
+                            data-ad-layout-key="+3v+pt+4r-a-41"
+                            data-ad-client="ca-pub-4781060024956035"
+                            data-ad-slot="1096599178"
+                        ></ins>
 
                         :
                         content.name_recipe ?
