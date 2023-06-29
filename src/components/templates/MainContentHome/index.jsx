@@ -22,7 +22,7 @@ export default function MainContentHome() {
     //useContext
     const { valueSearch, user } = useContext(HomeContext);
     //useState
-    const [postPerPage, setPostPerPage] = useState(10);
+    const [postPerPage, setPostPerPage] = useState(15);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
     const [showContentSection, setContentSection] = useState(false)

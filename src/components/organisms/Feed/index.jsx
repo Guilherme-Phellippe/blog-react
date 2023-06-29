@@ -12,12 +12,14 @@ function AdsInFeed({ index }) {
         switch (index) {
             case 7 || 23 || 35:
                 console.log("index: "+index, 7,23,35)
-                return <ins class="adsbygoogle"
+                return <ins
+                    className="adsbygoogle"
                     style={{ display: "block" }}
                     data-ad-format="fluid"
-                    data-ad-layout-key="-5z+ed+2i-1n-4w"
+                    data-ad-layout-key="+3v+pt+4r-a-41"
                     data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="4072766205"></ins>
+                    data-ad-slot="1096599178"></ins>
+                
             case 11 || 27 || 39:
                 console.log("index: "+index, 11,27,39)
                 return <ins class="adsbygoogle"
@@ -36,13 +38,12 @@ function AdsInFeed({ index }) {
                     data-ad-slot="1390816442"></ins>
             default:
                 console.log("index: "+index, "default")
-                return <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-format="fluid"
-                    data-ad-layout-key="+3v+pt+4r-a-41"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1096599178"></ins>
+                return <ins class="adsbygoogle"
+                style={{ display: "block" }}
+                data-ad-format="fluid"
+                data-ad-layout-key="-5z+ed+2i-1n-4w"
+                data-ad-client="ca-pub-4781060024956035"
+                data-ad-slot="4072766205"></ins>
         }
     }, [index])
 
