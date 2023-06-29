@@ -1,67 +1,61 @@
 import 'moment/locale/pt-br';
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
 import { Loading } from '../../atoms/Loading/Loading';
 
-function AdsInFeed({ index }) {
+// function AdsInFeed({ index }) {
 
-    useCallback(() => {
-        switch (index) {
-            case 7 || 23 || 35:
-                console.log("index: " + index, 7, 23, 35)
-                return <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-format="fluid"
-                    data-ad-layout-key="+3v+pt+4r-a-41"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1096599178"></ins>
+//    const viewer = useCallback(() => {
+//         switch (index) {
+//             case 7 || 23 || 35:
+//                 console.log("index: " + index, 7, 23, 35)
+//                 return <ins
+//                     className="adsbygoogle"
+//                     style={{ display: "block" }}
+//                     data-ad-format="fluid"
+//                     data-ad-layout-key="+3v+pt+4r-a-41"
+//                     data-ad-client="ca-pub-4781060024956035"
+//                     data-ad-slot="1096599178"></ins>
 
-            case 11 || 27 || 39:
-                console.log("index: " + index, 11, 27, 39)
-                return <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-format="fluid"
-                    data-ad-layout-key="-69+ed+2i-1n-4w"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="2675977957"></ins>
-            case 15 || 31 || 43:
-                console.log("index: " + index, 15, 31, 43)
-                return <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-format="fluid"
-                    data-ad-layout-key="-5z+ed+2i-1n-4w"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1390816442"></ins>
-            default:
-                console.log("index: " + index, "default")
-                return <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-format="fluid"
-                    data-ad-layout-key="-5z+ed+2i-1n-4w"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="4072766205"></ins>
-        }
-    }, [index])
+//             case 11 || 27 || 39:
+//                 console.log("index: " + index, 11, 27, 39)
+//                 return <ins
+//                     className="adsbygoogle"
+//                     style={{ display: "block" }}
+//                     data-ad-format="fluid"
+//                     data-ad-layout-key="-69+ed+2i-1n-4w"
+//                     data-ad-client="ca-pub-4781060024956035"
+//                     data-ad-slot="2675977957"></ins>
+//             case 15 || 31 || 43:
+//                 console.log("index: " + index, 15, 31, 43)
+//                 return <ins
+//                     className="adsbygoogle"
+//                     style={{ display: "block" }}
+//                     data-ad-format="fluid"
+//                     data-ad-layout-key="-5z+ed+2i-1n-4w"
+//                     data-ad-client="ca-pub-4781060024956035"
+//                     data-ad-slot="1390816442"></ins>
+//             default:
+//                 console.log("index: " + index, "default")
+//                 return <ins
+//                     className="adsbygoogle"
+//                     style={{ display: "block" }}
+//                     data-ad-format="fluid"
+//                     data-ad-layout-key="-5z+ed+2i-1n-4w"
+//                     data-ad-client="ca-pub-4781060024956035"
+//                     data-ad-slot="4072766205"></ins>
+//         }
+//     }, [index])
 
 
-    return (
-        <ins
-            className="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-format="fluid"
-            data-ad-layout-key="-5z+ed+2i-1n-4w"
-            data-ad-client="ca-pub-4781060024956035"
-            data-ad-slot="4072766205"></ins>
-    )
+//     return (
+//         viewer()
+//     )
 
-}
+// }
 
 
 export default function Feed({ contents, valueSearch }) {
@@ -99,7 +93,14 @@ export default function Feed({ contents, valueSearch }) {
                 return (
                     ((index + 1) % 4) === 0 ?
                         <div className="grid bg-white my-4 min-h-[20rem]">
-                            <AdsInFeed index={index} />
+                            {/* <AdsInFeed index={index} /> */}
+                            <ins
+                                className="adsbygoogle"
+                                style={{ display: "block" }}
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-5z+ed+2i-1n-4w"
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="4072766205"></ins>
                         </div>
                         :
                         content.name_recipe ?
