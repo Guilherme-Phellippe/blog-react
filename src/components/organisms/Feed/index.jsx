@@ -20,7 +20,7 @@ function AdsInFeed({ index }) {
             case 19:
                 return <h2>5</h2>
             default:
-                <ins
+                return <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}
                     data-ad-format="fluid"
@@ -28,7 +28,6 @@ function AdsInFeed({ index }) {
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="1096599178"
                 ></ins>
-                break;
         }
     }
 
