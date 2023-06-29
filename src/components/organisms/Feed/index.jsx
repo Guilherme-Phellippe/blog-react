@@ -1,6 +1,6 @@
 import 'moment/locale/pt-br';
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
@@ -8,7 +8,7 @@ import { Loading } from '../../atoms/Loading/Loading';
 
 function AdsInFeed({ index }) {
     
-    const viewer = useMemo(() => {
+    const viewer = useCallback(() => {
         switch (index) {
             case 7 || 23 || 35:
                 console.log("index: "+index, 7,23,35)
