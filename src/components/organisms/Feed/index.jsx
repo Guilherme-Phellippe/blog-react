@@ -33,7 +33,7 @@ export default function Feed({ contents, valueSearch }) {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                    (index + 1) % 4 === 0 ?
+                    (index + 1 ) % 4 === 0 ?
                         <ins
                             key={index}
                             className="adsbygoogle"
