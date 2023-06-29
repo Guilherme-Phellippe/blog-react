@@ -9,12 +9,9 @@ export default function PrepareMode({ prepareMode, type_prepare_mode }) {
             {
                 createListIngAdd(type_prepare_mode, newPrepareMode).map((item, index) =>
                     <div key={item.name + item.count} className="w-full flex flex-col justify-center items-start">
-                        {
-                            item.name !== "Principal" && index !== 0 &&
-                            <h3 className="text-color_orange bg-color_orange/20 p-2 rounded-xl text-s1_7 font-bold">
-                                {item.name}:
-                            </h3>
-                        }
+                        <h3 className={`${ item.name === "Principal" && index === 0 ? "hidden" : "block" } text-color_orange bg-color_orange/20 p-2 rounded-xl text-s1_7 font-bold`}>
+                            {item.name}:
+                        </h3>
                         <ul className='w-full p-0 md:p-4 flex flex-col'>
                             {
                                 item.ing.map((i, index) =>
