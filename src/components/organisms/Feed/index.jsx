@@ -11,14 +11,27 @@ function AdsInFeed({ index }) {
 
     const viewer = () => {
         switch (index) {
-            case 7:
-                return <h2>2</h2>
-            case 11:
-                return <h2>3</h2>
-            case 15:
-                return <h2>4</h2>
-            case 19:
-                return <h2>5</h2>
+            case 7 || 23 || 35:
+                return <ins class="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-5z+ed+2i-1n-4w"
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="4072766205"></ins>
+            case 11 || 27 || 39:
+                return <ins class="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-69+ed+2i-1n-4w"
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="2675977957"></ins>
+            case 15 || 31 || 43:
+                return <ins class="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-5z+ed+2i-1n-4w"
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="1390816442"></ins>
             default:
                 return <ins
                     className="adsbygoogle"
@@ -26,8 +39,7 @@ function AdsInFeed({ index }) {
                     data-ad-format="fluid"
                     data-ad-layout-key="+3v+pt+4r-a-41"
                     data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1096599178"
-                ></ins>
+                    data-ad-slot="1096599178"></ins>
         }
     }
 
