@@ -22,9 +22,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
             //ADD TITLE DYNAMIC
             document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
             setRecipe(data);
-            // GOOGLE ADSENSE 
-            window.location.hostname !== 'localhost' &&
-                (window.adsbygoogle = window.adsbygoogle || []).push({});
         })();
     }, [id]);
 
