@@ -23,7 +23,14 @@ export default function Feed({ contents, valueSearch }) {
         const filteredFeed = contents.filter(content => !listRecipeForRemove.includes(content.id.toString()))
 
         setFeed(filteredFeed)
-    }, [contents, listRecipeForRemove])
+    }, [contents, listRecipeForRemove]);
+
+
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        window.location.hostname !== 'localhost' &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [])
 
     const handleIdForAddListRemove = ({ currentTarget }) => {
         setListRecipeForRemove(list => [...list, currentTarget.id])
@@ -33,7 +40,7 @@ export default function Feed({ contents, valueSearch }) {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                    (index + 1 ) % 4 === 0 ?
+                    index === 1 ?
                         <ins
                             className="adsbygoogle"
                             style={{ display: "block" }}
