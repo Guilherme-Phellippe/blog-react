@@ -1,6 +1,6 @@
 import 'moment/locale/pt-br';
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
@@ -8,7 +8,7 @@ import { Loading } from '../../atoms/Loading/Loading';
 
 function AdsInFeed({ index }) {
     
-    const viewer = () => {
+    const viewer = useMemo(() => {
         switch (index) {
             case 7 || 23 || 35:
                 console.log("index: "+index, 7,23,35)
@@ -44,7 +44,7 @@ function AdsInFeed({ index }) {
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="1096599178"></ins>
         }
-    }
+    }, [index])
 
 
     return (
