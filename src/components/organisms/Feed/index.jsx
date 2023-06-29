@@ -17,7 +17,6 @@ function AdsInFeed({ index }) {
     const viewer = useCallback(() => {
         switch (index) {
             case 7 || 23 || 35:
-                console.log("index: " + index, 7, 23, 35)
                 return <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}
@@ -27,7 +26,6 @@ function AdsInFeed({ index }) {
                     data-ad-slot="1096599178"></ins>
 
             case 11 || 27 || 39:
-                console.log("index: " + index, 11, 27, 39)
                 return <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}
@@ -36,7 +34,6 @@ function AdsInFeed({ index }) {
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="2675977957"></ins>
             case 15 || 31 || 43:
-                console.log("index: " + index, 15, 31, 43)
                 return <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}
@@ -45,7 +42,6 @@ function AdsInFeed({ index }) {
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="1390816442"></ins>
             default:
-                console.log("index: " + index, "default")
                 return <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}

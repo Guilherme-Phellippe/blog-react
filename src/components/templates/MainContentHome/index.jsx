@@ -22,7 +22,7 @@ export default function MainContentHome() {
     //useContext
     const { valueSearch, user } = useContext(HomeContext);
     //useState
-    const [postPerPage, setPostPerPage] = useState(15);
+    const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
     const [feed, setFeed] = useState(recipes);
     const [showContentSection, setContentSection] = useState(false)
@@ -120,7 +120,7 @@ export default function MainContentHome() {
                             {postPerPage <= feed.length &&
                                 <Button
                                     customClass={"btn-primary flex items-center mt-16 mx-auto block px-8 text-s1_1"}
-                                    event={() => setPostPerPage((nmr_post) => nmr_post + 10)}
+                                    event={() => setPostPerPage((nmr_post) => nmr_post + 15)}
                                 >
                                     Ver mais receitas
                                     <MdArrowDropDown className="text-s2" />
