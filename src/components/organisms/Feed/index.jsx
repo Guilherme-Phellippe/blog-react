@@ -6,6 +6,37 @@ import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
 import { Loading } from '../../atoms/Loading/Loading';
 
+function AdsInFeed({ index }) {
+    console.log(index)
+
+    const viewer = () =>{
+        switch (index) {
+            case 1:
+                return <h2>2</h2>
+            case 2:
+                return <h2>2</h2>
+            case 3:
+                return <h2>2</h2>
+            case 4:
+                return <h2>2</h2>
+            default:
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-format="fluid"
+                    data-ad-layout-key="+3v+pt+4r-a-41"
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="1096599178"
+                ></ins>
+                break;
+        }
+    }
+
+
+    return viewer
+
+}
+
 
 export default function Feed({ contents, valueSearch }) {
     const listRecipeLocalStorage = localStorage.getItem("listIdForRemove") ? JSON.parse(localStorage.getItem("listIdForRemove")) : []
@@ -40,17 +71,9 @@ export default function Feed({ contents, valueSearch }) {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                   ((index+1) % 4) === 0 ?
+                    ((index + 1) % 4) === 0 ?
                         <div className="grid bg-white my-4">
-                            {console.log(content.id, index)}
-                            <ins
-                                className="adsbygoogle"
-                                style={{ display: "block" }}
-                                data-ad-format="fluid"
-                                data-ad-layout-key="+3v+pt+4r-a-41"
-                                data-ad-client="ca-pub-4781060024956035"
-                                data-ad-slot="1096599178"
-                            ></ins>
+                            <AdsInFeed index={index}/>
                         </div>
                         :
                         content.name_recipe ?
@@ -71,3 +94,5 @@ export default function Feed({ contents, valueSearch }) {
         </div>
     )
 }
+
+
