@@ -40,8 +40,9 @@ export default function Feed({ contents, valueSearch }) {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                    index === 1 ?
+                   ((index+1) % 4) === 0 ?
                         <div className="grid bg-white my-4">
+                            {console.log(content.id, index)}
                             <ins
                                 className="adsbygoogle"
                                 style={{ display: "block" }}
