@@ -24,13 +24,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         nmr_saved
     } = recipe
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' &&
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
-
-
     return (
         <div className="w-full flex justify-center">
             <div className="w-full md:w-2/3 p-4">
