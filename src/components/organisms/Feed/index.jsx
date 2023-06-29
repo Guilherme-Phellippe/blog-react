@@ -1,12 +1,10 @@
 import 'moment/locale/pt-br';
 
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FeedRecipes } from '../../molecules/FeedRecipes';
 import { FeedTip } from '../../molecules/FeedTips';
 import { Loading } from '../../atoms/Loading/Loading';
-
-const Adsense = lazy(() => import('../../molecules/Adsense'))
 
 
 export default function Feed({ contents, valueSearch }) {
@@ -36,12 +34,16 @@ export default function Feed({ contents, valueSearch }) {
             {feed.length ? feed.map((content, index) => {
                 return (
                     (index + 1) % 6 === 0 ?
-                        <Adsense
-                            key={index + "-adsense"}
-                            format="fluid"
-                            slot="1096599178"
-                            data-ad-layout-key="+3v+pt+4r-a-41"
-                        />
+                        <div className="w-full min-h-[10rem]">
+                            <ins class="adsbygoogle"
+                                style={{ display: "block" }}
+                                data-ad-format="fluid"
+                                data-ad-layout-key="+3v+pt+4r-a-41"
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="1096599178"
+                            ></ins>
+                        </div>
+
                         :
                         content.name_recipe ?
                             <FeedRecipes
