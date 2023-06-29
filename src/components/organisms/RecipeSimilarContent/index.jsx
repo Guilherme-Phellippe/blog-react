@@ -23,7 +23,7 @@ export default function RecipeSimilarContent({ name_search }) {
     }, [])
 
     const handleRecipeByTarget = () => {
-        const targets = name_search.split(' ');
+        const targets = name_search?.split(' ') || "";
         var recipesFinds = [];
         //find all recipes that has name_recipe similar the name_recipe or category this recipe.
         recipes.forEach((recipe) => {

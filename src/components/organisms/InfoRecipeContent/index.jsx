@@ -12,24 +12,15 @@ const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSave
 
 
 export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
-    const {
-        name_recipe,
-        nmr_hearts,
-        images_recipe,
-        ing,
-        stuffing_ing,
-        type_stuffing_ing,
-        prepareMode,
-        type_prepare_mode,
-        nmr_saved
-    } = recipe
+
 
     return (
+        recipe &&
         <div className="w-full flex justify-center">
             <div className="w-full md:w-2/3 p-4">
                 <Suspense fallback={<Loading />}>
-                    <InfoRecipeHeader nmr_hearts={nmr_hearts} name_recipe={name_recipe} />
-                    <CarouselMidiasContent name_recipe={name_recipe} img={images_recipe} />
+                    <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
+                    <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
                 </Suspense>
 
                 <div className="w-full min-h-screen relative">
@@ -42,7 +33,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             </Suspense>
                             <Suspense className="relative" fallback={<Loading />}>
 
-                                <ins class="adsbygoogle"
+                                <ins className="adsbygoogle"
                                     style={{ display: "block" }}
                                     data-ad-format="fluid"
                                     data-ad-layout-key="-fc+51+9h-cr-91"
@@ -51,16 +42,16 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 ></ins>
 
                                 <IngredientsList
-                                    ing={ing}
-                                    stuffing_ing={stuffing_ing}
-                                    type_stuffing_ing={type_stuffing_ing}
+                                    ing={recipe.ing}
+                                    stuffing_ing={recipe.stuffing_ing}
+                                    type_stuffing_ing={recipe.type_stuffing_ing}
                                 />
                                 <PrepareMode
-                                    prepareMode={prepareMode}
-                                    type_prepare_mode={type_prepare_mode}
+                                    prepareMode={recipe.prepareMode}
+                                    type_prepare_mode={recipe.type_prepare_mode}
                                 />
 
-                                <ins class="adsbygoogle"
+                                <ins className="adsbygoogle"
                                     style={{ display: "block", textAlign: "center" }}
                                     data-ad-layout="in-article"
                                     data-ad-format="fluid"
@@ -71,7 +62,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             </Suspense>
                             <Suspense fallback={<Loading />}>
                                 <div className="w-full py-4 my-4 bg-[#24242420]">
-                                    <LikeComentsSaveButtons nmr_hearts={nmr_hearts} nmr_saved={nmr_saved} />
+                                    <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
                                 </div>
                                 <ListRecipeComments content={recipe} />
                             </Suspense>

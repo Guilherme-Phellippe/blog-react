@@ -34,7 +34,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     return (
         <div className="w-full max-w-[1500px] mx-auto">
-            
+
 
             {
                 recipe &&
@@ -55,22 +55,18 @@ export default function RecipeMain({ showContentAfterScroll }) {
                 </div>
 
                 <div className="w-full bg-white min-h-screen overflow-hidden">
-                    {
-                        recipe &&
-                        <Suspense fallback={<Loading />}>
-                            <InfoRecipeContent
-                                recipe={recipe}
-                                showContentAfterScroll={showContentAfterScroll}
-                            />
-                        </Suspense>
-                    }
 
-                    {
-                        recipe &&
-                        <Suspense fallback={<Loading />}>
-                            <RecipeSimilarContent name_search={recipe.name_recipe} />
-                        </Suspense>
-                    }
+                    <Suspense fallback={<Loading />}>
+                        <InfoRecipeContent
+                            recipe={recipe}
+                            showContentAfterScroll={showContentAfterScroll}
+                        />
+                    </Suspense>
+
+
+                    <Suspense fallback={<Loading />}>
+                        <RecipeSimilarContent name_search={recipe?.name_recipe} />
+                    </Suspense>
                 </div>
             </main>
         </div>
