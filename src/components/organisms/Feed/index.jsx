@@ -11,14 +11,14 @@ function AdsInFeed({ index }) {
 
     const viewer = () =>{
         switch (index) {
-            case 1:
+            case 7:
                 return <h2>2</h2>
-            case 2:
-                return <h2>2</h2>
-            case 3:
-                return <h2>2</h2>
-            case 4:
-                return <h2>2</h2>
+            case 11:
+                return <h2>3</h2>
+            case 15:
+                return <h2>4</h2>
+            case 19:
+                return <h2>5</h2>
             default:
                 <ins
                     className="adsbygoogle"
