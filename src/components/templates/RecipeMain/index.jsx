@@ -25,12 +25,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
         })();
     }, [id]);
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
-
-
     return (
         <div className="w-full max-w-[1500px] mx-auto">
 

@@ -38,7 +38,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             </Suspense>
                             <Suspense className="relative" fallback={<Loading />}>
 
-                                <ins className="adsbygoogle"
+                                <ins 
                                     style={{ display: "block" }}
                                     data-ad-format="fluid"
                                     data-ad-layout-key="-fc+51+9h-cr-91"
@@ -56,7 +56,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     type_prepare_mode={recipe.type_prepare_mode}
                                 />
 
-                                <ins className="adsbygoogle"
+                                <ins
                                     style={{ display: "block", textAlign: "center" }}
                                     data-ad-layout="in-article"
                                     data-ad-format="fluid"
