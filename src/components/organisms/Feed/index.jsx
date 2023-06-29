@@ -35,6 +35,7 @@ export default function Feed({ contents, valueSearch }) {
                 return (
                     (index + 1) % 4 === 0 ?
                         <ins
+                            key={index}
                             className="adsbygoogle"
                             style={{ display: "block" }}
                             data-ad-format="fluid"
@@ -42,7 +43,6 @@ export default function Feed({ contents, valueSearch }) {
                             data-ad-client="ca-pub-4781060024956035"
                             data-ad-slot="1096599178"
                         ></ins>
-
                         :
                         content.name_recipe ?
                             <FeedRecipes
