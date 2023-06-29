@@ -7,10 +7,10 @@ export default function PrepareMode({ prepareMode, type_prepare_mode }) {
         <div className="w-full h-auto flex flex-col items-center p-0 md:p-4 mb-20">
             <h2 className='text-s2 text-color_orange text-center font-bold my-4 bg-color_orange/20 w-full p-4'>MODO DE PREPARO</h2>
             {
-                createListIngAdd(type_prepare_mode, newPrepareMode).map((item) =>
+                createListIngAdd(type_prepare_mode, newPrepareMode).map((item, index) =>
                     <div key={item.name+item.count} className="w-full flex flex-col justify-center items-start">
                         {
-                            item.name !== "Principal" &&
+                            item.name !== "Principal" && index !== 0 &&
                             <h3 className="text-color_orange bg-color_orange/20 p-2 rounded-xl text-s1_7 font-bold">{item.name}:</h3>
                         }
                         <ul className='w-full p-0 md:p-4 flex flex-col'>
