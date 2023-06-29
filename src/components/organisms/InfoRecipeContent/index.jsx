@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
 import { ListRecipeComments } from '../../molecules/ListRecipeComments';
 
@@ -23,6 +23,13 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         type_prepare_mode,
         nmr_saved
     } = recipe
+
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        window.location.hostname !== 'localhost' &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [])
+
 
     return (
         <div className="w-full flex justify-center">
@@ -67,7 +74,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     data-ad-client="ca-pub-4781060024956035"
                                     data-ad-slot="5009663107"
                                 ></ins>
-                                
+
                             </Suspense>
                             <Suspense fallback={<Loading />}>
                                 <div className="w-full py-4 my-4 bg-[#24242420]">
