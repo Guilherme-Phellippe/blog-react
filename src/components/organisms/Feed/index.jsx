@@ -9,30 +9,39 @@ import { Loading } from '../../atoms/Loading/Loading';
 function AdsInFeed({ index }) {
     console.log(index)
 
-    const viewer = () =>{
-        switch (index) {
-            case 7:
-                return <h2>2</h2>
-            case 11:
-                return <h2>3</h2>
-            case 15:
-                return <h2>4</h2>
-            case 19:
-                return <h2>5</h2>
-            default:
-                return <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-format="fluid"
-                    data-ad-layout-key="+3v+pt+4r-a-41"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1096599178"
-                ></ins>
-        }
-    }
+    // const viewer = () => {
+    //     switch (index) {
+    //         case 7:
+    //             return <h2>2</h2>
+    //         case 11:
+    //             return <h2>3</h2>
+    //         case 15:
+    //             return <h2>4</h2>
+    //         case 19:
+    //             return <h2>5</h2>
+    //         default:
+    //             return <ins
+    //                 className="adsbygoogle"
+    //                 style={{ display: "block" }}
+    //                 data-ad-format="fluid"
+    //                 data-ad-layout-key="+3v+pt+4r-a-41"
+    //                 data-ad-client="ca-pub-4781060024956035"
+    //                 data-ad-slot="1096599178"
+    //             ></ins>
+    //     }
+    // }
 
 
-    return viewer
+    return (
+        <ins
+            className="adsbygoogle"
+            style={{ display: "block" }}
+            data-ad-format="fluid"
+            data-ad-layout-key="+3v+pt+4r-a-41"
+            data-ad-client="ca-pub-4781060024956035"
+            data-ad-slot="1096599178"
+        ></ins>
+    )
 
 }
 
@@ -72,7 +81,7 @@ export default function Feed({ contents, valueSearch }) {
                 return (
                     ((index + 1) % 4) === 0 ?
                         <div className="grid bg-white my-4">
-                            <AdsInFeed index={index}/>
+                            <AdsInFeed index={index} />
                         </div>
                         :
                         content.name_recipe ?
