@@ -7,11 +7,11 @@ import { FeedTip } from '../../molecules/FeedTips';
 import { Loading } from '../../atoms/Loading/Loading';
 
 function AdsInFeed({ index }) {
-    
+
     const viewer = useCallback(() => {
         switch (index) {
             case 7 || 23 || 35:
-                console.log("index: "+index, 7,23,35)
+                console.log("index: " + index, 7, 23, 35)
                 return <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}
@@ -19,31 +19,34 @@ function AdsInFeed({ index }) {
                     data-ad-layout-key="+3v+pt+4r-a-41"
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="1096599178"></ins>
-                
+
             case 11 || 27 || 39:
-                console.log("index: "+index, 11,27,39)
-                return <ins class="adsbygoogle"
+                console.log("index: " + index, 11, 27, 39)
+                return <ins
+                    className="adsbygoogle"
                     style={{ display: "block" }}
                     data-ad-format="fluid"
                     data-ad-layout-key="-69+ed+2i-1n-4w"
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="2675977957"></ins>
             case 15 || 31 || 43:
-                console.log("index: "+index, 15,31,43)
-                return <ins class="adsbygoogle"
+                console.log("index: " + index, 15, 31, 43)
+                return <ins
+                    className="adsbygoogle"
                     style={{ display: "block" }}
                     data-ad-format="fluid"
                     data-ad-layout-key="-5z+ed+2i-1n-4w"
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="1390816442"></ins>
             default:
-                console.log("index: "+index, "default")
-                return <ins class="adsbygoogle"
-                style={{ display: "block" }}
-                data-ad-format="fluid"
-                data-ad-layout-key="-5z+ed+2i-1n-4w"
-                data-ad-client="ca-pub-4781060024956035"
-                data-ad-slot="4072766205"></ins>
+                console.log("index: " + index, "default")
+                return <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-5z+ed+2i-1n-4w"
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="4072766205"></ins>
         }
     }, [index])
 
