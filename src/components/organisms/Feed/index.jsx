@@ -8,7 +8,7 @@ import { Loading } from '../../atoms/Loading/Loading';
 
 function AdsInFeed({ index }) {
 
-    const viewer = useCallback(() => {
+    useCallback(() => {
         switch (index) {
             case 7 || 23 || 35:
                 console.log("index: " + index, 7, 23, 35)
@@ -52,7 +52,13 @@ function AdsInFeed({ index }) {
 
 
     return (
-        viewer()
+        <ins
+            className="adsbygoogle"
+            style={{ display: "block" }}
+            data-ad-format="fluid"
+            data-ad-layout-key="-5z+ed+2i-1n-4w"
+            data-ad-client="ca-pub-4781060024956035"
+            data-ad-slot="4072766205"></ins>
     )
 
 }
