@@ -91,14 +91,17 @@ export default function Feed({ contents, valueSearch }) {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                    ((index + 1) % 4) === 0 ?
-                        <ins
-                            className="adsbygoogle bg-white my-4 "
-                            style={{ display: "block" }}
-                            data-ad-format="fluid"
-                            data-ad-layout-key="-5z+ed+2i-1n-4w"
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="4072766205"></ins>
+                    ((index) % 2) === 0 ?
+                        <div className="grid min-h-[20rem]">
+                            {/* <AdsInFeed index={index} /> */}
+                            <ins
+                                className="adsbygoogle"
+                                style={{ display: "block" }}
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-5z+ed+2i-1n-4w"
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="4072766205"></ins>
+                        </div>
                         :
                         content.name_recipe ?
                             <FeedRecipes
