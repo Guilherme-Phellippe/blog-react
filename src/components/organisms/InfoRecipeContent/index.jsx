@@ -37,6 +37,15 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 <RecipeChefInfo recipe={recipe} />
                             </Suspense>
                             <Suspense className="relative" fallback={<Loading />}>
+                                <div className="mb-4">
+                                    <ins className="adsbygoogle"
+                                        style={{ display: 'block' }}
+                                        data-ad-client="ca-pub-4781060024956035"
+                                        data-ad-slot="9346456414"
+                                        data-ad-format="auto"
+                                        data-full-width-responsive="true"
+                                    ></ins>
+                                </div>
 
                                 <ins
                                     className="adsbygoogle"
