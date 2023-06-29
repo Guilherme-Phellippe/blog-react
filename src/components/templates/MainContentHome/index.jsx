@@ -37,6 +37,9 @@ export default function MainContentHome() {
             if (recipesData) setRecipes(recipesData)
             else localStorage.removeItem('token')
             document.title = "Tem Sabor receitas oficiais"
+            // GOOGLE ADSENSE 
+            window.location.hostname !== 'localhost' &&
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
         }
         )();
     }, []);
@@ -84,7 +87,7 @@ export default function MainContentHome() {
                 !valueSearch &&
                 <ins
                     className="adsbygoogle"
-                    style={{display:"block"}}
+                    style={{ display: "block" }}
                     data-ad-client="ca-pub-4781060024956035"
                     data-ad-slot="2090078650"
                     data-ad-format="auto"
