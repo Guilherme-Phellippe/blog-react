@@ -143,7 +143,6 @@ export default function MainContentHome() {
             {/* This menu will only be displayed when the user is on the smartphone */}
             {window.innerWidth < 764 &&
                 <MenuMobile
-                    user={user}
                     ranking={topRankingByHearts()}
                 />
             }

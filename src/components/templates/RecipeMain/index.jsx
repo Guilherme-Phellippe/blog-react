@@ -1,11 +1,13 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Loading } from '../../atoms/Loading/Loading';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
+import { Loading } from '../../atoms/Loading/Loading';
+import MenuMobile, {   } from  "../MenuMobile"
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
+
 
 export default function RecipeMain() {
     const { id } = useParams();
@@ -43,7 +45,7 @@ export default function RecipeMain() {
                         data-ad-format="auto"
                         data-full-width-responsive="true"
                     ></ins>
-                    {console.log("banner top")} 
+                    {console.log("banner top")}
                 </div>
 
                 <div className="w-full bg-white min-h-screen overflow-hidden">
@@ -54,6 +56,12 @@ export default function RecipeMain() {
 
                 </div>
             </main>
+
+            {/* This menu will only be displayed when the user is on the smartphone */}
+            {window.innerWidth < 764 &&
+                <MenuMobile />
+            }
+
         </div>
     )
 }

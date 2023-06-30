@@ -6,24 +6,51 @@ import ColumnRightMainHome from "../../organisms/ColumnRightMainHome";
 import { ActiveInformation } from "../../organisms/ActiveInformation";
 import { dialog } from "../../../modals/Dialog";
 import MenuMobileDisplay from "../../molecules/MenuMobileDisplay";
-import { useCategoryApi } from "../../../hooks/useApi";
+import { useCategoryApi, useRecipeApi } from "../../../hooks/useApi";
 
-export default function MenuMobile({ user, ranking }) {
-    const { setValueSearch } = useContext(HomeContext);
-    const refCategoryApi = useRef(useCategoryApi());
-    const refRanking = useRef(null)
-    const refNotification = useRef(null)
+export default function MenuMobile({ ranking }) {
+    //USECONTEXT
+    const { setValueSearch, user } = useContext(HomeContext);
+    // USESTATE 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
-    const [categories, setCategories] = useState([])
+    const [listCategoriesAndRecipes, setListCategoriesAndRecipes] = useState({ categories: [], recipes: ranking || [] })
+    // USEREF
+    const refCategoryApi = useRef(useCategoryApi());
+    const refRecipesApi = useRef(useRecipeApi())
+    const refRanking = useRef(null)
+    const refValueRanking = useRef(ranking || null)
+    const refNotification = useRef(null)
+    //USENAVIGATE
     const navigate = useNavigate();
 
 
     useEffect(() => {
         (async () => {
-            const response = await refCategoryApi.current.getAllCategory();
-            setCategories(response.data)
+            //Api search all categories
+            const categories = await refCategoryApi.current.getAllCategory();
+            //In this line we check if there a value in the ranking, if we dont have that value, 
+            //we look for all the recipes in the api
+            const recipes = refValueRanking.current ?
+                { data: refValueRanking.current }
+                :
+                await refRecipesApi.current.getAllRecipes()
+            //in this line, we dont want to cause 2 renderings in component, with that we create a 
+            //object and define two key: categories and recipes and we save the data in it
+            setListCategoriesAndRecipes({ categories: categories.data, recipes: recipes.data })
         })()
     }, [])
+
+    /**
+     * This function return a recipe list.
+     * if the ranking is null, we create a new list recipe with a best recipes
+     * @returns list recipes order by best recipes
+     */
+    const rankingRecipes = () => {
+        if (ranking) return ranking
+
+        const recipesFiltered = listCategoriesAndRecipes.recipes.filter(recipe => recipe.name_recipe && recipe)
+        return [...recipesFiltered].sort((x, y) => y.nmr_hearts.length - x.nmr_hearts.length)
+    }
 
 
     const handleClickButtonMenu = async (currentTarget) => {
@@ -91,7 +118,7 @@ export default function MenuMobile({ user, ranking }) {
                 ref={refRanking}
                 className="flex flex-col w-4/5 h-screen z-[998] fixed top-0 right-0 bg-white invisible overflow-auto"
             >
-                <ColumnRightMainHome ranking={ranking} />
+                <ColumnRightMainHome ranking={rankingRecipes()} />
             </div>
             {/* when notification is open show this content  */}
             <div
@@ -105,7 +132,7 @@ export default function MenuMobile({ user, ranking }) {
                 <MenuMobileDisplay
                     setMenuIsOpen={setMenuIsOpen}
                     setValueSearch={setValueSearch}
-                    categories={categories}
+                    categories={listCategoriesAndRecipes.categories}
                 />
             }
         </>

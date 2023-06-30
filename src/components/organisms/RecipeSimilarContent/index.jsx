@@ -92,6 +92,7 @@ export default function RecipeSimilarContent({ name_search }) {
                     data-ad-format="auto"
                     data-full-width-responsive="true"
                 ></ins>
+                {console.log("anuncio 5")}
             </div>
         </div>
     )
