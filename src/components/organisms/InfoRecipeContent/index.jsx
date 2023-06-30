@@ -28,7 +28,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     showContentAfterScroll &&
                     <>
                         <div className="w-full min-h-screen relative">
-                            <div className="mb-4">
+                            {/* <div className="mb-4">
                                 <ins className="adsbygoogle"
                                     style={{ display: 'block' }}
                                     data-ad-client="ca-pub-4781060024956035"
@@ -37,7 +37,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     data-full-width-responsive="true"
                                 ></ins>
                                 {console.log("banner top")}
-                            </div>
+                            </div> */}
 
                             <Suspense fallback={<Loading />}>
                                 <PreparationInformation recipe={recipe} />
