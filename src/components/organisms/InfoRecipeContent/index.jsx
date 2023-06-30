@@ -23,19 +23,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         recipe &&
         <div className="w-full flex justify-center">
 
-            <div className="w-full min-h-[100px] bg-blue-400">
-                {console.log(window.innerWidth)}
-                <ins
-                    className="adsbygoogle"
-                    style={{ display: "block", textAlign: "center" }}
-                    data-ad-layout="in-article"
-                    data-ad-format="fluid"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="5009663107"
-                ></ins>
-            </div>
-
-
             <div className="w-full md:w-2/3 p-4">
                 <Suspense fallback={<Loading />}>
                     <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
