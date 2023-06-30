@@ -14,8 +14,6 @@ const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSave
 
 export default function InfoRecipeContent({ recipe }) {
 
-    window.location.hostname !== 'localhost' &&
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
 
     return (
         recipe &&
