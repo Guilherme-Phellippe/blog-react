@@ -38,16 +38,7 @@ export default function RecipeMain() {
             }
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
-                <div className="mb-4">
-                    <ins className="adsbygoogle"
-                        style={{ display: 'block' }}
-                        data-ad-client="ca-pub-4781060024956035"
-                        data-ad-slot="9346456414"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true"
-                    ></ins>
-                    {console.log("banner top")}
-                </div>
+                
 
                 <div className="w-full bg-white min-h-screen overflow-hidden">
 
