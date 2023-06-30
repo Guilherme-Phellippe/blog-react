@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { HomeProvider } from '../../contexts/Home/HomeProvider'
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
@@ -6,24 +6,24 @@ const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 const Main = lazy(() => import('../../components/templates/RecipeMain'))
 
 export default function Recipe() {
-    // const [showContentAfterScroll, setShowContentAfterScroll] = useState(false)
+    const [showContentAfterScroll, setShowContentAfterScroll] = useState(false)
 
-    // useEffect(() => {
-    //     const handleScroll = () => window.scrollY > 150 && setShowContentAfterScroll(true)
+    useEffect(() => {
+        const handleScroll = () => window.scrollY > 150 && setShowContentAfterScroll(true)
 
-    //     window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll);
 
-    //     return () => window.removeEventListener("scroll", handleScroll);
-    // }, [])
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [])
 
     return (
         <HomeProvider>
             <Header />
-            <Main />
-            <Footer />
+            <Main showContentAfterScroll={showContentAfterScroll} />
 
             {
-                // showContentAfterScroll &&
+                showContentAfterScroll && <Footer />
+                
             }
         </HomeProvider>
     )

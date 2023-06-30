@@ -12,7 +12,7 @@ const RecipeChefInfo = lazy(() => import("../../molecules/RecipeChefInfo"))
 const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSaveButtons"))
 
 
-export default function InfoRecipeContent({ recipe }) {
+export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
@@ -31,61 +31,66 @@ export default function InfoRecipeContent({ recipe }) {
                     <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
                 </Suspense>
 
-                <div className="w-full min-h-screen relative">
+                {
+                    showContentAfterScroll &&
+                    <>
+                        <div className="w-full min-h-screen relative">
 
-                    <Suspense fallback={<Loading />}>
-                        <PreparationInformation recipe={recipe} />
-                        <RecipeChefInfo recipe={recipe} />
-                    </Suspense>
+                            <Suspense fallback={<Loading />}>
+                                <PreparationInformation recipe={recipe} />
+                                <RecipeChefInfo recipe={recipe} />
+                            </Suspense>
 
-                    <Suspense className="relative" fallback={<Loading />}>
-                        <div className="w-full min-h-[150px]">
-                            <ins
-                                className="adsbygoogle"
-                                style={{ display: "block" }}
-                                data-ad-format="fluid"
-                                data-ad-layout-key="-fc+51+9h-cr-91"
-                                data-ad-client="ca-pub-4781060024956035"
-                                data-ad-slot="1453561477"
-                            ></ins>
-                            {console.log("anuncio 2")}
+                            <Suspense className="relative" fallback={<Loading />}>
+                                <div className="w-full min-h-[150px]">
+                                    <ins
+                                        className="adsbygoogle"
+                                        style={{ display: "block" }}
+                                        data-ad-format="fluid"
+                                        data-ad-layout-key="-fc+51+9h-cr-91"
+                                        data-ad-client="ca-pub-4781060024956035"
+                                        data-ad-slot="1453561477"
+                                    ></ins>
+                                    {console.log("anuncio 2")}
+                                </div>
+                                <IngredientsList
+                                    ing={recipe.ing}
+                                    stuffing_ing={recipe.stuffing_ing}
+                                    type_stuffing_ing={recipe.type_stuffing_ing}
+                                />
+                                <PrepareMode
+                                    prepareMode={recipe.prepareMode}
+                                    type_prepare_mode={recipe.type_prepare_mode}
+                                />
+                                <div className="w-full min-h-[150px]">
+                                    <ins
+                                        className="adsbygoogle"
+                                        style={{ display: "block", textAlign: "center" }}
+                                        data-ad-layout="in-article"
+                                        data-ad-format="fluid"
+                                        data-ad-client="ca-pub-4781060024956035"
+                                        data-ad-slot="5009663107"
+                                    ></ins>
+                                    {console.log("anuncio 3")}
+                                </div>
+
+                            </Suspense>
+
+
+
+                            <Suspense fallback={<Loading />}>
+                                <div className="w-full py-4 my-4 bg-[#24242420]">
+                                    <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
+                                </div>
+                                <ListRecipeComments content={recipe} />
+                            </Suspense>
+
+                            <RecipeSimilarContent name_search={recipe?.name_recipe} />
+
+
                         </div>
-                        <IngredientsList
-                            ing={recipe.ing}
-                            stuffing_ing={recipe.stuffing_ing}
-                            type_stuffing_ing={recipe.type_stuffing_ing}
-                        />
-                        <PrepareMode
-                            prepareMode={recipe.prepareMode}
-                            type_prepare_mode={recipe.type_prepare_mode}
-                        />
-                        <div className="w-full min-h-[150px]">
-                            <ins
-                                className="adsbygoogle"
-                                style={{ display: "block", textAlign: "center" }}
-                                data-ad-layout="in-article"
-                                data-ad-format="fluid"
-                                data-ad-client="ca-pub-4781060024956035"
-                                data-ad-slot="5009663107"
-                            ></ins>
-                            {console.log("anuncio 3")}
-                        </div>
-
-                    </Suspense>
-
-
-
-                    <Suspense fallback={<Loading />}>
-                        <div className="w-full py-4 my-4 bg-[#24242420]">
-                            <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
-                        </div>
-                        <ListRecipeComments content={recipe} />
-                    </Suspense>
-
-                    <RecipeSimilarContent name_search={recipe?.name_recipe} />
-
-
-                </div>
+                    </>
+                }
             </div>
         </div>
     )
