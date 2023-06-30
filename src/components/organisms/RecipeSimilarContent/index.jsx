@@ -17,7 +17,7 @@ export default function RecipeSimilarContent({ name_search }) {
         // GOOGLE ADSENSE 
         console.log(window.adsbygoogle)
         window.location.hostname !== 'localhost' &&
-            (window.adsbygoogle = []).push({});
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, []);
 
 
