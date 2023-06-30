@@ -52,7 +52,7 @@ export default function RecipeSimilarContent({ name_search }) {
     return (
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
             <div className="w-full bg-white rounded-md p-4">
-                <h2 className='text-center text-s2 p-8 text-color_orange font-bold'>Pela web</h2>
+                <h2 className='text-center text-s2 text-color_orange font-bold'>Pela web</h2>
                 <ins className="adsbygoogle"
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-4781060024956035"
@@ -65,7 +65,7 @@ export default function RecipeSimilarContent({ name_search }) {
             </div>
 
             <div className="w-full bg-white rounded-md">
-                <h2 className='text-center text-s2 p-8 text-color_orange font-bold'>Talvez você goste dessas receitas</h2>
+                <h2 className='text-center text-s2 pb-8 text-color_orange font-bold'>Talvez você goste dessas receitas</h2>
                 <div className="w-full flex flex-wrap gap-4 py-8 justify-evenly" >
                     {handleRecipeByTarget().length ?
                         handleRecipeByTarget().map((recipe, index) => {
@@ -81,7 +81,7 @@ export default function RecipeSimilarContent({ name_search }) {
 
             <div className="bg-white">
                 <div className="flex justify-center">
-                    <span className="w-full bg-zinc-900 h-[1px]"></span>
+                    <span className="w-full bg-zinc-900/20 h-[1px] -translate-y-1/2"></span>
                     <span className="mx-2">ads</span>
                     <span className="w-full bg-zinc-900 h-[1px]"></span>
                 </div>
