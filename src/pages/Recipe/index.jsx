@@ -10,10 +10,7 @@ export default function Recipe() {
 
     useEffect(() => {
         //THIS CODE IS SHOW SECTION IF USER SCROLLING PAGE
-        const handleScroll = () => {
-            console.log(window.scrollY)
-            if (window.scrollY > 20) setShowContentAfterScroll(true)
-        }
+        const handleScroll = () => window.scrollY > 20 && setShowContentAfterScroll(true)
 
         window.addEventListener('scroll', handleScroll)
 
