@@ -6,9 +6,8 @@ import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
-const RecipeSimilarContent = lazy(() => import("../../organisms/RecipeSimilarContent"))
 
-export default function RecipeMain({ showContentAfterScroll }) {
+export default function RecipeMain() {
     const { id } = useParams();
     const [recipe, setRecipe] = useState();
     const refRecipeApi = useRef(useRecipeApi());
@@ -50,16 +49,9 @@ export default function RecipeMain({ showContentAfterScroll }) {
                 <div className="w-full bg-white min-h-screen overflow-hidden">
 
                     <Suspense fallback={<Loading />}>
-                        <InfoRecipeContent
-                            recipe={recipe}
-                            showContentAfterScroll={showContentAfterScroll}
-                        />
+                        <InfoRecipeContent recipe={recipe} />
                     </Suspense>
 
-
-                    <Suspense fallback={<Loading />}>
-                        <RecipeSimilarContent name_search={recipe?.name_recipe} />
-                    </Suspense>
                 </div>
             </main>
         </div>
