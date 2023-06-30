@@ -77,6 +77,22 @@ export default function RecipeSimilarContent({ name_search }) {
                         : <h2>Não temos nenhuma sugestão de receitas para você.</h2>}
                 </div>
             </div>
+
+            <div>
+                <div className="flex">
+                    <hr />
+                    <span>Ads</span>
+                    <hr />
+                </div>
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="1972721637"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
+            </div>
         </div>
     )
 }
