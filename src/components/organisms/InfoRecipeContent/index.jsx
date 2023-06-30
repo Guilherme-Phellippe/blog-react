@@ -23,7 +23,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                     <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
                 </Suspense>
-                {console.log(showContentAfterScroll)}
 
                 {
                     showContentAfterScroll &&

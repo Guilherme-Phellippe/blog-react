@@ -23,19 +23,23 @@ export default function RecipeMain({ showContentAfterScroll }) {
             //ADD TITLE DYNAMIC
             document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
             setRecipe(data);
+            // GOOGLE ADSENSE 
+            console.log(window.adsbygoogle)
+            window.location.hostname !== 'localhost' &&
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
         })();
     }, [id]);
 
     return (
         recipe &&
         <div className="w-full max-w-[1500px] mx-auto">
-
             {
                 recipe &&
                 <Suspense fallback={<Loading />}>
                     <IconsShare recipe={recipe} />
                 </Suspense>
             }
+
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div className="mb-4">
@@ -52,8 +56,8 @@ export default function RecipeMain({ showContentAfterScroll }) {
                 <div className="w-full bg-white min-h-screen overflow-hidden">
 
                     <Suspense fallback={<Loading />}>
-                        <InfoRecipeContent 
-                            recipe={recipe} 
+                        <InfoRecipeContent
+                            recipe={recipe}
                             showContentAfterScroll={showContentAfterScroll}
                         />
                     </Suspense>
