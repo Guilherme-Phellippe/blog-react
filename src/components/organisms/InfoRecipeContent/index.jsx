@@ -56,9 +56,9 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 />
                                 <div className="w-full min-h-[150px] my-4">
                                     <div className="flex justify-center opacity-50">
-                                        <span className="w-full bg-zinc-900/50 h-[1px] -translate-y-1/2"></span>
+                                        <span className="w-full bg-zinc-900/50 h-[1px] translate-y-1/2"></span>
                                         <span className="mx-2">ads</span>
-                                        <span className="w-full bg-zinc-900/50 h-[1px] -translate-y-1/2"></span>
+                                        <span className="w-full bg-zinc-900/50 h-[1px] translate-y-1/2"></span>
                                     </div>
                                     <ins
                                         className="adsbygoogle"
