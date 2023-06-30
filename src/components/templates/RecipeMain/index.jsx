@@ -9,7 +9,7 @@ const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent")
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 
 
-export default function RecipeMain() {
+export default function RecipeMain({ showContentAfterScroll }) {
     const { id } = useParams();
     const [recipe, setRecipe] = useState();
     const refRecipeApi = useRef(useRecipeApi());
@@ -52,7 +52,10 @@ export default function RecipeMain() {
                 <div className="w-full bg-white min-h-screen overflow-hidden">
 
                     <Suspense fallback={<Loading />}>
-                        <InfoRecipeContent recipe={recipe} />
+                        <InfoRecipeContent 
+                            recipe={recipe} 
+                            showContentAfterScroll={showContentAfterScroll}
+                        />
                     </Suspense>
 
                 </div>
