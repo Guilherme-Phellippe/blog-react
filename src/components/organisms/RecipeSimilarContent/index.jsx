@@ -88,7 +88,9 @@ export default function RecipeSimilarContent({ name_search }) {
                     <span className="mx-2 -translate-y-1/2">ads</span>
                     <span className="w-full bg-zinc-900/50 h-[1px]"></span>
                 </div>
-                <div id="container-6ca87909acdede68c94d456d617061b0"></div>
+                {/* adsterra */}
+                <div id="container-8498991eee85f43efd197c82739768f9"></div>
+                {/* adsense */}
                 <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}
