@@ -40,6 +40,7 @@ export default function MainContentHome() {
             // GOOGLE ADSENSE 
             window.location.hostname !== 'localhost' &&
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
+
         }
         )();
     }, []);
@@ -93,7 +94,7 @@ export default function MainContentHome() {
                     data-ad-format="auto"
                     data-full-width-responsive="true"
                 ></ins>
-            }u
+            }
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4 min-h-screen relative">
                 {

@@ -89,8 +89,11 @@ export default function Feed({ contents, valueSearch }) {
         <div className='min-h-screen relative'>
             {feed.length ? feed.map((content, index) => {
                 return (
-                    ((index+1) % 4) === 0 ?
-                        <div className="grid min-h-[20rem] bg-white my-4">
+                    ((index + 1) % 4) === 0 ?
+                        <div
+                            key={index}
+                            className="grid min-h-[20rem] bg-white my-4"
+                        >
                             <AdsInFeed index={index} />
                         </div>
                         :
