@@ -15,7 +15,7 @@ export default function RecipeSimilarContent({ name_search }) {
         }
         dataFetch(api)
         // GOOGLE ADSENSE 
-        console.log(window.adsbygoogle)
+        console.log(window.adsbygoogle, 2)
         window.location.hostname !== 'localhost' &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, []);
