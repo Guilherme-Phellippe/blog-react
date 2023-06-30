@@ -21,7 +21,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
 
     return (
         recipe &&
-        <div className="w-full flex justify-center">
+        <div className="w-[260px] flex justify-center">
             <div className="w-full min-h-[100px]">
                 <ins
                     className="adsbygoogle"
