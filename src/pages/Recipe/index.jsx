@@ -11,6 +11,8 @@ export default function Recipe() {
     useEffect(() => {
         const handleScroll = () => window.scrollY > 150 && setShowContentAfterScroll(true)
 
+        console.log(window.scrollY)
+
         window.addEventListener("scroll", handleScroll);
 
         return () => window.removeEventListener("scroll", handleScroll);
