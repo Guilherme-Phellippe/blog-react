@@ -14,7 +14,6 @@ const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSave
 
 export default function InfoRecipeContent({ recipe }) {
 
-
     return (
         recipe &&
         <div className="w-full flex justify-center">
