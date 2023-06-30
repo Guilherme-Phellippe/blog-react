@@ -21,25 +21,18 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
 
     return (
         recipe &&
-        <div className="flex justify-center">
+        <div className="w-full flex justify-center">
 
             <div className="w-full min-h-[100px] bg-blue-400">
-                {/* <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-format="fluid"
-                    data-ad-layout-key="-fc+51+9h-cr-91"
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1453561477"
-                ></ins> */}
+                {console.log(window.innerWidth)}
                 <ins
-                                className="adsbygoogle"
-                                style={{ display: "block", textAlign: "center" }}
-                                data-ad-layout="in-article"
-                                data-ad-format="fluid"
-                                data-ad-client="ca-pub-4781060024956035"
-                                data-ad-slot="5009663107"
-                            ></ins>
+                    className="adsbygoogle"
+                    style={{ display: "block", textAlign: "center" }}
+                    data-ad-layout="in-article"
+                    data-ad-format="fluid"
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="5009663107"
+                ></ins>
             </div>
 
 
@@ -73,7 +66,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     type_prepare_mode={recipe.type_prepare_mode}
                                 />
                             </Suspense>
-                            
+
                             <Suspense fallback={<Loading />}>
                                 <div className="w-full py-4 my-4 bg-[#24242420]">
                                     <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
