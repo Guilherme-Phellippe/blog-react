@@ -23,6 +23,15 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         recipe &&
         <div className="w-full flex justify-center">
 
+            <ins
+                className="adsbygoogle"
+                style={{ display: "block" }}
+                data-ad-format="fluid"
+                data-ad-layout-key="-fc+51+9h-cr-91"
+                data-ad-client="ca-pub-4781060024956035"
+                data-ad-slot="1453561477"
+            ></ins>
+
 
             <div className="w-full md:w-2/3 p-4">
                 <Suspense fallback={<Loading />}>
@@ -40,14 +49,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 <RecipeChefInfo recipe={recipe} />
                             </Suspense>
 
-                            <ins
-                                className="adsbygoogle"
-                                style={{ display: "block" }}
-                                data-ad-format="fluid"
-                                data-ad-layout-key="-fc+51+9h-cr-91"
-                                data-ad-client="ca-pub-4781060024956035"
-                                data-ad-slot="1453561477"
-                            ></ins>
+
 
 
                             <Suspense className="relative" fallback={<Loading />}>
