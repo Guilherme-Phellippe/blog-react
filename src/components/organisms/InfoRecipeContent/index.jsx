@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
 import { ListRecipeComments } from '../../molecules/ListRecipeComments';
 import RecipeSimilarContent from '../RecipeSimilarContent';
@@ -14,13 +14,6 @@ const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSave
 
 export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        console.log(window.adsbygoogle)
-        window.location.hostname !== 'localhost' &&
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
-
     return (
         recipe &&
         <div className="w-full flex justify-center">
@@ -32,6 +25,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                 </Suspense>
 
                 {
+                    showContentAfterScroll &&
                     <>
                         <div className="w-full min-h-screen relative">
 
@@ -41,7 +35,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             </Suspense>
 
                             <Suspense className="relative" fallback={<Loading />}>
-                                <div className="w-full min-h-[150px]">
+                                <div className="w-full min-h-[150px] my-4">
                                     <ins
                                         className="adsbygoogle"
                                         style={{ display: "block" }}
