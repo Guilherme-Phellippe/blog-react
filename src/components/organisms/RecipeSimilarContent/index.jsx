@@ -60,7 +60,7 @@ export default function RecipeSimilarContent({ name_search }) {
                     data-matched-content-columns-num={window.innerWidth < 700 ? "2" : "4"}
                     data-ad-format="autorelaxed"
                 ></ins>
-                {console.log("anuncio 4")}
+                {console.log("anuncio 4")};
             </div>
 
             <div className="w-full bg-white rounded-md">
