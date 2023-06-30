@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
 import { ListRecipeComments } from '../../molecules/ListRecipeComments';
 import RecipeSimilarContent from '../RecipeSimilarContent';
@@ -14,12 +14,12 @@ const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSave
 
 export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        console.log(window.adsbygoogle)
-        window.location.hostname !== 'localhost' &&
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
+    // useEffect(() => {
+    //     // GOOGLE ADSENSE 
+    //     console.log(window.adsbygoogle)
+    //     window.location.hostname !== 'localhost' &&
+    //         (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // })
 
     return (
         recipe &&
@@ -50,6 +50,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                         data-ad-layout-key="-fc+51+9h-cr-91"
                                         data-ad-client="ca-pub-4781060024956035"
                                         data-ad-slot="1453561477"
+                                        // google_adtest="on"
                                     ></ins>
                                     {console.log("anuncio 2")}
                                 </div>

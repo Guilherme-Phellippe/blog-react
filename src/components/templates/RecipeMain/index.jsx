@@ -45,6 +45,7 @@ export default function RecipeMain() {
                         data-ad-slot="9346456414"
                         data-ad-format="auto"
                         data-full-width-responsive="true"
+                        // google_adtest="on"
                     ></ins>
                     {console.log("banner top")}
                 </div>
