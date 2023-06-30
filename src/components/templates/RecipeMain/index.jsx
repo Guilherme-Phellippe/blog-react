@@ -29,7 +29,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        console.log(window.adsbygoogle, 1)
+        recipe && console.log(window.adsbygoogle, 1)
         window.location.hostname !== 'localhost' && recipe &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [recipe])

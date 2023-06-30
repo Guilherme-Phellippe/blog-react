@@ -14,12 +14,15 @@ export default function RecipeSimilarContent({ name_search }) {
             setRecipes(data)
         }
         dataFetch(api)
-        // GOOGLE ADSENSE 
-        console.log(window.adsbygoogle, 2)
-        window.location.hostname !== 'localhost' &&
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
+
     }, []);
 
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        !!recipes.length && console.log(window.adsbygoogle, 2)
+        window.location.hostname !== 'localhost' && !!recipes.length &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [recipes])
 
     const handleRecipeByTarget = () => {
         const targets = name_search?.split(' ') || "";

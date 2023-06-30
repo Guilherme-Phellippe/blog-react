@@ -55,7 +55,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     prepareMode={recipe.prepareMode}
                                     type_prepare_mode={recipe.type_prepare_mode}
                                 />
-                                <div className="w-full min-h-[150px]">
+                                <div className="w-full min-h-[150px] my-4">
                                     <ins
                                         className="adsbygoogle"
                                         style={{ display: "block", textAlign: "center" }}
