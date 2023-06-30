@@ -35,7 +35,12 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             </Suspense>
 
                             <Suspense className="relative" fallback={<Loading />}>
-                                <div className="w-full min-h-[150px] my-4">
+                                <div className="w-full my-4">
+                                    <div className="flex justify-center opacity-25">
+                                        <span className="w-full bg-zinc-900/50 h-[1px]"></span>
+                                        <span className="mx-2 -translate-y-1/2">ads</span>
+                                        <span className="w-full bg-zinc-900/50 h-[1px]"></span>
+                                    </div>
                                     <ins
                                         className="adsbygoogle"
                                         style={{ display: "block" }}
@@ -54,11 +59,11 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     prepareMode={recipe.prepareMode}
                                     type_prepare_mode={recipe.type_prepare_mode}
                                 />
-                                <div className="w-full min-h-[150px] my-4">
-                                    <div className="flex justify-center opacity-50">
-                                        <span className="w-full bg-zinc-900/50 h-[1px] translate-y-1/2"></span>
-                                        <span className="mx-2">ads</span>
-                                        <span className="w-full bg-zinc-900/50 h-[1px] translate-y-1/2"></span>
+                                <div className="w-full my-4">
+                                    <div className="flex justify-center opacity-25">
+                                        <span className="w-full bg-zinc-900/50 h-[1px]"></span>
+                                        <span className="mx-2 -translate-y-1/2">ads</span>
+                                        <span className="w-full bg-zinc-900/50 h-[1px]"></span>
                                     </div>
                                     <ins
                                         className="adsbygoogle"
