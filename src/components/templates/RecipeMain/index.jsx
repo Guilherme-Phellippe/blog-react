@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 import { Loading } from '../../atoms/Loading/Loading';
-import MenuMobile, {   } from  "../MenuMobile"
+import MenuMobile, { } from "../MenuMobile"
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
@@ -23,6 +23,10 @@ export default function RecipeMain() {
             //ADD TITLE DYNAMIC
             document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
             setRecipe(data);
+            //  GOOGLE ADSENSE 
+            console.log(window.adsbygoogle)
+            window.location.hostname !== 'localhost' &&
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
         })();
     }, [id]);
 
@@ -45,7 +49,6 @@ export default function RecipeMain() {
                         data-ad-slot="9346456414"
                         data-ad-format="auto"
                         data-full-width-responsive="true"
-                        // google_adtest="on"
                     ></ins>
                     {console.log("banner top")}
                 </div>
