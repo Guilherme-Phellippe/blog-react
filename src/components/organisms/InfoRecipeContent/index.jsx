@@ -64,14 +64,14 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     type_prepare_mode={recipe.type_prepare_mode}
                                 />
                             </Suspense>
-                            <ins
+                            {/* <ins
                                 className="adsbygoogle"
                                 style={{ display: "block", textAlign: "center" }}
                                 data-ad-layout="in-article"
                                 data-ad-format="fluid"
                                 data-ad-client="ca-pub-4781060024956035"
                                 data-ad-slot="5009663107"
-                            ></ins>
+                            ></ins> */}
                             <Suspense fallback={<Loading />}>
                                 <div className="w-full py-4 my-4 bg-[#24242420]">
                                     <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
