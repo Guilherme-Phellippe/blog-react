@@ -23,7 +23,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         recipe &&
         <div className="flex justify-center">
 
-            <div className="w-[500px]">
+            <div className="w-[600px]">
                 <ins
                     className="adsbygoogle"
                     style={{ display: "block" }}
