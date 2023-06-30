@@ -27,6 +27,7 @@ export default function RecipeMain() {
     }, [id]);
 
     return (
+        recipe &&
         <div className="w-full max-w-[1500px] mx-auto">
 
             {

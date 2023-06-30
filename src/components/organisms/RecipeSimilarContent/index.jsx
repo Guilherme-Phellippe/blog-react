@@ -80,9 +80,9 @@ export default function RecipeSimilarContent({ name_search }) {
 
             <div>
                 <div className="flex justify-center">
-                    <hr className="w-full"/>
+                    <hr className="w-full bg-zinc-900 h-[1px]"/>
                     <span className="mx-2">ads</span>
-                    <hr className="w-full"/>
+                    <hr className="w-full bg-zinc-900 h-[1px]"/>
                 </div>
                 <ins
                     className="adsbygoogle"
