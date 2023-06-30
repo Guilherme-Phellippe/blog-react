@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
 import { ListRecipeComments } from '../../molecules/ListRecipeComments';
 import RecipeSimilarContent from '../RecipeSimilarContent';
@@ -14,10 +14,16 @@ const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSave
 
 export default function InfoRecipeContent({ recipe }) {
 
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        console.log(window.adsbygoogle)
+        window.location.hostname !== 'localhost' &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+    })
+
     return (
         recipe &&
         <div className="w-full flex justify-center">
-            
 
             <div className="w-full md:w-2/3 p-4">
                 <Suspense fallback={<Loading />}>
