@@ -17,16 +17,7 @@ export default function InfoRecipeContent({ recipe }) {
     return (
         recipe &&
         <div className="w-full flex justify-center">
-            <div className="mb-4">
-                    <ins className="adsbygoogle"
-                        style={{ display: 'block' }}
-                        data-ad-client="ca-pub-4781060024956035"
-                        data-ad-slot="9346456414"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true"
-                    ></ins>
-                    {console.log("banner top")}
-                </div>
+            
 
             <div className="w-full md:w-2/3 p-4">
                 <Suspense fallback={<Loading />}>
