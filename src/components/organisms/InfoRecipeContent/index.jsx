@@ -44,7 +44,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                         data-ad-client="ca-pub-4781060024956035"
                                         data-ad-slot="1453561477"
                                     ></ins>
-                                    {console.log("anuncio 2")}
                                 </div>
                                 <IngredientsList
                                     ing={recipe.ing}
@@ -56,6 +55,11 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     type_prepare_mode={recipe.type_prepare_mode}
                                 />
                                 <div className="w-full min-h-[150px] my-4">
+                                    <div className="flex justify-center">
+                                        <span className="w-full bg-zinc-900 h-[1px]"></span>
+                                        <span className="mx-2">ads</span>
+                                        <span className="w-full bg-zinc-900 h-[1px]"></span>
+                                    </div>
                                     <ins
                                         className="adsbygoogle"
                                         style={{ display: "block", textAlign: "center" }}
@@ -64,7 +68,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                         data-ad-client="ca-pub-4781060024956035"
                                         data-ad-slot="5009663107"
                                     ></ins>
-                                    {console.log("anuncio 3")}
                                 </div>
 
                             </Suspense>

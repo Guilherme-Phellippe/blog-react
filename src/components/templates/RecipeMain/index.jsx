@@ -29,7 +29,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        recipe && console.log(window.adsbygoogle, 1)
         window.location.hostname !== 'localhost' && recipe &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [recipe])
@@ -54,7 +53,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
                         data-ad-format="auto"
                         data-full-width-responsive="true"
                     ></ins>
-                    {console.log("banner top")}
                 </div>
 
                 <div className="w-full bg-white min-h-screen overflow-hidden">

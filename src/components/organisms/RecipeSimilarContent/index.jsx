@@ -19,7 +19,6 @@ export default function RecipeSimilarContent({ name_search }) {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        !!recipes.length && console.log(window.adsbygoogle, 2)
         window.location.hostname !== 'localhost' && !!recipes.length &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [recipes])
@@ -63,7 +62,6 @@ export default function RecipeSimilarContent({ name_search }) {
                     data-matched-content-columns-num={window.innerWidth < 700 ? "2" : "4"}
                     data-ad-format="autorelaxed"
                 ></ins>
-                {console.log("anuncio 4")};
             </div>
 
             <div className="w-full bg-white rounded-md">
@@ -81,11 +79,11 @@ export default function RecipeSimilarContent({ name_search }) {
                 </div>
             </div>
 
-            <div>
+            <div className="bg-white">
                 <div className="flex justify-center">
-                    <hr className="w-full bg-zinc-900 h-[1px]" />
+                    <span className="w-full bg-zinc-900 h-[1px]"></span>
                     <span className="mx-2">ads</span>
-                    <hr className="w-full bg-zinc-900 h-[1px]" />
+                    <span className="w-full bg-zinc-900 h-[1px]"></span>
                 </div>
                 <ins
                     className="adsbygoogle"
@@ -95,7 +93,6 @@ export default function RecipeSimilarContent({ name_search }) {
                     data-ad-format="auto"
                     data-full-width-responsive="true"
                 ></ins>
-                {console.log("anuncio 5")}
             </div>
         </div>
     )
