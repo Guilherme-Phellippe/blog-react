@@ -33,13 +33,17 @@ export default function InfoRecipeContent({ recipe }) {
                     </Suspense>
 
                     <Suspense className="relative" fallback={<Loading />}>
-                        <ins class="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-format="fluid"
-                            data-ad-layout-key="-fc+51+9h-cr-91"
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="1453561477"></ins>
-                        {console.log("anuncio 2")}
+                        <div className="w-full min-h-[150px]">
+                            <ins
+                                className="adsbygoogle"
+                                style={{ display: "block" }}
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-fc+51+9h-cr-91"
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="1453561477"
+                            ></ins>
+                            {console.log("anuncio 2")}
+                        </div>
                         <IngredientsList
                             ing={recipe.ing}
                             stuffing_ing={recipe.stuffing_ing}
@@ -49,15 +53,18 @@ export default function InfoRecipeContent({ recipe }) {
                             prepareMode={recipe.prepareMode}
                             type_prepare_mode={recipe.type_prepare_mode}
                         />
-                        <ins
-                            className="adsbygoogle"
-                            style={{ display: "block", textAlign: "center" }}
-                            data-ad-layout="in-article"
-                            data-ad-format="fluid"
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="5009663107"
-                        ></ins>
-                        {console.log("anuncio 3")}
+                        <div className="w-full min-h-[150px]">
+                            <ins
+                                className="adsbygoogle"
+                                style={{ display: "block", textAlign: "center" }}
+                                data-ad-layout="in-article"
+                                data-ad-format="fluid"
+                                data-ad-client="ca-pub-4781060024956035"
+                                data-ad-slot="5009663107"
+                            ></ins>
+                            {console.log("anuncio 3")}
+                        </div>
+
                     </Suspense>
 
 
