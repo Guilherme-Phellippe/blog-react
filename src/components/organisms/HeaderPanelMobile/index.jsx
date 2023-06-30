@@ -44,11 +44,14 @@ export default function HeaderPanelMobile({ user }) {
                             title={user?.name || "foto do usuario sem avatar"}
                         />
                     </div>
-                    <p className='text-s1_2 flex flex-col text-white'>
-                        Bem vindo,<span className='text-s1_5 text-white font-bold'>{formatTextLong(user?.name || "Usuário", 18)}</span>
+                    <p className='text-s1_2 flex justify-end flex-col text-white'>
+                        Bem vindo,
+                        <span className={`${window.innerWidth < 392 ? "text-s1_3": "text-s1_5"} text-white font-bold`}>
+                            {formatTextLong(user?.name || "Usuário", 18)}
+                        </span>
                     </p>
                     <MdArrowDropDown
-                        className='text-s2_5'
+                        className='text-s2_5 self-end'
                     />
                 </div>
 
