@@ -53,8 +53,6 @@ export default function RecipeSimilarContent({ name_search }) {
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
             <div className="w-full bg-white rounded-md p-4">
                 <h2 className='text-center text-s2 text-color_orange font-bold p-4'>Pela web</h2>
-                {/* adsterra */}
-                <div id="container-6ca87909acdede68c94d456d617061b0"></div>
                 {/* adsense */}
                 <ins className="adsbygoogle"
                     style={{ display: 'block' }}
@@ -88,8 +86,6 @@ export default function RecipeSimilarContent({ name_search }) {
                     <span className="mx-2 -translate-y-1/2">ads</span>
                     <span className="w-full bg-zinc-900/50 h-[1px]"></span>
                 </div>
-                {/* adsterra */}
-                <div id="container-8498991eee85f43efd197c82739768f9"></div>
                 {/* adsense */}
                 <ins
                     className="adsbygoogle"
