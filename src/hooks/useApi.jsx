@@ -278,12 +278,39 @@ export const useWhatsapp = () => ({
 })
 
 export const useShortLink = () => ({
-    createShortLink : async (url)=>{
-        const link = await api.post("/create-short-link", url).catch((err)=>{
+    createShortLink: async (url) => {
+        const link = await api.post("/create-short-link", url).catch((err) => {
             console.error("ERROR REQUEST SHORT LINK:", err)
             return false
-        } )
+        })
 
         return link
+    }
+})
+
+export const useNotificationPush = () => ({
+    getPublicKey: async () => {
+        const response = await axios.get("http://localhost:3334/push/public_key").catch((err) => {
+            console.error("ERROR REQUEST PUBLIC KEY:", err)
+            return false
+        })
+
+        return response
+    },
+    registerUserWithSubscription: async (data) => {
+        const response = await axios.post("http://localhost:3334/push/register", data).catch((err) => {
+            console.error("ERROR REQUEST REGISTER:", err)
+            return false
+        })
+
+        return response
+    },
+    sendNotification: async (data) => {
+        const response = await axios.post("http://localhost:3334/push/send", data).catch((err) => {
+            console.error("ERROR REQUEST SEND NOTIFICATION:", err)
+            return false
+        })
+
+        return response
     }
 })

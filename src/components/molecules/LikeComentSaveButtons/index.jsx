@@ -1,17 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 
 import { FaHeart, FaSave } from "react-icons/fa";
 import { RiMessage2Fill } from "react-icons/ri"
 import { useNavigate } from "react-router-dom";
 
-import { useFeedApi, useUserApi } from "../../../hooks/useApi";
+import { useFeedApi, useNotificationPush, useUserApi } from "../../../hooks/useApi";
 import { Button } from "../../atoms/Button";
 import { dialog } from "../../../modals/Dialog";
+import { PushNotificationContext } from "../../../contexts/PushNotification";
 
 export default function LikeComentSaveButtons({ recipeId, setNmr_hearts, nmr_hearts, setNmr_saved, nmr_saved }) {
     const token = JSON.parse(localStorage.getItem("token"))
+    const { subscription : subscriptionWait } = useContext(PushNotificationContext)
     const refFeedApi = useRef(useFeedApi())
     const refUserApi = useUserApi()
+    const apiNotificationPush = useNotificationPush()
     const refButtonSave = useRef()
     const refButtonLove = useRef()
     const navigate = useNavigate()
@@ -34,6 +37,17 @@ export default function LikeComentSaveButtons({ recipeId, setNmr_hearts, nmr_hea
 
 
     const handleLovedButton = async ({ currentTarget }) => {
+        const subscription = await subscriptionWait
+        console.log(subscription)
+        const res = await apiNotificationPush.sendNotification({
+            subscription,
+            dataSend:{
+                title: "Você deu amei em uma receita"
+            }
+        }).catch(err => console.log(err))
+
+        console.log(res?.data)
+
         if (token) {
             const userAlreadyGivedHeart = nmr_hearts.find(nmr => nmr === token.id);
             if (!userAlreadyGivedHeart) {
