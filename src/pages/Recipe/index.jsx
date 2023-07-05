@@ -10,7 +10,6 @@ export default function Recipe() {
     const [showContentAfterScroll, setShowContentAfterScroll] = useState(false)
 
     useEffect(() => {
-        console.log("recipe")
         initOneSignal();
      }, [])
    
