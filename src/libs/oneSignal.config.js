@@ -6,9 +6,13 @@ export const initOneSignal = async () => {
     const externalUserId = await OneSignal.getExternalUserId();
     const userId = await OneSignal.getUserId();
     const tags = await OneSignal.getTags();
+    const isPushNotificationsEnabled = await OneSignal.isPushNotificationsEnabled();
+    const provideUserConsent = await OneSignal.provideUserConsent()
 
-    console.log(subscription)
-    console.log(externalUserId)
-    console.log(userId)
-    console.log(tags)
+    console.log("subscription: ", subscription)
+    console.log("externalUserId: ", externalUserId)
+    console.log("userId: ", userId)
+    console.log("tags: ", tags)
+    console.log("isPushNotificationsEnabled: ", isPushNotificationsEnabled)
+    console.log("provideUserConsent: ", provideUserConsent)
 }
