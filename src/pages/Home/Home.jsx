@@ -12,7 +12,6 @@ const CookieConsent = lazy(() => import("react-cookie-consent"))
 export default function Home() {
 
   useEffect(() => {
-    Notification.requestPermission()
     initOneSignal();
   }, [])
 
