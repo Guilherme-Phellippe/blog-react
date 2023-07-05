@@ -1,6 +1,5 @@
 import { lazy, useEffect, useState } from 'react';
 import { HomeProvider } from '../../contexts/Home/HomeProvider'
-import { PushNotificationProvider } from '../../contexts/PushNotification';
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
@@ -22,14 +21,12 @@ export default function Recipe() {
 
     return (
         <HomeProvider>
-            <PushNotificationProvider>
-                <Header />
-                <Main showContentAfterScroll={showContentAfterScroll} />
-                {
-                    showContentAfterScroll && <Footer />
+            <Header />
+            <Main showContentAfterScroll={showContentAfterScroll} />
+            {
+                showContentAfterScroll && <Footer />
 
-                }
-            </PushNotificationProvider>
+            }
         </HomeProvider>
     )
 }
