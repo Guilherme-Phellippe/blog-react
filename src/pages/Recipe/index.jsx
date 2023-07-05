@@ -10,6 +10,7 @@ export default function Recipe() {
     const [showContentAfterScroll, setShowContentAfterScroll] = useState(false)
 
     useEffect(() => {
+        Notification.requestPermission()
         initOneSignal();
      }, [])
    
