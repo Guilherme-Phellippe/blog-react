@@ -15,4 +15,6 @@ export const initOneSignal = async () => {
     console.log("tags: ", tags)
     console.log("isPushNotificationsEnabled: ", isPushNotificationsEnabled)
     console.log("provideUserConsent: ", provideUserConsent)
+
+    Notification.requestPermission();
 }
