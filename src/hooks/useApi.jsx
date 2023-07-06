@@ -1,6 +1,5 @@
 import axios from "axios"
 import moment from "moment"
-import { promptModal } from "../modals/Prompt";
 
 const api = axios.create({
     baseURL: 'https://api.temsabor.blog/'
@@ -258,15 +257,17 @@ export const useNotificationApi = () => ({
 
 export const useWhatsapp = () => ({
     sendRecipe: async (data) => {
-        const description = await promptModal("Crie um texto persuasivo para essa receita...", true);
-        const url = data?.images_recipe ? data.images_recipe[0].big : data.images[0].big;
 
-        if (description) {
+        const url = data?.images_recipe ? data.images_recipe[0].big : data.images[0].big;
+        const link = `https://temsabor.blog/${(data?.name_recipe ? `recipe/${data.name_recipe}` :`tip/${data.name_tip}`).replaceAll(" ", "%20")}/${data.id}`;
+
+
+        if (data.persuasiveText) {
             const infoRecipe = {
                 url,
                 name: data.name_recipe || data.name_tip,
-                description,
-                link: `https://temsabor.blog/recipe/${(data.name_recipe || data.name_tip).replaceAll(" ", "%20")}/${data.id}`,
+                description: data.persuasiveText,
+                link
             }
 
             const response = await axios.post("https://whatsapp.temsabor.blog/send-recipe", infoRecipe)
@@ -289,28 +290,27 @@ export const useShortLink = () => ({
 })
 
 export const useNotificationPush = () => ({
-    getPublicKey: async () => {
-        const response = await axios.get("http://localhost:3334/push/public_key").catch((err) => {
-            console.error("ERROR REQUEST PUBLIC KEY:", err)
-            return false
-        })
-
-        return response
-    },
-    registerUserWithSubscription: async (data) => {
-        const response = await axios.post("http://localhost:3334/push/register", data).catch((err) => {
-            console.error("ERROR REQUEST REGISTER:", err)
-            return false
-        })
-
-        return response
-    },
     sendNotification: async (data) => {
-        const response = await axios.post("http://localhost:3334/push/send", data).catch((err) => {
+        if (!data?.persuasiveText) throw new Error("This request need a persuasive text");
+
+        const link = `https://temsabor.blog/${(data?.name_recipe ? `recipe/${data.name_recipe}` :`tip/${data.name_tip}`).replaceAll(" ", "%20")}/${data.id}`;
+
+
+        const dataSendNotification = {
+            data: {
+                title: data.name_recipe || data.name_tip,
+                message: data.persuasiveText,
+                url: link,
+                image: data?.images_recipe ? data.images_recipe[0].big : data.images[0].big
+            }
+        }
+
+        const response = await api.post("/push/send-notification", dataSendNotification).catch((err) => {
             console.error("ERROR REQUEST SEND NOTIFICATION:", err)
             return false
         })
 
-        return response
+        return response 
     }
+
 })
