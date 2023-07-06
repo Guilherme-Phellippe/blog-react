@@ -22,6 +22,7 @@ export const initOneSignal = async () => {
             break;
           }
           case userAgent.includes('safari'): {
+            //eslint-disable-next-line
             window.location.href = 'javascript:window.open(\'/path/to/instructions/safari.html\')';
             break;
           }
