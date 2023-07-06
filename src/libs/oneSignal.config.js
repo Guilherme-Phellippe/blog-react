@@ -6,7 +6,7 @@ export const initOneSignal = async () => {
   const userDevice = await OneSignal.getUserId();
   if(userDevice){
     if(Notification.permission !== "granted"){
-      Notification.requestPermission()
+      Notification.requestPermission((res)=> console.log(res))
     }
   }
 
