@@ -86,7 +86,7 @@ export default function MainContentHome() {
 
             {
                 !valueSearch &&
-                <div className="grid place-items-center">
+                <div className="flex justify-center">
                     <ins
                         className="adsbygoogle"
                         style={{ display: "block" }}
