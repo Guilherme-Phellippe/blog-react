@@ -11,10 +11,10 @@ export const initOneSignal = async () => {
       const resp = await dialog('Suas notificações estão bloqueadas 😱 \nVocê não está recebendo nossas receitas quentinhas assim que publicadas! \n\nCorrija agora mesmo nas configurações do seu navegador.', 0, "Corrigir agora");
       if (resp) {
         const userAgent = navigator.userAgent.toLowerCase();
-        console.log(userAgent)
+        console.log(userAgent.includes("chrome"))
         switch (userAgent) {
           case userAgent.includes('chrome'): {
-            window.location.href = 'chrome://settings/content/notifications';
+            window.open('chrome://settings/content/notifications');
             break;
           }
           case userAgent.includes('firefox'): {
