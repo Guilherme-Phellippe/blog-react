@@ -14,6 +14,7 @@ import { MdExitToApp, MdFacebook } from 'react-icons/md';
 import { Button } from "../../atoms/Button"
 import { Img } from '../../atoms/Img'
 import { Loading } from '../../atoms/Loading/Loading';
+import { loginWithGoogleModal } from '../../../modals/LoginWithGoogleModal';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDkpJkYLEFE3r-oyqpdG_4uGJEo9IDYAo8",
@@ -35,6 +36,10 @@ export const LoginWithSocialMidia = () => {
     const notificationApi = useNotificationApi()
     const userApi = useUserApi();
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        loginWithGoogleModal("faça login com o google", 1)
+    })
 
     const handleGoogleLogin = async () => {
         signInWithPopup(authLogin, provider)
