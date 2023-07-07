@@ -10,10 +10,10 @@ export const loginWithGoogleModal = () => {
 
     return new Promise((resolve, reject) => {
         const container = document.createElement('div');
-        container.setAttribute("class", "fixed bottom-0 left-0 z-[999] w-screen h-screen");
+        container.setAttribute("class", "fixed bottom-0 left-0 z-[999] w-screen h-screen flex items-end");
 
         const box = document.createElement('div');
-        box.setAttribute('class', `min-w-[20rem] max-w-[80%] md:max-w-2/3 min-h-[12rem] bg-white p-2 rounded-xl flex flex-col justify-between border-[1px]`)
+        box.setAttribute('class', `w-screen bg-white p-2 rounded-t-xl`)
 
         const contentTop = document.createElement('div');
         contentTop.setAttribute('class', "w-full flex-col");
@@ -24,6 +24,17 @@ export const loginWithGoogleModal = () => {
         const title = document.createElement("h2");
         title.setAttribute("class", `text-color_text_black font-bold text-center text-s1_5 py-3 px-8 rounded-t-xl`)
         title.innerText = "Faça login com o google"
+
+        const message = document.createElement("p");
+        message.setAttribute("class", `text-color_text_black text-center text-s1_5 p-8 rounded-t-xl p-4`)
+        message.innerText = ""
+
+        contentTop.appendChild(title)
+        contentTop.appendChild(message)
+        box.appendChild(contentTop)
+        box.appendChild(contentBottom)
+        container.appendChild(box)
+
 
         root.appendChild(container)
     })
