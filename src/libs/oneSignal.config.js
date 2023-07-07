@@ -31,7 +31,7 @@ export const initOneSignal = async () => {
             break;
           } 
           default: {
-            await dialog("Não foi possivel detectar seu navegador! \n\nMas você pode acessar as configurações de notificações dele e permitir a Tem sabor enviar receitas direto para você!")
+            await dialog("Não foi possivel detectar seu navegador! \n\nMas você pode acessar as configurações de notificações dele e permitir a Tem sabor enviar receitas direto para você!", 1)
           }
         }
       }
