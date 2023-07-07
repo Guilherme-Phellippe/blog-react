@@ -38,7 +38,7 @@ export const LoginWithSocialMidia = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        loginWithGoogleModal("faça login com o google", 1)
+        loginWithGoogleModal()
     },[])
 
     const handleGoogleLogin = async () => {
