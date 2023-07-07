@@ -67,7 +67,7 @@ export const LoginWithSocialMidia = () => {
           };
 
         // The start method will wait until the DOM is loaded.
-        ui.start('#root', uiConfig);
+        ui.start('#tested', uiConfig);
     }, [])
 
 
@@ -183,7 +183,7 @@ export const LoginWithSocialMidia = () => {
     }, [])
 
     return (
-        <div className='w-full flex flex-col justify-center items-center relative'>
+        <div className='w-full flex flex-col justify-center items-center relative' id='tested'>
             <Button event={handleGoogleLogin} customClass='w-full max-w-[300px] h-[40px] flex border rounded-3xl flex items-center gap-3 text-s1_5 py-4 my-8 bg-green-600'>
                 <FcGoogle className='text-s2_5 w-[55px] h-[50px] border border-green-500 rounded-full bg-white -translate-x-2' />
                 <span className='border-l px-4 w-full text-center text-white font-bold'>
