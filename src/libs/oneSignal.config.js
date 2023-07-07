@@ -14,7 +14,7 @@ export const initOneSignal = async () => {
         const text = isMobile ? 
         "Navegue até as configurações do seu navegador, procure por configurações do site ou algo parecido, \nache o nome do nosso site e permita as notificações!"
         :
-        "Clique no cadeado ou algo parecido, que fica ao lado do nome 'temsabor.blog',\nprocure por notificações, veja se está desabilitadom, se estiver, permita as notificações."
+        "Clique no cadeado ou algo parecido, que fica ao lado do nome 'temsabor.blog',\nprocure por notificações, veja se está desabilitado, se estiver, permita as notificações."
         dialog(`${text}\n\nProntinho! agora você já deve começar a receber nossas notificações!`, 1)
       }
 
