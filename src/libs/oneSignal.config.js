@@ -11,31 +11,10 @@ export const initOneSignal = async () => {
       const resp = await dialog('Suas notificações estão bloqueadas 😱 \nVocê não está recebendo nossas receitas quentinhas assim que publicadas! \n\nCorrija agora mesmo nas configurações do seu navegador.', 0, "Corrigir agora");
       if (resp) {
         const userAgent = navigator.userAgent.toLowerCase();
-        const index = 0
-        console.log(index)
-        switch (index) {
-          case 0: {
-            console.log(index)
-            window.location.href = 'chrome://settings/content/notifications';
-            break;
-          }
-          case userAgent.includes('firefox'): {
-            window.location.href = 'about:preferences#privacy';
-            break;
-          }
-          case userAgent.includes('safari'): {
-            //eslint-disable-next-line
-            window.location.href = 'javascript:window.open(\'/path/to/instructions/safari.html\')';
-            break;
-          }
-          case userAgent.includes('edge'): {
-            window.location.href = 'edge://settings/content/notifications';
-            break;
-          } 
-          default: {
-            await dialog("Não foi possivel detectar seu navegador! \n\nMas você pode acessar as configurações de notificações dele e permitir a Tem sabor enviar receitas direto para você!", 1)
-          }
-        }
+        const browsers = ["chrome", "firefox", "safari","edge"];
+        const userBrowser = browsers.find(browser => userAgent.includes(browser))
+        console.log(userBrowser)
+        dialog("Clique no botão abaixo para redefinir suas notificações: \n\n\n<a href='google.com' target='_blank'")
       }
     }
   }
