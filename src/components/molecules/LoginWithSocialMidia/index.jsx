@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { initializeApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth"
 
 import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
 import { dialog } from '../../../modals/Dialog'
@@ -34,6 +34,12 @@ export const LoginWithSocialMidia = () => {
     const notificationApi = useNotificationApi()
     const userApi = useUserApi();
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        signInWithRedirect(auth, provider).then(resp =>{
+            console.log(resp)
+        })
+    },[])
 
 
     const handleGoogleLogin = async () => {
