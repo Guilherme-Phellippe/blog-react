@@ -14,7 +14,7 @@ export const initOneSignal = async () => {
         const browsers = ["chrome", "firefox", "safari","edge"];
         const userBrowser = browsers.find(browser => userAgent.includes(browser))
         console.log(userBrowser)
-        dialog("Clique no botão abaixo para redefinir suas notificações: \n\n\n<a href='google.com' target='_blank'")
+        dialog("Clique no botão abaixo para redefinir suas notificações: \n\n\n<a href='google.com' target='_blank'>Google</a>", 1)
       }
     }
   }
