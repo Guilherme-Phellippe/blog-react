@@ -28,7 +28,7 @@ export const dialog = (text , type, buttonText) => {
 
         const message = document.createElement("p");
         message.setAttribute("class", `text-color_text_black text-center text-s1_5 p-8 rounded-t-xl p-4`)
-        message.innerHTML = text
+        message.innerText = text
 
         const buttonClose = document.createElement('button')
         buttonClose.setAttribute("class", `text-s1_3 p-2 px-4 text-color_text_black border rounded-xl`)
