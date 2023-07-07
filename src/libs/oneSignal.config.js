@@ -17,11 +17,9 @@ export const initOneSignal = async () => {
           { browser: "safari", path: "chrome://settings/content/notifications" },
           { browser: "edge", path: "chrome://settings/content/notifications" },
         ];
-        browsers.forEach(browser => {
-          let userBrowser = userAgent.includes(browser.browser);
-          console.log(userBrowser)
-          window.open(browser.path);
-        })
+        const userBrowser = browsers.find(browser => userAgent.includes(browser.browser))
+        
+        dialog(`Clique no botão abaixo para permitir que a Tem sabor envie receitas para você! <br /><br /> <a href=${userBrowser.path} target="_blank">${userBrowser}</a>`)
 
       }
     }
