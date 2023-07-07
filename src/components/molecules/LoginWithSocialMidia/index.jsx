@@ -39,7 +39,7 @@ export const LoginWithSocialMidia = () => {
 
     useEffect(()=>{
         loginWithGoogleModal("faça login com o google", 1)
-    })
+    },[])
 
     const handleGoogleLogin = async () => {
         signInWithPopup(authLogin, provider)
