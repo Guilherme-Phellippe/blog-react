@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { initializeApp } from 'firebase/app'
-import { auth } from "firebaseui"
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
@@ -29,7 +28,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const authLogin = getAuth(app)
 const provider = new GoogleAuthProvider();
-const ui = new auth.AuthUI(authLogin)
 
 export const LoginWithSocialMidia = () => {
     const [connected, setConnected] = useState({ connected: false })
@@ -37,39 +35,6 @@ export const LoginWithSocialMidia = () => {
     const notificationApi = useNotificationApi()
     const userApi = useUserApi();
     const navigate = useNavigate();
-
-    useEffect(() => {
-        var uiConfig = {
-            callbacks: {
-              signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-                // User successfully signed in.
-                // Return type determines whether we continue the redirect automatically
-                // or whether we leave that to developer to handle.
-                return true;
-              },
-              uiShown: function() {
-                // The widget is rendered.
-                // Hide the loader.
-                // document.getElementById('loader').style.display = 'none';
-              }
-            },
-            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-            signInFlow: 'popup',
-            signInSuccessUrl: 'https://temsabor.blog',
-            signInOptions: [
-              // Leave the lines as is for the providers you want to offer your users.
-                provider.providerId,
-            ],
-            // Terms of service url.
-            tosUrl: 'https://temsabor.blog/terms',
-            // Privacy policy url.
-            privacyPolicyUrl: 'https://temsabor.blog/policy'
-          };
-
-        // The start method will wait until the DOM is loaded.
-        ui.start('#tested', uiConfig);
-    }, [])
-
 
     const handleGoogleLogin = async () => {
         signInWithPopup(authLogin, provider)
