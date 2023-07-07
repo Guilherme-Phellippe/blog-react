@@ -86,16 +86,14 @@ export default function MainContentHome() {
 
             {
                 !valueSearch &&
-                <div className="flex justify-center">
-                    <ins
-                        className="adsbygoogle"
-                        style={{ display: "block" }}
-                        data-ad-client="ca-pub-4781060024956035"
-                        data-ad-slot="2090078650"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true"
-                    ></ins>
-                </div>
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="2090078650"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
             }
 
             <section className="grid grid-cols-2 md:grid-cols-4 gap-[2%] mt-4 min-h-screen relative">
