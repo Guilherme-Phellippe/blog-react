@@ -19,7 +19,7 @@ export const initOneSignal = async () => {
         ];
         const userBrowser = browsers.find(browser => userAgent.includes(browser.browser))
         
-        dialog(`Clique no botão abaixo para permitir que a Tem sabor envie receitas para você! <br /><br /> <a href=${userBrowser.path} target="_blank">${userBrowser}</a>`)
+        dialog(`Clique no botão abaixo para permitir que a Tem sabor envie receitas para você! <br /><br /> <a href=${userBrowser.path} target="_blank">${userBrowser.browser}</a>`)
 
       }
     }
