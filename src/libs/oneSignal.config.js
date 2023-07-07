@@ -16,7 +16,7 @@ export const initOneSignal = async () => {
         switch (index) {
           case 0: {
             console.log(index)
-            window.open('chrome://settings/content/notifications');
+            window.location.href = 'chrome://settings/content/notifications';
             break;
           }
           case userAgent.includes('firefox'): {
