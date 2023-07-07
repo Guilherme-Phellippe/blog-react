@@ -58,7 +58,7 @@ export const LoginWithSocialMidia = () => {
             signInSuccessUrl: 'https://temsabor.blog',
             signInOptions: [
               // Leave the lines as is for the providers you want to offer your users.
-              auth.GoogleAuthProvider.PROVIDER_ID,
+                provider.providerId,
             ],
             // Terms of service url.
             tosUrl: 'https://temsabor.blog/terms',
