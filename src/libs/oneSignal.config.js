@@ -13,7 +13,7 @@ export const initOneSignal = async () => {
         const userAgent = navigator.userAgent.toLowerCase();
         console.log(userAgent.includes("chrome"))
         switch (userAgent) {
-          case userAgent.includes('chrome'): {
+          case true: {
             window.open('chrome://settings/content/notifications');
             break;
           }
