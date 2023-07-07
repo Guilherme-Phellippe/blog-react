@@ -11,10 +11,18 @@ export const initOneSignal = async () => {
       const resp = await dialog('Suas notificações estão bloqueadas 😱 \nVocê não está recebendo nossas receitas quentinhas assim que publicadas! \n\nCorrija agora mesmo nas configurações do seu navegador.', 0, "Corrigir agora");
       if (resp) {
         const userAgent = navigator.userAgent.toLowerCase();
-        const browsers = ["chrome", "firefox", "safari","edge"];
-        const userBrowser = browsers.find(browser => userAgent.includes(browser))
-        console.log(userBrowser)
-        dialog("Clique no botão abaixo para redefinir suas notificações: <br/><br/><br/> <a href='https://www.google.com' target='_blank'>Google</a>", 1)
+        const browsers = [
+          { browser: "chrome", path: "chrome://settings/content/notifications" },
+          { browser: "firefox", path: "chrome://settings/content/notifications" },
+          { browser: "safari", path: "chrome://settings/content/notifications" },
+          { browser: "edge", path: "chrome://settings/content/notifications" },
+        ];
+        browsers.forEach(browser => {
+          let userBrowser = userAgent.includes(browser.browser);
+          console.log(userBrowser)
+          window.open(browser.path);
+        })
+
       }
     }
   }
