@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { initializeApp } from 'firebase/app'
+import { auth } from "firebaseui"
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
@@ -24,9 +25,11 @@ const firebaseConfig = {
     appId: "1:452576142508:web:144b4553e640ed2f68ab09"
 };
 
+
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app)
+const authLogin = getAuth(app)
 const provider = new GoogleAuthProvider();
+const ui = new auth.AuthUI(authLogin)
 
 export const LoginWithSocialMidia = () => {
     const [connected, setConnected] = useState({ connected: false })
@@ -35,15 +38,42 @@ export const LoginWithSocialMidia = () => {
     const userApi = useUserApi();
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        signInWithPopup(auth, provider)
-        .then(async (result) => { console.log(result) })
-    },[])
+    useEffect(() => {
+        var uiConfig = {
+            callbacks: {
+              signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                // User successfully signed in.
+                // Return type determines whether we continue the redirect automatically
+                // or whether we leave that to developer to handle.
+                return true;
+              },
+              uiShown: function() {
+                // The widget is rendered.
+                // Hide the loader.
+                // document.getElementById('loader').style.display = 'none';
+              }
+            },
+            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+            signInFlow: 'popup',
+            signInSuccessUrl: 'https://temsabor.blog',
+            signInOptions: [
+              // Leave the lines as is for the providers you want to offer your users.
+              auth.GoogleAuthProvider.PROVIDER_ID,
+            ],
+            // Terms of service url.
+            tosUrl: 'https://temsabor.blog/terms',
+            // Privacy policy url.
+            privacyPolicyUrl: 'https://temsabor.blog/policy'
+          };
+
+        // The start method will wait until the DOM is loaded.
+        ui.start('#root', uiConfig);
+    }, [])
 
 
     const handleGoogleLogin = async () => {
-        signInWithPopup(auth, provider)
-        .then(async (result) => {
+        signInWithPopup(authLogin, provider)
+            .then(async (result) => {
                 setLoading(true)
                 const userData = result.user.providerData[0];
 
