@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { initializeApp } from 'firebase/app'
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import app from "../../../libs/firebase.config"
 
 import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
 import { dialog } from '../../../modals/Dialog'
@@ -14,19 +14,8 @@ import { MdExitToApp, MdFacebook } from 'react-icons/md';
 import { Button } from "../../atoms/Button"
 import { Img } from '../../atoms/Img'
 import { Loading } from '../../atoms/Loading/Loading';
-import { loginWithGoogleModal } from '../../../modals/LoginWithGoogleModal';
-
-const firebaseConfig = {
-    apiKey: "AIzaSyDkpJkYLEFE3r-oyqpdG_4uGJEo9IDYAo8",
-    authDomain: "tem-sabor-auth.firebaseapp.com",
-    projectId: "tem-sabor-auth",
-    storageBucket: "tem-sabor-auth.appspot.com",
-    messagingSenderId: "452576142508",
-    appId: "1:452576142508:web:144b4553e640ed2f68ab09"
-};
 
 
-const app = initializeApp(firebaseConfig);
 const authLogin = getAuth(app)
 const provider = new GoogleAuthProvider();
 
@@ -37,9 +26,6 @@ export const LoginWithSocialMidia = () => {
     const userApi = useUserApi();
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        loginWithGoogleModal()
-    },[])
 
     const handleGoogleLogin = async () => {
         signInWithPopup(authLogin, provider)
