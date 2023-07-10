@@ -3,6 +3,7 @@ import { Suspense, lazy, useEffect } from "react";
 import { HomeProvider } from "../../contexts/Home/HomeProvider";
 import { Loading } from "../../components/atoms/Loading/Loading";
 import { initOneSignal } from "../../libs/oneSignal.config.js"
+import LoginWithSocialMidiaModal from "../../modals/LoginWithSocialMidiaModal";
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
@@ -23,6 +24,7 @@ export default function Home() {
       <Suspense fallback={<Loading />}>
         <MainContentHome />
         <Footer />
+        <LoginWithSocialMidiaModal />
         <CookieConsent
           buttonWrapperClasses="w-full md:w-auto flex justify-center items-center mb-8 md:mb-0"
           location="bottom"

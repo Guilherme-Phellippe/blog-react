@@ -14,9 +14,7 @@ export default function LoginWithSocialMidiaModal() {
     }, [])
 
     const closeModal = ({ target }) => {
-        if (target.dataset.ref) {
-            containerRef.current.classList.add("hidden")
-        }
+        if (target.dataset.ref) containerRef.current.classList.add("hidden")
     }
 
     return (
