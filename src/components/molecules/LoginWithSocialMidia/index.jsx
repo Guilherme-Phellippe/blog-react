@@ -75,8 +75,8 @@ export const LoginWithSocialMidia = ({ redirect }) => {
             // const { accessToken } = resp.authResponse
             // localStorage.setItem("f-access-t_34353839", JSON.stringify({ token: accessToken }))
 
-            window.FB.api('/me', { fields: 'email' }, async (userData) => {
-                console.log(userData)
+            window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
+                console.log(userData, resp)
                 const { name, picture, email, id } = userData
 
                 if (resp.status === "connected") {
