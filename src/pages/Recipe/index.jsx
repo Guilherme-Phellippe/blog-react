@@ -1,18 +1,19 @@
 import { lazy, useEffect, useState } from 'react';
 import { HomeProvider } from '../../contexts/Home/HomeProvider'
 import { initOneSignal } from '../../libs/oneSignal.config';
+import LoginWithSocialMidiaModal from '../../modals/LoginWithSocialMidiaModal';
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 const Main = lazy(() => import('../../components/templates/RecipeMain'))
 
 export default function Recipe() {
-    const [showContentAfterScroll, setShowContentAfterScroll] = useState(false)
+    const [showContentAfterScroll, setShowContentAfterScroll] = useState(false);
 
     useEffect(() => {
-        initOneSignal()
-     }, [])
-   
+        initOneSignal();
+    }, []);
+
 
     useEffect(() => {
         //THIS CODE IS SHOW SECTION IF USER SCROLLING PAGE
@@ -33,6 +34,7 @@ export default function Recipe() {
                 showContentAfterScroll && <Footer />
 
             }
+            <LoginWithSocialMidiaModal />
         </HomeProvider>
     )
 }

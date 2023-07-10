@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import app from "../../../libs/firebase.config"
 
-import { useNotificationApi, useUserApi } from '../../../hooks/useApi';
+import { useNotificationApi, useNotificationPush, useUserApi } from '../../../hooks/useApi';
 import { dialog } from '../../../modals/Dialog'
 import { formatTextLong } from '../../../scripts/formatTextLong'
 
@@ -19,11 +19,12 @@ import { Loading } from '../../atoms/Loading/Loading';
 const authLogin = getAuth(app)
 const provider = new GoogleAuthProvider();
 
-export const LoginWithSocialMidia = () => {
+export const LoginWithSocialMidia = ({ redirect }) => {
     const [connected, setConnected] = useState({ connected: false })
     const [loading, setLoading] = useState(false);
     const notificationApi = useNotificationApi()
     const userApi = useUserApi();
+    const notificationEmail = useNotificationPush();
     const navigate = useNavigate();
 
 
@@ -41,11 +42,12 @@ export const LoginWithSocialMidia = () => {
                     password: userData.displayName.split(' ').join(''),
                 }
 
+                await notificationEmail.createDataPush(user).catch(err => console.log("ERROR TO CREATE DATA PUSH:", err))
                 const response = await userApi.createNewUser(user);
                 if (!response.error) {
                     notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
                     localStorage.setItem('token', JSON.stringify(response))
-                    navigate('/')
+                    navigate(redirect || "/")
                 } else {
                     const { data } = await userApi.authenticateUser(
                         {
@@ -56,7 +58,8 @@ export const LoginWithSocialMidia = () => {
 
                     if (data) {
                         localStorage.setItem("token", JSON.stringify(data));
-                        navigate('/')
+                        navigate(redirect || "/")
+                        window.location.reload()
                     } else alert("Usuario ou senha incorretos!")
                 }
             })

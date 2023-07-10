@@ -254,12 +254,11 @@ export const useNotificationApi = () => ({
     }
 })
 
-
 export const useWhatsapp = () => ({
     sendRecipe: async (data) => {
 
         const url = data?.images_recipe ? data.images_recipe[0].big : data.images[0].big;
-        const link = `https://temsabor.blog/${(data?.name_recipe ? `recipe/${data.name_recipe}` :`tip/${data.name_tip}`).replaceAll(" ", "%20")}/${data.id}`;
+        const link = `https://temsabor.blog/${(data?.name_recipe ? `recipe/${data.name_recipe}` : `tip/${data.name_tip}`).replaceAll(" ", "%20")}/${data.id}`;
 
 
         if (data.persuasiveText) {
@@ -293,7 +292,7 @@ export const useNotificationPush = () => ({
     sendNotification: async (data) => {
         if (!data?.persuasiveText) throw new Error("This request need a persuasive text");
 
-        const link = `https://temsabor.blog/${(data?.name_recipe ? `recipe/${data.name_recipe}` :`tip/${data.name_tip}`).replaceAll(" ", "%20")}/${data.id}`;
+        const link = `https://temsabor.blog/${(data?.name_recipe ? `recipe/${data.name_recipe}` : `tip/${data.name_tip}`).replaceAll(" ", "%20")}/${data.id}`;
 
 
         const dataSendNotification = {
@@ -310,7 +309,22 @@ export const useNotificationPush = () => ({
             return false
         })
 
-        return response 
+        return response
+    },
+
+    /**
+     * This function will create a new data (Email or cell phone) in the database
+     * @param {string} data 
+     * @returns boolean if create a new data with success
+     */
+    createDataPush: async (data) => {
+        console.log(data)
+        const response = api.post("/user-data-push/register", data).catch(err => console.log(err))
+        return response
     }
+
+
+
+
 
 })
