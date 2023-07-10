@@ -48,6 +48,7 @@ export const LoginWithSocialMidia = ({ redirect }) => {
                     notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id)
                     localStorage.setItem('token', JSON.stringify(response))
                     navigate(redirect || "/")
+                    window.location.reload()
                 } else {
                     const { data } = await userApi.authenticateUser(
                         {
@@ -85,23 +86,27 @@ export const LoginWithSocialMidia = ({ redirect }) => {
                         photo: picture.data.url,
                     }
 
+                    await notificationEmail.createDataPush(user).catch(err => console.log("ERROR TO CREATE DATA PUSH:", err))
                     const response = await userApi.createNewUser(user);
 
                     if (!response.error) {
                         notificationApi.newNotificationAlreadyExist("e7682967-ea1e-4b46-8d2c-d1621dac5dd1", response.id);
                         localStorage.setItem('token', JSON.stringify(response))
-                        navigate('/')
+                        navigate(redirect || "/")
+                        window.location.reload()
                     } else {
+                        console.log(user)
                         const { data } = await userApi.authenticateUser(
                             {
-                                email: userData.email.toLowerCase(),
+                                email: user.email.toLowerCase(),
                                 socialLogin: true
                             }
                         );
 
                         if (data) {
                             localStorage.setItem("token", JSON.stringify(data));
-                            navigate('/')
+                            navigate(redirect || "/")
+                            window.location.reload()
                         } else dialog("Alguma coisa não se saiu bem :(, tente novamente mais tarde", 0)
                     }
                 }
