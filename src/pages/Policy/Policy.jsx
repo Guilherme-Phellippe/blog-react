@@ -2,6 +2,7 @@ import { lazy } from "react"
 import { PolicyMain } from "../../components/templates/PolicyMain"
 import { TermsMain } from "../../components/templates/TermsMain"
 import { HomeProvider } from "../../contexts/Home/HomeProvider"
+import LoginWithSocialMidiaModal from "../../modals/LoginWithSocialMidiaModal"
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
@@ -22,6 +23,7 @@ export default function Policy() {
                     <TermsMain />
             }
             <Footer />
+            <LoginWithSocialMidiaModal />
         </HomeProvider>
     )
 }

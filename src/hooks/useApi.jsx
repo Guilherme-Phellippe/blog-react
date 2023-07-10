@@ -318,7 +318,6 @@ export const useNotificationPush = () => ({
      * @returns boolean if create a new data with success
      */
     createDataPush: async (data) => {
-        console.log(data)
         const response = api.post("/user-data-push/register", data).catch(err => console.log(err))
         return response
     }
