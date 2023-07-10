@@ -78,8 +78,8 @@ export const LoginWithSocialMidia = ({ redirect }) => {
             window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
                 const { name, picture, email, id } = userData
 
-                if (resp.status === "connected") {
-                    if (email) {
+                if (email) {
+                    if (resp.status === "connected") {
                         const user = {
                             id,
                             name,
@@ -109,9 +109,9 @@ export const LoginWithSocialMidia = ({ redirect }) => {
                                 window.location.reload()
                             } else dialog("Alguma coisa não se saiu bem :(, tente novamente mais tarde", 0)
                         }
-                    } else handleLogoutFacebook();
 
-                }
+                    }
+                } else handleLogoutFacebook();
             })
         }, { scope: 'public_profile, email' });
     };
