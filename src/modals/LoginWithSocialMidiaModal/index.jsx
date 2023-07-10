@@ -11,9 +11,11 @@ export default function LoginWithSocialMidiaModal() {
     const [showContainer, setShowContainer] = useState(false);
 
     useEffect(() => {
-        const userLogged = localStorage.getItem("token")
-
-        !userLogged && setShowContainer(true)
+        setTimeout(() => {
+            const userLogged = localStorage.getItem("token")
+    
+            !userLogged && setShowContainer(true)
+        }, 7000);
     }, [])
 
     const closeModal = ({ target }) => {
