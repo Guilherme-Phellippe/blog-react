@@ -109,7 +109,7 @@ export const LoginWithSocialMidia = ({ redirect }) => {
                                 window.location.reload()
                             } else dialog("Alguma coisa não se saiu bem :(, tente novamente mais tarde", 0)
                         }
-                    }else handleFacebookLogin();
+                    }
                 }
             })
         }, { scope: 'public_profile, email' });
