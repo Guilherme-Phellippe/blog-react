@@ -76,6 +76,7 @@ export const LoginWithSocialMidia = ({ redirect }) => {
             localStorage.setItem("f-access-t_34353839", JSON.stringify({ token: accessToken }))
 
             window.FB.api('/me', { fields: 'name, email, picture' }, async (userData) => {
+                console.log(userData)
                 const { name, picture, email, id } = userData
 
                 if (resp.status === "connected") {
@@ -95,7 +96,6 @@ export const LoginWithSocialMidia = ({ redirect }) => {
                         navigate(redirect || "/")
                         window.location.reload()
                     } else {
-                        console.log(user)
                         const { data } = await userApi.authenticateUser(
                             {
                                 email: user.email.toLowerCase(),
