@@ -112,7 +112,7 @@ export const LoginWithSocialMidia = ({ redirect }) => {
                     }
                 }
             })
-        }, { scope: 'email,public_profile', return_scopes: true });
+        }, { scope: 'email', return_scopes: true });
     };
 
     const handleLogoutFacebook = () => {
