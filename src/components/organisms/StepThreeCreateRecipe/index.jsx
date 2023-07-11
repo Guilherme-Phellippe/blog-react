@@ -1,7 +1,7 @@
 import { useContext, useRef, useState } from "react"
 
 import { FaArrowLeft, FaPlusCircle } from "react-icons/fa"
-import { MdCheckCircle, MdError, MdListAlt, MdLoop, MdRemoveCircle } from "react-icons/md"
+import { MdListAlt, MdRemoveCircle } from "react-icons/md"
 
 import { useNotificationPush, useRecipeApi, useWhatsapp } from "../../../hooks/useApi"
 import { Input } from "../../atoms/Input"
@@ -12,6 +12,7 @@ import { UploadImage } from "../../molecules/UploadImage"
 import { dialog } from "../../../modals/Dialog"
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { promptModal } from "../../../modals/Prompt";
+import SubmissionStatusModal from "../../../modals/SubmissionStatusModal"
 
 
 
@@ -121,8 +122,8 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
             whatsappResponse?.status === 200 ? handleStatusSend("Whatsapp Groupos", 2) : handleStatusSend("Whatsapp Groupos", 1)
             //Send the recipe to notification push
             const notificationResponse = await notificationPush.sendNotification(data).catch(err => console.log(err))
-            notificationResponse?.status === 200 ?  handleStatusSend("Notificação push", 1) :  handleStatusSend("Notificação push", 1)
-            
+            notificationResponse?.status === 200 ? handleStatusSend("Notificação push", 1) : handleStatusSend("Notificação push", 1)
+
             handleStatusSend("Whatsapp privado", 1)
             handleStatusSend("Email", 1)
             handleStatusSend("Sms", 1)
@@ -195,35 +196,10 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                 </Button>
             </div>
 
-            <div
+            <SubmissionStatusModal
                 ref={containerStatusRef}
-
-                className="w-screen h-screen bg-black/20 fixed top-0 left-0 hidden place-items-center"
-            >
-                <div className="min-w-[300px] bg-white p-6 rounded-2xl">
-                    <h2 className="text-s1_5 text-center p-4 mb-4">Status de compartilhamento</h2>
-                    <div className="flex flex-col gap-4">
-                        {console.log(statusSendRecipe)}
-                        {
-                            statusSendRecipe.map(status =>
-                                <div key={status.name} className="flex justify-between">
-                                    <p className="text-s1_2">{status.name}</p>
-                                    <p>{
-                                        status.status === 0 ?
-                                            <MdLoop className="text-s1_2 fill-orange-500" /> :
-                                            status.status === 1 ?
-                                                <MdError className="text-s1_2 fill-red-500" /> :
-                                                <MdCheckCircle className="text-s1_2 fill-green-700" />
-                                    }</p>
-                                </div>
-                            )
-                        }
-                    </div>
-                    <div className="w-full flex justify-center">
-                        <Button event={() => containerStatusRef.current.classList.add("hidden")}>Fechar</Button>
-                    </div>
-                </div>
-            </div>
+                statusSendRecipe={statusSendRecipe}
+            />
         </div>
     )
 }
