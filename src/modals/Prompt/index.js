@@ -15,7 +15,7 @@ export const promptModal = (text, showEmoji) => {
         box.setAttribute('class', `min-w-[20rem] max-w-[80%] md:max-w-2/3 min-h-[12rem] bg-white p-2 rounded-xl flex flex-col justify-between border-[1px] border-color_orange`)
 
         const contentTop = document.createElement('div');
-        contentTop.setAttribute('class', "w-full flex-col");
+        contentTop.setAttribute('class', "w-full flex-col items-center");
         contentTop.setAttribute('id', "container-top");
 
         const contentEmojis = document.createElement('div');

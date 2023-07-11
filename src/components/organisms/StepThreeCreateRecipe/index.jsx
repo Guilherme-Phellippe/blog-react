@@ -1,6 +1,8 @@
 import { useContext, useRef, useState } from "react"
+
 import { FaArrowLeft, FaPlusCircle } from "react-icons/fa"
-import { MdListAlt, MdRemoveCircle } from "react-icons/md"
+import { MdCheckCircle, MdError, MdListAlt, MdLoop, MdRemoveCircle } from "react-icons/md"
+
 import { useNotificationPush, useRecipeApi, useWhatsapp } from "../../../hooks/useApi"
 import { Input } from "../../atoms/Input"
 import { Button } from "../../atoms/Button"
@@ -22,7 +24,19 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
     const [images, setImages] = useState([])
     const [wordKeys, setWordKeys] = useState([])
     const refWordKeys = useRef(null)
+    const containerStatusRef = useRef(null)
     const navigate = useNavigate()
+    const [statusSendRecipe, setStatusSendRecipe] = useState([
+        { name: "Tem sabor", status: 0 },
+        { name: "Whatsapp Groupos", status: 0 },
+        { name: "Whatsapp privado", status: 0 },
+        { name: "Notificação push", status: 0 },
+        { name: "Email", status: 0 },
+        { name: "Sms", status: 0 },
+        { name: "Pinterest", status: 0 },
+        { name: "Página do facebook", status: 0 },
+        { name: "Instagram", status: 0 },
+    ])
 
 
     const handleAddListWordKeys = () => {
@@ -47,23 +61,29 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
     }
 
     const handleCreateRecipe = async () => {
+        // start the load on button
         setLoading(true)
+        // Get the recipe info that is on local storage
         const recipe = JSON.parse(localStorage.getItem('recipe'));
+        // Check if there recipe info
         if (recipe) {
+            // Check if there images in useState Images
             if (images.length) {
+                // Add in object 'recipe' the images and word keys
                 recipe.images_recipe = images;
                 recipe.wordKeys = wordKeys;
-                const data = await recipeApi.createNewRecipe(recipe)
+                // Crear the recipe in the database
+                const data = await recipeApi.createNewRecipe(recipe);
+                // Check if recipe was created
                 if (data) {
                     // REMOVE RECIPE FROM STORAGE
                     localStorage.removeItem("recipe")
 
-                    // SEND RECIPE TO WHATSAPP,NOTIFICATION PUSH
+                    // If who is creating this recipe is admin, so send to social midas...
                     if (user.admin) {
                         const persuasiveText = await promptModal("Crie um texto persuasivo para essa receita...", true);
                         data.persuasiveText = persuasiveText
-                        await whatsapp.sendRecipe(data).catch(err => console.log(err))
-                        await notificationPush.sendNotification(data).catch(err => console.log(err))
+                        await handleSenderRecipes(data);
                     }
 
                     // REDIRECT TO USER TO RECIPE PAGE
@@ -75,6 +95,50 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
         }
         setLoading(false)
     }
+
+    const handleSenderRecipes = async (data) => {
+        // Remove class 'hidden' of containerStatusRef, this make the modal appear...
+        containerStatusRef.current.classList.remove("hidden")
+        containerStatusRef.current.classList.add("grid")
+
+        // Create a promisse for dialog sucess to wait for this validation to finish
+        return new Promise(async (resolve) => {
+            // This function change status of social midias,
+            // It takes 2 parameters: statusName is the name of midia social and
+            // status that takes 3 numbers -> 0: loading, 1: failed and 2: success
+            const handleStatusSend = (statusName, status) => {
+                setStatusSendRecipe(values => {
+                    const index = values.findIndex(i => i.name === statusName);
+                    values.splice(index, 1, { name: statusName, status });
+                    return [...values]
+                })
+            }
+            //If this code got there its why already publish the recipe on database,
+            //so send a number 2 (success) to "Tem sabor"
+            handleStatusSend("Tem sabor", 2)
+            //Send the recipe to group whatsapp
+            const whatsappResponse = await whatsapp.sendRecipe(data).catch(err => console.log(err))
+            whatsappResponse?.status === 200 ? handleStatusSend("Whatsapp Groupos", 2) : handleStatusSend("Whatsapp Groupos", 1)
+            //Send the recipe to notification push
+            const notificationResponse = await notificationPush.sendNotification(data).catch(err => console.log(err))
+            notificationResponse?.status === 200 ?  handleStatusSend("Notificação push", 1) :  handleStatusSend("Notificação push", 1)
+            
+            handleStatusSend("Whatsapp privado", 1)
+            handleStatusSend("Email", 1)
+            handleStatusSend("Sms", 1)
+            handleStatusSend("Pinterest", 1)
+            handleStatusSend("Página do facebook", 1)
+            handleStatusSend("Instagram", 1)
+
+            //Wait 1,5s to finish, this make it look prettier before closing...
+            setTimeout(() => {
+                containerStatusRef.current.classList.remove("grid")
+                containerStatusRef.current.classList.add("hidden")
+                resolve()
+            }, 1500);
+        })
+    }
+
 
 
     return (
@@ -129,6 +193,36 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
                 >
                     {loading ? <Loading /> : <span className="text-white flex justify-center gap-2"><MdListAlt /> Criar receita</span>}
                 </Button>
+            </div>
+
+            <div
+                ref={containerStatusRef}
+
+                className="w-screen h-screen bg-black/20 fixed top-0 left-0 hidden place-items-center"
+            >
+                <div className="min-w-[300px] bg-white p-6 rounded-2xl">
+                    <h2 className="text-s1_5 text-center p-4 mb-4">Status de compartilhamento</h2>
+                    <div className="flex flex-col gap-4">
+                        {console.log(statusSendRecipe)}
+                        {
+                            statusSendRecipe.map(status =>
+                                <div key={status.name} className="flex justify-between">
+                                    <p className="text-s1_2">{status.name}</p>
+                                    <p>{
+                                        status.status === 0 ?
+                                            <MdLoop className="text-s1_2 fill-orange-500" /> :
+                                            status.status === 1 ?
+                                                <MdError className="text-s1_2 fill-red-500" /> :
+                                                <MdCheckCircle className="text-s1_2 fill-green-700" />
+                                    }</p>
+                                </div>
+                            )
+                        }
+                    </div>
+                    <div className="w-full flex justify-center">
+                        <Button event={() => containerStatusRef.current.classList.add("hidden")}>Fechar</Button>
+                    </div>
+                </div>
             </div>
         </div>
     )

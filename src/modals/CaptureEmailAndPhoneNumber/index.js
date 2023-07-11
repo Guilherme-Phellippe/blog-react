@@ -26,7 +26,7 @@ export const captureEmailAndPhoneNumber = (isEmail) => {
         container.setAttribute("class", "fixed top-0 left-0 z-[999] w-screen h-screen bg-black/30 grid place-items-center");
 
         const box = document.createElement('div');
-        box.setAttribute('class', `min-w-[20rem] max-w-[80%] md:max-w-2/3 min-h-[12rem] bg-white p-2 rounded-xl flex flex-col justify-between scale-0 transition-transform duration-500`)
+        box.setAttribute('class', `min-w-[20rem] max-w-[90%] md:max-w-2/3 min-h-[12rem] bg-white p-2 rounded-xl flex flex-col justify-between scale-0 transition-transform duration-500`)
         setTimeout(() => box.classList.add("scale-100"), 50);
 
         const contentTop = document.createElement('div');
