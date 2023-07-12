@@ -122,10 +122,12 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
             whatsappResponse?.status === 200 ? handleStatusSend("Whatsapp Groupos", 2) : handleStatusSend("Whatsapp Groupos", 1)
             //Send the recipe to notification push
             const notificationResponse = await notificationPush.sendNotification(data).catch(err => console.log(err))
-            notificationResponse?.status === 200 ? handleStatusSend("Notificação push", 1) : handleStatusSend("Notificação push", 1)
+            notificationResponse?.status === 200 ? handleStatusSend("Notificação push", 2) : handleStatusSend("Notificação push", 1)
+           
+            const emailResponse = await notificationPush.sendEmail(data).catch(err => console.log(err))
+            emailResponse?.status === 200 ? handleStatusSend("Email", 2) : handleStatusSend("Email", 1)
 
             handleStatusSend("Whatsapp privado", 1)
-            handleStatusSend("Email", 1)
             handleStatusSend("Sms", 1)
             handleStatusSend("Pinterest", 1)
             handleStatusSend("Página do facebook", 1)

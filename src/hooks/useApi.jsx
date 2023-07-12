@@ -320,7 +320,28 @@ export const useNotificationPush = () => ({
     createDataPush: async (data) => {
         const response = await api.post("/user-data-push/register", data)
         return response
+    },
+
+    /**
+     * This function will send a email to user
+     * @param {string} data 
+     * @returns boolean if create a new data with success
+     */
+    sendEmail: async (data) => {
+        console.log(data)
+
+        const emailData = {
+            title: "Receita de Bolinho de arroz",
+            image: "https://i.ibb.co/kGDGS6R/8a5839a2a976.webp",
+            link: "https://ver-receita.cloud/Bolinho-de-arroz",
+            ingredients: ["1 copo de leite, 1 alho verde", "1 dente de sabre", "2 limão taiti"],
+        }
+
+        const response = await api.post("/email/send-recipe", emailData)
+        return response
     }
+
+
 
 
 
