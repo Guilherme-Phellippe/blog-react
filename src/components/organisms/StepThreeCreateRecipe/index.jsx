@@ -123,7 +123,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
             //Send the recipe to notification push
             const notificationResponse = await notificationPush.sendNotification(data).catch(err => console.log(err))
             notificationResponse?.status === 200 ? handleStatusSend("Notificação push", 2) : handleStatusSend("Notificação push", 1)
-           
+           //Send the recipe to email
             const emailResponse = await notificationPush.sendEmail(data).catch(err => console.log(err))
             emailResponse?.status === 200 ? handleStatusSend("Email", 2) : handleStatusSend("Email", 1)
 

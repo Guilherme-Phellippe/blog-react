@@ -80,10 +80,6 @@ export default function LoginWithSocialMidiaModal() {
         >
             <div className="w-full md:w-[500px] md:min-h-[350px] md:mt-32 md:mr-8 md:py-8 h-[30rem] rounded-t-xl md:rounded-xl bg-white p-4">
                 <div className="w-full gap-4 flex justify-center items-center border-b-[1px] border-b-black/20 relative">
-                    <span
-                        data-ref={"container"}
-                        className="absolute top-0 right-0 text-s1_7 font-bold font-sans cursor-pointer"
-                    >X</span>
                     <div className="flex justify-center items-center">
                         <div className="w-4/5 flex justify-start">
                             <h2 className="text-s1_7 text-left text-color_text_black">Faça login<br />de forma rápida e fácil,<br />basta escolher sua rede social.</h2>

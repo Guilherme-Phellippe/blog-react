@@ -328,13 +328,11 @@ export const useNotificationPush = () => ({
      * @returns boolean if create a new data with success
      */
     sendEmail: async (data) => {
-        console.log(data)
-
         const emailData = {
-            title: "Receita de Bolinho de arroz",
-            image: "https://i.ibb.co/kGDGS6R/8a5839a2a976.webp",
-            link: "https://ver-receita.cloud/Bolinho-de-arroz",
-            ingredients: ["1 copo de leite, 1 alho verde", "1 dente de sabre", "2 limão taiti"],
+            title: data?.name_recipe,
+            image: data.images_recipe[0].medium,
+            link: `https://temsabor.blog/recipe/${data.name_recipe}/${data.id}`,
+            ingredients: data.ing,
         }
 
         const response = await api.post("/email/send-recipe", emailData)
