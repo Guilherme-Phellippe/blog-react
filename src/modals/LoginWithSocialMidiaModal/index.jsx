@@ -13,7 +13,7 @@ export default function LoginWithSocialMidiaModal() {
     useEffect(() => {
         setTimeout(() => {
             const userLogged = localStorage.getItem("token")
-    
+
             !userLogged && setShowContainer(true)
         }, 7000);
     }, [])
@@ -36,7 +36,7 @@ export default function LoginWithSocialMidiaModal() {
             // In this line we get the datapush which is an object and initialize it in the dataPush variable,
             // if it doesnt exist, we start dataPush with the already made object.
             const dataPush = JSON.parse(localStorage.getItem("datapush")) || { howmanytimes: 1, email: false, cell_phone: false }
-            
+
             //In this line, we take the value of howManyTimes and divide it by 3,
             //so we will have every 3 numbers false, 
             //because we want the rest of the division to be different from 0.
@@ -48,7 +48,7 @@ export default function LoginWithSocialMidiaModal() {
             var response = null;
             if (tryEmailOrPhone && !dataPush.email) response = await captureEmailAndPhoneNumber(true);
             if (!tryEmailOrPhone && !dataPush.cell_phone) response = await captureEmailAndPhoneNumber(false);
-            
+
             //In this line we add 1 more number to the count, 
             //to verify how many times we have already displayed the modal to the user.
             dataPush.howmanytimes += 1;
@@ -64,7 +64,7 @@ export default function LoginWithSocialMidiaModal() {
             if (response) {
                 //if the user left his data, 
                 //let's save it in the database with the createDataPush function, sending the data to it.
-                await notificationApi.createDataPush(dataPush)
+                await notificationApi.createDataPush(tryEmailOrPhone ? { email: response.data } : { cell_phone: response.data })
                 await dialog(`${tryEmailOrPhone ? "E-mail" : "Número de telefone"} cadastrado com sucesso !`, 2)
             }
         }, 15000);
