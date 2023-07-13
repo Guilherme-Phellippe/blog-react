@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { useParams } from "react-router-dom"
 import { WhatsappShareButton, FacebookShareButton, TwitterShareButton, TelegramShareButton } from "react-share"
 
 
@@ -15,6 +16,7 @@ export default function IconsShare({ recipe }) {
     const shotLinks = useShortLink()
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";
+    const params = useParams();
 
     const handleIconsMobile = () => {
         setShowIconsShare(v => !v)
@@ -25,20 +27,21 @@ export default function IconsShare({ recipe }) {
     }
 
     const createAShortLink = async () => {
-        const origin_link = window.location.href
+        const { id } = params
         const linkLocalStorage = JSON.parse(localStorage.getItem("short_links")) || []
-        const hasLinkSaveLocalStorage = linkLocalStorage.find(link => link.origin_link === origin_link)
+        const hasLinkSaveLocalStorage = linkLocalStorage.find(link => link?.recipeId === id)
 
         var response;
         if (hasLinkSaveLocalStorage) {
             response = { data: { short_link: hasLinkSaveLocalStorage.short_link } }
         } else {
-            response = await shotLinks.createShortLink({ origin_link })
+            response = await shotLinks.createShortLink({ key: recipe.name_recipe, id })
 
-            linkLocalStorage.push({ origin_link, short_link: response.data.short_link })
+            linkLocalStorage.push(response)
 
             localStorage.setItem("short_links", JSON.stringify(linkLocalStorage))
         }
+
         if (response) {
             const { data: { short_link } } = response;
 
