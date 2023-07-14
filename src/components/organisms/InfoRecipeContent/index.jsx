@@ -37,7 +37,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                 </Suspense>
 
                 {
-                    // showContentAfterScroll &&
+                    showContentAfterScroll &&
                     <>
                         <div className="w-full min-h-screen relative">
 
