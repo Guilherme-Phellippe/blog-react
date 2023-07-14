@@ -29,19 +29,16 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                 <Suspense fallback={<Loading />}>
                     <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                     <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
-                    <div className="w-full my-4">
-                        <LineAds />
-                    </div>
-
-                    {console.log("return 1")}
-                    <ins
-                        className="adsbygoogle"
-                        style={{ display: "block" }}
-                        data-ad-format="fluid"
-                        data-ad-layout-key="-fc+51+9h-cr-91"
-                        data-ad-client="ca-pub-4781060024956035"
-                        data-ad-slot="1453561477"
-                    ></ins>
+                    <LineAds>
+                        <ins
+                            className="adsbygoogle"
+                            style={{ display: "block" }}
+                            data-ad-format="fluid"
+                            data-ad-layout-key="-fc+51+9h-cr-91"
+                            data-ad-client="ca-pub-4781060024956035"
+                            data-ad-slot="1453561477"
+                        ></ins>
+                    </LineAds>
                 </Suspense>
 
                 {
@@ -74,10 +71,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
                                 </div>
                                 <ListRecipeComments content={recipe} />
-                                <div className={`w-${window.innerWidth - 20}`}>
-                                    <LineAds />
-                                    {console.log("return 2")}
-
+                                <LineAds>
                                     <ins className="adsbygoogle"
                                         style={{ display: "block" }}
                                         data-ad-client="ca-pub-4781060024956035"
@@ -85,7 +79,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                         data-ad-format="auto"
                                         data-full-width-responsive="true"
                                     ></ins>
-                                </div>
+                                </LineAds>
                             </Suspense>
 
                             <RecipeSimilarContent name_search={recipe?.name_recipe} />
