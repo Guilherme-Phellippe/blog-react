@@ -77,7 +77,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 <ListRecipeComments content={recipe} />
                                 <div className="w-full my-4">
                                     <LineAds />
-                                    {console.log("return 1")}
+                                    {console.log("return 2")}
 
                                     <ins className="adsbygoogle"
                                         style={{ display: "block" }}
