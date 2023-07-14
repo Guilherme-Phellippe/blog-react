@@ -73,7 +73,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     <ListRecipeComments content={recipe} />
                                     <LineAds>
                                         <ins className="adsbygoogle"
-                                            style={{ display: "block", maxWidth: (window.innerWidth - 50) }}
+                                            style={{ display: "block" }}
                                             data-ad-client="ca-pub-4781060024956035"
                                             data-ad-slot="9346456414"
                                             data-ad-format="auto"
@@ -92,7 +92,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                 <div className="hidden md:block md:w-1/3 p-4">
                     <LineAds>
                         <ins className="adsbygoogle"
-                            style={{ display: "none" }}
+                            style={{ display: window.innerWidth <= 767 ? "none":"block" }}
                             data-ad-client="ca-pub-4781060024956035"
                             data-ad-slot="5163292498"
                             data-ad-format="auto"
