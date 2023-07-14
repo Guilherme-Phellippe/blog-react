@@ -14,9 +14,7 @@ export default function RecipeSimilarContent({ name_search }) {
             setRecipes(data)
         }
         dataFetch(api)
-
     }, []);
-
 
 
     const handleRecipeByTarget = () => {
@@ -63,14 +61,6 @@ export default function RecipeSimilarContent({ name_search }) {
                                 recipe={recipe} />
                         })
                         : <h2>Não temos nenhuma sugestão de receitas para você.</h2>}
-                </div>
-            </div>
-
-            <div className="bg-white">
-                <div className="flex justify-center opacity-25">
-                    <span className="w-full bg-zinc-900/50 h-[1px]"></span>
-                    <span className="mx-2 -translate-y-1/2">ads</span>
-                    <span className="w-full bg-zinc-900/50 h-[1px]"></span>
                 </div>
             </div>
         </div>

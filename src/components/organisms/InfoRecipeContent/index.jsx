@@ -19,6 +19,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' && recipe &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
+        console.log("useEffect")
     }, [recipe])
 
     return (
@@ -32,6 +33,8 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     <div className="w-full my-4">
                         <LineAds />
                     </div>
+
+                    {console.log("return 1")}
                     <ins
                         className="adsbygoogle"
                         style={{ display: "block" }}
@@ -74,17 +77,19 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 <ListRecipeComments content={recipe} />
                                 <div className="w-full my-4">
                                     <LineAds />
+                                    {console.log("return 1")}
+
                                     <ins className="adsbygoogle"
                                         style={{ display: "block" }}
                                         data-ad-client="ca-pub-4781060024956035"
                                         data-ad-slot="9346456414"
                                         data-ad-format="auto"
-                                        data-full-width-responsive="true"></ins>
+                                        data-full-width-responsive="true"
+                                    ></ins>
                                 </div>
                             </Suspense>
 
                             <RecipeSimilarContent name_search={recipe?.name_recipe} />
-
 
                         </div>
                     </>
