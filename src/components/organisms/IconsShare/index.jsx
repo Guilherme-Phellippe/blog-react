@@ -1,23 +1,19 @@
 import { useContext, useState } from 'react';
-import { useParams } from "react-router-dom"
 import { WhatsappShareButton, FacebookShareButton, TwitterShareButton, TelegramShareButton } from "react-share"
 
 
-import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp, FaTwitter, FaTelegram, FaLink } from 'react-icons/fa';
+import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp, FaTwitter, FaTelegram } from 'react-icons/fa';
 import { MdOutlineSendToMobile } from 'react-icons/md';
 
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
-import { useWhatsapp, useShortLink } from '../../../hooks/useApi';
-import { dialog } from "../../../modals/Dialog"
+import { useWhatsapp } from '../../../hooks/useApi';
 import { promptModal } from "../../../modals/Prompt"
 
 export default function IconsShare({ recipe }) {
     const { user } = useContext(HomeContext)
     const Whatsapp = useWhatsapp()
-    const shotLinks = useShortLink()
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";
-    const params = useParams();
 
     const handleIconsMobile = () => {
         setShowIconsShare(v => !v)
@@ -28,33 +24,6 @@ export default function IconsShare({ recipe }) {
         recipe.persuasiveText = persuasive
         await Whatsapp.sendRecipe(recipe)
     }
-
-    const createAShortLink = async () => {
-        const { id } = params
-        const linkLocalStorage = JSON.parse(localStorage.getItem("short_links")) || []
-        const hasLinkSaveLocalStorage = linkLocalStorage.find(link => link?.recipeId === id)
-
-        var response;
-        if (hasLinkSaveLocalStorage) {
-            response = { data: { short_link: hasLinkSaveLocalStorage.short_link } }
-        } else {
-            response = await shotLinks.createShortLink({ key: recipe.name_recipe, id })
-
-            linkLocalStorage.push(response)
-
-            localStorage.setItem("short_links", JSON.stringify(linkLocalStorage))
-        }
-
-        if (response) {
-            const { data: { short_link } } = response;
-
-            navigator.clipboard.writeText(short_link).then(() => {
-                dialog("Link copiado com sucesso", 2)
-            })
-        } else dialog("Falha ao copiar o link", 0)
-    }
-
-
 
     return (
         <div
@@ -129,14 +98,6 @@ export default function IconsShare({ recipe }) {
                             </span>
                             <MdOutlineSendToMobile className='text-s3 cursor-pointer fill-pink-500' />
                         </div>
-                    </div>
-                    <div className="flex md:mt-8 justify-center relative w-full group">
-                        <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
-                            Copiar o link da receita
-                        </span>
-                        <FaLink
-                            onClick={createAShortLink}
-                            className='text-s3 cursor-pointer fill-yellow-600' />
                     </div>
                 </>
 

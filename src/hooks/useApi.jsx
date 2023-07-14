@@ -256,7 +256,6 @@ export const useNotificationApi = () => ({
 
 export const useWhatsapp = () => ({
     sendRecipe: async (data) => {
-        console.log(data)
 
         const url = data?.images_recipe ? data.images_recipe[0].big : data.images[0].big;
         const link = `https://temsabor.blog/${(data?.name_recipe ? `receitas` : `tip`)}/${data.slug}`;
@@ -270,22 +269,10 @@ export const useWhatsapp = () => ({
             }
 
             const response = await axios.post("https://whatsapp.temsabor.blog/send-recipe", infoRecipe)
-            console.log(response)
 
             return response
         } else return null
 
-    }
-})
-
-export const useShortLink = () => ({
-    createShortLink: async (url) => {
-        const link = await api.post("/create-short-link", url).catch((err) => {
-            console.error("ERROR REQUEST SHORT LINK:", err)
-            return false
-        })
-
-        return link
     }
 })
 
