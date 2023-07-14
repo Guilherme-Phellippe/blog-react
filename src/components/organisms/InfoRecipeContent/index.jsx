@@ -74,7 +74,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
                                 </div>
                                 <ListRecipeComments content={recipe} />
-                                <div className="w-[100px] my-4">
+                                <div className={`w-${window.innerWidth - 20}`}>
                                     <LineAds />
                                     {console.log("return 2")}
 
