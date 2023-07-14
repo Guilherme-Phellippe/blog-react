@@ -57,6 +57,15 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     prepareMode={recipe.prepareMode}
                                     type_prepare_mode={recipe.type_prepare_mode}
                                 />
+
+                            </Suspense>
+
+
+                            <Suspense fallback={<Loading />}>
+                                <div className="w-full py-4 my-4 bg-[#24242420]">
+                                    <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
+                                </div>
+                                <ListRecipeComments content={recipe} />
                                 <div className="w-full my-4">
                                     <LineAds />
                                     <ins className="adsbygoogle"
@@ -66,15 +75,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                         data-ad-format="auto"
                                         data-full-width-responsive="true"></ins>
                                 </div>
-                            </Suspense>
-
-
-
-                            <Suspense fallback={<Loading />}>
-                                <div className="w-full py-4 my-4 bg-[#24242420]">
-                                    <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
-                                </div>
-                                <ListRecipeComments content={recipe} />
                             </Suspense>
 
                             <RecipeSimilarContent name_search={recipe?.name_recipe} />
