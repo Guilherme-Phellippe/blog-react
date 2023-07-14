@@ -25,15 +25,15 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
                     <div className="w-full my-4">
                         <LineAds />
-                        <ins
-                            className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-format="fluid"
-                            data-ad-layout-key="-fc+51+9h-cr-91"
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="1453561477"
-                        ></ins>
                     </div>
+                    <ins
+                        className="adsbygoogle"
+                        style={{ display: "block" }}
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-fc+51+9h-cr-91"
+                        data-ad-client="ca-pub-4781060024956035"
+                        data-ad-slot="1453561477"
+                    ></ins>
                 </Suspense>
 
                 {
