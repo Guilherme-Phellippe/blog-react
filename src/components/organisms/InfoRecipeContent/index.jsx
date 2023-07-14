@@ -37,7 +37,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                 </Suspense>
 
                 {
-                    showContentAfterScroll &&
+                    // showContentAfterScroll &&
                     <>
                         <div className="w-full min-h-screen relative">
 
@@ -53,17 +53,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     stuffing_ing={recipe.stuffing_ing}
                                     type_stuffing_ing={recipe.type_stuffing_ing}
                                 />
-                                <div className="w-full my-4">
-                                    <LineAds />
-                                    <ins
-                                        className="adsbygoogle"
-                                        style={{ display: "block", textAlign: "center" }}
-                                        data-ad-layout="in-article"
-                                        data-ad-format="fluid"
-                                        data-ad-client="ca-pub-4781060024956035"
-                                        data-ad-slot="5009663107"
-                                    ></ins>
-                                </div>
                                 <PrepareMode
                                     prepareMode={recipe.prepareMode}
                                     type_prepare_mode={recipe.type_prepare_mode}
