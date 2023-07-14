@@ -18,12 +18,12 @@ export default function Maintenance() {
                             alt={"Em manutenção"}
                         />
                     </div>
-                    <h2 className="text-s2 p-4 w-1/2 text-center leading-[25px] text-color_text_black">
+                    <h2 className="text-s2 p-4 w-11/12 md:w-1/2  text-center leading-[25px] text-color_text_black">
                         A Tem sabor agredece a sua visita, 
                         mas no momento estamos realizando melhorias em nosso blog, 
-                        sua expẽriencia e segurança aqui é muito importante para nós
+                        sua expêriencia e segurança aqui é muito importante para nós
                     </h2>
-                    <h3 className="w-1/2 text-center text-color_orange font-bold text-s1_5 py-8">Voltamos logo!</h3>
+                    <h3 className=" p-4 w-11/12 md:w-1/2 text-center text-color_orange font-bold text-s1_5 py-8">Voltamos logo!</h3>
                 </div>
                 <Footer />
             </Suspense>
