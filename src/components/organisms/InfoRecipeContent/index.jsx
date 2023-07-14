@@ -17,7 +17,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
 
     useEffect(() => {
         // GOOGLE ADSENSE 
-        console.log("useEffect")
         window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [showContentAfterScroll])
 
@@ -91,3 +90,5 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         </div>
     )
 }
+
+
