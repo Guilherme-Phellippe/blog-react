@@ -15,4 +15,19 @@
       <image:loc>https://i.ibb.co/D4XqmkJ/7e825d54213e.webp</image:loc>
     </image:image>
   </url>
+
+  <url>
+    <loc>https://temsabor.blog/receitas/bolo-de-amendoim</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Bolo de amendoim</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2023-06-14</news:publication_date>
+      <news:title>Receita deliciosa de Bolo de amendoim</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://i.ibb.co/LkYkcpG/bcc8c020008a.webp</image:loc>
+    </image:image>
+  </url>
 </urlset>
