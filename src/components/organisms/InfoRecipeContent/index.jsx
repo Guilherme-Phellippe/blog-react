@@ -19,7 +19,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         // GOOGLE ADSENSE 
         console.log("useEffect")
         window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
+    }, [showContentAfterScroll])
 
     return (
         recipe &&
@@ -78,13 +78,13 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     <LineAds />
                                     {console.log("return 2")}
 
-                                    {/* <ins className="adsbygoogle"
+                                    <ins className="adsbygoogle"
                                         style={{ display: "block" }}
                                         data-ad-client="ca-pub-4781060024956035"
                                         data-ad-slot="9346456414"
                                         data-ad-format="auto"
                                         data-full-width-responsive="true"
-                                    ></ins> */}
+                                    ></ins>
                                 </div>
                             </Suspense>
 
