@@ -49,16 +49,6 @@ export default function RecipeSimilarContent({ name_search }) {
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
             <div className="w-full bg-white rounded-md p-4">
                 <h2 className='text-center text-s2 text-color_orange font-bold p-4'>Pela web</h2>
-                {/* adsense */}
-                <ins className="adsbygoogle"
-                    style={{ display: 'block' }}
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="3655130128"
-                    data-matched-content-ui-type="image_stacked"
-                    data-matched-content-rows-num={window.innerWidth < 700 ? "3" : "2"}
-                    data-matched-content-columns-num={window.innerWidth < 700 ? "2" : "4"}
-                    data-ad-format="autorelaxed"
-                ></ins>
             </div>
 
             <div className="w-full bg-white rounded-md">
@@ -82,15 +72,6 @@ export default function RecipeSimilarContent({ name_search }) {
                     <span className="mx-2 -translate-y-1/2">ads</span>
                     <span className="w-full bg-zinc-900/50 h-[1px]"></span>
                 </div>
-                {/* adsense */}
-                <ins
-                    className="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-client="ca-pub-4781060024956035"
-                    data-ad-slot="1972721637"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
             </div>
         </div>
     )
