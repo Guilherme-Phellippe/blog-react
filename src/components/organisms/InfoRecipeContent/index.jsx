@@ -73,7 +73,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     <ListRecipeComments content={recipe} />
                                     <LineAds>
                                         <ins className="adsbygoogle"
-                                            style={{ display: "block" }}
+                                            style={{ display: "block", maxWidth: (window.innerWidth - 50) }}
                                             data-ad-client="ca-pub-4781060024956035"
                                             data-ad-slot="9346456414"
                                             data-ad-format="auto"
