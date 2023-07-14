@@ -89,7 +89,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
 
                     // REDIRECT TO USER TO RECIPE PAGE
                     const response = await dialog("Sua receita foi criada com sucesso!", 2, "Ver receita")
-                    if (response) navigate(`/recipe/${data.name_recipe}/${data.id}`)
+                    if (response) navigate(`/receitas/${data.slug}`)
                     else navigate('/')
                 } else await dialog("Tivemos um erro ao tentar processa sua receita, preencha os dados novamente e tente de novo", 0)
             } else await dialog("Sua receita precia de pelo menos uma imagem para ser criada!", 0)

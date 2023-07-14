@@ -23,8 +23,8 @@ export const useRecipeApi = () => ({
         return images
     },
 
-    getUniqueRecipe: async (id) => {
-        const data = await api.get(`/recipe/${id}`).catch(err => err);
+    getUniqueRecipe: async (slug) => {
+        const data = await api.get(`/recipe/${slug}`).catch(err => err);
         return data
     },
 
@@ -258,7 +258,7 @@ export const useWhatsapp = () => ({
     sendRecipe: async (data) => {
 
         const url = data?.images_recipe ? data.images_recipe[0].big : data.images[0].big;
-        const link = `https://temsabor.blog/${(data?.name_recipe ? `recipe/${data.name_recipe}` : `tip/${data.name_tip}`).replaceAll(" ", "%20")}/${data.id}`;
+        const link = `https://temsabor.blog/${(data?.name_recipe ? `receitas` : `tip`)}/${data.slug}`;
 
 
         if (data.persuasiveText) {
@@ -292,7 +292,7 @@ export const useNotificationPush = () => ({
     sendNotification: async (data) => {
         if (!data?.persuasiveText) throw new Error("This request need a persuasive text");
 
-        const link = `https://temsabor.blog/${(data?.name_recipe ? `recipe/${data.name_recipe}` : `tip/${data.name_tip}`).replaceAll(" ", "%20")}/${data.id}`;
+        const link = `https://temsabor.blog/${(data?.name_recipe ? `receitas` : `tip`)}/${data.slug}`;
 
 
         const dataSendNotification = {
@@ -331,7 +331,7 @@ export const useNotificationPush = () => ({
         const emailData = {
             title: data?.name_recipe,
             image: data.images_recipe[0].medium,
-            link: `https://temsabor.blog/recipe/${data.name_recipe}/${data.id}`,
+            link: `https://temsabor.blog/receitas/${data.slug}`,
             ingredients: data.ing,
         }
 

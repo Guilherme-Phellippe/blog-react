@@ -10,7 +10,7 @@ const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 
 
 export default function RecipeMain({ showContentAfterScroll }) {
-    const { id } = useParams();
+    const { slug } = useParams();
     const [recipe, setRecipe] = useState();
     const refRecipeApi = useRef(useRecipeApi());
     const refFeedApi = useRef(useFeedApi());
@@ -18,13 +18,13 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     useEffect(() => {
         (async () => {
-            refFeedApi.current.updateNumberEyes(id)
-            const { data } = await refRecipeApi.current.getUniqueRecipe(id);
+            const { data } = await refRecipeApi.current.getUniqueRecipe(slug);
+            refFeedApi.current.updateNumberEyes(data.id)
             //ADD TITLE DYNAMIC
             document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
             setRecipe(data);
         })();
-    }, [id]);
+    }, [slug]);
 
 
     useEffect(() => {

@@ -87,11 +87,10 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
     }
 
     const handleRedirectUser =({ currentTarget, target })=>{
-        const recipeId = currentTarget.querySelector('td[data-name="action"]').id
-        const recipeName = currentTarget.querySelector('td[data-name="name"]').textContent
+        const slug = currentTarget.dataset.slug
         const button = target.dataset.name === "button"
 
-        if(recipeId && recipeId && !button) navigate(`/recipe/${recipeName}/${recipeId}`)
+        if(slug && !button) navigate(`/receitas/${slug}/}`)
     }
 
     return (
@@ -127,7 +126,7 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
                                 className='text-center cursor-pointer hover:bg-background border-b-[1px] border-solid'
                             >
                                 <td className={`py-4 text-s1_2 p-2 ${index < 3 && !search ? 'bg-green-600 text-white font-bold' : ''}`}>{index + 1}°</td>
-                                <td className="py-4 text-s1_2" data-name="name">{candidate.name_recipe}</td>
+                                <td className="py-4 text-s1_2" data-slug={candidate.slug}>{candidate.name_recipe}</td>
                                 <td className="py-4 text-s1_2 hidden md:block">{candidate.user.name}</td>
                                 <td className="py-4 text-s1_2 hidden md:block">{moment(candidate.createdAt).startOf('hour').fromNow()}</td>
                                 <td className="py-4 text-s1_2">{
@@ -136,7 +135,7 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
                                         : 's/v'
                                         : '0'}
                                 </td>
-                                <td className="py-4 text-s1_2 relative flex justify-center" data-name="action" id={candidate.id}>
+                                <td className="py-4 text-s1_2 relative flex justify-center" id={candidate.id}>
                                     {
                                         loading ?
                                             <Loading />

@@ -70,7 +70,7 @@ export default function IconsShare({ recipe }) {
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <FacebookShareButton
                     quote={`${recipe?.name_recipe || recipe.name_tip}\n`}
-                    url={`https://temsabor.blog/recipe/${recipe?.name_recipe ? recipe.name_recipe.replaceAll(" ", "%20") : recipe.name_tip.replaceAll(" ", "%20")}/${recipe.id}`}
+                    url={`https://temsabor.blog/${recipe?.name_recipe ? "receitas" : "tip"}/${recipe.slug}`}
                 >
                     <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                         Compartilhe no Facebook
@@ -81,7 +81,7 @@ export default function IconsShare({ recipe }) {
             <div className="flex md:mt-8 justify-center relative w-full group">
                 <TwitterShareButton
                     quote={`${recipe?.name_recipe || recipe.name_tip}\n`}
-                    url={`https://temsabor.blog/recipe/${recipe?.name_recipe ? recipe.name_recipe.replaceAll(" ", "%20") : recipe.name_tip.replaceAll(" ", "%20")}/${recipe.id}`}
+                    url={`https://temsabor.blog/${recipe?.name_recipe ? "receitas" : "tip"}/${recipe.slug}`}
                 >
                     <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                         Compartilhe no Facebook
@@ -93,7 +93,7 @@ export default function IconsShare({ recipe }) {
                 <WhatsappShareButton
                     title={`*Olha oque eu encontrei: \n ${recipe?.name_recipe || recipe.name_tip}*\n`}
                     separator={`\n`}
-                    url={`https://temsabor.blog/recipe/${recipe?.name_recipe ? recipe.name_recipe.replaceAll(" ", "%20") : recipe.name_tip.replaceAll(" ", "%20")}/${recipe.id}`}
+                    url={`https://temsabor.blog/${recipe?.name_recipe ? "receitas" : "tip"}/${recipe.slug}`}
                 >
                     <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-4 transition-all'>
                         Compartilhe no Whatsapp
@@ -105,7 +105,7 @@ export default function IconsShare({ recipe }) {
                 <TelegramShareButton
                     title={`Olha oque eu encontrei: \n*${recipe?.name_recipe || recipe.name_tip}*\n`}
                     separator={"\n"}
-                    url={`https://temsabor.blog/recipe/${recipe?.name_recipe ? recipe.name_recipe.replaceAll(" ", "%20") : recipe.name_tip.replaceAll(" ", "%20")}/${recipe.id}`}
+                    url={`https://temsabor.blog/${recipe?.name_recipe ? "receitas" : "tip"}/${recipe.slug}`}
                 >
                     <span className='invisible md:group-hover:visible md:group-hover:translate-x-3/4 bg-white absolute left-0 rounded-br-xl rounded-tr-xl top-0 flex items-center text-s1_2 p-2 transition-all'>
                         Compartilhe no Facebook

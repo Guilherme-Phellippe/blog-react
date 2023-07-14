@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { Button } from "../../atoms/Button"
 
-export const AddRecipeInfo = ({ content: { user, id, name_recipe, createdAt } }) => {
+export const AddRecipeInfo = ({ content: { user, name_recipe,slug, createdAt } }) => {
     const { valueSearch } = useContext(HomeContext)
     const showButtonVote = moment(createdAt).month() === moment().month()
 
@@ -23,7 +23,7 @@ export const AddRecipeInfo = ({ content: { user, id, name_recipe, createdAt } })
                 <p className="text-s1 mt-4 font-bold">criado em: <span className="text-gray-500 font-normal">{moment(createdAt).format('lll')}</span></p>
             </div>
             <div className={`w-full h-full flex justify-evenly items-center ${valueSearch ? "mt-8" : "border-b-[1px] "}`}>
-                <Link onClick={handleScrollDocument} to={`/recipe/${name_recipe}/${id}`} >
+                <Link onClick={handleScrollDocument} to={`/receitas/${slug}`} >
                     <Button customClass={'btn-primary px-8 text-s1_3'}><FaListAlt /> Ver receita</Button>
                 </Link>
                 {

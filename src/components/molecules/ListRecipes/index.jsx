@@ -11,7 +11,7 @@ export const ListRecipes = ({ recipe, classContainer, classInfoContent, classImg
     }
 
     return (
-        <Link onClick={handleScrollDocument} to={`/recipe/${recipe.name_recipe}/${recipe.id}`}>
+        <Link onClick={handleScrollDocument} to={`/receitas/${recipe.slug}`}>
             <div className={classContainer}>
                 <div className={classImgContent}>
                     <Img imgs={recipe.images_recipe[0].small} alt={recipe.name_recipe} />

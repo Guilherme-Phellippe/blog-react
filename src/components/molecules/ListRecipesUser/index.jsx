@@ -21,7 +21,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
     return (
         <div className={`flex-none flex gap-y-4 justify-center items-center relative overflow-hidden ${isMyRecipes ? "w-full h-[180px] md:h-[250px]" : "w-1/2 md:w-1/3"}`}>
             <div className={`w-[95%] md:w-4/5 flex border-[1px] border-color_orange shadow-sm relative ${isMyRecipes ? "h-full" : "flex-col h-[250px] md:h-[300px]"}`}>
-                <Link className={`cursor-pointer relative ${isMyRecipes ? "w-2/5 h-full" : "w-full h-1/2"}`} to={`/recipe/${recipe.name_recipe.replace('?', '')}/${recipe.id}`}>
+                <Link className={`cursor-pointer relative ${isMyRecipes ? "w-2/5 h-full" : "w-full h-1/2"}`} to={`/receitas/${recipe.slug}`}>
                     <img className='w-full h-full object-cover' src={currentRecipe.images_recipe.length && currentRecipe.images_recipe[0].medium} alt={recipe.name_recipe} />
                 </Link>
                 <div className={`px-4 flex flex-col justify-around items-center ${isMyRecipes ? "w-3/5" : "w-full"}`}>
@@ -36,7 +36,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
                                 <span className="text-s1 text-white flex justify-between my-1">Número de receitas salvas: <span className="text-white text-s1_5">{recipe.nmr_saved.length}</span></span>
                             </div>
                             :
-                            <Link className="btn-primary text-s1_5 mt-8" to={`/recipe/${recipe.name_recipe.replace('?', '')}/${recipe.id}`}>Ver receita</Link>
+                            <Link className="btn-primary text-s1_5 mt-8" to={`/receitas/${recipe.slug}`}>Ver receita</Link>
                     }
                 </div>
                 {
