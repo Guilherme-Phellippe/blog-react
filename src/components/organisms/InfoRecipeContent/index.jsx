@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { Loading } from '../../atoms/Loading/Loading';
 import { ListRecipeComments } from '../../molecules/ListRecipeComments';
 import RecipeSimilarContent from '../RecipeSimilarContent';
+import LineAds from '../../atoms/LineAds';
 
 const InfoRecipeHeader = lazy(() => import("../../molecules/InfoRecipeHeader"))
 const CarouselMidiasContent = lazy(() => import("../../molecules/CarouselMidiasContent"))
@@ -22,6 +23,17 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                 <Suspense fallback={<Loading />}>
                     <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                     <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
+                    <div className="w-full my-4">
+                        <LineAds />
+                        <ins
+                            className="adsbygoogle"
+                            style={{ display: "block" }}
+                            data-ad-format="fluid"
+                            data-ad-layout-key="-fc+51+9h-cr-91"
+                            data-ad-client="ca-pub-4781060024956035"
+                            data-ad-slot="1453561477"
+                        ></ins>
+                    </div>
                 </Suspense>
 
                 {
@@ -35,36 +47,14 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             </Suspense>
 
                             <Suspense className="relative" fallback={<Loading />}>
-                                <div className="w-full my-4">
-                                    <div className="flex justify-center opacity-25">
-                                        <span className="w-full bg-zinc-900/50 h-[1px]"></span>
-                                        <span className="mx-2 -translate-y-1/2">ads</span>
-                                        <span className="w-full bg-zinc-900/50 h-[1px]"></span>
-                                    </div>
-                                    <ins
-                                        className="adsbygoogle"
-                                        style={{ display: "block" }}
-                                        data-ad-format="fluid"
-                                        data-ad-layout-key="-fc+51+9h-cr-91"
-                                        data-ad-client="ca-pub-4781060024956035"
-                                        data-ad-slot="1453561477"
-                                    ></ins>
-                                </div>
+
                                 <IngredientsList
                                     ing={recipe.ing}
                                     stuffing_ing={recipe.stuffing_ing}
                                     type_stuffing_ing={recipe.type_stuffing_ing}
                                 />
-                                <PrepareMode
-                                    prepareMode={recipe.prepareMode}
-                                    type_prepare_mode={recipe.type_prepare_mode}
-                                />
                                 <div className="w-full my-4">
-                                    <div className="flex justify-center opacity-25">
-                                        <span className="w-full bg-zinc-900/50 h-[1px]"></span>
-                                        <span className="mx-2 -translate-y-1/2">ads</span>
-                                        <span className="w-full bg-zinc-900/50 h-[1px]"></span>
-                                    </div>
+                                    <LineAds />
                                     <ins
                                         className="adsbygoogle"
                                         style={{ display: "block", textAlign: "center" }}
@@ -74,7 +64,19 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                         data-ad-slot="5009663107"
                                     ></ins>
                                 </div>
-
+                                <PrepareMode
+                                    prepareMode={recipe.prepareMode}
+                                    type_prepare_mode={recipe.type_prepare_mode}
+                                />
+                                <div className="w-full my-4">
+                                    <LineAds />
+                                    <ins className="adsbygoogle"
+                                        style={{ display: "block" }}
+                                        data-ad-client="ca-pub-4781060024956035"
+                                        data-ad-slot="9346456414"
+                                        data-ad-format="auto"
+                                        data-full-width-responsive="true"></ins>
+                                </div>
                             </Suspense>
 
 
