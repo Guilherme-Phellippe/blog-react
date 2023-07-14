@@ -256,12 +256,12 @@ export const useNotificationApi = () => ({
 
 export const useWhatsapp = () => ({
     sendRecipe: async (data) => {
+        console.log(data)
 
         const url = data?.images_recipe ? data.images_recipe[0].big : data.images[0].big;
         const link = `https://temsabor.blog/${(data?.name_recipe ? `receitas` : `tip`)}/${data.slug}`;
 
-
-        if (data.persuasiveText) {
+        if (data?.persuasiveText) {
             const infoRecipe = {
                 url,
                 name: data.name_recipe || data.name_tip,
@@ -270,6 +270,7 @@ export const useWhatsapp = () => ({
             }
 
             const response = await axios.post("https://whatsapp.temsabor.blog/send-recipe", infoRecipe)
+            console.log(response)
 
             return response
         } else return null

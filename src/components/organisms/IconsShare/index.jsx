@@ -9,6 +9,7 @@ import { MdOutlineSendToMobile } from 'react-icons/md';
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { useWhatsapp, useShortLink } from '../../../hooks/useApi';
 import { dialog } from "../../../modals/Dialog"
+import { promptModal } from "../../../modals/Prompt"
 
 export default function IconsShare({ recipe }) {
     const { user } = useContext(HomeContext)
@@ -23,6 +24,8 @@ export default function IconsShare({ recipe }) {
     }
 
     const handleSendWhatsapp = async () => {
+        const persuasive = await promptModal("Digite um texto persuasivo incentivando o usuario a clicar na receita")
+        recipe.persuasiveText = persuasive
         await Whatsapp.sendRecipe(recipe)
     }
 
