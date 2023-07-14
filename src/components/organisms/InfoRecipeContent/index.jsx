@@ -100,6 +100,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                         ></ins>
                     </LineAds>
                 </div>
+                
             </div>
 
             <RecipeSimilarContent name_search={recipe?.name_recipe} />
