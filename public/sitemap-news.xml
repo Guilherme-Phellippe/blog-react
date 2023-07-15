@@ -1,29 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  <url>
-    <loc>https://temsabor.blog/receitas/pudim-de-pacoca</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Pudim de paçoca</news:name>
-        <news:language>pt-br</news:language>
-      </news:publication>
-      <news:publication_date>2023-06-14</news:publication_date>
-      <news:title>Receita deliciosa de pudim de paçoca</news:title>
-      <news:keywords>pudim,paçoca</news:keywords>
-    </news:news>
-  </url>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
 
-  <url>
-    <loc>https://temsabor.blog/receitas/bolo-de-amendoim</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Bolo de amendoim</news:name>
-        <news:language>pt-br</news:language>
-      </news:publication>
-      <news:publication_date>2023-06-14</news:publication_date>
-      <news:title>Receita deliciosa de Bolo de amendoim</news:title>
-    </news:news>
-  </url>
+<channel>
+	<title>Tem sabor Receitas</title>
+	<atom:link href="https://temsabor.blog/sitemap-new.xml" rel="self" type="application/rss+xml" />
+	<link>https://temsabor.blog/</link>
+	<description>Melhor blog de receitas do Brasil</description>
+	<lastBuildDate>Mon, 20 may 2023 13:56:26 +0000</lastBuildDate>
+	<language>pt-BR</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://temsabor.blog/</generator>
 
-</urlset>
+<image>
+	<url>https://i.ibb.co/QnyS04q/Tem-Sabor.jpg</url>
+	<title>Tem sabor blog</title>
+	<link>https://temsabor.blog/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Receita de pudim de paçoca</title>
+		<link>https://temsabor.blog/receitas/pudim-de-pacoca</link>
+					<!-- <comments>https://jornadapro.com.br/windows-7-como-ativar-a-camera/#respond</comments> -->
+		
+		<dc:creator>Guilherme</dc:creator>
+		<pubDate>fri, 14 jul 2023 13:56:23 +0000</pubDate>
+				<category>Pudins</category>
+		<guid isPermaLink="false">https://temsabor.blog/receitas/pudim-de-pacoca</guid>
+
+					<description><![CDATA[<p>Olha essa deliciosa receita de pudim de paçoca</p>]]></description>
+										<content:encoded><![CDATA[
+                    <h2>INGREDIENTES</h2>
+                    <ul>
+                      <li>1 lata de leite condensado</li>
+                      <li>2 e 1/2 xícaras (chá) de leite</li>
+                      <li>5 ovos</li>
+                      <li>1 xícara (chá) de paçoca esfarelada</li>
+                      <li>Calda:</li>
+                      <li>1 xícara (chá) de açúcar</li>
+                      <li>1/2 xícara (chá) de água</li>
+                    </ul>]]></content:encoded>
+					
+					<wfw:commentRss>https://temsabor.blog/receitas/pudim-de-pacoca</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
