@@ -10,6 +10,8 @@
       </news:publication>
       <news:publication_date>2023-06-14</news:publication_date>
       <news:title>Receita deliciosa de pudim de paçoca</news:title>
+      <news:keywords>pudim,paçoca</news:keywords>
+      <news:genres>recipe</news:genres>
     </news:news>
   </url>
 
