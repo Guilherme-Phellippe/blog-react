@@ -2,7 +2,9 @@
 google.com, pub-4781060024956035, DIRECT, f08c47fec0942fa0
 
 #Themoneytizer
+themoneytizer.com,106407,DIRECT
 themoneytizer.com,106342,DIRECT
+RTBHOUSE.COM,j07PbTdI1fzD2JnrwDlm,DIRECT
 smartadserver.com,1097,DIRECT
 loopme.com,s-2411,RESELLER,6c8d5f95897a5a3b
 districtm.io,101760,RESELLER,3fd707be9c4527c3
