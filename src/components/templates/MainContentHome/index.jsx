@@ -108,7 +108,7 @@ export default function MainContentHome() {
                         <div className={`feed col-span-2 relative`}>
                             {!valueSearch &&
                                 <Suspense fallback={<Loading />}>
-                                    { user?.admin &&  <WebStoriesPreview /> }
+                                    <WebStoriesPreview /> 
                                     <PollRecipes />
                                     <CreateFeed user={user} />
                                 </Suspense>
