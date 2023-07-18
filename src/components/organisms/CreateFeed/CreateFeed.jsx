@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FaPen } from 'react-icons/fa'
-import { RiLightbulbFill, RiSendPlaneFill } from 'react-icons/ri'
+import { RiSendPlaneFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
 import { dialog } from '../../../modals/Dialog'
@@ -24,15 +24,15 @@ export default function CreateFeed({ user }) {
         }
 
     }
-    const handleCanCreateTip = async () => {
-        if (user) {
-            navigate(`/create-tip/?n=${valueInput}`)
-        } else {
-            const response = await dialog("Você precisa criar uma conta antes de publicar um receita!", 1, "Criar conta")
-            if (response) navigate('/register');
-        }
+    // const handleCanCreateTip = async () => {
+    //     if (user) {
+    //         navigate(`/create-tip/?n=${valueInput}`)
+    //     } else {
+    //         const response = await dialog("Você precisa criar uma conta antes de publicar um receita!", 1, "Criar conta")
+    //         if (response) navigate('/register');
+    //     }
 
-    }
+    // }
 
 
     return (
@@ -60,12 +60,12 @@ export default function CreateFeed({ user }) {
                 >
                     Publicar receita <RiSendPlaneFill className='fill-blue-800' />
                 </Button>
-                <Button
+                {/* <Button
                     customClass='flex items-center font-semi-bold text-color_text_black p-4 rounded-xl gap-4 text-s1_1 hover:bg-gray-200/80 '
                     event={handleCanCreateTip}
                 >
                     Publicar dica <RiLightbulbFill className='fill-yellow-800' />
-                </Button>
+                </Button> */}
             </div>
         </div >
     )

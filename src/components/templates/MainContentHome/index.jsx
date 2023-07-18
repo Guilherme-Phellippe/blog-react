@@ -10,6 +10,7 @@ import { useFeedApi } from "../../../hooks/useApi";
 import { smartSearch } from "../../../scripts/smartSearch";
 import { Loading } from "../../atoms/Loading/Loading";
 import MenuMobile from "../MenuMobile";
+import WebStoriesPreview from "../../organisms/WebStoriesPreview";
 
 const MostViewedRecipesContainer = lazy(() => import("../../organisms/MostViewedRecipesContainer"))
 const ColumnLeftMainHome = lazy(() => import("../../organisms/ColumnLeftMainHome"))
@@ -107,6 +108,7 @@ export default function MainContentHome() {
                         <div className={`feed col-span-2 relative`}>
                             {!valueSearch &&
                                 <Suspense fallback={<Loading />}>
+                                    { user?.admin &&  <WebStoriesPreview /> }
                                     <PollRecipes />
                                     <CreateFeed user={user} />
                                 </Suspense>

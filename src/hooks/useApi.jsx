@@ -276,6 +276,14 @@ export const useWhatsapp = () => ({
     }
 })
 
+
+export const useStories = () => ({
+    getAllStories: async () => {
+            const response = await api.get(`/stories/`).catch(err => console.log(err))
+            return response
+    }
+})
+
 export const useNotificationPush = () => ({
     sendNotification: async (data) => {
         if (!data?.persuasiveText) throw new Error("This request need a persuasive text");
@@ -326,11 +334,5 @@ export const useNotificationPush = () => ({
         const response = await api.post("/email/send-recipe", emailData)
         return response
     }
-
-
-
-
-
-
 
 })
