@@ -20,15 +20,19 @@ function initializePlayer() {
 
 
 async function addNewStories (){
-    const player = window.document.querySelector("amp-story-player");
+    const root = document.body.querySelector("#root")
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get("slug")
     const stories = await fetchNewStories();
+    const player = document.createElement("amp-story-player");
 
     stories.forEach(story => {
-        const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}"></a>`
+        const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
         player.insertAdjacentHTML("afterbegin", ancora)
     });
+
+
+    root.appendChild(player)
 }
 
 
