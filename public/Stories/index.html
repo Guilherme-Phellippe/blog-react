@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Teste Web stories</title>
+
+    <!-- Importe a biblioteca do AMP -->
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <!-- Importe o componente amp-story-player -->
+    <script async custom-element="amp-story-player"
+        src="https://cdn.ampproject.org/v0/amp-story-player-0.1.js"></script>
+    <script src="./index.js" defer></script>
+
+    <!-- <link rel="stylesheet" href="src/index.css"> -->
+    <link href="https://cdn.ampproject.org/amp-story-player-v0.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    <h1>oi?</h1>
+    <amp-story-player width="100vw" height="100vh" layout="fixed" id="lightbox" fullscreen>
+        <!-- REF CONTROLS -->
+        <a href="/stories/pets-completed.html" loading="lazy"></a>
+        <a href="https://stories.temsabor.blog/story/bolo-de-milho-de-latinha-molhadinho-de-liq..." loading="lazy"></a>
+        <a href="https://stories.temsabor.blog/story/receita-de-pudim" loading="lazy"></a>
+        <!-- CONTROLS -->
+
+        <script type="application/json">
+                    {
+                        "behavior": {
+                            "pageScroll": false,
+                            "autoplay": false,
+                            "on": "end",
+                            "action": "circular-wrapping"
+                        },
+                        "controls": [{
+                            "name": "close",
+                            "position": "start"
+                        }]
+                     }
+            </script>
+    </amp-story-player>
 </body>
+
 </html>
