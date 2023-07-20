@@ -1,5 +1,3 @@
-const { promise } = require("zod");
-
 // JS
 let player;
 
@@ -32,7 +30,7 @@ async function addNewStories (){
 
 
 function fetchNewStories(){
-    return new promise((resolve)=>{
+    return new Promise((resolve)=>{
         fetch("https://api.temsabor.blog/stories/",{
             method: "POST"
         }).then(res => res.json)
