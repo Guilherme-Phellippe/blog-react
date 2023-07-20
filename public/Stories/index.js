@@ -7,6 +7,8 @@ function initializePlayer() {
         player.addEventListener("amp-story-player-close", () => {
             window.location.href = "https://temsabor.blog/"
         });
+
+        searchSlug();
         return;
     }
 
@@ -15,6 +17,13 @@ function initializePlayer() {
             window.location.href = "https://temsabor.blog/"
         });
     });
+}
+
+
+function searchSlug (){
+    const urlParams = new URLSearchParams(window.location.search);
+    const slug = urlParams.get("slug")
+    console.log(slug)
 }
 
 
