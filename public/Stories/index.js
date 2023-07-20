@@ -49,5 +49,4 @@ function fetchNewStories(){
     }) 
 }
 
-addNewStories();
 initializePlayer();
