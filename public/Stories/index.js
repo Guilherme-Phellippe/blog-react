@@ -21,9 +21,19 @@ function initializePlayer() {
 
 
 async function addNewStories (){
+    const player = window.document.querySelector("amp-story-player");
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get("slug")
     const stories = await fetchNewStories();
+
+    stories.forEach(story => {
+        const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
+        player.insertAdjacentHTML("afterbegin", ancora)
+    });
+
+
+
+
 }
 
 
@@ -33,7 +43,6 @@ function fetchNewStories(){
             method: "GET"
         }).then(res => res.json())
         .then(stories => {
-            console.log(stories)
             resolve(stories)
         })
         .catch(err => console.log(err))
