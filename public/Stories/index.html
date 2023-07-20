@@ -20,7 +20,6 @@
 
 <body>
     <amp-story-player width="100vw" height="100vh" layout="fixed" id="lightbox" fullscreen>
-        <a href="https://stories.temsabor.blog/story/bolo-de-milho-de-latinha-molhadinho-de-liq..." loading="lazy"></a>
         <!-- CONTROLS -->
         <script type="application/json">
             {
@@ -35,6 +34,17 @@
                     "position": "start"
                 }]
              }
+        </script>
+        <script>
+            const player = window.document.querySelector("amp-story-player");
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get("slug")
+            const stories = await fetchNewStories();
+
+            stories.forEach(story => {
+                const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
+                player.insertAdjacentHTML("afterbegin", ancora)
+            });
         </script>
     </amp-story-player>
 </body>

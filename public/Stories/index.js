@@ -29,10 +29,6 @@ async function addNewStories (){
         const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
         player.insertAdjacentHTML("afterbegin", ancora)
     });
-
-
-
-
 }
 
 
@@ -48,5 +44,4 @@ function fetchNewStories(){
     }) 
 }
 
-addNewStories();
 initializePlayer();
