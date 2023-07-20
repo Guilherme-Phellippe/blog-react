@@ -63,10 +63,10 @@ function fetchNewStories(slug){
         }).then(res => res.json())
         .then(stories => {
             const indexSlug = stories.findIndex(story => story.slug === slug)
-            console.log(indexSlug)
-            const selectedSlug = stories.splice(indexSlug, 1)[0]
-            stories.push(selectedSlug)
-            console.log(stories)
+            if(indexSlug !== -1){
+                const selectedStory = stories.splice(indexSlug, 1)[0]
+                stories.push(selectedStory)
+            }
             resolve(stories)
         })
         .catch(err => console.log(err))
