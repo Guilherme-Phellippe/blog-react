@@ -45,7 +45,7 @@ async function addNewStories (){
         }]
      }`
 
-
+     console.log(stories)
     stories.forEach(story => {
         const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
         player.insertAdjacentHTML("afterbegin", ancora)
