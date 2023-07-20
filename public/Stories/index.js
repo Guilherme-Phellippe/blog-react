@@ -8,7 +8,6 @@ function initializePlayer() {
             window.location.href = "https://temsabor.blog/"
         });
 
-        addNewStories();
         return;
     }
 
@@ -49,4 +48,5 @@ function fetchNewStories(){
     }) 
 }
 
+addNewStories();
 initializePlayer();
