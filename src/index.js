@@ -23,6 +23,12 @@ const Tip = lazy(() => import('./pages/Tip/index'));
 const CreateTip = lazy(() => import('./pages/CreateTip/index'));
 const Contact = lazy(() => import('./pages/Contact/Contact'));
 
+// Função para renderizar o conteúdo do arquivo HTML
+const MyPageHTML = () => {
+  return <iframe src="./stories.html" title="My Page" width="100%" height="600px" />;
+};
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -45,6 +51,7 @@ root.render(
         <Route path='/panel-user' element={<Suspense fallback={<Loading />} ><PanelUser /></Suspense>} />
         <Route path='/terms' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
         <Route path='/policy' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
+        <Route path='/stories' element={<MyPageHTML />} />
         <Route path='*' element={<Suspense fallback={<Loading />} ><NotFound /></Suspense>} />
       </Routes>
     </BrowserRouter>
