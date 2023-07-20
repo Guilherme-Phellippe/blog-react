@@ -26,7 +26,7 @@ async function addNewStories (){
     const stories = await fetchNewStories();
 
     stories.forEach(story => {
-        const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
+        const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}"></a>`
         player.insertAdjacentHTML("afterbegin", ancora)
     });
 }
