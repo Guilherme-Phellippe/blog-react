@@ -23,7 +23,8 @@ async function addNewStories (){
     const root = document.body.querySelector("#root")
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get("slug")
-    const stories = await fetchNewStories();
+    const stories = await fetchNewStories(slug);
+
 
     const player = document.createElement("amp-story-player");
     player.setAttribute("width", "100vw")
@@ -45,7 +46,6 @@ async function addNewStories (){
         }]
      }`
 
-     console.log(stories)
     stories.forEach(story => {
         const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
         player.insertAdjacentHTML("afterbegin", ancora)
@@ -56,12 +56,17 @@ async function addNewStories (){
 }
 
 
-function fetchNewStories(){
+function fetchNewStories(slug){
     return new Promise((resolve)=>{
         fetch("https://api.temsabor.blog/stories/",{
             method: "GET"
         }).then(res => res.json())
         .then(stories => {
+            const indexSlug = stories.findIndex(story => story.slug === slug)
+            console.log(indexSlug)
+            const selectedSlug = stories.splice(indexSlug, 1)[0]
+            stories.push(selectedSlug)
+            console.log(stories)
             resolve(stories)
         })
         .catch(err => console.log(err))
