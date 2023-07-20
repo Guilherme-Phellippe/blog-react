@@ -24,8 +24,6 @@ async function addNewStories (){
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get("slug")
     const stories = await fetchNewStories();
-    console.log("SLUG", slug)
-    console.log("STORIES", stories)
 }
 
 
@@ -35,6 +33,7 @@ function fetchNewStories(){
             method: "POST"
         }).then(res => res.json)
         .then(stories => {
+            console.log(stories)
             resolve(stories)
         })
         .catch(err => console.log(err))
