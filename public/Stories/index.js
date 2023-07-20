@@ -24,14 +24,34 @@ async function addNewStories (){
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get("slug")
     const stories = await fetchNewStories();
+
     const player = document.createElement("amp-story-player");
+    player.setAttribute("width", "100vw")
+    player.setAttribute("height", "100vh")
+    player.setAttribute("layout", "fixed")
+    
+    const script = document.createElement("script");
+    script.setAttribute("type","application/json")
+    script.innerHTML = `{
+        "behavior": {
+            "pageScroll": false,
+            "autoplay": false,
+            "on": "end",
+            "action": "circular-wrapping"
+        },
+         "controls": [{
+                "name": "close",
+            "position": "start"
+        }]
+     }`
+
 
     stories.forEach(story => {
         const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
         player.insertAdjacentHTML("afterbegin", ancora)
     });
 
-
+    player.appendChild(script)
     root.appendChild(player)
 }
 
