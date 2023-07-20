@@ -30,7 +30,7 @@ async function addNewStories (){
 function fetchNewStories(){
     return new Promise((resolve)=>{
         fetch("https://api.temsabor.blog/stories/",{
-            method: "POST"
+            method: "GET"
         }).then(res => res.json)
         .then(stories => {
             console.log(stories)
