@@ -53,6 +53,8 @@ async function addNewStories (){
 
     player.appendChild(script)
     root.appendChild(player)
+
+    initializePlayer();
 }
 
 
@@ -74,4 +76,3 @@ function fetchNewStories(slug){
 }
 
 addNewStories();
-initializePlayer();
