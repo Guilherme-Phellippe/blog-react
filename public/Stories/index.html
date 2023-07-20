@@ -35,17 +35,6 @@
                 }]
              }
         </script>
-        <script>
-            const player = window.document.querySelector("amp-story-player");
-            const urlParams = new URLSearchParams(window.location.search);
-            const slug = urlParams.get("slug")
-            const stories = await fetchNewStories();
-
-            stories.forEach(story => {
-                const ancora = `<a href="https://stories.temsabor.blog/story/${story.slug}" loading="lazy"></a>`
-                player.insertAdjacentHTML("afterbegin", ancora)
-            });
-        </script>
     </amp-story-player>
 </body>
 

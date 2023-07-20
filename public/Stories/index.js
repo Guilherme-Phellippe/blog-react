@@ -44,4 +44,5 @@ function fetchNewStories(){
     }) 
 }
 
+addNewStories();
 initializePlayer();
