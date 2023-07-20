@@ -1,3 +1,5 @@
+const { promise } = require("zod");
+
 // JS
 let player;
 
@@ -8,7 +10,7 @@ function initializePlayer() {
             window.location.href = "https://temsabor.blog/"
         });
 
-        searchSlug();
+        addNewStories();
         return;
     }
 
@@ -20,10 +22,25 @@ function initializePlayer() {
 }
 
 
-function searchSlug (){
+async function addNewStories (){
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get("slug")
-    console.log(slug)
+    const stories = await fetchNewStories();
+    console.log("SLUG", slug)
+    console.log("STORIES", stories)
+}
+
+
+function fetchNewStories(){
+    return new promise((resolve)=>{
+        fetch("https://api.temsabor.blog/stories/",{
+            method: "POST"
+        }).then(res => res.json)
+        .then(stories => {
+            resolve(stories)
+        })
+        .catch(err => console.log(err))
+    }) 
 }
 
 
