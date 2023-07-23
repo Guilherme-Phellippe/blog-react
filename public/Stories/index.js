@@ -60,6 +60,7 @@ async function addNewStories (){
     player.appendChild(script)
     root.appendChild(player)
 
+    ChangeNameTitlePage();
     initializePlayer();
 }
 
