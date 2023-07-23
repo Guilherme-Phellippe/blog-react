@@ -22,7 +22,7 @@ function ChangeNameTitlePage(){
     const titleTag = document.head.querySelector("title")
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get("slug");
-    titleTag.textContent = slug
+    titleTag.textContent = slug.replaceAll("-", " ")
 }
 
 async function addNewStories (){
