@@ -18,6 +18,12 @@ function initializePlayer() {
     });
 }
 
+function ChangeNameTitlePage(){
+    const titleTag = document.head.querySelector("title")
+    const urlParams = new URLSearchParams(window.location.search);
+    const slug = urlParams.get("slug");
+    titleTag.textContent = slug
+}
 
 async function addNewStories (){
     const root = document.body.querySelector("#root")
