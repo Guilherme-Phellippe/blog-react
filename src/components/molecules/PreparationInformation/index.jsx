@@ -19,7 +19,7 @@ export default function PreparationInformation({ recipe }) {
             <div className='w-1/2 md:w-1/4 h-1/2 md:h-full flex flex-col justify-center items-center relative after:absolute after:right-0 after:w-px after:h-1/2 after:mt-1/4 after:opacity-10 after:bg-black'>
                 <BiChat className='text-s3 text-color_orange' />
                 <h3>VISUALIZAÇÕES</h3>
-                <h2 className='text-s2 mt-2 md:mt-0 text-color_orange'>{recipe.nmr_eyes}</h2>
+                <h2 className='text-s2 mt-2 md:mt-0 text-color_orange'>{Number(recipe.nmr_eyes) + 1}</h2>
             </div>
             <div className='w-1/2 md:w-1/4 h-1/2 md:h-full flex flex-col justify-center items-center relative after:absolute after:right-0 after:w-px after:h-1/2 after:mt-1/4 after:opacity-10 after:bg-black'>
                 <BiHeart className='text-s3 text-color_orange' />

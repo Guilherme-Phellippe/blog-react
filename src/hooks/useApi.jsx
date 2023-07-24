@@ -13,10 +13,6 @@ export const useRecipeApi = () => ({
 
     createNewRecipe: async (recipe) => {
         const data = await api.post('/recipe', recipe).catch(error => error)
-        if(data){
-            const respGoogle = await axios.get("https://www.google.com/ping?sitemap=https://api.temsabor.blog/sitemap-recipes.xml").catch(err => console.log(err))
-            console.log(respGoogle)
-        }
 
         return data.data
     },
@@ -73,10 +69,6 @@ export const useTipApi = () => ({
 
     createNewTip: async (tip) => {
         const data = await api.post('/tip', tip).catch(error => error)
-        if(data){
-            const respGoogle = await axios.get("https://www.google.com/ping?sitemap=https://api.temsabor.blog/sitemap-recipes.xml").catch(err => console.log(err))
-            console.log(respGoogle)
-        }
 
         return data.data
     },
