@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useCallback, useMemo } from "react"
+import { useCallback, useEffect, useMemo } from "react"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 
 export default function ColumnLeftMainHome({ recipes }) {
@@ -14,12 +14,12 @@ export default function ColumnLeftMainHome({ recipes }) {
         })
     }, [recipes]);
 
-    // useEffect(() => {
-    //     // GOOGLE ADSENSE 
-    //     window.location.hostname !== 'localhost' &&
-    //         window.innerWidth > 700 &&
-    //         (window.adsbygoogle = window.adsbygoogle || []).push({});
-    // }, [])
+    useEffect(() => {
+        // GOOGLE ADSENSE 
+        window.location.hostname !== 'localhost' &&
+            window.innerWidth > 700 &&
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }, [])
 
     return (
         <aside className="hidden md:block col-span-1 bg-white">
@@ -28,7 +28,7 @@ export default function ColumnLeftMainHome({ recipes }) {
                     title={'Receitas novas'}
                     ranking={MostRecent()} />
             }, [MostRecent])}
-{/* 
+
             {
                 window.innerWidth > 700 &&
                 <ins className="adsbygoogle"
@@ -40,7 +40,7 @@ export default function ColumnLeftMainHome({ recipes }) {
                     data-matched-content-columns-num="1"
                     data-ad-format="autorelaxed"
                 ></ins>
-            } */}
+            }
 
         </aside>
     )
