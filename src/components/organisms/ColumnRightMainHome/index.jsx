@@ -1,5 +1,5 @@
 import moment from "moment"
-import { useCallback, useEffect, useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import { PanelUser } from "../../organisms/PanelUser/PanelUser"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 
@@ -14,12 +14,12 @@ export default function ColumnRightMainHome({ ranking = [] }) {
         })
     }, [ranking])
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        if (window.location.hostname !== 'localhost') {
-            if (window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
-    }, [])
+    // useEffect(() => {
+    //     // GOOGLE ADSENSE 
+    //     if (window.location.hostname !== 'localhost') {
+    //         if (window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
+    //     }
+    // }, [])
 
     return (
         <aside className={`col-span-1 bg-white md:block`}>
@@ -29,7 +29,7 @@ export default function ColumnRightMainHome({ ranking = [] }) {
                         <PanelUser />
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
 
-                        {window.innerWidth > 700 ?
+                        {/* {window.innerWidth > 700 ?
                             <ins className="adsbygoogle"
                                 style={{ display: "block" }}
                                 data-ad-client="ca-pub-4781060024956035"
@@ -41,7 +41,7 @@ export default function ColumnRightMainHome({ ranking = [] }) {
                             ></ins>
                             :
                             null
-                        }
+                        } */}
 
                         {/* This categories list will only be displayed, if user is in resolution lower than 768px */}
                         <div className="flex flex-col md:hidden">

@@ -94,7 +94,7 @@ export default function Feed({ contents, valueSearch }) {
                             key={index}
                             className="grid min-h-[20rem] bg-white my-4"
                         >
-                            <AdsInFeed index={index} />
+                            <AdsInFeed index={1} />
                         </div>
                         :
                         content.name_recipe ?
