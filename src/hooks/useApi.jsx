@@ -105,15 +105,15 @@ export const useFeedApi = () => ({
 
     updateNumberEyes: async (id) => {
         const TIME_NOW = `${moment().year()}${moment().dayOfYear()}${moment().hours()}${moment().minutes()}`;
-        const lastTimeCalled = localStorage.getItem("lastTimeCalledFunctionNumberEyes")
-        const canExecuteFetch = lastTimeCalled ? Number(TIME_NOW) > Number(lastTimeCalled) : true;
-        if (canExecuteFetch) {
+        // const lastTimeCalled = localStorage.getItem("lastTimeCalledFunctionNumberEyes")
+        // const canExecuteFetch = lastTimeCalled ? Number(TIME_NOW) > Number(lastTimeCalled) : true;
+        // if (canExecuteFetch) {
             localStorage.setItem("lastTimeCalledFunctionNumberEyes", TIME_NOW)
             const data = await api.patch(`/feed/${id}/nmr-eyes`).catch(err => {
                 return err
             });
             return data
-        }
+        // }
     },
 
     updateNumberHearts: async (ids) => {
