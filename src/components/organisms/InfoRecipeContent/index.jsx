@@ -18,11 +18,11 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
     useEffect(() => {
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [showContentAfterScroll])
+    }, [showContentAfterScroll, recipe])
 
     return (
         recipe &&
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col" key={recipe.id}>
             <div className="w-full flex">
 
                 <div className="w-full md:w-2/3 p-4">
