@@ -13,6 +13,10 @@ export const useRecipeApi = () => ({
 
     createNewRecipe: async (recipe) => {
         const data = await api.post('/recipe', recipe).catch(error => error)
+        if(data){
+            const respGoogle = await axios.get("http://www.google.com/ping?sitemap=https://api.temsabor.blog/sitemap-recipes.xml")
+            console.log(respGoogle)
+        }
 
         return data.data
     },

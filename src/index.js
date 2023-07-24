@@ -7,7 +7,6 @@ import { ScrollToTopPage } from './contexts/ScrollToTopPage';
 import { Loading } from './components/atoms/Loading/Loading';
 
 import './index.css';
-import SiteMapFeeds from './sitemaps/feed';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Recipe = lazy(() => import('./pages/Recipe/index'));
@@ -46,7 +45,6 @@ root.render(
         <Route path='/panel-user' element={<Suspense fallback={<Loading />} ><PanelUser /></Suspense>} />
         <Route path='/terms' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
         <Route path='/policy' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
-        <Route path='/sitemap/feed' element={<Suspense fallback={<Loading />}> <SiteMapFeeds /> </Suspense> } />
         <Route path='*' element={<Suspense fallback={<Loading />} ><NotFound /></Suspense>} />
       </Routes>
     </BrowserRouter>
