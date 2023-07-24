@@ -36,4 +36,22 @@
 		<priority>1.0</priority>
 		<lastmod>2023-07-17T13:10:27+00:00</lastmod>
 	</url>
+	<url>
+		<loc>https://temsabor.blog/receitas/receita-de-queijadinha</loc>
+		<news:news>
+			<news:publication>
+				<news:name>Tem sabor Receitas</news:name>
+				<news:language>pt</news:language>
+			</news:publication>
+			<news:publication_date>2023-07-24T09:38:39+00:00</news:publication_date>
+			<news:title>
+				<![CDATA[ RECEITA DE QUEIJADINHA ]]>
+			</news:title>
+			<news:keywords>
+				<![CDATA[ Queijadinha, fácil, rápida ]]>
+			</news:keywords>
+		</news:news>
+		<priority>1.0</priority>
+		<lastmod>2023-07-24T09:38:39+00:00</lastmod>
+	</url>
 </urlset>
