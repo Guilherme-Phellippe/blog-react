@@ -89,7 +89,7 @@ export default function MainContentHome() {
                 !valueSearch &&
                     <ins
                         className="adsbygoogle"
-                        style={{ display: "block" }}
+                        style={{ display: "block", margin:"1rem auto" }}
                         data-ad-client="ca-pub-4781060024956035"
                         data-ad-slot="2090078650"
                         data-ad-format="auto"
