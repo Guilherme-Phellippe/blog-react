@@ -8,7 +8,7 @@ export const BoxRankingRecipes = ({ title, ranking }) => {
 
     return (
         <div className={`w-full flex flex-col pb-12`}>;
-            <h2 className='w-full text-center padding-1 text-s1_2'>{title}</h2>
+            <h2 className='w-full text-center padding-1 text-s1_3'>{title}</h2>
             {
                 !!filteredRanking.length && filteredRanking.map((recipe, index) => {
                     if (index < limitRecipes && index < 15) return (

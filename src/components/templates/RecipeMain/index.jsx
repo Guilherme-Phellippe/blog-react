@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 import { Loading } from '../../atoms/Loading/Loading';
-import MenuMobile, { } from "../MenuMobile"
+// import MenuMobile, { } from "../MenuMobile"
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
@@ -51,9 +51,9 @@ export default function RecipeMain({ showContentAfterScroll }) {
             </main>
 
             {/* This menu will only be displayed when the user is on the smartphone */}
-            {window.innerWidth < 764 &&
+            {/* {window.innerWidth < 764 &&
                 <MenuMobile />
-            }
+            } */}
 
         </div>
     )
