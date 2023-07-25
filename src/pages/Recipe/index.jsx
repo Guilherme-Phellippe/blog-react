@@ -17,8 +17,8 @@ export default function Recipe() {
     return (
         <HomeProvider>
             <Header />
-            <Main />
             <Suspense fallback={<Loading />}>
+                <Main />
                 <Footer />
             </Suspense>
             <LoginWithSocialMidiaModal />
