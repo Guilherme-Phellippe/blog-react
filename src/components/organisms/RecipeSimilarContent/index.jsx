@@ -15,6 +15,12 @@ export default function RecipeSimilarContent({ name_search }) {
             setRecipes(data)
         }
         dataFetch(api)
+
+        try {
+            window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (error) {
+            console.log(error)
+        }
     }, []);
 
 
