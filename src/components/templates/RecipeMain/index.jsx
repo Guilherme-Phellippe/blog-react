@@ -40,6 +40,8 @@ export default function RecipeMain({ showContentAfterScroll }) {
                         recipe={recipe}
                         showContentAfterScroll={showContentAfterScroll}
                     />
+                    {console.log("PAGE: RecipeMain", "FATHERCOMPONENT: main", "TIME: ", new Date())}
+
                 </div>
             </main>
 

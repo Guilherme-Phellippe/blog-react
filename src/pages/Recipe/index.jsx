@@ -22,6 +22,7 @@ export default function Recipe() {
                 <Footer />
             </Suspense>
             <LoginWithSocialMidiaModal />
+            {console.log("PAGE: Recipe", "FATHERCOMPONENT: HomeProvider", "TIME: ", new Date())}
         </HomeProvider>
     )
 }

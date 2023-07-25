@@ -90,6 +90,7 @@ export default function InfoRecipeContent({ recipe }) {
             </div>
 
             <RecipeSimilarContent name_search={recipe?.name_recipe} />
+            {console.log("PAGE: InfoRecipeMain", "FATHERCOMPONENT: div", "TIME: ", new Date())}
 
         </div>
     )
