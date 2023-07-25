@@ -22,7 +22,7 @@ export default function Recipe() {
                 <Footer />
             </Suspense>
             <LoginWithSocialMidiaModal />
-            {console.log("PAGE: Recipe", "FATHERCOMPONENT: HomeProvider", "TIME: ", new Date())}
+            {console.log("PAGE: Recipe","TIME: ", new Date().getTime())}
         </HomeProvider>
     )
 }

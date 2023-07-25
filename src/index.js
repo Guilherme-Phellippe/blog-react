@@ -46,7 +46,7 @@ root.render(
         <Route path='/terms' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
         <Route path='/policy' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
         <Route path='*' element={<Suspense fallback={<Loading />} ><NotFound /></Suspense>} />
-        {console.log("PAGE: index", "FATHERCOMPONENT: Route", "TIME: ", new Date())}
+        {console.log("PAGE: index", "TIME: ", new Date().getTime())}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
