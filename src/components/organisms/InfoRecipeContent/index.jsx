@@ -23,7 +23,7 @@ export default function InfoRecipeContent({ recipe }) {
                     <Suspense fallback={<Loading />}>
                         <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                         <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
-                        <LineAds>
+                        <LineAds display={true}>
                             <ins
                                 className="adsbygoogle"
                                 style={{ display: "block" }}
@@ -63,7 +63,7 @@ export default function InfoRecipeContent({ recipe }) {
                             </div>
                             <ListRecipeComments content={recipe} />
                             {console.log("Ad inforecipecontent 2", new Date().getSeconds(), new Date().getMilliseconds())}
-                            <LineAds >
+                            <LineAds display={true}>
                                 <ins className="adsbygoogle"
                                     style={{ display: "block" }}
                                     data-ad-client="ca-pub-4781060024956035"
