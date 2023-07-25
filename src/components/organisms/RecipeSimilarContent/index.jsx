@@ -45,9 +45,14 @@ export default function RecipeSimilarContent({ name_search }) {
 
     return (
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
-            {/* <div className="w-full bg-white rounded-md p-4">
+            <div className="w-full bg-white rounded-md p-4">
                 <h2 className='text-center text-s2 text-color_orange font-bold p-4'>Pela web</h2>
-            </div> */}
+                <ins className="adsbygoogle"
+                    style={{display:"block"}}
+                    data-ad-format="autorelaxed"
+                    data-ad-client="ca-pub-4781060024956035"
+                    data-ad-slot="3655130128"></ins>
+            </div>
 
             <div className="w-full bg-white rounded-md">
                 <h2 className='text-center text-s2 pb-8 text-color_orange font-bold'>Talvez você goste dessas receitas</h2>
