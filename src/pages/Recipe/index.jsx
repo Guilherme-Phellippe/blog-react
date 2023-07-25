@@ -22,7 +22,7 @@ export default function Recipe() {
                 <Footer />
             </Suspense>
             <LoginWithSocialMidiaModal />
-            {console.log("PAGE: Recipe","TIME: ", new Date().getMinutes(),":",new Date().getSeconds(),":" , new Date().getMilliseconds())}
+            {console.log("Recipe","TIME: ", new Date().getMinutes()+":"+new Date().getSeconds()+":" + new Date().getMilliseconds())}
         </HomeProvider>
     )
 }
