@@ -15,7 +15,7 @@ export default function ColumnRightMainHome({ ranking = [] }) {
     }, [ranking])
 
     useEffect(() => {
-        console.log("ColumnRightMainHome")
+        console.log("removido!")
         // GOOGLE ADSENSE 
         // if (window.location.hostname !== 'localhost') {
         //     if (window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
