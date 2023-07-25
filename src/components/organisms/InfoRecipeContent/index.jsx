@@ -24,7 +24,6 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     <Suspense fallback={<Loading />}>
                         <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                         <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
-                        {console.log("Ad inforecipecontent")}
                         <LineAds>
                             <ins
                                 className="adsbygoogle"
@@ -35,6 +34,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                 data-ad-slot="1453561477"
                             ></ins>
                         </LineAds>
+                        {console.log("Ad inforecipecontent")}
                     </Suspense>
 
                     {
