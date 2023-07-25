@@ -77,9 +77,9 @@ export default function InfoRecipeContent({ recipe }) {
                 </div>
 
                 <div className="hidden md:block md:w-1/3 p-4">
-                    <LineAds>
+                    <LineAds display={false}>
                         <ins className="adsbygoogle"
-                            style={{ display: "none" }}
+                            style={{ display: "block" }}
                             data-ad-client="ca-pub-4781060024956035"
                             data-ad-slot="5163292498"
                             data-ad-format="auto"
