@@ -38,6 +38,7 @@ export default function MainContentHome() {
             if (recipesData) setRecipes(recipesData)
             else localStorage.removeItem('token')
             document.title = "Tem Sabor receitas oficiais"
+            console.log("MainContentHome")
             // GOOGLE ADSENSE 
             window.location.hostname !== 'localhost' &&
                 (window.adsbygoogle = window.adsbygoogle || []).push({});

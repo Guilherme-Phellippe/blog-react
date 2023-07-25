@@ -15,6 +15,7 @@ export default function ColumnRightMainHome({ ranking = [] }) {
     }, [ranking])
 
     useEffect(() => {
+        console.log("ColumnRightMainHome")
         // GOOGLE ADSENSE 
         if (window.location.hostname !== 'localhost') {
             if (window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
