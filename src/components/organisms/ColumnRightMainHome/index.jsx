@@ -28,7 +28,6 @@ export default function ColumnRightMainHome({ ranking = [] }) {
                     <>
                         <PanelUser />
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
-                        {console.log("columnrightmainhome")}
                         {window.innerWidth > 700 ?
                             <ins className="adsbygoogle"
                                 style={{ display: "block" }}

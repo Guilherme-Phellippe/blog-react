@@ -3,8 +3,6 @@ import { useEffect } from "react"
 export default function LineAds({ children, display }) {
 
     useEffect(()=>{
-        console.log(display && "SALVOU NA VARIÁVEL ADSBYGOOGLE")
-
         display && 
         window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [display])

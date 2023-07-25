@@ -62,7 +62,6 @@ export default function InfoRecipeContent({ recipe }) {
                                 <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
                             </div>
                             <ListRecipeComments content={recipe} />
-                            {console.log("Ad inforecipecontent 2", new Date().getSeconds(), new Date().getMilliseconds())}
                             <LineAds display={true}>
                                 <ins className="adsbygoogle"
                                     style={{ display: "block" }}
