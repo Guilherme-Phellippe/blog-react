@@ -1,15 +1,10 @@
 import { useEffect } from "react"
 
-export default function LineAds({ children, isLastComponentRendering }) {
+export default function LineAds({ children }) {
 
     useEffect(()=>{
-        if(isLastComponentRendering){
             window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
-            console.log(isLastComponentRendering)
-
-        }
-    }, [isLastComponentRendering])
-
+    }, [])
 
     return (
         <div className="my-8">
