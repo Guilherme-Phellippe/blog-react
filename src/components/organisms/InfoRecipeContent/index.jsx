@@ -19,7 +19,9 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         // GOOGLE ADSENSE 
         console.log("infoRecipe content")
         try {
-            window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+            setTimeout(() => {
+                window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+            }, 5000);
         } catch (error) {
             console.log(error)
         }
