@@ -90,7 +90,7 @@ export default function InfoRecipeContent({ recipe }) {
             </div>
 
             <RecipeSimilarContent name_search={recipe?.name_recipe} />
-            {console.log("PAGE: InfoRecipeMain", "TIME: ", new Date().getTime())}
+            {console.log("PAGE: InfoRecipeMain", "TIME: ",  new Date().getMinutes(),":",new Date().getSeconds(),":" , new Date().getMilliseconds())}
 
         </div>
     )
