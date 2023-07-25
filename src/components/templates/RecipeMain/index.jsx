@@ -6,7 +6,7 @@ import { Loading } from '../../atoms/Loading/Loading';
 
 const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
-const MenuMobile = lazy(() => import('../MenuMobile'))
+// const MenuMobile = lazy(() => import('../MenuMobile'))
 
 
 export default function RecipeMain({ showContentAfterScroll }) {
@@ -51,11 +51,11 @@ export default function RecipeMain({ showContentAfterScroll }) {
             </main>
 
             {/* This menu will only be displayed when the user is on the smartphone */}
-            {window.innerWidth < 764 &&
+            {/* {window.innerWidth < 764 &&
                 <Suspense fallback={<Loading />}>
                     <MenuMobile />
                 </Suspense>
-            }
+            } */}
 
         </div>
     )
