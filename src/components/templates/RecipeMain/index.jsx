@@ -22,7 +22,6 @@ export default function RecipeMain({ showContentAfterScroll }) {
             refFeedApi.current.updateNumberEyes(data.id)
             //ADD TITLE DYNAMIC
             document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
-            console.log(data)
             setRecipe(data);
         })();
     }, [slug]);
