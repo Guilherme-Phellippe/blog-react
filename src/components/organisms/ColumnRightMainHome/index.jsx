@@ -15,6 +15,8 @@ export default function ColumnRightMainHome({ ranking = [] }) {
     }, [ranking])
 
     useEffect(() => {
+        console.log("js inforecipecontent")
+
         // GOOGLE ADSENSE 
         if (window.location.hostname !== 'localhost') {
             if (window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -28,7 +30,7 @@ export default function ColumnRightMainHome({ ranking = [] }) {
                     <>
                         <PanelUser />
                         <BoxRankingRecipes title={'As mais amadas'} ranking={ranking} />
-
+                        {console.log("columnrightmainhome")}
                         {window.innerWidth > 700 ?
                             <ins className="adsbygoogle"
                                 style={{ display: "block" }}
