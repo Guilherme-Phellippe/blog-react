@@ -39,14 +39,10 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div className="w-full bg-white min-h-screen overflow-hidden">
-
-                    <Suspense fallback={<Loading />}>
-                        <InfoRecipeContent
-                            recipe={recipe}
-                            showContentAfterScroll={showContentAfterScroll}
-                        />
-                    </Suspense>
-
+                    <InfoRecipeContent
+                        recipe={recipe}
+                        showContentAfterScroll={showContentAfterScroll}
+                    />
                 </div>
             </main>
 
