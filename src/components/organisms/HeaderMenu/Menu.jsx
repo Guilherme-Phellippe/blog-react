@@ -1,30 +1,17 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { Categories } from '../../molecules/Categories/Categories'
 
 import { LinkNavigation } from '../../atoms/LinkNavigation'
-import { useCategoryApi } from '../../../hooks/useApi'
-import { HomeContext } from '../../../contexts/Home/HomeProvider'
 
 import HeaderMenuMobile from '../HeaderPanelMobile'
 
-export const Menu = () => {
-    const { setValueSearch, user } = useContext(HomeContext)
-    const refCategoryApi = useRef(useCategoryApi())
-    const [categories, setCategories] = useState([])
+export default function Menu({ categories, setValueSearch, user }){
     const refCategories = useRef(null)
-
+    
     useEffect(() => {
         handleActiveLineTextMenu();
-        (async () => {
-            const { data } = await refCategoryApi.current.getAllCategory();
-            data.sort((a, b) => b.recipe - a.recipe)
-            const categories = data.filter(category => category.recipe >= 1)
-            setCategories(categories)
-        })()
-    }, [])
 
-    useEffect(() => {
         const takeClick = (e) => {
             if (!e.target.matches('li') && !e.target.matches('svg')) {
                 refCategories.current?.classList.add("invisible")
@@ -32,7 +19,7 @@ export const Menu = () => {
         }
 
         document.addEventListener('click', takeClick)
-
+        
         return () => document.removeEventListener('click', takeClick)
     }, [])
 
@@ -51,10 +38,9 @@ export const Menu = () => {
         })
     }
 
-
+    
     return (
         <div className="container-menu w-full h-[50px] items-center bg-color_orange order-1 md:order-2">
-
             <ul className='menu hidden md:flex w-full h-full justify-center items-center list-none' >
 
                 <LinkNavigation
@@ -84,4 +70,3 @@ export const Menu = () => {
         </div >
     )
 }
-

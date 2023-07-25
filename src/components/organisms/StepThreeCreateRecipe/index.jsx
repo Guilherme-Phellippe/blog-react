@@ -10,9 +10,9 @@ import { Loading } from "../../atoms/Loading/Loading"
 import { useNavigate } from "react-router-dom"
 import { UploadImage } from "../../molecules/UploadImage"
 import { dialog } from "../../../modals/Dialog"
-import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { promptModal } from "../../../modals/Prompt";
 import SubmissionStatusModal from "../../../modals/SubmissionStatusModal"
+import { UserContext } from "../../../contexts/userProvider"
 
 
 
@@ -20,7 +20,7 @@ export const StepThreeCreateRecipe = ({ setStep }) => {
     const recipeApi = useRecipeApi()
     const whatsapp = useWhatsapp();
     const notificationPush = useNotificationPush();
-    const { user } = useContext(HomeContext)
+    const { user } = useContext(UserContext)
     const [loading, setLoading] = useState(false)
     const [images, setImages] = useState([])
     const [wordKeys, setWordKeys] = useState([])

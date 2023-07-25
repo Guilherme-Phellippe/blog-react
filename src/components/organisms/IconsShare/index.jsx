@@ -1,16 +1,14 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { WhatsappShareButton, FacebookShareButton, TwitterShareButton, TelegramShareButton } from "react-share"
 
 
 import { FaCamera, FaFacebook, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaWhatsapp, FaTwitter, FaTelegram } from 'react-icons/fa';
 import { MdOutlineSendToMobile } from 'react-icons/md';
 
-import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { useWhatsapp } from '../../../hooks/useApi';
 import { promptModal } from "../../../modals/Prompt"
 
-export default function IconsShare({ recipe }) {
-    const { user } = useContext(HomeContext)
+export default function IconsShare({ recipe, user }) {
     const Whatsapp = useWhatsapp()
     const [showIconsShare, setShowIconsShare] = useState(false)
     const customClass = showIconsShare ? "" : "-translate-x-[83.33%]";

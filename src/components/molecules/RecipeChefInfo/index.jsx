@@ -2,13 +2,11 @@ import moment from "moment"
 import { formatTextLong } from "../../../scripts/formatTextLong"
 
 export default function RecipeChefInfo({ recipe }){ 
-    const noImgUser = 'https://www.procurandocraques.com/static/img/admin/user-profile.png'
-    
     return (
         <div id="RecipeChefInfo-print" className="w-full bg-background rounded-b-3xl flex flex-col justify-center align-center p-8">
             <h2 className='w-full flex justify-center items-center text-s1_5 h-1/4 mb-4'>INFORMAÇÕES DO CHEF</h2>
             <div className='w-full h-3/4 flex justify-center align-center p-2'>
-                <img className="rounded-2xl max-w-[12rem] max-h-[12rem] object-cover" src={recipe.user.photo ? recipe.user.photo: noImgUser} alt={`imagem do chef chamado ${recipe.user.name}`} />
+                <img className="rounded-2xl max-w-[12rem] max-h-[12rem] object-cover" src={recipe.user.photo} alt={`imagem do chef chamado ${recipe.user.name}`} />
                 <div className='flex flex-col px-4'>
                     <h2 className="text-s1_4 my-1 font-semibold">{`${formatTextLong(recipe.user.name, 20)}`}</h2>
                     <h3 className="text-s1_2 my-1 font-semibold">membro desde: <span className="text-color_text font-normal">{moment(recipe.createdAt).format("DD/MM/yyyy")}</span></h3>

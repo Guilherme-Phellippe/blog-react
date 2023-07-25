@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { dialog } from '../../../modals/Dialog'
-import { HomeContext } from "../../../contexts/Home/HomeProvider";
 import { useTipApi } from "../../../hooks/useApi";
 import { IoCreate } from  'react-icons/io5'
 
@@ -11,11 +10,12 @@ import { Input } from "../../atoms/Input";
 import { Loading } from "../../atoms/Loading/Loading";
 import { TextEditor } from "../../molecules/TextEditor"
 import { UploadImage } from "../../molecules/UploadImage";
+import { UserContext } from "../../../contexts/userProvider";
 
 
 export const MainCreateTip = () => {
     const tipApi = useTipApi()
-    const { user } = useContext(HomeContext)
+    const { user } = useContext(UserContext)
     const [text, setText] = useState('');
     const [title, setTitle] = useState('');
     const [align, setAlign] = useState('text-left')

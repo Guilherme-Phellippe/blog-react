@@ -9,7 +9,7 @@ const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 const MenuMobile = lazy(() => import('../MenuMobile'))
 
 
-export default function RecipeMain({ showContentAfterScroll }) {
+export default function RecipeMain({ setValueSearch, user }) {
     const { slug } = useParams();
     const [recipe, setRecipe] = useState();
     const refRecipeApi = useRef(useRecipeApi());
@@ -32,7 +32,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
         recipe &&
         <div className="w-full max-w-[1500px] mx-auto">
             <Suspense fallback={<Loading />}>
-                <IconsShare recipe={recipe} />
+                <IconsShare recipe={recipe} user={user} />
             </Suspense>
 
 
@@ -40,9 +40,8 @@ export default function RecipeMain({ showContentAfterScroll }) {
                 <div className="w-full bg-white min-h-screen overflow-hidden">
                     <InfoRecipeContent
                         recipe={recipe}
-                        showContentAfterScroll={showContentAfterScroll}
+                        user={user}
                     />
-                    {console.log("RecipeMain", "TIME: ", new Date().getSeconds()+":" + new Date().getMilliseconds())}
 
                 </div>
             </main>
@@ -50,7 +49,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
             {/* This menu will only be displayed when the user is on the smartphone */}
             {window.innerWidth < 764 &&
                 <Suspense fallback={<Loading />}>
-                    <MenuMobile />
+                    <MenuMobile setValueSearch={setValueSearch} user={user} />
                 </Suspense>
             }
 

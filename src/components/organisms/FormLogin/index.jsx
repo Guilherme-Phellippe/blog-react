@@ -9,11 +9,11 @@ import { useUserApi } from "../../../hooks/useApi";
 import { Button } from "../../atoms/Button";
 import { Input } from "../../atoms/Input"
 import { Loading } from "../../atoms/Loading/Loading"
-import { HomeContext } from "../../../contexts/Home/HomeProvider";
+import { UserContext } from "../../../contexts/userProvider";
 
 
 export const FormLogin = () => {
-    const { user } = useContext(HomeContext)
+    const { user } = useContext(UserContext)
     const [openEyePassword, setOpenEyePassword] = useState(false)
     const [typeInputPassword, setTypeInputPassword] = useState('password');
     const [loading, setLoading] = useState(false)

@@ -1,5 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { HomeContext } from "../../../contexts/Home/HomeProvider";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuMobileOption from "../../organisms/MenuMobileOption";
 import ColumnRightMainHome from "../../organisms/ColumnRightMainHome";
@@ -8,9 +7,7 @@ import { dialog } from "../../../modals/Dialog";
 import MenuMobileDisplay from "../../molecules/MenuMobileDisplay";
 import { useCategoryApi, useRecipeApi } from "../../../hooks/useApi";
 
-export default function MenuMobile({ ranking }) {
-    //USECONTEXT
-    const { setValueSearch, user } = useContext(HomeContext);
+export default function MenuMobile({ ranking, setValueSearch, user }) {
     // USESTATE 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
     const [listCategoriesAndRecipes, setListCategoriesAndRecipes] = useState({ categories: [], recipes: ranking || [] })

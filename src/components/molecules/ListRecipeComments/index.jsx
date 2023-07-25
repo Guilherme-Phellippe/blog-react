@@ -1,10 +1,8 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { BoxAddNewComment } from "../BoxAddNewComment"
 import { FeedComments } from "../FeedComments"
-import { HomeContext } from "../../../contexts/Home/HomeProvider";
 
-export const ListRecipeComments = ({ content }) => {
-    const { user: userLogged } = useContext(HomeContext)
+export const ListRecipeComments = ({ content, user: userLogged }) => {
     const [comments, setComments] = useState(content.comments)
 
 

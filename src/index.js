@@ -7,6 +7,8 @@ import { ScrollToTopPage } from './contexts/ScrollToTopPage';
 import { Loading } from './components/atoms/Loading/Loading';
 
 import './index.css';
+import { HomeProvider } from './contexts/Home/HomeProvider';
+import UserProvider from './contexts/userProvider';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Recipe = lazy(() => import('./pages/Recipe/index'));
@@ -26,27 +28,31 @@ const Contact = lazy(() => import('./pages/Contact/Contact'));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ScrollToTopPage />
-      <Routes>
-        <Route path='/' element={<Suspense fallback={<Loading />}><Home /></Suspense>} />
-        <Route path='/home' element={<Suspense fallback={<Loading />} ><Home /></Suspense>} />
-        <Route path='/receitas/:slug' element={<Suspense fallback={<Loading />} ><Recipe /></Suspense>} />
-        <Route path='/store' element={<Suspense fallback={<Loading />} ><Store /></Suspense>} />
-        <Route path='/poll' element={<Suspense fallback={<Loading />} ><Poll /></Suspense>} />
-        <Route path='/login' element={<Suspense fallback={<Loading />} ><Login /></Suspense>} />
-        <Route path='/register' element={<Suspense fallback={<Loading />} ><Login /></Suspense>} />
-        <Route path='/create' element={<Suspense fallback={<Loading />} ><CreateRecipe /></Suspense>} />
-        <Route path='/create-tip' element={<Suspense fallback={<Loading />} ><CreateTip /></Suspense>} />
-        <Route path='/about' element={<Suspense fallback={<Loading />} ><About /></Suspense>} />
-        <Route path='/contact' element={<Suspense fallback={<Loading />} ><Contact /></Suspense>} />
-        <Route path='/tip/:name/:id' element={<Suspense fallback={<Loading />} ><Tip /></Suspense>} />
-        <Route path='/category/:sub' element={<Suspense fallback={<Loading />} ><Category /></Suspense>} />
-        <Route path='/panel-user' element={<Suspense fallback={<Loading />} ><PanelUser /></Suspense>} />
-        <Route path='/terms' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
-        <Route path='/policy' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
-        <Route path='*' element={<Suspense fallback={<Loading />} ><NotFound /></Suspense>} />
-      </Routes>
-    </BrowserRouter>
+    <HomeProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <ScrollToTopPage />
+          <Routes>
+            <Route path='/' element={<Suspense fallback={<Loading />}><Home /></Suspense>} />
+            <Route path='/home' element={<Suspense fallback={<Loading />} ><Home /></Suspense>} />
+            <Route path='/receitas/:slug' element={<Suspense fallback={<Loading />} ><Recipe /></Suspense>} />
+            <Route path='/store' element={<Suspense fallback={<Loading />} ><Store /></Suspense>} />
+            <Route path='/poll' element={<Suspense fallback={<Loading />} ><Poll /></Suspense>} />
+            <Route path='/login' element={<Suspense fallback={<Loading />} ><Login /></Suspense>} />
+            <Route path='/register' element={<Suspense fallback={<Loading />} ><Login /></Suspense>} />
+            <Route path='/create' element={<Suspense fallback={<Loading />} ><CreateRecipe /></Suspense>} />
+            <Route path='/create-tip' element={<Suspense fallback={<Loading />} ><CreateTip /></Suspense>} />
+            <Route path='/about' element={<Suspense fallback={<Loading />} ><About /></Suspense>} />
+            <Route path='/contact' element={<Suspense fallback={<Loading />} ><Contact /></Suspense>} />
+            <Route path='/tip/:name/:id' element={<Suspense fallback={<Loading />} ><Tip /></Suspense>} />
+            <Route path='/category/:sub' element={<Suspense fallback={<Loading />} ><Category /></Suspense>} />
+            <Route path='/panel-user' element={<Suspense fallback={<Loading />} ><PanelUser /></Suspense>} />
+            <Route path='/terms' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
+            <Route path='/policy' element={<Suspense fallback={<Loading />} ><Policy /></Suspense>} />
+            <Route path='*' element={<Suspense fallback={<Loading />} ><NotFound /></Suspense>} />
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
+    </HomeProvider>
   </React.StrictMode>
 );

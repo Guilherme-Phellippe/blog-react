@@ -13,7 +13,7 @@ const RecipeChefInfo = lazy(() => import("../../molecules/RecipeChefInfo"))
 const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSaveButtons"))
 
 
-export default function InfoRecipeContent({ recipe }) {
+export default function InfoRecipeContent({ recipe, user }) {
     return (
         recipe &&
         <div className="w-full flex flex-col" key={recipe.id}>
@@ -61,7 +61,7 @@ export default function InfoRecipeContent({ recipe }) {
                             <div className="w-full py-4 my-4 bg-[#24242420]">
                                 <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
                             </div>
-                            <ListRecipeComments content={recipe} />
+                            <ListRecipeComments content={recipe} user={user}/>
                             <LineAds display={true}>
                                 <ins className="adsbygoogle"
                                     style={{ display: "block" }}
@@ -90,7 +90,6 @@ export default function InfoRecipeContent({ recipe }) {
             </div>
 
             <RecipeSimilarContent name_search={recipe?.name_recipe} />
-            {console.log("InfoRecipeMain", "TIME: ",  new Date().getSeconds()+":" + new Date().getMilliseconds())}
 
         </div>
     )

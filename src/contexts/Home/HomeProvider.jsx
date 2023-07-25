@@ -1,25 +1,16 @@
-import { createContext, useEffect, useRef, useState } from "react"
-import { useUserApi } from "../../hooks/useApi";
+import { createContext, useState } from "react"
 
 export const HomeContext = createContext();
 
 export const HomeProvider = ({ children }) => {
-    const [valueSearch, setValueSearch] = useState('');
-    const [user, setUser] = useState();
-    const refUserApi = useRef(useUserApi())
-
-    useEffect(() => {
-        (async () => {
-            const response = await refUserApi.current.authenticateLogin();
-            response?.data ? setUser(response.data) : localStorage.removeItem('token');
-        })()
-    }, [])
+    const [valueSearch, setValueSearch] = useState();
 
     return (
-        <HomeContext.Provider value={{valueSearch, user, setValueSearch}}>
+        <HomeContext.Provider value={{ valueSearch, setValueSearch }}>
             {children}
         </HomeContext.Provider>
     )
+
 }
 
 
