@@ -13,8 +13,7 @@ const RecipeChefInfo = lazy(() => import("../../molecules/RecipeChefInfo"))
 const LikeComentsSaveButtons = lazy(() => import("../../molecules/LikeComentSaveButtons"))
 
 
-export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
-
+export default function InfoRecipeContent({ recipe }) {
     return (
         recipe &&
         <div className="w-full flex flex-col" key={recipe.id}>
@@ -77,17 +76,17 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     </div>
                 </div>
 
-                {/* <div className="hidden md:block md:w-1/3 p-4">
+                <div className="hidden md:block md:w-1/3 p-4">
                     <LineAds>
                         <ins className="adsbygoogle"
-                            style={{ display: "block" }}
+                            style={{ display: window.innerWidth >= 768 ? "block" : "hidden" }}
                             data-ad-client="ca-pub-4781060024956035"
                             data-ad-slot="5163292498"
                             data-ad-format="auto"
                             data-full-width-responsive="true"
                         ></ins>
                     </LineAds>
-                </div> */}
+                </div>
 
             </div>
 

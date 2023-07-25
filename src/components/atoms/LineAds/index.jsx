@@ -3,7 +3,7 @@ import { useEffect } from "react"
 export default function LineAds({ children }) {
 
     useEffect(()=>{
-            window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+        window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
     }, [])
 
     return (

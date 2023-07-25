@@ -22,6 +22,7 @@ export default function RecipeMain({ showContentAfterScroll }) {
             refFeedApi.current.updateNumberEyes(data.id)
             //ADD TITLE DYNAMIC
             document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
+            console.log(data)
             setRecipe(data);
         })();
     }, [slug]);
@@ -29,17 +30,14 @@ export default function RecipeMain({ showContentAfterScroll }) {
     return (
         recipe &&
         <div className="w-full max-w-[1500px] mx-auto">
-            {
-                recipe &&
-                <Suspense fallback={<Loading />}>
-                    <IconsShare recipe={recipe} />
-                </Suspense>
-            }
+            <Suspense fallback={<Loading />}>
+                <IconsShare recipe={recipe} />
+            </Suspense>
 
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div className="w-full bg-white min-h-screen overflow-hidden">
-                {console.log("RECIPEMAIN", new Date().getSeconds(), new Date().getMilliseconds())}
+                    {console.log("RECIPEMAIN", new Date().getSeconds(), new Date().getMilliseconds())}
                     <InfoRecipeContent
                         recipe={recipe}
                         showContentAfterScroll={showContentAfterScroll}
