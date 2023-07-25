@@ -82,7 +82,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                 </div>
 
                 <div className="hidden md:block md:w-1/3 p-4">
-                    <LineAds>
+                    <LineAds isLastComponentRendering={true}>
                         <ins className="adsbygoogle"
                             style={{ display: "block" }}
                             data-ad-client="ca-pub-4781060024956035"

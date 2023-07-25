@@ -1,4 +1,13 @@
-export default function LineAds({ children }) {
+import { useEffect } from "react"
+
+export default function LineAds({ children, isLastComponentRendering }) {
+
+    useEffect(()=>{
+        isLastComponentRendering &&  window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
+        
+    }, [isLastComponentRendering])
+
+
     return (
         <div className="my-8">
             <div className="flex justify-center opacity-25">
