@@ -24,7 +24,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     <Suspense fallback={<Loading />}>
                         <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                         <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
-                        <LineAds>
+                        <LineAds isLastComponentRendering={true}>
                             <ins
                                 className="adsbygoogle"
                                 style={{ display: "block" }}
@@ -69,7 +69,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     <ListRecipeComments content={recipe} />
                                     {console.log("Ad inforecipecontent 2")}
 
-                                    <LineAds isLastComponentRendering={true}>
+                                    <LineAds >
                                         <ins className="adsbygoogle"
                                             style={{ display: "block" }}
                                             data-ad-client="ca-pub-4781060024956035"
