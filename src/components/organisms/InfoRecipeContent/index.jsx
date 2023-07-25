@@ -69,7 +69,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                     <ListRecipeComments content={recipe} />
                                     {console.log("Ad inforecipecontent 2")}
 
-                                    <LineAds>
+                                    <LineAds isLastComponentRendering={true}>
                                         <ins className="adsbygoogle"
                                             style={{ display: "block" }}
                                             data-ad-client="ca-pub-4781060024956035"
