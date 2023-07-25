@@ -83,7 +83,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     }
                 </div>
 
-                <div className="hidden md:block md:w-1/3 p-4">
+                {/* <div className="hidden md:block md:w-1/3 p-4">
                     <LineAds>
                         <ins className="adsbygoogle"
                             style={{ display: "block" }}
@@ -93,7 +93,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             data-full-width-responsive="true"
                         ></ins>
                     </LineAds>
-                </div>
+                </div> */}
 
             </div>
 
