@@ -18,7 +18,9 @@ export default function RecipeMain({ showContentAfterScroll }) {
 
     useEffect(() => {
         (async () => {
+            //SEARCH DATA IN API
             const { data } = await refRecipeApi.current.getUniqueRecipe(slug);
+            //UPDATE NUMBER VISITS
             refFeedApi.current.updateNumberEyes(data.id)
             //ADD TITLE DYNAMIC
             document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"

@@ -38,6 +38,7 @@ export default function LikeComentSaveButtons({ recipeId, setNmr_hearts, nmr_hea
             const userAlreadyGivedHeart = nmr_hearts.find(nmr => nmr === token.id);
             if (!userAlreadyGivedHeart) {
                 currentTarget.querySelector('svg').classList.add('animate-pulse-icon', 'duration-500', 'fill-red-500');
+                console.log("Executei a api updateNumberHearts")
                 const data = await refFeedApi.current.updateNumberHearts({ idUser: token.id, recipeId })
                 if (data.status === 201) setNmr_hearts(nmr => [...nmr, token.id]);
             }
@@ -62,7 +63,9 @@ export default function LikeComentSaveButtons({ recipeId, setNmr_hearts, nmr_hea
             const userAlreadyGivedSaved = nmr_saved.find(nmr => nmr === token.id);
             if (!userAlreadyGivedSaved) {
                 currentTarget.querySelector('svg').classList.add('animate-pulse-icon', 'duration-500', 'fill-green-700');
+                console.log("Executei a api feed updateNumberSaved")
                 const data = await refFeedApi.current.updateNumberSaved({ idUser: token.id, recipeId })
+                console.log("Executei a api user updateNumberSaved")
                 const dataUser = await refUserApi.updateNumberSaved({ idUser: token.id, recipeId })
                 if (data.status === 200 && dataUser.status === 200) {
                     setNmr_saved(nmr => [...nmr, token.id])

@@ -22,6 +22,7 @@ export default function IconsShare({ recipe }) {
     const handleSendWhatsapp = async () => {
         const persuasive = await promptModal("Digite um texto persuasivo incentivando o usuario a clicar na receita",true)
         recipe.persuasiveText = persuasive
+        console.log("Executei a chamada a api do whatsapp para enviar uma receita")
         await Whatsapp.sendRecipe(recipe)
     }
 
