@@ -1,7 +1,8 @@
-import { lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { HomeProvider } from '../../contexts/Home/HomeProvider'
 import { initOneSignal } from '../../libs/oneSignal.config';
 import LoginWithSocialMidiaModal from '../../modals/LoginWithSocialMidiaModal';
+import { Loading } from '../../components/atoms/Loading/Loading';
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
@@ -17,7 +18,9 @@ export default function Recipe() {
         <HomeProvider>
             <Header />
             <Main />
-            <Footer />
+            <Suspense fallback={<Loading />}>
+                <Footer />
+            </Suspense>
             <LoginWithSocialMidiaModal />
         </HomeProvider>
     )
