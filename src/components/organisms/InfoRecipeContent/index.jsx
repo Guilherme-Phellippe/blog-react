@@ -19,9 +19,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
         // GOOGLE ADSENSE 
         console.log("infoRecipe content")
         try {
-            setTimeout(() => {
-                window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
-            }, 5000);
+            window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (error) {
             console.log(error)
         }
@@ -88,15 +86,12 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                         ></ins>
                                     </LineAds>
                                 </Suspense>
-
-
-
                             </div>
                         </>
                     }
                 </div>
 
-                {/* <div className="hidden md:block md:w-1/3 p-4">
+                <div className="hidden md:block md:w-1/3 p-4">
                     <LineAds>
                         <ins className="adsbygoogle"
                             style={{ display: "block" }}
@@ -106,7 +101,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                             data-full-width-responsive="true"
                         ></ins>
                     </LineAds>
-                </div> */}
+                </div>
 
             </div>
 
