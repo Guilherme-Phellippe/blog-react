@@ -18,9 +18,9 @@ export default function ColumnRightMainHome({ ranking = [] }) {
         console.log("js inforecipecontent")
 
         // GOOGLE ADSENSE 
-        if (window.location.hostname !== 'localhost') {
-            if (window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
+        // if (window.location.hostname !== 'localhost') {
+        //     if (window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
+        // }
     }, [])
 
     return (

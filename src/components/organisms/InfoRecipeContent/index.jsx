@@ -24,6 +24,7 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                     <Suspense fallback={<Loading />}>
                         <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                         <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
+                        {console.log("Ad inforecipecontent")}
                         <LineAds>
                             <ins
                                 className="adsbygoogle"
@@ -66,6 +67,8 @@ export default function InfoRecipeContent({ recipe, showContentAfterScroll }) {
                                         <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
                                     </div>
                                     <ListRecipeComments content={recipe} />
+                                    {console.log("Ad inforecipecontent 2")}
+
                                     <LineAds>
                                         <ins className="adsbygoogle"
                                             style={{ display: "block" }}
