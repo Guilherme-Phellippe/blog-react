@@ -29,6 +29,6 @@
 
 export default function Recipe(){ 
     return(
-        <h1>Manutenção</h1>
+        <h1 className="p-8 text-s2">Página em Manutenção.</h1>
     )
 }
