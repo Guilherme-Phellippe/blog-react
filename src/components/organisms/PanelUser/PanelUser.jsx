@@ -5,11 +5,11 @@ import { formatTextLong } from '../../../scripts/formatTextLong'
 
 import { Button } from '../../atoms/Button'
 import { Img } from '../../atoms/Img';
-import { HomeContext } from '../../../contexts/Home/HomeProvider';
+import { UserContext } from '../../../contexts/userProvider';
 
 
 export const PanelUser = () => {
-    const { user } = useContext(HomeContext)
+    const { user } = useContext(UserContext)
     const numberNotifications = useRef(0)
 
 

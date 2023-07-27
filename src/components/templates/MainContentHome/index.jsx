@@ -24,7 +24,6 @@ export default function MainContentHome() {
     //useContext
     const { valueSearch } = useContext(HomeContext);
     const { user } = useContext(UserContext);
-    console.log(user)
     //useState
     const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
@@ -45,7 +44,6 @@ export default function MainContentHome() {
             // GOOGLE ADSENSE 
             window.location.hostname !== 'localhost' &&
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
-
         }
         )();
     }, []);
