@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="utf-8" />
   <title>Tem Sabor receitas oficiais</title>
@@ -10,24 +9,49 @@
     content="Aqui no blog da Tem Sabor , você irá descobrir uma variedade de receitas deliciosas e também compartilhar as suas receitas, nosso blog é uma rede social focada apenas na area da culinária. Descubra dicas e truques de culinária vão ajudá-lo a aprimorar suas habilidades na cozinha e impressionar seus convidados. Nós acreditamos que cozinhar é uma forma de expressão, uma maneira de compartilhar amor e carinho com aqueles que você ama. Então, junte-se a nós e descubra o prazer de cozinhar com sabor e paixão!" />
   <meta name="p:domain_verify" content="edfb6b31df137b8f790ee57339f94247" />
   <meta name="facebook-domain-verification" content="1cqo794l4ixaen0vxzfdhxcif9cjt2" />
+  <!-- 
+      From: Adsense
+      Description: This script is to load adsense ads in websites.
+  -->
+  <script defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4781060024956035"
+    crossorigin="anonymous"></script>
+  <!-- end- adsense  -->
+  <!-- 
+    From: Google Ads
+    Description: This script is to analyzing user metrics for google ads
+  -->
+  <!-- <script defer src="https://www.googletagmanager.com/gtag/js?id=AW-11222378479"></script> -->
+  <!-- end- Google ads  -->
+  <!-- Meta Pixel Code -->
+  <!-- <script defer>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '6766513706712789');
+    fbq('track', 'PageView');
+  </script> -->
+  <!-- End Meta Pixel Code -->
+  <!-- <script defer>
+    // GOOGLE SEARCH
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-WT4C913RR3');
+    gtag('config', 'AW-11222378479'); //google ads
+    gtag('event', 'conversion', { 'send_to': 'AW-11222378479/WrciCKfQzroYEO_Pn-cp' });
+  </script> -->
 </head>
 
 <body>
   <noscript>Você precisa ter o Javascript dísponivel para acessar o blog da Tem Sabor</noscript>
   <div id="root"></div>
-  <script>
-    window.addEventListener("load", () => {
-      console.log("window load")
-      const { head } = document
-
-      // script to adsense
-      const adsense = document.createElement("script");
-      adsense.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4781060024956035"
-      adsense.defer = true
-      adsense.setAttribute("crossorigin", "anonymous")
-      head.appendChild(adsense)
-    })
-  </script>
 </body>
-
 </html>
