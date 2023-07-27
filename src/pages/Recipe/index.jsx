@@ -7,13 +7,15 @@ const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 const Main = lazy(() => import('../../components/templates/RecipeMain'))
 const LoginWithSocialMidiaModal = lazy(() => import('../../modals/LoginWithSocialMidiaModal'))
+
 const initOneSignal = lazy(()=> import('../../libs/oneSignal.config'));
 
 export default function Recipe() {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        window.location.hostname !== 'localhost' && initOneSignal();
+        window.location.hostname !== 'localhost' 
+        && initOneSignal();
     }, []);
 
     return (
