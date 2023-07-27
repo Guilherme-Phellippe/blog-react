@@ -20,10 +20,10 @@ export default function Recipe() {
     return (
         <HomeProvider>
             <Header user={user} />
-            <Main user={user} />
-            <Footer />
+            {/* <Main user={user} /> */}
+            {/* <Footer /> */}
             {/* MODAL LOGIN WITH SOCIAL MIDIA  */}
-            <LoginWithSocialMidiaModal />
+            {/* <LoginWithSocialMidiaModal /> */}
         </HomeProvider>
     )
 }
