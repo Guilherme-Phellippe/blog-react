@@ -5,7 +5,7 @@ import { initOneSignal } from '../../libs/oneSignal.config';
 import { HomeProvider } from '../../contexts/Home/HomeProvider';
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
-// const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
+const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 const Main = lazy(() => import('../../components/templates/RecipeMain'))
 
 export default function Recipe() {
@@ -21,7 +21,7 @@ export default function Recipe() {
         <HomeProvider>
             <Header user={user} />
             <Main user={user} />
-            {/* <Footer /> */}
+            <Footer />
             {/* MODAL LOGIN WITH SOCIAL MIDIA  */}
             {/* <LoginWithSocialMidiaModal /> */}
         </HomeProvider>
