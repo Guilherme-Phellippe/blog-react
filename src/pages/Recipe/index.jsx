@@ -16,12 +16,12 @@ export default function Recipe() {
         window.location.hostname !== 'localhost' && initOneSignal();
     }, []);
 
-
     return (
         <>
             <Header setValueSearch={setValueSearch} user={user} />
             <Main setValueSearch={setValueSearch} user={user} />
             <Footer />
+            {/* MODAL LOGIN WITH SOCIAL MIDIA  */}
             <LoginWithSocialMidiaModal />
         </>
     )
