@@ -1,15 +1,14 @@
 import React, { Suspense, lazy } from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { ScrollToTopPage } from './contexts/ScrollToTopPage';
 
 import { Loading } from './components/atoms/Loading/Loading';
 
+import './index.css';
 import { HomeProvider } from './contexts/Home/HomeProvider';
 import UserProvider from './contexts/userProvider';
-import './index.css';
-
-const ReactDOM = lazy(()=> import('react-dom/client'));
-const { BrowserRouter, Routes, Route } = lazy(()=> import('react-router-dom'));
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Recipe = lazy(() => import('./pages/Recipe/index'));
