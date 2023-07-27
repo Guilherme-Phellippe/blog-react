@@ -1,7 +1,7 @@
 import axios from "axios"
-import { lazy } from "react";
-
-const moment = lazy(()=> import("moment"));
+import moment from "moment";
+// import { lazy } from "react";
+// const moment = lazy(()=> import("moment"));
 
 const api = axios.create({
     baseURL: 'https://api.temsabor.blog/'
