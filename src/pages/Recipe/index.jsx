@@ -1,34 +1,28 @@
-// import { Suspense, lazy, useContext, useEffect } from 'react';
-// import { UserContext } from '../../contexts/userProvider';
-// import { initOneSignal } from '../../libs/oneSignal.config';
-// import { HomeProvider } from '../../contexts/Home/HomeProvider';
-// import { Loading } from '../../components/atoms/Loading/Loading';
+import { Suspense, lazy, useContext, useEffect } from 'react';
+import { UserContext } from '../../contexts/userProvider';
+import { initOneSignal } from '../../libs/oneSignal.config';
+import { HomeProvider } from '../../contexts/Home/HomeProvider';
+import { Loading } from '../../components/atoms/Loading/Loading';
 
-// const Header = lazy(() => import("../../components/templates/Header/Header"))
-// const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
-// const Main = lazy(() => import('../../components/templates/RecipeMain'))
-// const LoginWithSocialMidiaModal = lazy(() => import('../../modals/LoginWithSocialMidiaModal'))
+const Header = lazy(() => import("../../components/templates/Header/Header"))
+const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
+const Main = lazy(() => import('../../components/templates/RecipeMain'))
+const LoginWithSocialMidiaModal = lazy(() => import('../../modals/LoginWithSocialMidiaModal'))
 
-// export default function Recipe() {
-//     const { user } = useContext(UserContext)
+export default function Recipe() {
+    const { user } = useContext(UserContext)
 
-//     useEffect(() => {
-//         window.location.hostname !== 'localhost' && window.addEventListener("load", () => initOneSignal())
-//     }, []);
+    useEffect(() => {
+        window.location.hostname !== 'localhost' && window.addEventListener("load", () => initOneSignal())
+    }, []);
 
-//     return (
-//         <HomeProvider>
-//             <Header user={user} />
-//             <Main user={user} />
-//             <Suspense fallback={<Loading />}><Footer /></Suspense>
-//             {/* MODAL LOGIN WITH SOCIAL MIDIA  */}
-//             <LoginWithSocialMidiaModal />
-//         </HomeProvider>
-//     )
-// }
-
-export default function Recipe(){ 
-    return(
-        <h1 className="text-s2 text-center p-8">Página em manuntenção!</h1>
+    return (
+        <HomeProvider>
+            <Header user={user} />
+            <Main user={user} />
+            <Suspense fallback={<Loading />}><Footer /></Suspense>
+            {/* MODAL LOGIN WITH SOCIAL MIDIA  */}
+            <LoginWithSocialMidiaModal />
+        </HomeProvider>
     )
 }
