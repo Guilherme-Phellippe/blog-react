@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { Bartop } from '../../organisms/HeaderBartop'
 import Menu from '../../organisms/HeaderMenu/Menu'
 import { useCategoryApi } from '../../../hooks/useApi';
 
-export default function Header({ setValueSearch, user }) {
+function Header({ user }) {
     const [categories, setCategories] = useState()
     const refCategoryApi = useRef(useCategoryApi())
     const searchDataCategories = useRef(true)
@@ -28,12 +28,14 @@ export default function Header({ setValueSearch, user }) {
             <Bartop />
             <Menu 
                 categories={categories}
-                setValueSearch={setValueSearch}
                 user={user}
             />
         </header>
 
     )
 }
+
+
+export default memo(Header);
 
 

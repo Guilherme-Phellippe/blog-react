@@ -64,7 +64,6 @@ export default function Footer() {
                             <h3 className=' text-white '>Quer receber receitas quentinhas?</h3>
                             <h4 className=' text-white '>Deixe seu email</h4>
                             <Input
-
                                 className="text-black p-4"
                                 placeholder="Digite seu email:"
                                 icon={<MdSend onClick={() => alert("E-mail enviado!")} className='text-s2 fill-blue-600  cursor-pointer' />}
@@ -76,7 +75,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="w-full bg-white flex justify-center p-4">
-                <span>Site desenvolvido por: <h4>Guilherme Phellippe</h4></span>
+                <span>Site desenvolvido por: <h4>Alk company</h4></span>
             </div>
 
         </footer>

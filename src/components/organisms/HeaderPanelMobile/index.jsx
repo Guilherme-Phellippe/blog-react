@@ -46,7 +46,7 @@ export default function HeaderPanelMobile({ user }) {
                     </div>
                     <p className='text-s1_2 flex justify-end flex-col text-white'>
                         Bem vindo,
-                        <span className={`${window.innerWidth < 392 ? "text-s1_3": "text-s1_5"} text-white font-bold`}>
+                        <span className={`${window.innerWidth < 392 ? "text-s1_3" : "text-s1_5"} text-white font-bold`}>
                             {formatTextLong(user?.name || "Usuário", 18)}
                         </span>
                     </p>

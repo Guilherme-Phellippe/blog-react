@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef, useState } from 'react';
+import { Suspense, lazy, memo, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
@@ -9,22 +9,26 @@ const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 const MenuMobile = lazy(() => import('../MenuMobile'))
 
 
-export default function RecipeMain({ setValueSearch, user }) {
+function RecipeMain({ user }) {
     const { slug } = useParams();
     const [recipe, setRecipe] = useState();
+    const loadedDataRecipe = useRef(false)
     const refRecipeApi = useRef(useRecipeApi());
     const refFeedApi = useRef(useFeedApi());
 
 
     useEffect(() => {
         (async () => {
-            //SEARCH DATA IN API
-            const { data } = await refRecipeApi.current.getUniqueRecipe(slug);
-            //UPDATE NUMBER VISITS
-            refFeedApi.current.updateNumberEyes(data.id)
-            //ADD TITLE DYNAMIC
-            document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
-            setRecipe(data);
+            if(!loadedDataRecipe.current){
+                loadedDataRecipe.current = true
+                //SEARCH DATA IN API
+                const { data } = await refRecipeApi.current.getUniqueRecipe(slug);
+                //UPDATE NUMBER VISITS
+                refFeedApi.current.updateNumberEyes(data.id)
+                //ADD TITLE DYNAMIC
+                document.head.querySelector("title").textContent = data.name_recipe + " - Tem sabor receitas"
+                setRecipe(data);
+            }
         })();
     }, [slug]);
 
@@ -34,7 +38,6 @@ export default function RecipeMain({ setValueSearch, user }) {
             <Suspense fallback={<Loading />}>
                 <IconsShare recipe={recipe} user={user} />
             </Suspense>
-
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div className="w-full bg-white min-h-screen overflow-hidden">
@@ -49,10 +52,13 @@ export default function RecipeMain({ setValueSearch, user }) {
             {/* This menu will only be displayed when the user is on the smartphone */}
             {window.innerWidth < 764 &&
                 <Suspense fallback={<Loading />}>
-                    <MenuMobile setValueSearch={setValueSearch} user={user} />
+                    <MenuMobile user={user} />
                 </Suspense>
             }
 
         </div>
     )
 }
+
+
+export default memo(RecipeMain)

@@ -1,12 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { Categories } from '../../molecules/Categories/Categories'
 
 import { LinkNavigation } from '../../atoms/LinkNavigation'
 
 import HeaderMenuMobile from '../HeaderPanelMobile'
+import { HomeContext } from '../../../contexts/Home/HomeProvider'
 
-export default function Menu({ categories, setValueSearch, user }){
+export default function Menu({ categories, user }){
+    const { setValueSearch } = useContext(HomeContext)
     const refCategories = useRef(null)
     
     useEffect(() => {
@@ -44,7 +46,7 @@ export default function Menu({ categories, setValueSearch, user }){
             <ul className='menu hidden md:flex w-full h-full justify-center items-center list-none' >
 
                 <LinkNavigation
-                    onClick={() => setValueSearch("")}
+                    onClick={() => setValueSearch(undefined)}
                     route={'/'}
                     customClass={''}
                 >Home</LinkNavigation>

@@ -23,7 +23,7 @@ export default function MenuMobileDisplay({ setMenuIsOpen, setValueSearch, categ
 
             <ul className='menu flex flex-col w-full  items-center list-none' >
                 <LinkNavigation
-                    onClick={() => { setMenuIsOpen(false); setValueSearch("") }}
+                    onClick={() => { setMenuIsOpen(false); setValueSearch('') }}
                     route={'/'}
                     customClass={'border-b-[#fff4] border-b-[1px] w-screen'}
                 >Home</LinkNavigation>

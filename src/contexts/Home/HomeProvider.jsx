@@ -1,16 +1,17 @@
-import { createContext, useState } from "react"
+import { createContext, useMemo, useState } from "react"
 
 export const HomeContext = createContext();
 
-export const HomeProvider = ({ children }) => {
+export const HomeProvider =({ children }) => {
     const [valueSearch, setValueSearch] = useState();
 
+    const valuesSearchStates = useMemo(()=> ({ valueSearch, setValueSearch }), [valueSearch] )
+
     return (
-        <HomeContext.Provider value={{ valueSearch, setValueSearch }}>
+        <HomeContext.Provider value={valuesSearchStates}>
             {children}
         </HomeContext.Provider>
     )
-
 }
 
 

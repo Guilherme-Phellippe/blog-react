@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuMobileOption from "../../organisms/MenuMobileOption";
 import ColumnRightMainHome from "../../organisms/ColumnRightMainHome";
@@ -6,8 +6,11 @@ import { ActiveInformation } from "../../organisms/ActiveInformation";
 import { dialog } from "../../../modals/Dialog";
 import MenuMobileDisplay from "../../molecules/MenuMobileDisplay";
 import { useCategoryApi, useRecipeApi } from "../../../hooks/useApi";
+import { HomeContext } from "../../../contexts/Home/HomeProvider";
 
-export default function MenuMobile({ ranking, setValueSearch, user }) {
+export default function MenuMobile({ ranking, user }) {
+    // USE CONTEXT
+    const { setValueSearch } = useContext(HomeContext)
     // USESTATE 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
     const [listCategoriesAndRecipes, setListCategoriesAndRecipes] = useState({ categories: [], recipes: ranking || [] })
@@ -52,7 +55,7 @@ export default function MenuMobile({ ranking, setValueSearch, user }) {
 
     const handleClickButtonMenu = async (currentTarget) => {
         document.documentElement.style.overflow = 'auto'
-        setValueSearch(null)
+        setValueSearch(undefined)
         const nameMenu = currentTarget.querySelector("span").textContent;
 
         switch (nameMenu) {

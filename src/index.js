@@ -1,14 +1,11 @@
 import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import { ScrollToTopPage } from './contexts/ScrollToTopPage';
-
 import { Loading } from './components/atoms/Loading/Loading';
+import UserProvider from './contexts/userProvider';
 
 import './index.css';
-import { HomeProvider } from './contexts/Home/HomeProvider';
-import UserProvider from './contexts/userProvider';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Recipe = lazy(() => import('./pages/Recipe/index'));
@@ -28,7 +25,6 @@ const Contact = lazy(() => import('./pages/Contact/Contact'));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HomeProvider>
       <UserProvider>
         <BrowserRouter>
           <ScrollToTopPage />
@@ -53,6 +49,5 @@ root.render(
           </Routes>
         </BrowserRouter>
       </UserProvider>
-    </HomeProvider>
   </React.StrictMode>
 );
