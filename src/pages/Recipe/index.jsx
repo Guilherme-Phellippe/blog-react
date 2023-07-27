@@ -6,7 +6,7 @@ import { HomeProvider } from '../../contexts/Home/HomeProvider';
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 // const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
-// const Main = lazy(() => import('../../components/templates/RecipeMain'))
+const Main = lazy(() => import('../../components/templates/RecipeMain'))
 
 export default function Recipe() {
     const { user } = useContext(UserContext)
@@ -20,7 +20,7 @@ export default function Recipe() {
     return (
         <HomeProvider>
             <Header user={user} />
-            {/* <Main user={user} /> */}
+            <Main user={user} />
             {/* <Footer /> */}
             {/* MODAL LOGIN WITH SOCIAL MIDIA  */}
             {/* <LoginWithSocialMidiaModal /> */}
