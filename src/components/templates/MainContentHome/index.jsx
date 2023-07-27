@@ -11,6 +11,7 @@ import { smartSearch } from "../../../scripts/smartSearch";
 import { Loading } from "../../atoms/Loading/Loading";
 import MenuMobile from "../MenuMobile";
 import WebStoriesPreview from "../../organisms/WebStoriesPreview";
+import { UserContext } from "../../../contexts/userProvider";
 
 const MostViewedRecipesContainer = lazy(() => import("../../organisms/MostViewedRecipesContainer"))
 const ColumnLeftMainHome = lazy(() => import("../../organisms/ColumnLeftMainHome"))
@@ -21,7 +22,8 @@ const CreateFeed = lazy(() => import("../../organisms/CreateFeed/CreateFeed"))
 
 export default function MainContentHome() {
     //useContext
-    const { valueSearch, user } = useContext(HomeContext);
+    const { valueSearch } = useContext(HomeContext);
+    const { user } = useContext(UserContext);
     //useState
     const [postPerPage, setPostPerPage] = useState(10);
     const [recipes, setRecipes] = useState([])
