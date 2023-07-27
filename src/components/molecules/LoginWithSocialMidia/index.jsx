@@ -16,8 +16,6 @@ import { Img } from '../../atoms/Img'
 import { Loading } from '../../atoms/Loading/Loading';
 
 
-const authLogin = getAuth(app)
-const provider = new GoogleAuthProvider();
 
 export const LoginWithSocialMidia = ({ redirect }) => {
     const [connected, setConnected] = useState({ connected: false })
@@ -29,7 +27,10 @@ export const LoginWithSocialMidia = ({ redirect }) => {
 
 
     const handleGoogleLogin = async () => {
-        signInWithPopup(authLogin, provider)
+        window.addEventListener("load", ()=> {
+            const authLogin = getAuth(app)
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(authLogin, provider)
             .then(async (result) => {
                 setLoading(true)
                 const userData = result.user.providerData[0];
@@ -68,6 +69,7 @@ export const LoginWithSocialMidia = ({ redirect }) => {
                 console.error(error)
                 setLoading(false)
             });
+        })
     }
 
     const handleFacebookLogin = () => {

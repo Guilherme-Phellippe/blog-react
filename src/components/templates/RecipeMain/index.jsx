@@ -19,7 +19,7 @@ function RecipeMain({ user }) {
 
     useEffect(() => {
         (async () => {
-            if(!loadedDataRecipe.current){
+            if (!loadedDataRecipe.current) {
                 loadedDataRecipe.current = true
                 //SEARCH DATA IN API
                 const { data } = await refRecipeApi.current.getUniqueRecipe(slug);
@@ -41,11 +41,12 @@ function RecipeMain({ user }) {
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div className="w-full bg-white min-h-screen overflow-hidden">
-                    <InfoRecipeContent
-                        recipe={recipe}
-                        user={user}
-                    />
-
+                    <Suspense fallback={<Loading />}>
+                        <InfoRecipeContent
+                            recipe={recipe}
+                            user={user}
+                        />
+                    </Suspense>
                 </div>
             </main>
 
