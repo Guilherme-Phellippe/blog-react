@@ -1,8 +1,8 @@
-import { lazy, useCallback, useEffect, useMemo } from "react"
+import { useCallback, useEffect, useMemo } from "react"
 import { PanelUser } from "../../organisms/PanelUser/PanelUser"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 
-const moment = lazy(()=> import("moment"));
+import moment from "moment"
 
 export default function ColumnRightMainHome({ ranking = [] }) {
     const MostRecent = useCallback(() => {

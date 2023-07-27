@@ -1,7 +1,6 @@
-import { lazy, useState } from "react"
+import { useState } from "react"
 import { Notification } from "../Notification"
-
-const moment = lazy(()=> import("moment"));
+import moment from "moment"
 
 export const PanelNotifications = ({ notifications: data }) => {
     const [notifications, setNotifications] = useState(data)

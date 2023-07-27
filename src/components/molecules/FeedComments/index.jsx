@@ -5,12 +5,12 @@ import { AiOutlineComment } from "react-icons/ai"
 import { Input } from "../../atoms/Input"
 import { Img } from "../../atoms/Img"
 import { MdDeleteForever } from 'react-icons/md'
-import { lazy, useRef, useState } from "react"
+import {  useRef, useState } from "react"
 import { useCommentApi } from "../../../hooks/useApi"
 import { useNavigate } from "react-router-dom"
 import { dialog } from "../../../modals/Dialog"
 
-const moment = lazy(()=> import("moment"));
+import moment from "moment"
 
 export const FeedComments = ({ comment, userLogged, setComments }) => {
     const [showbuttonAsnwer, setShowButtonAnswer] = useState(true)

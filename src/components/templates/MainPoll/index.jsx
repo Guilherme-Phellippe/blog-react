@@ -1,4 +1,4 @@
-import { lazy, useCallback, useContext, useEffect, useRef, useState } from "react"
+import { useCallback, useContext, useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 
 import { IoIosCreate } from "react-icons/io"
@@ -10,7 +10,7 @@ import { TablePoll } from "../../organisms/TablePoll"
 import MenuMobile from "../../templates/MenuMobile"
 import { useRecipeApi } from "../../../hooks/useApi"
 
-const moment = lazy(()=> import("moment"));
+import moment from "moment"
 
 export default function MainPoll() {
     const refRecipeApi = useRef(useRecipeApi());
