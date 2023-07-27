@@ -3,12 +3,12 @@ import { Suspense, lazy, useEffect } from "react";
 import { HomeProvider } from "../../contexts/Home/HomeProvider";
 import { Loading } from "../../components/atoms/Loading/Loading";
 import LoginWithSocialMidiaModal from "../../modals/LoginWithSocialMidiaModal";
+import { initOneSignal } from "../../libs/oneSignal.config";
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
 const Footer = lazy(() => import("../../components/templates/Footer/Footer"))
 const MainContentHome = lazy(() => import("../../components/templates/MainContentHome"))
 const CookieConsent = lazy(() => import("react-cookie-consent"))
-const initOneSignal = lazy(() => import("../../libs/oneSignal.config.js"))
 
 export default function Home() {
 
