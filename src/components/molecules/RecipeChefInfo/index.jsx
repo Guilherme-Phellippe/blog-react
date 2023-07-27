@@ -1,5 +1,7 @@
-import moment from "moment"
+import { lazy } from "react"
 import { formatTextLong } from "../../../scripts/formatTextLong"
+
+const moment = lazy(()=> import("moment"));
 
 export default function RecipeChefInfo({ recipe }){ 
     return (

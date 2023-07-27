@@ -1,9 +1,10 @@
 
-import moment from "moment";
-import { useState } from "react"
+import { lazy, useState } from "react"
 import { MdArrowDropDown, MdArrowDropUp, MdDelete, MdMessage } from "react-icons/md"
 import { useNotificationApi } from "../../../hooks/useApi";
 import { formatTextLong } from "../../../scripts/formatTextLong";
+
+const moment = lazy(()=> import("moment"));
 
 export const Notification = ({ notification, setNotifications }) => {
     const notificationApi = useNotificationApi()

@@ -1,5 +1,4 @@
-import moment from "moment"
-import { useEffect, useRef, useState } from "react"
+import { lazy, useEffect, useRef, useState } from "react"
 import { FaSadTear, FaSearch } from "react-icons/fa"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import { useRecipeApi } from "../../../hooks/useApi"
@@ -7,6 +6,8 @@ import { Button } from "../../atoms/Button"
 import { Input } from "../../atoms/Input"
 import { Loading } from "../../atoms/Loading/Loading"
 import { dialog } from "../../../modals/Dialog"
+
+const moment = lazy(()=> import("moment"));
 
 export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe }) => {
     const token = JSON.parse(localStorage.getItem("token"));

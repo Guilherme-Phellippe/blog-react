@@ -1,6 +1,7 @@
-import moment from "moment";
-import { useCallback, useEffect, useMemo } from "react"
+import { lazy, useCallback, useEffect, useMemo } from "react"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
+
+const moment = lazy(()=> import("moment"));
 
 export default function ColumnLeftMainHome({ recipes }) {
 

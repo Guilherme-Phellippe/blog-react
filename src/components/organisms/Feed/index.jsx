@@ -1,4 +1,3 @@
-import 'moment/locale/pt-br';
 
 import { useCallback, useEffect, useState } from "react";
 
@@ -9,7 +8,6 @@ import { Loading } from '../../atoms/Loading/Loading';
 function AdsInFeed({ index }) {
 
     useEffect(() => {
-        console.log("AdsInFeed")
         // GOOGLE ADSENSE 
         window.location.hostname !== 'localhost' &&
             (window.adsbygoogle = window.adsbygoogle || []).push({});
