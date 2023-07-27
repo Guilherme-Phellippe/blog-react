@@ -1,7 +1,7 @@
 import OneSignal from 'react-onesignal';
 import { dialog } from '../modals/Dialog';
 
-export default async function initOneSignal() {
+export async function initOneSignal() {
     await OneSignal.init({ appId: "1fc3feb0-617d-4599-b8d8-cd5c995aca0c" })
     const userDevice = await OneSignal.getUserId();
     if (userDevice) {
