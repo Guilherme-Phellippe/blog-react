@@ -4,6 +4,8 @@ import { dialog } from '../modals/Dialog';
 export const initOneSignal = async () => {
   await OneSignal.init({ appId: "1fc3feb0-617d-4599-b8d8-cd5c995aca0c" })
 
+  window.addEventListener("load", ()=>{console.log("página carregada")})
+
   const userDevice = await OneSignal.getUserId();
   if (userDevice) {
     if (Notification.permission === "default") Notification.requestPermission()
