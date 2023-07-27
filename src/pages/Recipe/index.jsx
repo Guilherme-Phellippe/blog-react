@@ -12,7 +12,9 @@ export default function Recipe() {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        window.location.hostname !== 'localhost' && initOneSignal();
+        window.location.hostname !== 'localhost' && window.addEventListener("load", ()=>{
+            initOneSignal();
+        })
     }, []);
 
     return (
