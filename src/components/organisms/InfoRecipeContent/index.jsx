@@ -76,7 +76,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                 </div>
 
                 <div className="hidden md:block md:w-1/3 p-4">
-                    <h2 className='text-s1_5 font-bold text-color_orange pt-8 pb-6 text-center'>Utensílios usados na receita:</h2>
+                    <h2 className='text-s1_5 font-bold text-color_orange pt-8 pb-6 text-center'>Utensílios usados:</h2>
                     {/* AD AMAZON FIXED */}
                     <div className="flex justify-center">
                         <iframe
