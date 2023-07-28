@@ -1,7 +1,6 @@
-import { Suspense, lazy, useContext, useEffect } from 'react';
+import { lazy, useContext, useEffect } from 'react';
 import { UserContext } from '../../contexts/userProvider';
 import { HomeProvider } from '../../contexts/Home/HomeProvider';
-import { Loading } from '../../components/atoms/Loading/Loading';
 import { initOneSignal } from '../../libs/oneSignal.config';
 
 const Header = lazy(() => import("../../components/templates/Header/Header"))
@@ -13,17 +12,18 @@ export default function Recipe() {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        window.location.hostname !== 'localhost' 
-        && initOneSignal();
+        window.location.hostname !== 'localhost'
+            && initOneSignal();
     }, []);
 
     return (
         <HomeProvider>
             <Header user={user} />
             <Main user={user} />
-            <Suspense fallback={<Loading />}><Footer /></Suspense>
+            <Footer />
             {/* MODAL LOGIN WITH SOCIAL MIDIA  */}
             <LoginWithSocialMidiaModal />
+
         </HomeProvider>
     )
 }
