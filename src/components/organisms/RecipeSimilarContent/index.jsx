@@ -45,6 +45,7 @@ export default function RecipeSimilarContent({ name_search }) {
 
     return (
         <div id="RecipeSimilarContent-print" className="w-full bg-background pt-8">
+            <h2 className="text-s1_5 text-color_orange text-center">Pela web</h2>
             <div className="w-full bg-white rounded-md p-4">
                 {/* <h2 className='text-center text-s2 text-color_orange font-bold p-4'>Pela web</h2> */}
                 <ins className="adsbygoogle"
