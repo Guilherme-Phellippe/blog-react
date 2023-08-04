@@ -31,7 +31,7 @@ root.render(
           <Routes>
             <Route path='/' element={<Suspense fallback={<Loading />}><Home /></Suspense>} />
             <Route path='/home' element={<Suspense fallback={<Loading />} ><Home /></Suspense>} />
-            <Route path='/receitas/:slug' element={<Recipe />} />
+            <Route path='/receitas/:slug' element={<Suspense fallback={<Loading />} ><Recipe /></Suspense>} />
             <Route path='/store' element={<Suspense fallback={<Loading />} ><Store /></Suspense>} />
             <Route path='/poll' element={<Suspense fallback={<Loading />} ><Poll /></Suspense>} />
             <Route path='/login' element={<Suspense fallback={<Loading />} ><Login /></Suspense>} />

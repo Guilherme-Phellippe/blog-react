@@ -23,7 +23,6 @@ export default function Recipe() {
             <Footer />
             {/* MODAL LOGIN WITH SOCIAL MIDIA  */}
             <LoginWithSocialMidiaModal />
-
         </HomeProvider>
     )
 }
