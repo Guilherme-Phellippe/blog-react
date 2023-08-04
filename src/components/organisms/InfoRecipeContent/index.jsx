@@ -76,23 +76,12 @@ export default function InfoRecipeContent({ recipe, user }) {
                 </div>
 
                 <div className="hidden md:block md:w-1/3 p-4">
-                    <h2 className='text-s1_5 font-bold text-color_orange pt-8 pb-6 text-center'>Utensílios usados:</h2>
-                    {/* AD AMAZON FIXED */}
-                    <div className="flex justify-center">
-                        <iframe
-                            title='compartimento para guardar temperos'
-                            sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin"
-                            style={{ width: "150px", height: "240px" }}
-                            scrolling="no"
-                            src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=BR&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=guilherme34-20&marketplace=amazon&region=BR&placement=B08L5M5V6H&asins=B08L5M5V6H&linkId=a37774fecc9c19fdd701b1c9b0b00a11&show_border=true&link_opens_in_new_window=true"
-                        ></iframe>
-                        <iframe
-                            title='Pulverizador de óleo para cozinhar'
-                            sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin"
-                            style={{ width: "120px", height: "240px" }}
-                            src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=BR&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=guilherme34-20&marketplace=amazon&region=BR&placement=B08BFD54YW&asins=B08BFD54YW&linkId=0f8a9f190ce224b07eb66e9795cbabb0&show_border=true&link_opens_in_new_window=true"
-                        ></iframe>
-                    </div>
+                    <LineAds display={true}>
+                        <div
+                            className="adsbyalkware"
+                            data-format="alk-display"
+                        ></div>
+                    </LineAds>
                 </div>
 
             </div>
