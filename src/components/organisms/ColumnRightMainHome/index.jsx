@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import { PanelUser } from "../../organisms/PanelUser/PanelUser"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 
@@ -15,12 +15,6 @@ export default function ColumnRightMainHome({ ranking = [] }) {
         })
     }, [ranking])
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        if (window.location.hostname !== 'localhost') {
-            if (window.innerWidth > 700) (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
-    }, [])
 
     return (
         <aside className={`col-span-1 bg-white md:block`}>
