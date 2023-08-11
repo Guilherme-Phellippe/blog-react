@@ -7,10 +7,11 @@ import { LinkNavigation } from '../../atoms/LinkNavigation'
 import HeaderMenuMobile from '../HeaderPanelMobile'
 import { HomeContext } from '../../../contexts/Home/HomeProvider'
 
-export default function Menu({ categories, user }){
+export default function Menu({ categories, user }) {
+
     const { setValueSearch } = useContext(HomeContext)
     const refCategories = useRef(null)
-    
+
     useEffect(() => {
         handleActiveLineTextMenu();
 
@@ -21,7 +22,7 @@ export default function Menu({ categories, user }){
         }
 
         document.addEventListener('click', takeClick)
-        
+
         return () => document.removeEventListener('click', takeClick)
     }, [])
 
@@ -40,7 +41,8 @@ export default function Menu({ categories, user }){
         })
     }
 
-    
+
+
     return (
         <div className="container-menu w-full h-[50px] items-center bg-color_orange order-1 md:order-2">
             <ul className='menu hidden md:flex w-full h-full justify-center items-center list-none' >

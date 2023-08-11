@@ -1,11 +1,12 @@
 import { Suspense, lazy, memo, useEffect, useRef, useState } from 'react';
 import { useCategoryApi } from '../../../hooks/useApi';
+import Bartop from '../../organisms/HeaderBartop';
 import { Loading } from '../../atoms/Loading/Loading';
 
-const Bartop = lazy(() => import('../../organisms/HeaderBartop'))
 const Menu = lazy(() => import('../../organisms/HeaderMenu'))
 
 function Header({ user }) {
+
     const [categories, setCategories] = useState()
     const refCategoryApi = useRef(useCategoryApi())
     const searchDataCategories = useRef(true)
@@ -26,9 +27,11 @@ function Header({ user }) {
 
     return (
         categories &&
-        <header className='w-full bg-color_orange flex flex-col items-center z-[999] mb-8 md:mb-16'>
+        <header className='w-full bg-color_orange flex flex-col items-center z-[999] mb-8 md:mb-16 relative'>
+
+            <Bartop />
+
             <Suspense fallback={<Loading />}>
-                <Bartop />
                 <Menu
                     categories={categories}
                     user={user}

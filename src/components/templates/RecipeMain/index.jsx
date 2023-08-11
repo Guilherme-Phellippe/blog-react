@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 import { Loading } from '../../atoms/Loading/Loading';
 
-const InfoRecipeContent = lazy(() => import("../../organisms/InfoRecipeContent"))
+import InfoRecipeContent from "../../organisms/InfoRecipeContent";
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 const MenuMobile = lazy(() => import('../MenuMobile'))
 
@@ -34,24 +34,20 @@ function RecipeMain({ user }) {
 
     return (
         recipe &&
-        <div className="w-full max-w-[1500px] mx-auto">
-            <Suspense fallback={<Loading />}>
-                <IconsShare recipe={recipe} user={user} />
-            </Suspense>
+        <div className="w-full max-w-[1500px] min-h-screen mx-auto">
+            <IconsShare recipe={recipe} user={user} />
 
             <main className='flex flex-col w-[97%] md:w-5/6 mt-8 mx-auto'>
                 <div
                     className='adsbyalkware'
                     data-format='alk-banner'
                 ></div>
-                
+
                 <div className="w-full bg-white min-h-screen overflow-hidden">
-                    <Suspense fallback={<Loading />}>
-                        <InfoRecipeContent
-                            recipe={recipe}
-                            user={user}
-                        />
-                    </Suspense>
+                    <InfoRecipeContent
+                        recipe={recipe}
+                        user={user}
+                    />
                 </div>
             </main>
 
