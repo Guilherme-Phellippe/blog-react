@@ -13,7 +13,8 @@ export default function LineAds({ children, display }) {
 
 
                 
-                (window.adsbygoogle = []).push({});
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+                console.log("Adding ads on container adsbygoogle");
 
                 window.hasAdsenseScriptHead = true;
             }
