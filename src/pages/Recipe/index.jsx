@@ -23,7 +23,7 @@ export default function Recipe() {
                 script.async = true;
                 document.head.appendChild(script);
 
-                window.hasAdsenseScriptHead = true
+                window.hasAdsenseScriptHead = true;
 
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
             }
