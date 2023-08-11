@@ -1,4 +1,26 @@
+import { useEffect } from "react";
+
 export default function LineAds({ children, display }) {
+
+    useEffect(()=>{
+        if (window.location.hostname !== 'localhost') {
+            // Create script to Google Adsense and load to ad to display
+            if (!window.hasAdsenseScriptHead) {
+                const script = document.createElement('script');
+                script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4781060024956035';
+                script.async = true;
+                document.head.appendChild(script);
+
+
+                
+                (window.adsbygoogle = []).push({});
+                console.log("Adding ads on container adsbygoogle");
+
+                window.hasAdsenseScriptHead = true;
+            }
+        }
+    },[])
+
     return (
         display &&
         <div className="my-8">
