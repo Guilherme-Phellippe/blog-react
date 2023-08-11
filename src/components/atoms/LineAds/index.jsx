@@ -14,7 +14,6 @@ export default function LineAds({ children, display }) {
 
                 
                 (window.adsbygoogle = []).push({});
-                console.log("Adding ads on container adsbygoogle");
 
                 window.hasAdsenseScriptHead = true;
             }
