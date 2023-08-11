@@ -24,8 +24,8 @@ export default function Recipe() {
                 document.head.appendChild(script);
 
 
-                console.log("Adding ads on container adsbygoogle")
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
+                console.log("Adding ads on container adsbygoogle");
 
                 window.hasAdsenseScriptHead = true;
             }
