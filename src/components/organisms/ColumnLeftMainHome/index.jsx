@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import { BoxRankingRecipes } from "../BoxRankingRecipes"
 import moment from "moment"
 
@@ -14,12 +14,6 @@ export default function ColumnLeftMainHome({ recipes }) {
         })
     }, [recipes]);
 
-    useEffect(() => {
-        // GOOGLE ADSENSE 
-        window.location.hostname !== 'localhost' &&
-            window.innerWidth > 700 &&
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [])
 
     return (
         <aside className="hidden md:block col-span-1 bg-white">
