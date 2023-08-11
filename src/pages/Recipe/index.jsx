@@ -23,8 +23,10 @@ export default function Recipe() {
                 script.async = true;
                 document.head.appendChild(script);
 
+
+                console.log("Adding ads on container adsbygoogle")
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
-                
+
                 window.hasAdsenseScriptHead = true;
             }
         }
