@@ -12,8 +12,22 @@ export default function Recipe() {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        window.location.hostname !== 'localhost'
-            && initOneSignal();
+        if (window.location.hostname !== 'localhost') {
+            // Loading the oneSignal config
+            initOneSignal();
+
+            // Create script to Google Adsense and load to ad to display
+            if (!window.hasAdsenseScriptHead) {
+                const script = document.createElement('script');
+                script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4781060024956035';
+                script.async = true;
+                document.head.appendChild(script);
+
+                window.hasAdsenseScriptHead = true
+
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+            }
+        }
     }, []);
 
     return (

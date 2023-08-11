@@ -1,21 +1,4 @@
-import { useEffect } from "react"
-
 export default function LineAds({ children, display }) {
-
-    useEffect(() => {
-        if(!window.hasAdsenseScriptHead){
-            const script = document.createElement('script');
-            script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4781060024956035';
-            script.async = true;
-            document.head.appendChild(script);
-
-            window.hasAdsenseScriptHead = true
-        }
-
-        display &&
-            window.location.hostname !== 'localhost' && (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [display])
-
     return (
         display &&
         <div className="my-8">

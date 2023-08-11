@@ -93,6 +93,7 @@ export default function LoginWithSocialMidiaModal() {
                     </div>
                 </div>
                 <LoginWithSocialMidia redirect={window.location.pathname} />
+   
             </div>
         </div>
     )

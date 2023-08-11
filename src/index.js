@@ -5,10 +5,12 @@ import { ScrollToTopPage } from './contexts/ScrollToTopPage';
 import { Loading } from './components/atoms/Loading/Loading';
 import UserProvider from './contexts/userProvider';
 
+import Recipe from './pages/Recipe/index';
+
 import './index.css';
 
+
 const Home = lazy(() => import('./pages/Home/Home'));
-const Recipe = lazy(() => import('./pages/Recipe/index'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 const Store = lazy(() => import('./pages/Store/Store'));
 const Poll = lazy(() => import('./pages/Poll/Poll'));
@@ -22,6 +24,7 @@ const Tip = lazy(() => import('./pages/Tip/index'));
 const CreateTip = lazy(() => import('./pages/CreateTip/index'));
 const Contact = lazy(() => import('./pages/Contact/Contact'));
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -31,7 +34,7 @@ root.render(
           <Routes>
             <Route path='/' element={<Suspense fallback={<Loading />}><Home /></Suspense>} />
             <Route path='/home' element={<Suspense fallback={<Loading />} ><Home /></Suspense>} />
-            <Route path='/receitas/:slug' element={<Suspense fallback={<Loading />} ><Recipe /></Suspense>} />
+            <Route path='/receitas/:slug' element={<Recipe />} />
             <Route path='/store' element={<Suspense fallback={<Loading />} ><Store /></Suspense>} />
             <Route path='/poll' element={<Suspense fallback={<Loading />} ><Poll /></Suspense>} />
             <Route path='/login' element={<Suspense fallback={<Loading />} ><Login /></Suspense>} />

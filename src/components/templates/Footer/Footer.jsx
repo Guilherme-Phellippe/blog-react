@@ -77,7 +77,6 @@ export default function Footer() {
             <div className="w-full bg-white flex justify-center p-4">
                 <span>Site desenvolvido por: <h4>Alk company</h4></span>
             </div>
-
         </footer>
     )
 }
