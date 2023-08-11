@@ -13,7 +13,7 @@ export default function UserProvider({ children }) {
             loadUser.current = true;
             (async () => {
                 const response = await refUserApi.current.authenticateLogin();
-                setUser(response.data)
+                setUser(response?.data)
             })();
         }
     }, [])
