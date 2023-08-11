@@ -6,6 +6,7 @@ export default function LineAds({ children, display }) {
                 <span className="w-full bg-zinc-900/50 h-[1px]"></span>
                 <span className="mx-2 -translate-y-1/2">Publicidade</span>
                 <span className="w-full bg-zinc-900/50 h-[1px]"></span>
+            {console.log("Load ads")}
             </div>
             {children}
         </div>
