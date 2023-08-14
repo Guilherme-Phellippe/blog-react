@@ -1,6 +1,6 @@
-export default function timer(date = new Date()) {
+export default function timer(date) {
     const dateNow = new Date();
-    const userDate = new Date(date)
+    const userDate = date ? new Date(date) : new Date();
 
     function formatTimeAgo() {
         const diff = Math.floor(((dateNow - userDate) / 1000));
@@ -8,7 +8,6 @@ export default function timer(date = new Date()) {
         else if (diff < 60 && diff < 120) return "Há alguns segundos atrás"
         else if (diff > 120 && diff < 3600) {
             const diffMinutes = Math.floor(diff / 60);
-            console.log(diffMinutes, "----")
             return `Há ${diffMinutes} minutos atrás`
         }
         else if (diff > 3600 && diff < (3600 * 24)) {
@@ -56,7 +55,7 @@ export default function timer(date = new Date()) {
     }
 
     function dayOfYear() {
-        let diffInMillis = date - new Date(userDate.getFullYear(), 0, 0)
+        let diffInMillis = userDate - new Date(dateNow.getFullYear(), 0, 0)
         let dayOfYear = Math.floor(diffInMillis / (24 * 60 * 60 * 1000))
         return dayOfYear
     }
