@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react';
-import { ListRecipeComments } from '../../molecules/ListRecipeComments';
-import RecipeSimilarContent from '../RecipeSimilarContent';
 import LineAds from '../../atoms/LineAds';
+// import { ListRecipeComments } from '../../molecules/ListRecipeComments';
+// import RecipeSimilarContent from '../RecipeSimilarContent';
 
 import InfoRecipeHeader from "../../molecules/InfoRecipeHeader";
 import CarouselMidiasContent from "../../molecules/CarouselMidiasContent";
-import PreparationInformation from "../../molecules/PreparationInformation";
-import IngredientsList from "../../atoms/IngredientsList/IngredientsList";
-import PrepareMode from "../../atoms/PrepareMode";
-import RecipeChefInfo from "../../molecules/RecipeChefInfo";
-import LikeComentsSaveButtons from "../../molecules/LikeComentSaveButtons";
+// import PreparationInformation from "../../molecules/PreparationInformation";
+// import IngredientsList from "../../atoms/IngredientsList/IngredientsList";
+// import PrepareMode from "../../atoms/PrepareMode";
+// import RecipeChefInfo from "../../molecules/RecipeChefInfo";
+// import LikeComentsSaveButtons from "../../molecules/LikeComentSaveButtons";
 
 
 export default function InfoRecipeContent({ recipe, user }) {
@@ -73,36 +73,32 @@ export default function InfoRecipeContent({ recipe, user }) {
                         ></ins>
                     </LineAds>
 
-                    <div className="w-full min-h-screen relative">
+                    {/* <div className="w-full min-h-screen relative">
 
                         <PreparationInformation recipe={recipe} />
-
                         <RecipeChefInfo recipe={recipe} />
+                        <IngredientsList
+                            ing={recipe.ing}
+                            stuffing_ing={recipe.stuffing_ing}
+                            type_stuffing_ing={recipe.type_stuffing_ing}
+                        />
+                        <PrepareMode
+                            prepareMode={recipe.prepareMode}
+                            type_prepare_mode={recipe.type_prepare_mode}
+                        />
 
 
 
-                            <IngredientsList
-                                ing={recipe.ing}
-                                stuffing_ing={recipe.stuffing_ing}
-                                type_stuffing_ing={recipe.type_stuffing_ing}
-                            />
-                            <PrepareMode
-                                prepareMode={recipe.prepareMode}
-                                type_prepare_mode={recipe.type_prepare_mode}
-                            />
-
-
-
-                            <div className="w-full py-4 my-4 bg-[#24242420]">
-                                <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
-                            </div>
-                            <ListRecipeComments content={recipe} user={user} />
-                            <LineAds display={true}>
-                                <div className="adsbyalkware"
-                                    data-ad-format="alk-banner"
-                                ></div>
-                            </LineAds>
-                    </div>
+                        <div className="w-full py-4 my-4 bg-[#24242420]">
+                            <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
+                        </div>
+                        <ListRecipeComments content={recipe} user={user} />
+                        <LineAds display={true}>
+                            <div className="adsbyalkware"
+                                data-ad-format="alk-banner"
+                            ></div>
+                        </LineAds>
+                    </div> */}
                 </div>
 
                 <div className="hidden md:block md:w-1/3 p-4">
@@ -122,7 +118,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                 </div>
             </div>
 
-            <RecipeSimilarContent name_search={recipe?.name_recipe} />
+            {/* <RecipeSimilarContent name_search={recipe?.name_recipe} /> */}
         </div>
     )
 }
