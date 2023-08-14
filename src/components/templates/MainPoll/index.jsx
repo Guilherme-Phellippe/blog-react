@@ -10,7 +10,7 @@ import { TablePoll } from "../../organisms/TablePoll"
 import MenuMobile from "../../templates/MenuMobile"
 import { useRecipeApi } from "../../../hooks/useApi"
 
-import moment from "moment"
+import timer from "../../../scripts/formatTime"
 
 export default function MainPoll() {
     const refRecipeApi = useRef(useRecipeApi());
@@ -26,10 +26,7 @@ export default function MainPoll() {
     }, []);
 
     const filteredRecipeByDate = recipes.filter(recipe => {
-        const createdAt = moment(recipe.createdAt).month() + "" + moment(recipe.createdAt).year();
-        const currentDate = moment().month() + "" + moment().year();
-
-        if (createdAt === currentDate) return recipe
+        if (timer(recipe.createdAt).isSameMonth()) return recipe
         else return null
     })
 

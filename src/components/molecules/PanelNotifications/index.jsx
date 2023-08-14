@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { Notification } from "../Notification"
-import moment from "moment"
+import timer from "../../../scripts/formatTime"
 
 export const PanelNotifications = ({ notifications: data }) => {
     const [notifications, setNotifications] = useState(data)
-    notifications.sort((a, b) => moment(b.notification.createdAt).diff(moment(a.notification.createdAt)))
+    notifications.sort((a, b) => timer(b.notification.createdAt).diff(a.notification.createdAt))
 
     return (
         <div className="flex flex-col gap-y-4 w-full h-full overflow-auto">

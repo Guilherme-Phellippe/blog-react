@@ -1,13 +1,13 @@
-import moment from "moment"
 import { useContext } from "react"
 import { FaListAlt, FaPoll } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { Button } from "../../atoms/Button"
+import timer from "../../../scripts/formatTime"
 
 export const AddRecipeInfo = ({ content: { user, name_recipe,slug, createdAt } }) => {
     const { valueSearch } = useContext(HomeContext)
-    const showButtonVote = moment(createdAt).month() === moment().month()
+    const showButtonVote = timer(createdAt).isSameMonth();
 
     const handleScrollDocument = () => {
         // need to add this scroll: auto, because on mobile,
@@ -20,7 +20,7 @@ export const AddRecipeInfo = ({ content: { user, name_recipe,slug, createdAt } }
             <div className={valueSearch ? 'flex flex-col items-center justify-center' : 'hidden'}>
                 <h2 className="text-s1_5 text-center">{name_recipe}</h2>
                 <h2 className="text-s1_2 mt-4">Criado por: <span className="text-color_orange">{user.name}</span></h2>
-                <p className="text-s1 mt-4 font-bold">criado em: <span className="text-gray-500 font-normal">{moment(createdAt).format('lll')}</span></p>
+                <p className="text-s1 mt-4 font-bold">criado em: <span className="text-gray-500 font-normal">{timer(createdAt).format('dd/mm/yyyy')}</span></p>
             </div>
             <div className={`w-full h-full flex justify-evenly items-center ${valueSearch ? "mt-8" : "border-b-[1px] "}`}>
                 <Link onClick={handleScrollDocument} to={`/receitas/${slug}`} >

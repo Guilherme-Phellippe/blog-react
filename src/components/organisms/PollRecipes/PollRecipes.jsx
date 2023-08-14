@@ -4,7 +4,7 @@ import { useRecipeApi } from '../../../hooks/useApi';
 import { Button } from '../../atoms/Button';
 import { Candidate } from '../../molecules/Candidate';
 
-import moment from 'moment';
+import timer from '../../../scripts/formatTime';
 
 export default function PollRecipes() {
     const [recipes, setRecipes] = useState([]);
@@ -14,10 +14,7 @@ export default function PollRecipes() {
         (async () => {
             const { data } = await refRecipeApi.current.getAllRecipes();
             const filteredRecipeByDate = data.filter(recipe => {
-                const createdAt = moment(recipe.createdAt).month() + "" + moment(recipe.createdAt).year();
-                const currentDate = moment().month() + "" + moment().year();
-
-                if (createdAt === currentDate) return recipe
+                if (timer(recipe.createdAt).isSameMonth()) return recipe
                 else return null
             })
 

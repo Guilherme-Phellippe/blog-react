@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import moment from "moment"
+import timer from "../../../scripts/formatTime"
 import { useState } from "react"
 
 import { FcSettings } from "react-icons/fc"
@@ -27,7 +27,7 @@ export const ListRecipesUser = ({ recipe, isMyRecipes }) => {
                 <div className={`px-4 flex flex-col justify-around items-center ${isMyRecipes ? "w-3/5" : "w-full"}`}>
                     <h3 className="text-s1 text-center text-color_text p-2">{currentRecipe.category.name_category}</h3>
                     <h3 className="text-s1_3 text-center text-color_text p-2">{currentRecipe.name_recipe}</h3>
-                    <h3 className="text-s1">{moment(recipe.createdAt).format("lll")}</h3>
+                    <h3 className="text-s1">{timer(recipe.createdAt).format("dd/mm/yyyy")}</h3>
                     {
                         isMyRecipes ?
                             <div className={`w-3/4 flex flex-col gap-2 bg-color_orange justify-center py-3 px-8 rounded-lg`}>

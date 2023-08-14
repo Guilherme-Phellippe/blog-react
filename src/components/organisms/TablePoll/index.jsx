@@ -7,7 +7,7 @@ import { Input } from "../../atoms/Input"
 import { Loading } from "../../atoms/Loading/Loading"
 import { dialog } from "../../../modals/Dialog"
 
-import moment from "moment"
+import timer from "../../../scripts/formatTime"
 
 export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe }) => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -129,7 +129,7 @@ export const TablePoll = ({ candidates: candidatesRecipe, setUpdateListRecipe })
                                 <td className={`py-4 text-s1_2 p-2 ${index < 3 && !search ? 'bg-green-600 text-white font-bold' : ''}`}>{index + 1}°</td>
                                 <td className="py-4 text-s1_2" data-slug={candidate.slug}>{candidate.name_recipe}</td>
                                 <td className="py-4 text-s1_2 hidden md:block">{candidate.user.name}</td>
-                                <td className="py-4 text-s1_2 hidden md:block">{moment(candidate.createdAt).startOf('hour').fromNow()}</td>
+                                <td className="py-4 text-s1_2 hidden md:block">{timer(candidate.createdAt).formatTimeAgo()}</td>
                                 <td className="py-4 text-s1_2">{
                                     totalVotes > 0 ? candidate.votes.length > 0
                                         ? ((candidate.votes.length / totalVotes) * 100).toFixed(2).replace('.', ',') + '%'

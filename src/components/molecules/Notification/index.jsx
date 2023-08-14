@@ -4,7 +4,7 @@ import { MdArrowDropDown, MdArrowDropUp, MdDelete, MdMessage } from "react-icons
 import { useNotificationApi } from "../../../hooks/useApi";
 import { formatTextLong } from "../../../scripts/formatTextLong";
 
-import moment from "moment"
+import timer from "../../../scripts/formatTime"
 
 export const Notification = ({ notification, setNotifications }) => {
     const notificationApi = useNotificationApi()
@@ -63,7 +63,7 @@ export const Notification = ({ notification, setNotifications }) => {
                     ></p>
                     <div className="flex justify-between mt-8 pt-6 px-4 border-t-[1px] text-s1 opacity-70">
                         <span>@EquipeTemSabor</span>
-                        <span>{moment(notification.createdAt).format('lll')}</span>
+                        <span>{timer(notification.createdAt).format('dd/mm/yyyy')}</span>
                     </div>
                 </div>
             }

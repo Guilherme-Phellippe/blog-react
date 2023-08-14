@@ -1,4 +1,4 @@
-import moment from "moment"
+import timer from "../../../scripts/formatTime"
 import { useContext } from "react"
 import { RiCloseCircleFill } from "react-icons/ri"
 import { HomeContext } from "../../../contexts/Home/HomeProvider"
@@ -19,7 +19,7 @@ export const HeaderInfoFeed = ({ content: { user, createdAt, id }, onClick }) =>
             </div>
             <div className="w-[70%] h-full py-6 px-4 ">
                 <h2 className="text-s1_4">{user.name}</h2>
-                <p>{moment(createdAt).startOf('s').fromNow()}</p>
+                <p>{timer(createdAt).formatTimeAgo()}</p>
             </div>
             <div className="w-1/5 flex justify-end items-center">
                 <RiCloseCircleFill

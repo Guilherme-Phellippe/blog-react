@@ -1,10 +1,10 @@
-import moment from "moment";
+import timer from "../../../scripts/formatTime";
 import { BoxRecipe } from "../../organisms/BoxRecipe/BoxRecipe";
 
 export default function MostViewedRecipesContainer({ valueSearch, topRanking }) {
     const filteredRanking = topRanking('nmr_eyes')
-        .filter((recipe) => recipe.name_recipe && moment(recipe.createdAt).dayOfYear() > (moment().dayOfYear() - 3) && recipe)
-        .sort((a, b) => moment(b.createdAt).dayOfYear() - moment(a.createdAt).dayOfYear())
+        .filter((recipe) => recipe.name_recipe && timer(recipe.createdAt).dayOfYear() > (timer().dayOfYear() - 3) && recipe)
+        .sort((a, b) => timer(b.createdAt).dayOfYear() - timer(a.createdAt).dayOfYear())
         .filter((recipe, index) => index < 3 && recipe)
         .sort((a, b) => b.nmr_eyes - a.nmr_eyes)
 

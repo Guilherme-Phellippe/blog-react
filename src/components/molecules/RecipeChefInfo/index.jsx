@@ -1,4 +1,4 @@
-import moment from "moment"
+import timer from "../../../scripts/formatTime"
 import { formatTextLong } from "../../../scripts/formatTextLong"
 
 export default function RecipeChefInfo({ recipe }){ 
@@ -9,7 +9,7 @@ export default function RecipeChefInfo({ recipe }){
                 <img className="rounded-2xl max-w-[12rem] max-h-[12rem] object-cover" src={recipe.user.photo} alt={`imagem do chef chamado ${recipe.user.name}`} />
                 <div className='flex flex-col px-4'>
                     <h2 className="text-s1_4 my-1 font-semibold">{`${formatTextLong(recipe.user.name, 20)}`}</h2>
-                    <h3 className="text-s1_2 my-1 font-semibold">membro desde: <span className="text-color_text font-normal">{moment(recipe.createdAt).format("DD/MM/yyyy")}</span></h3>
+                    <h3 className="text-s1_2 my-1 font-semibold">membro desde: <span className="text-color_text font-normal">{timer(recipe.createdAt).format("dd/mm/yyyy")}</span></h3>
                     <h3 className="text-s1_2 my-1 font-semibold">receitas publicadas: <span className="text-color_text font-normal">{recipe.user._count.recipe}</span></h3>
                     <h3 className="text-s1_2 my-1 font-semibold">Total de "amei": <span className="text-color_text font-normal">{recipe.user.nmr_hearts}</span></h3>
                     <h3 className="text-s1_2 my-1 font-semibold">Prêmios receita do mês: <span className="text-color_text font-normal">Sem informações</span></h3>

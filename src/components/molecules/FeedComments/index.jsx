@@ -10,7 +10,7 @@ import { useCommentApi } from "../../../hooks/useApi"
 import { useNavigate } from "react-router-dom"
 import { dialog } from "../../../modals/Dialog"
 
-import moment from "moment"
+import timer from "../../../scripts/formatTime"
 
 export const FeedComments = ({ comment, userLogged, setComments }) => {
     const [showbuttonAsnwer, setShowButtonAnswer] = useState(true)
@@ -125,7 +125,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                 <div className="w-auto rounded-3xl m-2 flex flex-col justify-start items-start bg-background">
                     <div className="flex items-center my-2 mx-4 gap-2">
                         <h2 className="font-bold text-s1_3">{comment.user.name} - </h2>
-                        <span className="text-s1">{moment(comment.createdAt).startOf('seconds').fromNow()}</span>
+                        <span className="text-s1">{timer(comment.createdAt).formatTimeAgo()}</span>
                     </div>
                     <p className="text-s1_3 mx-6 mb-3">{comment.comment}</p>
                 </div>
@@ -171,7 +171,7 @@ export const FeedComments = ({ comment, userLogged, setComments }) => {
                         <div className="rounded-3xl m-2 flex flex-col bg-background">
                             <div className="flex items-center mx-3 mt-2 gap-2">
                                 <h2 className="font-bold text-s1_2">{answer.name} - </h2>
-                                <span className="text-s1">{moment(answer.createdAt).startOf('seconds').fromNow()}</span>
+                                <span className="text-s1">{timer(answer.createdAt).formatTimeAgo()}</span>
                             </div>
                             <p className="text-s1_2 mx-6 my-2">{answer.answer}</p>
                         </div>
