@@ -3,7 +3,7 @@ import { dialog } from '../modals/Dialog';
 
 
 export async function initOneSignal() {
-    const APP_ID_ONESIGNAL = process.env.APP_ID_ONESIGNAL
+    const APP_ID_ONESIGNAL = "1fc3feb0-617d-4599-b8d8-cd5c995aca0c"
     await OneSignal.init({ appId: APP_ID_ONESIGNAL })
     const userDevice = await OneSignal.getUserId();
     if (userDevice) {
