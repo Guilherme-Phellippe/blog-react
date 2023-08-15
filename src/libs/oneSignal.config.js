@@ -1,8 +1,10 @@
 import OneSignal from 'react-onesignal';
 import { dialog } from '../modals/Dialog';
 
+
 export async function initOneSignal() {
-    await OneSignal.init({ appId: "1fc3feb0-617d-4599-b8d8-cd5c995aca0c" })
+    const APP_ID_ONESIGNAL = process.env.APP_ID_ONESIGNAL
+    await OneSignal.init({ appId: APP_ID_ONESIGNAL })
     const userDevice = await OneSignal.getUserId();
     if (userDevice) {
       if (Notification.permission === "default") Notification.requestPermission()
