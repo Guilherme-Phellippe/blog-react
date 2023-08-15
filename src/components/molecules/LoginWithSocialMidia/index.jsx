@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
-import app from "../../../libs/firebase.config"
 
 import { useNotificationApi, useNotificationPush, useUserApi } from '../../../hooks/useApi';
 import { dialog } from '../../../modals/Dialog'
@@ -16,6 +15,7 @@ import { Img } from '../../atoms/Img'
 import { Loading } from '../../atoms/Loading/Loading';
 
 
+const app = lazy(()=> import("../../../libs/firebase.config"));
 
 export const LoginWithSocialMidia = ({ redirect }) => {
     const [connected, setConnected] = useState({ connected: false })
