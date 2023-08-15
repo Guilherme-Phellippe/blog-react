@@ -74,7 +74,6 @@ export const LoginWithSocialMidia = ({ redirect }) => {
 
     const handleFacebookLogin = () => {
         window.FB.login((resp) => {
-            console.log(resp.authResponse.grantedScopes)
             // const { accessToken } = resp.authResponse
             // localStorage.setItem("f-access-t_34353839", JSON.stringify({ token: accessToken }))
 
@@ -149,6 +148,7 @@ export const LoginWithSocialMidia = ({ redirect }) => {
             js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+        console.log("chamou facebook")
     }, [])
 
     return (
