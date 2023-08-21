@@ -49,8 +49,8 @@ export default function timer(date) {
         }
     }
 
-    function diff(currentDiff) {
-        const d1 = new Date(currentDiff)
+    function diff() {
+        const d1 = new Date(date)
         return Math.floor((d1 - dateNow) / 1000)
     }
 

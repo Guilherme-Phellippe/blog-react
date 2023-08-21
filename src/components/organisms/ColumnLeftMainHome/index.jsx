@@ -6,7 +6,7 @@ export default function ColumnLeftMainHome({ recipes }) {
 
     const MostRecent = useCallback(() => {
         return [...recipes].sort((a, b) => {
-            let date1 = timer(a.createdAt).diff()
+            let date1 = timer(a.createdAt).diff();
             let date2 = timer(b.createdAt).diff()
             if (date1 > date2) return -1
             else if (date1 < date2) return 1
