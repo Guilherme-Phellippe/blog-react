@@ -36,7 +36,7 @@ export const Img = ({ imgs, alt, title }) => {
 
   return (
     <img
-      className={`lazyloader w-full h-full object-cover`}
+      className={`lazyloader w-full h-full object-cover object-center`}
       src="https://i.ibb.co/zsRwZ69/Design-sem-nome-24.webp"
       alt={alt}
       title={title}

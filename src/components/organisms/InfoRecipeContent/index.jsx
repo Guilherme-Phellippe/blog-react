@@ -10,6 +10,7 @@ import IngredientsList from "../../atoms/IngredientsList/IngredientsList";
 import PrepareMode from "../../atoms/PrepareMode";
 import RecipeChefInfo from "../../molecules/RecipeChefInfo";
 import LikeComentsSaveButtons from "../../molecules/LikeComentSaveButtons";
+import ProductsUsedRecipe from '../../molecules/ProductsUsedRecipe';
 
 
 export default function InfoRecipeContent({ recipe, user }) {
@@ -61,6 +62,9 @@ export default function InfoRecipeContent({ recipe, user }) {
                 <div className="w-full md:w-2/3 p-4">
                     <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                     <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
+                    <ProductsUsedRecipe />
+                    <PreparationInformation recipe={recipe} />
+                    <RecipeChefInfo recipe={recipe} />
 
                     <LineAds display={true}>
                         <ins
@@ -75,8 +79,6 @@ export default function InfoRecipeContent({ recipe, user }) {
 
                     <div className="w-full min-h-screen relative">
 
-                        <PreparationInformation recipe={recipe} />
-                        <RecipeChefInfo recipe={recipe} />
                         <IngredientsList
                             ing={recipe.ing}
                             stuffing_ing={recipe.stuffing_ing}
