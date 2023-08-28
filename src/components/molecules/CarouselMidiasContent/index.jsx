@@ -23,7 +23,7 @@ export default function CarouselMidiasContent({ img: imgs }) {
     return (
         <div
             data-id="container"
-            className={`${valueSearch ? "order-1 w-1/2 h-full" : 'h-full'} w-full flex max-h-[500px] mt-4 overflow-hidden relative`}
+            className={`${valueSearch ? "order-1 w-1/2 h-full" : 'h-auto'} w-full flex max-h-[500px] mt-4 overflow-hidden relative`}
         >
             <div
                 data-side="left"
