@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 
 import { UserContext } from '../../contexts/userProvider';
 import { HomeProvider } from '../../contexts/Home/HomeProvider';
