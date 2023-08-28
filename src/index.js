@@ -12,7 +12,7 @@ import './index.css';
 const Recipe = lazy(() => import('./pages/Recipe/index'));
 const Home = lazy(() => import('./pages/Home/Home'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
-const Store = lazy(() => import('./pages/Store/Store'));
+const Product = lazy(() => import('./pages/Product/Product'));
 const Poll = lazy(() => import('./pages/Poll/Poll'));
 const Login = lazy(() => import('./pages/Login/Login'));
 const CreateRecipe = lazy(() => import('./pages/CreateRecipe/CreateRecipe'));
@@ -23,6 +23,7 @@ const Policy = lazy(() => import('./pages/Policy/Policy'));
 const Tip = lazy(() => import('./pages/Tip/index'));
 const CreateTip = lazy(() => import('./pages/CreateTip/index'));
 const Contact = lazy(() => import('./pages/Contact/Contact'));
+const Whatsapp = lazy(() => import('./pages/Whatsapp/index'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -34,7 +35,7 @@ root.render(
           <Route path='/' element={<Suspense fallback={<LoadingInput />}><Home /></Suspense>} />
           <Route path='/home' element={<Suspense fallback={<LoadingInput />} ><Home /></Suspense>} />
           <Route path='/receitas/:slug' element={<Suspense fallback={<LoadingInput />} ><Recipe /></Suspense>} />
-          <Route path='/store' element={<Suspense fallback={<LoadingInput />} ><Store /></Suspense>} />
+          <Route path='/produto' element={<Suspense fallback={<LoadingInput />} ><Product /></Suspense>} />
           <Route path='/poll' element={<Suspense fallback={<LoadingInput />} ><Poll /></Suspense>} />
           <Route path='/login' element={<Suspense fallback={<LoadingInput />} ><Login /></Suspense>} />
           <Route path='/register' element={<Suspense fallback={<LoadingInput />} ><Login /></Suspense>} />
@@ -48,6 +49,7 @@ root.render(
           <Route path='/terms' element={<Suspense fallback={<LoadingInput />} ><Policy /></Suspense>} />
           <Route path='/policy' element={<Suspense fallback={<LoadingInput />} ><Policy /></Suspense>} />
           <Route path='*' element={<Suspense fallback={<LoadingInput />} ><NotFound /></Suspense>} />
+          <Route path='/whatsapp' element={<Whatsapp />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

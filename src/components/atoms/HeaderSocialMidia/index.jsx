@@ -36,7 +36,7 @@ export const SocialMidia = ({ hidden, isMobile }) => {
                 <FaYoutube className={`my-2 ${isMobile ? 'text-s3 mx-4' : 'text-s1_7'} cursor-pointer rounded-full transition-all text-red-500 bg-white`} />
             </a>
             <a
-                href="https://chat.whatsapp.com/DZXN21IUt0eJ5Twbao5biN"
+                href="https://chat.whatsapp.com/KjhJHHrLE8IL5puyaKtvzK"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Esse link levará você ao grupo do whatsapp"
