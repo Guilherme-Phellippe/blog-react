@@ -28,7 +28,7 @@ export default function CarouselMidiasContent({ img: imgs }) {
             <div
                 data-side="left"
                 onClick={handleScrollImgs}
-                className="flex items-center h-full absolute left-0 top-0 cursor-pointer"
+                className="flex items-center h-full absolute left-0 top-0 cursor-pointer bg-gradient-to-r from-black/70 to-transparent"
             >
                 <SlArrowLeft className={`${imgs?.length <= 1 ? "hidden" : "block"} text-s3 text-white`} />
             </div>
@@ -54,7 +54,7 @@ export default function CarouselMidiasContent({ img: imgs }) {
             <div
                 data-side="right"
                 onClick={handleScrollImgs}
-                className="flex items-center h-full absolute right-0 top-0 cursor-pointer"
+                className="flex items-center h-full absolute right-0 top-0 cursor-pointer  bg-gradient-to-l from-black/70 to-transparent"
             >
                 <SlArrowRight
                     className={`${imgs.length <= 1 ? "hidden" : "block"} text-s3 text-white`}
