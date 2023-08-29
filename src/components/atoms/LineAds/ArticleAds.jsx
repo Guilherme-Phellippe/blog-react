@@ -9,7 +9,7 @@ const ArticleAds = () => {
             <div className="flex flex-col">
                 <h2 className='text-s1_3 font-bold text-center'>Descobri o segredo das batatas de supermercado!!!</h2>
                 <div className="flex p-2 w-full h-1/2 items-end justify-between">
-                    <p className='text-s1_3'>é esse produtinho aqui</p>
+                    <p className='text-s1_3 text-center w-3/4'>é esse produtinho aqui...</p>
                     <a
                         href="https://amzn.to/3YSHUDe"
                         target='_blank'
