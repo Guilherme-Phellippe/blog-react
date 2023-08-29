@@ -22,9 +22,9 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
 
 
     const maxNumber = (array) => {
-        const newArray = array.sort((a, b) => b - a)
-        const value1 = newArray[0].toFixed(2).toString()
-        const value2 = newArray[newArray.length - 1].toFixed(2).toString()
+        const newArray = array.sort((a, b) => b.price - a.price)
+        const value1 = newArray[0].price.toFixed(2).toString()
+        const value2 = newArray[newArray.length - 1].price.toFixed(2).toString()
         const arrayFormat = [value1.replace(".", ","), value2.replace(".", ",")]
         return arrayFormat
     }
@@ -33,10 +33,15 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
         refAllProducts.current.classList.add("hidden")
         refAllProviders.current.classList.remove("hidden")
         refAllProviders.current.classList.add("flex")
+        refAllProviders.current.id =  currentTarget.id
     }
 
     const handleClickProvider = ({ currentTarget })=> {
-        console.log("o usuário escolheu a "+currentTarget.dataset.provider)
+        const provider = currentTarget.dataset.provider;
+        const id = refAllProviders.current.id
+        const productSelected = products.find(product => product.id === id)
+        const link = productSelected.link.find(l => l.provider === provider);
+        if(link) window.open(link.url)
     }
 
 
@@ -54,20 +59,21 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
                 {
                     products.map(product =>
                         <div key={product.id} className="w-full md:w-3/5 border-[1px] my-4 md:border-black/30 bg-white flex flex-col items-center">
-                            <h2 className="text-center p-4 text-s1_7 font-bold text-color_orange">{formatTextLong(product.name, 70)}</h2>
+                            <h2 className="text-center p-4 text-s1_7 font-bold text-color_orange">{formatTextLong(product.product_name, 70)}</h2>
                             <div className="p-4 w-[90%] h-3/5 border-[1px] rounded-xl border-color_orange/50 overflow-hidden">
-                                <Caroucel img={product.images} />
+                                <Caroucel img={product.product_images} />
                             </div>
-                            <p className="text-s1_5 text-center my-4 mx-auto">{product.description}</p>
+                            <p className="text-s1_5 text-center my-4 mx-auto px-4">{product.description}</p>
                             <div className="flex flex-col items-center text-s1_3 my-4">
                                 <h3 className="text-s1_5 font-medium">Os preços estão entre:</h3>
                                 <div className="flex justify-center items-center my-4 ">
                                     <span className="text-green-700">R$</span>
-                                    <span className="text-s2 text-green-800">{maxNumber(product.prices)[1]} e {maxNumber(product.prices)[0]}</span>
+                                    <span className="text-s2 text-green-800">{maxNumber(product.link)[1]} e {maxNumber(product.link)[0]}</span>
                                 </div>
                             </div>
                             <button
                                 onClick={(e) => handleShowProvider(e)}
+                                id={product.id}
                                 className="bg-green-700 text-white p-4 px-8 text-s1_5 rounded-2xl flex justify-center items-center gap-3 mb-12">
                                 Comprar agora <FaShoppingBasket />
                             </button>
@@ -91,7 +97,7 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
                             <div className="w-[150px] h-[100px] mx-auto">
                                 <Img imgs={"https://m.media-amazon.com/images/G/32/social_share/amazon_logo._CB633267191_.png"} />
                             </div>
-                            <span className="text-s1_5 bg-blue-700 p-2 rounded-lg text-white">R$ 99,90</span>
+                            {/* <span className="text-s1_5 bg-blue-700 p-2 rounded-lg text-white">R$ 99,90</span> */}
                         </div>
                         <div
                             data-provider="shopee"
@@ -101,7 +107,7 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
                             <div className="w-[150px] h-[100px] mx-auto">
                                 <Img imgs={"https://cuponomia-a.akamaihd.net/img/stores/original/shopee-637268866674503035.png"} />
                             </div>
-                            <span className="text-s1_5 bg-blue-700 p-2 rounded-lg text-white">R$ 97,99</span>
+                            {/* <span className="text-s1_5 bg-blue-700 p-2 rounded-lg text-white">R$ 97,99</span> */}
                         </div>
                     </div>
                 </div>
