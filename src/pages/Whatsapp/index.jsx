@@ -5,7 +5,6 @@ import { HomeProvider } from '../../contexts/Home/HomeProvider';
 import Footer from "../../components/templates/Footer/Footer"
 import Header from "../../components/templates/Header/Header";
 
-import { Img } from "../../components/atoms/Img"
 import { Button } from "../../components/atoms/Button";
 import { FaSignInAlt } from "react-icons/fa";
 
@@ -20,12 +19,10 @@ const Whatsapp = () => {
         <HomeProvider>
             <Header user={user} />
             <main className="w-full max-w-[1600px] mx-auto bg-white flex flex-col items-center">
-                <div className="flex w-full md:w-1/2 mx-auto">
-                    <Img imgs={"https://i.ibb.co/4dz4GyX/Grupo-secreto-de-receitas.webp"} />
-                </div>
-                <p className="text-s2 font-medium leading-[3rem] w-full md:w-1/2  text-center my-12">
-                    Entre agora mesmo em nosso grupo do whatsapp, onde compartilhamos diariamente
-                    as melhores receitas criadas pela Tem sabor.
+                <h2 className="text-s3 font-bold p-4 text-color_orange w-full md:w-1/2  text-center ">Parabéns!</h2>
+                <h3 className="text-s2 font-medium p-4  w-full md:w-1/2  text-center ">Você está muito perto de fazer parte do nosso grupo secreto de receitas!</h3>
+                <p className="text-s1_7  w-full md:w-1/2  text-center ">
+                    Compartilhamos diariamente as melhores receitas criadas pela Tem sabor.
                 </p>
 
                 <Button event={handleClickButton} customClass="btn-primary p-4 px-8 text-s2 my-8">Entrar no grupo <FaSignInAlt /> </Button>
