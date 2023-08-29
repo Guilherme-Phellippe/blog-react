@@ -11,6 +11,7 @@ import PrepareMode from "../../atoms/PrepareMode";
 import RecipeChefInfo from "../../molecules/RecipeChefInfo";
 import LikeComentsSaveButtons from "../../molecules/LikeComentSaveButtons";
 import ProductsUsedRecipe from '../../molecules/ProductsUsedRecipe';
+import ArticleAds from '../../atoms/LineAds/ArticleAds';
 
 
 export default function InfoRecipeContent({ recipe, user }) {
@@ -57,8 +58,8 @@ export default function InfoRecipeContent({ recipe, user }) {
     return (
         recipe &&
         <div className="w-full flex flex-col" key={recipe.id}>
-            <div className="w-full flex">
 
+            <div className="w-full flex">
                 <div className="w-full md:w-2/3 p-4">
                     <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
                     <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
@@ -84,6 +85,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                             stuffing_ing={recipe.stuffing_ing}
                             type_stuffing_ing={recipe.type_stuffing_ing}
                         />
+                        <ArticleAds />
                         <PrepareMode
                             prepareMode={recipe.prepareMode}
                             type_prepare_mode={recipe.type_prepare_mode}

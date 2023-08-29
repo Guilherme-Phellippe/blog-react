@@ -5,6 +5,7 @@ import { useFeedApi, useRecipeApi } from '../../../hooks/useApi';
 import { Loading } from '../../atoms/Loading/Loading';
 
 import InfoRecipeContent from "../../organisms/InfoRecipeContent";
+import BannerAds from '../../atoms/LineAds/BannerAds';
 const IconsShare = lazy(() => import('../../organisms/IconsShare'))
 const MenuMobile = lazy(() => import('../MenuMobile'))
 
@@ -32,6 +33,8 @@ function RecipeMain({ user }) {
         })();
     }, [slug]);
 
+
+
     return (
         recipe &&
         <div className="w-full max-w-[1500px] min-h-screen mx-auto">
@@ -42,6 +45,8 @@ function RecipeMain({ user }) {
                     className='adsbyalkware'
                     data-format='alk-banner'
                 ></div>
+
+                <BannerAds />
 
                 <div className="w-full bg-white min-h-screen overflow-hidden">
                     <InfoRecipeContent
