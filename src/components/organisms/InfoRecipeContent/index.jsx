@@ -109,6 +109,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                                     controls
                                     autoPlay={true}
                                     loop={true}
+                                    muted={true}
                                     className="h-[350px] w-full"
                                     src="https://cvf.shopee.com.br/file/de55f605a59230107f84fc9b62466a87"
                                 > </video>
