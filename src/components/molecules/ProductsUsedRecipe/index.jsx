@@ -51,7 +51,6 @@ const ProductsUsedRecipe = ({ usedProducts }) => {
             (async ()=>{
                 const { data } = await axios.get("https://alk.temsabor.blog/products_ad").catch(err => console.log(err))
                 const filteredUsedProducts = data.filter(d =>  usedProducts.find(up => up === d.id))
-                console.log(filteredUsedProducts)
                 setProducts(filteredUsedProducts)
             })()
         }

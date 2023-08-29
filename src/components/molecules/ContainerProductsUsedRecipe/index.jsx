@@ -1,14 +1,15 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { MdClose } from "react-icons/md"
 import Caroucel from "../../molecules/CarouselMidiasContent"
 import { formatTextLong } from "../../../scripts/formatTextLong";
 import { FaShoppingBasket } from "react-icons/fa";
-import { Img } from "../../atoms/Img";
+import ChooseProvider from "../ChooseProvider";
+
 
 const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
     const refContainer = useRef();
     const refAllProducts = useRef();
-    const refAllProviders = useRef();
+    const [productSelected, setProductSelected] = useState()
 
     useEffect(() => {
         if (refContainer.current) {
@@ -31,18 +32,12 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
 
     const handleShowProvider = ({ currentTarget }) => {
         refAllProducts.current.classList.add("hidden")
-        refAllProviders.current.classList.remove("hidden")
-        refAllProviders.current.classList.add("flex")
-        refAllProviders.current.id =  currentTarget.id
+        refAllProducts.current.classList.remove("flex")
+        const product = products.find(product => product.id === currentTarget.id)
+        setProductSelected(product)
     }
 
-    const handleClickProvider = ({ currentTarget })=> {
-        const provider = currentTarget.dataset.provider;
-        const id = refAllProviders.current.id
-        const productSelected = products.find(product => product.id === id)
-        const link = productSelected.link.find(l => l.provider === provider);
-        if(link) window.open(link.url)
-    }
+
 
 
     return (
@@ -82,36 +77,10 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
                 }
             </div>
 
-            <div
-                ref={refAllProviders}
-                className="hidden w-full h-full flex-col items-center gap-4 justify-center"
-            >
-                <div className="w-full md:w-1/2 flex flex-col gap-4 items-center bg-white">
-                    <h2 className="text-s2 text-center p-4 font-bold">Escolha sua plataforma preferida:</h2>
-                    <div className="flex gap-4 mb-16">
-                        <div
-                            data-provider="amazon"
-                            onClick={handleClickProvider}
-                            className="flex flex-col items-center cursor-pointer border-[1px] border-blue-700 rounded-2xl py-4"
-                        >
-                            <div className="w-[150px] h-[100px] mx-auto">
-                                <Img imgs={"https://m.media-amazon.com/images/G/32/social_share/amazon_logo._CB633267191_.png"} />
-                            </div>
-                            {/* <span className="text-s1_5 bg-blue-700 p-2 rounded-lg text-white">R$ 99,90</span> */}
-                        </div>
-                        <div
-                            data-provider="shopee"
-                            onClick={handleClickProvider}
-                            className="flex flex-col items-center cursor-pointer border-[1px] border-blue-700  rounded-2xl py-4"
-                        >
-                            <div className="w-[150px] h-[100px] mx-auto">
-                                <Img imgs={"https://cuponomia-a.akamaihd.net/img/stores/original/shopee-637268866674503035.png"} />
-                            </div>
-                            {/* <span className="text-s1_5 bg-blue-700 p-2 rounded-lg text-white">R$ 97,99</span> */}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {productSelected && <ChooseProvider product={productSelected} />}
+                
+
+
 
         </div>
     )
