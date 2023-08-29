@@ -114,7 +114,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                                 > </video>
                                 <a 
                                     href="https://amzn.to/45Pa18I"
-                                    className='text-s2 bg-green-700 text-white p-2 px-8 rounded-xl mt-12 flex items-center gap-2'
+                                    className='text-s2 bg-green-700 cursor-pointer hover:bg-green-600 transition-colors text-white p-2 px-8 rounded-xl mt-12 flex items-center gap-2'
                                 > <SlBasket />Comprar agora</a>
                             </div>
                         </LineAds>

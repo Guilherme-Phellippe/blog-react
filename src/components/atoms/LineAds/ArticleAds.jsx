@@ -14,7 +14,7 @@ const ArticleAds = () => {
                         href="https://amzn.to/3YSHUDe"
                         target='_blank'
                         rel="noreferrer"
-                        className='bg-green-700 px-2 py-1 rounded-lg text-white font-medium'
+                        className='bg-green-700 px-2 py-1 rounded-lg text-white font-medium cursor-pointer'
                     >Saiba mais</a>
                 </div>
             </div>
