@@ -13,12 +13,15 @@ import LikeComentsSaveButtons from "../../molecules/LikeComentSaveButtons";
 import ProductsUsedRecipe from '../../molecules/ProductsUsedRecipe';
 import ArticleAds from '../../atoms/LineAds/ArticleAds';
 import { SlBasket } from 'react-icons/sl';
+import { Img } from '../../atoms/Img';
 
 
 export default function InfoRecipeContent({ recipe, user }) {
     const refContainerAd = useRef();
 
     const handleContainerAdOnViewport = () => {
+        const divAd = refContainerAd.current.querySelector("div#container-ads");
+
         function isDivIsViewport() {
             const heightAd = refContainerAd.current.querySelector("div#container-ads").offsetHeight;
             const rect = refContainerAd?.current.getBoundingClientRect();
@@ -27,24 +30,17 @@ export default function InfoRecipeContent({ recipe, user }) {
 
 
         if (refContainerAd.current) {
-            const divAd = refContainerAd.current.querySelector("div#container-ads");
+            console.log(isDivIsViewport())
             if (isDivIsViewport()[0] && !isDivIsViewport()[1]) {
-                divAd.classList.add(`w-[${refContainerAd.current.offsetWidth}px]`)
-                divAd.classList.add("fixed");
-                divAd.classList.add("top-0");
-                divAd.classList.remove("sticky");
-                divAd.classList.remove("bottom-0");
-                divAd.classList.remove("absolute");
+                divAd.classList.add("fixed", "top-0")
+                divAd.classList.remove("absolute","bottom-0")
             } else if (isDivIsViewport()[1]) {
-                divAd.classList.remove("fixed");
-                divAd.classList.remove("top-0");
-                divAd.classList.add("absolute");
-                divAd.classList.add("bottom-0");
-            } else {
-                divAd.classList.remove("fixed");
-                divAd.classList.add("sticky");
-                divAd.classList.remove("top-0");
+                divAd.classList.remove("fixed", "top-0")
+                divAd.classList.add("absolute","bottom-0")
+            }else {
+                divAd.classList.remove("fixed", "top-0")
             }
+
 
         }
     }
@@ -113,7 +109,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                                     className="h-[350px] w-full"
                                     src="https://cvf.shopee.com.br/file/de55f605a59230107f84fc9b62466a87"
                                 > </video>
-                                <a 
+                                <a
                                     href="https://amzn.to/45Pa18I"
                                     className='text-s2 bg-green-700 cursor-pointer hover:bg-green-600 transition-colors text-white p-2 px-8 rounded-xl mt-12 flex items-center gap-2'
                                 > <SlBasket />Comprar agora</a>
@@ -127,12 +123,11 @@ export default function InfoRecipeContent({ recipe, user }) {
                         className="w-full h-[80vh] relative"
                         ref={refContainerAd}
                     >
-                        <div id="container-ads" className="sticky">
+                        <div id="container-ads" className="w-[300px] cursor-pointer">
                             <LineAds display={true}>
-                                <div
-                                    className="adsbyalkware"
-                                    data-format="alk-display"
-                                ></div>
+                                <a href="https://amzn.to/45vNFcn" className='w-full overflow-hidden'>
+                                    <Img imgs={"https://i.ibb.co/x3fVKNC/459-Sn-S-associates-1200x1200-CB428349983.jpg"} />
+                                </a>
                             </LineAds>
                         </div>
                     </div>
