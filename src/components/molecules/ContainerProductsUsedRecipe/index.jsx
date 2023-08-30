@@ -60,7 +60,7 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
 
             <div
                 ref={refAllProducts}
-                className="w-full md:w-3/4 h-full md:h-3/4 px-2 bg-white flex justify-between items-center overflow-hidden relative"
+                className="w-full md:w-3/4 max-w-[800px] h-full md:h-3/4 px-2 bg-white flex justify-between items-center overflow-hidden relative"
             >
                 <BsFillArrowLeftCircleFill
                     onClick={changeDisplayProduct}
@@ -68,12 +68,15 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
                     className="abasolute top-0 left-0 text-s4 z-[999] cursor-pointer fill-color_orange"
                 />
 
-                <div key={products[indexProduct].id} className="w-full md:w-4/5 h-full my-4 bg-white flex flex-col  items-center">
-                    <h2 className="text-center p-4 text-s1_7 font-bold text-color_orange">{formatTextLong(products[indexProduct].product_name, 70)}</h2>
-                    <div className="w-full md:w-3/4 border-[1px] rounded-xl border-color_orange/50 overflow-hidden grid place-items-center">
-                        <Caroucel img={products[indexProduct].product_images} />
+                <div key={products[indexProduct].id} className="w-full md:w-4/5 max-w-[500px] h-full my-4 bg-white flex flex-col  items-center">
+                    <h2 className="py-6 text-s2 font-bold text-color_orange">{formatTextLong(products[indexProduct].product_name, 70)}</h2>
+                    <div className="w-full border-[1px] rounded-xl border-color_orange/50 overflow-hidden grid place-items-center">
+                        <Caroucel 
+                            img={products[indexProduct].product_images}
+                            object="contain"
+                         />
                     </div>
-                    <p className="text-s1_5 text-center my-4 mx-auto">{products[indexProduct].description}</p>
+                    <p className="text-s1_5 text-center my-4 mx-auto text-color_text_black_light">{products[indexProduct].description}</p>
                     <div className="flex flex-col items-center text-s1_3 my-4">
                         <h3 className="text-s1_5 font-medium">Os preços estão entre:</h3>
                         <div className="flex justify-center items-center my-4 ">

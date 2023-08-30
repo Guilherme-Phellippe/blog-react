@@ -32,12 +32,12 @@ export default function ChooseProvider({ product }) {
 
     return (
         <div
-            className="w-full h-full flex flex-col items-center gap-4 justify-center"
+            className="w-full max-w-[800px] h-full flex flex-col items-center gap-4 justify-center"
         >
-            <div className="w-full md:w-1/2 flex flex-col gap-4 rounded-lg items-center bg-white">
-                <h3 className="text-s2 text-center pt-4">Fazemos uma busca avançada em cada marketplace</h3>
+            <div className="w-full md:w-4/5 flex flex-col gap-4 rounded-lg items-center bg-white">
+                <h3 className="text-s2 text-center pt-4 font-bold">Fazemos uma busca avançada em cada marketplace</h3>
                 <h3 className="text-s2 text-center">Buscando sempre:</h3>
-                <div className="flex flex-col">
+                <div className="flex flex-col border-[1px] border-green-700/30 p-4 px-8 rounded-xl">
                     <span className="flex items-center gap-2 text-s1_4 my-1"><FaCheckCircle className="text-green-700" /> Melhores preços</span>
                     <span className="flex items-center gap-2 text-s1_4 my-1 "><FaCheckCircle className="text-green-700" /> Compra segura</span>
                     <span className="flex items-center gap-2 text-s1_4 my-1 "><FaCheckCircle className="text-green-700" /> Envio imediato</span>

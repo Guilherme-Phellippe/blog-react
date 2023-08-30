@@ -3,7 +3,7 @@ import { HomeContext } from "../../../contexts/Home/HomeProvider"
 import { Img } from "../../atoms/Img";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl"
 
-export default function CarouselMidiasContent({ img: imgs }) {
+export default function CarouselMidiasContent({ img: imgs, object = "cover" }) {
     const { valueSearch } = useContext(HomeContext);
 
 
@@ -44,7 +44,7 @@ export default function CarouselMidiasContent({ img: imgs }) {
                                 key={index}
                                 className={`flex-none ${imgs.length <= 1 ? 'w-full' : 'w-[95%] border-l-2 ml-2 border-l-white snap-start'}  `}
                             >
-                                <Img imgs={img} alt={"Imagens relacionadas ao conteúdo"} />
+                                <Img imgs={img} alt={"Imagens relacionadas ao conteúdo"} object={object} />
                             </div>
                         )
                     })

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import lazySizes from 'lazysizes';
 
-export const Img = ({ imgs, alt, title }) => {
+export const Img = ({ imgs, alt, title, object = "cover" }) => {
   //1250, 650, 300, 100 = sizes in hostImages
   const imageRef = useRef(null)
   const [src, setSrc] = useState('')
@@ -36,7 +36,7 @@ export const Img = ({ imgs, alt, title }) => {
 
   return (
     <img
-      className={`lazyloader w-full h-full object-cover object-center`}
+      className={`lazyloader w-full h-full object-${object} object-center`}
       src="https://i.ibb.co/zsRwZ69/Design-sem-nome-24.webp"
       alt={alt}
       title={title}
