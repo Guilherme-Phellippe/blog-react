@@ -120,7 +120,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                     >
                         <div id="container-ads" className="w-[300px] cursor-pointer">
                             <LineAds facebookEventName={"perpetual_products"}>
-                                <a href="https://amzn.to/45vNFcn" className='w-full overflow-hidden'>
+                                <a href="https://amzn.to/45vNFcn" target='_blank' className='w-full overflow-hidden' rel="noreferrer">
                                     <Img imgs={"https://i.ibb.co/x3fVKNC/459-Sn-S-associates-1200x1200-CB428349983.jpg"} />
                                 </a>
                             </LineAds>
