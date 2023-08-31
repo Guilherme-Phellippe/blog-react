@@ -1,8 +1,15 @@
 import { Img } from "../Img"
 
 const ArticleAds = () => {
+
+    const handleClickButton = ()=>{
+        // eslint-disable-next-line no-undef
+        fbq('trackCustom', "ad_ingredient_list");
+    }
+
+
     return (
-        <div className="flex max-h-[80px] shadow-md">
+        <div className="flex max-h-[80px] shadow-md" onClick={handleClickButton}>
             <div className="w-1/5">
                 <Img imgs={"https://m.media-amazon.com/images/I/41qN01i9TuL._AC_.jpg"} />
             </div>
