@@ -16,7 +16,13 @@ const ProductsUsedRecipe = ({ usedProducts }) => {
                 setProducts(filteredUsedProducts)
             })()
         }
-    },[usedProducts])
+    },[usedProducts]);
+
+    const handleClickButton = ()=>{
+        setContainerProducts(true)
+        // eslint-disable-next-line no-undef
+        fbq('trackCustom', 'EvProductsUsedRecipe', {recipe: '0'});
+    }
 
     return (
         !!products?.length &&
@@ -27,7 +33,7 @@ const ProductsUsedRecipe = ({ usedProducts }) => {
                     <Img imgs={"https://i.ibb.co/tYHJgtd/Design-sem-nome-8.jpg"} />
                 </div>
                 <button
-                    onClick={() => setContainerProducts(true)}
+                    onClick={handleClickButton}
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-color_orange rounded-3xl text-white font-bold text-s1_3"
                 >
                     Veja todos os produtos
