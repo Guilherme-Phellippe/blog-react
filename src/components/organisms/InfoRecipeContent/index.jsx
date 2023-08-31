@@ -30,18 +30,13 @@ export default function InfoRecipeContent({ recipe, user }) {
 
 
         if (refContainerAd.current) {
-            console.log(isDivIsViewport())
             if (isDivIsViewport()[0] && !isDivIsViewport()[1]) {
                 divAd.classList.add("fixed", "top-0")
                 divAd.classList.remove("absolute","bottom-0")
             } else if (isDivIsViewport()[1]) {
                 divAd.classList.remove("fixed", "top-0")
                 divAd.classList.add("absolute","bottom-0")
-            }else {
-                divAd.classList.remove("fixed", "top-0")
-            }
-
-
+            }else  divAd.classList.remove("fixed", "top-0")
         }
     }
 
@@ -64,7 +59,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                     <PreparationInformation recipe={recipe} />
                     <RecipeChefInfo recipe={recipe} />
 
-                    <LineAds display={true}>
+                    <LineAds facebookEventName={"google_ad"}>
                         <ins
                             className="adsbygoogle"
                             style={{ display: "block" }}
@@ -94,7 +89,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                             <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
                         </div>
                         <ListRecipeComments content={recipe} user={user} />
-                        <LineAds display={true}>
+                        <LineAds facebookEventName={"video_ad_amazon_product"}>
                             <div className="adsbyalkware"
                                 data-ad-format="alk-banner"
                             ></div>
@@ -124,7 +119,7 @@ export default function InfoRecipeContent({ recipe, user }) {
                         ref={refContainerAd}
                     >
                         <div id="container-ads" className="w-[300px] cursor-pointer">
-                            <LineAds display={true}>
+                            <LineAds facebookEventName={"perpetual_products"}>
                                 <a href="https://amzn.to/45vNFcn" className='w-full overflow-hidden'>
                                     <Img imgs={"https://i.ibb.co/x3fVKNC/459-Sn-S-associates-1200x1200-CB428349983.jpg"} />
                                 </a>

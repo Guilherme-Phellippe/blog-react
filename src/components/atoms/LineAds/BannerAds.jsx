@@ -17,10 +17,20 @@ const BannerAds = () => {
         }, 1500);
 
         return () => clearInterval(interval)
-    }, [])
+    }, []);
+
+
+    const handleClickButton = ()=>{
+        // eslint-disable-next-line no-undef
+        fbq('trackCustom', "banner_amazon_top");
+    }
 
     return (
-        <div id="banner-ads" className="w-full h-[100px] md:h-[150px] lg:h-[180px] my-12 black cursor-pointer relative overflow-hidden">
+        <div 
+            id="banner-ads" 
+            onClick={handleClickButton}
+            className="w-full h-[100px] md:h-[150px] lg:h-[180px] my-12 black cursor-pointer relative overflow-hidden"
+        >
             <a href="https://amzn.to/3sCfnWg" target='_blank' rel="noreferrer">
                 <Img imgs={"https://i.ibb.co/7SjJhyp/Tudo-para-1.jpg"} />
                 <div ref={refContainerTextAd} className="flex flex-col">

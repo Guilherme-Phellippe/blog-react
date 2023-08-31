@@ -21,7 +21,7 @@ const ProductsUsedRecipe = ({ usedProducts }) => {
     const handleClickButton = ()=>{
         setContainerProducts(true)
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', 'EvProductsUsedRecipe', {recipe: '0'});
+        fbq('trackCustom', 'ev_products_used_recipe');
     }
 
     return (
