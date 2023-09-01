@@ -8,6 +8,8 @@ const Video = ({ src, title }) => {
     const isExpand = useRef(false);
 
     const handlePlay = () => {
+        // eslint-disable-next-line no-undef
+        fbq('trackCustom', "play_video_recipe");
         const vimeoPlayer = refContainer.current.querySelector("iframe")
         const layer = refContainer.current.querySelector("div[data-layer='play']")
         if (isPlay.current) {
