@@ -18,9 +18,7 @@ export const FeedRecipes = ({ content, hasSearch, handleIdForAddListRemove }) =>
                 <HeaderInfoFeed content={content} onClick={handleIdForAddListRemove} />
 
                 <CarouselMidiasContent
-                    img={content.images_recipe}
-                    name_recipe={content.name_recipe}
-                    category={content.category.name_category}
+                    recipe={content}
                 />
 
                 <AddRecipeInfo

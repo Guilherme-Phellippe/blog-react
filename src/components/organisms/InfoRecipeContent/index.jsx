@@ -54,7 +54,7 @@ export default function InfoRecipeContent({ recipe, user }) {
             <div className="w-full flex">
                 <div className="w-full md:w-2/3 p-4">
                     <InfoRecipeHeader nmr_hearts={recipe.nmr_hearts} name_recipe={recipe.name_recipe} />
-                    <CarouselMidiasContent name_recipe={recipe.name_recipe} img={recipe.images_recipe} />
+                    <CarouselMidiasContent recipe={recipe} />
                     {!!recipe?.products_used_recipe.length && <ProductsUsedRecipe usedProducts={recipe?.products_used_recipe} />}
                     <PreparationInformation recipe={recipe} />
                     <RecipeChefInfo recipe={recipe} />

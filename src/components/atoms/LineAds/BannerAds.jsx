@@ -40,6 +40,7 @@ const BannerAds = () => {
         fbq('trackCustom', "banner_top");
     }
 
+
     return (
         <div
             id="banner-ads"
@@ -55,3 +56,4 @@ const BannerAds = () => {
 }
 
 export default BannerAds
+
