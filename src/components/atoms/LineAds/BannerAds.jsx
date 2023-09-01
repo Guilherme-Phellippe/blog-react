@@ -1,45 +1,54 @@
 import { useEffect, useRef } from "react";
 import { Img } from "../Img";
 
+const images = {
+    mobile: [
+        "https://i.ibb.co/zbKm768/Design-sem-nome-9.jpg",
+        "https://i.ibb.co/bv1yj42/2.jpg",
+        "https://i.ibb.co/1MCsJ01/3.jpg",
+    ],
+    desktop: [
+        "https://i.ibb.co/LzMcDBT/Como.jpg",
+        "https://i.ibb.co/ryvdkR5/2.jpg",
+        "https://i.ibb.co/42Ryq93/3.jpg"
+    ]
+}
+
 const BannerAds = () => {
-    const refContainerTextAd = useRef()
+    const refContainer = useRef()
 
 
     //efeito no banner de anuncio
     useEffect(() => {
-        const interval = setInterval(() => {
+        var count = 0;
+        const img = refContainer.current.querySelector("img")
+        img.src = window.innerWidth >= 680 ? images.desktop[count] : images.mobile[count]
 
-            const allH2 = refContainerTextAd.current.querySelectorAll("h2")
-            allH2.forEach(h2 => {
-                h2.classList.add("translate-y-0")
-                h2.classList.remove("translate-y-80")
-            });
-        }, 1500);
+        const interval = setInterval(()=>{
+            count >= 2 ? count = 0 : count++;
+            img.src = window.innerWidth >= 680 ? images.desktop[count] : images.mobile[count]
+        }, 7000);
+
+
 
         return () => clearInterval(interval)
     }, []);
 
 
-    const handleClickButton = ()=>{
+    const handleClickButton = () => {
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', "banner_amazon_top");
+        fbq('trackCustom', "banner_top");
     }
 
     return (
-        <div 
-            id="banner-ads" 
+        <div
+            id="banner-ads"
+            ref={refContainer}
             onClick={handleClickButton}
-            className="w-full h-[100px] md:h-[150px] lg:h-[180px] my-12 black cursor-pointer relative overflow-hidden"
+            className="w-full h-[170px] md:h-[170px] lg:h-[180px] shadow-md my-12 black cursor-pointer relative overflow-hidden"
         >
-            <a href="https://amzn.to/3sCfnWg" target='_blank' rel="noreferrer">
-                <Img imgs={"https://i.ibb.co/7SjJhyp/Tudo-para-1.jpg"} />
-                <div ref={refContainerTextAd} className="flex flex-col">
-                    <h2 className='translate-y-80 transition-transform duration-500 absolute top-[7%] lg:top-[10%] -translate-x-1/2 left-1/2 text-s1_2 md:text-s1_7 lg:text-s2_5 text-zinc-100 font-bold'>Tudo para sua</h2>
-                    <h2 className='translate-y-80 transition-transform duration-500 absolute top-[18%] lg:top-[22%] -translate-x-1/2 left-1/2 text-s2_5 md:text-s3 lg:text-s4 text-color_orange font-bold'>Cozinha</h2>
-                    <h2 className='translate-y-80 transition-transform duration-500 absolute top-[42%] lg:top-[45%] -translate-x-1/2 left-1/2 text-s1_2 md:text-s1_5 lg:text-s1_7 text-zinc-100 font-bold'>está aqui</h2>
-                    <h2 className='translate-y-80 transition-transform duration-500 absolute top-[58%] lg:top-[58%] -translate-x-1/2 left-1/2 text-s1_2 md:text-s1_5 lg:text-s1_7 text-zinc-100 font-bold'>com <span className='bg-color_red rounded-lg px-1'>Frete grátis</span></h2>
-                    <h2 className='translate-y-80 transition-transform duration-500 absolute top-[75%] lg:top-[75%] -translate-x-1/2 left-1/2 text-s1_2 md:text-s1_5 lg:text-s1_7 text-zinc-100 bg-green-700 md:p-2 lg:p-3 px-4 rounded-2xl font-bold'>Venha conferir</h2>
-                </div>
+            <a href="https://go.hotmart.com/F86370228D" target='_blank' rel="noreferrer">
+                <Img imgs={""} object={window.innerWidth >= 680 ? "contain" : "cover"} />
             </a>
         </div>
     )
