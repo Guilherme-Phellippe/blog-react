@@ -1,31 +1,46 @@
 import { useRef } from "react"
-import { FaPlay } from "react-icons/fa";
+import { FaExpand, FaPause, FaPlay } from "react-icons/fa";
 
 const Video = ({ src, title }) => {
     const refContainer = useRef();
+    const refControls = useRef();
+    const isPlay = useRef(false);
+    const isExpand = useRef(false);
 
-    const handlePlay = ()=>{
+    const handlePlay = () => {
         const vimeoPlayer = refContainer.current.querySelector("iframe")
         const layer = refContainer.current.querySelector("div[data-layer='play']")
-        console.log(vimeoPlayer.dataset.play)
-        if(vimeoPlayer.dataset.play === "true"){
-            if(window.innerWidth <= 680 || window.innerHeight <= 480){
-                refContainer.current.classList.remove("fixed", "top-0", "left-0", "z-[1000]")
-                refContainer.current.classList.add("relative")
+        console.log(isPlay.current)
+        if (isPlay.current) {
+            if (isExpand.current) {
+                if (window.innerWidth <= 680 || window.innerHeight <= 480) handleExpandVideo()
             }
             vimeoPlayer.contentWindow.postMessage('{"method":"setVolume", "value":"0"}', '*');
             vimeoPlayer.contentWindow.postMessage('{"method":"pause"}', '*');
             layer.style.opacity = "1"
-            vimeoPlayer.dataset.play = "false"
-        }else{
-            if(window.innerWidth <= 680 || window.innerHeight <= 480){
-                refContainer.current.classList.add("fixed", "top-0", "left-0", "z-[1000]")
-                refContainer.current.classList.remove("relative")
-            }
+            refControls.current.querySelector("#play").classList.remove("hidden")
+            refControls.current.querySelector("#pause").classList.add("hidden")
+            isPlay.current = false
+        } else {
+            if (window.innerWidth <= 680 || window.innerHeight <= 480) handleExpandVideo()
             vimeoPlayer.contentWindow.postMessage('{"method":"setVolume", "value":"1"}', '*');
             vimeoPlayer.contentWindow.postMessage('{"method":"play"}', '*');
             layer.style.opacity = "0"
-            vimeoPlayer.dataset.play = "true"
+            refControls.current.querySelector("#play").classList.add("hidden")
+            refControls.current.querySelector("#pause").classList.remove("hidden")
+            isPlay.current = true
+        }
+    }
+
+    const handleExpandVideo = () => {
+        if (isExpand.current) {
+            refContainer.current.classList.remove("fixed", "top-0", "left-0", "z-[1000]")
+            refContainer.current.classList.add("relative")
+            isExpand.current = false
+        } else {
+            refContainer.current.classList.add("fixed", "top-0", "left-0", "z-[1000]")
+            refContainer.current.classList.remove("relative")
+            isExpand.current = true
         }
     }
 
@@ -42,24 +57,31 @@ const Video = ({ src, title }) => {
                 data-play="false"
             ></iframe>
 
-            {/* <div className={`w-full p-4 absolute bottom-0 left-0 flex justify-around bg-color_orange z-20 ${play === 1 ? "invisible" : "visible"}`}>
-                {play === 0 ?
-                    <FaPlay className="text-s2 cursor-pointer text-white" onClick={() => setPlay(1)} /> :
-                    <FaPause className="text-s2 cursor-pointer text-white" onClick={() => setPlay(0)} />
-                }
-                {mute === 0 ?
-                    <FaMicrophone className="text-s2 cursor-pointer text-white" onClick={() => setMute(1)} /> :
-                    <FaMicrophoneSlash className="text-s2 cursor-pointer text-white" onClick={() => setMute(0)} />
-                }
+            <div
+                ref={refControls}
+                className={`w-full p-4 absolute bottom-0 left-0 flex justify-between bg-color_orange z-20`}
+            >
+                <FaPlay
+                    id="play"
+                    className="text-s2 cursor-pointer text-white"
+                    onClick={handlePlay}
+                    data-layer="play"
+                />
+                <FaPause
+                    id="pause"
+                    className="text-s2 cursor-pointer text-white hidden"
+                    onClick={handlePlay}
+                    data-layer="pause"
+                />
                 <FaExpand className="text-s2 cursor-pointer text-white" data-expand={true} onClick={handleExpandVideo} />
-            </div> */}
+            </div>
 
-            <div 
+            <div
                 className="absolute top-0 left-0 w-full h-full bg-black/30 flex items-center justify-center"
                 onClick={handlePlay}
                 data-layer="play"
             >
-                <FaPlay className="text-s5 cursor-pointer text-white bg-color_orange p-4 rounded-xl"  /> :
+                <FaPlay className="text-s5 cursor-pointer text-white bg-color_orange p-4 rounded-xl" /> :
             </div>
 
         </div>
