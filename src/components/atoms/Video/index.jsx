@@ -10,7 +10,6 @@ const Video = ({ src, title }) => {
     const handlePlay = () => {
         const vimeoPlayer = refContainer.current.querySelector("iframe")
         const layer = refContainer.current.querySelector("div[data-layer='play']")
-        console.log(isPlay.current)
         if (isPlay.current) {
             if (isExpand.current) {
                 if (window.innerWidth <= 680 || window.innerHeight <= 480) handleExpandVideo()

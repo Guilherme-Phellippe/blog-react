@@ -59,17 +59,6 @@ export default function InfoRecipeContent({ recipe, user }) {
                     <PreparationInformation recipe={recipe} />
                     <RecipeChefInfo recipe={recipe} />
 
-                    <LineAds facebookEventName={"google_ad"}>
-                        <ins
-                            className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-format="fluid"
-                            data-ad-layout-key="-fc+51+9h-cr-91"
-                            data-ad-client="ca-pub-4781060024956035"
-                            data-ad-slot="1453561477"
-                        ></ins>
-                    </LineAds>
-
                     <div className="w-full min-h-screen relative">
 
                         <IngredientsList
