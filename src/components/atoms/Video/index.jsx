@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { FaExpand, FaMicrophone, FaMicrophoneSlash, FaPause, FaPlay } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 
 const Video = ({ src, title }) => {
     const refContainer = useRef();
@@ -35,10 +35,10 @@ const Video = ({ src, title }) => {
             className="w-full h-full relative group cursor-pointer bg-black grid place-items-center"
         >
 
-            <iframe src="https://player.vimeo.com/video/860281939?badge=1&amp;title=0&amp;byline=0&amp;controls=0"
+            <iframe src={`${src}?badge=1&title=0&byline=0&controls=0`}
                 allow="autoplay; fullscreen; picture-in-picture"
                 className="absolute top-0 left-0; w-full h-full"
-                title="SnapInsta.io-Bolo de paçoca _ Chef Isis Alvarez-(1080p)"
+                title={title}
                 data-play="false"
             ></iframe>
 
