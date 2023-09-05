@@ -52,7 +52,7 @@ const CursoBoloDePote = () => {
                         {
                             showButtonBuy &&
                             <div className="w-full flex flex-col items-center " >
-                                <h2 className="text-s2_5 py-4 my-4">Vagas preenchidas em tempo real</h2>
+                                <h2 className="text-s2_5 py-4 my-4 text-center">Vagas preenchidas em tempo real</h2>
                                 <VacanciesFilled />
                                 <button
                                     onClick={handleBuyNow}

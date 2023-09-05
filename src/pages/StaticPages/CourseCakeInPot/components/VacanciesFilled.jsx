@@ -41,7 +41,7 @@ const VacanciesFilled = () => {
     }
 
     return (
-        <div className="w-[380px] md:w-[400px] flex justify-center flex-wrap gap-2">
+        <div className="w-[380px] md:w-[400px] max-w-[80%] flex justify-center flex-wrap gap-2">
             {
                 vacanciesFilled.map(vancancy => {
                     const { index } = vancancy
