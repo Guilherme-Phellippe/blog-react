@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import VideoCourse from "./components/VideoCourse";
 import WelcomeCard from "./components/WelcomeCard";
 import VacanciesFilled from "./components/VacanciesFilled";

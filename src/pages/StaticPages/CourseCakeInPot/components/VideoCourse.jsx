@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { FaPlay } from "react-icons/fa"
-import { IoRefresh } from "react-icons/io5";
 
 const VideoCourse = () => {
     const refContainer = useRef();
