@@ -7,6 +7,7 @@ import LoadingInput from './components/atoms/Loading/LoadingInput';
 
 
 import './index.css';
+import CursoBoloDePote from './pages/StaticPages/CursoBoloDePote';
 
 
 const Recipe = lazy(() => import('./pages/Recipe/index'));
@@ -50,6 +51,7 @@ root.render(
           <Route path='/policy' element={<Suspense fallback={<LoadingInput />} ><Policy /></Suspense>} />
           <Route path='*' element={<Suspense fallback={<LoadingInput />} ><NotFound /></Suspense>} />
           <Route path='/whatsapp' element={<Whatsapp />} />
+          <Route path='/historia-da-julia-galvao' element={<Suspense fallback={<LoadingInput />} ><CursoBoloDePote /></Suspense>} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

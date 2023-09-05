@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Img } from "../Img";
+import { Link } from "react-router-dom";
 
 const images = {
     mobile: [
@@ -24,7 +25,7 @@ const BannerAds = () => {
         const img = refContainer.current.querySelector("img")
         img.src = window.innerWidth >= 680 ? images.desktop[count] : images.mobile[count]
 
-        const interval = setInterval(()=>{
+        const interval = setInterval(() => {
             count >= 2 ? count = 0 : count++;
             img.src = window.innerWidth >= 680 ? images.desktop[count] : images.mobile[count]
         }, 7000);
@@ -47,10 +48,10 @@ const BannerAds = () => {
             ref={refContainer}
             onClick={handleClickButton}
             className="w-full h-[170px] md:h-[170px] lg:h-[180px] shadow-md my-12 black cursor-pointer relative overflow-hidden"
-        >
-            <a href="https://go.hotmart.com/F86370228D" target='_blank' rel="noreferrer">
-                <Img imgs={""} object={window.innerWidth >= 680 ? "contain" : "cover"} />
-            </a>
+        >   
+        <Link to={"/historia-da-julia-galvao"}>
+            <Img imgs={""} object={window.innerWidth >= 680 ? "contain" : "cover"} />
+        </Link>
         </div>
     )
 }

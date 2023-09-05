@@ -1,15 +1,17 @@
 import { useRef } from "react"
 import { FaExpand, FaPause, FaPlay } from "react-icons/fa";
 
-const Video = ({ src, title }) => {
+const Video = ({ src, title, controls, evFacebook }) => {
     const refContainer = useRef();
     const refControls = useRef();
+    const refProgress = useRef();
     const isPlay = useRef(false);
     const isExpand = useRef(false);
 
     const handlePlay = () => {
+
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', "play_video_recipe");
+        fbq('trackCustom', evFacebook);
         const vimeoPlayer = refContainer.current.querySelector("iframe")
         const layer = refContainer.current.querySelector("div[data-layer='play']")
         if (isPlay.current) {
@@ -19,18 +21,20 @@ const Video = ({ src, title }) => {
             vimeoPlayer.contentWindow.postMessage('{"method":"setVolume", "value":"0"}', '*');
             vimeoPlayer.contentWindow.postMessage('{"method":"pause"}', '*');
             layer.style.opacity = "1"
-            refControls.current.querySelector("#play").classList.remove("hidden")
-            refControls.current.querySelector("#pause").classList.add("hidden")
-            isPlay.current = false
+            refControls.current?.querySelector("#play").classList.remove("hidden")
+            refControls.current?.querySelector("#pause").classList.add("hidden")
+            isPlay.current = false;
         } else {
             if (window.innerWidth <= 680 || window.innerHeight <= 480) handleExpandVideo()
             vimeoPlayer.contentWindow.postMessage('{"method":"setVolume", "value":"1"}', '*');
             vimeoPlayer.contentWindow.postMessage('{"method":"play"}', '*');
             layer.style.opacity = "0"
-            refControls.current.querySelector("#play").classList.add("hidden")
-            refControls.current.querySelector("#pause").classList.remove("hidden")
+            refControls.current?.querySelector("#play").classList.add("hidden")
+            refControls.current?.querySelector("#pause").classList.remove("hidden")
             isPlay.current = true
         }
+
+
     }
 
     const handleExpandVideo = () => {
@@ -58,24 +62,39 @@ const Video = ({ src, title }) => {
                 data-play="false"
             ></iframe>
 
-            <div
-                ref={refControls}
-                className={`w-full p-4 absolute bottom-0 left-0 flex justify-between bg-color_orange z-20`}
-            >
-                <FaPlay
-                    id="play"
-                    className="text-s2 cursor-pointer text-white"
-                    onClick={handlePlay}
-                    data-layer="play"
-                />
-                <FaPause
-                    id="pause"
-                    className="text-s2 cursor-pointer text-white hidden"
-                    onClick={handlePlay}
-                    data-layer="pause"
-                />
-                <FaExpand className="text-s2 cursor-pointer text-white" data-expand={true} onClick={handleExpandVideo} />
-            </div>
+            {
+                <div
+                    ref={refControls}
+                    className={`w-full p-4 absolute bottom-0 left-0 flex justify-between bg-color_orange z-20`}
+                >
+                    <div className="w-1/5 flex justify-center">
+                        <FaPlay
+                            id="play"
+                            className="text-s2 cursor-pointer text-white"
+                            onClick={handlePlay}
+                            data-layer="play"
+                        />
+                        <FaPause
+                            id="pause"
+                            className="text-s2 cursor-pointer text-white hidden"
+                            onClick={handlePlay}
+                            data-layer="pause"
+                        />
+                    </div>
+                    <div className="w-3/5">
+                        <div
+                            className="w-full h-full flex bg-zinc-100 overflow-hidden"
+                            ref={refProgress}
+                        >
+                            <span className="w-full h-full bg-color_orange/50"></span>
+                        </div>
+                    </div>
+                    <div className="w-1/5 flex justify-center">
+                        <FaExpand className="text-s2 cursor-pointer text-white" data-expand={true} onClick={handleExpandVideo} />
+                    </div>
+                </div>
+            }
+
 
             <div
                 className="absolute top-0 left-0 w-full h-full bg-black/30 flex items-center justify-center"

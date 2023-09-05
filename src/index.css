@@ -65,3 +65,18 @@ h1,h2,h3,h4,h5,h6,p,span{
 
   
 }
+
+@keyframes grownUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-grown-in {
+  animation: grownUp .5s linear infinite alternate;
+}
+
+
