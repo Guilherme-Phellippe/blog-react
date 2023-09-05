@@ -7,7 +7,7 @@ import LoadingInput from './components/atoms/Loading/LoadingInput';
 
 
 import './index.css';
-import CursoBoloDePote from './pages/StaticPages/CursoBoloDePote';
+import CursoBoloDePote from './pages/StaticPages/CourseCakeInPot/CursoBoloDePote';
 
 
 const Recipe = lazy(() => import('./pages/Recipe/index'));
