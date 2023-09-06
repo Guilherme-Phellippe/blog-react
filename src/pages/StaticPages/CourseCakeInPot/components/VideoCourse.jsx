@@ -1,17 +1,20 @@
 import { useEffect, useRef } from "react";
 import { FaPlay } from "react-icons/fa"
+import { useLocation } from "react-router-dom";
 
 const VideoCourse = () => {
     const refContainer = useRef();
     const refProgressBar = useRef();
     const isPlay = useRef(false);
     const isExpand = useRef(false);
+    const { search } = useLocation();
+    const fromFacebook = search.includes("facebook");
     var intervalVideoWatching;
 
     const handleClickPlayVideo = () => {
 
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', "video_depoiment_course_cake_pot", { intervalVideoWatching });
+        fromFacebook ?  fbq('trackCustom', "video_depoiment_course_cake_pot_fb", { intervalVideoWatching }) : fbq('trackCustom', "video_depoiment_course_cake_pot_tb", { intervalVideoWatching });
         const vimeoPlayer = refContainer.current.querySelector("iframe")
         const layer = refContainer.current.querySelector("div[data-layer='play']")
 
