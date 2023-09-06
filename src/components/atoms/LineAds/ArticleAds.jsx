@@ -18,7 +18,7 @@ const ArticleAds = () => {
                 />
             </div>
             <div className="w-5/6 flex flex-col">
-                <h2 className='text-s1_3 md:text-s1_5 leading-6 h-1/2 p-1 md:p-4 font-medium text-center'>Como eu consegui faturar mais de <span className="text-orange-400 font-bold">R$ 3.000 reais</span> por mês vendendo  <span className="text-orange-400 font-bold">bolos de pote </span> em casa?</h2>
+                <h2 className='text-s1_3 md:text-s1_5 leading-5 sm:leading-6 h-1/2 p-1 md:p-4 font-medium text-center'>Como eu consegui faturar mais de <span className="text-orange-400 font-bold">R$ 3.000 reais</span> por mês vendendo  <span className="text-orange-400 font-bold">bolos de pote </span> em casa?</h2>
                 <div className="flex p-2 md:px-4 w-full h-1/2 items-end justify-between">
                     <p className='sm:text-s1_1 md:text-s1_3 text-center w-3/4'>Clique em <span className="font-bold">SAIBA MAIS</span>, vou contar tudo</p>
                     <a
