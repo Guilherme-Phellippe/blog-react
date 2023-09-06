@@ -9,14 +9,14 @@ import { useLocation } from "react-router-dom";
 const CursoBoloDePote = () => {
     const [showButtonBuy, setButtonBuy] = useState();
     const { search } = useLocation();
+    const fromFacebook = search.includes("facebook");
 
 
     useEffect(() => {
         //ADD EVENT FACEBOOK
-        const fromFacebook = search.includes("facebook");
         // eslint-disable-next-line no-undef
-        fromFacebook ? fbq("trackCustom", "Page_view_from_facebook") : fbq("trackCustom", "Page_view_from_temsabor");
-    }, [search])
+        fromFacebook ? fbq("trackCustom", "Page_view_from_fb") : fbq("trackCustom", "Page_view_from_tb");
+    }, [fromFacebook])
 
 
     useEffect(() => {
@@ -34,12 +34,12 @@ const CursoBoloDePote = () => {
 
     const handleKnowMore = () => {
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', "Know_more");
+        fromFacebook ? fbq('trackCustom', "know_more_from_fb") : fbq('trackCustom', "know_more_from_tb") 
         window.location.href = "https://go.hotmart.com/F86370228D"
     }
     const handleBuyNow = () => {
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', "purchase");
+        fromFacebook ? fbq('trackCustom', "purchase_from_fb") : fbq('trackCustom', "purchase_from_tb") 
         window.location.href = "https://go.hotmart.com/F86370228D?ap=5873"
     }
 
