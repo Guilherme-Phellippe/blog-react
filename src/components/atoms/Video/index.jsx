@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { FaExpand, FaPause, FaPlay } from "react-icons/fa";
 
-const Video = ({ src, title, controls, evFacebook }) => {
+const Video = ({ src, title, evFacebook }) => {
     const refContainer = useRef();
     const refControls = useRef();
     const refProgress = useRef();

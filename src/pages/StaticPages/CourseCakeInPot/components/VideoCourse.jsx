@@ -11,7 +11,7 @@ const VideoCourse = () => {
     const handleClickPlayVideo = () => {
 
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', "video_depoiment_course_cake_pot");
+        fbq('trackCustom', "video_depoiment_course_cake_pot", { intervalVideoWatching });
         const vimeoPlayer = refContainer.current.querySelector("iframe")
         const layer = refContainer.current.querySelector("div[data-layer='play']")
 
@@ -90,7 +90,7 @@ const VideoCourse = () => {
                     ref={refProgressBar}
                     className="w-full h-[50px] absolute bottom-0 left-0 bg-white p-6 z-30 flex items-center gap-2"
                 >
-                   
+
                     <div className="w-full h-full overflow-hidden rounded-2xl bg-color_red flex">
                         <span className="w-full h-full border-r-2 bg-zinc-300 -translate-x-full flex items-center">
                         </span>
