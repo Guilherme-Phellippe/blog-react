@@ -44,7 +44,11 @@ export default function CarouselMidiasContent({ recipe, object = "cover" }) {
                         key={0}
                         className={`flex-none ${recipe.images_recipe.length <= 1 ? 'w-full' : 'w-[95%] border-l-2 ml-2 border-l-white snap-start'}  `}
                     >
-                        <Video src={recipe.videos_recipe[0]} title={recipe.name_recipe}/>
+                        <Video 
+                            src={recipe.videos_recipe[0]} 
+                            title={recipe.name_recipe}
+                            evFacebook={"View_recipe_video"}
+                        />
                     </div>
                 }
                 
