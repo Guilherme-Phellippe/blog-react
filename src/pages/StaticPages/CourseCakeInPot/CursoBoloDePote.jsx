@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import VideoCourse from "./components/VideoCourse";
 import WelcomeCard from "./components/WelcomeCard";
 import VacanciesFilled from "./components/VacanciesFilled";
+import { Loading } from "../../../components/atoms/Loading/Loading"
 
 
 const CursoBoloDePote = () => {
@@ -35,22 +36,26 @@ const CursoBoloDePote = () => {
         <main className="w-full max-w-[1500px] min-h-screen mx-auto relative bg-[url('https://chefisisalvarez.com.br/wp-content/uploads/2021/06/Fundo-Bolo-no-pote-scaled-1-1.jpg')] flex flex-col">
 
             <div className="w-full flex flex-col">
-                <WelcomeCard />
+                <Suspense fallback={<Loading />}>
+                    <WelcomeCard />
+                </Suspense>
 
                 <div className="w-full flex flex-col items-center">
 
                     <div className="w-full flex flex-col items-center">
 
+                        <Suspense fallback={<Loading />}>
+                            <div className="flex flex-col items-center md:mt-32">
+                                <h2 className="text-s2_5 py-4 font-medium mt-16 text-color_orange">Você precisa <span className="underline text-color_orange font-bold">ver esse video!</span></h2>
+                                <h3 className="text-s1_7 py-2 px-4 text-center text-color_text_black">
+                                    Esse não será o video mais bonito que você verá hoje, mas será o <span className="font-medium">ÚNICO </span>
+                                    capaz <br /><span className="underline font-medium">transformar sua vida.</span>
+                                </h3>
+                            </div>
 
-                        <div className="flex flex-col items-center md:mt-32">
-                            <h2 className="text-s2_5 py-4 font-medium mt-16 text-color_orange">Você precisa <span className="underline text-color_orange font-bold">ver esse video!</span></h2>
-                            <h3 className="text-s1_7 py-2 px-4 text-center text-color_text_black">
-                                Esse não será o video mais bonito que você verá hoje, mas será o <span className="font-medium">ÚNICO </span>
-                                capaz <br /><span className="underline font-medium">transformar sua vida.</span>
-                            </h3>
-                        </div>
+                            <VideoCourse />
+                        </Suspense>
 
-                        <VideoCourse />
 
 
                         {
