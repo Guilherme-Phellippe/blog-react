@@ -21,9 +21,13 @@ const CursoBoloDePote = () => {
     }, [])
 
     const handleKnowMore = () => {
+        // eslint-disable-next-line no-undef
+        fbq('trackCustom', "Know more");
         window.location.href = "https://go.hotmart.com/F86370228D"
     }
     const handleBuyNow = () => {
+        // eslint-disable-next-line no-undef
+        fbq('trackCustom', "purchase");
         window.location.href = "https://go.hotmart.com/F86370228D?ap=5873"
     }
 
