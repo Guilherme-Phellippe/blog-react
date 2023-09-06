@@ -3,13 +3,24 @@ import VideoCourse from "./components/VideoCourse";
 import WelcomeCard from "./components/WelcomeCard";
 import VacanciesFilled from "./components/VacanciesFilled";
 import { Loading } from "../../../components/atoms/Loading/Loading"
+import { useLocation } from "react-router-dom";
 
 
 const CursoBoloDePote = () => {
     const [showButtonBuy, setButtonBuy] = useState();
+    const { search } = useLocation();
+
 
     useEffect(() => {
+        //ADD EVENT FACEBOOK
+        const fromFacebook = search.includes("facebook");
+        // eslint-disable-next-line no-undef
+        fromFacebook ? fbq("trackCustom", "Page_view_from_facebook") : fbq("trackCustom", "Page_view_from_temsabor");
+    }, [search])
 
+
+    useEffect(() => {
+        //add container to user purchase the product
         const interval = setInterval(() => {
             const watchingVideo = localStorage.getItem("timer_watching");
             if (Number(watchingVideo) >= 180) {
@@ -23,7 +34,7 @@ const CursoBoloDePote = () => {
 
     const handleKnowMore = () => {
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', "Know more");
+        fbq('trackCustom', "Know_more");
         window.location.href = "https://go.hotmart.com/F86370228D"
     }
     const handleBuyNow = () => {

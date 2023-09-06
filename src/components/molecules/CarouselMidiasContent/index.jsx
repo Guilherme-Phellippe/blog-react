@@ -4,7 +4,7 @@ import { Img } from "../../atoms/Img";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl"
 import Video from "../../atoms/Video";
 
-export default function CarouselMidiasContent({ recipe, object = "cover" }) {
+export default function CarouselMidiasContent({ images,videos, object = "cover" }) {
     const { valueSearch } = useContext(HomeContext);
 
 
@@ -31,33 +31,34 @@ export default function CarouselMidiasContent({ recipe, object = "cover" }) {
                 onClick={handleScrollImgs}
                 className="flex items-center h-full absolute left-0 top-0 cursor-pointer bg-gradient-to-r from-black/70 to-transparent"
             >
-                <SlArrowLeft className={`${recipe.images_recipe?.length <= 1 ? "hidden" : "block"} text-s3 text-white`} />
+                <SlArrowLeft className={`${images.length <= 1 ? "hidden" : "block"} text-s3 text-white`} />
             </div>
 
             <div
                 data-id="container-imgs"
-                className={`${recipe.images_recipe?.length <= 1 ? "w-full" : "flex flex-nowrap w-full overflow-auto no-scrollbar snap-x snap-mandatory"}`}
+                className={`${images.length <= 1 ? "w-full" : "flex flex-nowrap w-full overflow-auto no-scrollbar snap-x snap-mandatory"}`}
             >
                 {
-                    !!recipe.videos_recipe?.length &&
+                    !!videos?.length &&
                     <div
                         key={0}
-                        className={`flex-none ${recipe.images_recipe.length <= 1 ? 'w-full' : 'w-[95%] border-l-2 ml-2 border-l-white snap-start'}  `}
+                        className={`flex-none ${images.length <= 1 ? 'w-full' : 'w-[95%] border-l-2 ml-2 border-l-white snap-start'}  `}
                     >
                         <Video 
-                            src={recipe.videos_recipe[0]} 
-                            title={recipe.name_recipe}
+                            src={videos[0]} 
+                            title="Video do contexto da págiona"
                             evFacebook={"View_recipe_video"}
                         />
                     </div>
                 }
                 
                 {
-                    recipe.images_recipe.map((img) => {
+
+                    images.map((img, index) => {
                         return (
                             <div
-                                key={img.small}
-                                className={`flex-none ${recipe.images_recipe.length <= 1 ? 'w-full' : 'w-[95%] border-l-2 ml-2 border-l-white snap-start'}  `}
+                                key={index}
+                                className={`flex-none ${images.length <= 1 ? 'w-full' : 'w-[95%] border-l-2 ml-2 border-l-white snap-start'}  `}
                             >
                                 <Img imgs={img} alt={"Imagens relacionadas ao conteúdo"} object={object} />
                             </div>
@@ -72,7 +73,7 @@ export default function CarouselMidiasContent({ recipe, object = "cover" }) {
                 className="flex items-center h-full absolute right-0 top-0 cursor-pointer  bg-gradient-to-l from-black/70 to-transparent"
             >
                 <SlArrowRight
-                    className={`${recipe.images_recipe.length <= 1 ? "hidden" : "block"} text-s3 text-white`}
+                    className={`${images.length <= 1 ? "hidden" : "block"} text-s3 text-white`}
                 />
             </div>
         </div>

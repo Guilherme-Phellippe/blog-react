@@ -92,8 +92,7 @@ const VideoCourse = () => {
                 >
 
                     <div className="w-full h-full overflow-hidden rounded-2xl bg-color_red flex">
-                        <span className="w-full h-full border-r-2 bg-zinc-300 -translate-x-full flex items-center">
-                        </span>
+                        <span className="w-full h-full border-r-2 bg-zinc-300 -translate-x-full flex items-center"></span>
                     </div>
                 </div>
 

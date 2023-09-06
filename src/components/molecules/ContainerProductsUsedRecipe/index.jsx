@@ -72,7 +72,7 @@ const ContainerProductsUsedRecipe = ({ products, setContainerProducts }) => {
                     <h2 className="py-6 text-s2 font-bold text-color_orange">{formatTextLong(products[indexProduct].product_name, 70)}</h2>
                     <div className="w-full border-[1px] rounded-xl border-color_orange/50 overflow-hidden grid place-items-center">
                         <Caroucel 
-                            img={products[indexProduct].product_images}
+                            images={products[indexProduct].product_images}
                             object="contain"
                          />
                     </div>
