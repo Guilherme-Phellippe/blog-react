@@ -12,7 +12,6 @@ import RecipeChefInfo from "../../molecules/RecipeChefInfo";
 import LikeComentsSaveButtons from "../../molecules/LikeComentSaveButtons";
 import ProductsUsedRecipe from '../../molecules/ProductsUsedRecipe';
 import ArticleAds from '../../atoms/LineAds/ArticleAds';
-import { SlBasket } from 'react-icons/sl';
 import { Img } from '../../atoms/Img';
 
 
