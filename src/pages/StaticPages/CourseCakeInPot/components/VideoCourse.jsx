@@ -12,11 +12,10 @@ const VideoCourse = () => {
     var intervalVideoWatching;
 
     const handleClickPlayVideo = () => {
-
         // eslint-disable-next-line no-undef
         fromFacebook ?  fbq('trackCustom', "video_depoiment_course_cake_pot_fb", { intervalVideoWatching }) : fbq('trackCustom', "video_depoiment_course_cake_pot_tb", { intervalVideoWatching });
-        const vimeoPlayer = refContainer.current.querySelector("iframe")
-        const layer = refContainer.current.querySelector("div[data-layer='play']")
+        const vimeoPlayer = refContainer.current.querySelector("iframe");
+        const layer = refContainer.current.querySelector("div[data-layer='play']");
 
         if (isPlay.current) {
             stopTimerVideo();

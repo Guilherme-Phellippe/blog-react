@@ -18,7 +18,7 @@ export const FeedRecipes = ({ content, hasSearch, handleIdForAddListRemove }) =>
                 <HeaderInfoFeed content={content} onClick={handleIdForAddListRemove} />
 
                 <CarouselMidiasContent
-                    recipe={content}
+                    images={content.images_recipe}
                 />
 
                 <AddRecipeInfo
@@ -31,7 +31,7 @@ export const FeedRecipes = ({ content, hasSearch, handleIdForAddListRemove }) =>
                 />
             </div>
 
-           { !hasSearch && <ListRecipeComments content={content} /> }
+            {!hasSearch && <ListRecipeComments content={content} />}
         </div>
     )
 }
