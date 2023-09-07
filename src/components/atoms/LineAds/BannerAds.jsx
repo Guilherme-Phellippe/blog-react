@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { Img } from "../Img";
-import { Link } from "react-router-dom";
 
 const images = {
     mobile: [
@@ -49,9 +48,9 @@ const BannerAds = () => {
             onClick={handleClickButton}
             className="w-full h-[170px] md:h-[180px] lg:h-[220px] shadow-md my-12 black cursor-pointer relative overflow-hidden"
         >   
-        <Link to={"https://ev.braip.com/pv/lip7pm1o/afi8jjq9px"}>
+        <a href={"https://ev.braip.com/pv/lip7pm1o/afi8jjq9px"}>
             <Img imgs={""} object={"cover"} />
-        </Link>
+        </a>
         </div>
     )
 }
