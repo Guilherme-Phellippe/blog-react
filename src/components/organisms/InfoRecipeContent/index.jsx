@@ -78,27 +78,6 @@ export default function InfoRecipeContent({ recipe, user }) {
                             <LikeComentsSaveButtons nmr_hearts={recipe.nmr_hearts} nmr_saved={recipe.nmr_saved} />
                         </div>
                         <ListRecipeComments content={recipe} user={user} />
-                        <LineAds facebookEventName={"video_ad_amazon_product"}>
-                            <div className="adsbyalkware"
-                                data-ad-format="alk-banner"
-                            ></div>
-                            <div className="flex flex-col items-center shadow-md p-4">
-                                <h2 className='text-s2 text-center'>Incrível triturador de alimentos</h2>
-                                <p className='text-s1_5 my-2'>(Faz batatas igual ao do supermercado!!!)</p>
-                                <video
-                                    controls
-                                    autoPlay={true}
-                                    loop={true}
-                                    muted={true}
-                                    className="h-[350px] w-full"
-                                    src="https://cvf.shopee.com.br/file/de55f605a59230107f84fc9b62466a87"
-                                > </video>
-                                <a
-                                    href="https://amzn.to/45Pa18I"
-                                    className='text-s2 bg-green-700 cursor-pointer hover:bg-green-600 transition-colors text-white p-2 px-8 rounded-xl mt-12 flex items-center gap-2'
-                                > <SlBasket />Comprar agora</a>
-                            </div>
-                        </LineAds>
                     </div>
                 </div>
 

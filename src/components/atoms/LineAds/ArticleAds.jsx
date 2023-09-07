@@ -20,6 +20,7 @@ const ArticleAds = () => {
             </div>
             <div className="w-5/6 flex flex-col">
                 <h2 className='text-s1_3 md:text-s1_5 leading-5 sm:leading-6 h-1/2 p-1 md:p-4 font-medium text-center'>
+                <span className="text-red-700 font-bold"> Dores nas juntas? </span>
                     Por que a industria farmacêutica  
                     <span className="text-red-700 font-bold"> não quer </span>
                     que você saiba dessa 
