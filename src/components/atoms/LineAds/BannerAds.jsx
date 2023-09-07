@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 const images = {
     mobile: [
-        "https://i.ibb.co/zbKm768/Design-sem-nome-9.jpg",
-        "https://i.ibb.co/bv1yj42/2.jpg",
-        "https://i.ibb.co/1MCsJ01/3.jpg",
+        "https://i.ibb.co/pQZqcZy/F-RMULA-AVAN-ADA-PARA-O-COMBATE-DAS-DORES-ARTICULARES-E-DO-CORPO-1.jpg",
+        "https://i.ibb.co/pQZqcZy/F-RMULA-AVAN-ADA-PARA-O-COMBATE-DAS-DORES-ARTICULARES-E-DO-CORPO-1.jpg",
+        "https://i.ibb.co/pQZqcZy/F-RMULA-AVAN-ADA-PARA-O-COMBATE-DAS-DORES-ARTICULARES-E-DO-CORPO-1.jpg",
     ],
     desktop: [
-        "https://i.ibb.co/LzMcDBT/Como.jpg",
-        "https://i.ibb.co/ryvdkR5/2.jpg",
-        "https://i.ibb.co/42Ryq93/3.jpg"
+        "https://i.ibb.co/HPsW7w6/F-RMULA-AVAN-ADA-PARA-O-COMBATE-DAS-DORES-ARTICULARES-E-DO-CORPO.jpg",
+        "https://i.ibb.co/HPsW7w6/F-RMULA-AVAN-ADA-PARA-O-COMBATE-DAS-DORES-ARTICULARES-E-DO-CORPO.jpg",
+        "https://i.ibb.co/HPsW7w6/F-RMULA-AVAN-ADA-PARA-O-COMBATE-DAS-DORES-ARTICULARES-E-DO-CORPO.jpg"
     ]
 }
 
@@ -38,7 +38,7 @@ const BannerAds = () => {
 
     const handleClickButton = () => {
         // eslint-disable-next-line no-undef
-        fbq('trackCustom', "banner_top");
+        fbq('trackCustom', "banner_curcumy_ad");
     }
 
 
@@ -47,10 +47,10 @@ const BannerAds = () => {
             id="banner-ads"
             ref={refContainer}
             onClick={handleClickButton}
-            className="w-full h-[170px] md:h-[170px] lg:h-[180px] shadow-md my-12 black cursor-pointer relative overflow-hidden"
+            className="w-full h-[170px] md:h-[180px] lg:h-[220px] shadow-md my-12 black cursor-pointer relative overflow-hidden"
         >   
-        <Link to={"/historia-da-julia-galvao"}>
-            <Img imgs={""} object={window.innerWidth >= 680 ? "contain" : "cover"} />
+        <Link to={"https://ev.braip.com/pv/lip7pm1o/afi8jjq9px"}>
+            <Img imgs={""} object={"cover"} />
         </Link>
         </div>
     )
