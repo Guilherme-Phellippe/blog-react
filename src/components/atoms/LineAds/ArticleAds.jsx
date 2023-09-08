@@ -29,7 +29,7 @@ const ArticleAds = () => {
                 <div className="flex p-2 md:px-4 w-full h-1/2 items-end justify-between">
                     <p className='sm:text-s1_1 md:text-s1_3 text-center w-3/4'>Clique em <span className="font-bold">SAIBA MAIS</span>, vou contar tudo</p>
                     <a
-                        href="https://ev.braip.com/pv/lipndovp/afi8jjq9px"
+                        href="https://ev.braip.com/campanhas/cpa/came707pr"
                         target='_blank'
                         rel="noreferrer"
                         className='md:text-lg bg-green-700 px-2 py-1 rounded-lg text-white font-medium cursor-pointer'
